@@ -39,18 +39,18 @@
 		67348AB01446350700A3160A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		67348AB21446350700A3160A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		67348AB41446350700A3160A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		67348AB81446350700A3160A /* Dash-Info.plist */ = {isa = PBXFileReference; path = "Dash-Info.plist"; sourceTree = "<group>"; };
+		67348AB81446350700A3160A /* Dash-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dash-Info.plist"; sourceTree = "<group>"; };
 		67348ABA1446350700A3160A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		67348ABC1446350700A3160A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		67348ABE1446350700A3160A /* Dash-Prefix.pch */ = {isa = PBXFileReference; path = "Dash-Prefix.pch"; sourceTree = "<group>"; };
-		67348ABF1446350700A3160A /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		67348ABE1446350700A3160A /* Dash-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dash-Prefix.pch"; sourceTree = "<group>"; };
+		67348ABF1446350700A3160A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		67348AC01446350700A3160A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		67348AC31446350700A3160A /* Dash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dash.xcdatamodel; sourceTree = "<group>"; };
 		67348ACA1446350700A3160A /* DashTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DashTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67348ACB1446350700A3160A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		67348AD41446350700A3160A /* DashTests-Info.plist */ = {isa = PBXFileReference; path = "DashTests-Info.plist"; sourceTree = "<group>"; };
+		67348AD41446350700A3160A /* DashTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DashTests-Info.plist"; sourceTree = "<group>"; };
 		67348AD61446350700A3160A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		67348AD81446350700A3160A /* DashTests.h */ = {isa = PBXFileReference; path = DashTests.h; sourceTree = "<group>"; };
+		67348AD81446350700A3160A /* DashTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashTests.h; sourceTree = "<group>"; };
 		67348AD91446350700A3160A /* DashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
