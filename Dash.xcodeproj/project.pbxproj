@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67348AAF1446350700A3160A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AAE1446350700A3160A /* UIKit.framework */; };
+		67348AB11446350700A3160A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB01446350700A3160A /* Foundation.framework */; };
+		67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB21446350700A3160A /* CoreGraphics.framework */; };
+		67348AB51446350700A3160A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB41446350700A3160A /* CoreData.framework */; };
+		67348ABB1446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AB91446350700A3160A /* InfoPlist.strings */; };
+		67348ABD1446350700A3160A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348ABC1446350700A3160A /* main.m */; };
+		67348AC11446350700A3160A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AC01446350700A3160A /* AppDelegate.m */; };
+		67348AC41446350700A3160A /* Dash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 67348AC21446350700A3160A /* Dash.xcdatamodeld */; };
+		67348ACC1446350700A3160A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348ACB1446350700A3160A /* SenTestingKit.framework */; };
+		67348ACD1446350700A3160A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AAE1446350700A3160A /* UIKit.framework */; };
+		67348ACE1446350700A3160A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB01446350700A3160A /* Foundation.framework */; };
+		67348ACF1446350700A3160A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB41446350700A3160A /* CoreData.framework */; };
+		67348AD71446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AD51446350700A3160A /* InfoPlist.strings */; };
+		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		67348AD01446350700A3160A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67348AA11446350700A3160A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67348AA91446350700A3160A;
+			remoteInfo = Dash;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		67348AAA1446350700A3160A /* Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67348AAE1446350700A3160A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		67348AB01446350700A3160A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		67348AB21446350700A3160A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		67348AB41446350700A3160A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		67348AB81446350700A3160A /* Dash-Info.plist */ = {isa = PBXFileReference; path = "Dash-Info.plist"; sourceTree = "<group>"; };
+		67348ABA1446350700A3160A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		67348ABC1446350700A3160A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		67348ABE1446350700A3160A /* Dash-Prefix.pch */ = {isa = PBXFileReference; path = "Dash-Prefix.pch"; sourceTree = "<group>"; };
+		67348ABF1446350700A3160A /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		67348AC01446350700A3160A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		67348AC31446350700A3160A /* Dash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dash.xcdatamodel; sourceTree = "<group>"; };
+		67348ACA1446350700A3160A /* DashTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DashTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67348ACB1446350700A3160A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		67348AD41446350700A3160A /* DashTests-Info.plist */ = {isa = PBXFileReference; path = "DashTests-Info.plist"; sourceTree = "<group>"; };
+		67348AD61446350700A3160A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		67348AD81446350700A3160A /* DashTests.h */ = {isa = PBXFileReference; path = DashTests.h; sourceTree = "<group>"; };
+		67348AD91446350700A3160A /* DashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67348AA71446350700A3160A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67348AAF1446350700A3160A /* UIKit.framework in Frameworks */,
+				67348AB11446350700A3160A /* Foundation.framework in Frameworks */,
+				67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */,
+				67348AB51446350700A3160A /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67348AC61446350700A3160A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67348ACC1446350700A3160A /* SenTestingKit.framework in Frameworks */,
+				67348ACD1446350700A3160A /* UIKit.framework in Frameworks */,
+				67348ACE1446350700A3160A /* Foundation.framework in Frameworks */,
+				67348ACF1446350700A3160A /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67348A9F1446350700A3160A = {
+			isa = PBXGroup;
+			children = (
+				67348AB61446350700A3160A /* Dash */,
+				67348AD21446350700A3160A /* DashTests */,
+				67348AAD1446350700A3160A /* Frameworks */,
+				67348AAB1446350700A3160A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67348AAB1446350700A3160A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67348AAA1446350700A3160A /* Dash.app */,
+				67348ACA1446350700A3160A /* DashTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67348AAD1446350700A3160A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67348AAE1446350700A3160A /* UIKit.framework */,
+				67348AB01446350700A3160A /* Foundation.framework */,
+				67348AB21446350700A3160A /* CoreGraphics.framework */,
+				67348AB41446350700A3160A /* CoreData.framework */,
+				67348ACB1446350700A3160A /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67348AB61446350700A3160A /* Dash */ = {
+			isa = PBXGroup;
+			children = (
+				67348ABF1446350700A3160A /* AppDelegate.h */,
+				67348AC01446350700A3160A /* AppDelegate.m */,
+				67348AC21446350700A3160A /* Dash.xcdatamodeld */,
+				67348AB71446350700A3160A /* Supporting Files */,
+			);
+			path = Dash;
+			sourceTree = "<group>";
+		};
+		67348AB71446350700A3160A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				67348AB81446350700A3160A /* Dash-Info.plist */,
+				67348AB91446350700A3160A /* InfoPlist.strings */,
+				67348ABC1446350700A3160A /* main.m */,
+				67348ABE1446350700A3160A /* Dash-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		67348AD21446350700A3160A /* DashTests */ = {
+			isa = PBXGroup;
+			children = (
+				67348AD81446350700A3160A /* DashTests.h */,
+				67348AD91446350700A3160A /* DashTests.m */,
+				67348AD31446350700A3160A /* Supporting Files */,
+			);
+			path = DashTests;
+			sourceTree = "<group>";
+		};
+		67348AD31446350700A3160A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				67348AD41446350700A3160A /* DashTests-Info.plist */,
+				67348AD51446350700A3160A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67348AA91446350700A3160A /* Dash */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67348ADD1446350700A3160A /* Build configuration list for PBXNativeTarget "Dash" */;
+			buildPhases = (
+				67348AA61446350700A3160A /* Sources */,
+				67348AA71446350700A3160A /* Frameworks */,
+				67348AA81446350700A3160A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dash;
+			productName = Dash;
+			productReference = 67348AAA1446350700A3160A /* Dash.app */;
+			productType = "com.apple.product-type.application";
+		};
+		67348AC91446350700A3160A /* DashTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67348AE01446350700A3160A /* Build configuration list for PBXNativeTarget "DashTests" */;
+			buildPhases = (
+				67348AC51446350700A3160A /* Sources */,
+				67348AC61446350700A3160A /* Frameworks */,
+				67348AC71446350700A3160A /* Resources */,
+				67348AC81446350700A3160A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67348AD11446350700A3160A /* PBXTargetDependency */,
+			);
+			name = DashTests;
+			productName = DashTests;
+			productReference = 67348ACA1446350700A3160A /* DashTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67348AA11446350700A3160A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 67348AA41446350700A3160A /* Build configuration list for PBXProject "Dash" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 67348A9F1446350700A3160A;
+			productRefGroup = 67348AAB1446350700A3160A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67348AA91446350700A3160A /* Dash */,
+				67348AC91446350700A3160A /* DashTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67348AA81446350700A3160A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67348ABB1446350700A3160A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67348AC71446350700A3160A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67348AD71446350700A3160A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		67348AC81446350700A3160A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67348AA61446350700A3160A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67348ABD1446350700A3160A /* main.m in Sources */,
+				67348AC11446350700A3160A /* AppDelegate.m in Sources */,
+				67348AC41446350700A3160A /* Dash.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67348AC51446350700A3160A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67348ADA1446350700A3160A /* DashTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		67348AD11446350700A3160A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67348AA91446350700A3160A /* Dash */;
+			targetProxy = 67348AD01446350700A3160A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		67348AB91446350700A3160A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67348ABA1446350700A3160A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		67348AD51446350700A3160A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67348AD61446350700A3160A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		67348ADB1446350700A3160A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		67348ADC1446350700A3160A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67348ADE1446350700A3160A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
+				INFOPLIST_FILE = "Dash/Dash-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		67348ADF1446350700A3160A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
+				INFOPLIST_FILE = "Dash/Dash-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		67348AE11446350700A3160A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dash.app/Dash";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
+				INFOPLIST_FILE = "DashTests/DashTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		67348AE21446350700A3160A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dash.app/Dash";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
+				INFOPLIST_FILE = "DashTests/DashTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67348AA41446350700A3160A /* Build configuration list for PBXProject "Dash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67348ADB1446350700A3160A /* Debug */,
+				67348ADC1446350700A3160A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67348ADD1446350700A3160A /* Build configuration list for PBXNativeTarget "Dash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67348ADE1446350700A3160A /* Debug */,
+				67348ADF1446350700A3160A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		67348AE01446350700A3160A /* Build configuration list for PBXNativeTarget "DashTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67348AE11446350700A3160A /* Debug */,
+				67348AE21446350700A3160A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		67348AC21446350700A3160A /* Dash.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				67348AC31446350700A3160A /* Dash.xcdatamodel */,
+			);
+			currentVersion = 67348AC31446350700A3160A /* Dash.xcdatamodel */;
+			path = Dash.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 67348AA11446350700A3160A /* Project object */;
+}
