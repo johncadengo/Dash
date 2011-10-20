@@ -21,6 +21,8 @@
 		67348ACF1446350700A3160A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB41446350700A3160A /* CoreData.framework */; };
 		67348AD71446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AD51446350700A3160A /* InfoPlist.strings */; };
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
+		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
+		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,9 @@
 		67348AD61446350700A3160A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		67348AD81446350700A3160A /* DashTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashTests.h; sourceTree = "<group>"; };
 		67348AD91446350700A3160A /* DashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashTests.m; sourceTree = "<group>"; };
+		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
+		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
+		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +119,10 @@
 		67348AB61446350700A3160A /* Dash */ = {
 			isa = PBXGroup;
 			children = (
+				67CC265E1450D83B00B618C0 /* ViewControllers */,
 				67348ABF1446350700A3160A /* AppDelegate.h */,
 				67348AC01446350700A3160A /* AppDelegate.m */,
+				67CC26541450D7BA00B618C0 /* Storyboard.storyboard */,
 				67348AC21446350700A3160A /* Dash.xcdatamodeld */,
 				67348AB71446350700A3160A /* Supporting Files */,
 			);
@@ -150,6 +157,24 @@
 				67348AD51446350700A3160A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		679009D41450D89500511E0F /* DashViewController */ = {
+			isa = PBXGroup;
+			children = (
+				679009D91450D9B300511E0F /* DashViewController.h */,
+				679009DA1450D9B300511E0F /* DashViewController.m */,
+			);
+			name = DashViewController;
+			sourceTree = "<group>";
+		};
+		67CC265E1450D83B00B618C0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				679009D41450D89500511E0F /* DashViewController */,
+			);
+			name = ViewControllers;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67348ABB1446350700A3160A /* InfoPlist.strings in Resources */,
+				67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +286,7 @@
 				67348ABD1446350700A3160A /* main.m in Sources */,
 				67348AC11446350700A3160A /* AppDelegate.m in Sources */,
 				67348AC41446350700A3160A /* Dash.xcdatamodeld in Sources */,
+				679009DB1450D9B300511E0F /* DashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +448,7 @@
 				67348ADF1446350700A3160A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		67348AE01446350700A3160A /* Build configuration list for PBXNativeTarget "DashTests" */ = {
 			isa = XCConfigurationList;
@@ -429,6 +457,7 @@
 				67348AE21446350700A3160A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
