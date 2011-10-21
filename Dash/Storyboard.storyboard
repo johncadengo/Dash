@@ -30,7 +30,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="P4Y-XY-TTB"/>
-                    <navigationItem key="navigationItem" id="noZ-FV-T1W"/>
+                    <navigationItem key="navigationItem" title="Feed" id="noZ-FV-T1W"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-239" y="-1200"/>
@@ -42,19 +42,10 @@
                     <view key="view" contentMode="scaleToFill" id="nem-WE-FCB">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DashViewController" lineBreakMode="tailTruncation" minimumFontSize="10" id="Y2t-1i-0lg">
-                                <rect key="frame" x="85" y="195" width="150" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="5K2-KO-x4v"/>
-                    <navigationItem key="navigationItem" id="vQH-Wo-XW0"/>
+                    <navigationItem key="navigationItem" title="Dash" id="vQH-Wo-XW0"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-239" y="52"/>
@@ -84,7 +75,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="ent-O0-PYz"/>
-                    <navigationItem key="navigationItem" id="EAV-TG-CPr"/>
+                    <navigationItem key="navigationItem" title="Friends" id="EAV-TG-CPr"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-239" y="685"/>
@@ -114,7 +105,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="w20-zF-plu"/>
-                    <navigationItem key="navigationItem" id="7bW-GD-5hp"/>
+                    <navigationItem key="navigationItem" title="Profile" id="7bW-GD-5hp"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-239" y="1319"/>
@@ -123,7 +114,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr1-RU-IBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="V0S-th-8fT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Z8B-YK-ssI"/>
+                    <tabBarItem key="tabBarItem" title="Feed" id="Z8B-YK-ssI"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lPd-dH-2lr">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -159,7 +150,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="5vL-6S-Ajf"/>
-                    <navigationItem key="navigationItem" id="Xdx-WY-A6D"/>
+                    <navigationItem key="navigationItem" title="Places" id="Xdx-WY-A6D"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-239" y="-585"/>
@@ -167,7 +158,7 @@
         <scene sceneID="bA9-iY-ZLs">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnG-hZ-xE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController definesPresentationContext="YES" id="oV9-W4-NIe" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" definesPresentationContext="YES" id="oV9-W4-NIe" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="hdA-52-CZg"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="SXe-A6-ZTu">
@@ -190,7 +181,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qs2-d7-vbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="jCg-bA-KS5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="0yL-mB-VgE"/>
+                    <tabBarItem key="tabBarItem" title="Dash" id="0yL-mB-VgE"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Bwz-aK-HnF">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -205,7 +196,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ViJ-wf-3jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="IdB-Gh-7Ud" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="0EB-Vu-1yY"/>
+                    <tabBarItem key="tabBarItem" title="Places" id="0EB-Vu-1yY"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="56U-ry-ZHk">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -220,7 +211,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXs-bS-Lwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Toc-43-LWk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Lci-3r-bf3"/>
+                    <tabBarItem key="tabBarItem" title="Friends" id="Lci-3r-bf3"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="9A6-36-YEX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -235,7 +226,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9g-F9-mVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="dD0-DX-IST" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="t6o-Au-Wag"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="t6o-Au-Wag"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="h8f-fc-C5Q">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

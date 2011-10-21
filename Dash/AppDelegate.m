@@ -18,6 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Get the TabBarController so we can start off on a different index.
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    
+    // TODO: Handle constants in the proper way.
+    [tabBarController setSelectedIndex: 2];
+    
     return YES;
 }
 

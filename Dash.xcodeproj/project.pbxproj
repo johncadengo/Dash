@@ -258,7 +258,7 @@
 				67348AA61446350700A3160A /* Sources */,
 				67348AA71446350700A3160A /* Frameworks */,
 				67348AA81446350700A3160A /* Resources */,
-				679009F614511BB400511E0F /* ShellScript */,
+				679009F614511BB400511E0F /* Run Script to turn TODO:, FIXME:, ???:, and !!!: keywords into warinings */,
 			);
 			buildRules = (
 			);
@@ -349,13 +349,14 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		679009F614511BB400511E0F /* ShellScript */ = {
+		679009F614511BB400511E0F /* Run Script to turn TODO:, FIXME:, ???:, and !!!: keywords into warinings */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script to turn TODO:, FIXME:, ???:, and !!!: keywords into warinings";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
