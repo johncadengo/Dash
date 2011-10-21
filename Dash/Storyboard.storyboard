@@ -8,7 +8,7 @@
         <scene sceneID="nEa-y7-DTw">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdl-sn-eOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="cp7-e9-PhF" sceneMemberID="viewController">
+                <tableViewController id="cp7-e9-PhF" customClass="FeedViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o06-6c-5rI">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,7 @@
         <scene sceneID="D8r-q8-ko5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hj-t8-BKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="9kF-QB-6qP" sceneMemberID="viewController">
+                <tableViewController id="9kF-QB-6qP" customClass="FriendsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cwr-yy-2es">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +92,7 @@
         <scene sceneID="g0H-Km-RHi">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMs-8Z-85d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="uCd-lj-enM" sceneMemberID="viewController">
+                <tableViewController id="uCd-lj-enM" customClass="ProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="u07-TN-5Bc">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,7 @@
         <scene sceneID="0yi-PX-Kun">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xak-M4-wyX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="d0u-3Q-WJe" sceneMemberID="viewController">
+                <tableViewController id="d0u-3Q-WJe" customClass="PlacesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YGW-wT-Qmz">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,6 +247,20 @@
             <point key="canvasLocation" x="-712" y="1319"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="FeedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedViewController.h"/>
+        </class>
+        <class className="FriendsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
+        </class>
+        <class className="PlacesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesViewController.h"/>
+        </class>
+        <class className="ProfileViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
