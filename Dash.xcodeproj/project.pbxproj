@@ -23,6 +23,10 @@
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
+		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
+		679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EE1450EB9600511E0F /* PlacesViewController.m */; };
+		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
+		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +62,14 @@
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009E41450E75900511E0F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
+		679009EA1450EB7A00511E0F /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewController.h; path = Dash/ViewControllers/FeedViewController/FeedViewController.h; sourceTree = "<group>"; };
+		679009EB1450EB7A00511E0F /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewController.m; path = Dash/ViewControllers/FeedViewController/FeedViewController.m; sourceTree = "<group>"; };
+		679009ED1450EB9600511E0F /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlacesViewController.h; path = Dash/ViewControllers/PlacesViewController/PlacesViewController.h; sourceTree = "<group>"; };
+		679009EE1450EB9600511E0F /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlacesViewController.m; path = Dash/ViewControllers/PlacesViewController/PlacesViewController.m; sourceTree = "<group>"; };
+		679009F01450ED8800511E0F /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendsViewController.h; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.h; sourceTree = "<group>"; };
+		679009F11450ED8800511E0F /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.m; sourceTree = "<group>"; };
+		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
+		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,10 +199,50 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		679009E61450EB1D00511E0F /* FeedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				679009EA1450EB7A00511E0F /* FeedViewController.h */,
+				679009EB1450EB7A00511E0F /* FeedViewController.m */,
+			);
+			name = FeedViewController;
+			sourceTree = "<group>";
+		};
+		679009E71450EB2900511E0F /* PlacesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				679009ED1450EB9600511E0F /* PlacesViewController.h */,
+				679009EE1450EB9600511E0F /* PlacesViewController.m */,
+			);
+			name = PlacesViewController;
+			sourceTree = "<group>";
+		};
+		679009E81450EB3A00511E0F /* FriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				679009F01450ED8800511E0F /* FriendsViewController.h */,
+				679009F11450ED8800511E0F /* FriendsViewController.m */,
+			);
+			name = FriendsViewController;
+			sourceTree = "<group>";
+		};
+		679009E91450EB4400511E0F /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				679009F31450ED9B00511E0F /* ProfileViewController.h */,
+				679009F41450ED9B00511E0F /* ProfileViewController.m */,
+			);
+			name = ProfileViewController;
+			sourceTree = "<group>";
+		};
 		67CC265E1450D83B00B618C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				679009E61450EB1D00511E0F /* FeedViewController */,
+				679009E71450EB2900511E0F /* PlacesViewController */,
 				679009D41450D89500511E0F /* DashViewController */,
+				679009E81450EB3A00511E0F /* FriendsViewController */,
+				679009E91450EB4400511E0F /* ProfileViewController */,
 			);
 			name = ViewControllers;
 			path = ..;
@@ -307,6 +359,10 @@
 				67348AC11446350700A3160A /* AppDelegate.m in Sources */,
 				67348AC41446350700A3160A /* Dash.xcdatamodeld in Sources */,
 				679009DB1450D9B300511E0F /* DashViewController.m in Sources */,
+				679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */,
+				679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */,
+				679009F21450ED8800511E0F /* FriendsViewController.m in Sources */,
+				679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
