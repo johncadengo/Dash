@@ -7,8 +7,11 @@
 //
 
 #import "DashTests.h"
+#import "DashAPI.h"
 
 @implementation DashTests
+
+@synthesize dash = _dash;
 
 - (void)setUp
 {
@@ -16,21 +19,22 @@
     
     // Set-up code here.
     NSLog(@"%@ setUp", self.name);
-//    calculator = [[[Calculator alloc] init] retain];
-//    STAssertNotNil(calculator, @"Cannot create Calculator instance");
+    self.dash = [[DashAPI alloc] init];
+    STAssertNotNil(self.dash, @"Cannot create DashAPI instance");
 }
 
 - (void)tearDown
 {
-//    [calculator release];
-//    NSLog(@"%@ tearDown", self.name);
+    NSLog(@"%@ tearDown", self.name);
     
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testDashInit
 {
-    STFail(@"Unit tests are not implemented yet in DashTests");
+    // Make sure that all the ivars of dash have been initialized
+    JSONDecoder *JSON = self.dash.JSON;
+    STAssertNotNil(JSON, @"JSON ivar of DashAPI has not been initialized");
 }
 
 @end

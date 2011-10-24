@@ -7,10 +7,21 @@
 //
 
 #import "DashAPI.h"
+#import "JSONKit.h"
 
 @implementation DashAPI
 
-@synthesize JSON;
+@synthesize JSON = _JSON;
 
+-(id) init 
+{
+    self = [super init];
+    
+    if (self) {
+        self.JSON = [[JSONDecoder alloc] init];
+    }
+    
+    return self;
+}
 
 @end

@@ -8,6 +8,10 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
+@class DashAPI;
+
 @interface DashTests : SenTestCase
+
+@property (nonatomic, strong) DashAPI *dash;
 
 @end

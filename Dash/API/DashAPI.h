@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JSONKit.h"
+
+@class JSONDecoder;
 
 @interface DashAPI : NSObject
 
