@@ -98,16 +98,25 @@
 {
     NSLog(@"%@ start", self.name); 
     
-    Person *person = [self getLastPerson];
+    // First, get the last person entity from the persistent store, which is john.
+    Person *john = [self getLastPerson];
     
-    // First check initial values of the person fetched
-    STAssertTrue([[person name] isEqualToString:@"john"], @"Name failed to store properly.");
-    STAssertTrue([[person email] isEqualToString:@"john@john.com"], @"Email failed to store properly.");
+    // Check initial values of the person fetched
+    STAssertTrue([[john name] isEqualToString:@"john"], @"Name failed to store properly.");
+    STAssertTrue([[john email] isEqualToString:@"john@john.com"], @"Email failed to store properly.");
     
     // Change the values
-
+    [john setName:@"brown"];
+    [john setEmail:@"brwn@paris.com"];
+    
     // Try to save
     [self saveContext];
+    
+    // Now refetch it and make sure that it has updated the values
+    Person *brown = [self getLastPerson];
+    
+    STAssertTrue([[brown name] isEqualToString:@"brown"], @"Name failed to store properly.");
+    STAssertTrue([[brown email] isEqualToString:@"brwn@paris.com"], @"Email failed to store properly.");
     
     NSLog(@"%@ end", self.name); 
 }
