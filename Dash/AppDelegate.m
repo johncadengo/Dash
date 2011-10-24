@@ -16,13 +16,16 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
+// Make sure we start out on the Dash Tab
+enum {
+    kDashTabIndex = 2
+};
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Get the TabBarController so we can start off on a different index.
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    
-    // TODO: Handle constants in the proper way.
-    [tabBarController setSelectedIndex: 2];
+    [tabBarController setSelectedIndex: kDashTabIndex];
     
     return YES;
 }

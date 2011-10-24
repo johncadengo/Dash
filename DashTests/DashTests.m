@@ -15,11 +15,15 @@
     [super setUp];
     
     // Set-up code here.
+    NSLog(@"%@ setUp", self.name);
+//    calculator = [[[Calculator alloc] init] retain];
+//    STAssertNotNil(calculator, @"Cannot create Calculator instance");
 }
 
 - (void)tearDown
 {
-    // Tear-down code here.
+//    [calculator release];
+//    NSLog(@"%@ tearDown", self.name);
     
     [super tearDown];
 }
