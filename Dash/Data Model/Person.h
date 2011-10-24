@@ -13,10 +13,10 @@
 
 @interface Person : NSManagedObject
 
-@property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSSet *rating;
-@property (nonatomic, retain) NSSet *location;
+@property (nonatomic, strong) NSString * email;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSSet *rating;
+@property (nonatomic, strong) NSSet *location;
 @end
 
 @interface Person (CoreDataGeneratedAccessors)

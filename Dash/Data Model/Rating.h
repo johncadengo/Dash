@@ -13,8 +13,8 @@
 
 @interface Rating : NSManagedObject
 
-@property (nonatomic, retain) NSString * stars;
-@property (nonatomic, retain) Place *place;
-@property (nonatomic, retain) NSManagedObject *person;
+@property (nonatomic, strong) NSString * stars;
+@property (nonatomic, strong) Place *place;
+@property (nonatomic, strong) NSManagedObject *person;
 
 @end

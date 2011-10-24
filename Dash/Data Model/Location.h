@@ -12,9 +12,9 @@
 
 @interface Location : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * latitude;
-@property (nonatomic, retain) NSNumber * longitude;
-@property (nonatomic, retain) NSManagedObject *place;
-@property (nonatomic, retain) NSManagedObject *person;
+@property (nonatomic, strong) NSNumber * latitude;
+@property (nonatomic, strong) NSNumber * longitude;
+@property (nonatomic, strong) NSManagedObject *place;
+@property (nonatomic, strong) NSManagedObject *person;
 
 @end

@@ -13,12 +13,12 @@
 
 @interface Place : NSManagedObject
 
-@property (nonatomic, retain) NSString * address;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * phone;
-@property (nonatomic, retain) NSString * price;
-@property (nonatomic, retain) Location *location;
-@property (nonatomic, retain) NSSet *rating;
+@property (nonatomic, strong) NSString * address;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * phone;
+@property (nonatomic, strong) NSString * price;
+@property (nonatomic, strong) Location *location;
+@property (nonatomic, strong) NSSet *rating;
 @end
 
 @interface Place (CoreDataGeneratedAccessors)

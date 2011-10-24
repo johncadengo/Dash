@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		670EC3A01455B5B50070BDE0 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 670EC39F1455B5B50070BDE0 /* Constants.m */; };
+		670EC3A01455B5B50070BDE0 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 670EC39F1455B5B50070BDE0 /* Constants.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67348AAF1446350700A3160A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AAE1446350700A3160A /* UIKit.framework */; };
 		67348AB11446350700A3160A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB01446350700A3160A /* Foundation.framework */; };
 		67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB21446350700A3160A /* CoreGraphics.framework */; };
 		67348AB51446350700A3160A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB41446350700A3160A /* CoreData.framework */; };
 		67348ABB1446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AB91446350700A3160A /* InfoPlist.strings */; };
-		67348ABD1446350700A3160A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348ABC1446350700A3160A /* main.m */; };
-		67348AC11446350700A3160A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AC01446350700A3160A /* AppDelegate.m */; };
+		67348ABD1446350700A3160A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348ABC1446350700A3160A /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		67348AC11446350700A3160A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AC01446350700A3160A /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67348AC41446350700A3160A /* Dash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 67348AC21446350700A3160A /* Dash.xcdatamodeld */; };
 		67348ACC1446350700A3160A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348ACB1446350700A3160A /* SenTestingKit.framework */; };
 		67348ACD1446350700A3160A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AAE1446350700A3160A /* UIKit.framework */; };
@@ -22,14 +22,14 @@
 		67348ACF1446350700A3160A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB41446350700A3160A /* CoreData.framework */; };
 		67348AD71446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AD51446350700A3160A /* InfoPlist.strings */; };
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
-		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
-		6736536D1455C72000E53822 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6736536C1455C72000E53822 /* JSONKit.m */; settings = {COMPILER_FLAGS = " \"-fno-objc-arc\""; }; };
-		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
+		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6736536D1455C72000E53822 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6736536C1455C72000E53822 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
-		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
-		679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EE1450EB9600511E0F /* PlacesViewController.m */; };
-		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
-		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
+		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EE1450EB9600511E0F /* PlacesViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
 		67B9F22A14560AD5009D480C /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B9F22914560AD5009D480C /* Location.m */; };
 		67B9F22D14560AED009D480C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B9F22C14560AED009D480C /* Place.m */; };
@@ -537,6 +537,7 @@
 		67348ADE1446350700A3160A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
 				INFOPLIST_FILE = "Dash/Dash-Info.plist";
@@ -548,6 +549,7 @@
 		67348ADF1446350700A3160A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
 				INFOPLIST_FILE = "Dash/Dash-Info.plist";
