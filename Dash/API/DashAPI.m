@@ -9,6 +9,11 @@
 #import "DashAPI.h"
 #import "JSONKit.h"
 
+// Private properties
+@interface DashAPI ()
+@property (strong, nonatomic) JSONDecoder *JSON;
+@end
+
 @implementation DashAPI
 
 @synthesize JSON = _JSON;
@@ -22,6 +27,12 @@
     }
     
     return self;
+}
+
+-(void) pop:(CLLocation *)location
+{
+    
+    
 }
 
 @end

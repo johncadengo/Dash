@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class JSONDecoder;
+#import <CoreLocation/CoreLocation.h>
 
 @interface DashAPI : NSObject
 
-@property (nonatomic, strong) JSONDecoder *JSON;
+-(void) pop:(CLLocation*)location;
 
 @end

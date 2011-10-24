@@ -12,6 +12,7 @@
 
 @interface DashTests : SenTestCase
 
-@property (nonatomic, strong) DashAPI *dash;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) DashAPI *dash;
 
 @end

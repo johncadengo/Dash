@@ -30,6 +30,7 @@
 		679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EE1450EB9600511E0F /* PlacesViewController.m */; };
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
+		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		679009F11450ED8800511E0F /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.m; sourceTree = "<group>"; };
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
+		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */,
 				67348AAF1446350700A3160A /* UIKit.framework in Frameworks */,
 				67348AB11446350700A3160A /* Foundation.framework in Frameworks */,
 				67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */,
@@ -131,6 +134,7 @@
 		67348AAD1446350700A3160A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67B9F2241455E8D0009D480C /* CoreLocation.framework */,
 				67348AAE1446350700A3160A /* UIKit.framework */,
 				67348AB01446350700A3160A /* Foundation.framework */,
 				67348AB21446350700A3160A /* CoreGraphics.framework */,
