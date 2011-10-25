@@ -189,7 +189,6 @@
 			children = (
 				67348AD81446350700A3160A /* DashTests.h */,
 				67348AD91446350700A3160A /* DashTests.m */,
-				67B9F237145657AD009D480C /* Logic Tests */,
 				67348AD31446350700A3160A /* Supporting Files */,
 			);
 			path = DashTests;
@@ -297,13 +296,6 @@
 				67B9F22914560AD5009D480C /* Location.m */,
 			);
 			name = "Data Model";
-			sourceTree = "<group>";
-		};
-		67B9F237145657AD009D480C /* Logic Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Logic Tests";
 			sourceTree = "<group>";
 		};
 		67CC265E1450D83B00B618C0 /* ViewControllers */ = {
