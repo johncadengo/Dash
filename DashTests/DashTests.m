@@ -7,7 +7,6 @@
 //
 
 #import "DashTests.h"
-#import "AppDelegate.h"
 #import "DashAPI.h"
 #import "JSONKit.h"
 #import "Person.h"
@@ -20,19 +19,27 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize dash = _dash;
 
+#pragma mark -
+#pragma mark Setup and TearDown
+
+/** Run before each test, creates an example data model we can play with during our tests.
+ */
 - (void)setUp
 {
+    NSLog(@"%@ setUp", self.name);
     [super setUp];
     
-    // Set-up code here.
-    NSLog(@"%@ setUp", self.name);
+    // Create our DashAPI object
     self.dash = [[DashAPI alloc] init];
     STAssertNotNil(self.dash, @"Cannot create DashAPI instance");
     
-    // Get managed object context from the app delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.managedObjectContext = [appDelegate managedObjectContext];
-    STAssertNotNil(self.managedObjectContext, @"Cannot get managed object context");
+    // Build a core data stack in memory so it can be quick and teardown will be simple 
+    NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:[NSArray arrayWithObject:[NSBundle mainBundle]]];
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
+    STAssertTrue([persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:NULL] ? YES : NO, @"Failed to add in-memory persistent store");    
+    self.managedObjectContext = [[NSManagedObjectContext alloc] init];
+    self.managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator;
+    STAssertNotNil(self.managedObjectContext, @"Failed to create managed object context");
     
     // Create and configure a new instance of the Person entity.
     Person *person = (Person *)[NSEntityDescription insertNewObjectForEntityForName: @"Person" inManagedObjectContext: self.managedObjectContext];
@@ -47,12 +54,19 @@
     
 }
 
+/** Run after each test, makes sure to dispose of everything we've created during setup.
+ 
+    TODO: Actually tear down things. Right now, it does not.
+ */
 - (void)tearDown
 {
     NSLog(@"%@ tearDown", self.name);
     
     [super tearDown];
 }
+
+#pragma mark -
+#pragma mark Helper Methods to be used throughout tests
 
 - (void)saveContext
 {
@@ -90,9 +104,13 @@
     return person;
 }
 
-/* testPerson fetches a Person entity from the persistent store
- * then tests setting and getting its properties
- * and finally tests saving the context and making sure it went through.
+#pragma mark -
+#pragma mark Tests
+
+/**
+ testPerson fetches a Person entity from the persistent store
+ then tests setting and getting its properties
+ and finally tests saving the context and making sure it went through.
  */
 - (void)testGetPerson 
 {
