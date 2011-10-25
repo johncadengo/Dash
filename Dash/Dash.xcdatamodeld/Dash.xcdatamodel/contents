@@ -16,6 +16,10 @@
     </entity>
     <entity name="Highlight" parentEntity="Association" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HighlightPhoto" inverseName="highlight" inverseEntity="HighlightPhoto" syncable="YES"/>
+    </entity>
+    <entity name="HighlightPhoto" parentEntity="Photo" syncable="YES">
+        <relationship name="highlight" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Highlight" inverseName="photos" inverseEntity="Highlight" syncable="YES"/>
     </entity>
     <entity name="Hours" syncable="YES">
         <attribute name="close" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -39,6 +43,17 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="associations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Association" inverseName="person" inverseEntity="Association" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="author" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="profilepic" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PersonPhoto" inverseName="person" inverseEntity="PersonPhoto" syncable="YES"/>
+    </entity>
+    <entity name="PersonPhoto" parentEntity="Photo" syncable="YES">
+        <relationship name="person" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="profilepic" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Photo" isAbstract="YES" syncable="YES">
+        <attribute name="localpath" optional="YES" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="photos" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Place" representedClassName="Place" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -50,21 +65,29 @@
         <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="places" inverseEntity="Category" syncable="YES"/>
         <relationship name="hours" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hours" inverseName="place" inverseEntity="Hours" syncable="YES"/>
         <relationship name="location" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="place" inverseEntity="Location" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlacePhoto" inverseName="place" inverseEntity="PlacePhoto" syncable="YES"/>
+    </entity>
+    <entity name="PlacePhoto" parentEntity="Photo" syncable="YES">
+        <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="photos" inverseEntity="Place" syncable="YES"/>
     </entity>
     <entity name="Rate" parentEntity="Association" syncable="YES"/>
     <entity name="Save" parentEntity="Association" syncable="YES"/>
     <entity name="Visit" parentEntity="Association" syncable="YES"/>
     <elements>
         <element name="Association" positionX="97" positionY="-18" width="128" height="105"/>
-        <element name="Location" positionX="-216" positionY="-18" width="128" height="165"/>
-        <element name="Person" positionX="250" positionY="-18" width="128" height="105"/>
-        <element name="Place" positionX="-63" positionY="-27" width="128" height="180"/>
+        <element name="Location" positionX="-216" positionY="-27" width="128" height="165"/>
+        <element name="Person" positionX="250" positionY="9" width="128" height="135"/>
+        <element name="Place" positionX="-63" positionY="-27" width="128" height="195"/>
         <element name="Save" positionX="-72" positionY="189" width="128" height="45"/>
         <element name="Visit" positionX="63" positionY="189" width="128" height="45"/>
         <element name="Rate" positionX="198" positionY="189" width="128" height="45"/>
-        <element name="Highlight" positionX="-72" positionY="243" width="128" height="60"/>
+        <element name="Highlight" positionX="-72" positionY="243" width="128" height="75"/>
         <element name="Comment" positionX="63" positionY="243" width="128" height="60"/>
         <element name="Hours" positionX="-216" positionY="186" width="128" height="120"/>
         <element name="Category" positionX="-65" positionY="-126" width="128" height="90"/>
+        <element name="Photo" positionX="252" positionY="-216" width="128" height="105"/>
+        <element name="PlacePhoto" positionX="97" positionY="-162" width="128" height="60"/>
+        <element name="HighlightPhoto" positionX="97" positionY="-90" width="128" height="60"/>
+        <element name="PersonPhoto" positionX="252" positionY="-78" width="128" height="60"/>
     </elements>
 </model>
