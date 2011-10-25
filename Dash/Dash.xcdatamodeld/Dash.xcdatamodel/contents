@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="10K549" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Association" representedClassName="Association" isAbstract="YES" parentEntity="Uniqueness" syncable="YES">
+    <entity name="Action" parentEntity="Uniqueness" syncable="YES">
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="person" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="associations" inverseEntity="Person" syncable="YES"/>
+        <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="actions" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Association" representedClassName="" isAbstract="YES" parentEntity="Action" syncable="YES">
         <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="associations" inverseEntity="Place" syncable="YES"/>
     </entity>
     <entity name="Category" parentEntity="Uniqueness" syncable="YES">
@@ -10,6 +12,9 @@
         <relationship name="places" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="categories" inverseEntity="Place" syncable="YES"/>
     </entity>
     <entity name="Email" parentEntity="TextAssociation" syncable="YES"/>
+    <entity name="Event" syncable="YES">
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
     <entity name="Highlight" parentEntity="TextAssociation" syncable="YES">
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reply" inverseName="highlight" inverseEntity="Reply" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HighlightPhoto" inverseName="highlight" inverseEntity="HighlightPhoto" syncable="YES"/>
@@ -35,17 +40,15 @@
     <entity name="Person" representedClassName="Person" parentEntity="Uniqueness" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="associations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Association" inverseName="person" inverseEntity="Association" syncable="YES"/>
-        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="author" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="actions" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="author" inverseEntity="Action" syncable="YES"/>
         <relationship name="profilepic" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PersonPhoto" inverseName="person" inverseEntity="PersonPhoto" syncable="YES"/>
     </entity>
     <entity name="PersonPhoto" parentEntity="Photo" syncable="YES">
         <relationship name="person" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="profilepic" inverseEntity="Person" syncable="YES"/>
     </entity>
-    <entity name="Photo" isAbstract="YES" parentEntity="Uniqueness" syncable="YES">
-        <attribute name="localpath" optional="YES" syncable="YES"/>
+    <entity name="Photo" isAbstract="YES" parentEntity="Action" syncable="YES">
+        <attribute name="localpath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="photos" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Place" representedClassName="Place" parentEntity="Uniqueness" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -80,7 +83,7 @@
     </entity>
     <entity name="Visit" parentEntity="Association" syncable="YES"/>
     <elements>
-        <element name="Association" positionX="97" positionY="3" width="128" height="90"/>
+        <element name="Association" positionX="97" positionY="45" width="128" height="60"/>
         <element name="Category" positionX="-216" positionY="-126" width="128" height="75"/>
         <element name="Reply" positionX="106" positionY="339" width="128" height="75"/>
         <element name="ReplyPhoto" positionX="250" positionY="336" width="128" height="60"/>
@@ -88,9 +91,9 @@
         <element name="HighlightPhoto" positionX="241" positionY="252" width="128" height="60"/>
         <element name="Hours" positionX="-216" positionY="186" width="128" height="105"/>
         <element name="Location" positionX="-216" positionY="-27" width="128" height="150"/>
-        <element name="Person" positionX="250" positionY="9" width="128" height="120"/>
+        <element name="Person" positionX="250" positionY="9" width="128" height="105"/>
         <element name="PersonPhoto" positionX="250" positionY="-69" width="128" height="60"/>
-        <element name="Photo" positionX="97" positionY="-117" width="128" height="90"/>
+        <element name="Photo" positionX="97" positionY="-48" width="128" height="75"/>
         <element name="Place" positionX="-65" positionY="-27" width="128" height="180"/>
         <element name="PlacePhoto" positionX="-65" positionY="-96" width="128" height="60"/>
         <element name="Rate" positionX="-72" positionY="300" width="128" height="60"/>
@@ -98,6 +101,8 @@
         <element name="Email" positionX="97" positionY="198" width="128" height="45"/>
         <element name="Visit" positionX="-72" positionY="243" width="128" height="45"/>
         <element name="TextAssociation" positionX="99" positionY="126" width="128" height="60"/>
-        <element name="Uniqueness" positionX="79" positionY="-234" width="128" height="60"/>
+        <element name="Uniqueness" positionX="99" positionY="-294" width="128" height="60"/>
+        <element name="Event" positionX="250" positionY="-216" width="128" height="60"/>
+        <element name="Action" positionX="97" positionY="-144" width="128" height="75"/>
     </elements>
 </model>
