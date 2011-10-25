@@ -35,6 +35,7 @@
 		67B9F22D14560AED009D480C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B9F22C14560AED009D480C /* Place.m */; };
 		67B9F23014560AED009D480C /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B9F22F14560AED009D480C /* Rating.m */; };
 		67B9F23314560AEE009D480C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B9F23214560AED009D480C /* Person.m */; };
+		67CBFB0614565A890005C706 /* LogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CBFB0514565A890005C706 /* LogicTests.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,8 @@
 		67B9F22F14560AED009D480C /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rating.m; path = "Data Model/Rating.m"; sourceTree = "<group>"; };
 		67B9F23114560AED009D480C /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person.h"; sourceTree = "<group>"; };
 		67B9F23214560AED009D480C /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person.m"; sourceTree = "<group>"; };
+		67CBFB0414565A890005C706 /* LogicTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogicTests.h; path = "Logic Tests/LogicTests.h"; sourceTree = "<group>"; };
+		67CBFB0514565A890005C706 /* LogicTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogicTests.m; path = "Logic Tests/LogicTests.m"; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +192,7 @@
 			children = (
 				67348AD81446350700A3160A /* DashTests.h */,
 				67348AD91446350700A3160A /* DashTests.m */,
+				67CBFB0714565A990005C706 /* LogicTests */,
 				67348AD31446350700A3160A /* Supporting Files */,
 			);
 			path = DashTests;
@@ -296,6 +300,15 @@
 				67B9F22914560AD5009D480C /* Location.m */,
 			);
 			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		67CBFB0714565A990005C706 /* LogicTests */ = {
+			isa = PBXGroup;
+			children = (
+				67CBFB0414565A890005C706 /* LogicTests.h */,
+				67CBFB0514565A890005C706 /* LogicTests.m */,
+			);
+			name = LogicTests;
 			sourceTree = "<group>";
 		};
 		67CC265E1450D83B00B618C0 /* ViewControllers */ = {
@@ -456,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67348ADA1446350700A3160A /* DashTests.m in Sources */,
+				67CBFB0614565A890005C706 /* LogicTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
