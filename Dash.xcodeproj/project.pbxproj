@@ -24,6 +24,10 @@
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6736536D1455C72000E53822 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6736536C1455C72000E53822 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6751695F14565F5B00487ABF /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 6751695E14565F5B00487ABF /* Person.m */; };
+		6751696314565F8600487ABF /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 6751696214565F8600487ABF /* Place.m */; };
+		6751696614565F8600487ABF /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 6751696514565F8600487ABF /* Location.m */; };
+		6751696914565F8600487ABF /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = 6751696814565F8600487ABF /* Rating.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -69,6 +73,14 @@
 		673653681455C1DD00E53822 /* DashAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashAPI.m; path = API/DashAPI.m; sourceTree = "<group>"; };
 		6736536B1455C72000E53822 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = API/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		6736536C1455C72000E53822 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = API/JSONKit/JSONKit.m; sourceTree = "<group>"; };
+		6751695D14565F5B00487ABF /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person.h"; sourceTree = "<group>"; };
+		6751695E14565F5B00487ABF /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person.m"; sourceTree = "<group>"; };
+		6751696114565F8600487ABF /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = "Data Model/Place.h"; sourceTree = "<group>"; };
+		6751696214565F8600487ABF /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place.m"; sourceTree = "<group>"; };
+		6751696414565F8600487ABF /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Location.h"; sourceTree = "<group>"; };
+		6751696514565F8600487ABF /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Location.m"; sourceTree = "<group>"; };
+		6751696714565F8600487ABF /* Rating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rating.h; path = "Data Model/Rating.h"; sourceTree = "<group>"; };
+		6751696814565F8600487ABF /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rating.m; path = "Data Model/Rating.m"; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009E41450E75900511E0F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
@@ -274,6 +286,14 @@
 		67B9F22714560ABD009D480C /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				6751695D14565F5B00487ABF /* Person.h */,
+				6751695E14565F5B00487ABF /* Person.m */,
+				6751696714565F8600487ABF /* Rating.h */,
+				6751696814565F8600487ABF /* Rating.m */,
+				6751696414565F8600487ABF /* Location.h */,
+				6751696514565F8600487ABF /* Location.m */,
+				6751696114565F8600487ABF /* Place.h */,
+				6751696214565F8600487ABF /* Place.m */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -424,6 +444,10 @@
 				670EC3A01455B5B50070BDE0 /* Constants.m in Sources */,
 				673653691455C1DD00E53822 /* DashAPI.m in Sources */,
 				6736536D1455C72000E53822 /* JSONKit.m in Sources */,
+				6751695F14565F5B00487ABF /* Person.m in Sources */,
+				6751696314565F8600487ABF /* Place.m in Sources */,
+				6751696614565F8600487ABF /* Location.m in Sources */,
+				6751696914565F8600487ABF /* Rating.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
