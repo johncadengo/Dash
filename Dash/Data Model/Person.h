@@ -11,6 +11,8 @@
 
 @class Location, Rating;
 
+/** Person is a custom class to represent the Person entity in our core data model.
+ */
 @interface Person : NSManagedObject
 
 @property (nonatomic, strong) NSString * email;

@@ -33,10 +33,12 @@
     self.dash = [[DashAPI alloc] init];
     STAssertNotNil(self.dash, @"Cannot create DashAPI instance");
     
-    // Build a core data stack in memory so it can be quick and teardown will be simple 
+    // Build a core data stack in memory so it can be quick and teardown will be simple.
     NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:[NSArray arrayWithObject:[NSBundle mainBundle]]];
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
-    STAssertTrue([persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:NULL] ? YES : NO, @"Failed to add in-memory persistent store");    
+    STAssertTrue([persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:NULL] ? YES : NO, @"Failed to add in-memory persistent store");
+    
+    // Create our managedObjectContext and point it to the in-memory core data stack.
     self.managedObjectContext = [[NSManagedObjectContext alloc] init];
     self.managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator;
     STAssertNotNil(self.managedObjectContext, @"Failed to create managed object context");

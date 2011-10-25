@@ -16,7 +16,7 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
-// Make sure we start out on the Dash Tab
+// Make sure we start out on the Dash Tab.
 enum {
     kDashTabIndex = 2
 };
