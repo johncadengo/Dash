@@ -31,12 +31,6 @@
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
-		67B9F22A14560AD5009D480C /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B9F22914560AD5009D480C /* Location.m */; };
-		67B9F22D14560AED009D480C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B9F22C14560AED009D480C /* Place.m */; };
-		67B9F23014560AED009D480C /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B9F22F14560AED009D480C /* Rating.m */; };
-		67B9F23314560AEE009D480C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B9F23214560AED009D480C /* Person.m */; };
-		67CBFB0614565A890005C706 /* LogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CBFB0514565A890005C706 /* LogicTests.m */; };
-		67CBFB0B14565B390005C706 /* ApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CBFB0A14565B390005C706 /* ApplicationTests.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -87,18 +81,6 @@
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		67B9F22814560AD5009D480C /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Location.h"; sourceTree = "<group>"; };
-		67B9F22914560AD5009D480C /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Location.m"; sourceTree = "<group>"; };
-		67B9F22B14560AED009D480C /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = "Data Model/Place.h"; sourceTree = "<group>"; };
-		67B9F22C14560AED009D480C /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place.m"; sourceTree = "<group>"; };
-		67B9F22E14560AED009D480C /* Rating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rating.h; path = "Data Model/Rating.h"; sourceTree = "<group>"; };
-		67B9F22F14560AED009D480C /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rating.m; path = "Data Model/Rating.m"; sourceTree = "<group>"; };
-		67B9F23114560AED009D480C /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person.h"; sourceTree = "<group>"; };
-		67B9F23214560AED009D480C /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person.m"; sourceTree = "<group>"; };
-		67CBFB0414565A890005C706 /* LogicTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogicTests.h; path = "Logic Tests/LogicTests.h"; sourceTree = "<group>"; };
-		67CBFB0514565A890005C706 /* LogicTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogicTests.m; path = "Logic Tests/LogicTests.m"; sourceTree = "<group>"; };
-		67CBFB0914565B390005C706 /* ApplicationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationTests.h; path = "Application Tests/ApplicationTests.h"; sourceTree = "<group>"; };
-		67CBFB0A14565B390005C706 /* ApplicationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationTests.m; path = "Application Tests/ApplicationTests.m"; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,8 +177,6 @@
 			children = (
 				67348AD81446350700A3160A /* DashTests.h */,
 				67348AD91446350700A3160A /* DashTests.m */,
-				67CBFB0814565B150005C706 /* Application Tests */,
-				67CBFB0714565A990005C706 /* Logic Tests */,
 				67348AD31446350700A3160A /* Supporting Files */,
 			);
 			path = DashTests;
@@ -294,34 +274,8 @@
 		67B9F22714560ABD009D480C /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				67B9F23114560AED009D480C /* Person.h */,
-				67B9F23214560AED009D480C /* Person.m */,
-				67B9F22E14560AED009D480C /* Rating.h */,
-				67B9F22F14560AED009D480C /* Rating.m */,
-				67B9F22B14560AED009D480C /* Place.h */,
-				67B9F22C14560AED009D480C /* Place.m */,
-				67B9F22814560AD5009D480C /* Location.h */,
-				67B9F22914560AD5009D480C /* Location.m */,
 			);
 			name = "Data Model";
-			sourceTree = "<group>";
-		};
-		67CBFB0714565A990005C706 /* Logic Tests */ = {
-			isa = PBXGroup;
-			children = (
-				67CBFB0414565A890005C706 /* LogicTests.h */,
-				67CBFB0514565A890005C706 /* LogicTests.m */,
-			);
-			name = "Logic Tests";
-			sourceTree = "<group>";
-		};
-		67CBFB0814565B150005C706 /* Application Tests */ = {
-			isa = PBXGroup;
-			children = (
-				67CBFB0914565B390005C706 /* ApplicationTests.h */,
-				67CBFB0A14565B390005C706 /* ApplicationTests.m */,
-			);
-			name = "Application Tests";
 			sourceTree = "<group>";
 		};
 		67CC265E1450D83B00B618C0 /* ViewControllers */ = {
@@ -470,10 +424,6 @@
 				670EC3A01455B5B50070BDE0 /* Constants.m in Sources */,
 				673653691455C1DD00E53822 /* DashAPI.m in Sources */,
 				6736536D1455C72000E53822 /* JSONKit.m in Sources */,
-				67B9F22A14560AD5009D480C /* Location.m in Sources */,
-				67B9F22D14560AED009D480C /* Place.m in Sources */,
-				67B9F23014560AED009D480C /* Rating.m in Sources */,
-				67B9F23314560AEE009D480C /* Person.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,8 +432,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				67348ADA1446350700A3160A /* DashTests.m in Sources */,
-				67CBFB0614565A890005C706 /* LogicTests.m in Sources */,
-				67CBFB0B14565B390005C706 /* ApplicationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
