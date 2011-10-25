@@ -13,7 +13,12 @@
     </entity>
     <entity name="Comment" parentEntity="Association" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CommentPhoto" inverseName="comment" inverseEntity="CommentPhoto" syncable="YES"/>
     </entity>
+    <entity name="CommentPhoto" parentEntity="Photo" syncable="YES">
+        <relationship name="comment" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Comment" inverseName="photos" inverseEntity="Comment" syncable="YES"/>
+    </entity>
+    <entity name="Flag" parentEntity="Association" syncable="YES"/>
     <entity name="Highlight" parentEntity="Association" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HighlightPhoto" inverseName="highlight" inverseEntity="HighlightPhoto" syncable="YES"/>
@@ -72,22 +77,26 @@
     </entity>
     <entity name="Rate" parentEntity="Association" syncable="YES"/>
     <entity name="Save" parentEntity="Association" syncable="YES"/>
+    <entity name="Share" parentEntity="Association" syncable="YES"/>
     <entity name="Visit" parentEntity="Association" syncable="YES"/>
     <elements>
-        <element name="Association" positionX="97" positionY="-18" width="128" height="105"/>
+        <element name="Association" positionX="97" positionY="3" width="128" height="105"/>
         <element name="Location" positionX="-216" positionY="-27" width="128" height="165"/>
         <element name="Person" positionX="250" positionY="9" width="128" height="135"/>
-        <element name="Place" positionX="-63" positionY="-27" width="128" height="195"/>
+        <element name="Place" positionX="-65" positionY="-27" width="128" height="195"/>
         <element name="Save" positionX="-72" positionY="189" width="128" height="45"/>
         <element name="Visit" positionX="63" positionY="189" width="128" height="45"/>
         <element name="Rate" positionX="198" positionY="189" width="128" height="45"/>
         <element name="Highlight" positionX="-72" positionY="243" width="128" height="75"/>
-        <element name="Comment" positionX="63" positionY="243" width="128" height="60"/>
+        <element name="Comment" positionX="63" positionY="243" width="128" height="75"/>
         <element name="Hours" positionX="-216" positionY="186" width="128" height="120"/>
         <element name="Category" positionX="-65" positionY="-126" width="128" height="90"/>
         <element name="Photo" positionX="252" positionY="-216" width="128" height="105"/>
-        <element name="PlacePhoto" positionX="97" positionY="-162" width="128" height="60"/>
-        <element name="HighlightPhoto" positionX="97" positionY="-90" width="128" height="60"/>
+        <element name="PlacePhoto" positionX="97" positionY="-216" width="128" height="60"/>
+        <element name="HighlightPhoto" positionX="97" positionY="-144" width="128" height="60"/>
         <element name="PersonPhoto" positionX="252" positionY="-78" width="128" height="60"/>
+        <element name="CommentPhoto" positionX="97" positionY="-72" width="128" height="60"/>
+        <element name="Flag" positionX="198" positionY="243" width="128" height="45"/>
+        <element name="Share" positionX="196" positionY="297" width="128" height="45"/>
     </elements>
 </model>
