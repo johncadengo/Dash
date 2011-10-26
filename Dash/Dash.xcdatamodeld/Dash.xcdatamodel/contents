@@ -18,6 +18,9 @@
     <entity name="FlagPlace" parentEntity="Flag" syncable="YES">
         <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="flags" inverseEntity="Place" syncable="YES"/>
     </entity>
+    <entity name="Friendships" parentEntity="Action" syncable="YES">
+        <relationship name="source" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="friends" inverseEntity="Person" syncable="YES"/>
+    </entity>
     <entity name="Highlight" parentEntity="PlaceAction" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HighlightAction" inverseName="hightlight" inverseEntity="HighlightAction" syncable="YES"/>
@@ -47,12 +50,10 @@
     <entity name="Person" representedClassName="Person" parentEntity="Uniqueness" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="actions" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="author" inverseEntity="Action" syncable="YES"/>
+        <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Action" inverseName="author" inverseEntity="Action" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Friendships" inverseName="source" inverseEntity="Friendships" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="party" inverseEntity="Pop" syncable="YES"/>
         <relationship name="profilepic" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PersonPhoto" inverseName="person" inverseEntity="PersonPhoto" syncable="YES"/>
-    </entity>
-    <entity name="PersonLocation" parentEntity="Location" syncable="YES">
-        <relationship name="pops" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Pop" inverseName="location" inverseEntity="Pop" syncable="YES"/>
     </entity>
     <entity name="PersonPhoto" parentEntity="Photo" syncable="YES">
         <relationship name="person" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="profilepic" inverseEntity="Person" syncable="YES"/>
@@ -72,6 +73,7 @@
         <relationship name="flags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FlagPlace" inverseName="place" inverseEntity="FlagPlace" syncable="YES"/>
         <relationship name="hours" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hours" inverseName="place" inverseEntity="Hours" syncable="YES"/>
         <relationship name="location" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="place" inverseEntity="PlaceLocation" syncable="YES"/>
+        <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="places" inverseEntity="Pop" syncable="YES"/>
     </entity>
     <entity name="PlaceAction" representedClassName="" isAbstract="YES" parentEntity="Action" syncable="YES">
         <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="actions" inverseEntity="Place" syncable="YES"/>
@@ -79,9 +81,13 @@
     <entity name="PlaceLocation" parentEntity="Location" syncable="YES">
         <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="location" inverseEntity="Place" syncable="YES"/>
     </entity>
-    <entity name="Pop" parentEntity="PlaceAction" syncable="YES">
-        <relationship name="location" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PersonLocation" inverseName="pops" inverseEntity="PersonLocation" syncable="YES"/>
+    <entity name="Pop" parentEntity="Action" syncable="YES">
+        <relationship name="location" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PopLocation" inverseName="pops" inverseEntity="PopLocation" syncable="YES"/>
         <relationship name="party" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="pops" inverseEntity="Person" syncable="YES"/>
+        <relationship name="places" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="pops" inverseEntity="Place" syncable="YES"/>
+    </entity>
+    <entity name="PopLocation" parentEntity="Location" syncable="YES">
+        <relationship name="pops" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Pop" inverseName="location" inverseEntity="Pop" syncable="YES"/>
     </entity>
     <entity name="Rate" parentEntity="PlaceAction" syncable="YES">
         <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -101,29 +107,30 @@
     <elements>
         <element name="Action" positionX="97" positionY="-141" width="128" height="75"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="60"/>
-        <element name="Category" positionX="-65" positionY="-120" width="128" height="75"/>
-        <element name="Email" positionX="-74" positionY="342" width="128" height="45"/>
+        <element name="Category" positionX="-72" positionY="-126" width="128" height="75"/>
+        <element name="Email" positionX="-74" positionY="360" width="128" height="45"/>
         <element name="Highlight" positionX="97" positionY="315" width="128" height="90"/>
         <element name="HighlightPhoto" positionX="99" positionY="243" width="128" height="60"/>
         <element name="Hours" positionX="-216" positionY="-126" width="128" height="105"/>
         <element name="Location" positionX="-315" positionY="-9" width="128" height="135"/>
-        <element name="Person" positionX="250" positionY="255" width="128" height="120"/>
+        <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
         <element name="PersonPhoto" positionX="250" positionY="174" width="128" height="60"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="Place" positionX="-65" positionY="-27" width="128" height="180"/>
-        <element name="Rate" positionX="-72" positionY="270" width="128" height="60"/>
+        <element name="Place" positionX="-72" positionY="-36" width="128" height="195"/>
+        <element name="Rate" positionX="-72" positionY="288" width="128" height="60"/>
         <element name="Reply" positionX="412" positionY="72" width="128" height="75"/>
         <element name="ReplyPhoto" positionX="412" positionY="-6" width="128" height="60"/>
-        <element name="Save" positionX="-72" positionY="162" width="128" height="45"/>
+        <element name="Save" positionX="-72" positionY="180" width="128" height="45"/>
         <element name="Uniqueness" positionX="99" positionY="-225" width="128" height="60"/>
-        <element name="Visit" positionX="-72" positionY="216" width="128" height="45"/>
-        <element name="HighlightAction" positionX="421" positionY="315" width="128" height="60"/>
+        <element name="Visit" positionX="-72" positionY="234" width="128" height="45"/>
+        <element name="HighlightAction" positionX="405" positionY="171" width="128" height="60"/>
         <element name="Like" positionX="412" positionY="-81" width="128" height="45"/>
         <element name="Flag" positionX="358" positionY="-243" width="128" height="60"/>
         <element name="FlagPlace" positionX="286" positionY="-153" width="128" height="60"/>
         <element name="FlagPhoto" positionX="430" positionY="-153" width="128" height="60"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
-        <element name="PersonLocation" positionX="-243" positionY="162" width="128" height="60"/>
-        <element name="Pop" positionX="-243" positionY="285" width="128" height="75"/>
+        <element name="PopLocation" positionX="-243" positionY="162" width="128" height="60"/>
+        <element name="Pop" positionX="-243" positionY="285" width="128" height="90"/>
+        <element name="Friendships" positionX="405" positionY="252" width="128" height="60"/>
     </elements>
 </model>
