@@ -18,10 +18,10 @@
     <entity name="Flag" representedClassName="Flag" parentEntity="Action" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="FlagPhoto" representedClassName="PhotoFlag" parentEntity="Flag" syncable="YES">
+    <entity name="FlagPhoto" representedClassName="FlagPhoto" parentEntity="Flag" syncable="YES">
         <relationship name="photo" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="flags" inverseEntity="Photo" syncable="YES"/>
     </entity>
-    <entity name="FlagPlace" representedClassName="PlaceFlag" parentEntity="Flag" syncable="YES">
+    <entity name="FlagPlace" representedClassName="FlagPlace" parentEntity="Flag" syncable="YES">
         <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="flags" inverseEntity="Place" syncable="YES"/>
     </entity>
     <entity name="Friendships" representedClassName="Friendships" parentEntity="Action" syncable="YES">
