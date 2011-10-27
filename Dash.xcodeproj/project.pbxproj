@@ -7,7 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		670EC3A01455B5B50070BDE0 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 670EC39F1455B5B50070BDE0 /* Constants.m */; };
+		672C2C731459E9A4006A1D6B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6C1459E9A4006A1D6B /* Category.m */; };
+		672C2C741459E9A4006A1D6B /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6E1459E9A4006A1D6B /* Hours.m */; };
+		672C2C751459E9A4006A1D6B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C701459E9A4006A1D6B /* Place.m */; };
+		672C2C761459E9A4006A1D6B /* PlaceLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C721459E9A4006A1D6B /* PlaceLocation.m */; };
+		672C2C7C1459E9B1006A1D6B /* Friendships.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C791459E9B1006A1D6B /* Friendships.m */; };
+		672C2C7D1459E9B1006A1D6B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C7B1459E9B1006A1D6B /* Person.m */; };
+		672C2C8A1459E9BF006A1D6B /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C7F1459E9BF006A1D6B /* Action.m */; };
+		672C2C8B1459E9BF006A1D6B /* Flag.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C811459E9BF006A1D6B /* Flag.m */; };
+		672C2C8C1459E9BF006A1D6B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C831459E9BF006A1D6B /* Location.m */; };
+		672C2C8D1459E9BF006A1D6B /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C851459E9BF006A1D6B /* Photo.m */; };
+		672C2C8E1459E9BF006A1D6B /* PlaceAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C871459E9BF006A1D6B /* PlaceAction.m */; };
+		672C2C8F1459E9BF006A1D6B /* Uniqueness.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C891459E9BF006A1D6B /* Uniqueness.m */; };
+		672C2C921459E9CC006A1D6B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C911459E9CC006A1D6B /* Constants.m */; };
 		67348AAF1446350700A3160A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AAE1446350700A3160A /* UIKit.framework */; };
 		67348AB11446350700A3160A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB01446350700A3160A /* Foundation.framework */; };
 		67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB21446350700A3160A /* CoreGraphics.framework */; };
@@ -24,18 +36,6 @@
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
 		6736536D1455C72000E53822 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6736536C1455C72000E53822 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		678882871459D5A900F7E826 /* Uniqueness.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882861459D5A900F7E826 /* Uniqueness.m */; };
-		6788828D1459D5A900F7E826 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 6788828C1459D5A900F7E826 /* Action.m */; };
-		678882901459D5AA00F7E826 /* Flag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6788828F1459D5AA00F7E826 /* Flag.m */; };
-		678882931459D5AA00F7E826 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882921459D5AA00F7E826 /* Location.m */; };
-		678882961459D5AA00F7E826 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882951459D5AA00F7E826 /* Photo.m */; };
-		6788829D1459D8B500F7E826 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 6788829C1459D8B500F7E826 /* Place.m */; };
-		678882A01459D8B500F7E826 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 6788829F1459D8B500F7E826 /* Category.m */; };
-		678882A91459D8B500F7E826 /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882A81459D8B500F7E826 /* Hours.m */; };
-		678882AC1459D8B500F7E826 /* PlaceLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882AB1459D8B500F7E826 /* PlaceLocation.m */; };
-		678882B21459D9CF00F7E826 /* PlaceAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882B11459D9CF00F7E826 /* PlaceAction.m */; };
-		678882B71459DBE900F7E826 /* Friendships.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882B61459DBE900F7E826 /* Friendships.m */; };
-		678882C61459DBEA00F7E826 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882C51459DBEA00F7E826 /* Person.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
@@ -71,8 +71,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		670EC39E1455B5B50070BDE0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = "../../../../Dash/iPhone app/Dash/Dash/Constants.h"; sourceTree = "<group>"; };
-		670EC39F1455B5B50070BDE0 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = "../../../../Dash/iPhone app/Dash/Dash/Constants.m"; sourceTree = "<group>"; };
+		672C2C6B1459E9A4006A1D6B /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = "Data Model/Place/Category.h"; sourceTree = "<group>"; };
+		672C2C6C1459E9A4006A1D6B /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = "Data Model/Place/Category.m"; sourceTree = "<group>"; };
+		672C2C6D1459E9A4006A1D6B /* Hours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hours.h; path = "Data Model/Place/Hours.h"; sourceTree = "<group>"; };
+		672C2C6E1459E9A4006A1D6B /* Hours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hours.m; path = "Data Model/Place/Hours.m"; sourceTree = "<group>"; };
+		672C2C6F1459E9A4006A1D6B /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = "Data Model/Place/Place.h"; sourceTree = "<group>"; };
+		672C2C701459E9A4006A1D6B /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place/Place.m"; sourceTree = "<group>"; };
+		672C2C711459E9A4006A1D6B /* PlaceLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceLocation.h; path = "Data Model/Place/PlaceLocation.h"; sourceTree = "<group>"; };
+		672C2C721459E9A4006A1D6B /* PlaceLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceLocation.m; path = "Data Model/Place/PlaceLocation.m"; sourceTree = "<group>"; };
+		672C2C781459E9B1006A1D6B /* Friendships.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friendships.h; path = "Data Model/Person/Friendships.h"; sourceTree = "<group>"; };
+		672C2C791459E9B1006A1D6B /* Friendships.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friendships.m; path = "Data Model/Person/Friendships.m"; sourceTree = "<group>"; };
+		672C2C7A1459E9B1006A1D6B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
+		672C2C7B1459E9B1006A1D6B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person/Person.m"; sourceTree = "<group>"; };
+		672C2C7E1459E9BF006A1D6B /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action.h; path = "Data Model/Abstract/Action.h"; sourceTree = "<group>"; };
+		672C2C7F1459E9BF006A1D6B /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Action.m; path = "Data Model/Abstract/Action.m"; sourceTree = "<group>"; };
+		672C2C801459E9BF006A1D6B /* Flag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flag.h; path = "Data Model/Abstract/Flag.h"; sourceTree = "<group>"; };
+		672C2C811459E9BF006A1D6B /* Flag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Flag.m; path = "Data Model/Abstract/Flag.m"; sourceTree = "<group>"; };
+		672C2C821459E9BF006A1D6B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
+		672C2C831459E9BF006A1D6B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Abstract/Location.m"; sourceTree = "<group>"; };
+		672C2C841459E9BF006A1D6B /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = "Data Model/Abstract/Photo.h"; sourceTree = "<group>"; };
+		672C2C851459E9BF006A1D6B /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = "Data Model/Abstract/Photo.m"; sourceTree = "<group>"; };
+		672C2C861459E9BF006A1D6B /* PlaceAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceAction.h; path = "Data Model/Abstract/PlaceAction.h"; sourceTree = "<group>"; };
+		672C2C871459E9BF006A1D6B /* PlaceAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceAction.m; path = "Data Model/Abstract/PlaceAction.m"; sourceTree = "<group>"; };
+		672C2C881459E9BF006A1D6B /* Uniqueness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Uniqueness.h; path = "Data Model/Abstract/Uniqueness.h"; sourceTree = "<group>"; };
+		672C2C891459E9BF006A1D6B /* Uniqueness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Uniqueness.m; path = "Data Model/Abstract/Uniqueness.m"; sourceTree = "<group>"; };
+		672C2C901459E9CC006A1D6B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		672C2C911459E9CC006A1D6B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		67348AAA1446350700A3160A /* Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67348AAE1446350700A3160A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67348AB01446350700A3160A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,30 +119,6 @@
 		673653681455C1DD00E53822 /* DashAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashAPI.m; path = API/DashAPI.m; sourceTree = "<group>"; };
 		6736536B1455C72000E53822 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = API/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		6736536C1455C72000E53822 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = API/JSONKit/JSONKit.m; sourceTree = "<group>"; };
-		678882851459D5A900F7E826 /* Uniqueness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Uniqueness.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Uniqueness.h"; sourceTree = "<group>"; };
-		678882861459D5A900F7E826 /* Uniqueness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Uniqueness.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Uniqueness.m"; sourceTree = "<group>"; };
-		6788828B1459D5A900F7E826 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Action.h"; sourceTree = "<group>"; };
-		6788828C1459D5A900F7E826 /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Action.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Action.m"; sourceTree = "<group>"; };
-		6788828E1459D5AA00F7E826 /* Flag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flag.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Flag.h"; sourceTree = "<group>"; };
-		6788828F1459D5AA00F7E826 /* Flag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Flag.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Flag.m"; sourceTree = "<group>"; };
-		678882911459D5AA00F7E826 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
-		678882921459D5AA00F7E826 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Location.m"; sourceTree = "<group>"; };
-		678882941459D5AA00F7E826 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Photo.h"; sourceTree = "<group>"; };
-		678882951459D5AA00F7E826 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/Photo.m"; sourceTree = "<group>"; };
-		6788829B1459D8B500F7E826 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/Place.h"; sourceTree = "<group>"; };
-		6788829C1459D8B500F7E826 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/Place.m"; sourceTree = "<group>"; };
-		6788829E1459D8B500F7E826 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/Category.h"; sourceTree = "<group>"; };
-		6788829F1459D8B500F7E826 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/Category.m"; sourceTree = "<group>"; };
-		678882A71459D8B500F7E826 /* Hours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hours.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/Hours.h"; sourceTree = "<group>"; };
-		678882A81459D8B500F7E826 /* Hours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hours.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/Hours.m"; sourceTree = "<group>"; };
-		678882AA1459D8B500F7E826 /* PlaceLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceLocation.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/PlaceLocation.h"; sourceTree = "<group>"; };
-		678882AB1459D8B500F7E826 /* PlaceLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceLocation.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/PlaceLocation.m"; sourceTree = "<group>"; };
-		678882B01459D9CE00F7E826 /* PlaceAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceAction.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/PlaceAction.h"; sourceTree = "<group>"; };
-		678882B11459D9CF00F7E826 /* PlaceAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceAction.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/PlaceAction.m"; sourceTree = "<group>"; };
-		678882B51459DBE900F7E826 /* Friendships.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friendships.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Friendships.h"; sourceTree = "<group>"; };
-		678882B61459DBE900F7E826 /* Friendships.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friendships.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Friendships.m"; sourceTree = "<group>"; };
-		678882C41459DBEA00F7E826 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Person.h"; sourceTree = "<group>"; };
-		678882C51459DBEA00F7E826 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Person.m"; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009E41450E75900511E0F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
@@ -232,8 +232,8 @@
 				67348AC01446350700A3160A /* AppDelegate.m */,
 				67CC26541450D7BA00B618C0 /* Storyboard.storyboard */,
 				67348AC21446350700A3160A /* Dash.xcdatamodeld */,
-				670EC39E1455B5B50070BDE0 /* Constants.h */,
-				670EC39F1455B5B50070BDE0 /* Constants.m */,
+				672C2C901459E9CC006A1D6B /* Constants.h */,
+				672C2C911459E9CC006A1D6B /* Constants.m */,
 				67348AB71446350700A3160A /* Supporting Files */,
 			);
 			path = Dash;
@@ -291,18 +291,18 @@
 		678882971459D5BD00F7E826 /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				678882941459D5AA00F7E826 /* Photo.h */,
-				678882951459D5AA00F7E826 /* Photo.m */,
-				678882911459D5AA00F7E826 /* Location.h */,
-				678882921459D5AA00F7E826 /* Location.m */,
-				6788828E1459D5AA00F7E826 /* Flag.h */,
-				6788828F1459D5AA00F7E826 /* Flag.m */,
-				6788828B1459D5A900F7E826 /* Action.h */,
-				6788828C1459D5A900F7E826 /* Action.m */,
-				678882851459D5A900F7E826 /* Uniqueness.h */,
-				678882861459D5A900F7E826 /* Uniqueness.m */,
-				678882B01459D9CE00F7E826 /* PlaceAction.h */,
-				678882B11459D9CF00F7E826 /* PlaceAction.m */,
+				672C2C7E1459E9BF006A1D6B /* Action.h */,
+				672C2C7F1459E9BF006A1D6B /* Action.m */,
+				672C2C801459E9BF006A1D6B /* Flag.h */,
+				672C2C811459E9BF006A1D6B /* Flag.m */,
+				672C2C821459E9BF006A1D6B /* Location.h */,
+				672C2C831459E9BF006A1D6B /* Location.m */,
+				672C2C841459E9BF006A1D6B /* Photo.h */,
+				672C2C851459E9BF006A1D6B /* Photo.m */,
+				672C2C861459E9BF006A1D6B /* PlaceAction.h */,
+				672C2C871459E9BF006A1D6B /* PlaceAction.m */,
+				672C2C881459E9BF006A1D6B /* Uniqueness.h */,
+				672C2C891459E9BF006A1D6B /* Uniqueness.m */,
 			);
 			name = Abstract;
 			sourceTree = "<group>";
@@ -310,10 +310,10 @@
 		678882981459D5CF00F7E826 /* Person */ = {
 			isa = PBXGroup;
 			children = (
-				678882C41459DBEA00F7E826 /* Person.h */,
-				678882C51459DBEA00F7E826 /* Person.m */,
-				678882B51459DBE900F7E826 /* Friendships.h */,
-				678882B61459DBE900F7E826 /* Friendships.m */,
+				672C2C781459E9B1006A1D6B /* Friendships.h */,
+				672C2C791459E9B1006A1D6B /* Friendships.m */,
+				672C2C7A1459E9B1006A1D6B /* Person.h */,
+				672C2C7B1459E9B1006A1D6B /* Person.m */,
 			);
 			name = Person;
 			sourceTree = "<group>";
@@ -321,14 +321,14 @@
 		678882991459D5D700F7E826 /* Place */ = {
 			isa = PBXGroup;
 			children = (
-				678882AA1459D8B500F7E826 /* PlaceLocation.h */,
-				678882AB1459D8B500F7E826 /* PlaceLocation.m */,
-				678882A71459D8B500F7E826 /* Hours.h */,
-				678882A81459D8B500F7E826 /* Hours.m */,
-				6788829E1459D8B500F7E826 /* Category.h */,
-				6788829F1459D8B500F7E826 /* Category.m */,
-				6788829B1459D8B500F7E826 /* Place.h */,
-				6788829C1459D8B500F7E826 /* Place.m */,
+				672C2C6B1459E9A4006A1D6B /* Category.h */,
+				672C2C6C1459E9A4006A1D6B /* Category.m */,
+				672C2C6D1459E9A4006A1D6B /* Hours.h */,
+				672C2C6E1459E9A4006A1D6B /* Hours.m */,
+				672C2C6F1459E9A4006A1D6B /* Place.h */,
+				672C2C701459E9A4006A1D6B /* Place.m */,
+				672C2C711459E9A4006A1D6B /* PlaceLocation.h */,
+				672C2C721459E9A4006A1D6B /* PlaceLocation.m */,
 			);
 			name = Place;
 			sourceTree = "<group>";
@@ -623,21 +623,8 @@
 				679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */,
 				679009F21450ED8800511E0F /* FriendsViewController.m in Sources */,
 				679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */,
-				670EC3A01455B5B50070BDE0 /* Constants.m in Sources */,
 				673653691455C1DD00E53822 /* DashAPI.m in Sources */,
 				6736536D1455C72000E53822 /* JSONKit.m in Sources */,
-				678882871459D5A900F7E826 /* Uniqueness.m in Sources */,
-				6788828D1459D5A900F7E826 /* Action.m in Sources */,
-				678882901459D5AA00F7E826 /* Flag.m in Sources */,
-				678882931459D5AA00F7E826 /* Location.m in Sources */,
-				678882961459D5AA00F7E826 /* Photo.m in Sources */,
-				6788829D1459D8B500F7E826 /* Place.m in Sources */,
-				678882A01459D8B500F7E826 /* Category.m in Sources */,
-				678882A91459D8B500F7E826 /* Hours.m in Sources */,
-				678882AC1459D8B500F7E826 /* PlaceLocation.m in Sources */,
-				678882B21459D9CF00F7E826 /* PlaceAction.m in Sources */,
-				678882B71459DBE900F7E826 /* Friendships.m in Sources */,
-				678882C61459DBEA00F7E826 /* Person.m in Sources */,
 				67BAC7EB1459E5660001C738 /* Comment.m in Sources */,
 				67BAC7EE1459E5670001C738 /* FlagPhoto.m in Sources */,
 				67BAC7F11459E5670001C738 /* FlagPlace.m in Sources */,
@@ -652,6 +639,19 @@
 				67BAC80C1459E6D50001C738 /* Email.m in Sources */,
 				67BAC80F1459E6D50001C738 /* Rate.m in Sources */,
 				67BAC8121459E6D50001C738 /* Save.m in Sources */,
+				672C2C731459E9A4006A1D6B /* Category.m in Sources */,
+				672C2C741459E9A4006A1D6B /* Hours.m in Sources */,
+				672C2C751459E9A4006A1D6B /* Place.m in Sources */,
+				672C2C761459E9A4006A1D6B /* PlaceLocation.m in Sources */,
+				672C2C7C1459E9B1006A1D6B /* Friendships.m in Sources */,
+				672C2C7D1459E9B1006A1D6B /* Person.m in Sources */,
+				672C2C8A1459E9BF006A1D6B /* Action.m in Sources */,
+				672C2C8B1459E9BF006A1D6B /* Flag.m in Sources */,
+				672C2C8C1459E9BF006A1D6B /* Location.m in Sources */,
+				672C2C8D1459E9BF006A1D6B /* Photo.m in Sources */,
+				672C2C8E1459E9BF006A1D6B /* PlaceAction.m in Sources */,
+				672C2C8F1459E9BF006A1D6B /* Uniqueness.m in Sources */,
+				672C2C921459E9CC006A1D6B /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
