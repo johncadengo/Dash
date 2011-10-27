@@ -112,6 +112,8 @@
         <element name="Comment" positionX="369" positionY="-9" width="128" height="75"/>
         <element name="Email" positionX="-74" positionY="360" width="128" height="45"/>
         <element name="Flag" positionX="358" positionY="-243" width="128" height="60"/>
+        <element name="FlagPhoto" positionX="430" positionY="-153" width="128" height="60"/>
+        <element name="FlagPlace" positionX="286" positionY="-153" width="128" height="60"/>
         <element name="Friendships" positionX="405" positionY="252" width="128" height="75"/>
         <element name="Highlight" positionX="97" positionY="315" width="128" height="75"/>
         <element name="HighlightPhoto" positionX="99" positionY="243" width="128" height="60"/>
@@ -121,10 +123,8 @@
         <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
         <element name="PersonPhoto" positionX="250" positionY="174" width="128" height="60"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="FlagPhoto" positionX="430" positionY="-153" width="128" height="60"/>
         <element name="Place" positionX="-72" positionY="-36" width="128" height="195"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
-        <element name="FlagPlace" positionX="286" positionY="-153" width="128" height="60"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
         <element name="PlacePhoto" positionX="252" positionY="72" width="128" height="60"/>
         <element name="Pop" positionX="-243" positionY="285" width="128" height="90"/>
