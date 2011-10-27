@@ -43,6 +43,10 @@
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
+		67BAC7EB1459E5660001C738 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7EA1459E5660001C738 /* Comment.m */; };
+		67BAC7EE1459E5670001C738 /* PhotoFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7ED1459E5670001C738 /* PhotoFlag.m */; };
+		67BAC7F11459E5670001C738 /* PlaceFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7F01459E5670001C738 /* PlaceFlag.m */; };
+		67BAC7F41459E5670001C738 /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7F31459E5670001C738 /* Like.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +121,14 @@
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		67BAC7E91459E5660001C738 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Comment.h; path = "Data Model/Actions/Feedback/Comment.h"; sourceTree = "<group>"; };
+		67BAC7EA1459E5660001C738 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Comment.m; path = "Data Model/Actions/Feedback/Comment.m"; sourceTree = "<group>"; };
+		67BAC7EC1459E5670001C738 /* PhotoFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoFlag.h; path = "Data Model/Actions/Feedback/PhotoFlag.h"; sourceTree = "<group>"; };
+		67BAC7ED1459E5670001C738 /* PhotoFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoFlag.m; path = "Data Model/Actions/Feedback/PhotoFlag.m"; sourceTree = "<group>"; };
+		67BAC7EF1459E5670001C738 /* PlaceFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceFlag.h; path = "Data Model/Actions/Feedback/PlaceFlag.h"; sourceTree = "<group>"; };
+		67BAC7F01459E5670001C738 /* PlaceFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceFlag.m; path = "Data Model/Actions/Feedback/PlaceFlag.m"; sourceTree = "<group>"; };
+		67BAC7F21459E5670001C738 /* Like.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Like.h; path = "Data Model/Actions/Feedback/Like.h"; sourceTree = "<group>"; };
+		67BAC7F31459E5670001C738 /* Like.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Like.m; path = "Data Model/Actions/Feedback/Like.m"; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +306,7 @@
 		6788829A1459D5DF00F7E826 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				67BAC7E81459E5230001C738 /* Feedback */,
 				67BAC7E71459E4920001C738 /* Photo */,
 				678882B41459DB8900F7E826 /* Pop */,
 				678882B31459DB8100F7E826 /* Highlight */,
@@ -392,6 +405,21 @@
 			children = (
 			);
 			name = Photo;
+			sourceTree = "<group>";
+		};
+		67BAC7E81459E5230001C738 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				67BAC7F21459E5670001C738 /* Like.h */,
+				67BAC7F31459E5670001C738 /* Like.m */,
+				67BAC7EF1459E5670001C738 /* PlaceFlag.h */,
+				67BAC7F01459E5670001C738 /* PlaceFlag.m */,
+				67BAC7EC1459E5670001C738 /* PhotoFlag.h */,
+				67BAC7ED1459E5670001C738 /* PhotoFlag.m */,
+				67BAC7E91459E5660001C738 /* Comment.h */,
+				67BAC7EA1459E5660001C738 /* Comment.m */,
+			);
+			name = Feedback;
 			sourceTree = "<group>";
 		};
 		67CC265E1450D83B00B618C0 /* ViewControllers */ = {
@@ -552,6 +580,10 @@
 				678882B21459D9CF00F7E826 /* PlaceAction.m in Sources */,
 				678882B71459DBE900F7E826 /* Friendships.m in Sources */,
 				678882C61459DBEA00F7E826 /* Person.m in Sources */,
+				67BAC7EB1459E5660001C738 /* Comment.m in Sources */,
+				67BAC7EE1459E5670001C738 /* PhotoFlag.m in Sources */,
+				67BAC7F11459E5670001C738 /* PlaceFlag.m in Sources */,
+				67BAC7F41459E5670001C738 /* Like.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
