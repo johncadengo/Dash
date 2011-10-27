@@ -10,7 +10,7 @@
 #import "PlaceAction.h"
 #import "Category.h"
 #import "Hours.h"
-#import "PlaceFlag.h"
+#import "FlagPlace.h"
 #import "PlaceLocation.h"
 #import "PlacePhoto.h"
 #import "Pop.h"

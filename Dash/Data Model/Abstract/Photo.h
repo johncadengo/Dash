@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Action.h"
 
-@class PhotoFlag;
+@class FlagPhoto;
 
 @interface Photo : Action
 
@@ -21,8 +21,8 @@
 
 @interface Photo (CoreDataGeneratedAccessors)
 
-- (void)addFlagsObject:(PhotoFlag *)value;
-- (void)removeFlagsObject:(PhotoFlag *)value;
+- (void)addFlagsObject:(FlagPhoto *)value;
+- (void)removeFlagsObject:(FlagPhoto *)value;
 - (void)addFlags:(NSSet *)values;
 - (void)removeFlags:(NSSet *)values;
 @end

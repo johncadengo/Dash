@@ -7,7 +7,7 @@
 //
 
 #import "Photo.h"
-#import "PhotoFlag.h"
+#import "FlagPhoto.h"
 
 
 @implementation Photo

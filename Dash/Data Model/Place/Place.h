@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Uniqueness.h"
 
-@class PlaceAction, Category, Hours, PlaceFlag, PlaceLocation, PlacePhoto, Pop;
+@class PlaceAction, Category, Hours, FlagPlace, PlaceLocation, PlacePhoto, Pop;
 
 @interface Place : Uniqueness
 
@@ -37,8 +37,8 @@
 - (void)removeCategoriesObject:(Category *)value;
 - (void)addCategories:(NSSet *)values;
 - (void)removeCategories:(NSSet *)values;
-- (void)addFlagsObject:(PlaceFlag *)value;
-- (void)removeFlagsObject:(PlaceFlag *)value;
+- (void)addFlagsObject:(FlagPlace *)value;
+- (void)removeFlagsObject:(FlagPlace *)value;
 - (void)addFlags:(NSSet *)values;
 - (void)removeFlags:(NSSet *)values;
 - (void)addHoursObject:(Hours *)value;

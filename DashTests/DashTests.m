@@ -10,7 +10,6 @@
 #import "DashAPI.h"
 #import "JSONKit.h"
 #import "Person.h"
-#import "Rating.h"
 #import "Place.h"
 #import "Location.h"
 
