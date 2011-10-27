@@ -18,6 +18,12 @@
     <entity name="Flag" representedClassName="Flag" parentEntity="Action" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="FlagPhoto" representedClassName="PhotoFlag" parentEntity="Flag" syncable="YES">
+        <relationship name="photo" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="flags" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <entity name="FlagPlace" representedClassName="PlaceFlag" parentEntity="Flag" syncable="YES">
+        <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="flags" inverseEntity="Place" syncable="YES"/>
+    </entity>
     <entity name="Friendships" representedClassName="Friendships" parentEntity="Action" syncable="YES">
         <attribute name="confirmed" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="source" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="friends" inverseEntity="Person" syncable="YES"/>
@@ -60,10 +66,7 @@
     <entity name="Photo" representedClassName="Photo" isAbstract="YES" parentEntity="Action" syncable="YES">
         <attribute name="localpath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="flags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PhotoFlag" inverseName="photo" inverseEntity="PhotoFlag" syncable="YES"/>
-    </entity>
-    <entity name="PhotoFlag" representedClassName="PhotoFlag" parentEntity="Flag" syncable="YES">
-        <relationship name="photo" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="flags" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="flags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FlagPhoto" inverseName="photo" inverseEntity="FlagPhoto" syncable="YES"/>
     </entity>
     <entity name="Place" representedClassName="Place" parentEntity="Uniqueness" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -72,7 +75,7 @@
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceAction" inverseName="place" inverseEntity="PlaceAction" syncable="YES"/>
         <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="places" inverseEntity="Category" syncable="YES"/>
-        <relationship name="flags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceFlag" inverseName="place" inverseEntity="PlaceFlag" syncable="YES"/>
+        <relationship name="flags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FlagPlace" inverseName="place" inverseEntity="FlagPlace" syncable="YES"/>
         <relationship name="hours" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hours" inverseName="place" inverseEntity="Hours" syncable="YES"/>
         <relationship name="location" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="place" inverseEntity="PlaceLocation" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlacePhoto" inverseName="place" inverseEntity="PlacePhoto" syncable="YES"/>
@@ -80,9 +83,6 @@
     </entity>
     <entity name="PlaceAction" representedClassName="PlaceAction" isAbstract="YES" parentEntity="Action" syncable="YES">
         <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="actions" inverseEntity="Place" syncable="YES"/>
-    </entity>
-    <entity name="PlaceFlag" representedClassName="PlaceFlag" parentEntity="Flag" syncable="YES">
-        <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="flags" inverseEntity="Place" syncable="YES"/>
     </entity>
     <entity name="PlaceLocation" representedClassName="PlaceLocation" parentEntity="Location" syncable="YES">
         <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="location" inverseEntity="Place" syncable="YES"/>
@@ -121,10 +121,10 @@
         <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
         <element name="PersonPhoto" positionX="250" positionY="174" width="128" height="60"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="PhotoFlag" positionX="430" positionY="-153" width="128" height="60"/>
+        <element name="FlagPhoto" positionX="430" positionY="-153" width="128" height="60"/>
         <element name="Place" positionX="-72" positionY="-36" width="128" height="195"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
-        <element name="PlaceFlag" positionX="286" positionY="-153" width="128" height="60"/>
+        <element name="FlagPlace" positionX="286" positionY="-153" width="128" height="60"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
         <element name="PlacePhoto" positionX="252" positionY="72" width="128" height="60"/>
         <element name="Pop" positionX="-243" positionY="285" width="128" height="90"/>

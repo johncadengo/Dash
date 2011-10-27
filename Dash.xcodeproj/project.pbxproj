@@ -32,10 +32,16 @@
 		6788829D1459D8B500F7E826 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 6788829C1459D8B500F7E826 /* Place.m */; };
 		678882A01459D8B500F7E826 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 6788829F1459D8B500F7E826 /* Category.m */; };
 		678882A31459D8B500F7E826 /* PlacePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882A21459D8B500F7E826 /* PlacePhoto.m */; };
-		678882A61459D8B500F7E826 /* PlaceFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882A51459D8B500F7E826 /* PlaceFlag.m */; };
 		678882A91459D8B500F7E826 /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882A81459D8B500F7E826 /* Hours.m */; };
 		678882AC1459D8B500F7E826 /* PlaceLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882AB1459D8B500F7E826 /* PlaceLocation.m */; };
 		678882B21459D9CF00F7E826 /* PlaceAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882B11459D9CF00F7E826 /* PlaceAction.m */; };
+		678882B71459DBE900F7E826 /* Friendships.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882B61459DBE900F7E826 /* Friendships.m */; };
+		678882BA1459DBEA00F7E826 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882B91459DBEA00F7E826 /* Rate.m */; };
+		678882BD1459DBEA00F7E826 /* PersonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882BC1459DBEA00F7E826 /* PersonPhoto.m */; };
+		678882C01459DBEA00F7E826 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882BF1459DBEA00F7E826 /* Save.m */; };
+		678882C31459DBEA00F7E826 /* Visit.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882C21459DBEA00F7E826 /* Visit.m */; };
+		678882C61459DBEA00F7E826 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882C51459DBEA00F7E826 /* Person.m */; };
+		678882C91459DBEA00F7E826 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 678882C81459DBEA00F7E826 /* Email.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
@@ -97,14 +103,26 @@
 		6788829F1459D8B500F7E826 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/Category.m"; sourceTree = "<group>"; };
 		678882A11459D8B500F7E826 /* PlacePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlacePhoto.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/PlacePhoto.h"; sourceTree = "<group>"; };
 		678882A21459D8B500F7E826 /* PlacePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlacePhoto.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/PlacePhoto.m"; sourceTree = "<group>"; };
-		678882A41459D8B500F7E826 /* PlaceFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceFlag.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/PlaceFlag.h"; sourceTree = "<group>"; };
-		678882A51459D8B500F7E826 /* PlaceFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceFlag.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/PlaceFlag.m"; sourceTree = "<group>"; };
 		678882A71459D8B500F7E826 /* Hours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hours.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/Hours.h"; sourceTree = "<group>"; };
 		678882A81459D8B500F7E826 /* Hours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hours.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/Hours.m"; sourceTree = "<group>"; };
 		678882AA1459D8B500F7E826 /* PlaceLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceLocation.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/PlaceLocation.h"; sourceTree = "<group>"; };
 		678882AB1459D8B500F7E826 /* PlaceLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceLocation.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Place/PlaceLocation.m"; sourceTree = "<group>"; };
 		678882B01459D9CE00F7E826 /* PlaceAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceAction.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/PlaceAction.h"; sourceTree = "<group>"; };
 		678882B11459D9CF00F7E826 /* PlaceAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceAction.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Abstract/PlaceAction.m"; sourceTree = "<group>"; };
+		678882B51459DBE900F7E826 /* Friendships.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friendships.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Friendships.h"; sourceTree = "<group>"; };
+		678882B61459DBE900F7E826 /* Friendships.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friendships.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Friendships.m"; sourceTree = "<group>"; };
+		678882B81459DBEA00F7E826 /* Rate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rate.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Rate.h"; sourceTree = "<group>"; };
+		678882B91459DBEA00F7E826 /* Rate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rate.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Rate.m"; sourceTree = "<group>"; };
+		678882BB1459DBEA00F7E826 /* PersonPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonPhoto.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/PersonPhoto.h"; sourceTree = "<group>"; };
+		678882BC1459DBEA00F7E826 /* PersonPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonPhoto.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/PersonPhoto.m"; sourceTree = "<group>"; };
+		678882BE1459DBEA00F7E826 /* Save.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Save.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Save.h"; sourceTree = "<group>"; };
+		678882BF1459DBEA00F7E826 /* Save.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Save.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Save.m"; sourceTree = "<group>"; };
+		678882C11459DBEA00F7E826 /* Visit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Visit.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Visit.h"; sourceTree = "<group>"; };
+		678882C21459DBEA00F7E826 /* Visit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Visit.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Visit.m"; sourceTree = "<group>"; };
+		678882C41459DBEA00F7E826 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Person.h"; sourceTree = "<group>"; };
+		678882C51459DBEA00F7E826 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Person.m"; sourceTree = "<group>"; };
+		678882C71459DBEA00F7E826 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Email.h; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Email.h"; sourceTree = "<group>"; };
+		678882C81459DBEA00F7E826 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Email.m; path = "../../../../Dash/iPhone app/Dash/Dash/Data Model/Person/Email.m"; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009E41450E75900511E0F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
@@ -268,6 +286,20 @@
 		678882981459D5CF00F7E826 /* Person */ = {
 			isa = PBXGroup;
 			children = (
+				678882C71459DBEA00F7E826 /* Email.h */,
+				678882C81459DBEA00F7E826 /* Email.m */,
+				678882C41459DBEA00F7E826 /* Person.h */,
+				678882C51459DBEA00F7E826 /* Person.m */,
+				678882C11459DBEA00F7E826 /* Visit.h */,
+				678882C21459DBEA00F7E826 /* Visit.m */,
+				678882BE1459DBEA00F7E826 /* Save.h */,
+				678882BF1459DBEA00F7E826 /* Save.m */,
+				678882BB1459DBEA00F7E826 /* PersonPhoto.h */,
+				678882BC1459DBEA00F7E826 /* PersonPhoto.m */,
+				678882B81459DBEA00F7E826 /* Rate.h */,
+				678882B91459DBEA00F7E826 /* Rate.m */,
+				678882B51459DBE900F7E826 /* Friendships.h */,
+				678882B61459DBE900F7E826 /* Friendships.m */,
 			);
 			name = Person;
 			sourceTree = "<group>";
@@ -279,8 +311,6 @@
 				678882AB1459D8B500F7E826 /* PlaceLocation.m */,
 				678882A71459D8B500F7E826 /* Hours.h */,
 				678882A81459D8B500F7E826 /* Hours.m */,
-				678882A41459D8B500F7E826 /* PlaceFlag.h */,
-				678882A51459D8B500F7E826 /* PlaceFlag.m */,
 				678882A11459D8B500F7E826 /* PlacePhoto.h */,
 				678882A21459D8B500F7E826 /* PlacePhoto.m */,
 				6788829E1459D8B500F7E826 /* Category.h */,
@@ -291,11 +321,25 @@
 			name = Place;
 			sourceTree = "<group>";
 		};
-		6788829A1459D5DF00F7E826 /* Universals */ = {
+		6788829A1459D5DF00F7E826 /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Universals;
+			name = Feedback;
+			sourceTree = "<group>";
+		};
+		678882B31459DB8100F7E826 /* Highlight */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Highlight;
+			sourceTree = "<group>";
+		};
+		678882B41459DB8900F7E826 /* Pop */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Pop;
 			sourceTree = "<group>";
 		};
 		679009D41450D89500511E0F /* DashViewController */ = {
@@ -362,8 +406,10 @@
 		67B9F22714560ABD009D480C /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				678882B41459DB8900F7E826 /* Pop */,
+				678882B31459DB8100F7E826 /* Highlight */,
 				678882971459D5BD00F7E826 /* Abstract */,
-				6788829A1459D5DF00F7E826 /* Universals */,
+				6788829A1459D5DF00F7E826 /* Feedback */,
 				678882991459D5D700F7E826 /* Place */,
 				678882981459D5CF00F7E826 /* Person */,
 			);
@@ -524,10 +570,16 @@
 				6788829D1459D8B500F7E826 /* Place.m in Sources */,
 				678882A01459D8B500F7E826 /* Category.m in Sources */,
 				678882A31459D8B500F7E826 /* PlacePhoto.m in Sources */,
-				678882A61459D8B500F7E826 /* PlaceFlag.m in Sources */,
 				678882A91459D8B500F7E826 /* Hours.m in Sources */,
 				678882AC1459D8B500F7E826 /* PlaceLocation.m in Sources */,
 				678882B21459D9CF00F7E826 /* PlaceAction.m in Sources */,
+				678882B71459DBE900F7E826 /* Friendships.m in Sources */,
+				678882BA1459DBEA00F7E826 /* Rate.m in Sources */,
+				678882BD1459DBEA00F7E826 /* PersonPhoto.m in Sources */,
+				678882C01459DBEA00F7E826 /* Save.m in Sources */,
+				678882C31459DBEA00F7E826 /* Visit.m in Sources */,
+				678882C61459DBEA00F7E826 /* Person.m in Sources */,
+				678882C91459DBEA00F7E826 /* Email.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
