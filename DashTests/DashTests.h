@@ -11,6 +11,7 @@
 @class DashAPI;
 
 /** Handles testing our model, the managed object context, the persistent store, etc.
+    All of our tests which need to access Core Data will inherit from this test case.
  */
 @interface DashTests : SenTestCase
 
@@ -18,8 +19,10 @@
  */
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-/** Returns the DashAPI object for communicating with our API
- */
-@property (strong, nonatomic) DashAPI *dash;
+
+- (void)setUp;
+- (void)tearDown;
+- (void)saveContext;
+- (NSMutableArray*) fetchEntity:(NSString*) entityName;
 
 @end

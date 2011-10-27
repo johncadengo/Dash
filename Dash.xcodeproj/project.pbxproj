@@ -20,7 +20,7 @@
 		672C2C8E1459E9BF006A1D6B /* PlaceAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C871459E9BF006A1D6B /* PlaceAction.m */; };
 		672C2C8F1459E9BF006A1D6B /* Uniqueness.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C891459E9BF006A1D6B /* Uniqueness.m */; };
 		672C2C921459E9CC006A1D6B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C911459E9CC006A1D6B /* Constants.m */; };
-		672C2C951459EDD5006A1D6B /* PersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C941459EDD4006A1D6B /* PersonTests.m */; };
+		672C2C9A1459EE8F006A1D6B /* PersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C991459EE8F006A1D6B /* PersonTests.m */; };
 		67348AAF1446350700A3160A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AAE1446350700A3160A /* UIKit.framework */; };
 		67348AB11446350700A3160A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB01446350700A3160A /* Foundation.framework */; };
 		67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB21446350700A3160A /* CoreGraphics.framework */; };
@@ -98,8 +98,8 @@
 		672C2C891459E9BF006A1D6B /* Uniqueness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Uniqueness.m; path = "Data Model/Abstract/Uniqueness.m"; sourceTree = "<group>"; };
 		672C2C901459E9CC006A1D6B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		672C2C911459E9CC006A1D6B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		672C2C931459EDD4006A1D6B /* PersonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonTests.h; path = LogicTests/PersonTests.h; sourceTree = "<group>"; };
-		672C2C941459EDD4006A1D6B /* PersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonTests.m; path = LogicTests/PersonTests.m; sourceTree = "<group>"; };
+		672C2C981459EE8F006A1D6B /* PersonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonTests.h; path = "Logic Tests/PersonTests.h"; sourceTree = "<group>"; };
+		672C2C991459EE8F006A1D6B /* PersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonTests.m; path = "Logic Tests/PersonTests.m"; sourceTree = "<group>"; };
 		67348AAA1446350700A3160A /* Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67348AAE1446350700A3160A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67348AB01446350700A3160A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -195,10 +195,17 @@
 		672C2C961459EDD9006A1D6B /* LogicTests */ = {
 			isa = PBXGroup;
 			children = (
-				672C2C931459EDD4006A1D6B /* PersonTests.h */,
-				672C2C941459EDD4006A1D6B /* PersonTests.m */,
+				672C2C981459EE8F006A1D6B /* PersonTests.h */,
+				672C2C991459EE8F006A1D6B /* PersonTests.m */,
 			);
 			name = LogicTests;
+			sourceTree = "<group>";
+		};
+		672C2C971459EE36006A1D6B /* ApplicationTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ApplicationTests;
 			sourceTree = "<group>";
 		};
 		67348A9F1446350700A3160A = {
@@ -267,6 +274,7 @@
 			children = (
 				67348AD81446350700A3160A /* DashTests.h */,
 				67348AD91446350700A3160A /* DashTests.m */,
+				672C2C971459EE36006A1D6B /* ApplicationTests */,
 				672C2C961459EDD9006A1D6B /* LogicTests */,
 				67348AD31446350700A3160A /* Supporting Files */,
 			);
@@ -673,7 +681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67348ADA1446350700A3160A /* DashTests.m in Sources */,
-				672C2C951459EDD5006A1D6B /* PersonTests.m in Sources */,
+				672C2C9A1459EE8F006A1D6B /* PersonTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
