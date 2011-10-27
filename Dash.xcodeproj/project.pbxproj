@@ -21,6 +21,7 @@
 		672C2C8F1459E9BF006A1D6B /* Uniqueness.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C891459E9BF006A1D6B /* Uniqueness.m */; };
 		672C2C921459E9CC006A1D6B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C911459E9CC006A1D6B /* Constants.m */; };
 		672C2C9A1459EE8F006A1D6B /* PersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C991459EE8F006A1D6B /* PersonTests.m */; };
+		672C2C9D1459FB06006A1D6B /* Person+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C9C1459FB06006A1D6B /* Person+Helper.m */; };
 		67348AAF1446350700A3160A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AAE1446350700A3160A /* UIKit.framework */; };
 		67348AB11446350700A3160A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB01446350700A3160A /* Foundation.framework */; };
 		67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB21446350700A3160A /* CoreGraphics.framework */; };
@@ -100,6 +101,8 @@
 		672C2C911459E9CC006A1D6B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		672C2C981459EE8F006A1D6B /* PersonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonTests.h; path = "Logic Tests/PersonTests.h"; sourceTree = "<group>"; };
 		672C2C991459EE8F006A1D6B /* PersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonTests.m; path = "Logic Tests/PersonTests.m"; sourceTree = "<group>"; };
+		672C2C9B1459FB06006A1D6B /* Person+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Person+Helper.h"; path = "Data Model/Person/Person+Helper.h"; sourceTree = "<group>"; };
+		672C2C9C1459FB06006A1D6B /* Person+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Person+Helper.m"; path = "Data Model/Person/Person+Helper.m"; sourceTree = "<group>"; };
 		67348AAA1446350700A3160A /* Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67348AAE1446350700A3160A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67348AB01446350700A3160A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -335,6 +338,8 @@
 				672C2C791459E9B1006A1D6B /* Friendships.m */,
 				672C2C7A1459E9B1006A1D6B /* Person.h */,
 				672C2C7B1459E9B1006A1D6B /* Person.m */,
+				672C2C9B1459FB06006A1D6B /* Person+Helper.h */,
+				672C2C9C1459FB06006A1D6B /* Person+Helper.m */,
 			);
 			name = Person;
 			sourceTree = "<group>";
@@ -673,6 +678,7 @@
 				672C2C8E1459E9BF006A1D6B /* PlaceAction.m in Sources */,
 				672C2C8F1459E9BF006A1D6B /* Uniqueness.m in Sources */,
 				672C2C921459E9CC006A1D6B /* Constants.m in Sources */,
+				672C2C9D1459FB06006A1D6B /* Person+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,7 +16,7 @@
 #pragma mark -
 #pragma mark Setup and TearDown
 
-/** Run before each test, creates an example data model we can play with during our tests.
+/** Run before each test. We need a database to play with, so creates one and adds a Person.
  */
 - (void)setUp
 {
