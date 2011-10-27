@@ -20,9 +20,22 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 
+/** Run before each test, creates an example data model we can play with during our tests.
+ */
 - (void)setUp;
+
+/** Run after each test, makes sure to dispose of everything we've created during setup.
+ 
+ TODO: Actually tear down things. Right now, it does not.
+ */
 - (void)tearDown;
+
+/** Saves to the persistent store in memory.
+ */
 - (void)saveContext;
+
+/** Fetches an entity by name from the managed object context.
+ */
 - (NSMutableArray*) fetchEntity:(NSString*) entityName;
 
 @end
