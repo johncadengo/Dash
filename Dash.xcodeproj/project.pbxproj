@@ -37,6 +37,16 @@
 		67348AD71446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AD51446350700A3160A /* InfoPlist.strings */; };
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
+		67697589145A5CA3001191CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697581145A5C82001191CF /* CFNetwork.framework */; };
+		6769758A145A5CA3001191CF /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697582145A5C82001191CF /* libxml2.dylib */; };
+		6769758B145A5CA3001191CF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697583145A5C82001191CF /* MobileCoreServices.framework */; };
+		6769758C145A5CA3001191CF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697584145A5C82001191CF /* SystemConfiguration.framework */; };
+		6769758D145A5CAE001191CF /* libRestKitCoreData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697579145A5BFA001191CF /* libRestKitCoreData.a */; };
+		6769758E145A5CAE001191CF /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697575145A5BFA001191CF /* libRestKitJSONParserJSONKit.a */; };
+		6769758F145A5CAE001191CF /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697569145A5BFA001191CF /* libRestKitNetwork.a */; };
+		67697590145A5CAE001191CF /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756B145A5BFA001191CF /* libRestKitObjectMapping.a */; };
+		67697591145A5CAE001191CF /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756D145A5BFA001191CF /* libRestKitSupport.a */; };
+		67697592145A5CAE001191CF /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
@@ -68,6 +78,90 @@
 			proxyType = 1;
 			remoteGlobalIDString = 67348AA91446350700A3160A;
 			remoteInfo = Dash;
+		};
+		67697568145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 253A07FC1255161B00976E89;
+			remoteInfo = RestKitNetwork;
+		};
+		6769756A145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 253A08031255162C00976E89;
+			remoteInfo = RestKitObjectMapping;
+		};
+		6769756C145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 253A080C12551D3000976E89;
+			remoteInfo = RestKitSupport;
+		};
+		6769756E145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20808DBD13DE8CDC000A156A;
+			remoteInfo = "RestKitJSONParser+NXJSON";
+		};
+		67697570145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2590E64F125231F600531FA8;
+			remoteInfo = "RestKitJSONParser+YAJL";
+		};
+		67697572145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2590E66B1252353700531FA8;
+			remoteInfo = "RestKitJSONParser+SBJSON";
+		};
+		67697574145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 73057FD11331AD2E001908EE;
+			remoteInfo = "RestKitJSONParser+JSONKit";
+		};
+		67697576145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25BD43BD1340315800DBACDD;
+			remoteInfo = "RestKitXMLParser+Libxml";
+		};
+		67697578145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 253A081412551D5300976E89;
+			remoteInfo = RestKitCoreData;
+		};
+		6769757A145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2523360511E79F090048F9B4;
+			remoteInfo = RestKitThree20;
+		};
+		6769757C145A5BFA001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3F6C39A510FE5C95008F47C5;
+			remoteInfo = "RestKit Specs";
+		};
+		6769757F145A5C6A001191CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 255B7588133BABBF00ED76AD;
+			remoteInfo = RestKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -122,6 +216,11 @@
 		67348AD91446350700A3160A /* DashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashTests.m; sourceTree = "<group>"; };
 		673653671455C1DD00E53822 /* DashAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashAPI.h; path = API/DashAPI.h; sourceTree = "<group>"; };
 		673653681455C1DD00E53822 /* DashAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashAPI.m; path = API/DashAPI.m; sourceTree = "<group>"; };
+		67697554145A5BFA001191CF /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		67697581145A5C82001191CF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		67697582145A5C82001191CF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		67697583145A5C82001191CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		67697584145A5C82001191CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009E41450E75900511E0F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
@@ -170,6 +269,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6769758D145A5CAE001191CF /* libRestKitCoreData.a in Frameworks */,
+				6769758E145A5CAE001191CF /* libRestKitJSONParserJSONKit.a in Frameworks */,
+				6769758F145A5CAE001191CF /* libRestKitNetwork.a in Frameworks */,
+				67697590145A5CAE001191CF /* libRestKitObjectMapping.a in Frameworks */,
+				67697591145A5CAE001191CF /* libRestKitSupport.a in Frameworks */,
+				67697592145A5CAE001191CF /* libRestKitXMLParserLibxml.a in Frameworks */,
+				67697589145A5CA3001191CF /* CFNetwork.framework in Frameworks */,
+				6769758A145A5CA3001191CF /* libxml2.dylib in Frameworks */,
+				6769758B145A5CA3001191CF /* MobileCoreServices.framework in Frameworks */,
+				6769758C145A5CA3001191CF /* SystemConfiguration.framework in Frameworks */,
 				67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */,
 				67348AAF1446350700A3160A /* UIKit.framework in Frameworks */,
 				67348AB11446350700A3160A /* Foundation.framework in Frameworks */,
@@ -211,6 +320,7 @@
 		67348A9F1446350700A3160A = {
 			isa = PBXGroup;
 			children = (
+				67697554145A5BFA001191CF /* RestKit.xcodeproj */,
 				67348AB61446350700A3160A /* Dash */,
 				67348AD21446350700A3160A /* DashTests */,
 				679009E01450E6C700511E0F /* Images */,
@@ -231,6 +341,10 @@
 		67348AAD1446350700A3160A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67697581145A5C82001191CF /* CFNetwork.framework */,
+				67697582145A5C82001191CF /* libxml2.dylib */,
+				67697583145A5C82001191CF /* MobileCoreServices.framework */,
+				67697584145A5C82001191CF /* SystemConfiguration.framework */,
 				67B9F2241455E8D0009D480C /* CoreLocation.framework */,
 				67348AAE1446350700A3160A /* UIKit.framework */,
 				67348AB01446350700A3160A /* Foundation.framework */,
@@ -295,16 +409,26 @@
 			children = (
 				673653671455C1DD00E53822 /* DashAPI.h */,
 				673653681455C1DD00E53822 /* DashAPI.m */,
-				6736536A1455C70D00E53822 /* JSONKit */,
 			);
 			name = API;
 			sourceTree = "<group>";
 		};
-		6736536A1455C70D00E53822 /* JSONKit */ = {
+		67697555145A5BFA001191CF /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				67697569145A5BFA001191CF /* libRestKitNetwork.a */,
+				6769756B145A5BFA001191CF /* libRestKitObjectMapping.a */,
+				6769756D145A5BFA001191CF /* libRestKitSupport.a */,
+				6769756F145A5BFA001191CF /* libRestKitJSONParserNXJSON.a */,
+				67697571145A5BFA001191CF /* libRestKitJSONParserYAJL.a */,
+				67697573145A5BFA001191CF /* libRestKitJSONParserSBJSON.a */,
+				67697575145A5BFA001191CF /* libRestKitJSONParserJSONKit.a */,
+				67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */,
+				67697579145A5BFA001191CF /* libRestKitCoreData.a */,
+				6769757B145A5BFA001191CF /* libRestKitThree20.a */,
+				6769757D145A5BFA001191CF /* RestKitSpecs.app */,
 			);
-			name = JSONKit;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		678882971459D5BD00F7E826 /* Abstract */ = {
@@ -525,10 +649,12 @@
 				67348AA71446350700A3160A /* Frameworks */,
 				67348AA81446350700A3160A /* Resources */,
 				679009F614511BB400511E0F /* Run Script to turn TODO:, FIXME:, ???:, and !!!: keywords into warinings */,
+				6769757E145A5C50001191CF /* Same as above but for DashTests */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				67697580145A5C6A001191CF /* PBXTargetDependency */,
 			);
 			name = Dash;
 			productName = Dash;
@@ -572,6 +698,12 @@
 			mainGroup = 67348A9F1446350700A3160A;
 			productRefGroup = 67348AAB1446350700A3160A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 67697555145A5BFA001191CF /* Products */;
+					ProjectRef = 67697554145A5BFA001191CF /* RestKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				67348AA91446350700A3160A /* Dash */,
@@ -579,6 +711,86 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		67697569145A5BFA001191CF /* libRestKitNetwork.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitNetwork.a;
+			remoteRef = 67697568145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6769756B145A5BFA001191CF /* libRestKitObjectMapping.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitObjectMapping.a;
+			remoteRef = 6769756A145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6769756D145A5BFA001191CF /* libRestKitSupport.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitSupport.a;
+			remoteRef = 6769756C145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6769756F145A5BFA001191CF /* libRestKitJSONParserNXJSON.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitJSONParserNXJSON.a;
+			remoteRef = 6769756E145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67697571145A5BFA001191CF /* libRestKitJSONParserYAJL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitJSONParserYAJL.a;
+			remoteRef = 67697570145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67697573145A5BFA001191CF /* libRestKitJSONParserSBJSON.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitJSONParserSBJSON.a;
+			remoteRef = 67697572145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67697575145A5BFA001191CF /* libRestKitJSONParserJSONKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitJSONParserJSONKit.a;
+			remoteRef = 67697574145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitXMLParserLibxml.a;
+			remoteRef = 67697576145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67697579145A5BFA001191CF /* libRestKitCoreData.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitCoreData.a;
+			remoteRef = 67697578145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6769757B145A5BFA001191CF /* libRestKitThree20.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitThree20.a;
+			remoteRef = 6769757A145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6769757D145A5BFA001191CF /* RestKitSpecs.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = RestKitSpecs.app;
+			remoteRef = 6769757C145A5BFA001191CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		67348AA81446350700A3160A /* Resources */ = {
@@ -615,6 +827,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		6769757E145A5C50001191CF /* Same as above but for DashTests */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Same as above but for DashTests";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}/Dash\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
+		};
 		679009F614511BB400511E0F /* Run Script to turn TODO:, FIXME:, ???:, and !!!: keywords into warinings */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -627,7 +853,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}/Dash\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -692,6 +918,11 @@
 			isa = PBXTargetDependency;
 			target = 67348AA91446350700A3160A /* Dash */;
 			targetProxy = 67348AD01446350700A3160A /* PBXContainerItemProxy */;
+		};
+		67697580145A5C6A001191CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 6769757F145A5C6A001191CF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -766,7 +997,9 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
 				INFOPLIST_FILE = "Dash/Dash-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -778,7 +1011,9 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
 				INFOPLIST_FILE = "Dash/Dash-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
