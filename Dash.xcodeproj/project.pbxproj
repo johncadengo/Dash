@@ -12,6 +12,7 @@
 		6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E3FF145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E403145F2D410069D5A8 /* UIImage+Tint.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6715E40A145F2F520069D5A8 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E409145F2F520069D5A8 /* ABTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		672C2C731459E9A4006A1D6B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6C1459E9A4006A1D6B /* Category.m */; };
 		672C2C741459E9A4006A1D6B /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6E1459E9A4006A1D6B /* Hours.m */; };
 		672C2C751459E9A4006A1D6B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C701459E9A4006A1D6B /* Place.m */; };
@@ -187,6 +188,8 @@
 		6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ProportionalFill.m"; path = "Helpers/MGImageUtilities/Classes/UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		6715E402145F2D410069D5A8 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Tint.h"; path = "Helpers/MGImageUtilities/Classes/UIImage+Tint.h"; sourceTree = "<group>"; };
 		6715E403145F2D410069D5A8 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Tint.m"; path = "Helpers/MGImageUtilities/Classes/UIImage+Tint.m"; sourceTree = "<group>"; };
+		6715E408145F2F520069D5A8 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABTableViewCell.h; path = Helpers/ABTableViewCell/ABTableViewCell.h; sourceTree = "<group>"; };
+		6715E409145F2F520069D5A8 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABTableViewCell.m; path = Helpers/ABTableViewCell/ABTableViewCell.m; sourceTree = "<group>"; };
 		672C2C6B1459E9A4006A1D6B /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = "Data Model/Place/Category.h"; sourceTree = "<group>"; };
 		672C2C6C1459E9A4006A1D6B /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = "Data Model/Place/Category.m"; sourceTree = "<group>"; };
 		672C2C6D1459E9A4006A1D6B /* Hours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hours.h; path = "Data Model/Place/Hours.h"; sourceTree = "<group>"; };
@@ -357,6 +360,15 @@
 				6715E403145F2D410069D5A8 /* UIImage+Tint.m */,
 			);
 			name = MGImageUtilities;
+			sourceTree = "<group>";
+		};
+		6715E407145F2EE70069D5A8 /* ABTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6715E408145F2F520069D5A8 /* ABTableViewCell.h */,
+				6715E409145F2F520069D5A8 /* ABTableViewCell.m */,
+			);
+			name = ABTableViewCell;
 			sourceTree = "<group>";
 		};
 		672C2C961459EDD9006A1D6B /* LogicTests */ = {
@@ -713,8 +725,9 @@
 		67F22FCD145F0C520010A09F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6715E3FD145F2D1E0069D5A8 /* MGImageUtilities */,
+				6715E407145F2EE70069D5A8 /* ABTableViewCell */,
 				67F22FCE145F0C630010A09F /* EGOImageLoading */,
+				6715E3FD145F2D1E0069D5A8 /* MGImageUtilities */,
 				676102CE145F1AC1005D23B1 /* MBProgressHUD */,
 			);
 			name = Helpers;
@@ -1041,6 +1054,7 @@
 				6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */,
 				6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */,
 				6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */,
+				6715E40A145F2F520069D5A8 /* ABTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
