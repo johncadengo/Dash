@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedCell.h"
 
-@interface FeedViewController : UITableViewController
+@interface FeedViewController : TISwipeableTableViewController
 
 @end
