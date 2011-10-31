@@ -7,3 +7,6 @@
 [submodule "Dash/Helpers/EGOImageLoading"]
 	path = Dash/Helpers/EGOImageLoading
 	url = https://github.com/enormego/EGOImageLoading.git
+[submodule "Dash/Helpers/MBProgressHUD"]
+	path = Dash/Helpers/MBProgressHUD
+	url = https://github.com/matej/MBProgressHUD.git
