@@ -9,8 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+@class Person;
+
 @interface DashAPI : NSObject
 
--(void) pop:(CLLocation*)location;
+- (void)pop:(CLLocation *)location;
+
+/** Returns an NSMutableArray of Footpring objects consisting of a Feed particular for a person.
+ */
+- (NSMutableArray *)feedForPerson:(Person *)person;
 
 @end

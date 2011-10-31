@@ -156,4 +156,32 @@
      */
 }
 
+#pragma mark - TISwipeableTableView stuff
+
+
+- (void)tableView:(UITableView *)tableView didSwipeCellAtIndexPath:(NSIndexPath *)indexPath 
+{	
+	[super tableView:tableView didSwipeCellAtIndexPath:indexPath];
+	
+
+}
+
+- (void)cellBackButtonWasTapped:(FeedCell *)cell {
+	
+	UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"BackView Button" 
+														 message:@"WHOA! YOU TAPPED A BACKVIEW BUTTON!" 
+														delegate:nil cancelButtonTitle:@"Sorry" 
+											   otherButtonTitles:nil];
+	[alertView show];
+	
+	[self hideVisibleBackView:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	[super scrollViewDidScroll:scrollView];
+	
+	// You gotta call super in all the methods you see here doing it.
+	// Otherwise, you will end up with cells not hiding their backViews.
+}
+
 @end

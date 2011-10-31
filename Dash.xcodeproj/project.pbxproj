@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		670956AC145EFBEF00057E32 /* TISwipeableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 670956AB145EFBEF00057E32 /* TISwipeableTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		670956AC145EFBEF00057E32 /* TISwipeableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 670956AB145EFBEF00057E32 /* TISwipeableTableView.m */; };
 		670956B4145EFF9C00057E32 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670956B3145EFF9C00057E32 /* QuartzCore.framework */; };
-		6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E3FF145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E403145F2D410069D5A8 /* UIImage+Tint.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E3FF145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m */; };
+		6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */; };
+		6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E403145F2D410069D5A8 /* UIImage+Tint.m */; };
 		672C2C731459E9A4006A1D6B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6C1459E9A4006A1D6B /* Category.m */; };
 		672C2C741459E9A4006A1D6B /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6E1459E9A4006A1D6B /* Hours.m */; };
 		672C2C751459E9A4006A1D6B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C701459E9A4006A1D6B /* Place.m */; };
@@ -42,7 +42,7 @@
 		67348AD71446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AD51446350700A3160A /* InfoPlist.strings */; };
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
-		676102D1145F1ADA005D23B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 676102D0145F1ADA005D23B1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		676102D1145F1ADA005D23B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 676102D0145F1ADA005D23B1 /* MBProgressHUD.m */; };
 		67697589145A5CA3001191CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697581145A5C82001191CF /* CFNetwork.framework */; };
 		6769758A145A5CA3001191CF /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697582145A5C82001191CF /* libxml2.dylib */; };
 		6769758B145A5CA3001191CF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697583145A5C82001191CF /* MobileCoreServices.framework */; };
@@ -53,6 +53,8 @@
 		67697590145A5CAE001191CF /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756B145A5BFA001191CF /* libRestKitObjectMapping.a */; };
 		67697591145A5CAE001191CF /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756D145A5BFA001191CF /* libRestKitSupport.a */; };
 		67697592145A5CAE001191CF /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */; };
+		6785B835145F37EA00467D8F /* Footprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6785B834145F37EA00467D8F /* Footprint.m */; };
+		6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6785B83B145F48C700467D8F /* NSDateHelper.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
@@ -76,11 +78,11 @@
 		67BAC8121459E6D50001C738 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8111459E6D50001C738 /* Save.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 		67F22FCC145F09D40010A09F /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FCB145F09D40010A09F /* FeedCell.m */; };
-		67F22FE4145F0DDF0010A09F /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE3145F0DDF0010A09F /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		67F22FE7145F0DE50010A09F /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE6145F0DE50010A09F /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		67F22FEC145F0DEB0010A09F /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE9145F0DEB0010A09F /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		67F22FED145F0DEB0010A09F /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		67F22FF0145F0DF20010A09F /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEF145F0DF20010A09F /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		67F22FE4145F0DDF0010A09F /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE3145F0DDF0010A09F /* EGOCache.m */; };
+		67F22FE7145F0DE50010A09F /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE6145F0DE50010A09F /* EGOImageButton.m */; };
+		67F22FEC145F0DEB0010A09F /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE9145F0DEB0010A09F /* EGOImageLoadConnection.m */; };
+		67F22FED145F0DEB0010A09F /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */; };
+		67F22FF0145F0DF20010A09F /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEF145F0DF20010A09F /* EGOImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +246,10 @@
 		67697582145A5C82001191CF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		67697583145A5C82001191CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		67697584145A5C82001191CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6785B833145F37EA00467D8F /* Footprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Footprint.h; path = API/Footprint.h; sourceTree = "<group>"; };
+		6785B834145F37EA00467D8F /* Footprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Footprint.m; path = API/Footprint.m; sourceTree = "<group>"; };
+		6785B83A145F48C700467D8F /* NSDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDateHelper.h; path = Helpers/EGOCocoaHelpers/NSDateHelper.h; sourceTree = "<group>"; };
+		6785B83B145F48C700467D8F /* NSDateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateHelper.m; path = Helpers/EGOCocoaHelpers/NSDateHelper.m; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009E41450E75900511E0F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
@@ -469,6 +475,8 @@
 			children = (
 				673653671455C1DD00E53822 /* DashAPI.h */,
 				673653681455C1DD00E53822 /* DashAPI.m */,
+				6785B833145F37EA00467D8F /* Footprint.h */,
+				6785B834145F37EA00467D8F /* Footprint.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -498,6 +506,15 @@
 				6769757D145A5BFA001191CF /* RestKitSpecs.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6785B836145F46FD00467D8F /* EGOCocoaHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				6785B83A145F48C700467D8F /* NSDateHelper.h */,
+				6785B83B145F48C700467D8F /* NSDateHelper.m */,
+			);
+			name = EGOCocoaHelpers;
 			sourceTree = "<group>";
 		};
 		678882971459D5BD00F7E826 /* Abstract */ = {
@@ -713,6 +730,7 @@
 		67F22FCD145F0C520010A09F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6785B836145F46FD00467D8F /* EGOCocoaHelpers */,
 				6715E3FD145F2D1E0069D5A8 /* MGImageUtilities */,
 				67F22FCE145F0C630010A09F /* EGOImageLoading */,
 				676102CE145F1AC1005D23B1 /* MBProgressHUD */,
@@ -1041,6 +1059,8 @@
 				6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */,
 				6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */,
 				6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */,
+				6785B835145F37EA00467D8F /* Footprint.m in Sources */,
+				6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,9 @@
 //
 
 #import "DashAPI.h"
+#import "Person.h"
+#import "Person+Helper.h"
+#import "Footprint.h"
 
 // Private properties
 @interface DashAPI ()
@@ -30,6 +33,13 @@
 {
     
     
+}
+
+- (NSMutableArray *)feedForPerson:(Person *)person
+{
+    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity: 1];
+
+    return feed;
 }
 
 @end
