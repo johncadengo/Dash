@@ -1,3 +1,9 @@
 [submodule "RestKit"]
 	path = RestKit
 	url = git://github.com/RestKit/RestKit.git
+[submodule "Dash/ViewControllers/TISwipeableTableView"]
+	path = Dash/ViewControllers/TISwipeableTableView
+	url = https://github.com/thermogl/TISwipeableTableView.git
+[submodule "Dash/Helpers/EGOImageLoading"]
+	path = Dash/Helpers/EGOImageLoading
+	url = https://github.com/enormego/EGOImageLoading.git
