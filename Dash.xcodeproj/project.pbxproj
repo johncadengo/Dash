@@ -62,6 +62,7 @@
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
+		67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0F33145F662C000CC4E7 /* FootprintTests.m */; };
 		67BAC7EB1459E5660001C738 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7EA1459E5660001C738 /* Comment.m */; };
 		67BAC7EE1459E5670001C738 /* FlagPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7ED1459E5670001C738 /* FlagPhoto.m */; };
 		67BAC7F11459E5670001C738 /* FlagPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7F01459E5670001C738 /* FlagPlace.m */; };
@@ -262,6 +263,8 @@
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		67BA0F32145F662C000CC4E7 /* FootprintTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FootprintTests.h; path = "Logic Tests/FootprintTests.h"; sourceTree = "<group>"; };
+		67BA0F33145F662C000CC4E7 /* FootprintTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FootprintTests.m; path = "Logic Tests/FootprintTests.m"; sourceTree = "<group>"; };
 		67BAC7E91459E5660001C738 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Comment.h; path = "Data Model/Actions/Feedback/Comment.h"; sourceTree = "<group>"; };
 		67BAC7EA1459E5660001C738 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Comment.m; path = "Data Model/Actions/Feedback/Comment.m"; sourceTree = "<group>"; };
 		67BAC7EC1459E5670001C738 /* FlagPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlagPhoto.h; path = "Data Model/Actions/Feedback/FlagPhoto.h"; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 			children = (
 				672C2C981459EE8F006A1D6B /* PersonTests.h */,
 				672C2C991459EE8F006A1D6B /* PersonTests.m */,
+				67BA0F32145F662C000CC4E7 /* FootprintTests.h */,
+				67BA0F33145F662C000CC4E7 /* FootprintTests.m */,
 			);
 			name = LogicTests;
 			sourceTree = "<group>";
@@ -1070,6 +1075,7 @@
 			files = (
 				67348ADA1446350700A3160A /* DashTests.m in Sources */,
 				672C2C9A1459EE8F006A1D6B /* PersonTests.m in Sources */,
+				67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

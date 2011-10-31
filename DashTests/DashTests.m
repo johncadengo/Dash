@@ -7,6 +7,8 @@
 //
 
 #import "DashTests.h"
+#import "Person.h"
+#import "Place.h"
 
 @implementation DashTests
 
@@ -29,6 +31,29 @@
     self.managedObjectContext = [[NSManagedObjectContext alloc] init];
     self.managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator;
     STAssertNotNil(self.managedObjectContext, @"Failed to create managed object context");
+    
+    // Create some sample objects to populate our database with.
+    Person *person = (Person *)[NSEntityDescription insertNewObjectForEntityForName: @"Person" inManagedObjectContext: self.managedObjectContext];
+    [person setUid: [NSNumber numberWithInt: 1]];
+    [person setName: @"john"];
+    [person setEmail:@"john@john.com"];
+    STAssertTrue([[person name] isEqualToString:@"john"], @"Name failed to store properly.");
+    STAssertTrue([[person email] isEqualToString:@"john@john.com"], @"Email failed to store properly.");
+    
+    // Create a fictional Place
+    Place *place = (Place *)[NSEntityDescription insertNewObjectForEntityForName: @"Place" inManagedObjectContext: self.managedObjectContext];
+    [place setUid: [NSNumber numberWithInt: 1]];
+    [place setName: @"Sheep on a Box"];
+    [place setAddress: @"226 Thompson St."];
+    [place setPhone: @"123-345-6789"];
+    [place setPrice: @"$$"];
+    STAssertNotNil([place name], @"Name failed to stick.");
+    STAssertNotNil([place address], @"Address failed to stick.");
+    STAssertNotNil([place phone], @"Phone failed to stick.");
+    STAssertNotNil([place price], @"Price failed to stick.");
+    
+    // Saves the managed object context into the persistent store.
+    [self saveContext];
 }
 
 - (void)tearDown
@@ -49,7 +74,7 @@
     STAssertTrue([self.managedObjectContext save:&saveError], @"Failed to save context to persistent store: %@", saveError);
 }
 
-- (NSMutableArray*) fetchEntity:(NSString*) entityName
+- (NSMutableArray *) fetchEntity:(NSString*) entityName
 {
     NSLog(@"%@ fetchEntity", self.name);
     
@@ -64,5 +89,30 @@
     
     return mutableFetchResults;
 }
+
+- (Person *)getLastPerson
+{
+    NSLog(@"%@ getLastPerson", self.name);
+    
+    NSMutableArray *mutableFetchResults = [self fetchEntity: @"Person"];
+    
+    // Get the person from the results of the request
+    Person *person = (Person *)[mutableFetchResults lastObject];
+    
+    return person;
+}
+
+- (Place *)getLastPlace
+{
+    NSLog(@"%@ getLastPlace", self.name);
+    
+    NSMutableArray *mutableFetchResults = [self fetchEntity: @"Place"];
+    
+    // Get the person from the results of the request
+    Place *place = (Place *)[mutableFetchResults lastObject];
+    
+    return place;
+}
+
 
 @end

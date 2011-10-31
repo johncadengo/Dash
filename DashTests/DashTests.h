@@ -9,6 +9,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 @class DashAPI;
+@class Person;
+@class Place;
 
 /** Handles testing our model, the managed object context, the persistent store, etc.
     All of our tests which need to access Core Data will inherit from this test case.
@@ -36,6 +38,9 @@
 
 /** Fetches an entity by name from the managed object context.
  */
-- (NSMutableArray*) fetchEntity:(NSString*) entityName;
+- (NSMutableArray *) fetchEntity:(NSString*) entityName;
+
+- (Person *)getLastPerson;
+- (Place *)getLastPlace;
 
 @end

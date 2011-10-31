@@ -1,15 +1,18 @@
 //
-//  PersonTests.m
+//  FootprintTests.m
 //  Dash
 //
-//  Created by John Cadengo on 10/27/11.
+//  Created by John Cadengo on 10/31/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "PersonTests.h"
+#import "FootprintTests.h"
+#import "Footprint.h"
+#import "Highlight.h"
 #import "Person.h"
+#import "Place.h"
 
-@implementation PersonTests
+@implementation FootprintTests
 
 @synthesize managedObjectContext = __managedObjectContext;
 
@@ -25,20 +28,23 @@
     // Creates our persistent store in memory and initializes our managed object context for us.
     [super setUp];
     
-    // Create and configure a new instance of the Person entity.
-    Person *person = (Person *)[NSEntityDescription insertNewObjectForEntityForName: @"Person" inManagedObjectContext: self.managedObjectContext];
-    [person setUid: [NSNumber numberWithInt: 2]];
-    [person setName: @"brown"];
-    [person setEmail:@"brown@paris.com"];
-    STAssertTrue([[person name] isEqualToString:@"brown"], @"Name failed to store properly.");
-    STAssertTrue([[person email] isEqualToString:@"brown@paris.com"], @"Email failed to store properly.");
+    // Have John create a Highlight at Sheep on a Box
+    Person *john = [self getLastPerson];
+    Place *sheepbox = [self getLastPlace];
+    Highlight *highlight = (Highlight *)[NSEntityDescription insertNewObjectForEntityForName: @"Highlight" inManagedObjectContext: self.managedObjectContext];
+    [highlight setUid: [NSNumber numberWithInt: 1]];
+    [highlight setText: @"Great soup dumplings!"];
+    [highlight setAuthor: john];
+    [highlight setPlace: sheepbox];
+    
+    
     
     // Saves the managed object context into the persistent store.
     [self saveContext];
 }
 
 /** Run after each test, makes sure to dispose of everything we've created during setup.
-
+ 
     TODO: Actually tear down things. Right now, it does not.
  */
 - (void)tearDown
@@ -46,6 +52,21 @@
     NSLog(@"%@ tearDown", self.name);
     
     [super tearDown];
+}
+
+#pragma mark -
+#pragma mark Helper Methods to be used throughout tests
+
+- (Person*)getLastPerson
+{
+    NSLog(@"%@ getLastPerson", self.name);
+    
+    NSMutableArray *mutableFetchResults = [self fetchEntity: @"Person"];
+    
+    // Get the person from the results of the request
+    Person *person = (Person*)[mutableFetchResults lastObject];
+    
+    return person;
 }
 
 #pragma mark -

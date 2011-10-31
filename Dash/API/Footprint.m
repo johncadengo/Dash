@@ -39,17 +39,13 @@
 @synthesize blurb = _blurb;
 @synthesize longago = _longago;
 
+/** Don't use init. It will be useless without an Action.
+    For now will assert NO.
+ */
 - (id)init 
 {
-    self = [super init];
-    
-    if (self) {
-        self.photoURL = [[NSURL alloc] init];
-        self.blurb = [[NSString alloc] init];
-        self.longago = [[NSString alloc] init];
-    }
-    
-    return self;
+    NSAssert(NO, @"This method should not be used");
+    return nil;
 }
 
 - (id)initWithAction:(Action*) action
@@ -69,7 +65,7 @@
 }
 
 #pragma - Helper methods for initWithAction
-/** Gets the URL from the Photo object, but also needs to consider caching one ay.
+/** Gets the URL from the Photo object, but also needs to consider caching one day.
  */
 - (NSURL *)URLWithPhoto:(Photo *)photo
 {
