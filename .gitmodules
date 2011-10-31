@@ -13,3 +13,6 @@
 [submodule "Dash/Helpers/MGImageUtilities"]
 	path = Dash/Helpers/MGImageUtilities
 	url = https://github.com/mattgemmell/MGImageUtilities.git
+[submodule "Dash/Helpers/ABTableViewCell"]
+	path = Dash/Helpers/ABTableViewCell
+	url = https://github.com/enormego/ABTableViewCell.git
