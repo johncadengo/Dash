@@ -12,10 +12,9 @@
 
 @interface Footprint : NSObject
 
-@property (nonatomic, strong) NSURL *photourl;
+@property (nonatomic, strong) NSURL *photoURL;
 @property (nonatomic, strong) NSString *blurb;
 @property (nonatomic, strong) NSString *longago;
-@property (nonatomic, strong) NSString *author;
 
 /** Don't call this. Won't do anything useful.
  */

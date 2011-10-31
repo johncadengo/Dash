@@ -8,38 +8,43 @@
 
 #import "Footprint.h"
 #import "Photo.h"
+#import "PersonPhoto.h"
 #import "Person.h"
 #import "Person+Helper.h"
 #import "Action.h"
+#import "NSDateHelper.h"
 
-// Private properties
+// Private
 @interface Footprint ()
 
+@property (nonatomic, strong) Person *author;
 @property (nonatomic, strong) Photo *photo;
-@property (nonatomic, strong) Person *person;
 @property (nonatomic, strong) Action *action;
+
+- (NSURL *)URLWithPhoto:(Photo *)photo;
+- (NSString *)blurbFromAction:(Action *)action;
+- (NSString *)longagoFromAction:(Action *)action;
 
 @end
 
 @implementation Footprint
 
-// Private ivars
+// Synthesize private ivars
+@synthesize author = _author;
 @synthesize photo = _photo;
-@synthesize person = _person;
 @synthesize action = _action;
 
 // Public ivars
-@synthesize photourl = _photourl;
+@synthesize photoURL = _photoURL;
 @synthesize blurb = _blurb;
 @synthesize longago = _longago;
-@synthesize author = _author;
 
 - (id)init 
 {
     self = [super init];
     
     if (self) {
-        self.photourl = [[NSURL alloc] init];
+        self.photoURL = [[NSURL alloc] init];
         self.blurb = [[NSString alloc] init];
         self.longago = [[NSString alloc] init];
     }
@@ -49,13 +54,41 @@
 
 - (id)initWithAction:(Action*) action
 {
-    self = [self init];
+    self = [super init];
     
     if (self) {
-        return self;
+        self.author = [action author];
+        self.photo = [self.author profilepic];
+        self.action = action;
+        self.photoURL = [self URLWithPhoto: self.photo];
+        self.blurb = [self blurbFromAction: self.action];
+        self.longago = [self longagoFromAction: self.action];
     }
     
     return self;
+}
+
+#pragma - Helper methods for initWithAction
+/** Gets the URL from the Photo object, but also needs to consider caching one ay.
+ */
+- (NSURL *)URLWithPhoto:(Photo *)photo
+{
+    return [NSURL URLWithString:@"http://thegospelcoalition.org/images/nav/small/icon_blog_TGC.png"];
+}
+
+/** Eventually needs to branch out depending on the type of Action: Highlight, Comment, etc.
+    TODO: Branch depending on what kind of Action is taking places. For now, stub.
+ */
+- (NSString *)blurbFromAction:(Action *)action
+{
+    return [NSString stringWithFormat: @"Laura Byun likes lemonade with mint tea leaves."];
+}
+
+/** Returns the name of the author of the string
+ */
+- (NSString *)longagoFromAction:(Action *)action
+{
+    return [NSString stringWithFormat: @"2 days ago"];
 }
 
 @end
