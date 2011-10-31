@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		670956AC145EFBEF00057E32 /* TISwipeableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 670956AB145EFBEF00057E32 /* TISwipeableTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		670956B4145EFF9C00057E32 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670956B3145EFF9C00057E32 /* QuartzCore.framework */; };
+		6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E3FF145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E403145F2D410069D5A8 /* UIImage+Tint.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		672C2C731459E9A4006A1D6B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6C1459E9A4006A1D6B /* Category.m */; };
 		672C2C741459E9A4006A1D6B /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6E1459E9A4006A1D6B /* Hours.m */; };
 		672C2C751459E9A4006A1D6B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C701459E9A4006A1D6B /* Place.m */; };
@@ -178,6 +181,12 @@
 		670956AA145EFBEF00057E32 /* TISwipeableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TISwipeableTableView.h; path = Dash/ViewControllers/TISwipeableTableView/TISwipeableTableView.h; sourceTree = "<group>"; };
 		670956AB145EFBEF00057E32 /* TISwipeableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TISwipeableTableView.m; path = Dash/ViewControllers/TISwipeableTableView/TISwipeableTableView.m; sourceTree = "<group>"; };
 		670956B3145EFF9C00057E32 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6715E3FE145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGImageUtilitiesAppDelegate.h; path = Helpers/MGImageUtilities/Classes/MGImageUtilitiesAppDelegate.h; sourceTree = "<group>"; };
+		6715E3FF145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGImageUtilitiesAppDelegate.m; path = Helpers/MGImageUtilities/Classes/MGImageUtilitiesAppDelegate.m; sourceTree = "<group>"; };
+		6715E400145F2D410069D5A8 /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ProportionalFill.h"; path = "Helpers/MGImageUtilities/Classes/UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
+		6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ProportionalFill.m"; path = "Helpers/MGImageUtilities/Classes/UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
+		6715E402145F2D410069D5A8 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Tint.h"; path = "Helpers/MGImageUtilities/Classes/UIImage+Tint.h"; sourceTree = "<group>"; };
+		6715E403145F2D410069D5A8 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Tint.m"; path = "Helpers/MGImageUtilities/Classes/UIImage+Tint.m"; sourceTree = "<group>"; };
 		672C2C6B1459E9A4006A1D6B /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = "Data Model/Place/Category.h"; sourceTree = "<group>"; };
 		672C2C6C1459E9A4006A1D6B /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = "Data Model/Place/Category.m"; sourceTree = "<group>"; };
 		672C2C6D1459E9A4006A1D6B /* Hours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hours.h; path = "Data Model/Place/Hours.h"; sourceTree = "<group>"; };
@@ -335,6 +344,19 @@
 				670956AB145EFBEF00057E32 /* TISwipeableTableView.m */,
 			);
 			name = TISwipeableTableView;
+			sourceTree = "<group>";
+		};
+		6715E3FD145F2D1E0069D5A8 /* MGImageUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				6715E3FE145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.h */,
+				6715E3FF145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m */,
+				6715E400145F2D410069D5A8 /* UIImage+ProportionalFill.h */,
+				6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */,
+				6715E402145F2D410069D5A8 /* UIImage+Tint.h */,
+				6715E403145F2D410069D5A8 /* UIImage+Tint.m */,
+			);
+			name = MGImageUtilities;
 			sourceTree = "<group>";
 		};
 		672C2C961459EDD9006A1D6B /* LogicTests */ = {
@@ -691,6 +713,7 @@
 		67F22FCD145F0C520010A09F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6715E3FD145F2D1E0069D5A8 /* MGImageUtilities */,
 				67F22FCE145F0C630010A09F /* EGOImageLoading */,
 				676102CE145F1AC1005D23B1 /* MBProgressHUD */,
 			);
@@ -1015,6 +1038,9 @@
 				67F22FED145F0DEB0010A09F /* EGOImageLoader.m in Sources */,
 				67F22FF0145F0DF20010A09F /* EGOImageView.m in Sources */,
 				676102D1145F1ADA005D23B1 /* MBProgressHUD.m in Sources */,
+				6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */,
+				6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */,
+				6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

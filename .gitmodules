@@ -10,3 +10,6 @@
 [submodule "Dash/Helpers/MBProgressHUD"]
 	path = Dash/Helpers/MBProgressHUD
 	url = https://github.com/matej/MBProgressHUD.git
+[submodule "Dash/Helpers/MGImageUtilities"]
+	path = Dash/Helpers/MGImageUtilities
+	url = https://github.com/mattgemmell/MGImageUtilities.git
