@@ -29,8 +29,8 @@
     [super setUp];
     
     // Get a person and a place to create a highlight between
-    Person *john = [self getLastPerson];
-    Place *sheepbox = [self getLastPlace];
+    Person *john = [self fetchLastPerson];
+    Place *sheepbox = [self fetchLastPlace];
     
     // Create the highlight
     self.highlight = (Highlight *)[NSEntityDescription insertNewObjectForEntityForName: @"Highlight" inManagedObjectContext: self.managedObjectContext];
@@ -39,7 +39,7 @@
     NSNumber *uid = [NSNumber numberWithInt: 1];
     NSDate *date = [NSDate date];
     NSString *text = [NSString stringWithFormat: @"Great soup dumplings!"];
-    [self.highlight setUID:uid timestamp:date text:text];
+    [self.highlight setUid:uid timestamp:date text:text];
     
     // Connect it
     [self.highlight setAuthor: john];
@@ -48,8 +48,9 @@
     // Saves the managed object context into the persistent store.
     [self saveContext];
     
-    //
-    
+    // Fetch it from core data and see if it worked
+    Highlight *fetched = [self fetchEntity:@"Highlight" withUid:uid];
+    STAssertEqualObjects(self.highlight, fetched, @"The highlight fetched from core data did not match the highlight we thought we saved with that uid.");
     STAssertNotNil(self.highlight.uid, @"UID didn't stick.");
     STAssertNotNil(self.highlight.text, @"Text didn't stick.");
     STAssertNotNil(self.highlight.author, @"Author didn't stick.");

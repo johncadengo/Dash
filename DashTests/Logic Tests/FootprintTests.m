@@ -30,8 +30,8 @@
     [super setUp];
     
     // Have John create a Highlight at Sheep on a Box
-    Person *john = [self getLastPerson];
-    Place *sheepbox = [self getLastPlace];
+    Person *john = [self fetchLastPerson];
+    Place *sheepbox = [self fetchLastPlace];
     self.highlight = (Highlight *)[NSEntityDescription insertNewObjectForEntityForName: @"Highlight" inManagedObjectContext: self.managedObjectContext];
     [self.highlight setUid: [NSNumber numberWithInt: 1]];
     [self.highlight setText: @"Great soup dumplings!"];

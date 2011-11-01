@@ -40,9 +40,11 @@
  */
 - (NSMutableArray *) fetchEntity:(NSString*) entityName;
 
-- (Person *)getLastPerson;
-- (Place *)getLastPlace;
+- (Person *)fetchLastPerson;
+- (Place *)fetchLastPlace;
 
-- (Person *)getPersonWithName:(NSString *)name;
+- (Person *)fetchPersonWithName:(NSString *)name;
+
+- (id)fetchEntity:(NSString *)entityName withUid:(NSNumber *)uid;
 
 @end

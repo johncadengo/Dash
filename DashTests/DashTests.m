@@ -103,7 +103,7 @@
     return mutableFetchResults;
 }
 
-- (Person *)getLastPerson
+- (Person *)fetchLastPerson
 {
     NSLog(@"%@ getLastPerson", self.name);
     
@@ -115,7 +115,7 @@
     return person;
 }
 
-- (Place *)getLastPlace
+- (Place *)fetchLastPlace
 {
     NSLog(@"%@ getLastPlace", self.name);
     
@@ -127,7 +127,7 @@
     return place;
 }
 
-- (Person *)getPersonWithName:(NSString *)name
+- (Person *)fetchPersonWithName:(NSString *)name
 {
     NSLog(@"%@ getLastPerson", self.name);
     
@@ -141,7 +141,25 @@
         }
     }
     
-    // Otherwise, if we couldn't find it, return nil
+    // Otherwise, we couldn't find it so we return nil
+    return nil;
+}
+
+- (id)fetchEntity:(NSString *)entityName withUid:(NSNumber *)uid
+{
+    NSLog(@"%@ fetchEntity:withUid:", self.name);
+    
+    NSMutableArray *mutableFetchResults = [self fetchEntity: entityName];
+    
+    // Again, lazy man's way
+    // TODO: Use NSPredicate and NSExpression to do this more efficiently
+    for (id entity in mutableFetchResults) {
+        if ([entity uid] == uid) {
+            return entity;
+        }
+    }
+    
+    // Otherwise, we couldn't find it so we return nil
     return nil;
 }
 

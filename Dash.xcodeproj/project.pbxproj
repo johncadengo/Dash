@@ -63,6 +63,7 @@
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
 		679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB514604BA70038E506 /* Highlight+Helper.m */; };
 		679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB8146059CE0038E506 /* HighlightTests.m */; };
+		679E8CBC146062210038E506 /* Action+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBB146062210038E506 /* Action+Helper.m */; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
 		67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0F33145F662C000CC4E7 /* FootprintTests.m */; };
 		67BAC7EB1459E5660001C738 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7EA1459E5660001C738 /* Comment.m */; };
@@ -268,6 +269,8 @@
 		679E8CB514604BA70038E506 /* Highlight+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Highlight+Helper.m"; path = "Data Model/Actions/Highlight/Highlight+Helper.m"; sourceTree = "<group>"; };
 		679E8CB7146059CE0038E506 /* HighlightTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightTests.h; path = "Logic Tests/HighlightTests.h"; sourceTree = "<group>"; };
 		679E8CB8146059CE0038E506 /* HighlightTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightTests.m; path = "Logic Tests/HighlightTests.m"; sourceTree = "<group>"; };
+		679E8CBA146062210038E506 /* Action+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Action+Helper.h"; path = "Data Model/Abstract/Action+Helper.h"; sourceTree = "<group>"; };
+		679E8CBB146062210038E506 /* Action+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Action+Helper.m"; path = "Data Model/Abstract/Action+Helper.m"; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		67BA0F32145F662C000CC4E7 /* FootprintTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FootprintTests.h; path = "Logic Tests/FootprintTests.h"; sourceTree = "<group>"; };
 		67BA0F33145F662C000CC4E7 /* FootprintTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FootprintTests.m; path = "Logic Tests/FootprintTests.m"; sourceTree = "<group>"; };
@@ -535,6 +538,8 @@
 			children = (
 				672C2C7E1459E9BF006A1D6B /* Action.h */,
 				672C2C7F1459E9BF006A1D6B /* Action.m */,
+				679E8CBA146062210038E506 /* Action+Helper.h */,
+				679E8CBB146062210038E506 /* Action+Helper.m */,
 				672C2C801459E9BF006A1D6B /* Flag.h */,
 				672C2C811459E9BF006A1D6B /* Flag.m */,
 				672C2C821459E9BF006A1D6B /* Location.h */,
@@ -1077,6 +1082,7 @@
 				6785B835145F37EA00467D8F /* Footprint.m in Sources */,
 				6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */,
 				679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */,
+				679E8CBC146062210038E506 /* Action+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

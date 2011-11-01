@@ -12,6 +12,6 @@
 
 /** Sets everything all at the same time.
  */
-- (void)setUID:(NSNumber *)uid timestamp:(NSDate *)time text:(NSString *)text;
+- (void)setUid:(NSNumber *)uid timestamp:(NSDate *)timestamp text:(NSString *)text;
 
 @end

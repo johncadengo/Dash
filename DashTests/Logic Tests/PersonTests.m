@@ -59,7 +59,7 @@
 - (void)testGetPersonByName
 {
     // Get John
-    Person *john = [self getPersonWithName: @"john"];
+    Person *john = [self fetchPersonWithName: @"john"];
     
     // Check if he's the right onw
     STAssertTrue([[john name] isEqualToString:@"john"], @"Name failed to store properly.");
@@ -75,7 +75,7 @@
     NSLog(@"%@ start", self.name); 
     
     // First brown
-    Person *brown = [self getPersonWithName: @"brown"];
+    Person *brown = [self fetchPersonWithName: @"brown"];
     
     // Check initial values of the person fetched
     NSString *name = [brown name];
@@ -91,7 +91,7 @@
     [self saveContext];
     
     // Now refetch it and make sure that it has updated the values
-    Person *BRWN = [self getPersonWithName: @"BRWN"];
+    Person *BRWN = [self fetchPersonWithName: @"BRWN"];
     
     name = [BRWN name];
     email = [BRWN email];

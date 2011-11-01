@@ -10,10 +10,10 @@
 
 @implementation Highlight (Helper)
 
-- (void)setUID:(NSNumber *)uid timestamp:(NSDate *)time text:(NSString *)text
+- (void)setUid:(NSNumber *)uid timestamp:(NSDate *)timestamp text:(NSString *)text
 {
     [self setUid: uid];
-    [self setTimestamp: time];
+    [self setTimestamp: timestamp];
     [self setText: text];
 }
 
