@@ -75,5 +75,13 @@
     STAssertNotNil(longago, @"Longago didn't stick.");
 }
 
+/** Creates a Footprint without an Action and makes sure it returns nil.
+ */
+- (void)testFootprintWithoutAction
+{
+    Footprint *footprint = [[Footprint alloc] initWithAction: nil];
+    STAssertNil(footprint, @"Footprint with no Action failed to return nil");
+}
+
 
 @end

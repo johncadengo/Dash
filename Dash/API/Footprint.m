@@ -40,12 +40,10 @@
 @synthesize longago = _longago;
 
 /** Don't use init. It will be useless without an Action.
-    For now will assert NO.
  */
 - (id)init 
 {
-    NSAssert(NO, @"This method should not be used");
-    return nil;
+    return [self initWithAction:nil];
 }
 
 - (id)initWithAction:(Action*) action
@@ -53,12 +51,18 @@
     self = [super init];
     
     if (self) {
-        self.author = [action author];
-        self.photo = [self.author profilepic];
-        self.action = action;
-        self.photoURL = [self URLWithPhoto: self.photo];
-        self.blurb = [self blurbFromAction: self.action];
-        self.longago = [self longagoFromAction: self.action];
+        // We need an Action!
+        if (action) {
+            self.author = [action author];
+            self.photo = [self.author profilepic];
+            self.action = action;
+            self.photoURL = [self URLWithPhoto: self.photo];
+            self.blurb = [self blurbFromAction: self.action];
+            self.longago = [self longagoFromAction: self.action];
+        }
+        else {
+            return nil;
+        }
     }
     
     return self;

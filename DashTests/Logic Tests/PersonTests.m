@@ -74,8 +74,8 @@
 {
     NSLog(@"%@ start", self.name); 
     
-    // First, get the last person entity from the persistent store, which is john.
-    Person *brown = [self getLastPerson];
+    // First brown
+    Person *brown = [self getPersonWithName: @"brown"];
     
     // Check initial values of the person fetched
     NSString *name = [brown name];
