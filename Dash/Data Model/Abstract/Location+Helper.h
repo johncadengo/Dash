@@ -19,4 +19,10 @@
  */
 - (void)setLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
+/** Calculates the distance between this location and the one provided.
+ 
+    TODO: Implement and write test cases for it.
+ */
+- (NSNumber *)distanceFrom:(Location *)location;
+
 @end

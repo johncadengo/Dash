@@ -11,6 +11,8 @@
 
 @implementation FriendsViewController
 
+@synthesize managedObjectContext = __managedObjectContext;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

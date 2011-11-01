@@ -36,4 +36,9 @@
     [self setSinRadLat:[NSNumber numberWithDouble:sinRadLat]];
 }
 
+- (NSNumber *)distanceFrom:(Location *)location
+{
+    return nil;
+}
+
 @end

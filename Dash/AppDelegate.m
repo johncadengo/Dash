@@ -8,6 +8,11 @@
 
 #import "AppDelegate.h"
 
+// Category to make sure that we have accessors to managedobjectcontext
+@interface UIViewController (Helper)
+-(void)setManagedObjectContext:(NSManagedObjectContext *)context;
+@end
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -26,6 +31,25 @@ enum {
     // Get the TabBarController so we can start off on a different index.
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     [tabBarController setSelectedIndex: kDashTabIndex];
+    
+    // Grab our managed object context
+    NSManagedObjectContext *context = [self managedObjectContext];
+    if (!context) {
+        // TODO: Handle the error.
+        NSLog(@"Uh oh");
+    }
+    
+    // and make sure everyone gets a reference to it.
+    for (UINavigationController *nav in [tabBarController viewControllers]) {
+        id controller = [nav topViewController];
+        if ([controller respondsToSelector: @selector(setManagedObjectContext:)]) {
+            [controller setManagedObjectContext:context];
+        }
+        else {
+            // This should never happen.
+            NSLog(@"Something went wrong trying to assign managed object context to one of the view controllers!");    
+        }
+    }
     
     return YES;
 }
