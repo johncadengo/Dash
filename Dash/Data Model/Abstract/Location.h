@@ -2,7 +2,7 @@
 //  Location.h
 //  Dash
 //
-//  Created by John Cadengo on 10/27/11.
+//  Created by John Cadengo on 11/1/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,11 +13,11 @@
 
 @interface Location : Uniqueness
 
-@property (nonatomic, retain) NSNumber * cos_rad_lat;
-@property (nonatomic, retain) NSNumber * latitude;
-@property (nonatomic, retain) NSNumber * longitude;
-@property (nonatomic, retain) NSNumber * rad_lat;
-@property (nonatomic, retain) NSNumber * rad_lng;
-@property (nonatomic, retain) NSNumber * sin_rad_lat;
+@property (nonatomic) double cosRadLat;
+@property (nonatomic) double latitude;
+@property (nonatomic) double longitude;
+@property (nonatomic) double radLat;
+@property (nonatomic) double radLng;
+@property (nonatomic) double sinRadLat;
 
 @end

@@ -20,7 +20,6 @@
 		672C2C7D1459E9B1006A1D6B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C7B1459E9B1006A1D6B /* Person.m */; };
 		672C2C8A1459E9BF006A1D6B /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C7F1459E9BF006A1D6B /* Action.m */; };
 		672C2C8B1459E9BF006A1D6B /* Flag.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C811459E9BF006A1D6B /* Flag.m */; };
-		672C2C8C1459E9BF006A1D6B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C831459E9BF006A1D6B /* Location.m */; };
 		672C2C8D1459E9BF006A1D6B /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C851459E9BF006A1D6B /* Photo.m */; };
 		672C2C8E1459E9BF006A1D6B /* PlaceAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C871459E9BF006A1D6B /* PlaceAction.m */; };
 		672C2C8F1459E9BF006A1D6B /* Uniqueness.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C891459E9BF006A1D6B /* Uniqueness.m */; };
@@ -64,6 +63,7 @@
 		679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB514604BA70038E506 /* Highlight+Helper.m */; };
 		679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB8146059CE0038E506 /* HighlightTests.m */; };
 		679E8CBC146062210038E506 /* Action+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBB146062210038E506 /* Action+Helper.m */; };
+		679E8CC01460684E0038E506 /* Flag+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBF1460684E0038E506 /* Flag+Helper.m */; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
 		67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0F33145F662C000CC4E7 /* FootprintTests.m */; };
 		67BAC7EB1459E5660001C738 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7EA1459E5660001C738 /* Comment.m */; };
@@ -81,6 +81,8 @@
 		67BAC80F1459E6D50001C738 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC80E1459E6D50001C738 /* Rate.m */; };
 		67BAC8121459E6D50001C738 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8111459E6D50001C738 /* Save.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
+		67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A4314606B790047C1E4 /* Location+Helper.m */; };
+		67D15A47146070250047C1E4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A46146070250047C1E4 /* Location.m */; };
 		67F22FCC145F09D40010A09F /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FCB145F09D40010A09F /* FeedCell.m */; };
 		67F22FE4145F0DDF0010A09F /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE3145F0DDF0010A09F /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FE7145F0DE50010A09F /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE6145F0DE50010A09F /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -209,8 +211,6 @@
 		672C2C7F1459E9BF006A1D6B /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Action.m; path = "Data Model/Abstract/Action.m"; sourceTree = "<group>"; };
 		672C2C801459E9BF006A1D6B /* Flag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flag.h; path = "Data Model/Abstract/Flag.h"; sourceTree = "<group>"; };
 		672C2C811459E9BF006A1D6B /* Flag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Flag.m; path = "Data Model/Abstract/Flag.m"; sourceTree = "<group>"; };
-		672C2C821459E9BF006A1D6B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
-		672C2C831459E9BF006A1D6B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Abstract/Location.m"; sourceTree = "<group>"; };
 		672C2C841459E9BF006A1D6B /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = "Data Model/Abstract/Photo.h"; sourceTree = "<group>"; };
 		672C2C851459E9BF006A1D6B /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = "Data Model/Abstract/Photo.m"; sourceTree = "<group>"; };
 		672C2C861459E9BF006A1D6B /* PlaceAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceAction.h; path = "Data Model/Abstract/PlaceAction.h"; sourceTree = "<group>"; };
@@ -271,6 +271,8 @@
 		679E8CB8146059CE0038E506 /* HighlightTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightTests.m; path = "Logic Tests/HighlightTests.m"; sourceTree = "<group>"; };
 		679E8CBA146062210038E506 /* Action+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Action+Helper.h"; path = "Data Model/Abstract/Action+Helper.h"; sourceTree = "<group>"; };
 		679E8CBB146062210038E506 /* Action+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Action+Helper.m"; path = "Data Model/Abstract/Action+Helper.m"; sourceTree = "<group>"; };
+		679E8CBE1460684E0038E506 /* Flag+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Flag+Helper.h"; path = "Data Model/Abstract/Flag+Helper.h"; sourceTree = "<group>"; };
+		679E8CBF1460684E0038E506 /* Flag+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Flag+Helper.m"; path = "Data Model/Abstract/Flag+Helper.m"; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		67BA0F32145F662C000CC4E7 /* FootprintTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FootprintTests.h; path = "Logic Tests/FootprintTests.h"; sourceTree = "<group>"; };
 		67BA0F33145F662C000CC4E7 /* FootprintTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FootprintTests.m; path = "Logic Tests/FootprintTests.m"; sourceTree = "<group>"; };
@@ -303,6 +305,10 @@
 		67BAC8101459E6D50001C738 /* Save.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Save.h; path = "Data Model/Actions/PlaceActions/Save.h"; sourceTree = "<group>"; };
 		67BAC8111459E6D50001C738 /* Save.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Save.m; path = "Data Model/Actions/PlaceActions/Save.m"; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		67D15A4214606B790047C1E4 /* Location+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Location+Helper.h"; path = "Data Model/Abstract/Location+Helper.h"; sourceTree = "<group>"; };
+		67D15A4314606B790047C1E4 /* Location+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+Helper.m"; path = "Data Model/Abstract/Location+Helper.m"; sourceTree = "<group>"; };
+		67D15A45146070250047C1E4 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
+		67D15A46146070250047C1E4 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Abstract/Location.m"; sourceTree = "<group>"; };
 		67F22FCA145F09D40010A09F /* FeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedCell.h; path = Dash/ViewControllers/FeedViewController/FeedCell.h; sourceTree = "<group>"; };
 		67F22FCB145F09D40010A09F /* FeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedCell.m; path = Dash/ViewControllers/FeedViewController/FeedCell.m; sourceTree = "<group>"; };
 		67F22FE2145F0DDF0010A09F /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOCache.h; path = Helpers/EGOImageLoading/EGOCache/EGOCache.h; sourceTree = "<group>"; };
@@ -542,8 +548,12 @@
 				679E8CBB146062210038E506 /* Action+Helper.m */,
 				672C2C801459E9BF006A1D6B /* Flag.h */,
 				672C2C811459E9BF006A1D6B /* Flag.m */,
-				672C2C821459E9BF006A1D6B /* Location.h */,
-				672C2C831459E9BF006A1D6B /* Location.m */,
+				679E8CBE1460684E0038E506 /* Flag+Helper.h */,
+				679E8CBF1460684E0038E506 /* Flag+Helper.m */,
+				67D15A45146070250047C1E4 /* Location.h */,
+				67D15A46146070250047C1E4 /* Location.m */,
+				67D15A4214606B790047C1E4 /* Location+Helper.h */,
+				67D15A4314606B790047C1E4 /* Location+Helper.m */,
 				672C2C841459E9BF006A1D6B /* Photo.h */,
 				672C2C851459E9BF006A1D6B /* Photo.m */,
 				672C2C861459E9BF006A1D6B /* PlaceAction.h */,
@@ -1062,7 +1072,6 @@
 				672C2C7D1459E9B1006A1D6B /* Person.m in Sources */,
 				672C2C8A1459E9BF006A1D6B /* Action.m in Sources */,
 				672C2C8B1459E9BF006A1D6B /* Flag.m in Sources */,
-				672C2C8C1459E9BF006A1D6B /* Location.m in Sources */,
 				672C2C8D1459E9BF006A1D6B /* Photo.m in Sources */,
 				672C2C8E1459E9BF006A1D6B /* PlaceAction.m in Sources */,
 				672C2C8F1459E9BF006A1D6B /* Uniqueness.m in Sources */,
@@ -1083,6 +1092,9 @@
 				6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */,
 				679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */,
 				679E8CBC146062210038E506 /* Action+Helper.m in Sources */,
+				679E8CC01460684E0038E506 /* Flag+Helper.m in Sources */,
+				67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */,
+				67D15A47146070250047C1E4 /* Location.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 //  Location.m
 //  Dash
 //
-//  Created by John Cadengo on 10/27/11.
+//  Created by John Cadengo on 11/1/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,11 +11,11 @@
 
 @implementation Location
 
-@dynamic cos_rad_lat;
+@dynamic cosRadLat;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic rad_lat;
-@dynamic rad_lng;
-@dynamic sin_rad_lat;
+@dynamic radLat;
+@dynamic radLng;
+@dynamic sinRadLat;
 
 @end

@@ -45,12 +45,12 @@
         <relationship name="action" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="likes" inverseEntity="Action" syncable="YES"/>
     </entity>
     <entity name="Location" representedClassName="Location" isAbstract="YES" parentEntity="Uniqueness" syncable="YES">
-        <attribute name="cos_rad_lat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="cosRadLat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="rad_lat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="rad_lng" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
-        <attribute name="sin_rad_lat" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="radLat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="radLng" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="sinRadLat" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Person" representedClassName="Person" parentEntity="Uniqueness" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
