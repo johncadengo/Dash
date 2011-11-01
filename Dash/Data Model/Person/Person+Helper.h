@@ -13,9 +13,9 @@
 
 @interface Person (Helper)
 
--(void)save:(Place *)place;
--(void)rate:(Place *)place withRating:(NSNumber *)rating;
--(void)email:(Place *)place;
--(void)visit:(Place *)place;
+- (void)save:(Place *)place;
+- (void)rate:(Place *)place withRating:(NSNumber *)rating;
+- (void)email:(Place *)place;
+- (void)visit:(Place *)place;
 
 @end

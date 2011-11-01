@@ -61,6 +61,8 @@
 		679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EE1450EB9600511E0F /* PlacesViewController.m */; };
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
+		679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB514604BA70038E506 /* Highlight+Helper.m */; };
+		679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB8146059CE0038E506 /* HighlightTests.m */; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
 		67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0F33145F662C000CC4E7 /* FootprintTests.m */; };
 		67BAC7EB1459E5660001C738 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7EA1459E5660001C738 /* Comment.m */; };
@@ -262,6 +264,10 @@
 		679009F11450ED8800511E0F /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.m; sourceTree = "<group>"; };
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
+		679E8CB414604BA70038E506 /* Highlight+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Highlight+Helper.h"; path = "Data Model/Actions/Highlight/Highlight+Helper.h"; sourceTree = "<group>"; };
+		679E8CB514604BA70038E506 /* Highlight+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Highlight+Helper.m"; path = "Data Model/Actions/Highlight/Highlight+Helper.m"; sourceTree = "<group>"; };
+		679E8CB7146059CE0038E506 /* HighlightTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightTests.h; path = "Logic Tests/HighlightTests.h"; sourceTree = "<group>"; };
+		679E8CB8146059CE0038E506 /* HighlightTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightTests.m; path = "Logic Tests/HighlightTests.m"; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		67BA0F32145F662C000CC4E7 /* FootprintTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FootprintTests.h; path = "Logic Tests/FootprintTests.h"; sourceTree = "<group>"; };
 		67BA0F33145F662C000CC4E7 /* FootprintTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FootprintTests.m; path = "Logic Tests/FootprintTests.m"; sourceTree = "<group>"; };
@@ -375,6 +381,8 @@
 				672C2C991459EE8F006A1D6B /* PersonTests.m */,
 				67BA0F32145F662C000CC4E7 /* FootprintTests.h */,
 				67BA0F33145F662C000CC4E7 /* FootprintTests.m */,
+				679E8CB7146059CE0038E506 /* HighlightTests.h */,
+				679E8CB8146059CE0038E506 /* HighlightTests.m */,
 			);
 			name = LogicTests;
 			sourceTree = "<group>";
@@ -586,6 +594,8 @@
 			children = (
 				67BAC8041459E6580001C738 /* Highlight.h */,
 				67BAC8051459E6580001C738 /* Highlight.m */,
+				679E8CB414604BA70038E506 /* Highlight+Helper.h */,
+				679E8CB514604BA70038E506 /* Highlight+Helper.m */,
 			);
 			name = Highlight;
 			sourceTree = "<group>";
@@ -1066,6 +1076,7 @@
 				6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */,
 				6785B835145F37EA00467D8F /* Footprint.m in Sources */,
 				6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */,
+				679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,6 +1087,7 @@
 				67348ADA1446350700A3160A /* DashTests.m in Sources */,
 				672C2C9A1459EE8F006A1D6B /* PersonTests.m in Sources */,
 				67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */,
+				679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
