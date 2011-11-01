@@ -11,8 +11,12 @@
 
 #import "DashTests.h"
 
+@class Highlight;
+
 /** Tests the Footprint class, which is part of the DashAPI.
  */
 @interface FootprintTests : DashTests
+
+@property (nonatomic, strong) Highlight *highlight;
 
 @end
