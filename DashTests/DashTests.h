@@ -43,4 +43,6 @@
 - (Person *)getLastPerson;
 - (Place *)getLastPlace;
 
+- (Person *)getPersonWithName:(NSString *)name;
+
 @end

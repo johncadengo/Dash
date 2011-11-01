@@ -51,34 +51,52 @@
 #pragma mark -
 #pragma mark Tests
 
-/**
- testPerson fetches a Person entity from the persistent store
- then tests setting and getting its properties
- and finally tests saving the context and making sure it went through.
+
+/** Makes sure our GetPersonByName works.
+    Goes into the database, fetches the Person entity and 
+    searches for the Person with the name that matches our argument.
+ */
+- (void)testGetPersonByName
+{
+    // Get John
+    Person *john = [self getPersonWithName: @"john"];
+    
+    // Check if he's the right onw
+    STAssertTrue([[john name] isEqualToString:@"john"], @"Name failed to store properly.");
+    STAssertTrue([[john email] isEqualToString:@"john@john.com"], @"Email failed to store properly.");
+}
+
+/** testPerson fetches a Person entity from the persistent store
+    then tests setting and getting its properties
+    and finally tests saving the context and making sure it went through.
  */
 - (void)testGetPerson 
 {
     NSLog(@"%@ start", self.name); 
     
     // First, get the last person entity from the persistent store, which is john.
-    Person *john = [self getLastPerson];
+    Person *brown = [self getLastPerson];
     
     // Check initial values of the person fetched
-    STAssertTrue([[john name] isEqualToString:@"john"], @"Name failed to store properly.");
-    STAssertTrue([[john email] isEqualToString:@"john@john.com"], @"Email failed to store properly.");
+    NSString *name = [brown name];
+    NSString *email = [brown email];
+    STAssertTrue([name isEqualToString:@"brown"], @"Name failed to store properly. Got instead: %@", name);
+    STAssertTrue([email isEqualToString:@"brown@paris.com"], @"Email failed to store properly. Got instead: %@", email);
     
     // Change the values
-    [john setName:@"brown"];
-    [john setEmail:@"brwn@paris.com"];
+    [brown setName: @"BRWN"];
+    [brown setEmail: @"BRWN@paris.com"];
     
     // Try to save
     [self saveContext];
     
     // Now refetch it and make sure that it has updated the values
-    Person *brown = [self getLastPerson];
+    Person *BRWN = [self getPersonWithName: @"BRWN"];
     
-    STAssertTrue([[brown name] isEqualToString:@"brown"], @"Name failed to store properly.");
-    STAssertTrue([[brown email] isEqualToString:@"brwn@paris.com"], @"Email failed to store properly.");
+    name = [BRWN name];
+    email = [BRWN email];
+    STAssertTrue([name isEqualToString:@"BRWN"], @"Name failed to store properly. Got instead: %@", name);
+    STAssertTrue([email isEqualToString:@"BRWN@paris.com"], @"Email failed to store properly. Got instead: %@", email);
     
     NSLog(@"%@ end", self.name); 
 }

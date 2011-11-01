@@ -9,6 +9,7 @@
 #import "DashTests.h"
 #import "Person.h"
 #import "Place.h"
+#import "PlaceLocation.h"
 
 @implementation DashTests
 
@@ -51,6 +52,18 @@
     STAssertNotNil([place address], @"Address failed to stick.");
     STAssertNotNil([place phone], @"Phone failed to stick.");
     STAssertNotNil([place price], @"Price failed to stick.");
+    
+    // All Places need a Location
+    // Google Map coordinates of 226 Thompson St 10012
+    // LAT = 40.7292540
+    // LNG = -73.9988530
+    PlaceLocation *location = (PlaceLocation *)[NSEntityDescription insertNewObjectForEntityForName: @"PlaceLocation" inManagedObjectContext: self.managedObjectContext];
+    [location setUid: [NSNumber numberWithInt: 1]];
+    [location setLatitude: [NSNumber numberWithDouble: 40.7292540]];
+    [location setLongitude: [NSNumber numberWithDouble: -73.9988530]];
+
+    // Attach the Location to the Place
+    [place setLocation: location];
     
     // Saves the managed object context into the persistent store.
     [self saveContext];
@@ -114,5 +127,22 @@
     return place;
 }
 
+- (Person *)getPersonWithName:(NSString *)name
+{
+    NSLog(@"%@ getLastPerson", self.name);
+    
+    NSMutableArray *mutableFetchResults = [self fetchEntity: @"Person"];
+    
+    // Lazy man's way, after bringing the whole database into memory LOL
+    // TODO: Use NSPredicate and NSExpression to do this more efficiently
+    for (Person *person in mutableFetchResults) {
+        if (person.name == name) {
+            return person;
+        }
+    }
+    
+    // Otherwise, if we couldn't find it, return nil
+    return nil;
+}
 
 @end
