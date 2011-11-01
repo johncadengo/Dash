@@ -81,6 +81,7 @@
 		67BAC80F1459E6D50001C738 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC80E1459E6D50001C738 /* Rate.m */; };
 		67BAC8121459E6D50001C738 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8111459E6D50001C738 /* Save.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
+		67CCDE8914607D8400CF657D /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8814607D8400CF657D /* LocationTests.m */; };
 		67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A4314606B790047C1E4 /* Location+Helper.m */; };
 		67D15A47146070250047C1E4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A46146070250047C1E4 /* Location.m */; };
 		67F22FCC145F09D40010A09F /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FCB145F09D40010A09F /* FeedCell.m */; };
@@ -305,6 +306,8 @@
 		67BAC8101459E6D50001C738 /* Save.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Save.h; path = "Data Model/Actions/PlaceActions/Save.h"; sourceTree = "<group>"; };
 		67BAC8111459E6D50001C738 /* Save.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Save.m; path = "Data Model/Actions/PlaceActions/Save.m"; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		67CCDE8714607D8400CF657D /* LocationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationTests.h; path = "Logic Tests/LocationTests.h"; sourceTree = "<group>"; };
+		67CCDE8814607D8400CF657D /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationTests.m; path = "Logic Tests/LocationTests.m"; sourceTree = "<group>"; };
 		67D15A4214606B790047C1E4 /* Location+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Location+Helper.h"; path = "Data Model/Abstract/Location+Helper.h"; sourceTree = "<group>"; };
 		67D15A4314606B790047C1E4 /* Location+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+Helper.m"; path = "Data Model/Abstract/Location+Helper.m"; sourceTree = "<group>"; };
 		67D15A45146070250047C1E4 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 				67BA0F33145F662C000CC4E7 /* FootprintTests.m */,
 				679E8CB7146059CE0038E506 /* HighlightTests.h */,
 				679E8CB8146059CE0038E506 /* HighlightTests.m */,
+				67CCDE8714607D8400CF657D /* LocationTests.h */,
+				67CCDE8814607D8400CF657D /* LocationTests.m */,
 			);
 			name = LogicTests;
 			sourceTree = "<group>";
@@ -1106,6 +1111,7 @@
 				672C2C9A1459EE8F006A1D6B /* PersonTests.m in Sources */,
 				67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */,
 				679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */,
+				67CCDE8914607D8400CF657D /* LocationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

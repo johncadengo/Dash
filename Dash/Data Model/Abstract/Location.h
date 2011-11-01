@@ -13,11 +13,11 @@
 
 @interface Location : Uniqueness
 
-@property (nonatomic) double cosRadLat;
-@property (nonatomic) double latitude;
-@property (nonatomic) double longitude;
-@property (nonatomic) double radLat;
-@property (nonatomic) double radLng;
-@property (nonatomic) double sinRadLat;
+@property (nonatomic, retain) NSNumber * cosRadLat;
+@property (nonatomic, retain) NSNumber * latitude;
+@property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSNumber * radLat;
+@property (nonatomic, retain) NSNumber * radLng;
+@property (nonatomic, retain) NSNumber * sinRadLat;
 
 @end

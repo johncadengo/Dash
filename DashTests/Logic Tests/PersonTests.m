@@ -11,8 +11,6 @@
 
 @implementation PersonTests
 
-@synthesize managedObjectContext = __managedObjectContext;
-
 #pragma mark -
 #pragma mark Setup and TearDown
 

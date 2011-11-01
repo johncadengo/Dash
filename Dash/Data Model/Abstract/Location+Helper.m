@@ -8,27 +8,32 @@
 
 #import "Location+Helper.h"
 
-@interface Location ()
--(double)degreesToRadians:(double)degrees;
-@end
-
 @implementation Location (Helper)
 
--(double)degreesToRadians:(double)degrees
+-(NSNumber *)degreesToRadians:(NSNumber *)degrees
 {
-    return degrees * M_PI / 180;
+    double radians = ([degrees doubleValue] * M_PI) / 180.0;
+    return [NSNumber numberWithDouble: radians];
 }
 
-- (void)setLatitude:(double)latitude longitude:(double)longitude
+- (void)setLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude
 {
     [self setLatitude:latitude];
     [self setLongitude:longitude];
     
-    // Make calculations and set their values
-    [self setRadLat:[self degreesToRadians:latitude]];
-    [self setRadLng:[self degreesToRadians:longitude]];
-    [self setCosRadLat:cos(self.radLat)];
-    [self setSinRadLat:cos(self.radLat)];
+    // Make calculations
+    double radLat = [[self degreesToRadians:latitude] doubleValue];
+    double radLng = [[self degreesToRadians:longitude] doubleValue];
+    double cosRadLat = cos(radLat);
+    double sinRadLat = sin(radLat);
+    
+    //NSLog(@"%d")
+    
+    // and set their values
+    [self setRadLat:[NSNumber numberWithDouble:radLat]];
+    [self setRadLng:[NSNumber numberWithDouble:radLng]];
+    [self setCosRadLat:[NSNumber numberWithDouble:cosRadLat]];
+    [self setSinRadLat:[NSNumber numberWithDouble:sinRadLat]];
 }
 
 @end

@@ -10,6 +10,7 @@
 
 @interface Location (Helper)
 
-- (void)setLatitude:(double)latitude longitude:(double)longitude;
+- (NSNumber *)degreesToRadians:(NSNumber *)degrees;
+- (void)setLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
 @end

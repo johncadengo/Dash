@@ -14,7 +14,6 @@
 
 @implementation FootprintTests
 
-@synthesize managedObjectContext = __managedObjectContext;
 @synthesize highlight = _highlight;
 
 #pragma mark -
