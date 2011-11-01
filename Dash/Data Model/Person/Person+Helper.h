@@ -13,9 +13,28 @@
 
 @interface Person (Helper)
 
+/** Saves a Place to this Person's list.
+    
+    TODO: Implement and write test case for it.
+ */
 - (void)save:(Place *)place;
+
+/** Rate a Place with a rating.
+ 
+    TODO: Implement and write test case for it.
+ */
 - (void)rate:(Place *)place withRating:(NSNumber *)rating;
+
+/** Emails this Place's information to someone.
+ 
+    TODO: Implement and write test case for it.
+ */
 - (void)email:(Place *)place;
+
+/** Adds this Place to a Person's "Been Here" list.
+ 
+    TODO: Implement and write test case for it.
+ */
 - (void)visit:(Place *)place;
 
 @end

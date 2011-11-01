@@ -10,6 +10,8 @@
 
 @interface Flag (Helper)
 
+/** Sets the attributes of a flag at one time: uid, timestamp, and text.
+ */
 - (void)setUid:(NSNumber *)uid timestamp:(NSDate *)timestamp text:(NSString *)text;
 
 @end

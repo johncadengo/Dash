@@ -17,4 +17,9 @@
     [self setText:text];
 }
 
+- (void)addHightlightToPlace:(Place *)place byPerson:(Person *)person withPhoto:(HighlightPhoto *)photo
+{
+    
+}
+
 @end

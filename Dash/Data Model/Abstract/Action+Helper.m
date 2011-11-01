@@ -16,4 +16,9 @@
     [self setTimestamp:timestamp];
 }
 
+- (void)connect:(Person *)person toPlace:(Place *)place
+{
+    
+}
+
 @end
