@@ -9,8 +9,8 @@
 #import "DashAPI.h"
 #import "Person.h"
 #import "Person+Helper.h"
-#import "Action.h"
-#import "Action+Helper.h"
+#import "Highlight.h"
+#import "Highlight+Helper.h"
 
 
 // Private properties
@@ -20,12 +20,20 @@
 
 @implementation DashAPI
 
--(id) init 
+@synthesize managedObjectContext = __managedObjectContext;
+
+-(id) init
+{
+    NSAssert(NO, @"Must init with a managed object context.");
+    return nil;
+}
+
+-(id) initWithManagedObjectContext:(NSManagedObjectContext *)context
 {
     self = [super init];
     
     if (self) {
-        return self;
+        self.managedObjectContext = context;
     }
     
     return self;
@@ -55,12 +63,12 @@
 - (NSMutableArray *)feedForPerson:(Person *)person withCount:(NSUInteger)count
 {
     // TODO: This is a stub for now. Actually request news items from model!
-    Action *action;
+    Highlight *highlight;
     NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:count];
 
     for (int i = 0; i < count; ++i) {
-        action = [[Action alloc] init];
-        [feed addObject:action];
+        highlight = (Highlight *)[NSEntityDescription insertNewObjectForEntityForName:@"Highlight" inManagedObjectContext:self.managedObjectContext];
+        [feed addObject:highlight];
     }
     
     return feed;

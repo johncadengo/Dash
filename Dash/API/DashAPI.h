@@ -22,6 +22,10 @@ enum {
 
 @interface DashAPI : NSObject
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+-(id) initWithManagedObjectContext:(NSManagedObjectContext *)context;
+
 - (void)pop:(CLLocation *)location;
 
 /** Returns a feed of news items.

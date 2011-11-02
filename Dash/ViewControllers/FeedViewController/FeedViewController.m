@@ -24,11 +24,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Connect to our API.
-        self.api = [[DashAPI alloc] init];
-        
-        // Initialize our tableview's array which will represent its model.
-        self.feedItems = [self.api feed];
+        // Nada.
     }
     return self;
 }
@@ -46,6 +42,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Connect to our API.
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
+    
+    // Initialize our tableview's array which will represent its model.
+    self.feedItems = [self.api feed];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

@@ -65,6 +65,8 @@
  */
 - (void)testActionsFootprint
 {
+    NSLog(@"%@", self.name);
+    
     Action *action = self.highlight;
     NSString *photoPath = [action photoPath];
     NSString *blurb = [action blurb];

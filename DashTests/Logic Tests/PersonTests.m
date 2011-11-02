@@ -56,6 +56,8 @@
  */
 - (void)testGetPersonByName
 {
+    NSLog(@"%@", self.name);
+    
     // Get John
     Person *john = [self fetchPersonWithName: @"john"];
     
@@ -70,7 +72,7 @@
  */
 - (void)testGetPerson 
 {
-    NSLog(@"%@ start", self.name); 
+    NSLog(@"%@", self.name); 
     
     // First brown
     Person *brown = [self fetchPersonWithName: @"brown"];
