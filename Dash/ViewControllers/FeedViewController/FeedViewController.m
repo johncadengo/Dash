@@ -24,7 +24,8 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Nada.
+        // Custom stuff
+        [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     }
     return self;
 }
@@ -54,8 +55,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
 }
 
 - (void)viewDidUnload
@@ -114,8 +113,7 @@
             numRows = kNumRowsForListModeSection;
             break;
         case kFeedItemsSection:
-            // TODO: Calculate this value
-            numRows = 5;
+            numRows = [self.feedItems count];
             break;
         default:
             // Should never happen
@@ -150,10 +148,10 @@
 
 - (ListModeCell *)listModeCellForTableView:(UITableView *)tableView
 {
-    ListModeCell *cell = (ListModeCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ListModeCell *cell = (ListModeCell*)[tableView dequeueReusableCellWithIdentifier:ListModeCellIdentifier];
     
     if (cell == nil) {
-        cell = [[ListModeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ListModeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ListModeCellIdentifier];
     }
     NSLog(@"BYE");
     
@@ -162,10 +160,10 @@
 
 - (FeedCell *)feedCellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *) indexPath
 {
-    FeedCell *cell = (FeedCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FeedCell *cell = (FeedCell *)[tableView dequeueReusableCellWithIdentifier:FeedItemCellIdentifier];
     
     if (cell == nil) {
-        cell = [[FeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[FeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FeedItemCellIdentifier];
     }
     
     [cell setDelegate: self];

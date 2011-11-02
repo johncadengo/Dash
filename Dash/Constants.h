@@ -7,4 +7,5 @@
 //
 
 extern NSString * const MyFirstConstant;
-extern NSString * const CellIdentifier;
+extern NSString * const FeedItemCellIdentifier;
+extern NSString * const ListModeCellIdentifier;

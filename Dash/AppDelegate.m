@@ -23,14 +23,15 @@
 
 // Make sure we start out on the Dash Tab.
 enum {
-    kDashTabIndex = 0
+    kFeedTabIndex = 0,
+    kDashTabIndex = 2
 };
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Get the TabBarController so we can start off on a different index.
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    [tabBarController setSelectedIndex: kDashTabIndex];
+    [tabBarController setSelectedIndex: kFeedTabIndex];
     
     // Grab our managed object context
     NSManagedObjectContext *context = [self managedObjectContext];

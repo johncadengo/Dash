@@ -52,6 +52,8 @@
 #pragma mark -
 #pragma mark Tests
 
+/** Make sure there are items in the feed.
+ */
 - (void)testFeedViewModel
 {
     NSLog(@"%@", self.name);
@@ -59,6 +61,16 @@
     NSMutableArray *feedItems = [self.feedViewController feedItems];
     NSUInteger count = [feedItems count];
     STAssertTrue(count, @"There are no items in the feedItems array: %d", count);
+}
+
+/** Make sure the api is connected and functioning well.
+ */
+- (void)testFeedViewAPI
+{
+    NSLog(@"%@", self.name);
+    
+    DashAPI *api = [self.feedViewController api];
+    STAssertNotNil(api, @"The api is missing from feed view controller!");
 }
 
 @end

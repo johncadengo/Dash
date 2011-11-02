@@ -9,4 +9,5 @@
 #import "Constants.h"
 
 NSString * const MyFirstConstant = @"FirstConstant";
-NSString * const CellIdentifier = @"Cell";
+NSString * const FeedItemCellIdentifier = @"com.MadeupStartup.Dash.FeedItemCell";
+NSString * const ListModeCellIdentifier = @"com.MadeupStartup.Dash.ListModeCell";
