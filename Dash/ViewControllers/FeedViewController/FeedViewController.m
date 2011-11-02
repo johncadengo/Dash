@@ -24,7 +24,11 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        // Connect to our API.
+        self.api = [[DashAPI alloc] init];
+        
+        // Initialize our tableview's array which will represent its model.
+        self.feedItems = [self.api feed];
     }
     return self;
 }

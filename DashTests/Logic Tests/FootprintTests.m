@@ -66,13 +66,13 @@
 - (void)testActionsFootprint
 {
     Action *action = self.highlight;
-    NSURL *photourl = [action photoURL];
+    NSString *photoPath = [action photoPath];
     NSString *blurb = [action blurb];
     NSString *relativeTimestamp = [action relativeTimestamp]; 
     
-    STAssertNotNil(photourl, @"PhotoURL didn't stick.");
-    STAssertNotNil(blurb, @"Blurb didn't stick.");
-    STAssertNotNil(relativeTimestamp, @"Longago didn't stick.");
+    STAssertNotNil(photoPath, @"photoPath didn't stick.");
+    STAssertNotNil(blurb, @"blurb didn't stick.");
+    STAssertNotNil(relativeTimestamp, @"relativeTimestamp didn't stick.");
 }
 
 

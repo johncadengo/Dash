@@ -59,6 +59,7 @@
 		679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EE1450EB9600511E0F /* PlacesViewController.m */; };
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
+		6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */; };
 		679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB514604BA70038E506 /* Highlight+Helper.m */; };
 		679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB8146059CE0038E506 /* HighlightTests.m */; };
 		679E8CBC146062210038E506 /* Action+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBB146062210038E506 /* Action+Helper.m */; };
@@ -264,6 +265,8 @@
 		679009F11450ED8800511E0F /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.m; sourceTree = "<group>"; };
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
+		6796A8ED1461CC2500F87D93 /* FeedViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewControllerTests.h; path = ApplicationTests/FeedViewControllerTests.h; sourceTree = "<group>"; };
+		6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewControllerTests.m; path = ApplicationTests/FeedViewControllerTests.m; sourceTree = "<group>"; };
 		679E8CB414604BA70038E506 /* Highlight+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Highlight+Helper.h"; path = "Data Model/Actions/Highlight/Highlight+Helper.h"; sourceTree = "<group>"; };
 		679E8CB514604BA70038E506 /* Highlight+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Highlight+Helper.m"; path = "Data Model/Actions/Highlight/Highlight+Helper.m"; sourceTree = "<group>"; };
 		679E8CB7146059CE0038E506 /* HighlightTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightTests.h; path = "Logic Tests/HighlightTests.h"; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 		672C2C971459EE36006A1D6B /* ApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
+				6796A8ED1461CC2500F87D93 /* FeedViewControllerTests.h */,
+				6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */,
 			);
 			name = ApplicationTests;
 			sourceTree = "<group>";
@@ -1112,6 +1117,7 @@
 				67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */,
 				679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */,
 				67CCDE8914607D8400CF657D /* LocationTests.m in Sources */,
+				6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
