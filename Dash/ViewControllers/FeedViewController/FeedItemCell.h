@@ -24,7 +24,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *blurb;
 @property (nonatomic, strong) NSString *relativeTimestamp;
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIImage *image;
 
 // Methods
 - (void)setWithAction:(Action*)action;

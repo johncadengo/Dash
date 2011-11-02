@@ -13,11 +13,14 @@
 @synthesize name;
 @synthesize blurb;
 @synthesize relativeTimestamp;
-@synthesize imageView;
+@synthesize image;
 
 - (void)setWithAction:(Action*)action
 {
-    self.blurb = @"Hey";
+    self.blurb = @"hey";
+    self.image = [UIImage imageNamed:@"icon.png"];
+    
+    [self setNeedsDisplay];
 }
 
 - (void)buttonWasTapped:(UIButton *)button {
@@ -29,11 +32,8 @@
 
 - (void)backViewWillAppear {
 	
-	UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[button addTarget:self action:@selector(buttonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
-	[button setTitle:@"Tap me" forState:UIControlStateNormal];
-	[button setFrame:CGRectMake(20, 4, self.backView.frame.size.width - 40, self.backView.frame.size.height - 8)];
-	[self.backView addSubview:button];
+
+
 }
 
 - (void)backViewDidDisappear {
@@ -49,19 +49,37 @@
 	UIColor * textColour = (self.selected || self.highlighted) ? [UIColor whiteColor] : [UIColor blackColor];	
 	[textColour set];
 	
-	UIFont * textFont = [UIFont boldSystemFontOfSize:22];
+	UIFont * textFont = [UIFont boldSystemFontOfSize:16];
 	
 	CGSize textSize = [blurb sizeWithFont:textFont constrainedToSize:rect.size];
 	[blurb drawInRect:CGRectMake((rect.size.width / 2) - (textSize.width / 2), 
 								(rect.size.height / 2) - (textSize.height / 2),
 								textSize.width, textSize.height)
 			withFont:textFont];
+    
+    // Let's put an image here
+    CGFloat imageY = (rect.size.height - self.image.size.height) / 2;
+    CGPoint point = CGPointMake(5.0, imageY); 
+    [self.image drawAtPoint:point];
 }
 
 - (void)drawBackView:(CGRect)rect {
 	
 	[[UIImage imageNamed:@"meshpattern.png"] drawAsPatternInRect:rect];
 	[self drawShadowsWithHeight:10 opacity:0.3 InRect:rect forContext:UIGraphicsGetCurrentContext()];
+    
+    NSString *backViewText = [NSString stringWithFormat:@"buddy"];
+    
+    UIColor * textColour = (self.selected || self.highlighted) ? [UIColor whiteColor] : [UIColor blackColor];	
+	[textColour set];
+	
+	UIFont * textFont = [UIFont boldSystemFontOfSize:16];
+	
+	CGSize textSize = [backViewText sizeWithFont:textFont constrainedToSize:rect.size];
+	[backViewText drawInRect:CGRectMake((rect.size.width / 2) - (textSize.width / 2), 
+                                    (rect.size.height / 2) - (textSize.height / 2),
+                                    textSize.width, textSize.height)
+                withFont:textFont];
 }
 
 - (void)drawShadowsWithHeight:(CGFloat)shadowHeight opacity:(CGFloat)opacity InRect:(CGRect)rect forContext:(CGContextRef)context {
