@@ -9,3 +9,4 @@
 #import "Constants.h"
 
 NSString * const MyFirstConstant = @"FirstConstant";
+NSString * const CellIdentifier = @"Cell";

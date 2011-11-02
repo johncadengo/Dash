@@ -9,8 +9,33 @@
 #import <UIKit/UIKit.h>
 #import "FeedCell.h"
 
-@interface FeedViewController : TISwipeableTableViewController
+#pragma - Enum constants
+/** There are two sections: 
+    1) segemented control for list mode
+    2) items in the news feed
+ */
+enum {
+    kListModeSection = 0,
+    kFeedItemsSection = 1,
+    kNumSections = 2
+};
+
+/** Only 1 row to contain the UITableViewCell which will house the segmented control
+ */
+enum {
+    kNumRowsForListModeSection = 1
+};
+
+#pragma - Class definition
+
+@class ListModeCell;
+@class FeedCell;
+
+@interface FeedViewController : TISwipeableTableViewController <FeedCellDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+- (ListModeCell *)listModeCellForTableView:(UITableView *)tableView;
+- (FeedCell *)feedCellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *) indexPath;
 
 @end

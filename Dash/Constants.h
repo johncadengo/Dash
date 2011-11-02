@@ -7,3 +7,4 @@
 //
 
 extern NSString * const MyFirstConstant;
+extern NSString * const CellIdentifier;

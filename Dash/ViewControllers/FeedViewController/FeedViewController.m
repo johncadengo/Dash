@@ -7,7 +7,8 @@
 //
 
 #import "FeedViewController.h"
-
+#import "ListModeCell.h"
+#import "Constants.h"
 
 @implementation FeedViewController
 
@@ -80,30 +81,68 @@
 
 #pragma mark - Table view data source
 
+/** Two sections:
+    1) Segmented control for list mode
+    2) Items in the news feed
+ */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return kNumSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
+    switch (section) {
+        case kListModeSection:
+            return kNumRowsForListModeSection;
+        case kFeedItemsSection:
+            // TODO: Calculate this value
+            return 5;
+    }
+
+    // Should never happen
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    NSUInteger section = [indexPath section];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    switch (section) {
+        case kListModeSection:
+            return [self listModeCellForTableView:tableView];
+        case kFeedItemsSection:
+            return [self feedCellForTableView:tableView atIndexPath:indexPath];
     }
     
-    // Configure the cell...
+    // Should never happen
+    return nil;
+}
+
+
+- (ListModeCell *)listModeCellForTableView:(UITableView *)tableView
+{
+    ListModeCell *cell = (ListModeCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[ListModeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    NSLog(@"BYE");
+    
+    return cell;
+}
+
+- (FeedCell *)feedCellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *) indexPath
+{
+    FeedCell *cell = (FeedCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[FeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    [cell setDelegate: self];
+    [cell setText: @"Hi"];
     
     return cell;
 }
