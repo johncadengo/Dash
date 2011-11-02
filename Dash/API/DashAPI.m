@@ -9,7 +9,6 @@
 #import "DashAPI.h"
 #import "Person.h"
 #import "Person+Helper.h"
-#import "Footprint.h"
 
 // Private properties
 @interface DashAPI ()

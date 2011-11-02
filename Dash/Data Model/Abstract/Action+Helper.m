@@ -21,4 +21,23 @@
     
 }
 
+#pragma - Footprints
+
+- (NSURL *)photoURL
+{
+    return [NSURL URLWithString:@"http://thegospelcoalition.org/images/nav/small/icon_blog_TGC.png"];    
+}
+
+// TODO: Branch depending on what kind of Action is taking places. For now, stub.
+- (NSString *)blurb
+{
+    return [NSString stringWithFormat: @"Laura Byun likes lemonade with mint tea leaves."];
+    
+}
+
+- (NSString *)relativeTimestamp
+{
+    return [NSString stringWithFormat: @"2 days ago"];    
+}
+
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "FootprintTests.h"
-#import "Footprint.h"
+#import "Action.h"
+#import "Action+Helper.h"
 #import "Highlight.h"
 #import "Person.h"
 #import "Place.h"
@@ -62,24 +63,16 @@
 
 /** Creates a Footprint with an Action and makes sure everything gets set alright.
  */
-- (void)testFootprintWithAction
+- (void)testActionsFootprint
 {
-    Footprint *footprint = [[Footprint alloc] initWithAction: self.highlight];
-    NSURL *photourl = [footprint photoURL];
-    NSString *blurb = [footprint blurb];
-    NSString *longago = [footprint longago]; 
+    Action *action = self.highlight;
+    NSURL *photourl = [action photoURL];
+    NSString *blurb = [action blurb];
+    NSString *relativeTimestamp = [action relativeTimestamp]; 
     
     STAssertNotNil(photourl, @"PhotoURL didn't stick.");
     STAssertNotNil(blurb, @"Blurb didn't stick.");
-    STAssertNotNil(longago, @"Longago didn't stick.");
-}
-
-/** Creates a Footprint without an Action and makes sure it returns nil.
- */
-- (void)testFootprintWithoutAction
-{
-    Footprint *footprint = [[Footprint alloc] initWithAction: nil];
-    STAssertNil(footprint, @"Footprint with no Action failed to return nil");
+    STAssertNotNil(relativeTimestamp, @"Longago didn't stick.");
 }
 
 

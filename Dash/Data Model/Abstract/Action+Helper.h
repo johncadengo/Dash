@@ -24,4 +24,18 @@
  */
 - (void)connect:(Person *)person toPlace:(Place *)place;
 
+#pragma - Footprints
+/** Returns the URL of the photo to be displayed in the action's footprint
+ */
+- (NSURL *)photoURL;
+
+/** Returns the blurb to be displayed in the action's footprint
+ */
+- (NSString *)blurb;
+
+/** Returns the relative timestamp (2 days ago, etc.) 
+    of the action for displaying in its footprint
+ */
+- (NSString *)relativeTimestamp;
+
 @end

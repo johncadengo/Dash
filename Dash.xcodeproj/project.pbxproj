@@ -52,7 +52,6 @@
 		67697590145A5CAE001191CF /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756B145A5BFA001191CF /* libRestKitObjectMapping.a */; };
 		67697591145A5CAE001191CF /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756D145A5BFA001191CF /* libRestKitSupport.a */; };
 		67697592145A5CAE001191CF /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */; };
-		6785B835145F37EA00467D8F /* Footprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6785B834145F37EA00467D8F /* Footprint.m */; };
 		6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6785B83B145F48C700467D8F /* NSDateHelper.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
@@ -251,8 +250,6 @@
 		67697582145A5C82001191CF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		67697583145A5C82001191CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		67697584145A5C82001191CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		6785B833145F37EA00467D8F /* Footprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Footprint.h; path = API/Footprint.h; sourceTree = "<group>"; };
-		6785B834145F37EA00467D8F /* Footprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Footprint.m; path = API/Footprint.m; sourceTree = "<group>"; };
 		6785B83A145F48C700467D8F /* NSDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDateHelper.h; path = Helpers/EGOCocoaHelpers/NSDateHelper.h; sourceTree = "<group>"; };
 		6785B83B145F48C700467D8F /* NSDateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateHelper.m; path = Helpers/EGOCocoaHelpers/NSDateHelper.m; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
@@ -502,8 +499,6 @@
 			children = (
 				673653671455C1DD00E53822 /* DashAPI.h */,
 				673653681455C1DD00E53822 /* DashAPI.m */,
-				6785B833145F37EA00467D8F /* Footprint.h */,
-				6785B834145F37EA00467D8F /* Footprint.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -1093,7 +1088,6 @@
 				6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */,
 				6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */,
 				6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */,
-				6785B835145F37EA00467D8F /* Footprint.m in Sources */,
 				6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */,
 				679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */,
 				679E8CBC146062210038E506 /* Action+Helper.m in Sources */,
