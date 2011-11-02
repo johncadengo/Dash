@@ -23,9 +23,9 @@
 
 #pragma - Footprints
 
-- (NSURL *)photoURL
+- (NSString *)photoPath
 {
-    return [NSURL URLWithString:@"http://thegospelcoalition.org/images/nav/small/icon_blog_TGC.png"];    
+    return [NSString stringWithFormat:@"icon.png"];    
 }
 
 // TODO: Branch depending on what kind of Action is taking places. For now, stub.

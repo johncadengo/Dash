@@ -9,10 +9,16 @@
 #import "FeedViewController.h"
 #import "ListModeCell.h"
 #import "Constants.h"
+#import "DashAPI.h"
+#import "Action.h"
+#import "Action+Helper.h"
+
 
 @implementation FeedViewController
 
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize api = _api;
+@synthesize feedItems = _feedItems;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -42,6 +48,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
 }
 
 - (void)viewDidUnload

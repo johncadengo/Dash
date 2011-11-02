@@ -9,6 +9,9 @@
 #import "DashAPI.h"
 #import "Person.h"
 #import "Person+Helper.h"
+#import "Action.h"
+#import "Action+Helper.h"
+
 
 // Private properties
 @interface DashAPI ()
@@ -34,10 +37,32 @@
     
 }
 
+- (NSMutableArray *)feed
+{
+    return [self feedForPerson:nil withCount:kDefaultNumFeedItems];
+}
+
+- (NSMutableArray *)feedWithCount:(NSUInteger)count
+{
+    return [self feedForPerson:nil withCount:count];
+}
+
 - (NSMutableArray *)feedForPerson:(Person *)person
 {
-    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity: 1];
+    return [self feedForPerson:person withCount:kDefaultNumFeedItems];
+}
 
+- (NSMutableArray *)feedForPerson:(Person *)person withCount:(NSUInteger)count
+{
+    // TODO: This is a stub for now. Actually request news items from model!
+    Action *action;
+    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:count];
+
+    for (int i = 0; i < count; ++i) {
+        action = [[Action alloc] init];
+        [feed addObject:action];
+    }
+    
     return feed;
 }
 

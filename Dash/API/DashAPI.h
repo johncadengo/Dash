@@ -9,14 +9,39 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+#pragma - Enum constants
+// Some defaults
+enum {
+    kDefaultNumFeedItems = 25
+};
+
+
+#pragma - Class definition
+
 @class Person;
 
 @interface DashAPI : NSObject
 
 - (void)pop:(CLLocation *)location;
 
-/** Returns an NSMutableArray of Footpring objects consisting of a Feed particular for a person.
+/** Returns a feed of news items.
+    Defaults count and person.
+ */
+- (NSMutableArray *)feed;
+
+/** Returns count number of news items.
+    Defaults person.
+ */
+- (NSMutableArray *)feedWithCount:(NSUInteger)count;
+
+/** Returns a feed of news items for a specific person.
+    Defaults count.
  */
 - (NSMutableArray *)feedForPerson:(Person *)person;
+
+/** Returns count number of news items for a specific person.
+    Defaults nothing.
+ */
+- (NSMutableArray *)feedForPerson:(Person *)person withCount:(NSUInteger)count;
 
 @end

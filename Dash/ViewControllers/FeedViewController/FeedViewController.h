@@ -28,12 +28,15 @@ enum {
 
 #pragma - Class definition
 
+@class DashAPI;
 @class ListModeCell;
 @class FeedCell;
 
 @interface FeedViewController : TISwipeableTableViewController <FeedCellDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) DashAPI *api;
+@property (nonatomic, strong) NSMutableArray *feedItems;
 
 - (ListModeCell *)listModeCellForTableView:(UITableView *)tableView;
 - (FeedCell *)feedCellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *) indexPath;

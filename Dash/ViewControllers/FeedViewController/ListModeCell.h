@@ -10,4 +10,6 @@
 
 @interface ListModeCell : UITableViewCell
 
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+
 @end

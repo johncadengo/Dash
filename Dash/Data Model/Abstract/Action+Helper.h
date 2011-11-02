@@ -25,9 +25,9 @@
 - (void)connect:(Person *)person toPlace:(Place *)place;
 
 #pragma - Footprints
-/** Returns the URL of the photo to be displayed in the action's footprint
+/** Returns the local path of the photo to be displayed in the action's footprint
  */
-- (NSURL *)photoURL;
+- (NSString *)photoPath;
 
 /** Returns the blurb to be displayed in the action's footprint
  */

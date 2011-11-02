@@ -23,7 +23,7 @@
 
 // Make sure we start out on the Dash Tab.
 enum {
-    kDashTabIndex = 2
+    kDashTabIndex = 0
 };
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
