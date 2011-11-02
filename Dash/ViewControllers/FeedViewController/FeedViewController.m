@@ -92,6 +92,38 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    CGFloat height = 0.0;
+    
+    switch (section) {
+        case kListModeSection:
+            // TODO: Make this a constant and figure out where to put it.
+            height = 30.0;
+            break;
+        case kFeedItemsSection:
+            height = [self heightForFeedCellForRow:row];
+            break;
+        default:
+            // Should never happen
+            NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
+            break;
+    }
+    
+    return height;
+}
+
+- (CGFloat)heightForFeedCellForRow:(NSInteger)row
+{
+    // TODO: Dynamically generate this!
+    return 50.0;
+}
+
 #pragma mark - Table view data source
 
 /** Two sections:
@@ -153,17 +185,16 @@
     if (cell == nil) {
         cell = [[ListModeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ListModeCellIdentifier];
     }
-    NSLog(@"BYE");
     
     return cell;
 }
 
-- (FeedCell *)feedCellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *) indexPath
+- (FeedItemCell *)feedCellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *) indexPath
 {
-    FeedCell *cell = (FeedCell *)[tableView dequeueReusableCellWithIdentifier:FeedItemCellIdentifier];
+    FeedItemCell *cell = (FeedItemCell *)[tableView dequeueReusableCellWithIdentifier:FeedItemCellIdentifier];
     
     if (cell == nil) {
-        cell = [[FeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FeedItemCellIdentifier];
+        cell = [[FeedItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FeedItemCellIdentifier];
     }
     
     [cell setDelegate: self];
@@ -234,7 +265,7 @@
 
 }
 
-- (void)cellBackButtonWasTapped:(FeedCell *)cell {
+- (void)cellBackButtonWasTapped:(FeedItemCell *)cell {
 	
 	UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"BackView Button" 
 														 message:@"WHOA! YOU TAPPED A BACKVIEW BUTTON!" 
