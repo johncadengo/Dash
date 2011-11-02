@@ -10,14 +10,14 @@
 
 @implementation FeedItemCell
 @synthesize delegate;
-@synthesize text;
+@synthesize name;
+@synthesize blurb;
+@synthesize relativeTimestamp;
+@synthesize imageView;
 
-- (void)setText:(NSString *)aString {
-	
-	NSString * copy = [aString copy];
-	text = copy;
-	
-	[self setNeedsDisplay];
+- (void)setWithAction:(Action*)action
+{
+    self.blurb = @"Hey";
 }
 
 - (void)buttonWasTapped:(UIButton *)button {
@@ -51,8 +51,8 @@
 	
 	UIFont * textFont = [UIFont boldSystemFontOfSize:22];
 	
-	CGSize textSize = [text sizeWithFont:textFont constrainedToSize:rect.size];
-	[text drawInRect:CGRectMake((rect.size.width / 2) - (textSize.width / 2), 
+	CGSize textSize = [blurb sizeWithFont:textFont constrainedToSize:rect.size];
+	[blurb drawInRect:CGRectMake((rect.size.width / 2) - (textSize.width / 2), 
 								(rect.size.height / 2) - (textSize.height / 2),
 								textSize.width, textSize.height)
 			withFont:textFont];

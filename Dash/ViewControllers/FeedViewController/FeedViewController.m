@@ -158,7 +158,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger section = [indexPath section];
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
     id cell = nil;
 
     switch (section) {
@@ -166,7 +167,7 @@
             cell = [self listModeCellForTableView:tableView];
             break;
         case kFeedItemsSection:
-            cell = [self feedCellForTableView:tableView atIndexPath:indexPath];
+            cell = [self feedCellForTableView:tableView forRow:row];
             break;
         default:
             // Should never happen
@@ -189,7 +190,7 @@
     return cell;
 }
 
-- (FeedItemCell *)feedCellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *) indexPath
+- (FeedItemCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
     FeedItemCell *cell = (FeedItemCell *)[tableView dequeueReusableCellWithIdentifier:FeedItemCellIdentifier];
     
@@ -197,8 +198,9 @@
         cell = [[FeedItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FeedItemCellIdentifier];
     }
     
-    [cell setDelegate: self];
-    [cell setText: @"Hi"];
+    [cell setDelegate:self];
+    Action *action = [[self feedItems] objectAtIndex:row];
+    [cell setWithAction:action];
     
     return cell;
 }
