@@ -93,31 +93,44 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSInteger numRows = 0;
+    
     switch (section) {
         case kListModeSection:
-            return kNumRowsForListModeSection;
+            numRows = kNumRowsForListModeSection;
+            break;
         case kFeedItemsSection:
             // TODO: Calculate this value
-            return 5;
+            numRows = 5;
+            break;
+        default:
+            // Should never happen
+            NSAssert(NO, @"Asking for number of rows in a section that doesn't exist: %d", section);
+            break;
     }
-
-    // Should never happen
-    return 0;
+    
+    return numRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger section = [indexPath section];
-    
+    id cell = nil;
+
     switch (section) {
         case kListModeSection:
-            return [self listModeCellForTableView:tableView];
+            cell = [self listModeCellForTableView:tableView];
+            break;
         case kFeedItemsSection:
-            return [self feedCellForTableView:tableView atIndexPath:indexPath];
+            cell = [self feedCellForTableView:tableView atIndexPath:indexPath];
+            break;
+        default:
+            // Should never happen
+            NSAssert(NO, @"Asking for cell in a section that doesn't exist: %d", section);
+            break;
     }
     
-    // Should never happen
-    return nil;
+    return cell;
 }
 
 
