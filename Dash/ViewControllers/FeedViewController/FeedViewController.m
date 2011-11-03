@@ -255,6 +255,8 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    [self performSegueWithIdentifier:@"FeedItemDetailView" sender:self];
 }
 
 #pragma mark - TISwipeableTableView stuff

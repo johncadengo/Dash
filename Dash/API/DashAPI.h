@@ -12,7 +12,7 @@
 #pragma - Enum constants
 // Some defaults
 enum {
-    kDefaultNumFeedItems = 25
+    kDefaultNumFeedItems = 100
 };
 
 
