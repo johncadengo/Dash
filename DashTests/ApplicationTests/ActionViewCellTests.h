@@ -1,8 +1,8 @@
 //
-//  FeedViewControllerTests.h
+//  ActionViewCellTests.h
 //  Dash
 //
-//  Created by John Cadengo on 11/2/11.
+//  Created by John Cadengo on 11/3/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,10 +11,10 @@
 
 #import "DashTests.h"
 
-@class FeedViewController;
+@class ActionViewCell;
 
-@interface FeedViewControllerTests : DashTests
+@interface ActionViewCellTests : DashTests
 
-@property (nonatomic, strong) FeedViewController *feedViewController;
+@property (nonatomic, strong) ActionViewCell *actionViewCell;
 
 @end

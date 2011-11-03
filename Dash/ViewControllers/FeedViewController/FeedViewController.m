@@ -195,12 +195,12 @@
     return cell;
 }
 
-- (FeedItemCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+- (ActionViewCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    FeedItemCell *cell = (FeedItemCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
+    ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
     
     if (cell == nil) {
-        cell = [[FeedItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFeedItemCellIdentifier];
+        cell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFeedItemCellIdentifier];
     }
     
     [cell setDelegate:self];
@@ -320,7 +320,7 @@
 
 #pragma mark - FeedItemCellDelegate
 
-- (void)cellBackButtonWasTapped:(FeedItemCell *)cell {
+- (void)cellBackButtonWasTapped:(ActionViewCell *)cell {
 	
 	UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"BackView Button" 
 														 message:@"WHOA! YOU TAPPED A BACKVIEW BUTTON!" 

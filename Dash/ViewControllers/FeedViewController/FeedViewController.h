@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FeedItemCell.h"
+#import "ActionViewCell.h"
 #import "ListModeCell.h"
 
 #pragma - Enum constants
@@ -31,9 +31,9 @@ enum {
 
 @class DashAPI;
 @class ListModeCell;
-@class FeedItemCell;
+@class ActionViewCell;
 
-@interface FeedViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate, ListModeCellDelegate, FeedCellDelegate>
+@interface FeedViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate, ListModeCellDelegate, ActionVIewCellDelegate>
 
 @property (nonatomic) ListMode listMode;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -44,6 +44,6 @@ enum {
 
 - (void)setListMode:(ListMode)listMode;
 - (ListModeCell *)listModeCellForTableView:(UITableView *)tableView;
-- (FeedItemCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (ActionViewCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 
 @end

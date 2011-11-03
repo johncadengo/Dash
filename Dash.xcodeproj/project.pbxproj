@@ -65,6 +65,7 @@
 		679E8CBC146062210038E506 /* Action+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBB146062210038E506 /* Action+Helper.m */; };
 		679E8CC01460684E0038E506 /* Flag+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBF1460684E0038E506 /* Flag+Helper.m */; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
+		67BA0B30146348E300993B42 /* ActionViewCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0B2F146348E300993B42 /* ActionViewCellTests.m */; };
 		67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0F33145F662C000CC4E7 /* FootprintTests.m */; };
 		67BAC7EB1459E5660001C738 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7EA1459E5660001C738 /* Comment.m */; };
 		67BAC7EE1459E5670001C738 /* FlagPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7ED1459E5670001C738 /* FlagPhoto.m */; };
@@ -85,7 +86,7 @@
 		67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8F1460D12C00CF657D /* ListModeCell.m */; };
 		67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A4314606B790047C1E4 /* Location+Helper.m */; };
 		67D15A47146070250047C1E4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A46146070250047C1E4 /* Location.m */; };
-		67F22FCC145F09D40010A09F /* FeedItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FCB145F09D40010A09F /* FeedItemCell.m */; };
+		67F22FCC145F09D40010A09F /* ActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FCB145F09D40010A09F /* ActionViewCell.m */; };
 		67F22FE4145F0DDF0010A09F /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE3145F0DDF0010A09F /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FE7145F0DE50010A09F /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE6145F0DE50010A09F /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FEC145F0DEB0010A09F /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE9145F0DEB0010A09F /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -276,6 +277,8 @@
 		679E8CBE1460684E0038E506 /* Flag+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Flag+Helper.h"; path = "Data Model/Abstract/Flag+Helper.h"; sourceTree = "<group>"; };
 		679E8CBF1460684E0038E506 /* Flag+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Flag+Helper.m"; path = "Data Model/Abstract/Flag+Helper.m"; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		67BA0B2E146348E300993B42 /* ActionViewCellTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionViewCellTests.h; path = ApplicationTests/ActionViewCellTests.h; sourceTree = "<group>"; };
+		67BA0B2F146348E300993B42 /* ActionViewCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionViewCellTests.m; path = ApplicationTests/ActionViewCellTests.m; sourceTree = "<group>"; };
 		67BA0F32145F662C000CC4E7 /* FootprintTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FootprintTests.h; path = "Logic Tests/FootprintTests.h"; sourceTree = "<group>"; };
 		67BA0F33145F662C000CC4E7 /* FootprintTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FootprintTests.m; path = "Logic Tests/FootprintTests.m"; sourceTree = "<group>"; };
 		67BAC7E91459E5660001C738 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Comment.h; path = "Data Model/Actions/Feedback/Comment.h"; sourceTree = "<group>"; };
@@ -315,8 +318,8 @@
 		67D15A4314606B790047C1E4 /* Location+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+Helper.m"; path = "Data Model/Abstract/Location+Helper.m"; sourceTree = "<group>"; };
 		67D15A45146070250047C1E4 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
 		67D15A46146070250047C1E4 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Abstract/Location.m"; sourceTree = "<group>"; };
-		67F22FCA145F09D40010A09F /* FeedItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedItemCell.h; path = Dash/ViewControllers/FeedViewController/FeedItemCell.h; sourceTree = "<group>"; };
-		67F22FCB145F09D40010A09F /* FeedItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedItemCell.m; path = Dash/ViewControllers/FeedViewController/FeedItemCell.m; sourceTree = "<group>"; };
+		67F22FCA145F09D40010A09F /* ActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionViewCell.h; path = Dash/ViewControllers/FeedViewController/ActionViewCell.h; sourceTree = "<group>"; };
+		67F22FCB145F09D40010A09F /* ActionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionViewCell.m; path = Dash/ViewControllers/FeedViewController/ActionViewCell.m; sourceTree = "<group>"; };
 		67F22FE2145F0DDF0010A09F /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOCache.h; path = Helpers/EGOImageLoading/EGOCache/EGOCache.h; sourceTree = "<group>"; };
 		67F22FE3145F0DDF0010A09F /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGOCache.m; path = Helpers/EGOImageLoading/EGOCache/EGOCache.m; sourceTree = "<group>"; };
 		67F22FE5145F0DE50010A09F /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOImageButton.h; path = Helpers/EGOImageLoading/EGOImageButton/EGOImageButton.h; sourceTree = "<group>"; };
@@ -409,6 +412,8 @@
 			children = (
 				6796A8ED1461CC2500F87D93 /* FeedViewControllerTests.h */,
 				6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */,
+				67BA0B2E146348E300993B42 /* ActionViewCellTests.h */,
+				67BA0B2F146348E300993B42 /* ActionViewCellTests.m */,
 			);
 			name = ApplicationTests;
 			sourceTree = "<group>";
@@ -664,8 +669,8 @@
 			children = (
 				679009EA1450EB7A00511E0F /* FeedViewController.h */,
 				679009EB1450EB7A00511E0F /* FeedViewController.m */,
-				67F22FCA145F09D40010A09F /* FeedItemCell.h */,
-				67F22FCB145F09D40010A09F /* FeedItemCell.m */,
+				67F22FCA145F09D40010A09F /* ActionViewCell.h */,
+				67F22FCB145F09D40010A09F /* ActionViewCell.m */,
 				67CCDE8E1460D12B00CF657D /* ListModeCell.h */,
 				67CCDE8F1460D12C00CF657D /* ListModeCell.m */,
 			);
@@ -1088,7 +1093,7 @@
 				672C2C921459E9CC006A1D6B /* Constants.m in Sources */,
 				672C2C9D1459FB06006A1D6B /* Person+Helper.m in Sources */,
 				670956AC145EFBEF00057E32 /* TISwipeableTableView.m in Sources */,
-				67F22FCC145F09D40010A09F /* FeedItemCell.m in Sources */,
+				67F22FCC145F09D40010A09F /* ActionViewCell.m in Sources */,
 				67F22FE4145F0DDF0010A09F /* EGOCache.m in Sources */,
 				67F22FE7145F0DE50010A09F /* EGOImageButton.m in Sources */,
 				67F22FEC145F0DEB0010A09F /* EGOImageLoadConnection.m in Sources */,
@@ -1118,6 +1123,7 @@
 				679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */,
 				67CCDE8914607D8400CF657D /* LocationTests.m in Sources */,
 				6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */,
+				67BA0B30146348E300993B42 /* ActionViewCellTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
