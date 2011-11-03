@@ -260,12 +260,23 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
     NSInteger section = [indexPath section];
     
     // Only perform segue on a row in the feed item section being tapped, not on the very first section.
     if (section != kListModeSection) {
-        [self performSegueWithIdentifier:@"FeedItemDetailView" sender:self];
+        [self performSegueWithIdentifier:@"ShowFeedItemDetails" sender:self];
+    }
+}
+
+#pragma mark - Storyboard Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"ShowFeedItemDetails"]) {
+        NSLog(@"HEY");
     }
 }
 
@@ -280,7 +291,7 @@
 }
 
 #pragma mark - ListModeCellDelegate
-/** Overriding synthesized method to make sure that when this value is changed we call setNeedsDisplay
+/** Overriding synthesized method to make sure that when this value is changed we call reloadData
     Shouldn't be a problem since ListMode is just an int.
  */
 - (void)setListMode:(ListMode)newListMode

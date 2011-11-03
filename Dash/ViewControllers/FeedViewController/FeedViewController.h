@@ -42,6 +42,7 @@ enum {
 
 - (CGFloat)heightForFeedCellForRow:(NSInteger)row;
 
+- (void)setListMode:(ListMode)listMode;
 - (ListModeCell *)listModeCellForTableView:(UITableView *)tableView;
 - (FeedItemCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 

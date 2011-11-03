@@ -73,4 +73,30 @@
     STAssertNotNil(api, @"The api is missing from feed view controller!");
 }
 
+/** Tests setListMode which overrides the synthesized method.
+    Makes sure it changes the ivar, does validation of the arguments passed,
+    calls NSAssert if an invalid value is passed, and that the backview is no longer visible.
+ */
+- (void)testSetListMode
+{
+    NSLog(@"%@", self.name);
+    
+    // Valid inputs: 0, 1
+    int mode;
+    bool backViewVisible;
+    
+    [self.feedViewController setListMode:kFriendsListMode];
+    mode = self.feedViewController.listMode;
+    backViewVisible = self.feedViewController.indexOfVisibleBackView ? YES : NO;
+    STAssertEquals(mode, kFriendsListMode, @"Listmode Wanted: %d Got: %d", mode);
+    STAssertFalse(backViewVisible, @"BackView failed to reset");
+    
+    [self.feedViewController setListMode:kNearbyListMode];
+    mode = self.feedViewController.listMode;
+    backViewVisible = self.feedViewController.indexOfVisibleBackView ? YES : NO;
+    STAssertEquals(mode, kNearbyListMode, @"Listmode Wanted: %d Got: %d", mode);
+    STAssertFalse(backViewVisible, @"BackView failed to reset");
+    
+}
+
 @end
