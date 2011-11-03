@@ -42,6 +42,28 @@
     }
 
     _cellType = cellType;
+    
+    UITableViewCellSelectionStyle selectionStyle;
+    
+    switch (_cellType) {
+        case ActionViewCellTypeHeader:
+            selectionStyle = UITableViewCellSelectionStyleNone;
+            break;
+        case ActionViewCellTypeFeedItem:
+            selectionStyle = UITableViewCellSelectionStyleBlue;            
+            break;
+        case ActionViewCellTypeFootprint:
+            selectionStyle = UITableViewCellSelectionStyleBlue;            
+            break;
+        default:
+            // Should never happen
+            NSAssert(NO, @"Trying to set ActionViewCellType that doesn't exist: %d", _cellType);
+            break;
+    }
+    
+    [self setSelectionStyle:selectionStyle];
+    
+    [self setNeedsDisplay];
 }
 
 - (void)setWithAction:(Action*)action
