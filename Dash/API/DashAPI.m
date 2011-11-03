@@ -45,12 +45,13 @@
     
 }
 
-- (NSMutableArray *)feed
+- (NSMutableArray *)feedForLocation:(CLLocation *)location
 {
-    return [self feedForPerson:nil withCount:kDefaultNumFeedItems];
+    // -1 to differentiate between location and person, for now. since im always passing nil haha
+    return [self feedForPerson:nil withCount:kDefaultNumFeedItems - 1];
 }
 
-- (NSMutableArray *)feedWithCount:(NSUInteger)count
+- (NSMutableArray *)feedForLocation:(CLLocation *)location WithCount:(NSUInteger)count
 {
     return [self feedForPerson:nil withCount:count];
 }
@@ -68,6 +69,14 @@
 
     for (int i = 0; i < count; ++i) {
         highlight = (Highlight *)[NSEntityDescription insertNewObjectForEntityForName:@"Highlight" inManagedObjectContext:self.managedObjectContext];
+        
+        if (count == kDefaultNumFeedItems) {
+            [highlight setText: @"mint tea"];
+        }
+        else {
+            [highlight setText: @"black coffee"];
+        }
+        
         [feed addObject:highlight];
     }
     

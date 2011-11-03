@@ -12,8 +12,9 @@
 @implementation ListModeCell
 
 @synthesize segmentedControl;
+@synthesize delegate;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier selectedSegmentIndex:(ListMode)index
 {
     // TODO: Put these variables in constants
     
@@ -22,18 +23,33 @@
         // This cell should not be selectable.
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        NSArray *items = [NSArray arrayWithObjects: @"Friends", @"Nearby", nil];
+        NSArray *items = [NSArray arrayWithObjects: kListModeOne, kListModeTwo, nil];
         CGRect rect = CGRectMake(70.0, 0.0, 180.0, 25.0);
         
         self.segmentedControl = [[UISegmentedControl alloc] initWithItems: items];
         self.segmentedControl.frame = rect;
+        self.segmentedControl.selectedSegmentIndex = index;
+        [self.segmentedControl addTarget:self
+                                  action:@selector(updateListMode:)
+                        forControlEvents:UIControlEventValueChanged];
         
-        [self.segmentedControl setSelectedSegmentIndex: 0];
-
         [self.contentView addSubview: self.segmentedControl];
         [self setFrame: rect];
     }
     return self;
+}
+
+- (void)updateListMode:(id)sender
+{
+    UISegmentedControl * control = (UISegmentedControl *)sender;
+    ListMode newListMode = [control selectedSegmentIndex];
+    [self setListMode:newListMode];
+}
+
+- (void)setListMode:(ListMode)newListMode
+{
+    [self.segmentedControl setSelectedSegmentIndex: newListMode];
+    [self.delegate setListMode:newListMode];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

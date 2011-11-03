@@ -8,6 +8,8 @@
 
 #import "Constants.h"
 
-NSString * const MyFirstConstant = @"FirstConstant";
-NSString * const FeedItemCellIdentifier = @"com.MadeupStartup.Dash.FeedItemCell";
-NSString * const ListModeCellIdentifier = @"com.MadeupStartup.Dash.ListModeCell";
+NSString * const kMyFirstConstant = @"FirstConstant";
+NSString * const kFeedItemCellIdentifier = @"com.MadeupStartup.Dash.FeedItemCell";
+NSString * const kListModeCellIdentifier = @"com.MadeupStartup.Dash.ListModeCell";
+NSString * const kListModeOne = @"Friends";
+NSString * const kListModeTwo = @"Nearby";

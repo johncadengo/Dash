@@ -28,15 +28,15 @@ enum {
 
 - (void)pop:(CLLocation *)location;
 
-/** Returns a feed of news items.
+/** Returns a feed of news items nearby.
     Defaults count and person.
  */
-- (NSMutableArray *)feed;
+- (NSMutableArray *)feedForLocation:(CLLocation *)location;
 
-/** Returns count number of news items.
+/** Returns count number of news items nearby.
     Defaults person.
  */
-- (NSMutableArray *)feedWithCount:(NSUInteger)count;
+- (NSMutableArray *)feedForLocation:(CLLocation *)location WithCount:(NSUInteger)count;
 
 /** Returns a feed of news items for a specific person.
     Defaults count.

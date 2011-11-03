@@ -19,6 +19,7 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
 @synthesize feedItems = _feedItems;
+@synthesize listMode = _listMode;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,7 +49,7 @@
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
     
     // Initialize our tableview's array which will represent its model.
-    self.feedItems = [self.api feed];
+    [self setListMode:kFriendsListMode];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -181,21 +182,25 @@
 
 - (ListModeCell *)listModeCellForTableView:(UITableView *)tableView
 {
-    ListModeCell *cell = (ListModeCell*)[tableView dequeueReusableCellWithIdentifier:ListModeCellIdentifier];
+    ListModeCell *cell = (ListModeCell*)[tableView dequeueReusableCellWithIdentifier:kListModeCellIdentifier];
     
     if (cell == nil) {
-        cell = [[ListModeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ListModeCellIdentifier];
+        cell = [[ListModeCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                   reuseIdentifier:kListModeCellIdentifier 
+                              selectedSegmentIndex:self.listMode];
     }
+    
+    [cell setDelegate:self];
     
     return cell;
 }
 
 - (FeedItemCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    FeedItemCell *cell = (FeedItemCell *)[tableView dequeueReusableCellWithIdentifier:FeedItemCellIdentifier];
+    FeedItemCell *cell = (FeedItemCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
     
     if (cell == nil) {
-        cell = [[FeedItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FeedItemCellIdentifier];
+        cell = [[FeedItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFeedItemCellIdentifier];
     }
     
     [cell setDelegate:self];
@@ -256,7 +261,12 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     
-    [self performSegueWithIdentifier:@"FeedItemDetailView" sender:self];
+    NSInteger section = [indexPath section];
+    
+    // Only perform segue on a row in the feed item section being tapped, not on the very first section.
+    if (section != kListModeSection) {
+        [self performSegueWithIdentifier:@"FeedItemDetailView" sender:self];
+    }
 }
 
 #pragma mark - TISwipeableTableView stuff
@@ -268,6 +278,33 @@
 	
 
 }
+
+#pragma mark - ListModeCellDelegate
+/** Overriding synthesized method to make sure that when this value is changed we call setNeedsDisplay
+    Shouldn't be a problem since ListMode is just an int.
+ */
+- (void)setListMode:(ListMode)newListMode
+{
+    _listMode = newListMode;
+    NSMutableArray *newFeed;
+    
+    switch (self.listMode) {
+        case kFriendsListMode:
+            newFeed = [self.api feedForLocation:nil];
+            break;
+        case kNearbyListMode:
+            newFeed = [self.api feedForPerson:nil];
+            break;
+        default:
+            NSAssert(NO, @"Tried to change to a ListMode that does not exist: %d", newListMode);
+            break; 
+    }
+    
+    self.feedItems = newFeed;
+    [self.tableView reloadData];
+}
+
+#pragma mark - FeedItemCellDelegate
 
 - (void)cellBackButtonWasTapped:(FeedItemCell *)cell {
 	

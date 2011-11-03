@@ -7,6 +7,8 @@
 //
 
 #import "FeedItemCell.h"
+#import "Highlight.h"
+#import "Highlight+Helper.h"
 
 @implementation FeedItemCell
 @synthesize delegate;
@@ -17,7 +19,8 @@
 
 - (void)setWithAction:(Action*)action
 {
-    self.blurb = @"hey";
+    Highlight *highlight = (Highlight*) action;
+    self.blurb = [highlight text];
     self.image = [UIImage imageNamed:@"icon.png"];
     
     [self setNeedsDisplay];
