@@ -39,7 +39,11 @@ typedef enum {
 @property (nonatomic, strong) UIImage *image;
 
 // Methods
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier actionViewCellType:(ActionViewCellType) cellType;
+
+/** Class method to determine the dyanmic row height of an action cell view
+ */
++ (CGFloat)heightForBlurb:(NSString *)blurb withCellType:(ActionViewCellType)cellType;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(ActionViewCellType) cellType;
 
 /** Sets the type of cell we are going to create.
     If it is invalid, goes with default header type.

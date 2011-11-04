@@ -61,7 +61,7 @@
  */
 - (void)testActionTableViewCellTypes
 {
-    ActionViewCell *actionViewCell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier" actionViewCellType:ActionViewCellTypeHeader];
+    ActionViewCell *actionViewCell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier" cellType:ActionViewCellTypeHeader];
     UITableViewCellSelectionStyle selectionStyle = actionViewCell.selectionStyle;
     STAssertEquals(selectionStyle, UITableViewCellSelectionStyleNone, @"Header Action View Cell failed to set selection style to none: %d", selectionStyle);
     STAssertNotNil(actionViewCell, @"Failed to initialize a properly typed action view cell");
@@ -74,7 +74,7 @@
     STAssertEquals(cellType, ActionViewCellTypeHeader, @"Failed to catch an invalid ActionViewCellType and set it to the default value of header cell. Wanted %d Got: %d", ActionViewCellTypeHeader, cellType);
     
     // Using custom initializer
-    actionViewCell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier" actionViewCellType:kNumActionViewCellTypes];
+    actionViewCell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier" cellType:kNumActionViewCellTypes];
     cellType = actionViewCell.cellType;
     selectionStyle = actionViewCell.selectionStyle;
     STAssertEquals(selectionStyle, UITableViewCellSelectionStyleNone, @"Header Action View Cell failed to set selection style to none: %d", selectionStyle);

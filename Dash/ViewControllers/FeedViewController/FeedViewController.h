@@ -40,6 +40,8 @@ enum {
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSMutableArray *feedItems;
 
+/** Dynamically generate the row height for feed item cells
+ */
 - (CGFloat)heightForFeedCellForRow:(NSInteger)row;
 
 - (void)setListMode:(ListMode)listMode;

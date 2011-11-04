@@ -22,12 +22,18 @@
 @synthesize relativeTimestamp;
 @synthesize image;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+
++ (CGFloat)heightForBlurb:(NSString *)blurb withCellType:(ActionViewCellType)cellType
 {
-    return [self initWithStyle:style reuseIdentifier:reuseIdentifier actionViewCellType:kNumActionViewCellTypes];
+    return 50.0;
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier actionViewCellType:(ActionViewCellType)cellType
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    return [self initWithStyle:style reuseIdentifier:reuseIdentifier cellType:kNumActionViewCellTypes];
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(ActionViewCellType)cellType
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     

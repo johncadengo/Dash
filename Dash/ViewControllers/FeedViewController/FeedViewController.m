@@ -121,8 +121,10 @@
 
 - (CGFloat)heightForFeedCellForRow:(NSInteger)row
 {
-    // TODO: Dynamically generate this!
-    return 50.0;
+    // Get the blurb we are using for that row
+    Action *action = [self.feedItems objectAtIndex:row];
+    NSString *blurb = [action blurb];
+    return [ActionViewCell heightForBlurb:blurb withCellType:ActionViewCellTypeFeedItem];
 }
 
 #pragma mark - Table view data source
@@ -202,7 +204,7 @@
     if (cell == nil) {
         cell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                      reuseIdentifier:kFeedItemCellIdentifier
-                                  actionViewCellType:ActionViewCellTypeFeedItem];
+                                  cellType:ActionViewCellTypeFeedItem];
     }
    
     [cell setDelegate:self];
