@@ -22,11 +22,72 @@
 @synthesize relativeTimestamp;
 @synthesize image;
 
+#pragma mark - Some UI constants
+
+static CGFloat kWindowWidth = 320.0f;
+static CGFloat kDefaultHeight = 100.0f;
+static CGFloat kPadding = 10.0f;
+static CGFloat kPicWidth = 57.0f;
+
+#pragma mark - Class methods
 
 + (CGFloat)heightForBlurb:(NSString *)blurb withCellType:(ActionViewCellType)cellType
 {
-    return 50.0;
+    CGSize textSize = [self textSizeForBlurb:blurb];
+    CGFloat height = textSize.height;
+    
+    return MAX(kDefaultHeight, height);
 }
+
++ (UIFont *)nameFont
+{
+    return [UIFont boldSystemFontOfSize:16];    
+}
+
++ (UIFont *)blurbFont
+{
+    return [UIFont boldSystemFontOfSize:12];
+}
+
++ (UIFont *)timestampFont
+{
+    return [UIFont boldSystemFontOfSize:12];
+}
+
++ (CGSize)textSizeForName:(NSString *)name
+{
+    CGFloat maxWidth = kWindowWidth - 68.0;
+	CGSize textSize = [name sizeWithFont:[self nameFont] 
+                                     forWidth:maxWidth 
+                                lineBreakMode:UILineBreakModeTailTruncation];
+    
+    return textSize;
+
+}
+
++ (CGSize)textSizeForBlurb:(NSString *)blurb
+{
+    CGFloat maxWidth = kWindowWidth - 68.0;
+	CGSize textSize = [blurb sizeWithFont:[self blurbFont] 
+                                     forWidth:maxWidth 
+                                lineBreakMode:UILineBreakModeWordWrap];
+    
+    return textSize;
+    
+}
+
++ (CGSize)textSizeForTimestamp:(NSString *)timestamp
+{
+    CGFloat maxWidth = kWindowWidth - 68.0;
+	CGSize textSize = [timestamp sizeWithFont:[self timestampFont] 
+                                     forWidth:maxWidth 
+                                lineBreakMode:UILineBreakModeTailTruncation];
+    
+    return textSize;
+    
+}
+
+#pragma mark - Instance methods
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -123,17 +184,15 @@
 	UIColor * textColour = (self.selected || self.highlighted) ? [UIColor whiteColor] : [UIColor blackColor];	
 	[textColour set];
 	
-	UIFont * textFont = [UIFont boldSystemFontOfSize:16];
+	UIFont * textFont = [[self class] blurbFont];
 	
-	CGSize textSize = [blurb sizeWithFont:textFont constrainedToSize:rect.size];
-	[blurb drawInRect:CGRectMake((rect.size.width / 2) - (textSize.width / 2), 
-								(rect.size.height / 2) - (textSize.height / 2),
+	CGSize textSize = [[self class] textSizeForBlurb:self.blurb];
+	[blurb drawInRect:CGRectMake(kPicWidth + (kPadding * 2), kPadding,
 								textSize.width, textSize.height)
 			withFont:textFont];
     
     // Let's put an image here
-    CGFloat imageY = (rect.size.height - self.image.size.height) / 2;
-    CGPoint point = CGPointMake(5.0, imageY); 
+    CGPoint point = CGPointMake(kPadding, kPadding); 
     [self.image drawAtPoint:point];
 }
 

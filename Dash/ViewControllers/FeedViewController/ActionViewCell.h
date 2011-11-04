@@ -43,6 +43,14 @@ typedef enum {
 /** Class method to determine the dyanmic row height of an action cell view
  */
 + (CGFloat)heightForBlurb:(NSString *)blurb withCellType:(ActionViewCellType)cellType;
+
++ (UIFont *)nameFont;
++ (UIFont *)blurbFont;
++ (UIFont *)timestampFont;
++ (CGSize)textSizeForName:(NSString *)name;
++ (CGSize)textSizeForBlurb:(NSString *)blurb;
++ (CGSize)textSizeForTimestamp:(NSString *)timestamp;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(ActionViewCellType) cellType;
 
 /** Sets the type of cell we are going to create.
