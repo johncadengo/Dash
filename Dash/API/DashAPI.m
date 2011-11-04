@@ -74,7 +74,7 @@
             [highlight setText: @"mint tea leaves on the thai fried rice are excellent!"];
         }
         else {
-            [highlight setText: @"black coffee has free refills! awesome! i just have to write more because it lets me type up to 140 characters just like a tweet and i want to see if this is really waht it says it is."];
+            [highlight setText: @"black coffee has free refills! awesome! i just have to write more because it lets me type up to 140 characters just like a tweet and i want to see if this is really what it says it is."];
         }
         
         [feed addObject:highlight];

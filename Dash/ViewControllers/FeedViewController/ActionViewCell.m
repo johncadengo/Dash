@@ -206,10 +206,13 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
     CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
 	[self.blurb drawInRect:CGRectMake(kPicWidth + (kPadding * 2), 
-                                      nameSize.height + kPadding,
+                                      nameSize.height + (2 * kPadding),
                                       blurbSize.width, blurbSize.height)
                   withFont:[[self class] blurbFont]
              lineBreakMode:kBlurbLineBreak];
+    
+    textColour = [UIColor grayColor];
+    [textColour set];
     
     CGSize timeSize = [[self class] textSizeForTimestamp:self.timestamp];
     CGPoint timeOrigin = CGPointMake(kPicWidth + (kPadding * 2), 
