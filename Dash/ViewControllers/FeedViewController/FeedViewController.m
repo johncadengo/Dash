@@ -12,8 +12,9 @@
 #import "DashAPI.h"
 #import "Action.h"
 #import "Action+Helper.h"
+#import "Highlight.h"
+#import "Highlight+Helper.h"
 #import "HighlightViewController.h"
-
 
 @implementation FeedViewController
 
@@ -136,7 +137,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return kNumSections;
+    return kNumFeedViewSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -272,8 +273,8 @@
     
     // Only perform segue on a row in the feed item section being tapped, not on the very first section.
     if (section != kListModeSection) {
-        Action *action = [self.feedItems objectAtIndex:row];
-        [self performSegueWithIdentifier:@"ShowFeedItemDetails" sender:action];
+        Highlight *highlight = [self.feedItems objectAtIndex:row];
+        [self performSegueWithIdentifier:@"ShowFeedItemDetails" sender:highlight];
     }
 }
 
@@ -282,9 +283,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ShowFeedItemDetails"]) {
-        Action *action = (Action *) sender;
-        HighlightViewController *actionViewController = (HighlightViewController *)[segue destinationViewController];
-        [actionViewController setAction: action];
+        Highlight *highlight = (Highlight *) sender;
+        HighlightViewController *highlightViewController = (HighlightViewController *)[segue destinationViewController];
+        [highlightViewController setHighlight:highlight];
     }
 }
 

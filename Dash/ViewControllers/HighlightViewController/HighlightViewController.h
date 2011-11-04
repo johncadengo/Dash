@@ -9,10 +9,31 @@
 #import <UIKit/UIKit.h>
 #import "ActionViewCell.h"
 
-@class Action;
+#pragma - Enum constants
+/** There are two sections: 
+ 1) segemented control for list mode
+ 2) items in the news feed
+ */
+enum {
+    kHeaderSection = 0,
+    kCommentsSection = 1,
+    kPhotosSection = 2,
+    kNumHighlightViewSections = 3
+};
+
+/** Only 1 row to contain the UITableViewCell which will house the segmented control
+ */
+enum {
+    kNumRowsForHeaderSection = 2,   // Highlight and footer (# comments, # likes)
+    kNumRowsForPhotoSection = 1
+};
+
+#pragma - Class definition
+
+@class Highlight;
 
 @interface HighlightViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate, ActionVIewCellDelegate>
 
-@property (nonatomic, strong) Action *action;
+@property (nonatomic, strong) Highlight *highlight;
 
 @end

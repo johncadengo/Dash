@@ -21,7 +21,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="P4Y-XY-TTB"/>
                     <navigationItem key="navigationItem" title="Feed" id="noZ-FV-T1W"/>
                     <connections>
-                        <segue destination="d3P-bh-jfq" kind="push" identifier="ShowFeedItemDetails" id="Ux8-zN-X0y"/>
+                        <segue destination="d3P-bh-jfq" kind="push" identifier="ShowFeedItemDetails" id="Jzf-6z-3sh"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -266,32 +266,6 @@
             <point key="canvasLocation" x="-770" y="8"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ActionViewCell" superclassName="TISwipeableTableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActionViewCell.h"/>
-        </class>
-        <class className="DashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashViewController.h"/>
-        </class>
-        <class className="FeedViewController" superclassName="TISwipeableTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedViewController.h"/>
-        </class>
-        <class className="FriendsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
-        </class>
-        <class className="PlacesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesViewController.h"/>
-        </class>
-        <class className="ProfileViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-        </class>
-        <class className="TISwipeableTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TISwipeableTableViewCell.h"/>
-        </class>
-        <class className="TISwipeableTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TISwipeableTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

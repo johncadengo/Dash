@@ -67,8 +67,8 @@
 {
     NSLog(@"%@", self.name);
     
-    Action *action = self.hightlightViewController.action;
-    STAssertNotNil(action, @"Highlight wasn't properly assigned prior to segue");
+    Highlight *highlight = self.hightlightViewController.highlight;
+    STAssertNotNil(highlight, @"Highlight wasn't properly assigned prior to segue");
     
 }
 

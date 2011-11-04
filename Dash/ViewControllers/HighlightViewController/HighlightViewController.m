@@ -14,7 +14,7 @@
 
 @implementation HighlightViewController
 
-@synthesize action = _action;
+@synthesize highlight = _highlight;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

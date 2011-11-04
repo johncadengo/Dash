@@ -18,7 +18,7 @@
 enum {
     kListModeSection = 0,
     kFeedItemsSection = 1,
-    kNumSections = 2
+    kNumFeedViewSections = 2
 };
 
 /** Only 1 row to contain the UITableViewCell which will house the segmented control
