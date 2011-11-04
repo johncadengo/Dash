@@ -69,11 +69,11 @@
     
     Action *action = self.highlight;
     NSString *photoPath = [action photoPath];
-    NSString *blurb = [action blurb];
+    NSString *description = [action description];
     NSString *relativeTimestamp = [action relativeTimestamp]; 
     
     STAssertNotNil(photoPath, @"photoPath didn't stick.");
-    STAssertNotNil(blurb, @"blurb didn't stick.");
+    STAssertNotNil(description, @"description didn't stick.");
     STAssertNotNil(relativeTimestamp, @"relativeTimestamp didn't stick.");
 }
 

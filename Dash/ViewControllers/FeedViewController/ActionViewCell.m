@@ -46,8 +46,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     CGSize blurbSize = [self textSizeForBlurb:blurb];
     CGSize timestampSize = [self textSizeForTimestamp:@"2 days"];
     CGFloat height = kPadding + nameSize.height + kPadding + blurbSize.height + kPadding + timestampSize.height + kPadding;
-    
-    NSLog(@"asdf %f", height);
+
     return MAX(kDefaultHeight, height);
 }
 

@@ -34,7 +34,7 @@
     // Set the feed view controller
     UITabBarController *tabBarController = (UITabBarController *)[[yourApplicationDelegate window] rootViewController];
     UINavigationController *navController = (UINavigationController *)[[tabBarController viewControllers] objectAtIndex:0];
-    self.feedViewController = (FeedViewController *)[navController topViewController];
+    self.feedViewController = (FeedViewController *)[[navController viewControllers] objectAtIndex:0];
     STAssertNotNil(self.feedViewController, @"Could not obtain the FeedViewController");
 }
 

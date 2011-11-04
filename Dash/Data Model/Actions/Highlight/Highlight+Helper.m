@@ -22,7 +22,7 @@
     
 }
 
-- (NSString *)blurb
+- (NSString *)description
 {
     return [self text];
 }

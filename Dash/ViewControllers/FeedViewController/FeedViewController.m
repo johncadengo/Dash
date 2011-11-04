@@ -12,6 +12,7 @@
 #import "DashAPI.h"
 #import "Action.h"
 #import "Action+Helper.h"
+#import "ActionViewController.h"
 
 
 @implementation FeedViewController
@@ -123,8 +124,7 @@
 {
     // Get the blurb we are using for that row
     Action *action = [self.feedItems objectAtIndex:row];
-    NSString *blurb = [action blurb];
-    return [ActionViewCell heightForBlurb:blurb withCellType:ActionViewCellTypeFeedItem];
+    return [ActionViewCell heightForBlurb:[action description] withCellType:ActionViewCellTypeFeedItem];
 }
 
 #pragma mark - Table view data source
@@ -268,10 +268,12 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
     NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
     
     // Only perform segue on a row in the feed item section being tapped, not on the very first section.
     if (section != kListModeSection) {
-        [self performSegueWithIdentifier:@"ShowFeedItemDetails" sender:self];
+        Action *action = [self.feedItems objectAtIndex:row];
+        [self performSegueWithIdentifier:@"ShowFeedItemDetails" sender:action];
     }
 }
 
@@ -280,7 +282,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ShowFeedItemDetails"]) {
-        NSLog(@"Segue to show fee item details");
+        Action *action = (Action *) sender;
+        ActionViewController *actionViewController = (ActionViewController *)[segue destinationViewController];
+        [actionViewController setAction: action];
     }
 }
 

@@ -11,6 +11,10 @@
 @class Person;
 @class Place;
 
+@protocol Description <NSObject>
+- (NSString *)description;
+@end
+
 @interface Action (Helper)
 
 /** Sets the attributes of an Action at one time: uid and timestamp.
@@ -31,7 +35,7 @@
 
 /** Returns the blurb to be displayed in the action's footprint
  */
-- (NSString *)blurb;
+- (NSString *)description;
 
 /** Returns the relative timestamp (2 days ago, etc.) 
     of the action for displaying in its footprint

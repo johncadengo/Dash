@@ -29,7 +29,7 @@
 }
 
 // TODO: Branch depending on what kind of Action is taking places. For now, stub.
-- (NSString *)blurb
+- (NSString *)description
 {
     return [NSString stringWithFormat: @"Laura Byun likes lemonade with mint tea leaves."];
     

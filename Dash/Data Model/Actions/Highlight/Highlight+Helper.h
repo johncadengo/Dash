@@ -7,12 +7,12 @@
 //
 
 #import "Highlight.h"
-
+#import "Action+Helper.h"
 @class Person;
 @class Place;
 @class HighlightPhoto;
 
-@interface Highlight (Helper)
+@interface Highlight (Helper) <Description>
 
 /** Sets the attributes of a Highlight at one time: uid, timestamp, and text.
  */
@@ -25,5 +25,9 @@
     TODO: Implement it and write test cases for it.
  */
 - (void)addHightlightToPlace:(Place *)place byPerson:(Person *)person withPhoto:(HighlightPhoto *)photo;
+
+/** This is what is shown
+ */
+- (NSString *)description;
 
 @end
