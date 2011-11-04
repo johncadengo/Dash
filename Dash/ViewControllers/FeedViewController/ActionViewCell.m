@@ -10,6 +10,10 @@
 #import "Highlight.h"
 #import "Highlight+Helper.h"
 
+@interface TISwipeableTableViewCell ()
+- (void)initialSetup;
+@end
+
 @implementation ActionViewCell
 @synthesize cellType = _cellType;
 @synthesize delegate;
@@ -34,26 +38,39 @@
     return self;
 }
 
-- (void)setCellType:(ActionViewCellType)cellType
+/** Need to override this to change "oldstyle" private ivar of super class
+ */
+- (void)initialSetup
+{
+    //self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [super initialSetup];
+}
+
+- (void)setCellType:(ActionViewCellType)newCellType
 {
     // If the type is invalid, we will set it to the default value: Header
-    if (cellType >= kNumActionViewCellTypes) {
-        cellType = ActionViewCellTypeHeader;
+    if (newCellType >= kNumActionViewCellTypes) {
+        newCellType = ActionViewCellTypeHeader;
     }
 
-    _cellType = cellType;
+    _cellType = newCellType;
     
     UITableViewCellSelectionStyle selectionStyle;
+    bool userInteractionEnabled;
     
+    // TODO: This all works as long as NONE is paired with NO.
     switch (_cellType) {
         case ActionViewCellTypeHeader:
             selectionStyle = UITableViewCellSelectionStyleNone;
+            userInteractionEnabled = NO;
             break;
         case ActionViewCellTypeFeedItem:
             selectionStyle = UITableViewCellSelectionStyleBlue;            
+            userInteractionEnabled = YES;
             break;
         case ActionViewCellTypeFootprint:
             selectionStyle = UITableViewCellSelectionStyleBlue;            
+            userInteractionEnabled = YES;
             break;
         default:
             // Should never happen
@@ -61,9 +78,8 @@
             break;
     }
     
-    [self setSelectionStyle:selectionStyle];
-    
-    [self setNeedsDisplay];
+    self.selectionStyle = selectionStyle;
+    self.userInteractionEnabled = userInteractionEnabled;
 }
 
 - (void)setWithAction:(Action*)action

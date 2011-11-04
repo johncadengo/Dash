@@ -200,9 +200,11 @@
     ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
     
     if (cell == nil) {
-        cell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFeedItemCellIdentifier];
+        cell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                     reuseIdentifier:kFeedItemCellIdentifier
+                                  actionViewCellType:ActionViewCellTypeFeedItem];
     }
-    
+   
     [cell setDelegate:self];
     Action *action = [[self feedItems] objectAtIndex:row];
     [cell setWithAction:action];
@@ -276,7 +278,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ShowFeedItemDetails"]) {
-        NSLog(@"HEY");
+        NSLog(@"Segue to show fee item details");
     }
 }
 
@@ -285,6 +287,7 @@
 
 - (void)tableView:(UITableView *)tableView didSwipeCellAtIndexPath:(NSIndexPath *)indexPath 
 {	
+    NSLog(@"SWIPE");
 	[super tableView:tableView didSwipeCellAtIndexPath:indexPath];
 	
 
