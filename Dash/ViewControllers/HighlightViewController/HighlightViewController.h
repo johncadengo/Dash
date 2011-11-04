@@ -31,9 +31,17 @@ enum {
 #pragma - Class definition
 
 @class Highlight;
+@class DashAPI;
 
 @interface HighlightViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate, ActionVIewCellDelegate>
 
 @property (nonatomic, strong) Highlight *highlight;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) DashAPI *api;
+@property (nonatomic, strong) NSMutableArray *comments;
+
+/** Dynamically generate the row height for action cells
+ */
+- (CGFloat)heightForActionCellForRow:(NSInteger)row;
 
 @end

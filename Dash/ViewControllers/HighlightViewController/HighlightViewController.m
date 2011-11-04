@@ -8,13 +8,17 @@
 
 #import "HighlightViewController.h"
 #import "TISwipeableTableView.h"
-
 #import "Highlight.h"
 #import "Highlight+Helper.h"
+#import "DashAPI.h"
 
 @implementation HighlightViewController
 
+@synthesize managedObjectContext = __managedObjectContext;
 @synthesize highlight = _highlight;
+@synthesize api = _api;
+@synthesize comments = _comments;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -78,6 +82,43 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    CGFloat height = 0.0;
+    
+    switch (section) {
+        case kHeaderSection:
+            // TODO: Make this a constant and figure out where to put it.
+            height = [ActionViewCell heightForAction:self.highlight withCellType:ActionViewCellTypeHeader];
+            break;
+        case kCommentsSection:
+            height = [self heightForActionCellForRow:row];
+            break;
+        case kPhotosSection:
+            height = 50.0;
+            break;
+        default:
+            // Should never happen
+            NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
+            break;
+    }
+    
+    return height;
+}
+
+- (CGFloat)heightForActionCellForRow:(NSInteger)row
+{
+    // Get the blurb we are using for that row
+    Action *action = [self.comments objectAtIndex:row];
+    return [ActionViewCell heightForAction:action withCellType:ActionViewCellTypeFeedItem];
 }
 
 #pragma mark - Table view data source

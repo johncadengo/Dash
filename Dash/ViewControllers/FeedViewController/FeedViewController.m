@@ -125,7 +125,7 @@
 {
     // Get the blurb we are using for that row
     Action *action = [self.feedItems objectAtIndex:row];
-    return [ActionViewCell heightForBlurb:[action description] withCellType:ActionViewCellTypeFeedItem];
+    return [ActionViewCell heightForAction:action withCellType:ActionViewCellTypeFeedItem];
 }
 
 #pragma mark - Table view data source

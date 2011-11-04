@@ -53,7 +53,7 @@
 		67697590145A5CAE001191CF /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756B145A5BFA001191CF /* libRestKitObjectMapping.a */; };
 		67697591145A5CAE001191CF /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756D145A5BFA001191CF /* libRestKitSupport.a */; };
 		67697592145A5CAE001191CF /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */; };
-		676B649E14647E0700FEEF7C /* HighlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B649D14647E0700FEEF7C /* HighlightViewController.m */; };
+		676B64A114647E2B00FEEF7C /* HighlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A014647E2B00FEEF7C /* HighlightViewController.m */; };
 		6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6785B83B145F48C700467D8F /* NSDateHelper.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
@@ -257,8 +257,8 @@
 		67697582145A5C82001191CF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		67697583145A5C82001191CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		67697584145A5C82001191CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		676B649C14647E0700FEEF7C /* HighlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewController.h; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.h; sourceTree = "<group>"; };
-		676B649D14647E0700FEEF7C /* HighlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewController.m; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.m; sourceTree = "<group>"; };
+		676B649F14647E2B00FEEF7C /* HighlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewController.h; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.h; sourceTree = "<group>"; };
+		676B64A014647E2B00FEEF7C /* HighlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewController.m; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.m; sourceTree = "<group>"; };
 		6785B83A145F48C700467D8F /* NSDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDateHelper.h; path = Helpers/EGOCocoaHelpers/NSDateHelper.h; sourceTree = "<group>"; };
 		6785B83B145F48C700467D8F /* NSDateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateHelper.m; path = Helpers/EGOCocoaHelpers/NSDateHelper.m; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
@@ -527,8 +527,8 @@
 		6739F4691464530F00735858 /* HighlightViewController */ = {
 			isa = PBXGroup;
 			children = (
-				676B649C14647E0700FEEF7C /* HighlightViewController.h */,
-				676B649D14647E0700FEEF7C /* HighlightViewController.m */,
+				676B649F14647E2B00FEEF7C /* HighlightViewController.h */,
+				676B64A014647E2B00FEEF7C /* HighlightViewController.m */,
 			);
 			name = HighlightViewController;
 			sourceTree = "<group>";
@@ -1128,7 +1128,7 @@
 				67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */,
 				67D15A47146070250047C1E4 /* Location.m in Sources */,
 				67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */,
-				676B649E14647E0700FEEF7C /* HighlightViewController.m in Sources */,
+				676B64A114647E2B00FEEF7C /* HighlightViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

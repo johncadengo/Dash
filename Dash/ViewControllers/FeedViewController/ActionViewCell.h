@@ -42,7 +42,7 @@ typedef enum {
 
 /** Class method to determine the dyanmic row height of an action cell view
  */
-+ (CGFloat)heightForBlurb:(NSString *)blurb withCellType:(ActionViewCellType)cellType;
++ (CGFloat)heightForAction:(Action *)action withCellType:(ActionViewCellType)cellType;
 
 + (UIFont *)nameFont;
 + (UIFont *)blurbFont;

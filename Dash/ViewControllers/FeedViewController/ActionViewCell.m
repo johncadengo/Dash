@@ -9,6 +9,8 @@
 #import "ActionViewCell.h"
 #import "Highlight.h"
 #import "Highlight+Helper.h"
+#import "Person.h"
+#import "Person+Helper.h"
 
 @interface TISwipeableTableViewCell ()
 - (void)initialSetup;
@@ -40,11 +42,11 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 #pragma mark - Class methods
 
-+ (CGFloat)heightForBlurb:(NSString *)blurb withCellType:(ActionViewCellType)cellType
++ (CGFloat)heightForAction:(Action *)action withCellType:(ActionViewCellType)cellType
 {
-    CGSize nameSize = [self textSizeForName:@"Laura Byun"];
-    CGSize blurbSize = [self textSizeForBlurb:blurb];
-    CGSize timestampSize = [self textSizeForTimestamp:@"2 days"];
+    CGSize nameSize = [self textSizeForName:[[action author] name]];
+    CGSize blurbSize = [self textSizeForBlurb:[action description]];
+    CGSize timestampSize = [self textSizeForTimestamp:[[action timestamp] description]];
     CGFloat height = kPadding + nameSize.height + kPadding + blurbSize.height + kPadding + timestampSize.height + kPadding;
 
     return MAX(kDefaultHeight, height);
