@@ -9,5 +9,7 @@
 extern NSString * const kMyFirstConstant;
 extern NSString * const kFeedItemCellIdentifier;
 extern NSString * const kListModeCellIdentifier;
+extern NSString * const kHighlightHeaderCellIdentifier;
+extern NSString * const kHighlightCommentCellIdentifier;
 extern NSString * const kListModeOne;
 extern NSString * const kListModeTwo;

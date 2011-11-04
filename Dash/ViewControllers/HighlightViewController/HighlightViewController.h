@@ -44,4 +44,7 @@ enum {
  */
 - (CGFloat)heightForActionCellForRow:(NSInteger)row;
 
+- (ActionViewCell *)HeaderCellForTableView:(UITableView *)tableView;
+- (ActionViewCell *)CommentCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+
 @end

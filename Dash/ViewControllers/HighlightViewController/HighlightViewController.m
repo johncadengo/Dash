@@ -11,6 +11,7 @@
 #import "Highlight.h"
 #import "Highlight+Helper.h"
 #import "DashAPI.h"
+#import "Constants.h"
 
 @implementation HighlightViewController
 
@@ -45,6 +46,8 @@
     
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
+    
+    self.comments = [self.api commentsForHighlight:self.highlight];
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     
@@ -100,7 +103,14 @@
     
     switch (section) {
         case kHighlightHeaderSection:
-            height = [ActionViewCell heightForAction:self.highlight withCellType:ActionViewCellTypeHeader];
+            // TODO: Clean this up and make the height a constant.
+            if (row == 0) {
+                height = [ActionViewCell heightForAction:self.highlight 
+                                            withCellType:ActionViewCellTypeHeader];
+            }
+            else {
+                height = 20.0;
+            }
             break;
         case kHighlightCommentsSection:
             height = [self heightForActionCellForRow:row];
@@ -139,13 +149,15 @@
     
     switch (section) {
         case kHighlightHeaderSection:
-            numRows = kHighlightNumRowsForHeaderSection;
+            //numRows = kHighlightNumRowsForHeaderSection;
+            numRows = 1;
             break;
         case kHighlightCommentsSection:
             numRows = [self.comments count];
             break;
         case kHighlightPhotosSection:
-            numRows = kHighlightNumRowsForPhotoSection;
+            //numRows = kHighlightNumRowsForPhotoSection;
+            numRows = 0;
             break;
         default:
             // Should never happen
@@ -158,17 +170,63 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    id cell = nil;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    switch (section) {
+        case kHighlightHeaderSection:
+            cell = [self HeaderCellForTableView:tableView];
+            break;
+        case kHighlightCommentsSection:
+            cell = [self CommentCellForTableView:tableView forRow:row];
+            break;
+        case kHighlightPhotosSection:
+            cell = nil;
+            break;
+        default:
+            // Should never happen
+            NSAssert(NO, @"Asking for cell in a section that doesn't exist: %d", section);
+            break;
     }
-    
-    // Configure the cell...
     
     return cell;
 }
+
+- (ActionViewCell *)HeaderCellForTableView:(UITableView *)tableView
+{
+    ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kHighlightHeaderCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                     reuseIdentifier:kHighlightHeaderCellIdentifier
+                                            cellType:ActionViewCellTypeHeader];
+    }
+    
+    [cell setDelegate:self];
+    Action *action = self.highlight;
+    [cell setWithAction:action];
+    
+    return cell;
+}
+
+- (ActionViewCell *)CommentCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+{
+    ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kHighlightCommentCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                     reuseIdentifier:kHighlightCommentCellIdentifier
+                                            cellType:ActionViewCellTypeFootprint];
+    }
+    
+    [cell setDelegate:self];
+    Action *action = [self.comments objectAtIndex:row];
+    [cell setWithAction:action];
+    
+    return cell;
+}
+
 
 /*
 // Override to support conditional editing of the table view.
