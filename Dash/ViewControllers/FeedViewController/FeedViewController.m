@@ -12,7 +12,7 @@
 #import "DashAPI.h"
 #import "Action.h"
 #import "Action+Helper.h"
-#import "ActionViewController.h"
+#import "HighlightViewController.h"
 
 
 @implementation FeedViewController
@@ -283,7 +283,7 @@
 {
     if ([[segue identifier] isEqualToString:@"ShowFeedItemDetails"]) {
         Action *action = (Action *) sender;
-        ActionViewController *actionViewController = (ActionViewController *)[segue destinationViewController];
+        HighlightViewController *actionViewController = (HighlightViewController *)[segue destinationViewController];
         [actionViewController setAction: action];
     }
 }
