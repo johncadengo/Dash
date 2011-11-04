@@ -19,7 +19,7 @@
 @synthesize delegate;
 @synthesize name;
 @synthesize blurb;
-@synthesize relativeTimestamp;
+@synthesize timestamp;
 @synthesize image;
 
 #pragma mark - Some UI constants
@@ -46,7 +46,7 @@ static CGFloat kPicWidth = 57.0f;
 
 + (UIFont *)blurbFont
 {
-    return [UIFont boldSystemFontOfSize:12];
+    return [UIFont systemFontOfSize:14];
 }
 
 + (UIFont *)timestampFont
@@ -152,7 +152,9 @@ static CGFloat kPicWidth = 57.0f;
 - (void)setWithAction:(Action*)action
 {
     Highlight *highlight = (Highlight*) action;
+    self.name = @"Laura Byun";
     self.blurb = [highlight text];
+    self.timestamp = @"2 days ago";
     self.image = [UIImage imageNamed:@"icon.png"];
     
     [self setNeedsDisplay];
@@ -183,13 +185,20 @@ static CGFloat kPicWidth = 57.0f;
 	
 	UIColor * textColour = (self.selected || self.highlighted) ? [UIColor whiteColor] : [UIColor blackColor];	
 	[textColour set];
-	
-	UIFont * textFont = [[self class] blurbFont];
-	
-	CGSize textSize = [[self class] textSizeForBlurb:self.blurb];
-	[blurb drawInRect:CGRectMake(kPicWidth + (kPadding * 2), kPadding,
-								textSize.width, textSize.height)
-			withFont:textFont];
+	CGSize nameSize = [[self class] textSizeForName:self.name];
+	[self.name drawInRect:CGRectMake(kPicWidth + (kPadding * 2), kPadding,
+								nameSize.width, nameSize.height)
+			withFont:[[self class] nameFont]];
+
+    CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
+	[self.blurb drawInRect:CGRectMake(kPicWidth + (kPadding * 2), nameSize.height + kPadding,
+                                 blurbSize.width, blurbSize.height)
+             withFont:[[self class] blurbFont]];
+    
+    CGSize timeSize = [[self class] textSizeForTimestamp:self.timestamp];
+	[self.timestamp drawInRect:CGRectMake(kWindowWidth - kPadding - timeSize.width, kPadding,
+                                 timeSize.width, timeSize.height)
+             withFont:[[self class] timestampFont]];
     
     // Let's put an image here
     CGPoint point = CGPointMake(kPadding, kPadding); 

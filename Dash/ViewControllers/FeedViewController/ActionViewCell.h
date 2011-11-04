@@ -35,7 +35,7 @@ typedef enum {
 @property (nonatomic) ActionViewCellType cellType;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *blurb;
-@property (nonatomic, strong) NSString *relativeTimestamp;
+@property (nonatomic, strong) NSString *timestamp;
 @property (nonatomic, strong) UIImage *image;
 
 // Methods
