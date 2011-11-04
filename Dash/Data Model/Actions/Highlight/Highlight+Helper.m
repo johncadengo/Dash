@@ -22,4 +22,9 @@
     
 }
 
+- (NSString *)blurb
+{
+    return [self text];
+}
+
 @end

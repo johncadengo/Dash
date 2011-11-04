@@ -24,7 +24,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         NSArray *items = [NSArray arrayWithObjects: kListModeOne, kListModeTwo, nil];
-        CGRect rect = CGRectMake(70.0, 0.0, 180.0, 25.0);
+        CGRect rect = CGRectMake(70.0, 10.0, 180.0, 25.0);
         
         self.segmentedControl = [[UISegmentedControl alloc] initWithItems: items];
         self.segmentedControl.frame = rect;

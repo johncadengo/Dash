@@ -25,17 +25,29 @@
 #pragma mark - Some UI constants
 
 static CGFloat kWindowWidth = 320.0f;
-static CGFloat kDefaultHeight = 100.0f;
-static CGFloat kPadding = 10.0f;
+static CGFloat kDefaultHeight = 90.0f;
+static CGFloat kPadding = 5.0f;
 static CGFloat kPicWidth = 57.0f;
+
+/** Should never get THIS big.. Just wanted to leave room
+ */
+static CGFloat kMaxBlurbHeight = 1000.0f;
+
+static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
+static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
+static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
+
 
 #pragma mark - Class methods
 
 + (CGFloat)heightForBlurb:(NSString *)blurb withCellType:(ActionViewCellType)cellType
 {
-    CGSize textSize = [self textSizeForBlurb:blurb];
-    CGFloat height = textSize.height;
+    CGSize nameSize = [self textSizeForName:@"Laura Byun"];
+    CGSize blurbSize = [self textSizeForBlurb:blurb];
+    CGSize timestampSize = [self textSizeForTimestamp:@"2 days"];
+    CGFloat height = kPadding + nameSize.height + kPadding + blurbSize.height + kPadding + timestampSize.height + kPadding;
     
+    NSLog(@"asdf %f", height);
     return MAX(kDefaultHeight, height);
 }
 
@@ -56,10 +68,10 @@ static CGFloat kPicWidth = 57.0f;
 
 + (CGSize)textSizeForName:(NSString *)name
 {
-    CGFloat maxWidth = kWindowWidth - 68.0;
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
 	CGSize textSize = [name sizeWithFont:[self nameFont] 
                                      forWidth:maxWidth 
-                                lineBreakMode:UILineBreakModeTailTruncation];
+                                lineBreakMode:kNameLineBreak];
     
     return textSize;
 
@@ -67,10 +79,11 @@ static CGFloat kPicWidth = 57.0f;
 
 + (CGSize)textSizeForBlurb:(NSString *)blurb
 {
-    CGFloat maxWidth = kWindowWidth - 68.0;
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
+    CGSize maxSize = CGSizeMake(maxWidth, kMaxBlurbHeight);
 	CGSize textSize = [blurb sizeWithFont:[self blurbFont] 
-                                     forWidth:maxWidth 
-                                lineBreakMode:UILineBreakModeWordWrap];
+                        constrainedToSize:maxSize
+                            lineBreakMode:kBlurbLineBreak];
     
     return textSize;
     
@@ -78,10 +91,10 @@ static CGFloat kPicWidth = 57.0f;
 
 + (CGSize)textSizeForTimestamp:(NSString *)timestamp
 {
-    CGFloat maxWidth = kWindowWidth - 68.0;
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
 	CGSize textSize = [timestamp sizeWithFont:[self timestampFont] 
                                      forWidth:maxWidth 
-                                lineBreakMode:UILineBreakModeTailTruncation];
+                                lineBreakMode:kTimestampLineBreak];
     
     return textSize;
     
@@ -154,7 +167,7 @@ static CGFloat kPicWidth = 57.0f;
     Highlight *highlight = (Highlight*) action;
     self.name = @"Laura Byun";
     self.blurb = [highlight text];
-    self.timestamp = @"2 days ago";
+    self.timestamp = @"2 days";
     self.image = [UIImage imageNamed:@"icon.png"];
     
     [self setNeedsDisplay];
@@ -187,18 +200,25 @@ static CGFloat kPicWidth = 57.0f;
 	[textColour set];
 	CGSize nameSize = [[self class] textSizeForName:self.name];
 	[self.name drawInRect:CGRectMake(kPicWidth + (kPadding * 2), kPadding,
-								nameSize.width, nameSize.height)
-			withFont:[[self class] nameFont]];
+                                     nameSize.width, nameSize.height)
+                 withFont:[[self class] nameFont]
+            lineBreakMode:kNameLineBreak];
 
     CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
-	[self.blurb drawInRect:CGRectMake(kPicWidth + (kPadding * 2), nameSize.height + kPadding,
-                                 blurbSize.width, blurbSize.height)
-             withFont:[[self class] blurbFont]];
+	[self.blurb drawInRect:CGRectMake(kPicWidth + (kPadding * 2), 
+                                      nameSize.height + kPadding,
+                                      blurbSize.width, blurbSize.height)
+                  withFont:[[self class] blurbFont]
+             lineBreakMode:kBlurbLineBreak];
     
     CGSize timeSize = [[self class] textSizeForTimestamp:self.timestamp];
-	[self.timestamp drawInRect:CGRectMake(kWindowWidth - kPadding - timeSize.width, kPadding,
-                                 timeSize.width, timeSize.height)
-             withFont:[[self class] timestampFont]];
+    CGPoint timeOrigin = CGPointMake(kPicWidth + (kPadding * 2), 
+                                     MAX((kPadding + nameSize.height + kPadding + blurbSize.height + kPadding),
+                                         kDefaultHeight - kPadding - timeSize.height));
+	[self.timestamp drawAtPoint:timeOrigin 
+                       forWidth:timeSize.width 
+                       withFont:[[self class] timestampFont]
+                  lineBreakMode:kTimestampLineBreak];
     
     // Let's put an image here
     CGPoint point = CGPointMake(kPadding, kPadding); 

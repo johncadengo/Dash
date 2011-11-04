@@ -105,7 +105,7 @@
     switch (section) {
         case kListModeSection:
             // TODO: Make this a constant and figure out where to put it.
-            height = 30.0;
+            height = 40.0;
             break;
         case kFeedItemsSection:
             height = [self heightForFeedCellForRow:row];
