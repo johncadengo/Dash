@@ -1,18 +1,18 @@
 //
-//  Highlight+Helper.h
+//  Comment+Helper.h
 //  Dash
 //
-//  Created by John Cadengo on 11/1/11.
+//  Created by John Cadengo on 11/4/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "Highlight.h"
+#import "Comment.h"
 #import "Action+Helper.h"
-@class Person;
-@class Place;
-@class HighlightPhoto;
 
-@interface Highlight (Helper) <Description>
+@class Highlight;
+@class Person;
+
+@interface Comment (Helper) <Description>
 
 /** Sets the attributes of a Highlight at one time: uid, timestamp, and text.
  */
@@ -21,5 +21,4 @@
 /** This is what is shown
  */
 - (NSString *)description;
-
 @end

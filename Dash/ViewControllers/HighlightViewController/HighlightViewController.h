@@ -15,17 +15,17 @@
  2) items in the news feed
  */
 enum {
-    kHeaderSection = 0,
-    kCommentsSection = 1,
-    kPhotosSection = 2,
-    kNumHighlightViewSections = 3
+    kHighlightHeaderSection = 0,
+    kHighlightCommentsSection = 1,
+    kHighlightPhotosSection = 2,
+    kHighlightNumSections = 3
 };
 
-/** Only 1 row to contain the UITableViewCell which will house the segmented control
+/** 
  */
 enum {
-    kNumRowsForHeaderSection = 2,   // Highlight and footer (# comments, # likes)
-    kNumRowsForPhotoSection = 1
+    kHighlightNumRowsForHeaderSection = 2,   // Highlight and footer (# comments, # likes)
+    kHighlightNumRowsForPhotoSection = 1
 };
 
 #pragma - Class definition

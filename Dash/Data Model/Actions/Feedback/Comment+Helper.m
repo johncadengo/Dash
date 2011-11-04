@@ -1,14 +1,14 @@
 //
-//  Highlight+Helper.m
+//  Comment+Helper.m
 //  Dash
 //
-//  Created by John Cadengo on 11/1/11.
+//  Created by John Cadengo on 11/4/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "Highlight+Helper.h"
+#import "Comment+Helper.h"
 
-@implementation Highlight (Helper)
+@implementation Comment (Helper)
 
 - (void)setUid:(NSNumber *)uid timestamp:(NSDate *)timestamp text:(NSString *)text
 {

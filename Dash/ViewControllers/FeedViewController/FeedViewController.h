@@ -16,9 +16,9 @@
     2) items in the news feed
  */
 enum {
-    kListModeSection = 0,
-    kFeedItemsSection = 1,
-    kNumFeedViewSections = 2
+    kFeedListModeSection = 0,
+    kFeedFeedItemsSection = 1,
+    kFeedNumSections = 2
 };
 
 /** Only 1 row to contain the UITableViewCell which will house the segmented control

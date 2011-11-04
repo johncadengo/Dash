@@ -54,6 +54,9 @@
 		67697591145A5CAE001191CF /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756D145A5BFA001191CF /* libRestKitSupport.a */; };
 		67697592145A5CAE001191CF /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */; };
 		676B64A114647E2B00FEEF7C /* HighlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A014647E2B00FEEF7C /* HighlightViewController.m */; };
+		676B64A41464871A00FEEF7C /* Comment+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A31464871A00FEEF7C /* Comment+Helper.m */; };
+		676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */; };
+		676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */; };
 		6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6785B83B145F48C700467D8F /* NSDateHelper.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
@@ -259,6 +262,12 @@
 		67697584145A5C82001191CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		676B649F14647E2B00FEEF7C /* HighlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewController.h; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.h; sourceTree = "<group>"; };
 		676B64A014647E2B00FEEF7C /* HighlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewController.m; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.m; sourceTree = "<group>"; };
+		676B64A21464871A00FEEF7C /* Comment+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Comment+Helper.h"; path = "Data Model/Actions/Feedback/Comment+Helper.h"; sourceTree = "<group>"; };
+		676B64A31464871A00FEEF7C /* Comment+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Comment+Helper.m"; path = "Data Model/Actions/Feedback/Comment+Helper.m"; sourceTree = "<group>"; };
+		676B64A9146493AD00FEEF7C /* NSArray+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Helpers.h"; path = "Helpers/RandomStrings/NSArray+Helpers.h"; sourceTree = "<group>"; };
+		676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Helpers.m"; path = "Helpers/RandomStrings/NSArray+Helpers.m"; sourceTree = "<group>"; };
+		676B64AC146493CA00FEEF7C /* NSString+RandomStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RandomStrings.h"; path = "Helpers/RandomStrings/NSString+RandomStrings.h"; sourceTree = "<group>"; };
+		676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RandomStrings.m"; path = "Helpers/RandomStrings/NSString+RandomStrings.m"; sourceTree = "<group>"; };
 		6785B83A145F48C700467D8F /* NSDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDateHelper.h; path = Helpers/EGOCocoaHelpers/NSDateHelper.h; sourceTree = "<group>"; };
 		6785B83B145F48C700467D8F /* NSDateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateHelper.m; path = Helpers/EGOCocoaHelpers/NSDateHelper.m; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
@@ -560,6 +569,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		676B64A514648C2400FEEF7C /* RandomStrings */ = {
+			isa = PBXGroup;
+			children = (
+				676B64A9146493AD00FEEF7C /* NSArray+Helpers.h */,
+				676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */,
+				676B64AC146493CA00FEEF7C /* NSString+RandomStrings.h */,
+				676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */,
+			);
+			name = RandomStrings;
+			sourceTree = "<group>";
+		};
 		6785B836145F46FD00467D8F /* EGOCocoaHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,6 +776,8 @@
 				67BAC7ED1459E5670001C738 /* FlagPhoto.m */,
 				67BAC7E91459E5660001C738 /* Comment.h */,
 				67BAC7EA1459E5660001C738 /* Comment.m */,
+				676B64A21464871A00FEEF7C /* Comment+Helper.h */,
+				676B64A31464871A00FEEF7C /* Comment+Helper.m */,
 			);
 			name = Feedback;
 			sourceTree = "<group>";
@@ -793,6 +815,7 @@
 		67F22FCD145F0C520010A09F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				676B64A514648C2400FEEF7C /* RandomStrings */,
 				6785B836145F46FD00467D8F /* EGOCocoaHelpers */,
 				6715E3FD145F2D1E0069D5A8 /* MGImageUtilities */,
 				67F22FCE145F0C630010A09F /* EGOImageLoading */,
@@ -1129,6 +1152,9 @@
 				67D15A47146070250047C1E4 /* Location.m in Sources */,
 				67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */,
 				676B64A114647E2B00FEEF7C /* HighlightViewController.m in Sources */,
+				676B64A41464871A00FEEF7C /* Comment+Helper.m in Sources */,
+				676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */,
+				676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

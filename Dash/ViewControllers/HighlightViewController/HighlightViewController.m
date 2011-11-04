@@ -43,7 +43,11 @@
 {
     [super viewDidLoad];
     
-
+    // Connect to our API.
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
+    
+    [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -95,14 +99,14 @@
     CGFloat height = 0.0;
     
     switch (section) {
-        case kHeaderSection:
-            // TODO: Make this a constant and figure out where to put it.
+        case kHighlightHeaderSection:
             height = [ActionViewCell heightForAction:self.highlight withCellType:ActionViewCellTypeHeader];
             break;
-        case kCommentsSection:
+        case kHighlightCommentsSection:
             height = [self heightForActionCellForRow:row];
             break;
-        case kPhotosSection:
+        case kHighlightPhotosSection:
+            // TODO: Figure out this height.
             height = 50.0;
             break;
         default:
@@ -125,16 +129,31 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return kHighlightNumSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    NSInteger numRows = 0;
+    
+    switch (section) {
+        case kHighlightHeaderSection:
+            numRows = kHighlightNumRowsForHeaderSection;
+            break;
+        case kHighlightCommentsSection:
+            numRows = [self.comments count];
+            break;
+        case kHighlightPhotosSection:
+            numRows = kHighlightNumRowsForPhotoSection;
+            break;
+        default:
+            // Should never happen
+            NSAssert(NO, @"Asking for number of rows in a section that doesn't exist: %d", section);
+            break;
+    }
+    
+    return numRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

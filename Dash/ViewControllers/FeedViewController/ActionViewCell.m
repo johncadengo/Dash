@@ -11,6 +11,8 @@
 #import "Highlight+Helper.h"
 #import "Person.h"
 #import "Person+Helper.h"
+#import "NSArray+Helpers.h"
+#import "NSString+RandomStrings.h"
 
 @interface TISwipeableTableViewCell ()
 - (void)initialSetup;
@@ -44,9 +46,11 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 + (CGFloat)heightForAction:(Action *)action withCellType:(ActionViewCellType)cellType
 {
-    CGSize nameSize = [self textSizeForName:[[action author] name]];
+    //CGSize nameSize = [self textSizeForName:[[action author] name]];
+    CGSize nameSize = [self textSizeForName:@"hi"];
     CGSize blurbSize = [self textSizeForBlurb:[action description]];
-    CGSize timestampSize = [self textSizeForTimestamp:[[action timestamp] description]];
+    //CGSize timestampSize = [self textSizeForTimestamp:[[action timestamp] description]];
+    CGSize timestampSize = [self textSizeForTimestamp:@"hi"];
     CGFloat height = kPadding + nameSize.height + kPadding + blurbSize.height + kPadding + timestampSize.height + kPadding;
 
     return MAX(kDefaultHeight, height);
@@ -166,9 +170,13 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 - (void)setWithAction:(Action*)action
 {
     Highlight *highlight = (Highlight*) action;
-    self.name = @"Laura Byun";
-    self.blurb = [highlight text];
-    self.timestamp = @"2 days";
+    
+    NSArray *names = [NSArray arrayWithObjects:@"Laura Byun", @"Grace Chi", @"Chloe Choe", @"Eunice Chung", nil];
+    NSArray *timestamps = [NSArray arrayWithObjects:@"2 days", @"1 day", @"30 seconds", @"2 weeks", nil];
+    
+    self.name = [names randomObject];
+    self.blurb = [action description];
+    self.timestamp = [timestamps randomObject];
     self.image = [UIImage imageNamed:@"icon.png"];
     
     [self setNeedsDisplay];

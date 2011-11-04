@@ -28,7 +28,6 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom stuff
-        [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     }
     return self;
 }
@@ -52,6 +51,8 @@
     
     // Initialize our tableview's array which will represent its model.
     [self setListMode:kFriendsListMode];
+    
+    [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -105,11 +106,11 @@
     CGFloat height = 0.0;
     
     switch (section) {
-        case kListModeSection:
+        case kFeedListModeSection:
             // TODO: Make this a constant and figure out where to put it.
             height = 40.0;
             break;
-        case kFeedItemsSection:
+        case kFeedFeedItemsSection:
             height = [self heightForFeedCellForRow:row];
             break;
         default:
@@ -137,7 +138,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return kNumFeedViewSections;
+    return kFeedNumSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -145,10 +146,10 @@
     NSInteger numRows = 0;
     
     switch (section) {
-        case kListModeSection:
+        case kFeedListModeSection:
             numRows = kNumRowsForListModeSection;
             break;
-        case kFeedItemsSection:
+        case kFeedFeedItemsSection:
             numRows = [self.feedItems count];
             break;
         default:
@@ -167,10 +168,10 @@
     id cell = nil;
 
     switch (section) {
-        case kListModeSection:
+        case kFeedListModeSection:
             cell = [self listModeCellForTableView:tableView];
             break;
-        case kFeedItemsSection:
+        case kFeedFeedItemsSection:
             cell = [self feedCellForTableView:tableView forRow:row];
             break;
         default:
@@ -272,7 +273,7 @@
     NSInteger row = [indexPath row];
     
     // Only perform segue on a row in the feed item section being tapped, not on the very first section.
-    if (section != kListModeSection) {
+    if (section != kFeedListModeSection) {
         Highlight *highlight = [self.feedItems objectAtIndex:row];
         [self performSegueWithIdentifier:@"ShowFeedItemDetails" sender:highlight];
     }
@@ -286,6 +287,9 @@
         Highlight *highlight = (Highlight *) sender;
         HighlightViewController *highlightViewController = (HighlightViewController *)[segue destinationViewController];
         [highlightViewController setHighlight:highlight];
+        
+        // Make sure it has a managed object context
+        [highlightViewController setManagedObjectContext:self.managedObjectContext];
     }
 }
 

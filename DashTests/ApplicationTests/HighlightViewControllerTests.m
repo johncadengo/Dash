@@ -70,6 +70,8 @@
     Highlight *highlight = self.hightlightViewController.highlight;
     STAssertNotNil(highlight, @"Highlight wasn't properly assigned prior to segue");
     
+    NSManagedObjectContext *context = self.hightlightViewController.managedObjectContext;
+    STAssertNotNil(context, @"Managed object context was not properly initialized for %@", self.name);
 }
 
 @end
