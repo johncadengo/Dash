@@ -15,7 +15,7 @@
 #import "Comment+Helper.h"
 #import "NSArray+Helpers.h"
 #import "NSString+RandomStrings.h"
-
+#import "Photo.h"
 
 // Private properties
 @interface DashAPI ()
@@ -74,9 +74,7 @@
     NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:count];
 
     for (int i = 0; i < count; ++i) {
-        highlight = (Highlight *)[NSEntityDescription insertNewObjectForEntityForName:@"Highlight" inManagedObjectContext:self.managedObjectContext];
-        
-        [highlight setText: [NSString randomStringOfMaxLength:140]];
+        highlight = [self person:nil addsHighlight:[NSString randomStringOfMaxLength:140] toPlace:nil withPhoto:nil];
         
         [feed addObject:highlight];
     }
@@ -91,25 +89,16 @@
 
 - (NSMutableArray *)commentsForHighlight:(Highlight *)highlight withCount:(NSUInteger)count
 {
-    // TODO: This is a stub for now. Actually request comments fro model!
+    // TODO: This is a stub for now. Actually request comments from model!
     Comment *comment;
     NSMutableArray *comments = [[NSMutableArray alloc] initWithCapacity:count];
 
-    comment = (Comment *)[NSEntityDescription insertNewObjectForEntityForName:@"Comment" inManagedObjectContext:self.managedObjectContext];
-    [comment setText:@"ahahaha, i really like this place too!"];
-    [comments addObject:comment];
+    NSArray *texts = [NSArray arrayWithObjects:@"ahaha, i totally love this.",
+                      @"me too!", @"my fav :D", @"ur so kewl", @"LOL!!!", nil];
     
-    comment = (Comment *)[NSEntityDescription insertNewObjectForEntityForName:@"Comment" inManagedObjectContext:self.managedObjectContext];
-    [comment setText:@"my favorite :)"];
-    [comments addObject:comment];
-    
-    comment = (Comment *)[NSEntityDescription insertNewObjectForEntityForName:@"Comment" inManagedObjectContext:self.managedObjectContext];
-    [comment setText:@"ur so kewl"];
-    [comments addObject:comment];
-    
-    for (int i = 3; i < count; ++i) {
-        comment = (Comment *)[NSEntityDescription insertNewObjectForEntityForName:@"Comment" inManagedObjectContext:self.managedObjectContext];
-        [comment setText:@"quick brown foxes jumping"];
+    for (int i = 0; i < count; ++i) {
+        comment = [self person:nil comments:[texts randomObject] onAction:highlight];
+        [comments addObject:comment];
     }
     
     return comments;
@@ -118,14 +107,51 @@
 
 #pragma mark - Posts
 
-- (void)person:(Person*)person comments:(NSString *)text onHighlight:(Highlight *)highlight
+- (Comment *)person:(Person *)person comments:(NSString *)text onAction:(Action *)action
 {
+    // TODO: Validation?
+    Comment *comment = (Comment *)[NSEntityDescription insertNewObjectForEntityForName:@"Comment" inManagedObjectContext:self.managedObjectContext];
     
+    Person *author;
+    
+    if (person) {
+        author = person;
+    }
+    else {
+        NSArray *names = [NSArray arrayWithObjects:@"Laura Byun", @"Grace Chi", @"Chloe Choe", @"Eunice Chung", @"Andrew Park", @"Chris Kim", @"Amos Kim", @"Julia Yang", nil];
+        author = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:self.managedObjectContext];
+        [author setName:[NSString stringWithFormat:[names randomObject]]];
+    }
+    
+    [comment setAuthor:author];
+    [comment setText:text];
+    [comment setAction:action];
+    
+    return comment;
 }
 
-- (void)person:(Person *)person addsHighlight:(NSString *)text toPlace:(Place *) withPhoto:(Photo *) photo
+- (Highlight *)person:(Person *)person addsHighlight:(NSString *)text toPlace:(Place *)place withPhoto:(Photo *)photo
 {
+    // TODO: Validation?
+    Highlight *highlight = (Highlight *)[NSEntityDescription insertNewObjectForEntityForName:@"Highlight" inManagedObjectContext:self.managedObjectContext];
+
+    Person *author;
     
+    if (person) {
+        author = person;
+    }
+    else {
+        NSArray *names = [NSArray arrayWithObjects:@"Laura Byun", @"Grace Chi", @"Chloe Choe", @"Eunice Chung", @"Andrew Park", @"Chris Kim", @"Amos Kim", @"Julia Yang", nil];
+        author = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:self.managedObjectContext];
+        [author setName:[NSString stringWithFormat:[names randomObject]]];
+    }
+    
+    [highlight setAuthor:author];
+    [highlight setText:text];
+    // TODO: Handle Photos?
+    //[highlight setPhotos:];
+    
+    return highlight;
 }
 
 @end

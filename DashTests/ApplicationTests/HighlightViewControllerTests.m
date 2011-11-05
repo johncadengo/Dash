@@ -61,7 +61,7 @@
 #pragma mark -
 #pragma mark Tests
 
-/** Make sure an Action was properly assigned before the segue occurs.
+/** Make sure an action was properly assigned before the segue occurs.
  */
 - (void)testPrepareSegue
 {
@@ -72,6 +72,16 @@
     
     NSManagedObjectContext *context = self.hightlightViewController.managedObjectContext;
     STAssertNotNil(context, @"Managed object context was not properly initialized for %@", self.name);
+}
+
+/** Make sure highlight has an author with a name.
+ */
+- (void)testHighlight
+{
+    NSLog(@"%@", self.name);
+    
+    Highlight *highlight = self.hightlightViewController.highlight;
+    STAssertNotNil(highlight.author, @"Highlight has no author!");
 }
 
 @end

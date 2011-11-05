@@ -23,6 +23,8 @@ enum {
 @class Highlight;
 @class Place;
 @class Photo;
+@class Comment;
+@class Action;
 
 @interface DashAPI : NSObject
 
@@ -66,12 +68,12 @@ enum {
 - (NSMutableArray *)commentsForHighlight:(Highlight *)highlight withCount:(NSUInteger)count;
 
 #pragma mark - Posts
-/**
+/** Returns a newly made comment by a person on an action.
  */
-- (void)person:(Person*)person comments:(NSString *)text onHighlight:(Highlight *)highlight;
+- (Comment *)person:(Person *)person comments:(NSString *)text onAction:(Action *)action;
 
 /**
  */
-- (void)person:(Person *)person addsHighlight:(NSString *)text toPlace:(Place *) withPhoto:(Photo *) photo;
+- (Highlight *)person:(Person *)person addsHighlight:(NSString *)text toPlace:(Place *)place withPhoto:(Photo *)photo;
 
 @end

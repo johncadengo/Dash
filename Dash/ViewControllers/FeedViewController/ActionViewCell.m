@@ -171,10 +171,9 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 {
     Highlight *highlight = (Highlight*) action;
     
-    NSArray *names = [NSArray arrayWithObjects:@"Laura Byun", @"Grace Chi", @"Chloe Choe", @"Eunice Chung", nil];
     NSArray *timestamps = [NSArray arrayWithObjects:@"2 days", @"1 day", @"30 seconds", @"2 weeks", nil];
     
-    self.name = [names randomObject];
+    self.name = [[action author] name];
     self.blurb = [action description];
     self.timestamp = [timestamps randomObject];
     self.image = [UIImage imageNamed:@"icon.png"];
