@@ -175,7 +175,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     
     self.name = [[action author] name];
     self.blurb = [action description];
-    self.timestamp = [timestamps randomObject];
+    self.timestamp = [action relativeTimestamp];//[timestamps randomObject];
     self.image = [UIImage imageNamed:@"icon.png"];
     
     [self setNeedsDisplay];

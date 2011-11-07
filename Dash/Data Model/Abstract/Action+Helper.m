@@ -7,6 +7,7 @@
 //
 
 #import "Action+Helper.h"
+#import "NSDate+RandomDates.h"
 
 @implementation Action (Helper)
 
@@ -37,7 +38,8 @@
 
 - (NSString *)relativeTimestamp
 {
-    return [NSString stringWithFormat: @"2 days ago"];    
+    return [self.timestamp relativeTimestamp];
 }
+
 
 @end

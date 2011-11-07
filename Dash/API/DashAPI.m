@@ -16,6 +16,8 @@
 #import "NSArray+Helpers.h"
 #import "NSString+RandomStrings.h"
 #import "Photo.h"
+#import "NSDate+RandomDates.h"
+
 
 // Private properties
 @interface DashAPI ()
@@ -126,6 +128,7 @@
     [comment setAuthor:author];
     [comment setText:text];
     [comment setAction:action];
+    [comment setTimestamp:[NSDate randomDateWithinRelativeTime:RelativeTimeDays]];
     
     return comment;
 }
@@ -148,6 +151,7 @@
     
     [highlight setAuthor:author];
     [highlight setText:text];
+    [highlight setTimestamp:[NSDate randomDateWithinRelativeTime:RelativeTimeDays]];
     // TODO: Handle Photos?
     //[highlight setPhotos:];
     

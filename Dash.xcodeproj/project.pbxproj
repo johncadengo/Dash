@@ -98,6 +98,7 @@
 		67F22FEC145F0DEB0010A09F /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE9145F0DEB0010A09F /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FED145F0DEB0010A09F /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FF0145F0DF20010A09F /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEF145F0DF20010A09F /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		67FFE58614687B7B00135225 /* NSDate+RandomDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FFE58514687B7B00135225 /* NSDate+RandomDates.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -348,6 +349,8 @@
 		67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGOImageLoader.m; path = Helpers/EGOImageLoading/EGOImageLoader/EGOImageLoader.m; sourceTree = "<group>"; };
 		67F22FEE145F0DF20010A09F /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOImageView.h; path = Helpers/EGOImageLoading/EGOImageView/EGOImageView.h; sourceTree = "<group>"; };
 		67F22FEF145F0DF20010A09F /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGOImageView.m; path = Helpers/EGOImageLoading/EGOImageView/EGOImageView.m; sourceTree = "<group>"; };
+		67FFE58414687B7B00135225 /* NSDate+RandomDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+RandomDates.h"; path = "Helpers/RandomStrings/NSDate+RandomDates.h"; sourceTree = "<group>"; };
+		67FFE58514687B7B00135225 /* NSDate+RandomDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+RandomDates.m"; path = "Helpers/RandomStrings/NSDate+RandomDates.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -579,6 +582,8 @@
 				676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */,
 				676B64AC146493CA00FEEF7C /* NSString+RandomStrings.h */,
 				676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */,
+				67FFE58414687B7B00135225 /* NSDate+RandomDates.h */,
+				67FFE58514687B7B00135225 /* NSDate+RandomDates.m */,
 			);
 			name = RandomStrings;
 			sourceTree = "<group>";
@@ -1169,6 +1174,7 @@
 				676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */,
 				676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */,
 				67E7D94E146862E000E86F31 /* EGORefreshTableHeaderView.m in Sources */,
+				67FFE58614687B7B00135225 /* NSDate+RandomDates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
