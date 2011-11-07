@@ -13,3 +13,6 @@
 [submodule "Dash/Helpers/MGImageUtilities"]
 	path = Dash/Helpers/MGImageUtilities
 	url = https://github.com/mattgemmell/MGImageUtilities.git
+[submodule "Dash/Helpers/EGOTableViewPullRefresh"]
+	path = Dash/Helpers/EGOTableViewPullRefresh
+	url = https://github.com/enormego/EGOTableViewPullRefresh.git
