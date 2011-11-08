@@ -64,6 +64,9 @@
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
 		6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */; };
+		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
+		679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F91469D19600E0CDE2 /* Photo+Helper.m */; };
+		679A48FD1469D30800E0CDE2 /* PersonPhoto+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48FC1469D30800E0CDE2 /* PersonPhoto+Helper.m */; };
 		679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB514604BA70038E506 /* Highlight+Helper.m */; };
 		679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB8146059CE0038E506 /* HighlightTests.m */; };
 		679E8CBC146062210038E506 /* Action+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBB146062210038E506 /* Action+Helper.m */; };
@@ -282,6 +285,12 @@
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
 		6796A8ED1461CC2500F87D93 /* FeedViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewControllerTests.h; path = ApplicationTests/FeedViewControllerTests.h; sourceTree = "<group>"; };
 		6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewControllerTests.m; path = ApplicationTests/FeedViewControllerTests.m; sourceTree = "<group>"; };
+		679A48F51469D02F00E0CDE2 /* FeedbackActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackActivityCell.h; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.h; sourceTree = "<group>"; };
+		679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackActivityCell.m; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.m; sourceTree = "<group>"; };
+		679A48F81469D19500E0CDE2 /* Photo+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Photo+Helper.h"; path = "Data Model/Abstract/Photo+Helper.h"; sourceTree = "<group>"; };
+		679A48F91469D19600E0CDE2 /* Photo+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Photo+Helper.m"; path = "Data Model/Abstract/Photo+Helper.m"; sourceTree = "<group>"; };
+		679A48FB1469D30800E0CDE2 /* PersonPhoto+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PersonPhoto+Helper.h"; path = "Data Model/Actions/Photo/PersonPhoto+Helper.h"; sourceTree = "<group>"; };
+		679A48FC1469D30800E0CDE2 /* PersonPhoto+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PersonPhoto+Helper.m"; path = "Data Model/Actions/Photo/PersonPhoto+Helper.m"; sourceTree = "<group>"; };
 		679E8CB414604BA70038E506 /* Highlight+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Highlight+Helper.h"; path = "Data Model/Actions/Highlight/Highlight+Helper.h"; sourceTree = "<group>"; };
 		679E8CB514604BA70038E506 /* Highlight+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Highlight+Helper.m"; path = "Data Model/Actions/Highlight/Highlight+Helper.m"; sourceTree = "<group>"; };
 		679E8CB7146059CE0038E506 /* HighlightTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightTests.h; path = "Logic Tests/HighlightTests.h"; sourceTree = "<group>"; };
@@ -541,6 +550,8 @@
 			children = (
 				676B649F14647E2B00FEEF7C /* HighlightViewController.h */,
 				676B64A014647E2B00FEEF7C /* HighlightViewController.m */,
+				679A48F51469D02F00E0CDE2 /* FeedbackActivityCell.h */,
+				679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */,
 			);
 			name = HighlightViewController;
 			sourceTree = "<group>";
@@ -602,6 +613,8 @@
 				67D15A4314606B790047C1E4 /* Location+Helper.m */,
 				672C2C841459E9BF006A1D6B /* Photo.h */,
 				672C2C851459E9BF006A1D6B /* Photo.m */,
+				679A48F81469D19500E0CDE2 /* Photo+Helper.h */,
+				679A48F91469D19600E0CDE2 /* Photo+Helper.m */,
 				672C2C861459E9BF006A1D6B /* PlaceAction.h */,
 				672C2C871459E9BF006A1D6B /* PlaceAction.m */,
 				672C2C881459E9BF006A1D6B /* Uniqueness.h */,
@@ -757,6 +770,8 @@
 				67BAC7F91459E60C0001C738 /* PlacePhoto.m */,
 				67BAC7F51459E60B0001C738 /* PersonPhoto.h */,
 				67BAC7F61459E60B0001C738 /* PersonPhoto.m */,
+				679A48FB1469D30800E0CDE2 /* PersonPhoto+Helper.h */,
+				679A48FC1469D30800E0CDE2 /* PersonPhoto+Helper.m */,
 			);
 			name = Photo;
 			sourceTree = "<group>";
@@ -1161,6 +1176,9 @@
 				676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */,
 				67E7D94E146862E000E86F31 /* EGORefreshTableHeaderView.m in Sources */,
 				67FFE58614687B7B00135225 /* NSDate+RandomDates.m in Sources */,
+				679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */,
+				679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */,
+				679A48FD1469D30800E0CDE2 /* PersonPhoto+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

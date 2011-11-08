@@ -13,6 +13,7 @@
 #import "Person+Helper.h"
 #import "NSArray+Helpers.h"
 #import "NSString+RandomStrings.h"
+#import "PersonPhoto+Helper.h"
 
 @interface TISwipeableTableViewCell ()
 - (void)initialSetup;
@@ -124,14 +125,6 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     return self;
 }
 
-/** Need to override this to change "oldstyle" private ivar of super class
- */
-- (void)initialSetup
-{
-    //self.selectionStyle = UITableViewCellSelectionStyleNone;
-    [super initialSetup];
-}
-
 - (void)setCellType:(ActionViewCellType)newCellType
 {
     // If the type is invalid, we will set it to the default value: Header
@@ -170,14 +163,12 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 - (void)setWithAction:(Action*)action
 {
-    Highlight *highlight = (Highlight*) action;
-    
-    NSArray *timestamps = [NSArray arrayWithObjects:@"2 days", @"1 day", @"30 seconds", @"2 weeks", nil];
+    NSString *iconPath = [[[action author] profilepic] localpath];
     
     self.name = [[action author] name];
     self.blurb = [action description];
-    self.timestamp = [action relativeTimestamp];//[timestamps randomObject];
-    self.image = [UIImage imageNamed:@"icon.png"];
+    self.timestamp = [action relativeTimestamp];
+    self.image = [UIImage imageNamed:iconPath];
     
     [self setNeedsDisplay];
 }
