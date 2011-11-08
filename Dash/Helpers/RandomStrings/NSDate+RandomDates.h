@@ -25,7 +25,7 @@ typedef enum {
 
 /** Generates a random date from within the relative time and returns its string representation
  */
-+ (NSString *) stringOfRandomDateWithinRelativeTime:(RelativeTime)relativeTime;
++ (NSString *) randomRelativeTimestamp:(RelativeTime)relativeTime;
 
 /** Adapted from an answer to a SO question:
     http://stackoverflow.com/questions/4937230/relative-string-from-nsdate/7734475#7734475

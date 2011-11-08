@@ -17,8 +17,6 @@ static const int DAY = 24 * HOUR;
 static const int MONTH = 30 * DAY;
 static const int YEAR = 12 * MONTH;
 
-
-
 + (NSDate *) randomDateWithinRelativeTime:(RelativeTime)relativeTime
 {
     NSInteger unit;
@@ -53,7 +51,7 @@ static const int YEAR = 12 * MONTH;
     return randomDate;
 }
 
-+ (NSString *) stringOfRandomDateWithinRelativeTime:(RelativeTime)relativeTime
++ (NSString *) randomRelativeTimestamp:(RelativeTime)relativeTime
 {
     NSDate *randomDate = [self randomDateWithinRelativeTime:relativeTime];
     return [randomDate relativeTimestamp];

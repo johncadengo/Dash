@@ -57,7 +57,6 @@
 		676B64A41464871A00FEEF7C /* Comment+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A31464871A00FEEF7C /* Comment+Helper.m */; };
 		676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */; };
 		676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */; };
-		6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6785B83B145F48C700467D8F /* NSDateHelper.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
@@ -270,8 +269,6 @@
 		676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Helpers.m"; path = "Helpers/RandomStrings/NSArray+Helpers.m"; sourceTree = "<group>"; };
 		676B64AC146493CA00FEEF7C /* NSString+RandomStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RandomStrings.h"; path = "Helpers/RandomStrings/NSString+RandomStrings.h"; sourceTree = "<group>"; };
 		676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RandomStrings.m"; path = "Helpers/RandomStrings/NSString+RandomStrings.m"; sourceTree = "<group>"; };
-		6785B83A145F48C700467D8F /* NSDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDateHelper.h; path = Helpers/EGOCocoaHelpers/NSDateHelper.h; sourceTree = "<group>"; };
-		6785B83B145F48C700467D8F /* NSDateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateHelper.m; path = Helpers/EGOCocoaHelpers/NSDateHelper.m; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009E41450E75900511E0F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
@@ -588,15 +585,6 @@
 			name = RandomStrings;
 			sourceTree = "<group>";
 		};
-		6785B836145F46FD00467D8F /* EGOCocoaHelpers */ = {
-			isa = PBXGroup;
-			children = (
-				6785B83A145F48C700467D8F /* NSDateHelper.h */,
-				6785B83B145F48C700467D8F /* NSDateHelper.m */,
-			);
-			name = EGOCocoaHelpers;
-			sourceTree = "<group>";
-		};
 		678882971459D5BD00F7E826 /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,7 +822,6 @@
 			children = (
 				67E7D94B146862CC00E86F31 /* EGOTableViewPullRefresh */,
 				676B64A514648C2400FEEF7C /* RandomStrings */,
-				6785B836145F46FD00467D8F /* EGOCocoaHelpers */,
 				6715E3FD145F2D1E0069D5A8 /* MGImageUtilities */,
 				67F22FCE145F0C630010A09F /* EGOImageLoading */,
 				676102CE145F1AC1005D23B1 /* MBProgressHUD */,
@@ -1162,7 +1149,6 @@
 				6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */,
 				6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */,
 				6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */,
-				6785B83C145F48C700467D8F /* NSDateHelper.m in Sources */,
 				679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */,
 				679E8CBC146062210038E506 /* Action+Helper.m in Sources */,
 				679E8CC01460684E0038E506 /* Flag+Helper.m in Sources */,

@@ -32,6 +32,7 @@ static CGFloat kWindowWidth = 320.0f;
 static CGFloat kDefaultHeight = 90.0f;
 static CGFloat kPadding = 5.0f;
 static CGFloat kPicWidth = 57.0f;
+static CGFloat kDetailDisclosureWidth = 30.0f;
 
 /** Should never get THIS big.. Just wanted to leave room
  */
@@ -84,7 +85,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 + (CGSize)textSizeForBlurb:(NSString *)blurb
 {
-    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding) - kDetailDisclosureWidth;
     CGSize maxSize = CGSizeMake(maxWidth, kMaxBlurbHeight);
 	CGSize textSize = [blurb sizeWithFont:[self blurbFont] 
                         constrainedToSize:maxSize
@@ -150,7 +151,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
             userInteractionEnabled = NO;
             break;
         case ActionViewCellTypeFeedItem:
-            selectionStyle = UITableViewCellSelectionStyleBlue;            
+            selectionStyle = UITableViewCellSelectionStyleBlue;
             userInteractionEnabled = YES;
             break;
         case ActionViewCellTypeFootprint:
@@ -213,9 +214,10 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
             lineBreakMode:kNameLineBreak];
 
     CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
-	[self.blurb drawInRect:CGRectMake(kPicWidth + (kPadding * 2), 
-                                      nameSize.height + (2 * kPadding),
-                                      blurbSize.width, blurbSize.height)
+    CGRect blurbRect = CGRectMake(kPicWidth + (kPadding * 2), 
+                                  nameSize.height + (2 * kPadding),
+                                  blurbSize.width, blurbSize.height);
+	[self.blurb drawInRect:blurbRect
                   withFont:[[self class] blurbFont]
              lineBreakMode:kBlurbLineBreak];
     
@@ -234,6 +236,16 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     // Let's put an image here
     CGPoint point = CGPointMake(kPadding, kPadding); 
     [self.image drawAtPoint:point];
+    
+    // If it is a feed item action cell then we draw a detail view indicator on the right side
+    if (self.cellType == ActionViewCellTypeFeedItem) {
+        UIFont *font = [[self class] nameFont];
+        NSString *arrow = [NSString stringWithFormat:@">"];
+        CGSize arrowSize = [arrow sizeWithFont:font];
+        CGPoint point = CGPointMake(kWindowWidth -  (4 * kPadding), 
+                                    (rect.size.height / 2.0f) - (arrowSize.height / 2.0f));
+        [arrow drawAtPoint:point withFont:font];
+    }
 }
 
 - (void)drawBackView:(CGRect)rect {
