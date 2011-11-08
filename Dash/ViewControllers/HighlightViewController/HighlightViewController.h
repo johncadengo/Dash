@@ -28,10 +28,18 @@ enum {
     kHighlightNumRowsForPhotoSection = 1
 };
 
+/**
+ */
+enum {
+    kHighlightHeaderRow = 0,
+    kHighlightFeedbackActivityRow = 1
+};
+
 #pragma - Class definition
 
 @class Highlight;
 @class DashAPI;
+@class FeedbackActivityCell;
 
 @interface HighlightViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate, ActionVIewCellDelegate>
 
@@ -40,11 +48,17 @@ enum {
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSMutableArray *comments;
 
+/** Two rows in this section so far: Header and the feedback activity
+ */
+- (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row;
+
 /** Dynamically generate the row height for action cells
  */
 - (CGFloat)heightForActionCellForRow:(NSInteger)row;
 
+- (UITableViewCell *)HeaderSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (ActionViewCell *)HeaderCellForTableView:(UITableView *)tableView;
+- (FeedbackActivityCell *)FeedbackActivityCellForTableView:(UITableView *)tableView;
 - (ActionViewCell *)CommentCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 
 @end

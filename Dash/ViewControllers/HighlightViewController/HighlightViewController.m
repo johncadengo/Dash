@@ -12,6 +12,7 @@
 #import "Highlight+Helper.h"
 #import "DashAPI.h"
 #import "Constants.h"
+#import "FeedbackActivityCell.h"
 
 @implementation HighlightViewController
 
@@ -103,14 +104,7 @@
     
     switch (section) {
         case kHighlightHeaderSection:
-            // TODO: Clean this up and make the height a constant.
-            if (row == 0) {
-                height = [ActionViewCell heightForAction:self.highlight 
-                                            withCellType:ActionViewCellTypeHeader];
-            }
-            else {
-                height = 20.0;
-            }
+            height = [self heightForHeaderSectionCellForRow:row];
             break;
         case kHighlightCommentsSection:
             height = [self heightForActionCellForRow:row];
@@ -122,6 +116,26 @@
         default:
             // Should never happen
             NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
+            break;
+    }
+    
+    return height;
+}
+
+- (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row
+{
+    CGFloat height;
+    
+    switch (row) {
+        case kHighlightHeaderRow:
+            height = [ActionViewCell heightForAction:self.highlight 
+                                        withCellType:ActionViewCellTypeHeader];
+            break;
+        case kHighlightFeedbackActivityRow:
+            height = [FeedbackActivityCell heightForAction:self.highlight];
+            break;
+        default:
+            NSAssert(NO, @"Asking for height of a row in the header section that doesn't exist: %d", row);
             break;
     }
     
@@ -149,8 +163,7 @@
     
     switch (section) {
         case kHighlightHeaderSection:
-            //numRows = kHighlightNumRowsForHeaderSection;
-            numRows = 1;
+            numRows = kHighlightNumRowsForHeaderSection;
             break;
         case kHighlightCommentsSection:
             numRows = [self.comments count];
@@ -176,7 +189,7 @@
     
     switch (section) {
         case kHighlightHeaderSection:
-            cell = [self HeaderCellForTableView:tableView];
+            cell = [self HeaderSectionCellForTableView:tableView forRow:row];
             break;
         case kHighlightCommentsSection:
             cell = [self CommentCellForTableView:tableView forRow:row];
@@ -187,6 +200,25 @@
         default:
             // Should never happen
             NSAssert(NO, @"Asking for cell in a section that doesn't exist: %d", section);
+            break;
+    }
+    
+    return cell;
+}
+
+- (UITableViewCell *)HeaderSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+{
+    id cell;
+    
+    switch (row) {
+        case kHighlightHeaderRow:
+            cell = [self HeaderCellForTableView:tableView];
+            break;
+        case kHighlightFeedbackActivityRow:
+            cell = [self FeedbackActivityCellForTableView:tableView];
+            break;
+        default:
+            NSAssert(NO, @"Asking for a row in the header section that doesn't exist: %d", row);
             break;
     }
     
@@ -206,6 +238,19 @@
     [cell setDelegate:self];
     Action *action = self.highlight;
     [cell setWithAction:action];
+    
+    return cell;
+}
+
+- (FeedbackActivityCell *)FeedbackActivityCellForTableView:(UITableView *)tableView
+{
+    FeedbackActivityCell *cell = (FeedbackActivityCell *)[tableView dequeueReusableCellWithIdentifier:kHighlightFeedbackCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[FeedbackActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kHighlightFeedbackCellIdentifier action:nil];
+    }
+    
+    [cell setBackgroundColor:[UIColor grayColor]];
     
     return cell;
 }
