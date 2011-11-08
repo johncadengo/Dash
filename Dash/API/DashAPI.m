@@ -17,6 +17,7 @@
 #import "NSString+RandomStrings.h"
 #import "Photo.h"
 #import "NSDate+RandomDates.h"
+#import "Action+Helper.h"
 
 
 // Private properties

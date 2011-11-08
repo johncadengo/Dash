@@ -250,7 +250,8 @@
         cell = [[FeedbackActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kHighlightFeedbackCellIdentifier action:nil];
     }
     
-    [cell setBackgroundColor:[UIColor grayColor]];
+    Action *action = self.highlight;
+    [cell setWithAction:action];
     
     return cell;
 }

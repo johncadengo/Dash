@@ -42,4 +42,11 @@
  */
 - (NSString *)relativeTimestamp;
 
+/** Returns the feedback activity of an action.
+ 
+    Can leave feedback on many kinds of actions: highlight, photo, stash, checkin, etc.
+ */
+- (NSString *)feedbackActivity;
+
+
 @end

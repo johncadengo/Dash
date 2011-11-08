@@ -41,5 +41,10 @@
     return [self.timestamp relativeTimestamp];
 }
 
+- (NSString *)feedbackActivity 
+{
+    return [NSString stringWithFormat:@"3 comments, %d likes", 1 + arc4random() % 10];
+}
+
 
 @end

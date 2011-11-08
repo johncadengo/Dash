@@ -68,8 +68,7 @@ static CGFloat kWindowWidth = 320.0f;
 
 - (void)setWithAction:(Action *)action
 {
-    // TODO: Actually look at the action
-    self.activity = [NSString stringWithFormat:@"2 comments, 1 like"];
+    self.activity = [action feedbackActivity];
     
     [self setNeedsDisplay];
 }
