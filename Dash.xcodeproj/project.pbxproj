@@ -67,6 +67,7 @@
 		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
 		679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F91469D19600E0CDE2 /* Photo+Helper.m */; };
 		679A48FD1469D30800E0CDE2 /* PersonPhoto+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48FC1469D30800E0CDE2 /* PersonPhoto+Helper.m */; };
+		679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */; };
 		679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB514604BA70038E506 /* Highlight+Helper.m */; };
 		679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB8146059CE0038E506 /* HighlightTests.m */; };
 		679E8CBC146062210038E506 /* Action+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBB146062210038E506 /* Action+Helper.m */; };
@@ -291,6 +292,8 @@
 		679A48F91469D19600E0CDE2 /* Photo+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Photo+Helper.m"; path = "Data Model/Abstract/Photo+Helper.m"; sourceTree = "<group>"; };
 		679A48FB1469D30800E0CDE2 /* PersonPhoto+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PersonPhoto+Helper.h"; path = "Data Model/Actions/Photo/PersonPhoto+Helper.h"; sourceTree = "<group>"; };
 		679A48FC1469D30800E0CDE2 /* PersonPhoto+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PersonPhoto+Helper.m"; path = "Data Model/Actions/Photo/PersonPhoto+Helper.m"; sourceTree = "<group>"; };
+		679A49041469F2A900E0CDE2 /* JCImageGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCImageGalleryViewController.h; path = Dash/ViewControllers/JCImageGalleryView/JCImageGalleryViewController.h; sourceTree = "<group>"; };
+		679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCImageGalleryViewController.m; path = Dash/ViewControllers/JCImageGalleryView/JCImageGalleryViewController.m; sourceTree = "<group>"; };
 		679E8CB414604BA70038E506 /* Highlight+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Highlight+Helper.h"; path = "Data Model/Actions/Highlight/Highlight+Helper.h"; sourceTree = "<group>"; };
 		679E8CB514604BA70038E506 /* Highlight+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Highlight+Helper.m"; path = "Data Model/Actions/Highlight/Highlight+Helper.m"; sourceTree = "<group>"; };
 		679E8CB7146059CE0038E506 /* HighlightTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightTests.h; path = "Logic Tests/HighlightTests.h"; sourceTree = "<group>"; };
@@ -750,6 +753,15 @@
 			name = ProfileViewController;
 			sourceTree = "<group>";
 		};
+		679A49031469F26100E0CDE2 /* JCImageGalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				679A49041469F2A900E0CDE2 /* JCImageGalleryViewController.h */,
+				679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */,
+			);
+			name = JCImageGalleryView;
+			sourceTree = "<group>";
+		};
 		67B9F22714560ABD009D480C /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -811,6 +823,7 @@
 		67CC265E1450D83B00B618C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				679A49031469F26100E0CDE2 /* JCImageGalleryView */,
 				670956A9145EFBCF00057E32 /* TISwipeableTableView */,
 				6739F4691464530F00735858 /* HighlightViewController */,
 				679009E61450EB1D00511E0F /* FeedViewController */,
@@ -1179,6 +1192,7 @@
 				679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */,
 				679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */,
 				679A48FD1469D30800E0CDE2 /* PersonPhoto+Helper.m in Sources */,
+				679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
