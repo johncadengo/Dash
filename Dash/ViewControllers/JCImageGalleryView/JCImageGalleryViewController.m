@@ -11,7 +11,8 @@
 
 @implementation JCImageGalleryViewController
 
-@synthesize rowView;
+@synthesize rowView = _rowView;
+@synthesize images = _images;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,8 +25,13 @@
     self = [super initWithStyle:style];
     if (self) {
         CGRect frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
-        self.rowView = [[UIView alloc] initWithFrame:frame];
+        self.rowView = [[JCImageGalleryView alloc] initWithFrame:frame];
         [self.rowView setBackgroundColor: [UIColor blackColor]];
+        
+        self.images = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        [self.rowView addGestureRecognizer:tap];
     }
     return self;
 }
@@ -38,11 +44,18 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
+{
+    NSLog(@"heya");
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

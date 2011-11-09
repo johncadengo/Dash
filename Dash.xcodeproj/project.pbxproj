@@ -63,6 +63,7 @@
 		679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EE1450EB9600511E0F /* PlacesViewController.m */; };
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
+		67937141146A42DE00D74465 /* JCImageGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67937140146A42DE00D74465 /* JCImageGalleryView.m */; };
 		6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */; };
 		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
 		679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F91469D19600E0CDE2 /* Photo+Helper.m */; };
@@ -94,6 +95,8 @@
 		67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8F1460D12C00CF657D /* ListModeCell.m */; };
 		67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A4314606B790047C1E4 /* Location+Helper.m */; };
 		67D15A47146070250047C1E4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A46146070250047C1E4 /* Location.m */; };
+		67E7CA92146A2C0B00B7CBCF /* Dash.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA90146A2C0B00B7CBCF /* Dash.png */; };
+		67E7CA93146A2C0B00B7CBCF /* DashApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA91146A2C0B00B7CBCF /* DashApp.png */; };
 		67E7D94E146862E000E86F31 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FCC145F09D40010A09F /* ActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FCB145F09D40010A09F /* ActionViewCell.m */; };
 		67F22FE4145F0DDF0010A09F /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE3145F0DDF0010A09F /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -284,6 +287,8 @@
 		679009F11450ED8800511E0F /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.m; sourceTree = "<group>"; };
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
+		6793713F146A42DE00D74465 /* JCImageGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCImageGalleryView.h; path = Dash/ViewControllers/JCImageGalleryView/JCImageGalleryView.h; sourceTree = "<group>"; };
+		67937140146A42DE00D74465 /* JCImageGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCImageGalleryView.m; path = Dash/ViewControllers/JCImageGalleryView/JCImageGalleryView.m; sourceTree = "<group>"; };
 		6796A8ED1461CC2500F87D93 /* FeedViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewControllerTests.h; path = ApplicationTests/FeedViewControllerTests.h; sourceTree = "<group>"; };
 		6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewControllerTests.m; path = ApplicationTests/FeedViewControllerTests.m; sourceTree = "<group>"; };
 		679A48F51469D02F00E0CDE2 /* FeedbackActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackActivityCell.h; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.h; sourceTree = "<group>"; };
@@ -344,6 +349,8 @@
 		67D15A4314606B790047C1E4 /* Location+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+Helper.m"; path = "Data Model/Abstract/Location+Helper.m"; sourceTree = "<group>"; };
 		67D15A45146070250047C1E4 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
 		67D15A46146070250047C1E4 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Abstract/Location.m"; sourceTree = "<group>"; };
+		67E7CA90146A2C0B00B7CBCF /* Dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dash.png; path = Dash/Images/Icons/Dash.png; sourceTree = "<group>"; };
+		67E7CA91146A2C0B00B7CBCF /* DashApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DashApp.png; path = Dash/Images/Icons/DashApp.png; sourceTree = "<group>"; };
 		67E7D94C146862E000E86F31 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGORefreshTableHeaderView.h; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGORefreshTableHeaderView.m; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		67F22FCA145F09D40010A09F /* ActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionViewCell.h; path = Dash/ViewControllers/FeedViewController/ActionViewCell.h; sourceTree = "<group>"; };
@@ -708,6 +715,8 @@
 		679009E11450E6D000511E0F /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				67E7CA90146A2C0B00B7CBCF /* Dash.png */,
+				67E7CA91146A2C0B00B7CBCF /* DashApp.png */,
 				679009E41450E75900511E0F /* icon@2x.png */,
 			);
 			name = Icons;
@@ -758,6 +767,8 @@
 			children = (
 				679A49041469F2A900E0CDE2 /* JCImageGalleryViewController.h */,
 				679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */,
+				6793713F146A42DE00D74465 /* JCImageGalleryView.h */,
+				67937140146A42DE00D74465 /* JCImageGalleryView.m */,
 			);
 			name = JCImageGalleryView;
 			sourceTree = "<group>";
@@ -1068,6 +1079,8 @@
 				67348ABB1446350700A3160A /* InfoPlist.strings in Resources */,
 				67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */,
 				679009E51450E75900511E0F /* icon@2x.png in Resources */,
+				67E7CA92146A2C0B00B7CBCF /* Dash.png in Resources */,
+				67E7CA93146A2C0B00B7CBCF /* DashApp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1193,6 +1206,7 @@
 				679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */,
 				679A48FD1469D30800E0CDE2 /* PersonPhoto+Helper.m in Sources */,
 				679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */,
+				67937141146A42DE00D74465 /* JCImageGalleryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

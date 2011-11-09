@@ -13,6 +13,7 @@
 #import "DashAPI.h"
 #import "Constants.h"
 #import "FeedbackActivityCell.h"
+#import "JCImageGalleryView.h"
 
 @implementation HighlightViewController
 
@@ -284,6 +285,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         [cell addSubview: [self.imageGalleryViewController rowView]];
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

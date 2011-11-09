@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JCImageGalleryView.h"
 
 @interface JCImageGalleryViewController : UITableViewController
 
-@property (nonatomic, strong) UIView *rowView;
+@property (nonatomic, strong) JCImageGalleryView *rowView;
+@property (nonatomic, strong) NSMutableArray *images;
+
 
 - (id)initWithStyle:(UITableViewStyle)style withSize:(CGSize)size;
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
 
 @end
