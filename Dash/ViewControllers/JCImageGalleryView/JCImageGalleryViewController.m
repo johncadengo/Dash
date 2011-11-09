@@ -7,7 +7,7 @@
 //
 
 #import "JCImageGalleryViewController.h"
-
+#import "AppDelegate.h"
 
 @implementation JCImageGalleryViewController
 
@@ -26,14 +26,39 @@
     if (self) {
         CGRect frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
         self.rowView = [[JCImageGalleryView alloc] initWithFrame:frame];
-        [self.rowView setBackgroundColor: [UIColor blackColor]];
+        [self.rowView setBackgroundColor: [UIColor grayColor]];
         
         self.images = [[NSMutableArray alloc] initWithCapacity:4];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
         [self.rowView addGestureRecognizer:tap];
+        
+        
     }
     return self;
+}
+
+- (void)showToolbar:(id)sender
+{
+    UIToolbar *toolbar = [UIToolbar new];
+    toolbar.barStyle = UIBarStyleDefault;
+    [toolbar sizeToFit];
+    toolbar.frame = CGRectMake(0, 410, 320, 50);
+    
+    NSArray* toolbarItems = [NSArray arrayWithObjects:
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
+                                                                           target:self
+                                                                           action:@selector(done:)],
+                             nil];
+    
+    
+    [toolbar setItems:toolbarItems];
+    [self.rowView addSubview:toolbar];
+}
+
+- (void)done:(id)sender
+{
+    NSLog(@"hey hey hey");
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +71,54 @@
 
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    NSLog(@"heya");
+    CGRect oldframe = self.rowView.bounds;
+    CGRect newframe = CGRectMake(oldframe.origin.x, 0.0f,
+                                 oldframe.size.width, 960.0f);
+    newframe = [[UIScreen mainScreen] applicationFrame];
+    //CGRect zerobounds = CGRectMake(newbounds.origin.x, newbounds.origin.y, 320.0f, 1.0f);
+    
+    UIView *souper = self.rowView.superview;
+    UIView *souperdooper = souper.superview;
+    //souper.clipsToBounds = NO;
+    //souperdooper.clipsToBounds = NO;
+    
+    CGRect frame = souper.frame;
+    
+    //[souper removeFromSuperview];
+    //[souperdooper addSubview:self.rowView];
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.rowView];
+    
+    self.rowView.frame = frame;
+    
+    //self.rowView.clipsToBounds = NO;
+    NSLog(@"hey %f %f %f %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    
+
+//    [souperdooper removeFromSuperview];
+
+    [UIView animateWithDuration:1.0
+                          delay: 0.0
+                        options: UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         //[self.rowView removeFromSuperview];
+//                         
+                         self.rowView.frame = newframe;
+                         //souperdooper.bounds = zerobounds;
+                     }
+                     completion:^(BOOL finished){
+                         // Wait one second and then fade in the view
+                         [UIView animateWithDuration:1.0
+                                               delay: 1.0
+                                             options:UIViewAnimationOptionCurveEaseOut
+                                          animations:^{
+                                              //souperdooper.alpha = 0.0;
+                                              //self.rowView.alpha = 0.7;
+                                          }
+                                          completion:nil];
+                     }];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToolbar:)];
+    [self.rowView addGestureRecognizer:tap];
 }
 
 #pragma mark - View lifecycle

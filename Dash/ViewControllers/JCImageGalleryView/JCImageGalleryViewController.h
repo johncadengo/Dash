@@ -14,8 +14,10 @@
 @property (nonatomic, strong) JCImageGalleryView *rowView;
 @property (nonatomic, strong) NSMutableArray *images;
 
-
 - (id)initWithStyle:(UITableViewStyle)style withSize:(CGSize)size;
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
+
+- (void)showToolbar:(id)sender;
+- (void)done:(id)sender;
 
 @end
