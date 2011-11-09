@@ -283,7 +283,7 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        [cell addSubview: [self.imageGalleryViewController rowView]];
+        [cell addSubview: [self.imageGalleryViewController view]];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

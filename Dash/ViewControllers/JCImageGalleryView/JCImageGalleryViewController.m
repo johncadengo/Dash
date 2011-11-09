@@ -11,8 +11,12 @@
 
 @implementation JCImageGalleryViewController
 
-@synthesize rowView = _rowView;
+@synthesize view = _myView;
+@synthesize tap = _tap;
 @synthesize images = _images;
+@synthesize toolbar = _toolbar;
+@synthesize done = _done;
+@synthesize state = _state;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,40 +29,43 @@
     self = [super initWithStyle:style];
     if (self) {
         CGRect frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
-        self.rowView = [[JCImageGalleryView alloc] initWithFrame:frame];
-        [self.rowView setBackgroundColor: [UIColor grayColor]];
+        self.view = [[JCImageGalleryView alloc] initWithFrame:frame];
+        [self.view setBackgroundColor: [UIColor grayColor]];
         
         self.images = [[NSMutableArray alloc] initWithCapacity:4];
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-        [self.rowView addGestureRecognizer:tap];
+        self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        [self.view addGestureRecognizer:self.tap];
         
-        
+        self.state = JCImageGalleryViewStateRow;
     }
     return self;
 }
 
 - (void)showToolbar:(id)sender
 {
-    UIToolbar *toolbar = [UIToolbar new];
-    toolbar.barStyle = UIBarStyleDefault;
-    [toolbar sizeToFit];
-    toolbar.frame = CGRectMake(0, 410, 320, 50);
+    if (self.toolbar == nil) {
+        self.toolbar = [[UIToolbar alloc] init];
+        self.toolbar.barStyle = UIBarStyleBlack;
+        self.toolbar.translucent = YES;
+        
+        self.done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(handleDone:)];
+        [self.done setEnabled:YES];
+        
+        self.toolbarItems = [NSArray arrayWithObject:self.done];
+        [self.toolbar setItems:self.toolbarItems animated:YES];
+        [self.toolbar sizeToFit];
+    }
     
-    NSArray* toolbarItems = [NSArray arrayWithObjects:
-                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
-                                                                           target:self
-                                                                           action:@selector(done:)],
-                             nil];
-    
-    
-    [toolbar setItems:toolbarItems];
-    [self.rowView addSubview:toolbar];
+    [self.view addSubview:self.toolbar];
 }
 
-- (void)done:(id)sender
+- (void)handleDone:(id)sender
 {
     NSLog(@"hey hey hey");
+    [self.toolbar removeFromSuperview];
+    [self.view addGestureRecognizer:self.tap];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,54 +78,42 @@
 
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    CGRect oldframe = self.rowView.bounds;
-    CGRect newframe = CGRectMake(oldframe.origin.x, 0.0f,
-                                 oldframe.size.width, 960.0f);
-    newframe = [[UIScreen mainScreen] applicationFrame];
-    //CGRect zerobounds = CGRectMake(newbounds.origin.x, newbounds.origin.y, 320.0f, 1.0f);
-    
-    UIView *souper = self.rowView.superview;
-    UIView *souperdooper = souper.superview;
-    //souper.clipsToBounds = NO;
-    //souperdooper.clipsToBounds = NO;
-    
-    CGRect frame = souper.frame;
-    
-    //[souper removeFromSuperview];
-    //[souperdooper addSubview:self.rowView];
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.rowView];
-    
-    self.rowView.frame = frame;
-    
-    //self.rowView.clipsToBounds = NO;
-    NSLog(@"hey %f %f %f %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
-    
+    if (self.state == JCImageGalleryViewStateRow) {
+        CGRect newframe = [[UIScreen mainScreen] applicationFrame];
 
-//    [souperdooper removeFromSuperview];
+        UIView *souper = self.view.superview;
+        CGRect frame = souper.frame;
+        [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];    
+        self.view.frame = frame;
 
-    [UIView animateWithDuration:1.0
-                          delay: 0.0
-                        options: UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         //[self.rowView removeFromSuperview];
-//                         
-                         self.rowView.frame = newframe;
-                         //souperdooper.bounds = zerobounds;
-                     }
-                     completion:^(BOOL finished){
-                         // Wait one second and then fade in the view
-                         [UIView animateWithDuration:1.0
-                                               delay: 1.0
-                                             options:UIViewAnimationOptionCurveEaseOut
-                                          animations:^{
-                                              //souperdooper.alpha = 0.0;
-                                              //self.rowView.alpha = 0.7;
-                                          }
-                                          completion:nil];
-                     }];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToolbar:)];
-    [self.rowView addGestureRecognizer:tap];
+        [UIView animateWithDuration:1.0
+                              delay: 0.0
+                            options: UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             self.view.frame = newframe;
+                         }
+                         completion:^(BOOL finished){
+                             // Wait one second and then fade in the view
+                             [UIView animateWithDuration:1.0
+                                                   delay: 1.0
+                                                 options:UIViewAnimationOptionCurveEaseOut
+                                              animations:^{
+                                                  //self.rowView.alpha = 0.7;
+                                              }
+                                              completion:nil];
+                         }];
+        
+        [self flipState];
+    }
+    else {
+        [self.view removeGestureRecognizer:gestureRecognizer];
+        [self showToolbar:self];
+    }
+}
+
+- (void)flipState
+{
+    self.state = (self.state == JCImageGalleryViewStateOverlay) ? JCImageGalleryViewStateRow : JCImageGalleryViewStateOverlay;
 }
 
 #pragma mark - View lifecycle
