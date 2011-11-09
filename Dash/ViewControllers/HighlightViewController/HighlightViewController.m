@@ -27,8 +27,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // TODO: Constants this
-        self.imageGalleryViewController = [[JCImageGalleryViewController alloc] initWithStyle:UITableViewStylePlain];
+
     }
     return self;
 }
@@ -53,6 +52,8 @@
     self.comments = [self.api commentsForHighlight:self.highlight];
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
+    
+    self.imageGalleryViewController = [[JCImageGalleryViewController alloc] initWithStyle:UITableViewStylePlain];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -282,8 +283,6 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         [cell addSubview: [self.imageGalleryViewController rowView]];
-        CGRect rect = CGRectMake(0.0f, 0.0f, 320.0f, 70.0f);
-        [self.imageGalleryViewController.rowView drawRect:rect];
     }
     
     return cell;
