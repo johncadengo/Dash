@@ -11,11 +11,21 @@
 
 @implementation JCImageGalleryViewController
 
+@synthesize rowView;
+
 - (id)initWithStyle:(UITableViewStyle)style
+{
+    CGSize size = CGSizeMake(320.0f, 70.0f);
+    return [self initWithStyle:style withSize:size];
+}
+
+- (id)initWithStyle:(UITableViewStyle)style withSize:(CGSize)size
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        CGRect frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
+        self.rowView = [[UIView alloc] initWithFrame:frame];
+        [self.rowView setBackgroundColor: [UIColor blackColor]];
     }
     return self;
 }

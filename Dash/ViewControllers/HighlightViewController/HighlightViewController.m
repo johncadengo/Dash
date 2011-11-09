@@ -20,13 +20,15 @@
 @synthesize highlight = _highlight;
 @synthesize api = _api;
 @synthesize comments = _comments;
+@synthesize imageGalleryViewController = _imageGalleryViewController;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom stuff here
+        // TODO: Constants this
+        self.imageGalleryViewController = [[JCImageGalleryViewController alloc] initWithStyle:UITableViewStylePlain];
     }
     return self;
 }
@@ -111,7 +113,7 @@
             break;
         case kHighlightPhotosSection:
             // TODO: Figure out this height.
-            height = 50.0;
+            height = 70.0;
             break;
         default:
             // Should never happen
@@ -169,8 +171,7 @@
             numRows = [self.comments count];
             break;
         case kHighlightPhotosSection:
-            //numRows = kHighlightNumRowsForPhotoSection;
-            numRows = 0;
+            numRows = kHighlightNumRowsForPhotoSection;
             break;
         default:
             // Should never happen
@@ -189,13 +190,13 @@
     
     switch (section) {
         case kHighlightHeaderSection:
-            cell = [self HeaderSectionCellForTableView:tableView forRow:row];
+            cell = [self headerSectionCellForTableView:tableView forRow:row];
             break;
         case kHighlightCommentsSection:
-            cell = [self CommentCellForTableView:tableView forRow:row];
+            cell = [self commentCellForTableView:tableView forRow:row];
             break;
         case kHighlightPhotosSection:
-            cell = nil;
+            cell = [self imageGalleryCellForTableView:tableView];
             break;
         default:
             // Should never happen
@@ -206,16 +207,16 @@
     return cell;
 }
 
-- (UITableViewCell *)HeaderSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+- (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
     id cell;
     
     switch (row) {
         case kHighlightHeaderRow:
-            cell = [self HeaderCellForTableView:tableView];
+            cell = [self headerCellForTableView:tableView];
             break;
         case kHighlightFeedbackActivityRow:
-            cell = [self FeedbackActivityCellForTableView:tableView];
+            cell = [self feedbackActivityCellForTableView:tableView];
             break;
         default:
             NSAssert(NO, @"Asking for a row in the header section that doesn't exist: %d", row);
@@ -225,7 +226,7 @@
     return cell;
 }
 
-- (ActionViewCell *)HeaderCellForTableView:(UITableView *)tableView
+- (ActionViewCell *)headerCellForTableView:(UITableView *)tableView
 {
     ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kHighlightHeaderCellIdentifier];
     
@@ -242,7 +243,7 @@
     return cell;
 }
 
-- (FeedbackActivityCell *)FeedbackActivityCellForTableView:(UITableView *)tableView
+- (FeedbackActivityCell *)feedbackActivityCellForTableView:(UITableView *)tableView
 {
     FeedbackActivityCell *cell = (FeedbackActivityCell *)[tableView dequeueReusableCellWithIdentifier:kHighlightFeedbackCellIdentifier];
     
@@ -256,7 +257,7 @@
     return cell;
 }
 
-- (ActionViewCell *)CommentCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+- (ActionViewCell *)commentCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
     ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kHighlightCommentCellIdentifier];
     
@@ -269,6 +270,21 @@
     [cell setDelegate:self];
     Action *action = [self.comments objectAtIndex:row];
     [cell setWithAction:action];
+    
+    return cell;
+}
+
+- (UITableViewCell *)imageGalleryCellForTableView:(UITableView *)tableView
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        [cell addSubview: [self.imageGalleryViewController rowView]];
+        CGRect rect = CGRectMake(0.0f, 0.0f, 320.0f, 70.0f);
+        [self.imageGalleryViewController.rowView drawRect:rect];
+    }
     
     return cell;
 }

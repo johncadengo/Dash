@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ActionViewCell.h"
+#import "JCImageGalleryViewController.h"
 
 #pragma - Enum constants
 /** There are two sections: 
@@ -47,6 +48,7 @@ enum {
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSMutableArray *comments;
+@property (nonatomic, strong) JCImageGalleryViewController *imageGalleryViewController;
 
 /** Two rows in this section so far: Header and the feedback activity
  */
@@ -56,9 +58,10 @@ enum {
  */
 - (CGFloat)heightForActionCellForRow:(NSInteger)row;
 
-- (UITableViewCell *)HeaderSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
-- (ActionViewCell *)HeaderCellForTableView:(UITableView *)tableView;
-- (FeedbackActivityCell *)FeedbackActivityCellForTableView:(UITableView *)tableView;
-- (ActionViewCell *)CommentCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (ActionViewCell *)headerCellForTableView:(UITableView *)tableView;
+- (FeedbackActivityCell *)feedbackActivityCellForTableView:(UITableView *)tableView;
+- (ActionViewCell *)commentCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (UITableViewCell *)imageGalleryCellForTableView:(UITableView *)tableView;
 
 @end

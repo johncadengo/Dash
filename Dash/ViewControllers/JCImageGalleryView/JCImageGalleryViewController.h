@@ -10,4 +10,8 @@
 
 @interface JCImageGalleryViewController : UITableViewController
 
+@property (nonatomic, strong) UIView *rowView;
+
+- (id)initWithStyle:(UITableViewStyle)style withSize:(CGSize)size;
+
 @end
