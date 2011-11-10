@@ -135,7 +135,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     _cellType = newCellType;
     
     UITableViewCellSelectionStyle selectionStyle;
-    bool userInteractionEnabled;
+    BOOL userInteractionEnabled;
     
     // TODO: This all works as long as NONE is paired with NO.
     switch (_cellType) {

@@ -16,7 +16,7 @@ typedef enum {
     JCImageGalleryViewStateSpotlight = 2    // Shows a single image
 } JCImageGalleryViewState;
 
-@interface JCImageGalleryViewController : UIViewController
+@interface JCImageGalleryViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIView *superview;
 @property (nonatomic, strong) UIGestureRecognizer *tap;
@@ -26,6 +26,7 @@ typedef enum {
 
 @property (nonatomic, strong) NSMutableArray *images;
 @property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, getter=isToolbarVisible) BOOL toolbarVisible;
 @property (nonatomic, strong) UIBarButtonItem *done;
 @property (nonatomic) JCImageGalleryViewState state;
 
@@ -41,7 +42,7 @@ typedef enum {
 - (void)showPinholeView;
 - (void)showSpotlightView;
 
-- (void)showToolbar:(id)sender;
+- (void)toggleToolbar;
 - (void)handleDone:(id)sender;
 
 @end

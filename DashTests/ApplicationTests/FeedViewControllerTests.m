@@ -83,7 +83,7 @@
     
     // Valid inputs: 0, 1
     int mode;
-    bool backViewVisible;
+    BOOL backViewVisible;
     
     [self.feedViewController setListMode:kFriendsListMode];
     mode = self.feedViewController.listMode;
