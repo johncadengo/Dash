@@ -9,6 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+
+#import "Person.h"
+#import "Person+Helper.h"
+#import "Highlight.h"
+#import "Highlight+Helper.h"
+#import "Comment.h"
+#import "Comment+Helper.h"
+
+#import "Photo.h"
+
+#import "Action+Helper.h"
+#import "PersonPhoto+Helper.h"
+#import "PersonPhoto.h"
+
 #pragma - Enum constants
 // Some defaults
 enum {
@@ -18,13 +32,6 @@ enum {
 
 
 #pragma - Class definition
-
-@class Person;
-@class Highlight;
-@class Place;
-@class Photo;
-@class Comment;
-@class Action;
 
 @interface DashAPI : NSObject
 

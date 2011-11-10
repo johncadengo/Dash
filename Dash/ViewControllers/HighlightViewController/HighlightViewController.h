@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ActionViewCell.h"
-#import "JCImageGalleryViewController.h"
 
 #pragma - Enum constants
 /** There are two sections: 
@@ -17,15 +16,15 @@
  */
 enum {
     kHighlightHeaderSection = 0,
-    kHighlightCommentsSection = 1,
-    kHighlightPhotosSection = 2,
+    kHighlightPhotosSection = 1,
+    kHighlightCommentsSection = 2,
     kHighlightNumSections = 3
 };
 
 /** 
  */
 enum {
-    kHighlightNumRowsForHeaderSection = 2,   // Highlight and footer (# comments, # likes)
+    kHighlightNumRowsForHeaderSection = 1,   // Highlight and footer (# comments, # likes)
     kHighlightNumRowsForPhotoSection = 1
 };
 
@@ -41,6 +40,7 @@ enum {
 @class Highlight;
 @class DashAPI;
 @class FeedbackActivityCell;
+@class JCImageGalleryViewController;
 
 @interface HighlightViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate, ActionVIewCellDelegate>
 

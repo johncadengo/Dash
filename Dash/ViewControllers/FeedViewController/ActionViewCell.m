@@ -14,6 +14,7 @@
 #import "NSArray+Helpers.h"
 #import "NSString+RandomStrings.h"
 #import "PersonPhoto+Helper.h"
+#import "UIImage+ProportionalFill.h"
 
 @interface TISwipeableTableViewCell ()
 - (void)initialSetup;
@@ -164,11 +165,12 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 - (void)setWithAction:(Action*)action
 {
     NSString *iconPath = [[[action author] profilepic] localpath];
+    CGSize size = CGSizeMake(57.0f, 57.0f);
     
     self.name = [[action author] name];
     self.blurb = [action description];
     self.timestamp = [action relativeTimestamp];
-    self.image = [UIImage imageNamed:iconPath];
+    self.image = [[UIImage imageNamed:iconPath] imageCroppedToFitSize:size];
     
     [self setNeedsDisplay];
 }

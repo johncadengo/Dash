@@ -7,11 +7,14 @@
 //
 
 #import "Photo+Helper.h"
+#import "NSArray+Helpers.h"
 
 @implementation Photo (Helper)
 
 - (NSString *)localpath {
-    return [NSString stringWithFormat:@"icon.png"];
+    NSArray *photos = [NSArray arrayWithObjects:@"icon.png", @"Dash.png", @"DashApp.png", nil];
+    
+    return [NSString stringWithFormat:[photos randomObject]];
 }
 
 

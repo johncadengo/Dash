@@ -7,18 +7,10 @@
 //
 
 #import "DashAPI.h"
-#import "Person.h"
-#import "Person+Helper.h"
-#import "Highlight.h"
-#import "Highlight+Helper.h"
-#import "Comment.h"
-#import "Comment+Helper.h"
+
 #import "NSArray+Helpers.h"
 #import "NSString+RandomStrings.h"
-#import "Photo.h"
 #import "NSDate+RandomDates.h"
-#import "Action+Helper.h"
-
 
 // Private properties
 @interface DashAPI ()

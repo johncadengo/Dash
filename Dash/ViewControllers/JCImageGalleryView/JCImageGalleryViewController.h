@@ -30,19 +30,47 @@ typedef enum {
 @property (nonatomic, strong) UIBarButtonItem *done;
 @property (nonatomic) JCImageGalleryViewState state;
 
-- (id)initWithSuperview:(UIView *)superview;
-- (id)initWithSuperview:(UIView *)superview frame:(CGRect)frame;
+/** Defaults to the superview's frame.
+ */
+- (id)initWithImages:(NSArray *) images superview:(UIView *)superview;
+
+/** In case you want to use a frame smaller than the superview's.
+ */
+- (id)initWithImages:(NSArray *) images superview:(UIView *)superview frame:(CGRect)frame;
+
+/** Receive touch events and respond accordingly.
+ */
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
 
+/** If we tap the pinhole, we need to transform to the spotlight view and
+    zoom in on the appropriate picture.
+ */
 - (void)handlePinholeTap:(UIGestureRecognizer *)gestureRecognizer;
+
+/** If we tap the spotlight view we need to toggle the toolbars.
+ */
 - (void)handleSpotlightTap:(UIGestureRecognizer *)gestureRecognizer;
 
+/** When we set the state variable we also change the view accordingly.
+ */
 - (void)setState:(JCImageGalleryViewState)state;
 
+/** Called when a state change occurs where the new state is pinhole view.
+    Returns to the pinhole view when the done button is tapped on the toolbar.
+ */
 - (void)showPinholeView;
+
+/** Called when a state change occurs where the new state is spotlight view.
+    Called from the pinhole view when an image is tapped.
+ */
 - (void)showSpotlightView;
 
+/** Called in the spotlight view to turn the toolbar visible and hidden.
+ */
 - (void)toggleToolbar;
+
+/** Called when the done button is pushed. Will return us back to the pinhole view.
+ */
 - (void)handleDone:(id)sender;
 
 @end

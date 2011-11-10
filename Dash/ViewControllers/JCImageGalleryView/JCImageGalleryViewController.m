@@ -22,12 +22,12 @@
 @synthesize state = _state;
 @synthesize topView = _topView;
 
-- (id)initWithSuperview:(UIView *)superview
+- (id)initWithImages:(NSArray *) images superview:(UIView *)superview
 {
-    return [self initWithSuperview:superview frame:superview.frame];
+    return [self initWithImages:images superview:superview frame:superview.frame];
 }
 
-- (id)initWithSuperview:(UIView *)superview frame:(CGRect)frame
+- (id)initWithImages:(NSArray *) images superview:(UIView *)superview frame:(CGRect)frame
 {
     self = [super init];
     
@@ -229,6 +229,8 @@
 
 #pragma mark - Gesture recognizer delegate methods
 
+/** Lets touches on the toolbar pass through.
+ */
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     if ([touch.view.superview isKindOfClass:[UIToolbar class]]) return NO;

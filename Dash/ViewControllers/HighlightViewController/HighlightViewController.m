@@ -8,11 +8,12 @@
 
 #import "HighlightViewController.h"
 #import "TISwipeableTableView.h"
-#import "Highlight.h"
-#import "Highlight+Helper.h"
 #import "DashAPI.h"
 #import "Constants.h"
 #import "FeedbackActivityCell.h"
+#import "UIImage+ProportionalFill.h"
+#import "JCImageGalleryViewController.h"
+
 
 @implementation HighlightViewController
 
@@ -279,10 +280,20 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-
+        
+        CGSize size = CGSizeMake(57.0f, 57.0f);
+        UIImage *image;
+        NSString *iconPath;
+        NSMutableArray *images = [[NSMutableArray alloc] initWithCapacity:4];
+        for (Action *comment in self.comments) {
+            iconPath = [[[comment author] profilepic] localpath];
+            image = [[UIImage imageNamed:iconPath] imageCroppedToFitSize:size];
+            [images addObject:image];
+        }
+        
         CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 70.0f);
         cell.frame = frame;
-        self.imageGalleryViewController = [[JCImageGalleryViewController alloc] initWithSuperview:cell];
+        self.imageGalleryViewController = [[JCImageGalleryViewController alloc] initWithImages:images superview:cell];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
