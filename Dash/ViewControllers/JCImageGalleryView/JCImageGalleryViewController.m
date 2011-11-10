@@ -19,6 +19,7 @@
 @synthesize toolbar = _toolbar;
 @synthesize done = _done;
 @synthesize state = _state;
+@synthesize topView = _topView;
 
 - (id)initWithSuperview:(UIView *)superview
 {
@@ -32,6 +33,8 @@
     if (self) {
         self.images = [[NSMutableArray alloc] initWithCapacity:4];
 
+        self.topView = [[[[UIApplication sharedApplication] keyWindow] subviews] lastObject];
+        
         self.frame = frame;
         self.view = [[UIScrollView alloc] initWithFrame:self.frame];
         [self.view setBackgroundColor: [UIColor grayColor]];
@@ -51,33 +54,79 @@
     return self;    
 }
 
-- (void)showToolbar:(id)sender
-{
-    if (self.toolbar == nil) {
-        self.toolbar = [[UIToolbar alloc] init];
-        self.toolbar.barStyle = UIBarStyleBlack;
-        self.toolbar.translucent = YES;
-        
-        self.done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(handleDone:)];
-        [self.done setEnabled:YES];
-        
-        self.toolbarItems = [NSArray arrayWithObject:self.done];
-        [self.toolbar setItems:self.toolbarItems animated:YES];
-        [self.toolbar sizeToFit];
-    }
-    
-    [self.view addSubview:self.toolbar];
-}
-
 - (void)handleDone:(id)sender
 {
     [self.toolbar removeFromSuperview];
     [self.view addGestureRecognizer:self.tap];
+    [self setState:JCImageGalleryViewStatePinhole];
+}
 
-    CGRect oldframe = self.superview.frame;
-    CGRect newframe = CGRectMake(oldframe.origin.x, oldframe.origin.y - 20.f, oldframe.size.width , oldframe.size.height);
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
     
-    NSLog(@"hey %f %f %f %f", newframe.origin.x, newframe.origin.y, newframe.size.width, newframe.size.height);
+    // Release any cached data, images, etc that aren't in use.
+}
+
+- (void)setState:(JCImageGalleryViewState)state
+{
+    if (_state != state) {
+        // Keep the old one just in case we have to revert it
+        JCImageGalleryViewState oldState = _state;
+        _state = state;
+        
+        switch (_state) {
+            case JCImageGalleryViewStatePinhole:
+                [self showPinholeView];
+                break;
+            case JCImageGalleryViewStateGallery:
+
+                break;
+            case JCImageGalleryViewStateSpotlight:
+                [self showSpotlightView];
+                break;
+            default:
+                // We encountered a state that we haven't accounted for, revert it and error
+                _state = oldState;
+                NSAssert(NO, @"Tried to switch to a state that doesn't exist: %d", state);
+                break;
+        }
+    }
+}
+
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
+{
+    switch (self.state) {
+        case JCImageGalleryViewStatePinhole:
+            [self handlePinholeTap:gestureRecognizer];
+            break;
+        case JCImageGalleryViewStateSpotlight:
+            [self handleSpotlightTap:gestureRecognizer];
+            break;
+        default:
+            
+            break;
+    }
+    
+}
+
+
+- (void)handlePinholeTap:(UIGestureRecognizer *)gestureRecognizer
+{
+    [self setState:JCImageGalleryViewStateSpotlight];
+}
+
+- (void)handleSpotlightTap:(UIGestureRecognizer *)gestureRecognizer
+{
+    [self.view removeGestureRecognizer:gestureRecognizer];
+    [self showToolbar:self];
+    
+}
+
+- (void)showPinholeView
+{
+    CGRect newframe = [self.topView convertRect:self.superview.frame toView:self.superview];
     
     [UIView animateWithDuration:1.0
                           delay:0.0
@@ -100,40 +149,16 @@
                      }
                      completion:nil];
     
-    [self setState:JCImageGalleryViewStatePinhole];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO   
+                                            withAnimation:UIStatusBarAnimationSlide];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)showSpotlightView
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
-{
-    switch (self.state) {
-        case JCImageGalleryViewStatePinhole:
-            [self handlePinholeTap:gestureRecognizer];
-            break;
-        case JCImageGalleryViewStateSpotlight:
-            [self handleSpotlightTap:gestureRecognizer];
-            break;
-        default:
-            
-            break;
-    }
-    
-}
-
-
-- (void)handlePinholeTap:(UIGestureRecognizer *)gestureRecognizer
-{
-    CGRect newframe = [[UIScreen mainScreen] applicationFrame];
+    CGRect newframe = self.topView.frame;
     
     CGRect frame = self.superview.frame;
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];    
+    [self.topView addSubview:self.view];
     self.view.frame = frame;
     
     [UIView animateWithDuration:1.5
@@ -143,8 +168,8 @@
                          self.view.frame = newframe;
                      }
                      completion:^(BOOL finished){
-                         // Wait one second and then fade in the view
-                         
+                         [[UIApplication sharedApplication] setStatusBarHidden:YES   
+                                                                 withAnimation:UIStatusBarAnimationSlide];
                      }];
     
     [UIView animateWithDuration:1.0
@@ -153,17 +178,27 @@
                      animations:^{
                          self.view.backgroundColor = [UIColor blackColor];
                      }
-                     completion:nil];
-    
-    [self setState:JCImageGalleryViewStateSpotlight];
+                     completion:nil];    
 }
 
-- (void)handleSpotlightTap:(UIGestureRecognizer *)gestureRecognizer
+- (void)showToolbar:(id)sender
 {
-    [self.view removeGestureRecognizer:gestureRecognizer];
-    [self showToolbar:self];
+    if (self.toolbar == nil) {
+        self.toolbar = [[UIToolbar alloc] init];
+        self.toolbar.barStyle = UIBarStyleBlack;
+        self.toolbar.translucent = YES;
+        
+        self.done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(handleDone:)];
+        [self.done setEnabled:YES];
+        
+        self.toolbarItems = [NSArray arrayWithObject:self.done];
+        [self.toolbar setItems:self.toolbarItems animated:YES];
+        [self.toolbar sizeToFit];
+    }
     
+    [self.view addSubview:self.toolbar];
 }
+
 
 #pragma mark - View lifecycle
 
@@ -211,88 +246,6 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    // Configure the cell...
-    
-    return cell;
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 @end

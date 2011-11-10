@@ -22,6 +22,7 @@ typedef enum {
 @property (nonatomic, strong) UIGestureRecognizer *tap;
 @property (nonatomic, strong) UIScrollView *view;
 @property (nonatomic) CGRect frame;
+@property (nonatomic, strong) UIView *topView;
 
 @property (nonatomic, strong) NSMutableArray *images;
 @property (nonatomic, strong) UIToolbar *toolbar;
@@ -34,6 +35,11 @@ typedef enum {
 
 - (void)handlePinholeTap:(UIGestureRecognizer *)gestureRecognizer;
 - (void)handleSpotlightTap:(UIGestureRecognizer *)gestureRecognizer;
+
+- (void)setState:(JCImageGalleryViewState)state;
+
+- (void)showPinholeView;
+- (void)showSpotlightView;
 
 - (void)showToolbar:(id)sender;
 - (void)handleDone:(id)sender;
