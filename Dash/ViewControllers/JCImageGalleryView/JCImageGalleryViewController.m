@@ -13,6 +13,7 @@
 
 @synthesize superview = _mySuperview;
 @synthesize view = _myView;
+@synthesize frame = _frame;
 @synthesize tap = _tap;
 @synthesize images = _images;
 @synthesize toolbar = _toolbar;
@@ -30,8 +31,9 @@
     
     if (self) {
         self.images = [[NSMutableArray alloc] initWithCapacity:4];
-        
-        self.view = [[UIScrollView alloc] initWithFrame:frame];
+
+        self.frame = frame;
+        self.view = [[UIScrollView alloc] initWithFrame:self.frame];
         [self.view setBackgroundColor: [UIColor grayColor]];
 
 
@@ -71,7 +73,34 @@
 {
     [self.toolbar removeFromSuperview];
     [self.view addGestureRecognizer:self.tap];
+
+    CGRect oldframe = self.superview.frame;
+    CGRect newframe = CGRectMake(oldframe.origin.x, oldframe.origin.y - 20.f, oldframe.size.width , oldframe.size.height);
     
+    NSLog(@"hey %f %f %f %f", newframe.origin.x, newframe.origin.y, newframe.size.width, newframe.size.height);
+    
+    [UIView animateWithDuration:1.0
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseIn
+                     animations:^{
+                         self.view.frame = newframe;
+                     }
+                     completion:^(BOOL finished){
+                         // Wait one second and then fade in the view
+                         [self.view removeFromSuperview];
+                         self.view.frame = self.frame;
+                         [self.superview addSubview:self.view];
+                     }];
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.5
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         self.view.backgroundColor = [UIColor grayColor];
+                     }
+                     completion:nil];
+    
+    [self setState:JCImageGalleryViewStatePinhole];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,37 +113,56 @@
 
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    if (self.state == JCImageGalleryViewStatePinhole) {
-        CGRect newframe = [[UIScreen mainScreen] applicationFrame];
-
-        UIView *souper = self.view.superview;
-        CGRect frame = souper.frame;
-        [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];    
-        self.view.frame = frame;
-
-        [UIView animateWithDuration:1.0
-                              delay: 0.0
-                            options: UIViewAnimationOptionCurveEaseIn
-                         animations:^{
-                             self.view.frame = newframe;
-                         }
-                         completion:^(BOOL finished){
-                             // Wait one second and then fade in the view
-                             [UIView animateWithDuration:1.0
-                                                   delay: 1.0
-                                                 options:UIViewAnimationOptionCurveEaseOut
-                                              animations:^{
-                                                  //self.rowView.alpha = 0.7;
-                                              }
-                                              completion:nil];
-                         }];
-        
-        [self setState:JCImageGalleryViewStateGallery];
+    switch (self.state) {
+        case JCImageGalleryViewStatePinhole:
+            [self handlePinholeTap:gestureRecognizer];
+            break;
+        case JCImageGalleryViewStateSpotlight:
+            [self handleSpotlightTap:gestureRecognizer];
+            break;
+        default:
+            
+            break;
     }
-    else {
-        [self.view removeGestureRecognizer:gestureRecognizer];
-        [self showToolbar:self];
-    }
+    
+}
+
+
+- (void)handlePinholeTap:(UIGestureRecognizer *)gestureRecognizer
+{
+    CGRect newframe = [[UIScreen mainScreen] applicationFrame];
+    
+    CGRect frame = self.superview.frame;
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];    
+    self.view.frame = frame;
+    
+    [UIView animateWithDuration:1.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+                         self.view.frame = newframe;
+                     }
+                     completion:^(BOOL finished){
+                         // Wait one second and then fade in the view
+                         
+                     }];
+    
+    [UIView animateWithDuration:1.0
+                          delay:0.5
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         self.view.backgroundColor = [UIColor blackColor];
+                     }
+                     completion:nil];
+    
+    [self setState:JCImageGalleryViewStateSpotlight];
+}
+
+- (void)handleSpotlightTap:(UIGestureRecognizer *)gestureRecognizer
+{
+    [self.view removeGestureRecognizer:gestureRecognizer];
+    [self showToolbar:self];
+    
 }
 
 #pragma mark - View lifecycle
