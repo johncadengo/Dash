@@ -7,29 +7,31 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JCImageGalleryView.h"
 
 /** Keeps track of the state of the view
  */
 typedef enum {
-    JCImageGalleryViewStateRow = 0,
-    JCImageGalleryViewStateOverlay = 1
-}JCImageGalleryViewState;
+    JCImageGalleryViewStatePinhole = 0,     // Embed this in another view
+    JCImageGalleryViewStateGallery = 1,     // Shows images categorized by album
+    JCImageGalleryViewStateSpotlight = 2    // Shows a single image
+} JCImageGalleryViewState;
 
-@interface JCImageGalleryViewController : UITableViewController
+@interface JCImageGalleryViewController : UIViewController
 
-@property (nonatomic, strong) JCImageGalleryView *view;
+@property (nonatomic, strong) UIView *superview;
 @property (nonatomic, strong) UIGestureRecognizer *tap;
+@property (nonatomic, strong) UIScrollView *view;
+
 @property (nonatomic, strong) NSMutableArray *images;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *done;
 @property (nonatomic) JCImageGalleryViewState state;
 
-- (id)initWithStyle:(UITableViewStyle)style withSize:(CGSize)size;
+- (id)initWithSuperview:(UIView *)superview;
+- (id)initWithSuperview:(UIView *)superview frame:(CGRect)frame;
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
 
 - (void)showToolbar:(id)sender;
 - (void)handleDone:(id)sender;
-- (void)flipState;
 
 @end

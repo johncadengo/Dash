@@ -11,6 +11,7 @@
 
 @implementation JCImageGalleryViewController
 
+@synthesize superview = _mySuperview;
 @synthesize view = _myView;
 @synthesize tap = _tap;
 @synthesize images = _images;
@@ -18,28 +19,34 @@
 @synthesize done = _done;
 @synthesize state = _state;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithSuperview:(UIView *)superview
 {
-    CGSize size = CGSizeMake(320.0f, 70.0f);
-    return [self initWithStyle:style withSize:size];
+    return [self initWithSuperview:superview frame:superview.frame];
 }
 
-- (id)initWithStyle:(UITableViewStyle)style withSize:(CGSize)size
+- (id)initWithSuperview:(UIView *)superview frame:(CGRect)frame
 {
-    self = [super initWithStyle:style];
+    self = [super init];
+    
     if (self) {
-        CGRect frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
-        self.view = [[JCImageGalleryView alloc] initWithFrame:frame];
-        [self.view setBackgroundColor: [UIColor grayColor]];
-        
         self.images = [[NSMutableArray alloc] initWithCapacity:4];
         
+        self.view = [[UIScrollView alloc] initWithFrame:frame];
+        [self.view setBackgroundColor: [UIColor grayColor]];
+
+
         self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
         [self.view addGestureRecognizer:self.tap];
         
-        self.state = JCImageGalleryViewStateRow;
+        self.superview = superview;
+        [self.superview addSubview:self.view];
+        
+        // We always begin in the pinhole state 
+        // because we are initializing inside of a superview
+        self.state = JCImageGalleryViewStatePinhole;
     }
-    return self;
+    
+    return self;    
 }
 
 - (void)showToolbar:(id)sender
@@ -62,7 +69,6 @@
 
 - (void)handleDone:(id)sender
 {
-    NSLog(@"hey hey hey");
     [self.toolbar removeFromSuperview];
     [self.view addGestureRecognizer:self.tap];
     
@@ -78,7 +84,7 @@
 
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    if (self.state == JCImageGalleryViewStateRow) {
+    if (self.state == JCImageGalleryViewStatePinhole) {
         CGRect newframe = [[UIScreen mainScreen] applicationFrame];
 
         UIView *souper = self.view.superview;
@@ -103,17 +109,12 @@
                                               completion:nil];
                          }];
         
-        [self flipState];
+        [self setState:JCImageGalleryViewStateGallery];
     }
     else {
         [self.view removeGestureRecognizer:gestureRecognizer];
         [self showToolbar:self];
     }
-}
-
-- (void)flipState
-{
-    self.state = (self.state == JCImageGalleryViewStateOverlay) ? JCImageGalleryViewStateRow : JCImageGalleryViewStateOverlay;
 }
 
 #pragma mark - View lifecycle

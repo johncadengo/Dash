@@ -13,7 +13,6 @@
 #import "DashAPI.h"
 #import "Constants.h"
 #import "FeedbackActivityCell.h"
-#import "JCImageGalleryView.h"
 
 @implementation HighlightViewController
 
@@ -53,9 +52,7 @@
     self.comments = [self.api commentsForHighlight:self.highlight];
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
-    
-    self.imageGalleryViewController = [[JCImageGalleryViewController alloc] initWithStyle:UITableViewStylePlain];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -280,10 +277,12 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        [cell addSubview: [self.imageGalleryViewController view]];
+
+        CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 70.0f);
+        cell.frame = frame;
+        self.imageGalleryViewController = [[JCImageGalleryViewController alloc] initWithSuperview:cell];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -63,7 +63,6 @@
 		679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EE1450EB9600511E0F /* PlacesViewController.m */; };
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
-		67937141146A42DE00D74465 /* JCImageGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67937140146A42DE00D74465 /* JCImageGalleryView.m */; };
 		6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */; };
 		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
 		679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F91469D19600E0CDE2 /* Photo+Helper.m */; };
@@ -287,8 +286,6 @@
 		679009F11450ED8800511E0F /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.m; sourceTree = "<group>"; };
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
-		6793713F146A42DE00D74465 /* JCImageGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCImageGalleryView.h; path = Dash/ViewControllers/JCImageGalleryView/JCImageGalleryView.h; sourceTree = "<group>"; };
-		67937140146A42DE00D74465 /* JCImageGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCImageGalleryView.m; path = Dash/ViewControllers/JCImageGalleryView/JCImageGalleryView.m; sourceTree = "<group>"; };
 		6796A8ED1461CC2500F87D93 /* FeedViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewControllerTests.h; path = ApplicationTests/FeedViewControllerTests.h; sourceTree = "<group>"; };
 		6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewControllerTests.m; path = ApplicationTests/FeedViewControllerTests.m; sourceTree = "<group>"; };
 		679A48F51469D02F00E0CDE2 /* FeedbackActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackActivityCell.h; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.h; sourceTree = "<group>"; };
@@ -767,8 +764,6 @@
 			children = (
 				679A49041469F2A900E0CDE2 /* JCImageGalleryViewController.h */,
 				679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */,
-				6793713F146A42DE00D74465 /* JCImageGalleryView.h */,
-				67937140146A42DE00D74465 /* JCImageGalleryView.m */,
 			);
 			name = JCImageGalleryView;
 			sourceTree = "<group>";
@@ -1206,7 +1201,6 @@
 				679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */,
 				679A48FD1469D30800E0CDE2 /* PersonPhoto+Helper.m in Sources */,
 				679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */,
-				67937141146A42DE00D74465 /* JCImageGalleryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
