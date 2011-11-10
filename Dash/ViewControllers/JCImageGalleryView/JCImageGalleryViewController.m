@@ -126,11 +126,11 @@
 
 - (void)showPinholeView
 {
-    CGRect newframe = [self.topView convertRect:self.superview.frame toView:self.superview];
+    CGRect newframe = [self.superview convertRect:self.frame toView:self.topView];
     
     [UIView animateWithDuration:1.0
                           delay:0.0
-                        options:UIViewAnimationCurveEaseIn
+                        options:UIViewAnimationCurveEaseOut
                      animations:^{
                          self.view.frame = newframe;
                      }
@@ -155,17 +155,14 @@
 
 - (void)showSpotlightView
 {
-    CGRect newframe = self.topView.frame;
-    
-    CGRect frame = self.superview.frame;
     [self.topView addSubview:self.view];
-    self.view.frame = frame;
+    self.view.frame = [self.topView convertRect:self.view.frame fromView:self.superview];
     
     [UIView animateWithDuration:1.5
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         self.view.frame = newframe;
+                         self.view.frame = self.topView.frame;
                      }
                      completion:^(BOOL finished){
                          [[UIApplication sharedApplication] setStatusBarHidden:YES   
