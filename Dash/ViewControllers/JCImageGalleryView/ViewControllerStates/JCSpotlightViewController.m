@@ -14,6 +14,9 @@
 @synthesize toolbarVisible = _toolbarVisible;
 @synthesize done = _done;
 @synthesize seeAll = _seeAll;
+@synthesize leftSwipe = _leftSwipe;
+@synthesize rightSwipe = _rightSwipe;
+@synthesize page = _page;
 
 #pragma mark - Some UI constants
 
@@ -45,6 +48,16 @@ static CGFloat kLeftPadding = 0.0f;
         self.toolbarItems = [NSArray arrayWithObjects:self.done, flexibleSpace, self.seeAll, nil];
         [self.toolbar setItems:self.toolbarItems animated:YES];
         [self.toolbar sizeToFit];
+        
+        self.leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        self.leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self.context.view addGestureRecognizer:self.leftSwipe];
+        
+        self.rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        self.rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.context.view addGestureRecognizer:self.rightSwipe];
+
+        self.page = 1;
     }
     
     return self;
@@ -82,6 +95,18 @@ static CGFloat kLeftPadding = 0.0f;
     self.isToolbarVisible ? [self setToolbarVisible:NO] : [self setToolbarVisible:YES];
 }
 
+- (CGRect)rectForPage:(NSInteger)newPage
+{
+    CGFloat curX = self.context.view.frame.origin.x;
+    CGFloat curY = self.context.view.frame.origin.y;
+    CGFloat width = self.context.view.frame.size.width;
+    CGFloat height = self.context.view.frame.size.height;
+    
+    CGRect rect = CGRectMake(curX + (width * newPage), curY, width, height);
+    
+    return rect;
+}
+
 #pragma mark - JCImageGalleryController
 
 /** Want to lay out the images side by side, one full screen per image
@@ -107,7 +132,16 @@ static CGFloat kLeftPadding = 0.0f;
  */
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    [self toggleToolbar];
+    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+        [self toggleToolbar];
+    }
+    else {
+        self.page += 1;
+        CGRect newRect = [self rectForPage:self.page];
+        [self.context.view scrollRectToVisible:newRect animated:YES];
+        
+        NSLog(@"HEY HEY %f %f", newRect.origin.x, newRect.origin.y);
+    }
 }
 
 /** Takes over the full screen and hides the status bar.
@@ -122,6 +156,9 @@ static CGFloat kLeftPadding = 0.0f;
  
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:YES];
+    
+    CGSize contentSize = CGSizeMake(kImageWidth * [self.context.imageViews count], kImageWidth);
+    self.context.view.contentSize = contentSize;
     
     [UIView animateWithDuration:1.5
                           delay:0.0
