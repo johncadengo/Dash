@@ -13,30 +13,16 @@
 
 @property (nonatomic, strong) JCImageGalleryViewController *delegate;
 
-@property (nonatomic, strong) UIToolbar *toolbar;
-@property (nonatomic, getter=isToolbarVisible) BOOL toolbarVisible;
-@property (nonatomic, strong) UIBarButtonItem *done;
-
-
-- (id)initWithImages:(NSMutableArray *) images superview:(UIView *)superview frame:(CGRect)frame;
-
-/** If we tap the pinhole, we need to transform to the spotlight view and
-    zoom in on the appropriate picture.
+/** JCViewController is useless without a delegate. Must call this init statement.
  */
-/** If we tap the spotlight view we need to toggle the toolbars.
+- (id)initWithDelegate:(id)delegate;
+
+/** Must be able to know what to do with gestures.
  */
 - (void)handleTap:(UIGestureRecognizer *)gestureRecognizer;
 
-/**
+/** Needs to be able to show itself.
  */
 - (void)show;
-
-/** Called in the spotlight view to turn the toolbar visible and hidden.
- */
-- (void)toggleToolbar;
-
-/** Called when the done button is pushed. Will return us back to the pinhole view.
- */
-- (void)handleDone:(id)sender;
 
 @end

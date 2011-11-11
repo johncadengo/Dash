@@ -35,6 +35,7 @@ typedef enum {
 
 @interface JCImageGalleryViewController : UIViewController <UIGestureRecognizerDelegate, JCViewControllerDelegate>
 
+// Things that switch
 @property (nonatomic) JCImageGalleryViewState state;
 @property (nonatomic, strong) JCViewController *currentViewController;
 @property (nonatomic, strong) JCPinholeViewController *pinholeViewController;
@@ -42,6 +43,7 @@ typedef enum {
 @property (nonatomic, strong) JCSpotlightViewController *spotlightViewController;
 @property (nonatomic, strong) UIGestureRecognizer *tap;
 
+// Things that share
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *superview;
 @property (nonatomic, strong) UIScrollView *view;

@@ -53,12 +53,9 @@
         [self.superview addSubview:self.view];
         
         //
-        self.pinholeViewController = [[JCPinholeViewController alloc] initWithImages:images superview:superview frame:frame];
-        self.spotlightViewController = [[JCSpotlightViewController alloc] initWithImages:images superview:superview frame:frame];
+        self.pinholeViewController = [[JCPinholeViewController alloc] initWithDelegate:self];
+        self.spotlightViewController = [[JCSpotlightViewController alloc] initWithDelegate:self];
     
-        [self.pinholeViewController setDelegate:self];
-        [self.spotlightViewController setDelegate:self];
-        
         self.currentViewController = self.pinholeViewController;
         
         self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];

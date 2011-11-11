@@ -11,8 +11,16 @@
 
 @interface JCSpotlightViewController : JCViewController
 
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, getter=isToolbarVisible) BOOL toolbarVisible;
+@property (nonatomic, strong) UIBarButtonItem *done;
 
+/** Called in the spotlight view to turn the toolbar visible and hidden.
+ */
+- (void)toggleToolbar;
 
-
+/** Called when the done button is pushed. Will return us back to the pinhole view.
+ */
+- (void)handleDone:(id)sender;
 
 @end

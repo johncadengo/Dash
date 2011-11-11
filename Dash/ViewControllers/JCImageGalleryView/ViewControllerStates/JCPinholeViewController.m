@@ -10,12 +10,18 @@
 
 @implementation JCPinholeViewController
 
+
+/** If we tap the pinhole, we need to transform to the spotlight view and
+    zoom in on the appropriate picture.
+ */
 - (void)handleTap:(UIGestureRecognizer *)gestureRecognizer
 {
     [self.delegate setState:JCImageGalleryViewStateSpotlight];
     
 }
 
+/** Returns to pinhole view, which is our initial frame assigned by the coder.
+ */
 - (void)show
 {
     CGRect newframe = [self.delegate.superview convertRect:self.delegate.frame toView:self.delegate.topView];
