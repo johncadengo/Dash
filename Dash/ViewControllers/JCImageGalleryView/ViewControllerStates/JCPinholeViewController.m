@@ -67,6 +67,7 @@ static CGFloat kLeftPadding = 8.0f;
 - (void)show
 {
     [self.context.view setScrollEnabled:NO];
+    [self.context.view setPagingEnabled:NO];
     
     CGRect newframe = [self.context.superview convertRect:self.context.frame toView:self.context.topView];
     
@@ -100,7 +101,9 @@ static CGFloat kLeftPadding = 8.0f;
                      completion:nil];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO   
-                                            withAnimation:UIStatusBarAnimationSlide];    
+                                            withAnimation:UIStatusBarAnimationSlide];
+    
+    [self.context.view setContentSize:CGSizeZero];
 }
 
 - (void)hide

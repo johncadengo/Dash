@@ -14,8 +14,6 @@
 @synthesize toolbarVisible = _toolbarVisible;
 @synthesize done = _done;
 @synthesize seeAll = _seeAll;
-@synthesize leftSwipe = _leftSwipe;
-@synthesize rightSwipe = _rightSwipe;
 @synthesize page = _page;
 
 #pragma mark - Some UI constants
@@ -23,6 +21,7 @@
 static CGFloat kImageWidth = 320.0f;
 static CGFloat kTopPadding = 80.0f;
 static CGFloat kLeftPadding = 0.0f;
+static CGFloat kStatusBarHeight = 20.0f;
 
 #pragma mark - Implementation
 
@@ -32,10 +31,10 @@ static CGFloat kLeftPadding = 0.0f;
     
     if (self) {
         // Let's make the toolbar
-        self.toolbarVisible = NO;
         self.toolbar = [[UIToolbar alloc] init];
         self.toolbar.barStyle = UIBarStyleBlack;
         self.toolbar.translucent = YES;
+        self.toolbar.frame = CGRectMake(self.toolbar.frame.origin.x, self.toolbar.frame.origin.y + kStatusBarHeight, self.toolbar.frame.size.width, self.toolbar.frame.size.height);
         
         self.done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(handleDone:)];
         [self.done setEnabled:YES];
@@ -49,15 +48,7 @@ static CGFloat kLeftPadding = 0.0f;
         [self.toolbar setItems:self.toolbarItems animated:YES];
         [self.toolbar sizeToFit];
         
-        self.leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-        self.leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
-        [self.context.view addGestureRecognizer:self.leftSwipe];
-        
-        self.rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-        self.rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
-        [self.context.view addGestureRecognizer:self.rightSwipe];
-
-        self.page = 1;
+        self.page = 0;
     }
     
     return self;
@@ -83,7 +74,7 @@ static CGFloat kLeftPadding = 0.0f;
     }
     else {
         // Otherwise, add it
-        [self.context.view addSubview:self.toolbar];        
+        [self.context.topView addSubview:self.toolbar];        
     }
     
     // Now set the BOOL to reflect the changes
@@ -93,18 +84,20 @@ static CGFloat kLeftPadding = 0.0f;
 - (void)toggleToolbar
 {
     self.isToolbarVisible ? [self setToolbarVisible:NO] : [self setToolbarVisible:YES];
+    
+    // Pair this with showing the status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:!self.isToolbarVisible
+                                            withAnimation:UIStatusBarAnimationNone];
 }
 
-- (CGRect)rectForPage:(NSInteger)newPage
+- (CGPoint)originForPage:(NSInteger)newPage
 {
-    CGFloat curX = self.context.view.frame.origin.x;
-    CGFloat curY = self.context.view.frame.origin.y;
-    CGFloat width = self.context.view.frame.size.width;
-    CGFloat height = self.context.view.frame.size.height;
+    CGFloat x = kImageWidth * newPage;
+    CGFloat y = 0.0f;
     
-    CGRect rect = CGRectMake(curX + (width * newPage), curY, width, height);
+    CGPoint origin = CGPointMake(x, y);
     
-    return rect;
+    return origin;
 }
 
 #pragma mark - JCImageGalleryController
@@ -134,13 +127,6 @@ static CGFloat kLeftPadding = 0.0f;
 {
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
         [self toggleToolbar];
-    }
-    else {
-        self.page += 1;
-        CGRect newRect = [self rectForPage:self.page];
-        [self.context.view scrollRectToVisible:newRect animated:YES];
-        
-        NSLog(@"HEY HEY %f %f", newRect.origin.x, newRect.origin.y);
     }
 }
 
@@ -193,6 +179,9 @@ static CGFloat kLeftPadding = 0.0f;
 {
     // Hide the toolbar when we are leaving this view.
     [self setToolbarVisible:NO];
+    
+    // Go back to the first page, which is page 0
+    //[self.context.view setContentOffset:[self originForPage:0] animated:NO];
 }
 
 
