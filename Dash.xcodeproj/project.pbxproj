@@ -97,6 +97,10 @@
 		67E7CA92146A2C0B00B7CBCF /* Dash.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA90146A2C0B00B7CBCF /* Dash.png */; };
 		67E7CA93146A2C0B00B7CBCF /* DashApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA91146A2C0B00B7CBCF /* DashApp.png */; };
 		67E7D94E146862E000E86F31 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		67EDA900146C887F00AD3625 /* JCPinholeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA8FF146C887F00AD3625 /* JCPinholeViewController.m */; };
+		67EDA903146C8D6E00AD3625 /* JCSpotlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA902146C8D6D00AD3625 /* JCSpotlightViewController.m */; };
+		67EDA906146C8D8300AD3625 /* JCGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA905146C8D8200AD3625 /* JCGalleryViewController.m */; };
+		67EDA909146C8DF700AD3625 /* JCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA908146C8DF700AD3625 /* JCViewController.m */; };
 		67F22FCC145F09D40010A09F /* ActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FCB145F09D40010A09F /* ActionViewCell.m */; };
 		67F22FE4145F0DDF0010A09F /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE3145F0DDF0010A09F /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FE7145F0DE50010A09F /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE6145F0DE50010A09F /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -350,6 +354,14 @@
 		67E7CA91146A2C0B00B7CBCF /* DashApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DashApp.png; path = Dash/Images/Icons/DashApp.png; sourceTree = "<group>"; };
 		67E7D94C146862E000E86F31 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGORefreshTableHeaderView.h; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGORefreshTableHeaderView.m; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		67EDA8FE146C887F00AD3625 /* JCPinholeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCPinholeViewController.h; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCPinholeViewController.h; sourceTree = "<group>"; };
+		67EDA8FF146C887F00AD3625 /* JCPinholeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCPinholeViewController.m; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCPinholeViewController.m; sourceTree = "<group>"; };
+		67EDA901146C8D6D00AD3625 /* JCSpotlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCSpotlightViewController.h; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCSpotlightViewController.h; sourceTree = "<group>"; };
+		67EDA902146C8D6D00AD3625 /* JCSpotlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCSpotlightViewController.m; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCSpotlightViewController.m; sourceTree = "<group>"; };
+		67EDA904146C8D8200AD3625 /* JCGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCGalleryViewController.h; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCGalleryViewController.h; sourceTree = "<group>"; };
+		67EDA905146C8D8200AD3625 /* JCGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCGalleryViewController.m; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCGalleryViewController.m; sourceTree = "<group>"; };
+		67EDA907146C8DF600AD3625 /* JCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = JCViewController.h; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCViewController.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		67EDA908146C8DF700AD3625 /* JCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = JCViewController.m; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCViewController.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		67F22FCA145F09D40010A09F /* ActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionViewCell.h; path = Dash/ViewControllers/FeedViewController/ActionViewCell.h; sourceTree = "<group>"; };
 		67F22FCB145F09D40010A09F /* ActionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionViewCell.m; path = Dash/ViewControllers/FeedViewController/ActionViewCell.m; sourceTree = "<group>"; };
 		67F22FE2145F0DDF0010A09F /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOCache.h; path = Helpers/EGOImageLoading/EGOCache/EGOCache.h; sourceTree = "<group>"; };
@@ -764,6 +776,7 @@
 			children = (
 				679A49041469F2A900E0CDE2 /* JCImageGalleryViewController.h */,
 				679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */,
+				67EDA8FD146C87C200AD3625 /* ViewControllerStates */,
 			);
 			name = JCImageGalleryView;
 			sourceTree = "<group>";
@@ -849,6 +862,21 @@
 				67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */,
 			);
 			name = EGOTableViewPullRefresh;
+			sourceTree = "<group>";
+		};
+		67EDA8FD146C87C200AD3625 /* ViewControllerStates */ = {
+			isa = PBXGroup;
+			children = (
+				67EDA907146C8DF600AD3625 /* JCViewController.h */,
+				67EDA908146C8DF700AD3625 /* JCViewController.m */,
+				67EDA8FE146C887F00AD3625 /* JCPinholeViewController.h */,
+				67EDA8FF146C887F00AD3625 /* JCPinholeViewController.m */,
+				67EDA901146C8D6D00AD3625 /* JCSpotlightViewController.h */,
+				67EDA902146C8D6D00AD3625 /* JCSpotlightViewController.m */,
+				67EDA904146C8D8200AD3625 /* JCGalleryViewController.h */,
+				67EDA905146C8D8200AD3625 /* JCGalleryViewController.m */,
+			);
+			name = ViewControllerStates;
 			sourceTree = "<group>";
 		};
 		67F22FCD145F0C520010A09F /* Helpers */ = {
@@ -1201,6 +1229,10 @@
 				679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */,
 				679A48FD1469D30800E0CDE2 /* PersonPhoto+Helper.m in Sources */,
 				679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */,
+				67EDA900146C887F00AD3625 /* JCPinholeViewController.m in Sources */,
+				67EDA903146C8D6E00AD3625 /* JCSpotlightViewController.m in Sources */,
+				67EDA906146C8D8300AD3625 /* JCGalleryViewController.m in Sources */,
+				67EDA909146C8DF700AD3625 /* JCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

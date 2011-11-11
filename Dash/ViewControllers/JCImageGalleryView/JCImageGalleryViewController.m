@@ -7,225 +7,127 @@
 //
 
 #import "JCImageGalleryViewController.h"
+#import "JCViewController.h"
+#import "JCPinholeViewController.h"
+#import "JCGalleryViewController.h"
+#import "JCSpotlightViewController.h"
 #import "AppDelegate.h"
 
 @implementation JCImageGalleryViewController
 
-@synthesize superview = _mySuperview;
+@synthesize state = _state;
+@synthesize currentViewController = _currentViewController;
+@synthesize pinholeViewController = _pinholeViewController;
+@synthesize galleryViewController = _galleryViewController;
+@synthesize spotlightViewController = _spotlightViewController;
+@synthesize tap = _tap;
+
+@synthesize topView = _topView;
+@synthesize superview = _superview;
 @synthesize view = _myView;
 @synthesize frame = _frame;
-@synthesize tap = _tap;
 @synthesize images = _images;
-@synthesize toolbar = _toolbar;
-@synthesize toolbarVisible = _toolbarVisible;
-@synthesize done = _done;
-@synthesize state = _state;
-@synthesize topView = _topView;
+@synthesize imageViews = _imageViews;
 
-- (id)initWithImages:(NSArray *) images superview:(UIView *)superview
+- (id)initWithImages:(NSMutableArray *) images superview:(UIView *)superview
 {
     return [self initWithImages:images superview:superview frame:superview.frame];
 }
 
-- (id)initWithImages:(NSArray *) images superview:(UIView *)superview frame:(CGRect)frame
+- (id)initWithImages:(NSMutableArray *) images superview:(UIView *)superview frame:(CGRect)frame
 {
     self = [super init];
     
     if (self) {
-        self.images = [[NSMutableArray alloc] initWithCapacity:4];
-
+        self.images = [[NSMutableArray alloc] initWithArray:images];
+        self.imageViews = [[NSMutableArray alloc] initWithCapacity:[self.images count]];
+        [self setImageViewsWithImages:self.images];
+        
         self.topView = [[[[UIApplication sharedApplication] keyWindow] subviews] lastObject];
         
         self.frame = frame;
         self.view = [[UIScrollView alloc] initWithFrame:self.frame];
         [self.view setBackgroundColor: [UIColor grayColor]];
-
-
-        self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-        [self.view addGestureRecognizer:self.tap];
-        [self.tap setDelegate:self];
         
         self.superview = superview;
         [self.superview addSubview:self.view];
         
-        // We always begin in the pinhole state 
-        // because we are initializing inside of a superview
-        self.state = JCImageGalleryViewStatePinhole;
+        //
+        self.pinholeViewController = [[JCPinholeViewController alloc] initWithImages:images superview:superview frame:frame];
+        self.spotlightViewController = [[JCSpotlightViewController alloc] initWithImages:images superview:superview frame:frame];
+    
+        [self.pinholeViewController setDelegate:self];
+        [self.spotlightViewController setDelegate:self];
         
-        // Let's make the toolbar
-        self.toolbarVisible = NO;
-        self.toolbar = [[UIToolbar alloc] init];
-        self.toolbar.barStyle = UIBarStyleBlack;
-        self.toolbar.translucent = YES;
+        self.currentViewController = self.pinholeViewController;
         
-        self.done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(handleDone:)];
-        [self.done setEnabled:YES];
-        
-        self.toolbarItems = [NSArray arrayWithObject:self.done];
-        [self.toolbar setItems:self.toolbarItems animated:YES];
-        [self.toolbar sizeToFit];
+        self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        [self.view addGestureRecognizer:self.tap];
+        [self.tap setDelegate:self];
     }
     
     return self;    
 }
 
-- (void)handleDone:(id)sender
+- (void)setImageViewsWithImages:(NSMutableArray *)images
 {
-    [self.toolbar removeFromSuperview];
-    [self.view addGestureRecognizer:self.tap];
-    [self setState:JCImageGalleryViewStatePinhole];
+    UIImageView *imageView;
+    for (UIImage *image in images) {
+        imageView = [[UIImageView alloc] initWithImage:image];
+        [self.imageViews addObject:imageView];
+    }
 }
 
-- (void)didReceiveMemoryWarning
+- (void)setState:(JCImageGalleryViewState)newState
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)setState:(JCImageGalleryViewState)state
-{
-    if (_state != state) {
+    if (_state != newState) {
         // Keep the old one just in case we have to revert it
         JCImageGalleryViewState oldState = _state;
-        _state = state;
-        
-        switch (oldState) {
-            case JCImageGalleryViewStatePinhole:
-
-                break;
-            case JCImageGalleryViewStateGallery:
-                
-                break;
-            case JCImageGalleryViewStateSpotlight:
-                // If we are leaving the spotlight view, make sure to hide the toolbar
-                [self setToolbarVisible:NO];
-                break;
-            default:
-                NSAssert(NO, @"Current state is corrupted: %d", state);
-                break;
-        }
+        _state = newState;
         
         switch (_state) {
             case JCImageGalleryViewStatePinhole:
-                [self showPinholeView];
+                self.currentViewController = self.pinholeViewController;
                 break;
             case JCImageGalleryViewStateGallery:
 
                 break;
             case JCImageGalleryViewStateSpotlight:
-                [self showSpotlightView];
+                self.currentViewController = self.spotlightViewController;
                 break;
             default:
                 // We encountered a state that we haven't accounted for, revert it and error
                 _state = oldState;
-                NSAssert(NO, @"Tried to switch to a state that doesn't exist: %d", state);
+                NSAssert(NO, @"Tried to switch to a state that doesn't exist: %d", newState);
                 break;
         }
+        
+        [self.currentViewController show];
+        [self layoutImageViews];
     }
 }
 
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
+    [self.currentViewController handleTap:gestureRecognizer];
+}
+
+- (void)layoutImageViews
+{
     switch (self.state) {
         case JCImageGalleryViewStatePinhole:
-            [self handlePinholeTap:gestureRecognizer];
+            
             break;
         case JCImageGalleryViewStateSpotlight:
-            [self handleSpotlightTap:gestureRecognizer];
+            
             break;
         default:
             
             break;
     }
-    
 }
 
 
-- (void)handlePinholeTap:(UIGestureRecognizer *)gestureRecognizer
-{
-    [self setState:JCImageGalleryViewStateSpotlight];
-}
-
-- (void)handleSpotlightTap:(UIGestureRecognizer *)gestureRecognizer
-{
-    [self toggleToolbar];
-}
-
-- (void)showPinholeView
-{
-    CGRect newframe = [self.superview convertRect:self.frame toView:self.topView];
-    
-    [UIView animateWithDuration:1.0
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseOut
-                     animations:^{
-                         self.view.frame = newframe;
-                     }
-                     completion:^(BOOL finished){
-                         // Wait one second and then fade in the view
-                         [self.view removeFromSuperview];
-                         self.view.frame = self.frame;
-                         [self.superview addSubview:self.view];
-                     }];
-    
-    [UIView animateWithDuration:0.5
-                          delay:0.5
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         self.view.backgroundColor = [UIColor grayColor];
-                     }
-                     completion:nil];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO   
-                                            withAnimation:UIStatusBarAnimationSlide];
-}
-
-- (void)showSpotlightView
-{
-    [self.topView addSubview:self.view];
-    self.view.frame = [self.topView convertRect:self.view.frame fromView:self.superview];
-    
-    [UIView animateWithDuration:1.5
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseOut
-                     animations:^{
-                         self.view.frame = self.topView.frame;
-                     }
-                     completion:^(BOOL finished){
-                         [[UIApplication sharedApplication] setStatusBarHidden:YES   
-                                                                 withAnimation:UIStatusBarAnimationSlide];
-                     }];
-    
-    [UIView animateWithDuration:1.0
-                          delay:0.5
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         self.view.backgroundColor = [UIColor blackColor];
-                     }
-                     completion:nil];    
-}
-
-- (void)setToolbarVisible:(BOOL)toolbarVisible
-{
-    if (self.toolbarVisible) {
-        // If it is already visible, remove it
-        [self.toolbar removeFromSuperview];
-    }
-    else {
-        // Otherwise, add it
-        [self.view addSubview:self.toolbar];        
-    }
-    
-    // Now set the BOOL to reflect the changes
-    _toolbarVisible = toolbarVisible;
-}
-
-- (void)toggleToolbar
-{
-    self.isToolbarVisible ? [self setToolbarVisible:NO] : [self setToolbarVisible:YES];
-}
 
 #pragma mark - Gesture recognizer delegate methods
 
@@ -236,6 +138,16 @@
     if ([touch.view.superview isKindOfClass:[UIToolbar class]]) return NO;
     
     return YES;
+}
+
+#pragma mark - Memory Warning
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle

@@ -7,70 +7,70 @@
 //
 
 #import <UIKit/UIKit.h>
-
 /** Keeps track of the state of the view
  */
 typedef enum {
-    JCImageGalleryViewStatePinhole = 0,     // Embed this in another view
-    JCImageGalleryViewStateGallery = 1,     // Shows images categorized by album
-    JCImageGalleryViewStateSpotlight = 2    // Shows a single image
+    JCImageGalleryViewStatePinhole = 0,
+    JCImageGalleryViewStateGallery = 1,
+    JCImageGalleryViewStateSpotlight = 2
 } JCImageGalleryViewState;
 
-@interface JCImageGalleryViewController : UIViewController <UIGestureRecognizerDelegate>
+@protocol JCImageGalleryViewState <NSObject>
 
-@property (nonatomic, strong) UIView *superview;
+- (void)handleTap:(UIGestureRecognizer *)gestureRecognizer;
+- (void)show;
+
+@end
+
+@protocol JCViewControllerDelegate <NSObject>
+
+- (void)setState:(JCImageGalleryViewState)newState;
+
+@end
+
+@class JCViewController;
+@class JCPinholeViewController;
+@class JCGalleryViewController;
+@class JCSpotlightViewController;
+
+@interface JCImageGalleryViewController : UIViewController <UIGestureRecognizerDelegate, JCViewControllerDelegate>
+
+@property (nonatomic) JCImageGalleryViewState state;
+@property (nonatomic, strong) JCViewController *currentViewController;
+@property (nonatomic, strong) JCPinholeViewController *pinholeViewController;
+@property (nonatomic, strong) JCGalleryViewController *galleryViewController;
+@property (nonatomic, strong) JCSpotlightViewController *spotlightViewController;
 @property (nonatomic, strong) UIGestureRecognizer *tap;
+
+@property (nonatomic, strong) UIView *topView;
+@property (nonatomic, strong) UIView *superview;
 @property (nonatomic, strong) UIScrollView *view;
 @property (nonatomic) CGRect frame;
-@property (nonatomic, strong) UIView *topView;
-
 @property (nonatomic, strong) NSMutableArray *images;
-@property (nonatomic, strong) UIToolbar *toolbar;
-@property (nonatomic, getter=isToolbarVisible) BOOL toolbarVisible;
-@property (nonatomic, strong) UIBarButtonItem *done;
-@property (nonatomic) JCImageGalleryViewState state;
+@property (nonatomic, strong) NSMutableArray *imageViews;
 
 /** Defaults to the superview's frame.
  */
-- (id)initWithImages:(NSArray *) images superview:(UIView *)superview;
+- (id)initWithImages:(NSMutableArray *)images superview:(UIView *)superview;
 
 /** In case you want to use a frame smaller than the superview's.
  */
-- (id)initWithImages:(NSArray *) images superview:(UIView *)superview frame:(CGRect)frame;
+- (id)initWithImages:(NSMutableArray *)images superview:(UIView *)superview frame:(CGRect)frame;
+
+/** Creates all our imageViews with the images supplied by an array
+ */
+- (void)setImageViewsWithImages:(NSMutableArray *)images;
 
 /** Receive touch events and respond accordingly.
  */
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
 
-/** If we tap the pinhole, we need to transform to the spotlight view and
-    zoom in on the appropriate picture.
- */
-- (void)handlePinholeTap:(UIGestureRecognizer *)gestureRecognizer;
-
-/** If we tap the spotlight view we need to toggle the toolbars.
- */
-- (void)handleSpotlightTap:(UIGestureRecognizer *)gestureRecognizer;
-
 /** When we set the state variable we also change the view accordingly.
  */
-- (void)setState:(JCImageGalleryViewState)state;
+- (void)setState:(JCImageGalleryViewState)newState;
 
-/** Called when a state change occurs where the new state is pinhole view.
-    Returns to the pinhole view when the done button is tapped on the toolbar.
+/** Lays out the image views acording to our current state.
  */
-- (void)showPinholeView;
-
-/** Called when a state change occurs where the new state is spotlight view.
-    Called from the pinhole view when an image is tapped.
- */
-- (void)showSpotlightView;
-
-/** Called in the spotlight view to turn the toolbar visible and hidden.
- */
-- (void)toggleToolbar;
-
-/** Called when the done button is pushed. Will return us back to the pinhole view.
- */
-- (void)handleDone:(id)sender;
+- (void)layoutImageViews;
 
 @end
