@@ -15,7 +15,13 @@
 @synthesize done = _done;
 @synthesize seeAll = _seeAll;
 
-#pragma mark - Init
+#pragma mark - Some UI constants
+
+static CGFloat kImageWidth = 320.0f;
+static CGFloat kTopPadding = 80.0f;
+static CGFloat kLeftPadding = 0.0f;
+
+#pragma mark - Implementation
 
 - (id)initWithContext:(id)delegate
 {
@@ -78,6 +84,25 @@
 
 #pragma mark - JCImageGalleryController
 
+/** Want to lay out the images side by side, one full screen per image
+ */
+- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
+{
+    CGRect imageFrame;
+    int numImages = [imageViews count];
+    
+    for (int i = 0; i < numImages; i++) {
+        UIImageView *imageView = [imageViews objectAtIndex:i];
+        imageFrame = CGRectMake((i * kImageWidth), kTopPadding, 
+                                kImageWidth, kImageWidth);
+        imageView.frame = imageFrame;
+        
+        // Add this imageview to our view
+        //[self.context.view addSubview:imageView];
+    }
+    
+}
+
 /** If we tap the spotlight view we need to toggle the toolbars.
  */
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
@@ -94,6 +119,17 @@
         
         self.context.view.frame = [self.context.topView convertRect:self.context.view.frame fromView:self.context.superview];
     }
+ 
+    [self.context.view setScrollEnabled:YES];
+    [self.context.view setPagingEnabled:YES];
+    
+    [UIView animateWithDuration:1.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
+                     }
+                    completion:nil];
     
     [UIView animateWithDuration:1.5
                           delay:0.0

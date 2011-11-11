@@ -27,7 +27,7 @@
 // Some defaults
 enum {
     kDefaultNumFeedItems = 50,
-    kDefaultNumComments = 3
+    kDefaultNumComments = 4
 };
 
 

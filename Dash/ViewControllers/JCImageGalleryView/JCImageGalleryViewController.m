@@ -103,7 +103,6 @@
         
         [oldController hide];
         [self.currentViewController show];
-        [self layoutImageViews];
     }
 }
 
@@ -112,23 +111,6 @@
     [self.currentViewController handleGesture:gestureRecognizer];
 }
 
-- (void)layoutImageViews
-{
-    switch (self.state) {
-        case JCImageGalleryViewStatePinhole:
-            
-            break;
-        case JCImageGalleryViewStateSpotlight:
-            
-            break;
-        default:
-            
-            break;
-    }
-}
-
-
-
 #pragma mark - Gesture recognizer delegate methods
 
 /** Lets touches on the toolbar pass through.
@@ -136,7 +118,7 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     if ([touch.view.superview isKindOfClass:[UIToolbar class]]) return NO;
-    
+
     return YES;
 }
 

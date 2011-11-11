@@ -29,6 +29,13 @@
     return self;
 }
 
+/** Pinhole view is the first view. So when we init, we also want to lay out the images.
+ */
+- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
+{
+
+}
+
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
     // Subclasses must implement this

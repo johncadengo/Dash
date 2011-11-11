@@ -102,7 +102,7 @@
     NSInteger section = [indexPath section];
     NSInteger row = [indexPath row];
     
-    CGFloat height = 0.0;
+    CGFloat height = 0.0f;
     
     switch (section) {
         case kHighlightHeaderSection:
@@ -113,7 +113,7 @@
             break;
         case kHighlightPhotosSection:
             // TODO: Figure out this height.
-            height = 70.0;
+            height = 80.0f;
             break;
         default:
             // Should never happen
@@ -291,7 +291,7 @@
             [images addObject:image];
         }
         
-        CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 70.0f);
+        CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 80.0f);
         cell.frame = frame;
         self.imageGalleryViewController = [[JCImageGalleryViewController alloc] initWithImages:images superview:cell];
     }

@@ -21,6 +21,7 @@ typedef enum {
 
 @property (nonatomic, strong) JCImageGalleryViewController *context;
 
+- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame;
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
 - (void)show;
 - (void)hide;
@@ -75,9 +76,5 @@ typedef enum {
 /** When we set the state variable we also change the view accordingly.
  */
 - (void)setState:(JCImageGalleryViewState)newState;
-
-/** Lays out the image views acording to our current state.
- */
-- (void)layoutImageViews;
 
 @end
