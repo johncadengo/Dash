@@ -34,7 +34,7 @@ static CGFloat kStatusBarHeight = 20.0f;
         self.toolbar = [[UIToolbar alloc] init];
         self.toolbar.barStyle = UIBarStyleBlack;
         self.toolbar.translucent = YES;
-        self.toolbar.frame = CGRectMake(self.toolbar.frame.origin.x, self.toolbar.frame.origin.y + kStatusBarHeight, self.toolbar.frame.size.width, self.toolbar.frame.size.height);
+        self.toolbar.frame = CGRectOffset(self.toolbar.frame, 0.0f, kStatusBarHeight);
         
         self.done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(handleDone:)];
         [self.done setEnabled:YES];

@@ -13,7 +13,12 @@
 @synthesize toolbar = _toolbar;
 @synthesize done = _done;
 
-#pragma mark - Init
+#pragma mark - Some UI constants
+
+
+static CGFloat kStatusBarHeight = 20.0f;
+
+#pragma mark - Implementation
 
 - (id)initWithContext:(id)delegate
 {
@@ -24,6 +29,7 @@
         self.toolbar = [[UIToolbar alloc] init];
         self.toolbar.barStyle = UIBarStyleBlack;
         self.toolbar.translucent = YES;
+        self.toolbar.frame = CGRectOffset(self.toolbar.frame, 0.0f, kStatusBarHeight);
         
         self.done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(handleDone:)];
         [self.done setEnabled:YES];
