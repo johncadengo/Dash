@@ -46,6 +46,11 @@
     // Subclasses must implement this    
 }
 
+- (void)showOffset:(NSInteger)offset
+{
+    // Subclasses must implement this
+}
+
 - (void)hide
 {
     // Subclasses must implement this

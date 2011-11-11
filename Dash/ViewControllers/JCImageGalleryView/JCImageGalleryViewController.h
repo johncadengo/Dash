@@ -21,9 +21,25 @@ typedef enum {
 
 @property (nonatomic, strong) JCImageGalleryViewController *context;
 
+/** Lay out its image views according to its frame.
+ */
 - (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame;
+
+/** Handle taps and whatnot.
+ */
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
+
+/** JCViewController must show itself. Defaults with offset of zero.
+ */
 - (void)show;
+
+/** Shows with an offset. For example, used for starting
+    at a specific index in the spotlight view.
+ */
+- (void)showOffset:(NSInteger)offset;
+
+/** JCViewController must be able to hide itself. Put away toolbars and whatnot.
+ */
 - (void)hide;
 
 @end
@@ -31,6 +47,7 @@ typedef enum {
 @protocol JCViewControllerDelegate <NSObject>
 
 - (void)setState:(JCImageGalleryViewState)newState;
+- (void)setState:(JCImageGalleryViewState)newState withOffset:(NSInteger)offset;
 
 @end
 
@@ -73,8 +90,12 @@ typedef enum {
  */
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
 
-/** When we set the state variable we also change the view accordingly.
+/** When we set the state variable we also change the view accordingly. Defaults to offset zero.
  */
 - (void)setState:(JCImageGalleryViewState)newState;
+
+/** When we set the state variable we also change the view accordingly.
+ */
+- (void)setState:(JCImageGalleryViewState)newState withOffset:(NSInteger)offset;
 
 @end

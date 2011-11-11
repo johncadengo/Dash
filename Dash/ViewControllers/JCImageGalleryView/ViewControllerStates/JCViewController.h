@@ -25,6 +25,10 @@
  */
 - (void)show;
 
+/** 
+ */
+- (void)showOffset:(NSInteger)offset;
+
 /** Called when we are leaving this view.
  */
 - (void)hide;

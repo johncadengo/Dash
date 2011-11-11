@@ -63,6 +63,11 @@ static CGFloat kStatusBarHeight = 20.0f;
 /** Takes over the full screen and hides the status bar.
  */
 - (void)show
+{
+    [self showOffset:0];
+}
+
+- (void)showOffset:(NSInteger)offset
 {    
     [self.context.view addSubview:self.toolbar];
 

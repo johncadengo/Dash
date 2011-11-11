@@ -78,6 +78,11 @@
 
 - (void)setState:(JCImageGalleryViewState)newState
 {
+    [self setState:newState withOffset:0];
+}
+
+- (void)setState:(JCImageGalleryViewState)newState withOffset:(NSInteger)offset
+{
     if (_state != newState) {
         // Keep the old one just in case we have to revert it
         JCImageGalleryViewState oldState = _state;
@@ -102,7 +107,7 @@
         }
         
         [oldController hide];
-        [self.currentViewController show];
+        [self.currentViewController showOffset:offset];
     }
 }
 

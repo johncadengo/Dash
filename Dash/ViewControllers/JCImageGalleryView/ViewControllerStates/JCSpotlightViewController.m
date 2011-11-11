@@ -134,6 +134,11 @@ static CGFloat kStatusBarHeight = 20.0f;
  */
 - (void)show
 {
+    [self showOffset:0];
+}
+
+- (void)showOffset:(NSInteger)offset
+{
     if (![self.context.topView.subviews containsObject:self.context.view]) {
         [self.context.topView addSubview:self.context.view];
         
@@ -172,7 +177,10 @@ static CGFloat kStatusBarHeight = 20.0f;
                          self.context.view.backgroundColor = [UIColor blackColor];
                      }
                      completion:nil];    
-
+    
+    NSLog(@"offset %d", offset);
+    CGPoint offsetPoint = CGPointMake(offset * kImageWidth, 0);
+    [self.context.view setContentOffset:offsetPoint];
 }
 
 - (void)hide
