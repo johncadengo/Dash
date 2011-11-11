@@ -13,12 +13,13 @@
 @synthesize toolbar = _toolbar;
 @synthesize toolbarVisible = _toolbarVisible;
 @synthesize done = _done;
+@synthesize seeAll = _seeAll;
 
 #pragma mark - Init
 
-- (id)initWithDelegate:(id)delegate
+- (id)initWithContext:(id)delegate
 {
-    self = [super initWithDelegate:delegate];
+    self = [super initWithContext:delegate];
     
     if (self) {
         // Let's make the toolbar
@@ -30,7 +31,12 @@
         self.done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(handleDone:)];
         [self.done setEnabled:YES];
         
-        self.toolbarItems = [NSArray arrayWithObject:self.done];
+        self.seeAll = [[UIBarButtonItem alloc] initWithTitle:@"See All" style:UIBarButtonItemStyleBordered target:self action:@selector(handleSeeAll:)];
+        [self.seeAll setEnabled:YES];
+        
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        self.toolbarItems = [NSArray arrayWithObjects:self.done, flexibleSpace, self.seeAll, nil];
         [self.toolbar setItems:self.toolbarItems animated:YES];
         [self.toolbar sizeToFit];
     }
@@ -42,8 +48,12 @@
 
 - (void)handleDone:(id)sender
 {
-    [self setToolbarVisible:NO];
-    [self.delegate setState:JCImageGalleryViewStatePinhole];
+    [self.context setState:JCImageGalleryViewStatePinhole];
+}
+
+- (void)handleSeeAll:(id)sender
+{
+    [self.context setState:JCImageGalleryViewStateGallery];
 }
 
 - (void)setToolbarVisible:(BOOL)toolbarVisible
@@ -54,7 +64,7 @@
     }
     else {
         // Otherwise, add it
-        [self.delegate.view addSubview:self.toolbar];        
+        [self.context.view addSubview:self.toolbar];        
     }
     
     // Now set the BOOL to reflect the changes
@@ -70,7 +80,7 @@
 
 /** If we tap the spotlight view we need to toggle the toolbars.
  */
-- (void)handleTap:(UIGestureRecognizer *)gestureRecognizer
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
     [self toggleToolbar];
 }
@@ -79,14 +89,17 @@
  */
 - (void)show
 {
-    [self.delegate.topView addSubview:self.delegate.view];
-    self.delegate.view.frame = [self.delegate.topView convertRect:self.delegate.view.frame fromView:self.delegate.superview];
+    if (![self.context.topView.subviews containsObject:self.context.view]) {
+        [self.context.topView addSubview:self.context.view];
+        
+        self.context.view.frame = [self.context.topView convertRect:self.context.view.frame fromView:self.context.superview];
+    }
     
     [UIView animateWithDuration:1.5
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         self.delegate.view.frame = self.delegate.topView.frame;
+                         self.context.view.frame = self.context.topView.frame;
                      }
                      completion:^(BOOL finished){
                          [[UIApplication sharedApplication] setStatusBarHidden:YES   
@@ -97,10 +110,17 @@
                           delay:0.5
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         self.delegate.view.backgroundColor = [UIColor blackColor];
+                         self.context.view.backgroundColor = [UIColor blackColor];
                      }
                      completion:nil];    
 
 }
+
+- (void)hide
+{
+    // Hide the toolbar when we are leaving this view.
+    [self setToolbarVisible:NO];
+}
+
 
 @end

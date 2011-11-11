@@ -10,22 +10,39 @@
 
 @implementation JCViewController
 
-@synthesize delegate = _delegate;
+@synthesize context = _context;
 
 - (id)init
 {
-    NSAssert(NO, @"Must initialize a JCViewController with a delegate.");
+    NSAssert(NO, @"Must initialize a JCViewController with a context.");
+    return nil;
 }
 
-- (id)initWithDelegate:(id)delegate;
+- (id)initWithContext:(id)context;
 {
     self = [super init];
     
     if (self) {
-        self.delegate = delegate;
+        self.context = context;
     }
     
     return self;
 }
+
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
+{
+    // Subclasses must implement this
+}
+
+- (void)show
+{
+    // Subclasses must implement this    
+}
+
+- (void)hide
+{
+    // Subclasses must implement this
+}
+
 
 @end

@@ -53,8 +53,9 @@
         [self.superview addSubview:self.view];
         
         //
-        self.pinholeViewController = [[JCPinholeViewController alloc] initWithDelegate:self];
-        self.spotlightViewController = [[JCSpotlightViewController alloc] initWithDelegate:self];
+        self.pinholeViewController = [[JCPinholeViewController alloc] initWithContext:self];
+        self.galleryViewController = [[JCGalleryViewController alloc] initWithContext:self];
+        self.spotlightViewController = [[JCSpotlightViewController alloc] initWithContext:self];
     
         self.currentViewController = self.pinholeViewController;
         
@@ -80,6 +81,7 @@
     if (_state != newState) {
         // Keep the old one just in case we have to revert it
         JCImageGalleryViewState oldState = _state;
+        JCViewController *oldController = _currentViewController;
         _state = newState;
         
         switch (_state) {
@@ -87,7 +89,7 @@
                 self.currentViewController = self.pinholeViewController;
                 break;
             case JCImageGalleryViewStateGallery:
-
+                self.currentViewController = self.galleryViewController;
                 break;
             case JCImageGalleryViewStateSpotlight:
                 self.currentViewController = self.spotlightViewController;
@@ -99,6 +101,7 @@
                 break;
         }
         
+        [oldController hide];
         [self.currentViewController show];
         [self layoutImageViews];
     }
@@ -106,7 +109,7 @@
 
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    [self.currentViewController handleTap:gestureRecognizer];
+    [self.currentViewController handleGesture:gestureRecognizer];
 }
 
 - (void)layoutImageViews

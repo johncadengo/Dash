@@ -15,10 +15,15 @@ typedef enum {
     JCImageGalleryViewStateSpotlight = 2
 } JCImageGalleryViewState;
 
+@class JCImageGalleryViewController;
+
 @protocol JCImageGalleryViewState <NSObject>
 
-- (void)handleTap:(UIGestureRecognizer *)gestureRecognizer;
+@property (nonatomic, strong) JCImageGalleryViewController *context;
+
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
 - (void)show;
+- (void)hide;
 
 @end
 

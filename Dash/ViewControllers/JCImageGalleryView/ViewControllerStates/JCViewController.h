@@ -11,18 +11,22 @@
 
 @interface JCViewController : UIViewController <JCImageGalleryViewState>
 
-@property (nonatomic, strong) JCImageGalleryViewController *delegate;
+@property (nonatomic, strong) JCImageGalleryViewController *context;
 
 /** JCViewController is useless without a delegate. Must call this init statement.
  */
-- (id)initWithDelegate:(id)delegate;
+- (id)initWithContext:(id)context;
 
 /** Must be able to know what to do with gestures.
  */
-- (void)handleTap:(UIGestureRecognizer *)gestureRecognizer;
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
 
 /** Needs to be able to show itself.
  */
 - (void)show;
+
+/** Called when we are leaving this view.
+ */
+- (void)hide;
 
 @end

@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, getter=isToolbarVisible) BOOL toolbarVisible;
 @property (nonatomic, strong) UIBarButtonItem *done;
+@property (nonatomic, strong) UIBarButtonItem *seeAll;
 
 /** Called in the spotlight view to turn the toolbar visible and hidden.
  */
@@ -22,5 +23,9 @@
 /** Called when the done button is pushed. Will return us back to the pinhole view.
  */
 - (void)handleDone:(id)sender;
+
+/** Called when the see all button is pushed. Will transition to the gallery view.
+ */
+- (void)handleSeeAll:(id)sender;
 
 @end

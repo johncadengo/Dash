@@ -14,9 +14,9 @@
 /** If we tap the pinhole, we need to transform to the spotlight view and
     zoom in on the appropriate picture.
  */
-- (void)handleTap:(UIGestureRecognizer *)gestureRecognizer
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    [self.delegate setState:JCImageGalleryViewStateSpotlight];
+    [self.context setState:JCImageGalleryViewStateSpotlight];
     
 }
 
@@ -24,26 +24,26 @@
  */
 - (void)show
 {
-    CGRect newframe = [self.delegate.superview convertRect:self.delegate.frame toView:self.delegate.topView];
+    CGRect newframe = [self.context.superview convertRect:self.context.frame toView:self.context.topView];
     
     [UIView animateWithDuration:1.0
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         self.delegate.view.frame = newframe;
+                         self.context.view.frame = newframe;
                      }
                      completion:^(BOOL finished){
                          // Wait one second and then fade in the view
-                         [self.delegate.view removeFromSuperview];
-                         self.delegate.view.frame = self.delegate.frame;
-                         [self.delegate.superview addSubview:self.delegate.view];
+                         [self.context.view removeFromSuperview];
+                         self.context.view.frame = self.context.frame;
+                         [self.context.superview addSubview:self.context.view];
                      }];
     
     [UIView animateWithDuration:0.5
                           delay:0.5
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         self.delegate.view.backgroundColor = [UIColor grayColor];
+                         self.context.view.backgroundColor = [UIColor grayColor];
                      }
                      completion:nil];
     
@@ -51,5 +51,9 @@
                                             withAnimation:UIStatusBarAnimationSlide];    
 }
 
+- (void)hide
+{
+    
+}
 
 @end
