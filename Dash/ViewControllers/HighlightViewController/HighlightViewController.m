@@ -284,8 +284,10 @@
         CGSize size = CGSizeMake(57.0f, 57.0f);
         UIImage *image;
         NSString *iconPath;
-        NSMutableArray *images = [[NSMutableArray alloc] initWithCapacity:4];
-        for (Action *comment in self.comments) {
+        NSMutableArray *images = [[NSMutableArray alloc] initWithCapacity:24];
+        Action *comment;
+        for (int i = 0; i < 16; i++) {
+            comment = [self.comments objectAtIndex:i%4];
             iconPath = [[[comment author] profilepic] localpath];
             image = [[UIImage imageNamed:iconPath] imageCroppedToFitSize:size];
             [images addObject:image];

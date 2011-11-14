@@ -58,34 +58,46 @@ static CGFloat kLeftPadding = 8.0f;
     [self.context setState:JCImageGalleryViewStatePinhole];
 }
 
+#pragma mark - Layout Helpers
+
+- (NSInteger)numImagesPerRowInRect:(CGRect) rect
+{
+    return rect.size.width / kImageWidth;
+}
+
+- (CGFloat)xForColumn:(NSInteger)column
+{
+    return kLeftPadding + (column * kLeftPadding) + (column * kImageWidth);
+}
+
+- (CGFloat)yForRow:(NSInteger)row
+{
+    return kTopMargin + (row * kTopPadding) + (row * kImageWidth);
+}
+
 #pragma mark - JCImageGalleryController
 
 /** Want to lay out the images side by side, one full screen per image
  */
 - (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
 {
-    CGRect imageFrame;
-    CGFloat totalWidth = frame.size.width;
-    int numImagesPerRow = totalWidth / kImageWidth;
-    int numImages = [imageViews count];
+    int numImagesPerRow = [self numImagesPerRowInRect:frame];
     UIImageView *imageView;
     
     int row;
     int column;
     
-    for (int i = 0; i < numImages; i++) {
+    for (int i = 0; i < [imageViews count]; i++) {
         imageView = [imageViews objectAtIndex:i];
         
         column = i % numImagesPerRow;
         row = i / numImagesPerRow;
         
-        imageFrame = CGRectMake(kLeftPadding + (column * kLeftPadding) + (column * kImageWidth),
-                                kTopMargin + (row * kTopPadding) + (row * kImageWidth), 
-                                kImageWidth, kImageWidth);
-        imageView.frame = imageFrame;
+        imageView.frame = CGRectMake([self xForColumn:column], [self yForRow:row], 
+                                     kImageWidth, kImageWidth);
         
         // Keep track of our rects
-        [self.imageViewFrames addObject:[NSValue valueWithCGRect:imageFrame]];
+        [self.imageViewFrames addObject:[NSValue valueWithCGRect:imageView.frame]];
         
         // Add this imageview to our view
         [self.context.view addSubview:imageView];
@@ -123,15 +135,13 @@ static CGFloat kLeftPadding = 8.0f;
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:NO];
     
-    [UIView animateWithDuration:0.5
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseOut
-                     animations:^{
-                         self.context.view.backgroundColor = [UIColor grayColor];
-                     }
-                     completion:nil];
+    CGFloat width = self.context.view.frame.size.width;
     
-    CGSize contentSize = CGSizeMake(kImageWidth * [self.context.imageViews count], kImageWidth);
+    int numRows = [self.context.imageViews count] / [self numImagesPerRowInRect:self.context.view.frame];
+    // Just a little bigger than the screen size so that we give 
+    // the illusion of scrolling even when we don't need to scroll
+    CGFloat height = MAX([self yForRow:numRows+1], 481.0f);
+    CGSize contentSize = CGSizeMake(width, height);
     self.context.view.contentSize = contentSize;
     
     [UIView animateWithDuration:1.5
@@ -152,13 +162,12 @@ static CGFloat kLeftPadding = 8.0f;
     
     [UIView animateWithDuration:1.0
                           delay:0.5
-                        options:UIViewAnimationOptionCurveEaseOut
+                        options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         self.context.view.backgroundColor = [UIColor blackColor];
+                         self.context.view.backgroundColor = [UIColor grayColor];
                      }
-                     completion:nil];    
+                     completion:nil];
     
-    NSLog(@"offset %d", offset);
     CGPoint offsetPoint = CGPointMake(offset * kImageWidth, 0);
     [self.context.view setContentOffset:offsetPoint];
 }
