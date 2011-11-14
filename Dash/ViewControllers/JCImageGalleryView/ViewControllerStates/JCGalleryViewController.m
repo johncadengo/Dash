@@ -74,7 +74,7 @@ static CGFloat kMagicNumber = 35.0f;
     return kTopMargin + (row * kTopPadding) + (row * imageHeight);
 }
 
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews
+- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset
 {
     UIImageView *imageView;
     int row;
@@ -84,20 +84,39 @@ static CGFloat kMagicNumber = 35.0f;
     CGFloat imageHeight = imageWidth;
     
     // Skip the first?
-    for (int i = 1; i < [imageViews count]; i++) {
+    for (int i = 0; i < [imageViews count]; i++) {
         imageView = [imageViews objectAtIndex:i];
+        column = (i % kNumImagesPerRow) - offset;
+        row = (i / kNumImagesPerRow);
         
-        column = i % kNumImagesPerRow;
-        row = i / kNumImagesPerRow;
-        
-        imageView.frame = CGRectMake([self xForColumn:column withImageWidth:imageWidth], 
-                                     [self yForRow:row withImageHeight:imageHeight] + kMagicNumber, 
-                                     imageWidth, imageHeight);
-        
-        // Add this imageview to our view
+        if (i != offset) {
+            imageView.frame = CGRectMake([self xForColumn:column withImageWidth:imageWidth], 
+                                         [self yForRow:row withImageHeight:imageHeight] + kMagicNumber, 
+                                         imageWidth, imageHeight);
+            
+            // Add this imageview to our view
+            imageView.alpha = 0.0f;
+        }
+        else {
+            imageView.frame = CGRectMake([self xForColumn:column withImageWidth:imageWidth], 
+                                         [self yForRow:row withImageHeight:imageHeight] + 20.0f, 
+                                         imageWidth, imageHeight);
+        }
         [self.context.view addSubview:imageView];
-        imageView.alpha = 0.0f;
+        
     }
+}
+
+- (CGPoint)originForOffset:(NSInteger)offset
+{
+    int column = offset % kNumImagesPerRow;
+    int row = offset / kNumImagesPerRow;
+    CGFloat x = [self xForColumn:column withImageWidth:kImageWidth];
+    CGFloat y = [self yForRow:row withImageHeight:kImageWidth];
+    
+    CGPoint origin = CGPointMake(x, y);
+    
+    return origin;
 }
 
 #pragma mark - JCImageGalleryController
@@ -174,7 +193,7 @@ static CGFloat kMagicNumber = 35.0f;
     CGSize contentSize = CGSizeMake(width, height);
     self.context.view.contentSize = contentSize;
     
-    [self prepareLayoutWithImageViews:self.context.imageViews];
+    [self prepareLayoutWithImageViews:self.context.imageViews offset:offset];
     
     [UIView animateWithDuration:1.5
                           delay:0.0
@@ -198,6 +217,7 @@ static CGFloat kMagicNumber = 35.0f;
     // Hide the toolbar when we are leaving this view.
     [self.toolbar removeFromSuperview];
     self.context.view.backgroundColor = [UIColor grayColor];
+
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "JCSpotlightViewController.h"
+#import "JCPinholeViewController.h"
 
 @implementation JCSpotlightViewController
 
@@ -107,29 +108,34 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 #pragma mark - JCImageGalleryController
 
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews
+
+- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset
 {
-    // Dunno yet.
+    CGRect imageFrame;
+    UIImageView *imageView;
+    
+    for (int i = 0; i < offset; i++) {
+        imageView = [imageViews objectAtIndex:i];
+        imageFrame = CGRectMake((i * kImageWidth), kTopPadding, 
+                                kImageWidth, kImageWidth);
+        imageView.frame = imageFrame;
+        
+        // Add this imageview to our view
+        [self.context.view addSubview:imageView];
+        //imageView.alpha = 1.0f;
+    }
+    
+    for (int i = offset; i < [imageViews count]; i++) {
+        imageView = [imageViews objectAtIndex:i];
+        [imageView removeFromSuperview];
+    }
 }
 
 /** Want to lay out the images side by side, one full screen per image
  */
 - (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
 {
-    CGRect imageFrame;
-    int numImages = [imageViews count];
-    
-    for (int i = 0; i < numImages; i++) {
-        UIImageView *imageView = [imageViews objectAtIndex:i];
-        imageFrame = CGRectMake((i * kImageWidth), kTopPadding, 
-                                kImageWidth, kImageWidth);
-        imageView.frame = imageFrame;
-        
-        // Add this imageview to our view
-        //[self.context.view addSubview:imageView];
-        imageView.alpha = 1.0f;
-    }
-    
+    [self prepareLayoutWithImageViews:imageViews offset:[imageViews count]];
 }
 
 /** If we tap the spotlight view we need to toggle the toolbars.
@@ -166,9 +172,11 @@ static CGFloat kStatusBarHeight = 20.0f;
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
+                         [self prepareLayoutWithImageViews:self.context.imageViews offset:4];
                      }
-                    completion:nil];
+                     completion:^(BOOL finished) {
+                         [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
+                     }];
     
     [UIView animateWithDuration:1.5
                           delay:0.0

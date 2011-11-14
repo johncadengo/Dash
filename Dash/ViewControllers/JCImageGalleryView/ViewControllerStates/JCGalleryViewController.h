@@ -24,10 +24,12 @@
 
 /** Help calculate the layout of the gallery view
  */
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews;
+- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset;
 
 - (CGFloat)xForColumn:(NSInteger)column withImageWidth:(CGFloat)imageWidth;
 
 - (CGFloat)yForRow:(NSInteger)row withImageHeight:(CGFloat)imageHeight;
+
+- (CGPoint)originForOffset:(NSInteger)offset;
 
 @end

@@ -19,4 +19,6 @@
  */
 - (CGFloat)distanceBetweenRect:(CGRect)rect andPoint:(CGPoint)point;
 
+- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame;
+
 @end

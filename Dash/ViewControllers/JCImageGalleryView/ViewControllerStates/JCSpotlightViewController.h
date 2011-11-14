@@ -36,4 +36,7 @@
  */
 - (NSInteger)pageForOrigin:(CGPoint)origin;
 
+
+- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset;
+
 @end

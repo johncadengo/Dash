@@ -42,9 +42,9 @@ static CGFloat kLeftPadding = 8.0f;
     int numImages = [imageViews count];
     
     // We only want to lay out one row
-    int numImagesToLayout = MIN(numImagesPerRow, numImages);
+    //int numImagesToLayout = MIN(numImagesPerRow, numImages);
     
-    for (int i = 0; i < numImagesToLayout; i++) {
+    for (int i = 0; i < numImagesPerRow; i++) {
         UIImageView *imageView = [imageViews objectAtIndex:i];
         imageFrame = CGRectMake(((i + 1) * kLeftPadding) + (i * kImageWidth), kTopPadding, 
                                 kImageWidth, kImageWidth);
