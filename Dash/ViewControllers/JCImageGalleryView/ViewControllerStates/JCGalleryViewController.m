@@ -16,6 +16,7 @@
 
 #pragma mark - Some UI constants
 
+static int kNumImagesPerRow = 4;
 static CGFloat kStatusBarHeight = 20.0f;
 static CGFloat kImageWidth = 70.0f;
 static CGFloat kTopMargin = 64.0f;
@@ -60,41 +61,38 @@ static CGFloat kLeftPadding = 8.0f;
 
 #pragma mark - Layout Helpers
 
-- (NSInteger)numImagesPerRowInRect:(CGRect) rect
+- (CGFloat)xForColumn:(NSInteger)column withImageWidth:(CGFloat)imageWidth
 {
-    return rect.size.width / kImageWidth;
+    return kLeftPadding + (column * kLeftPadding) + (column * imageWidth);
 }
 
-- (CGFloat)xForColumn:(NSInteger)column
+- (CGFloat)yForRow:(NSInteger)row withImageHeight:(CGFloat)imageHeight
 {
-    return kLeftPadding + (column * kLeftPadding) + (column * kImageWidth);
-}
-
-- (CGFloat)yForRow:(NSInteger)row
-{
-    return kTopMargin + (row * kTopPadding) + (row * kImageWidth);
+    return kTopMargin + (row * kTopPadding) + (row * imageHeight);
 }
 
 #pragma mark - JCImageGalleryController
 
 /** Want to lay out the images side by side, one full screen per image
  */
-- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
+- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame
 {
-    int numImagesPerRow = [self numImagesPerRowInRect:frame];
     UIImageView *imageView;
-    
     int row;
     int column;
+    
+    CGFloat imageWidth = 70.0f;
+    CGFloat imageHeight = imageWidth;
     
     for (int i = 0; i < [imageViews count]; i++) {
         imageView = [imageViews objectAtIndex:i];
         
-        column = i % numImagesPerRow;
-        row = i / numImagesPerRow;
+        column = i % kNumImagesPerRow;
+        row = i / kNumImagesPerRow;
         
-        imageView.frame = CGRectMake([self xForColumn:column], [self yForRow:row], 
-                                     kImageWidth, kImageWidth);
+        imageView.frame = CGRectMake([self xForColumn:column withImageWidth:imageWidth], 
+                                     [self yForRow:row withImageHeight:imageHeight], 
+                                     imageWidth, imageHeight);
         
         // Keep track of our rects
         [self.imageViewFrames addObject:[NSValue valueWithCGRect:imageView.frame]];
@@ -137,26 +135,21 @@ static CGFloat kLeftPadding = 8.0f;
     
     CGFloat width = self.context.view.frame.size.width;
     
-    int numRows = [self.context.imageViews count] / [self numImagesPerRowInRect:self.context.view.frame];
+    int numRows = [self.context.imageViews count] / kNumImagesPerRow;
     // Just a little bigger than the screen size so that we give 
     // the illusion of scrolling even when we don't need to scroll
-    CGFloat height = MAX([self yForRow:numRows+1], 481.0f);
+    CGFloat height = MAX([self yForRow:numRows+1 withImageHeight:70.0f], 481.0f);
     CGSize contentSize = CGSizeMake(width, height);
     self.context.view.contentSize = contentSize;
     
-    [UIView animateWithDuration:1.5
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseOut
-                     animations:^{
-                         [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
-                     }
-                     completion:nil];
+    
+//    [self layoutImageViews:self.context.imageViews inSize:[self sizeForImageWidth:320.0f]];
     
     [UIView animateWithDuration:1.5
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         self.context.view.frame = self.context.topView.frame;
+                         [self layoutImageViews:self.context.imageViews inFrame:self.context.view.frame];
                      }
                      completion:nil];
     

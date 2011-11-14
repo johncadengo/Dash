@@ -24,9 +24,12 @@
 
 /** Help calculate the layout of the gallery view
  */
-- (NSInteger)numImagesPerRowInRect:(CGRect) rect;
 
-- (CGFloat)xForColumn:(NSInteger)column;
-- (CGFloat)yForRow:(NSInteger)row;
+
+- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame;
+
+- (CGFloat)xForColumn:(NSInteger)column withImageWidth:(CGFloat)imageWidth;
+
+- (CGFloat)yForRow:(NSInteger)row withImageHeight:(CGFloat)imageHeight;
 
 @end
