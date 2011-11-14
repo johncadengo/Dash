@@ -71,6 +71,31 @@ static CGFloat kLeftPadding = 8.0f;
     return kTopMargin + (row * kTopPadding) + (row * imageHeight);
 }
 
+- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews
+{
+    UIImageView *imageView;
+    int row;
+    int column;
+    
+    CGFloat imageWidth = 320.0f;
+    CGFloat imageHeight = imageWidth;
+    
+    // Skip the first?
+    for (int i = 1; i < [imageViews count]; i++) {
+        imageView = [imageViews objectAtIndex:i];
+        
+        column = i % kNumImagesPerRow;
+        row = i / kNumImagesPerRow;
+        
+        imageView.frame = CGRectMake([self xForColumn:column withImageWidth:imageWidth], 
+                                     [self yForRow:row withImageHeight:imageHeight] + 80.0f, 
+                                     imageWidth, imageHeight);
+        
+        // Add this imageview to our view
+        [self.context.view addSubview:imageView];
+    }
+}
+
 #pragma mark - JCImageGalleryController
 
 /** Want to lay out the images side by side, one full screen per image
@@ -119,6 +144,8 @@ static CGFloat kLeftPadding = 8.0f;
 
 - (void)showOffset:(NSInteger)offset
 {
+    NSLog(@"gallery offset: %d", offset);
+    
     if (![self.context.topView.subviews containsObject:self.context.view]) {
         [self.context.topView addSubview:self.context.view];
         
@@ -142,8 +169,7 @@ static CGFloat kLeftPadding = 8.0f;
     CGSize contentSize = CGSizeMake(width, height);
     self.context.view.contentSize = contentSize;
     
-    
-//    [self layoutImageViews:self.context.imageViews inSize:[self sizeForImageWidth:320.0f]];
+    [self prepareLayoutWithImageViews:self.context.imageViews];
     
     [UIView animateWithDuration:1.5
                           delay:0.0
@@ -160,9 +186,6 @@ static CGFloat kLeftPadding = 8.0f;
                          self.context.view.backgroundColor = [UIColor grayColor];
                      }
                      completion:nil];
-    
-    CGPoint offsetPoint = CGPointMake(offset * kImageWidth, 0);
-    [self.context.view setContentOffset:offsetPoint];
 }
 
 - (void)hide

@@ -16,8 +16,6 @@
 @property (nonatomic, strong) UIBarButtonItem *done;
 @property (nonatomic, strong) UIBarButtonItem *seeAll; 
 
-@property (nonatomic) NSInteger page;
-
 /** Called in the spotlight view to turn the toolbar visible and hidden.
  */
 - (void)toggleToolbar;
@@ -33,5 +31,9 @@
 /** Calculates the origin for the page. Page index starts at 0.
  */
 - (CGPoint)originForPage:(NSInteger)newPage;
+
+/** Calculate what page we are based on the origin. Page index starts at 0.
+ */
+- (NSInteger)pageForOrigin:(CGPoint)origin;
 
 @end

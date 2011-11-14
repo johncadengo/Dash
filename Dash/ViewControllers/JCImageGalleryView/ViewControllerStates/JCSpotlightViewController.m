@@ -14,7 +14,6 @@
 @synthesize toolbarVisible = _toolbarVisible;
 @synthesize done = _done;
 @synthesize seeAll = _seeAll;
-@synthesize page = _page;
 
 #pragma mark - Some UI constants
 
@@ -47,8 +46,6 @@ static CGFloat kStatusBarHeight = 20.0f;
         self.toolbarItems = [NSArray arrayWithObjects:self.done, flexibleSpace, self.seeAll, nil];
         [self.toolbar setItems:self.toolbarItems animated:YES];
         [self.toolbar sizeToFit];
-        
-        self.page = 0;
     }
     
     return self;
@@ -63,7 +60,8 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 - (void)handleSeeAll:(id)sender
 {
-    [self.context setState:JCImageGalleryViewStateGallery];
+    NSInteger offset = [self pageForOrigin:self.context.view.contentOffset];
+    [self.context setState:JCImageGalleryViewStateGallery withOffset:offset];
 }
 
 - (void)setToolbarVisible:(BOOL)toolbarVisible
@@ -98,6 +96,13 @@ static CGFloat kStatusBarHeight = 20.0f;
     CGPoint origin = CGPointMake(x, y);
     
     return origin;
+}
+
+- (NSInteger)pageForOrigin:(CGPoint)origin
+{
+    CGFloat x = origin.x;
+    
+    return x / kImageWidth;
 }
 
 #pragma mark - JCImageGalleryController
