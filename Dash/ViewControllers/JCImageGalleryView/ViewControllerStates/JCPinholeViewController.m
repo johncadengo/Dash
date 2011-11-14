@@ -94,16 +94,15 @@ static CGFloat kLeftPadding = 8.0f;
     NSInteger offset;
     CGRect imageFrame;
     CGFloat delta = 0.0f;
-    CGFloat minDelta = 1.0f;
+    CGFloat minDelta = kLeftPadding / 2.0f;    // Initial error of margin?
     
-    NSLog(@"heya %f %f", loc.x, loc.y);
-    
+    // Figure out which image is closest to the point that was tapped
     for (int i = 0; i < [self.imageViewFrames count]; ++i) {
         NSValue *val = [self.imageViewFrames objectAtIndex:i];
         imageFrame = [val CGRectValue];
         delta = [self distanceBetweenRect:imageFrame andPoint:loc];
         
-        if (minDelta > delta) {
+        if (delta < minDelta) {
             minDelta = delta;
             offset = i;
         }

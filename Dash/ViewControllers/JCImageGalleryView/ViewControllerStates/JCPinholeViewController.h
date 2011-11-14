@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JCViewController.h"
 
-@interface JCPinholeViewController : JCViewController
+@interface JCPinholeViewController : JCViewController <JCImageGalleryViewState>
 
 /** Let's keep track of our imageview frames so we can know if they were touched
  */

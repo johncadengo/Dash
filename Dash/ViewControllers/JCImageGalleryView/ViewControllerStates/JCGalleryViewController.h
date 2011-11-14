@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "JCViewController.h"
 
-@interface JCGalleryViewController : JCViewController
+@interface JCGalleryViewController : JCViewController <JCImageGalleryViewState>
 
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *done;
+
+/** Let's keep track of our imageview frames so we can know if they were touched
+ */
+@property (nonatomic, strong) NSMutableArray *imageViewFrames;
 
 /** Called when the done button is pushed. Will return us back to the pinhole view.
  */

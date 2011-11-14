@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JCViewController.h"
 
-@interface JCSpotlightViewController : JCViewController
+@interface JCSpotlightViewController : JCViewController <JCImageGalleryViewState>
 
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, getter=isToolbarVisible) BOOL toolbarVisible;
