@@ -23,6 +23,9 @@ static CGFloat kTopMargin = 64.0f;
 static CGFloat kTopPadding = 6.0f; 
 static CGFloat kLeftPadding = 8.0f;
 
+// I don't understand how this works exactly yet, but it works.
+static CGFloat kMagicNumber = 35.0f;
+
 #pragma mark - Implementation
 
 - (id)initWithContext:(id)delegate
@@ -88,11 +91,12 @@ static CGFloat kLeftPadding = 8.0f;
         row = i / kNumImagesPerRow;
         
         imageView.frame = CGRectMake([self xForColumn:column withImageWidth:imageWidth], 
-                                     [self yForRow:row withImageHeight:imageHeight] + 80.0f, 
+                                     [self yForRow:row withImageHeight:imageHeight] + kMagicNumber, 
                                      imageWidth, imageHeight);
         
         // Add this imageview to our view
         [self.context.view addSubview:imageView];
+        imageView.alpha = 0.0f;
     }
 }
 
@@ -124,6 +128,7 @@ static CGFloat kLeftPadding = 8.0f;
         
         // Add this imageview to our view
         [self.context.view addSubview:imageView];
+        imageView.alpha = 1.0f;
     }
     
 }

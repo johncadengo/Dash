@@ -107,6 +107,11 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 #pragma mark - JCImageGalleryController
 
+- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews
+{
+    // Dunno yet.
+}
+
 /** Want to lay out the images side by side, one full screen per image
  */
 - (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
@@ -122,6 +127,7 @@ static CGFloat kStatusBarHeight = 20.0f;
         
         // Add this imageview to our view
         //[self.context.view addSubview:imageView];
+        imageView.alpha = 1.0f;
     }
     
 }

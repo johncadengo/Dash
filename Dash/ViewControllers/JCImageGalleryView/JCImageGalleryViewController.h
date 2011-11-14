@@ -21,6 +21,10 @@ typedef enum {
 
 @property (nonatomic, strong) JCImageGalleryViewController *context;
 
+/** To ensure smooth transitions between views.
+ */
+- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews;
+
 /** Lay out its image views according to its frame.
  */
 - (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame;
