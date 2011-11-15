@@ -125,55 +125,27 @@ static int kNumImagesPerRow = 4;
 
 #pragma mark - Handling taps
 
-- (CGFloat)distanceBetweenRect:(CGRect)rect andPoint:(CGPoint)point
-{
-    // first of all, we check if point is inside rect. If it is, distance is zero
-    if (CGRectContainsPoint(rect, point)) return 0.f;
-    
-    // next we see which point in rect is closest to point
-    CGPoint closest = rect.origin;
-    if (rect.origin.x + rect.size.width < point.x)
-        closest.x += rect.size.width; // point is far right of us
-    else if (point.x > rect.origin.x) 
-        closest.x = point.x; // point above or below us
-    if (rect.origin.y + rect.size.height < point.y) 
-        closest.y += rect.size.height; // point is far below us
-    else if (point.y > rect.origin.y)
-        closest.y = point.y; // point is straight left or right
-    
-    // we've got a closest point; now pythagorean theorem
-    // distance^2 = [closest.x,y - closest.x,point.y]^2 + [closest.x,point.y - point.x,y]^2
-    // i.e. [closest.y-point.y]^2 + [closest.x-point.x]^2
-    CGFloat a = powf(closest.y-point.y, 2.f);
-    CGFloat b = powf(closest.x-point.x, 2.f);
-    return sqrtf(a + b);
-}
-
 /** If we tap the pinhole, we need to transform to the spotlight view and
     zoom in on the appropriate picture.
  */
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
     CGPoint loc = [gestureRecognizer locationInView:self.context.view];
-    NSInteger offset;
+    NSInteger offset = -1;
     CGRect imageFrame;
-    CGFloat delta = 0.0f;
-    CGFloat minDelta = kLeftPadding / 2.0f;    // Initial error of margin?
     
     // Figure out which image is closest to the point that was tapped
     for (int i = 0; i < [self.imageViewFrames count]; ++i) {
         NSValue *val = [self.imageViewFrames objectAtIndex:i];
         imageFrame = [val CGRectValue];
-        delta = [self distanceBetweenRect:imageFrame andPoint:loc];
-        
-        if (delta < minDelta) {
-            minDelta = delta;
+        if (CGRectContainsPoint(imageFrame, loc)) {
             offset = i;
         }
     }
     
-    
-    [self.context setState:JCImageGalleryViewStateSpotlight withOffset:offset];
+    if (offset >= 0) {
+        [self.context setState:JCImageGalleryViewStateSpotlight withOffset:offset];
+    }
 }
 
 #pragma mark - JCImageGalleryViewController

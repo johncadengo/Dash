@@ -23,9 +23,8 @@
 + (NSInteger)pageForOrigin:(CGPoint)origin;
 + (CGPoint)originForPage:(NSInteger)page;
 
-/** From: http://stackoverflow.com/questions/3552108/finding-closest-object-to-cgpoint/3556025#3556025
- */
-- (CGFloat)distanceBetweenRect:(CGRect)rect andPoint:(CGPoint)point;
+
+
 
 - (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame;
 

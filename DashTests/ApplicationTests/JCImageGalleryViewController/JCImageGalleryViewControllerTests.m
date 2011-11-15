@@ -158,9 +158,12 @@
     STAssertFalse(amShowing, @"Pinhole amShowing wrong: %d", amShowing);
     amShowing = self.spotlightViewController.amShowing;
     STAssertFalse(amShowing, @"Spotlight amShowing wrong: %d", amShowing);
-    
-    
-    
+}
+
+- (void)handleGesture
+{
+    NSLog(@"%@", self.name);
+
 }
 
 @end
