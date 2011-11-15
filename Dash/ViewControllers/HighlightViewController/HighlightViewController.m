@@ -81,6 +81,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    // Make sure to stop the animations that are ongoing if we are leaving our current view.
+    [self.imageGalleryViewController viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

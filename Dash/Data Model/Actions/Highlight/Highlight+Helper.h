@@ -8,6 +8,7 @@
 
 #import "Highlight.h"
 #import "Action+Helper.h"
+
 @class Person;
 @class Place;
 @class HighlightPhoto;

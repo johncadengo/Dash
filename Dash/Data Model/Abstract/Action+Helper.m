@@ -38,7 +38,8 @@
 
 - (NSString *)relativeTimestamp
 {
-    return [self.timestamp relativeTimestamp];
+    NSString *time = [NSString stringWithFormat:@"%@", [self.timestamp relativeTimestamp]];
+    return time;
 }
 
 - (NSString *)feedbackActivity 

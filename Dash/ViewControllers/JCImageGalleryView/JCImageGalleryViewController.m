@@ -172,6 +172,14 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    // Make sure we stop the animatiosn and whatnot that are ongoing
+    [self.view removeFromSuperview];
+    [self.superview addSubview: self.view];
+    
+    // TODO: Known bug where as we are transitioning, if the user changes the views
+    // by pushing either another tab, or navigating back on the navigation controller
+    // it will cause weird errors. Might want to intercept all touch events and disable them?
 }
 
 - (void)viewDidDisappear:(BOOL)animated
