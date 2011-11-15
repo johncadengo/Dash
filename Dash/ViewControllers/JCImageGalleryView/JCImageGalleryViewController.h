@@ -46,6 +46,10 @@ typedef enum {
  */
 - (void)hide;
 
+/**
+ */
+- (void)hideOffset:(NSInteger)offset;
+
 @end
 
 @protocol JCViewControllerDelegate <NSObject>

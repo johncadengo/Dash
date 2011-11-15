@@ -106,7 +106,7 @@
                 break;
         }
         
-        [oldController hide];
+        [oldController hideOffset:offset];
         [self.currentViewController showOffset:offset];
     }
 }

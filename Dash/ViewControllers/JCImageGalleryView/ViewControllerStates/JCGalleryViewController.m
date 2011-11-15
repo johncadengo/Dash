@@ -132,6 +132,8 @@ static CGFloat kMagicNumber = 35.0f;
     CGFloat imageWidth = 70.0f;
     CGFloat imageHeight = imageWidth;
     
+    [self.imageViewFrames removeAllObjects];
+    
     for (int i = 0; i < [imageViews count]; i++) {
         imageView = [imageViews objectAtIndex:i];
         
@@ -152,11 +154,27 @@ static CGFloat kMagicNumber = 35.0f;
     
 }
 
-/** If we tap the spotlight view we need to toggle the toolbars.
+/** If we tap the pinhole, we need to transform to the spotlight view and
+ zoom in on the appropriate picture.
  */
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    [self.context setState:JCImageGalleryViewStateSpotlight];
+    CGPoint loc = [gestureRecognizer locationInView:self.context.view];
+    NSInteger offset = -1;
+    CGRect imageFrame;
+    
+    // Figure out which image is closest to the point that was tapped
+    for (int i = 0; i < [self.imageViewFrames count]; ++i) {
+        NSValue *val = [self.imageViewFrames objectAtIndex:i];
+        imageFrame = [val CGRectValue];
+        if (CGRectContainsPoint(imageFrame, loc)) {
+            offset = i;
+        }
+    }
+    
+    if (offset >= 0) {
+        [self.context setState:JCImageGalleryViewStateSpotlight withOffset:offset];
+    }
 }
 
 /** Takes over the full screen and hides the status bar.
@@ -214,10 +232,14 @@ static CGFloat kMagicNumber = 35.0f;
 
 - (void)hide
 {
+    [self hideOffset:0];
+}
+
+- (void)hideOffset:(NSInteger)offset
+{
     // Hide the toolbar when we are leaving this view.
     [self.toolbar removeFromSuperview];
     self.context.view.backgroundColor = [UIColor grayColor];
-
 }
 
 @end

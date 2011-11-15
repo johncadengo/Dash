@@ -13,12 +13,56 @@
 static CGFloat kImageWidth = 70.0f;
 static CGFloat kTopPadding = 5.0f;
 static CGFloat kLeftPadding = 8.0f;
+static int kNumImagesPerRow = 4;
 
 #pragma mark - Implementation
 
 @implementation JCPinholeViewController
 
 @synthesize imageViewFrames = _imageViewFrames;
+
+#pragma mark - Class methods
+
++ (CGFloat)xForImageIndex:(NSInteger)index
+{
+    // Every 4 images add extra padding
+    CGFloat extraPadding = (index / kNumImagesPerRow) * kLeftPadding;
+    return ((index + 1) * kLeftPadding) + (index * kImageWidth) + extraPadding;
+}
+
++ (CGFloat)yForImageIndex:(NSInteger)index
+{
+    return kTopPadding;
+}
+
++ (CGPoint)originForImageIndex:(NSInteger)index
+{
+    return CGPointMake([self xForImageIndex:index], [self yForImageIndex:index]);
+}
+
++ (CGSize)contentSizeForNumImages:(NSInteger)numImages
+{
+    CGFloat width = [self xForImageIndex:numImages] + kImageWidth + kLeftPadding;
+    CGFloat height = kImageWidth + (2 * kTopPadding);
+    return CGSizeMake(width, height);
+}
+
++ (NSInteger)pageForOffset:(NSInteger)offset
+{   
+    return offset / kNumImagesPerRow;
+}
+
++ (NSInteger)pageForOrigin:(CGPoint)origin
+{
+    return floor(origin.x / 320.0f);
+}
+
++ (CGPoint)originForPage:(NSInteger)page
+{
+    return CGPointMake(320.0f * page, 0.0f);
+}
+
+#pragma mark - Initialization
 
 - (id)initWithContext:(id)context
 {
@@ -27,9 +71,30 @@ static CGFloat kLeftPadding = 8.0f;
     if (self) {
         self.imageViewFrames = [[NSMutableArray alloc] initWithCapacity:[self.context.imageViews count]];
         [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
+        
+        [self setContentView];
     }
     
     return self;
+}
+
+- (void)setContentView
+{
+    [self.context.view setScrollEnabled:YES];
+    [self.context.view setPagingEnabled:YES];
+    
+    self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
+}
+
+- (void)setContentOffset:(NSInteger)offset
+{
+    // So, depending on what offset we are, we need to first
+    // figure out the page that image is indexed at
+    NSInteger page = [[self class] pageForOffset:offset];
+    
+    // Then, we need to set the contentoffset to the CGPoint origin of that page.
+    CGPoint pageOrigin = [[self class] originForPage:page];
+    [self.context.view setContentOffset:pageOrigin];
 }
 
 /** Pinhole view is the first view. So when we init, we also want to lay out the images.
@@ -37,16 +102,16 @@ static CGFloat kLeftPadding = 8.0f;
 - (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
 {
     CGRect imageFrame;
-    CGFloat totalWidth = frame.size.width;
-    int numImagesPerRow = totalWidth / kImageWidth;
     int numImages = [imageViews count];
+    
+    [self.imageViewFrames removeAllObjects];
     
     // We only want to lay out one row
     //int numImagesToLayout = MIN(numImagesPerRow, numImages);
     
-    for (int i = 0; i < numImagesPerRow; i++) {
+    for (int i = 0; i < numImages; i++) {
         UIImageView *imageView = [imageViews objectAtIndex:i];
-        imageFrame = CGRectMake(((i + 1) * kLeftPadding) + (i * kImageWidth), kTopPadding, 
+        imageFrame = CGRectMake([[self class] xForImageIndex:i], kTopPadding, 
                                 kImageWidth, kImageWidth);
         imageView.frame = imageFrame;
         
@@ -124,11 +189,8 @@ static CGFloat kLeftPadding = 8.0f;
 
 - (void)showOffset:(NSInteger)offset
 {
-    [self.context.view setScrollEnabled:NO];
-    [self.context.view setPagingEnabled:NO];
-    
     CGRect newframe = [self.context.superview convertRect:self.context.frame toView:self.context.topView];
-    
+   
     [UIView animateWithDuration:1.0
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
@@ -161,12 +223,18 @@ static CGFloat kLeftPadding = 8.0f;
     [[UIApplication sharedApplication] setStatusBarHidden:NO   
                                             withAnimation:UIStatusBarAnimationSlide];
     
-    [self.context.view setContentSize:CGSizeZero];
+    [self setContentView];
+    [self setContentOffset:offset];
 }
 
 - (void)hide
 {
-    
+    [self hideOffset:0];
+}
+
+- (void)hideOffset:(NSInteger)offset
+{
+
 }
 
 @end

@@ -23,7 +23,26 @@ static CGFloat kTopPadding = 80.0f;
 static CGFloat kLeftPadding = 0.0f;
 static CGFloat kStatusBarHeight = 20.0f;
 
-#pragma mark - Implementation
+#pragma mark - Class methods
+
++ (CGPoint)originForPage:(NSInteger)newPage
+{
+    CGFloat x = kImageWidth * newPage;
+    CGFloat y = 0.0f;
+    
+    CGPoint origin = CGPointMake(x, y);
+    
+    return origin;
+}
+
++ (NSInteger)pageForOrigin:(CGPoint)origin
+{
+    CGFloat x = origin.x;
+    
+    return x / kImageWidth;
+}
+
+#pragma mark - Initialization
 
 - (id)initWithContext:(id)delegate
 {
@@ -56,12 +75,13 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 - (void)handleDone:(id)sender
 {
-    [self.context setState:JCImageGalleryViewStatePinhole];
+    NSInteger offset = [[self class] pageForOrigin:self.context.view.contentOffset];
+    [self.context setState:JCImageGalleryViewStatePinhole withOffset:offset];
 }
 
 - (void)handleSeeAll:(id)sender
 {
-    NSInteger offset = [self pageForOrigin:self.context.view.contentOffset];
+    NSInteger offset = [[self class] pageForOrigin:self.context.view.contentOffset];
     [self.context setState:JCImageGalleryViewStateGallery withOffset:offset];
 }
 
@@ -89,33 +109,41 @@ static CGFloat kStatusBarHeight = 20.0f;
                                             withAnimation:UIStatusBarAnimationNone];
 }
 
-- (CGPoint)originForPage:(NSInteger)newPage
-{
-    CGFloat x = kImageWidth * newPage;
-    CGFloat y = 0.0f;
-    
-    CGPoint origin = CGPointMake(x, y);
-    
-    return origin;
-}
-
-- (NSInteger)pageForOrigin:(CGPoint)origin
-{
-    CGFloat x = origin.x;
-    
-    return x / kImageWidth;
-}
-
 #pragma mark - JCImageGalleryController
-
 
 - (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset
 {
     CGRect imageFrame;
     UIImageView *imageView;
     
-    for (int i = 0; i < offset; i++) {
-        imageView = [imageViews objectAtIndex:i];
+    int firstRow =  offset + 4;
+    
+    for (int i = 0; i < [imageViews count]; i++) {
+        imageView = [self.context.imageViews objectAtIndex:i];
+        if (i < firstRow) {
+            imageFrame = CGRectMake((i * kImageWidth), kTopPadding, 
+                                    kImageWidth, kImageWidth);
+            imageView.frame = imageFrame;
+            
+            // Add this imageview to our view
+            [self.context.view addSubview:imageView];
+            //imageView.alpha = 1.0f;
+        }
+        else {
+            [imageView removeFromSuperview];
+        }
+    }
+}
+
+/** Want to lay out the images side by side, one full screen per image
+ */
+- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
+{
+    CGRect imageFrame;
+    UIImageView *imageView;
+    
+    for (int i = 0; i < [imageViews count]; i++) {
+        imageView = [self.context.imageViews objectAtIndex:i];
         imageFrame = CGRectMake((i * kImageWidth), kTopPadding, 
                                 kImageWidth, kImageWidth);
         imageView.frame = imageFrame;
@@ -124,18 +152,6 @@ static CGFloat kStatusBarHeight = 20.0f;
         [self.context.view addSubview:imageView];
         //imageView.alpha = 1.0f;
     }
-    
-    for (int i = offset; i < [imageViews count]; i++) {
-        imageView = [imageViews objectAtIndex:i];
-        [imageView removeFromSuperview];
-    }
-}
-
-/** Want to lay out the images side by side, one full screen per image
- */
-- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
-{
-    [self prepareLayoutWithImageViews:imageViews offset:[imageViews count]];
 }
 
 /** If we tap the spotlight view we need to toggle the toolbars.
@@ -172,7 +188,7 @@ static CGFloat kStatusBarHeight = 20.0f;
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         [self prepareLayoutWithImageViews:self.context.imageViews offset:4];
+                         [self prepareLayoutWithImageViews:self.context.imageViews offset:offset];
                      }
                      completion:^(BOOL finished) {
                          [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
@@ -203,6 +219,11 @@ static CGFloat kStatusBarHeight = 20.0f;
 }
 
 - (void)hide
+{
+    [self hideOffset:0];
+}
+
+- (void)hideOffset:(NSInteger)offset
 {
     // Hide the toolbar when we are leaving this view.
     [self setToolbarVisible:NO];

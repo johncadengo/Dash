@@ -16,6 +16,14 @@
 @property (nonatomic, strong) UIBarButtonItem *done;
 @property (nonatomic, strong) UIBarButtonItem *seeAll; 
 
+/** Calculates the origin for the page. Page index starts at 0.
+ */
++ (CGPoint)originForPage:(NSInteger)newPage;
+
+/** Calculate what page we are based on the origin. Page index starts at 0.
+ */
++ (NSInteger)pageForOrigin:(CGPoint)origin;
+
 /** Called in the spotlight view to turn the toolbar visible and hidden.
  */
 - (void)toggleToolbar;
@@ -27,15 +35,6 @@
 /** Called when the see all button is pushed. Will transition to the gallery view.
  */
 - (void)handleSeeAll:(id)sender;
-
-/** Calculates the origin for the page. Page index starts at 0.
- */
-- (CGPoint)originForPage:(NSInteger)newPage;
-
-/** Calculate what page we are based on the origin. Page index starts at 0.
- */
-- (NSInteger)pageForOrigin:(CGPoint)origin;
-
 
 - (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset;
 
