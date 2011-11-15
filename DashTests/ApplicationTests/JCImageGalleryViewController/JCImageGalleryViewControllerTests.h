@@ -12,9 +12,17 @@
 #import "DashTests.h"
 
 @class JCImageGalleryViewController;
+@class JCViewController;
+@class JCPinholeViewController;
+@class JCGalleryViewController;
+@class JCSpotlightViewController;
 
 @interface JCImageGalleryViewControllerTests : DashTests
 
 @property (nonatomic, strong) JCImageGalleryViewController *imageGalleryViewController;
+@property (nonatomic, strong) JCViewController *currentViewController;
+@property (nonatomic, strong) JCPinholeViewController *pinholeViewController;
+@property (nonatomic, strong) JCGalleryViewController *galleryViewController;
+@property (nonatomic, strong) JCSpotlightViewController *spotlightViewController;
 
 @end

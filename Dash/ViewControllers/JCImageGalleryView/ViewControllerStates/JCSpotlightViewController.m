@@ -172,6 +172,7 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 - (void)showOffset:(NSInteger)offset
 {
+    [super showOffset:offset];
     if (![self.context.topView.subviews containsObject:self.context.view]) {
         [self.context.topView addSubview:self.context.view];
         
@@ -225,6 +226,8 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 - (void)hideOffset:(NSInteger)offset
 {
+    [super hideOffset:offset];
+    
     // Hide the toolbar when we are leaving this view.
     [self setToolbarVisible:NO];
     

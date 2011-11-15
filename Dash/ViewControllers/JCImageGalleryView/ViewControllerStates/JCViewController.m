@@ -11,6 +11,7 @@
 @implementation JCViewController
 
 @synthesize context = _context;
+@synthesize showing = _showing;
 
 - (id)init
 {
@@ -43,18 +44,22 @@
 
 - (void)show
 {
-    // Subclasses must implement this    
+    [self setShowing:YES];
 }
 
 - (void)showOffset:(NSInteger)offset
 {
-    // Subclasses must implement this
+    [self setShowing:YES];
 }
 
 - (void)hide
 {
-    // Subclasses must implement this
+    [self setShowing:NO];
 }
 
+- (void)hideOffset:(NSInteger)offset
+{
+    [self setShowing:NO];
+}
 
 @end

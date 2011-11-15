@@ -20,6 +20,7 @@ typedef enum {
 @protocol JCImageGalleryViewState <NSObject>
 
 @property (nonatomic, strong) JCImageGalleryViewController *context;
+@property (nonatomic, getter=amShowing) BOOL showing;
 
 /** To ensure smooth transitions between views.
  */

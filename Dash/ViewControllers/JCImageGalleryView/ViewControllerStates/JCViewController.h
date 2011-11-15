@@ -12,6 +12,7 @@
 @interface JCViewController : UIViewController <JCImageGalleryViewState>
 
 @property (nonatomic, strong) JCImageGalleryViewController *context;
+@property (nonatomic, getter=amShowing) BOOL showing;
 
 /** JCViewController is useless without a delegate. Must call this init statement.
  */
@@ -32,5 +33,7 @@
 /** Called when we are leaving this view.
  */
 - (void)hide;
+
+- (void)hideOffset:(NSInteger)offset;
 
 @end

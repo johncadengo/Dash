@@ -191,6 +191,7 @@ static int kNumImagesPerRow = 4;
 
 - (void)showOffset:(NSInteger)offset
 {
+    [super showOffset:offset];
     CGRect newframe = [self.context.superview convertRect:self.context.frame toView:self.context.topView];
    
     [UIView animateWithDuration:1.0
@@ -238,7 +239,7 @@ static int kNumImagesPerRow = 4;
 
 - (void)hideOffset:(NSInteger)offset
 {
-
+    [super hideOffset:offset];
 }
 
 @end
