@@ -160,10 +160,38 @@
     STAssertFalse(amShowing, @"Spotlight amShowing wrong: %d", amShowing);
 }
 
-- (void)handleGesture
+- (void)testContentSizeWidth
 {
     NSLog(@"%@", self.name);
 
+    for (int i = 0; i < 24; i++) {
+        CGFloat wanted = ((i + 3) / 4) * 320.0f;
+        CGSize size = [JCPinholeViewController contentSizeForNumImages:i];
+        CGFloat got = size.width;
+        
+        STAssertEquals(wanted, got, @"content size");
+    }
+}
+
+- (void)testLayoutImageViews
+{
+    NSLog(@"%@", self.name);
+    
+    [self.pinholeViewController layoutImageViews:self.pinholeViewController.context.imageViews inFrame:self.pinholeViewController.context.frame];
+    
+    for (UIImageView *imageView in self.pinholeViewController.context.imageViews) {
+        // Check if their frames have been set
+        CGFloat x = imageView.frame.origin.x;
+        CGFloat y = imageView.frame.origin.y;
+        CGFloat width = imageView.frame.size.width;
+        CGFloat height = imageView.frame.size.height;
+        
+        STAssertTrue(x, @"x is zero");
+        STAssertTrue(y, @"y is zero");
+        STAssertTrue(width, @"width is zero");
+        STAssertTrue(height, @"height is zero");
+    }
+    
 }
 
 @end
