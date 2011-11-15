@@ -42,7 +42,9 @@ static int kNumImagesPerRow = 4;
 
 + (CGSize)contentSizeForNumImages:(NSInteger)numImages
 {
-    CGFloat width = [self xForImageIndex:numImages] + kImageWidth + kLeftPadding;
+    // To round up: q = (x + y - 1) / y;
+    int numPages = (numImages + kNumImagesPerRow - 1) / kNumImagesPerRow;
+    CGFloat width = numPages * 320.0f;
     CGFloat height = kImageWidth + (2 * kTopPadding);
     return CGSizeMake(width, height);
 }
@@ -225,6 +227,8 @@ static int kNumImagesPerRow = 4;
     
     [self setContentView];
     [self setContentOffset:offset];
+    
+    NSLog(@"%f", self.context.view.contentSize.width);
 }
 
 - (void)hide
