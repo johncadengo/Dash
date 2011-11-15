@@ -173,23 +173,39 @@
     }
 }
 
-- (void)testLayoutImageViews
+- (BOOL)checkRectNotZero:(CGRect)rect
 {
-    NSLog(@"%@", self.name);
+    BOOL pass = YES;
+    CGFloat x, y, width, height;
+
+    x = rect.origin.x;
+    y = rect.origin.y;
+    width = rect.size.width;
+    height = rect.size.height;
     
-    [self.pinholeViewController layoutImageViews:self.pinholeViewController.context.imageViews inFrame:self.pinholeViewController.context.frame];
-    
-    for (UIImageView *imageView in self.pinholeViewController.context.imageViews) {
-        // Check if their frames have been set
-        CGFloat x = imageView.frame.origin.x;
-        CGFloat y = imageView.frame.origin.y;
-        CGFloat width = imageView.frame.size.width;
-        CGFloat height = imageView.frame.size.height;
+    if (!(x && y && width && height)) {
+        pass = NO;
         
         STAssertTrue(x, @"x is zero");
         STAssertTrue(y, @"y is zero");
         STAssertTrue(width, @"width is zero");
         STAssertTrue(height, @"height is zero");
+    }
+    
+    return pass;
+}
+
+- (void)testLayoutImageViews
+{
+    NSLog(@"%@", self.name);
+    
+    [self.pinholeViewController layoutImageViews:self.pinholeViewController.context.imageViews inFrame:self.pinholeViewController.context.frame];
+
+    BOOL pass = YES;
+    for (UIImageView *imageView in self.pinholeViewController.context.imageViews) {
+        // Check if their frames have been set
+        pass = [self checkRectNotZero:imageView.frame];
+        STAssertTrue(pass, @"One of the imageviews being tested has no frame set");
     }
     
 }

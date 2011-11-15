@@ -25,4 +25,6 @@
 @property (nonatomic, strong) JCGalleryViewController *galleryViewController;
 @property (nonatomic, strong) JCSpotlightViewController *spotlightViewController;
 
+- (BOOL)checkRectNotZero:(CGRect)rect;
+
 @end
