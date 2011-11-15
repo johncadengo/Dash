@@ -130,7 +130,15 @@
     currentState = self.imageGalleryViewController.state;
     STAssertEquals(state, currentState, @"Redundant state change. Wanted: %d Got: %d", state, currentState);
     
-    // Change the state in the normal progression from pinhole to 
+    // Test if the amShowing is working properly in the default just initialized state
+    BOOL amShowing = self.pinholeViewController.amShowing;
+    STAssertTrue(amShowing, @"Pinhole controller's amShowing wrong: %d", amShowing);
+    amShowing = self.galleryViewController.amShowing;
+    STAssertFalse(amShowing, @"Gallery amShowing wrong: %d", amShowing);
+    amShowing = self.spotlightViewController.amShowing;
+    STAssertFalse(amShowing, @"Spotlight amShowing wrong: %d", amShowing);
+    
+    // Change the state from pinhole to gallery
     [self.imageGalleryViewController setState:JCImageGalleryViewStateGallery];
     
     // This should set off a cascade of changes. Make sure, first, that state has changed.
@@ -144,7 +152,7 @@
     STAssertEqualObjects(currentController, gallery, @"State changed to gallery failed to change controller");
     
     // Make sure the amShowing property correctly changes
-    BOOL amShowing = currentController.amShowing;
+    amShowing = currentController.amShowing;
     STAssertTrue(amShowing, @"Current controller's amShowing wrong: %d", amShowing);
     amShowing = self.pinholeViewController.amShowing;
     STAssertFalse(amShowing, @"Pinhole amShowing wrong: %d", amShowing);

@@ -72,9 +72,6 @@ static int kNumImagesPerRow = 4;
     
     if (self) {
         self.imageViewFrames = [[NSMutableArray alloc] initWithCapacity:[self.context.imageViews count]];
-        [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
-        
-        [self setContentView];
     }
     
     return self;
@@ -192,44 +189,53 @@ static int kNumImagesPerRow = 4;
 - (void)showOffset:(NSInteger)offset
 {
     [super showOffset:offset];
-    CGRect newframe = [self.context.superview convertRect:self.context.frame toView:self.context.topView];
-   
-    [UIView animateWithDuration:1.0
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseOut
-                     animations:^{
-                         [self layoutImageViews:self.context.imageViews inFrame:newframe];
-                     }
-                     completion:nil];
     
-    [UIView animateWithDuration:1.0
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseOut
-                     animations:^{
-                         self.context.view.frame = newframe;
-                     }
-                     completion:^(BOOL finished){
-                         // Wait one second and then fade in the view
-                         [self.context.view removeFromSuperview];
-                         self.context.view.frame = self.context.frame;
-                         [self.context.superview addSubview:self.context.view];
-                     }];
-    
-    [UIView animateWithDuration:0.5
-                          delay:0.5
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         self.context.view.backgroundColor = [UIColor grayColor];
-                     }
-                     completion:nil];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO   
-                                            withAnimation:UIStatusBarAnimationSlide];
+    // Only do the animation if we are in the topview. i.e. not in our superview.
+    if ([[self.context.topView subviews] containsObject:self.context.view]) {
+        CGRect newframe = [self.context.superview convertRect:self.context.frame toView:self.context.topView];
+       
+        [UIView animateWithDuration:1.0
+                              delay:0.0
+                            options:UIViewAnimationCurveEaseOut
+                         animations:^{
+                             [self layoutImageViews:self.context.imageViews inFrame:newframe];
+                         }
+                         completion:nil];
+        
+        [UIView animateWithDuration:1.0
+                              delay:0.0
+                            options:UIViewAnimationCurveEaseOut
+                         animations:^{
+                             self.context.view.frame = newframe;
+                         }
+                         completion:^(BOOL finished){
+                             // Wait one second and then fade in the view
+                             [self.context.view removeFromSuperview];
+                             self.context.view.frame = self.context.frame;
+                             [self.context.superview addSubview:self.context.view];
+                         }];
+        
+        [UIView animateWithDuration:0.5
+                              delay:0.5
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             self.context.view.backgroundColor = [UIColor grayColor];
+                         }
+                         completion:nil];
+        
+        [[UIApplication sharedApplication] setStatusBarHidden:NO   
+                                                withAnimation:UIStatusBarAnimationSlide];
+        
+
+        
+        NSLog(@"%f", self.context.view.contentSize.width);
+    }
+    else {
+        [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
+    }
     
     [self setContentView];
     [self setContentOffset:offset];
-    
-    NSLog(@"%f", self.context.view.contentSize.width);
 }
 
 - (void)hide

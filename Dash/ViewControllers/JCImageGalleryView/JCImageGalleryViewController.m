@@ -58,6 +58,7 @@
         self.spotlightViewController = [[JCSpotlightViewController alloc] initWithContext:self];
     
         self.currentViewController = self.pinholeViewController;
+        [self.currentViewController show];
         
         self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
         [self.view addGestureRecognizer:self.tap];

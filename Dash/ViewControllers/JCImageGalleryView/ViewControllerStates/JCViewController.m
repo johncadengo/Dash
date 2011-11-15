@@ -25,6 +25,7 @@
     
     if (self) {
         self.context = context;
+        [self setShowing:NO];
     }
     
     return self;
