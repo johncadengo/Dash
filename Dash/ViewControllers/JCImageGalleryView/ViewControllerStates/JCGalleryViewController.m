@@ -123,21 +123,21 @@ static CGFloat kLeftPadding = 8.0f;
 
 #pragma mark - JCImageGalleryController
 
-- (void)willLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+- (void)willLayoutWithOffset:(NSInteger)offset
 {
     
 }
 
 /** Want to lay out the images side by side, one full screen per image
  */
-- (void)layoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+- (void)layoutWithOffset:(NSInteger)offset
 {
     UIImageView *imageView;
     CGRect rect;
     [self.imageViewFrames removeAllObjects];
     
-    for (int i = 0; i < [imageViews count]; i++) {
-        imageView = [imageViews objectAtIndex:i];
+    for (int i = 0; i < [self.context.imageViews count]; i++) {
+        imageView = [self.context.imageViews objectAtIndex:i];
         
         rect = imageView.frame;
         rect.origin = [[self class] originForIndex:i];
@@ -153,7 +153,7 @@ static CGFloat kLeftPadding = 8.0f;
     }
 }
 
-- (void)didLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+- (void)didLayoutWithOffset:(NSInteger)offset
 {
     
 }
@@ -204,14 +204,14 @@ static CGFloat kLeftPadding = 8.0f;
     
     // Want to prepare the layout but putting all the images
     // that were arranged linearly into rows
-    [self prepareLayoutWithImageViews:self.context.imageViews offset:offset];
+    [self willLayoutWithOffset:offset];
     
     // So nothing has changed, in appearance to the user, but now we can start transforming.
     [UIView animateWithDuration:1.5
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         [self layoutImageViews:self.context.imageViews withOffset:offset];
+                         [self layoutWithOffset:offset];
                      }
                      completion:nil];
     

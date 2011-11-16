@@ -30,8 +30,4 @@
  */
 - (void)handleDone:(id)sender;
 
-/** Help calculate the layout of the gallery view
- */
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset;
-
 @end

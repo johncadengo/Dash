@@ -111,14 +111,14 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 #pragma mark - JCImageGalleryController
 
-- (void)willLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+- (void)willLayoutWithOffset:(NSInteger)offset
 {
     CGRect imageFrame;
     UIImageView *imageView;
     
     int firstRow =  offset + 4;
     
-    for (int i = 0; i < [imageViews count]; i++) {
+    for (int i = 0; i < [self.context.imageViews count]; i++) {
         imageView = [self.context.imageViews objectAtIndex:i];
         if (i < firstRow) {
             imageFrame = CGRectMake((i * kImageWidth), kTopPadding, 
@@ -137,12 +137,12 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 /** Want to lay out the images side by side, one full screen per image
  */
-- (void)layoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+- (void)layoutWithOffset:(NSInteger)offset
 {
     CGRect imageFrame;
     UIImageView *imageView;
     
-    for (int i = 0; i < [imageViews count]; i++) {
+    for (int i = 0; i < [self.context.imageViews count]; i++) {
         imageView = [self.context.imageViews objectAtIndex:i];
         imageFrame = CGRectMake((i * kImageWidth), kTopPadding, 
                                 kImageWidth, kImageWidth);
@@ -154,7 +154,7 @@ static CGFloat kStatusBarHeight = 20.0f;
     }
 }
 
-- (void)didLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+- (void)didLayoutWithOffset:(NSInteger)offset
 {
     
 }
@@ -194,10 +194,10 @@ static CGFloat kStatusBarHeight = 20.0f;
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         [self willLayoutImageViews:self.context.imageViews withOffset:offset];
+                         [self willLayoutWithOffset:offset];
                      }
                      completion:^(BOOL finished) {
-                         [self layoutImageViews:self.context.imageViews withOffset:offset];
+                         [self layoutWithOffset:offset];
                      }];
     
     [UIView animateWithDuration:1.5

@@ -79,22 +79,22 @@ static int kNumImagesPerRow = 4;
 
 #pragma mark - JCImageGalleryViewController
 
-- (void)willLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+- (void)willLayoutWithOffset:(NSInteger)offset
 {
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:YES];
     
-    self.context.view.contentSize = [[self class] contentSizeForNumImages:[imageViews count]];
+    self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
     
 
 }
 
 /** Pinhole view is the first view. So when we init, we also want to lay out the images.
  */
-- (void)layoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+- (void)layoutWithOffset:(NSInteger)offset
 {
     CGRect imageFrame;
-    int numImages = [imageViews count];
+    int numImages = [self.context.imageViews count];
     
     [self.imageViewFrames removeAllObjects];
     
@@ -102,7 +102,7 @@ static int kNumImagesPerRow = 4;
     //int numImagesToLayout = MIN(numImagesPerRow, numImages);
     
     for (int i = 0; i < numImages; i++) {
-        UIImageView *imageView = [imageViews objectAtIndex:i];
+        UIImageView *imageView = [self.context.imageViews objectAtIndex:i];
         imageFrame = CGRectMake([[self class] xForImageIndex:i], kTopPadding, 
                                 kImageWidth, kImageWidth);
         imageView.frame = imageFrame;
@@ -116,9 +116,11 @@ static int kNumImagesPerRow = 4;
     
 }
 
-- (void)didLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+- (void)didLayoutWithOffset:(NSInteger)offset
 {
-    
+    [self.context.view removeFromSuperview];
+    self.context.view.frame = self.context.frame;
+    [self.context.superview addSubview:self.context.view];
 }
 
 /** If we tap the pinhole, we need to transform to the spotlight view and
@@ -161,7 +163,7 @@ static int kNumImagesPerRow = 4;
 {
     [super showOffset:offset];
     
-    [self willLayoutImageViews:self.context.imageViews withOffset:offset];
+    [self willLayoutWithOffset:offset];
     
     // Only do the animation if we are in the topview. i.e. not in our superview.
     if ([[self.context.topView subviews] containsObject:self.context.view]) {
@@ -172,14 +174,10 @@ static int kNumImagesPerRow = 4;
                             options:UIViewAnimationCurveEaseOut
                          animations:^{
                              self.context.view.frame = newframe;
+                             [self layoutWithOffset:offset];
                          }
                          completion:^(BOOL finished){
-                             // Wait one second and then fade in the view
-                             [self.context.view removeFromSuperview];
-                             self.context.view.frame = self.context.frame;
-                             [self.context.superview addSubview:self.context.view];
-                             
-                             [self layoutImageViews:self.context.imageViews withOffset:offset];
+                             [self didLayoutWithOffset:offset];
                          }];
         
         [UIView animateWithDuration:0.5
@@ -194,7 +192,7 @@ static int kNumImagesPerRow = 4;
                                                 withAnimation:UIStatusBarAnimationSlide];
     }
     else {
-        [self layoutImageViews:self.context.imageViews withOffset:offset];
+        [self layoutWithOffset:offset];
     }
     
     // So, depending on what offset we are, we need to first

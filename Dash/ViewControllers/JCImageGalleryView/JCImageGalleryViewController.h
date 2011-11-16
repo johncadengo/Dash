@@ -24,15 +24,15 @@ typedef enum {
 
 /** Called before layout, to prepare smooth transitions.
  */
-- (void)willLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset;
+- (void)willLayoutWithOffset:(NSInteger)offset;
 
 /** Called during transition. Animated.
  */
-- (void)layoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset;
+- (void)layoutWithOffset:(NSInteger)offset;
 
 /** Called after layout. To fix everything in place thats not in view.
  */
-- (void)didLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset;
+- (void)didLayoutWithOffset:(NSInteger)offset;
 
 /** Handle single taps.
  */
