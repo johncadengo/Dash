@@ -77,35 +77,21 @@ static int kNumImagesPerRow = 4;
     return self;
 }
 
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset
+#pragma mark - JCImageGalleryViewController
+
+- (void)willLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
 {
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:YES];
     
     self.context.view.contentSize = [[self class] contentSizeForNumImages:[imageViews count]];
     
-    // So, depending on what offset we are, we need to first
-    // figure out the page that image is indexed at
-    NSInteger page = [[self class] pageForOffset:offset];
-    
-    // Then, we need to set the contentoffset to the CGPoint origin of that page.
-    CGPoint pageOrigin = [[self class] originForPage:page];
-    [self.context.view setContentOffset:pageOrigin];
-}
 
-- (void)setContentView
-{
-    
-}
-
-- (void)setContentOffset:(NSInteger)offset
-{
-    
 }
 
 /** Pinhole view is the first view. So when we init, we also want to lay out the images.
  */
-- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
+- (void)layoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
 {
     CGRect imageFrame;
     int numImages = [imageViews count];
@@ -130,7 +116,10 @@ static int kNumImagesPerRow = 4;
     
 }
 
-#pragma mark - Handling taps
+- (void)didLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+{
+    
+}
 
 /** If we tap the pinhole, we need to transform to the spotlight view and
     zoom in on the appropriate picture.
@@ -160,8 +149,6 @@ static int kNumImagesPerRow = 4;
     [self.context setState:JCImageGalleryViewStateGallery];
 }
 
-#pragma mark - JCImageGalleryViewController
-
 /** Returns to pinhole view, which is our initial frame assigned by the coder.
  */
 
@@ -174,17 +161,11 @@ static int kNumImagesPerRow = 4;
 {
     [super showOffset:offset];
     
+    [self willLayoutImageViews:self.context.imageViews withOffset:offset];
+    
     // Only do the animation if we are in the topview. i.e. not in our superview.
     if ([[self.context.topView subviews] containsObject:self.context.view]) {
         CGRect newframe = [self.context.superview convertRect:self.context.frame toView:self.context.topView];
-       
-        [UIView animateWithDuration:1.0
-                              delay:0.0
-                            options:UIViewAnimationCurveEaseOut
-                         animations:^{
-                             [self layoutImageViews:self.context.imageViews inFrame:newframe];
-                         }
-                         completion:nil];
         
         [UIView animateWithDuration:1.0
                               delay:0.0
@@ -197,6 +178,8 @@ static int kNumImagesPerRow = 4;
                              [self.context.view removeFromSuperview];
                              self.context.view.frame = self.context.frame;
                              [self.context.superview addSubview:self.context.view];
+                             
+                             [self layoutImageViews:self.context.imageViews withOffset:offset];
                          }];
         
         [UIView animateWithDuration:0.5
@@ -211,10 +194,16 @@ static int kNumImagesPerRow = 4;
                                                 withAnimation:UIStatusBarAnimationSlide];
     }
     else {
-        [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
+        [self layoutImageViews:self.context.imageViews withOffset:offset];
     }
     
-    [self prepareLayoutWithImageViews:self.context.imageViews offset:offset];
+    // So, depending on what offset we are, we need to first
+    // figure out the page that image is indexed at
+    NSInteger page = [[self class] pageForOffset:offset];
+    
+    // Then, we need to set the contentoffset to the CGPoint origin of that page.
+    CGPoint pageOrigin = [[self class] originForPage:page];
+    [self.context.view setContentOffset:pageOrigin];
 }
 
 - (void)hide

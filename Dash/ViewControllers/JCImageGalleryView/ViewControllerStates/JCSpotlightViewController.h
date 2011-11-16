@@ -36,6 +36,4 @@
  */
 - (void)handleSeeAll:(id)sender;
 
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset;
-
 @end

@@ -111,7 +111,7 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 #pragma mark - JCImageGalleryController
 
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset
+- (void)willLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
 {
     CGRect imageFrame;
     UIImageView *imageView;
@@ -137,7 +137,7 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 /** Want to lay out the images side by side, one full screen per image
  */
-- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame 
+- (void)layoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
 {
     CGRect imageFrame;
     UIImageView *imageView;
@@ -152,6 +152,11 @@ static CGFloat kStatusBarHeight = 20.0f;
         [self.context.view addSubview:imageView];
         //imageView.alpha = 1.0f;
     }
+}
+
+- (void)didLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset
+{
+    
 }
 
 /** If we tap the spotlight view we need to toggle the toolbars.
@@ -189,10 +194,10 @@ static CGFloat kStatusBarHeight = 20.0f;
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         [self prepareLayoutWithImageViews:self.context.imageViews offset:offset];
+                         [self willLayoutImageViews:self.context.imageViews withOffset:offset];
                      }
                      completion:^(BOOL finished) {
-                         [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
+                         [self layoutImageViews:self.context.imageViews withOffset:offset];
                      }];
     
     [UIView animateWithDuration:1.5

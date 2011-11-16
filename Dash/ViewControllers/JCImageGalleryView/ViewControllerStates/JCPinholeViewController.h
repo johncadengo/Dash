@@ -23,14 +23,4 @@
 + (NSInteger)pageForOrigin:(CGPoint)origin;
 + (CGPoint)originForPage:(NSInteger)page;
 
-
-
-
-- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame;
-
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset;
-
-- (void)setContentView;
-- (void)setContentOffset:(NSInteger)offset;
-
 @end

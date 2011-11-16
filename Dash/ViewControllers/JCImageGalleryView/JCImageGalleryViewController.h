@@ -22,13 +22,17 @@ typedef enum {
 @property (nonatomic, strong) JCImageGalleryViewController *context;
 @property (nonatomic, getter=amShowing) BOOL showing;
 
-/** To ensure smooth transitions between views.
+/** Called before layout, to prepare smooth transitions.
  */
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset;
+- (void)willLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset;
 
-/** Lay out its image views according to its frame.
+/** Called during transition. Animated.
  */
-- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame;
+- (void)layoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset;
+
+/** Called after layout. To fix everything in place thats not in view.
+ */
+- (void)didLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset;
 
 /** Handle single taps.
  */

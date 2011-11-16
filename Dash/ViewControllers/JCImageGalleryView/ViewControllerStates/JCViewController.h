@@ -18,22 +18,42 @@
  */
 - (id)initWithContext:(id)context;
 
-/** Must be able to know what to do with gestures.
+/** Called before layout, to prepare smooth transitions.
+ */
+- (void)willLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset;
+
+/** Called during transition. Animated.
+ */
+- (void)layoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset;
+
+/** Called after layout. To fix everything in place thats not in view.
+ */
+- (void)didLayoutImageViews:(NSMutableArray *)imageViews withOffset:(NSInteger)offset;
+
+/** Handle single taps.
  */
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer;
 
-/** Needs to be able to show itself.
+/** Handle double taps.
+ */
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress;
+
+/** JCViewController must show itself. Defaults with offset of zero.
  */
 - (void)show;
 
-/** 
+/** Shows with an offset. For example, used for starting
+ at a specific index in the spotlight view.
  */
 - (void)showOffset:(NSInteger)offset;
 
-/** Called when we are leaving this view.
+/** JCViewController must be able to hide itself. Put away toolbars and whatnot.
  */
 - (void)hide;
 
+/**
+ */
 - (void)hideOffset:(NSInteger)offset;
+
 
 @end
