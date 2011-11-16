@@ -96,16 +96,16 @@ static CGFloat kLeftPadding = 8.0f;
     [self.context setState:JCImageGalleryViewStatePinhole];
 }
 
-#pragma mark - Layout Helpers
+#pragma mark - JCImageGalleryController
 
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset
+- (void)willLayoutWithOffset:(NSInteger)offset
 {
     UIImageView *imageView;
     CGRect rect;
     [self.imageViewFrames removeAllObjects];
     
-    for (int i = 0; i < [imageViews count]; i++) {
-        imageView = [imageViews objectAtIndex:i];
+    for (int i = 0; i < [self.context.imageViews count]; i++) {
+        imageView = [self.context.imageViews objectAtIndex:i];
         
         rect = imageView.frame;
         rect.origin = [[self class] originForIndex:i withOffset:offset];
@@ -118,14 +118,6 @@ static CGFloat kLeftPadding = 8.0f;
         [self.context.view addSubview:imageView];
         imageView.alpha = 1.0f;
     }
-    
-}
-
-#pragma mark - JCImageGalleryController
-
-- (void)willLayoutWithOffset:(NSInteger)offset
-{
-    
 }
 
 /** Want to lay out the images side by side, one full screen per image
@@ -151,6 +143,8 @@ static CGFloat kLeftPadding = 8.0f;
         [self.context.view addSubview:imageView];
         imageView.alpha = 1.0f;
     }
+    
+    self.context.view.frame = self.context.topView.frame;
 }
 
 - (void)didLayoutWithOffset:(NSInteger)offset
@@ -213,15 +207,9 @@ static CGFloat kLeftPadding = 8.0f;
                      animations:^{
                          [self layoutWithOffset:offset];
                      }
-                     completion:nil];
-    
-    [UIView animateWithDuration:1.5
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseOut
-                     animations:^{
-                         self.context.view.frame = self.context.topView.frame;
-                     }
-                     completion:nil];
+                     completion:^(BOOL finished){
+                         [self didLayoutWithOffset:offset];
+                     }];
     
     [UIView animateWithDuration:1.0
                           delay:0.5
