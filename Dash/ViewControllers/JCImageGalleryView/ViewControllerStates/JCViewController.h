@@ -20,7 +20,7 @@
 
 /** Must be able to know what to do with gestures.
  */
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer;
 
 /** Needs to be able to show itself.
  */

@@ -77,16 +77,13 @@ static int kNumImagesPerRow = 4;
     return self;
 }
 
-- (void)setContentView
+- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset
 {
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:YES];
     
-    self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
-}
-
-- (void)setContentOffset:(NSInteger)offset
-{
+    self.context.view.contentSize = [[self class] contentSizeForNumImages:[imageViews count]];
+    
     // So, depending on what offset we are, we need to first
     // figure out the page that image is indexed at
     NSInteger page = [[self class] pageForOffset:offset];
@@ -94,6 +91,16 @@ static int kNumImagesPerRow = 4;
     // Then, we need to set the contentoffset to the CGPoint origin of that page.
     CGPoint pageOrigin = [[self class] originForPage:page];
     [self.context.view setContentOffset:pageOrigin];
+}
+
+- (void)setContentView
+{
+    
+}
+
+- (void)setContentOffset:(NSInteger)offset
+{
+    
 }
 
 /** Pinhole view is the first view. So when we init, we also want to lay out the images.
@@ -128,7 +135,7 @@ static int kNumImagesPerRow = 4;
 /** If we tap the pinhole, we need to transform to the spotlight view and
     zoom in on the appropriate picture.
  */
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer
 {
     CGPoint loc = [gestureRecognizer locationInView:self.context.view];
     NSInteger offset = -1;
@@ -146,6 +153,11 @@ static int kNumImagesPerRow = 4;
     if (offset >= 0) {
         [self.context setState:JCImageGalleryViewStateSpotlight withOffset:offset];
     }
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
+{
+    [self.context setState:JCImageGalleryViewStateGallery];
 }
 
 #pragma mark - JCImageGalleryViewController
@@ -197,17 +209,12 @@ static int kNumImagesPerRow = 4;
         
         [[UIApplication sharedApplication] setStatusBarHidden:NO   
                                                 withAnimation:UIStatusBarAnimationSlide];
-        
-
-        
-        NSLog(@"%f", self.context.view.contentSize.width);
     }
     else {
         [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
     }
     
-    [self setContentView];
-    [self setContentOffset:offset];
+    [self prepareLayoutWithImageViews:self.context.imageViews offset:offset];
 }
 
 - (void)hide

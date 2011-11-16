@@ -23,10 +23,44 @@ static CGFloat kTopMargin = 64.0f;
 static CGFloat kTopPadding = 6.0f; 
 static CGFloat kLeftPadding = 8.0f;
 
-// I don't understand how this works exactly yet, but it works.
-static CGFloat kMagicNumber = 35.0f;
+#pragma mark - Class Methods
 
-#pragma mark - Implementation
++ (CGFloat)xForColumn:(NSInteger)column withImageWidth:(CGFloat)imageWidth
+{
+    return kLeftPadding + (column * kLeftPadding) + (column * imageWidth);
+}
+
++ (CGFloat)yForRow:(NSInteger)row withImageHeight:(CGFloat)imageHeight
+{
+    return ((row + 1) * kTopPadding) + (row * imageHeight);
+}
+
++ (NSInteger)rowForIndex:(NSInteger)index
+{
+    return index / kNumImagesPerRow;
+}
+
++ (NSInteger)columnForIndex:(NSInteger)index
+{
+    return index % kNumImagesPerRow;
+}
+
++ (CGPoint)originForIndex:(NSInteger)index
+{
+    return [self originForIndex:index withOffset:0];
+}
+
++ (CGPoint)originForIndex:(NSInteger)index withOffset:(NSInteger)offset
+{
+    CGFloat x = [self xForColumn:[self columnForIndex:index] withImageWidth:kImageWidth];
+    CGFloat y = [self yForRow:[self rowForIndex:index] withImageHeight:kImageWidth];
+    
+    CGPoint origin = CGPointMake(x, y);
+    
+    return origin;
+}
+
+#pragma mark - Initialization
 
 - (id)initWithContext:(id)delegate
 {
@@ -64,85 +98,18 @@ static CGFloat kMagicNumber = 35.0f;
 
 #pragma mark - Layout Helpers
 
-- (CGFloat)xForColumn:(NSInteger)column withImageWidth:(CGFloat)imageWidth
-{
-    return kLeftPadding + (column * kLeftPadding) + (column * imageWidth);
-}
-
-- (CGFloat)yForRow:(NSInteger)row withImageHeight:(CGFloat)imageHeight
-{
-    return kTopMargin + (row * kTopPadding) + (row * imageHeight);
-}
-
 - (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset
 {
     UIImageView *imageView;
-    int row;
-    int column;
-    
-    CGFloat imageWidth = 320.0f;
-    CGFloat imageHeight = imageWidth;
-    
-    // Skip the first?
-    for (int i = 0; i < [imageViews count]; i++) {
-        imageView = [imageViews objectAtIndex:i];
-        column = (i % kNumImagesPerRow) - offset;
-        row = (i / kNumImagesPerRow);
-        
-        if (i != offset) {
-            imageView.frame = CGRectMake([self xForColumn:column withImageWidth:imageWidth], 
-                                         [self yForRow:row withImageHeight:imageHeight] + kMagicNumber, 
-                                         imageWidth, imageHeight);
-            
-            // Add this imageview to our view
-            imageView.alpha = 0.0f;
-        }
-        else {
-            imageView.frame = CGRectMake([self xForColumn:column withImageWidth:imageWidth], 
-                                         [self yForRow:row withImageHeight:imageHeight] + 20.0f, 
-                                         imageWidth, imageHeight);
-        }
-        [self.context.view addSubview:imageView];
-        
-    }
-}
-
-- (CGPoint)originForOffset:(NSInteger)offset
-{
-    int column = offset % kNumImagesPerRow;
-    int row = offset / kNumImagesPerRow;
-    CGFloat x = [self xForColumn:column withImageWidth:kImageWidth];
-    CGFloat y = [self yForRow:row withImageHeight:kImageWidth];
-    
-    CGPoint origin = CGPointMake(x, y);
-    
-    return origin;
-}
-
-#pragma mark - JCImageGalleryController
-
-/** Want to lay out the images side by side, one full screen per image
- */
-- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame
-{
-    UIImageView *imageView;
-    int row;
-    int column;
-    
-    CGFloat imageWidth = 70.0f;
-    CGFloat imageHeight = imageWidth;
-    
+    CGRect rect;
     [self.imageViewFrames removeAllObjects];
     
     for (int i = 0; i < [imageViews count]; i++) {
         imageView = [imageViews objectAtIndex:i];
         
-        column = i % kNumImagesPerRow;
-        row = i / kNumImagesPerRow;
-        
-        imageView.frame = CGRectMake([self xForColumn:column withImageWidth:imageWidth], 
-                                     [self yForRow:row withImageHeight:imageHeight], 
-                                     imageWidth, imageHeight);
+        rect = imageView.frame;
+        rect.origin = [[self class] originForIndex:i withOffset:offset];
+        imageView.frame = rect;
         
         // Keep track of our rects
         [self.imageViewFrames addObject:[NSValue valueWithCGRect:imageView.frame]];
@@ -154,10 +121,37 @@ static CGFloat kMagicNumber = 35.0f;
     
 }
 
+#pragma mark - JCImageGalleryController
+
+/** Want to lay out the images side by side, one full screen per image
+ */
+- (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame
+{
+    UIImageView *imageView;
+    CGRect rect;
+    [self.imageViewFrames removeAllObjects];
+    
+    for (int i = 0; i < [imageViews count]; i++) {
+        imageView = [imageViews objectAtIndex:i];
+        
+        rect = imageView.frame;
+        rect.origin = [[self class] originForIndex:i];
+        rect = CGRectOffset(rect, 0.0f, kTopMargin);
+        imageView.frame = rect;
+        
+        // Keep track of our rects
+        [self.imageViewFrames addObject:[NSValue valueWithCGRect:imageView.frame]];
+        
+        // Add this imageview to our view
+        [self.context.view addSubview:imageView];
+        imageView.alpha = 1.0f;
+    }
+}
+
 /** If we tap the pinhole, we need to transform to the spotlight view and
  zoom in on the appropriate picture.
  */
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer
 {
     CGPoint loc = [gestureRecognizer locationInView:self.context.view];
     NSInteger offset = -1;
@@ -188,36 +182,34 @@ static CGFloat kMagicNumber = 35.0f;
 {
     [super showOffset:offset];
     
+    // First step, if we are not on top, get on top  
     if (![self.context.topView.subviews containsObject:self.context.view]) {
         [self.context.topView addSubview:self.context.view];
         
+        // Ok, now that we are in the top view, we want to appear the same 
+        // as if nothing has changed, so we get the transform the frame's coordinates
+        // and whatnot to the new view's system.
         self.context.view.frame = [self.context.topView convertRect:self.context.view.frame fromView:self.context.superview];
     }
     
-    // In gallery view the toolbar will always be showing
-    [self.context.topView addSubview:self.toolbar];   
-    [[UIApplication sharedApplication] setStatusBarHidden:NO
-                                            withAnimation:UIStatusBarAnimationNone];
-    
-    [self.context.view setScrollEnabled:YES];
-    [self.context.view setPagingEnabled:NO];
-    
-    CGFloat width = self.context.view.frame.size.width;
-    
-    int numRows = [self.context.imageViews count] / kNumImagesPerRow;
-    // Just a little bigger than the screen size so that we give 
-    // the illusion of scrolling even when we don't need to scroll
-    CGFloat height = MAX([self yForRow:numRows+1 withImageHeight:70.0f], 481.0f);
-    CGSize contentSize = CGSizeMake(width, height);
-    self.context.view.contentSize = contentSize;
-    
+    // Want to prepare the layout but putting all the images
+    // that were arranged linearly into rows
     [self prepareLayoutWithImageViews:self.context.imageViews offset:offset];
+    
+    // So nothing has changed, in appearance to the user, but now we can start transforming.
+    [UIView animateWithDuration:1.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [self layoutImageViews:self.context.imageViews inFrame:self.context.frame];
+                     }
+                     completion:nil];
     
     [UIView animateWithDuration:1.5
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         [self layoutImageViews:self.context.imageViews inFrame:self.context.view.frame];
+                         self.context.view.frame = self.context.topView.frame;
                      }
                      completion:nil];
     
@@ -228,6 +220,11 @@ static CGFloat kMagicNumber = 35.0f;
                          self.context.view.backgroundColor = [UIColor grayColor];
                      }
                      completion:nil];
+    
+    // Finally, handle the toolbar and status bar. They will always be showing.
+    [self.context.topView addSubview:self.toolbar];   
+    [[UIApplication sharedApplication] setStatusBarHidden:NO
+                                            withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)hide

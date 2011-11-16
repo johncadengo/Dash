@@ -20,7 +20,8 @@
 @synthesize pinholeViewController = _pinholeViewController;
 @synthesize galleryViewController = _galleryViewController;
 @synthesize spotlightViewController = _spotlightViewController;
-@synthesize tap = _tap;
+@synthesize singleTap = _singleTap;
+@synthesize longPress = _longPress;
 
 @synthesize topView = _topView;
 @synthesize superview = _superview;
@@ -60,9 +61,13 @@
         self.currentViewController = self.pinholeViewController;
         [self.currentViewController show];
         
-        self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-        [self.view addGestureRecognizer:self.tap];
-        [self.tap setDelegate:self];
+        self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+        [self.view addGestureRecognizer:self.singleTap];
+        [self.singleTap setDelegate:self];
+        
+        self.longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        [self.view addGestureRecognizer:self.longPress];
+        [self.longPress setDelegate:self];
     }
     
     return self;    
@@ -112,9 +117,18 @@
     }
 }
 
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer
 {
-    [self.currentViewController handleGesture:gestureRecognizer];
+    if ([self.currentViewController respondsToSelector:@selector(handleSingleTap:)]) {
+        [self.currentViewController handleSingleTap:gestureRecognizer];
+    }
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
+{
+    if ([self.currentViewController respondsToSelector:@selector(handleLongPress:)]) {
+        [self.currentViewController handleLongPress:longPress];
+    }
 }
 
 #pragma mark - Gesture recognizer delegate methods

@@ -18,6 +18,14 @@
  */
 @property (nonatomic, strong) NSMutableArray *imageViewFrames;
 
+
++ (CGFloat)xForColumn:(NSInteger)column withImageWidth:(CGFloat)imageWidth;
++ (CGFloat)yForRow:(NSInteger)row withImageHeight:(CGFloat)imageHeight;
++ (NSInteger)rowForIndex:(NSInteger)index;
++ (NSInteger)columnForIndex:(NSInteger)index;
++ (CGPoint)originForIndex:(NSInteger)index;
++ (CGPoint)originForIndex:(NSInteger)index withOffset:(NSInteger)offset;
+
 /** Called when the done button is pushed. Will return us back to the pinhole view.
  */
 - (void)handleDone:(id)sender;
@@ -25,11 +33,5 @@
 /** Help calculate the layout of the gallery view
  */
 - (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset;
-
-- (CGFloat)xForColumn:(NSInteger)column withImageWidth:(CGFloat)imageWidth;
-
-- (CGFloat)yForRow:(NSInteger)row withImageHeight:(CGFloat)imageHeight;
-
-- (CGPoint)originForOffset:(NSInteger)offset;
 
 @end

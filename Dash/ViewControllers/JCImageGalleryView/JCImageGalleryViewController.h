@@ -24,15 +24,19 @@ typedef enum {
 
 /** To ensure smooth transitions between views.
  */
-- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews;
+- (void)prepareLayoutWithImageViews:(NSMutableArray *)imageViews offset:(NSInteger)offset;
 
 /** Lay out its image views according to its frame.
  */
 - (void)layoutImageViews:(NSMutableArray *)imageViews inFrame:(CGRect)frame;
 
-/** Handle taps and whatnot.
+/** Handle single taps.
  */
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer;
+
+/** Handle double taps.
+ */
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress;
 
 /** JCViewController must show itself. Defaults with offset of zero.
  */
@@ -73,7 +77,8 @@ typedef enum {
 @property (nonatomic, strong) JCPinholeViewController *pinholeViewController;
 @property (nonatomic, strong) JCGalleryViewController *galleryViewController;
 @property (nonatomic, strong) JCSpotlightViewController *spotlightViewController;
-@property (nonatomic, strong) UIGestureRecognizer *tap;
+@property (nonatomic, strong) UITapGestureRecognizer *singleTap;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPress;
 
 // Things that share
 @property (nonatomic, strong) UIView *topView;
@@ -97,7 +102,9 @@ typedef enum {
 
 /** Receive touch events and respond accordingly.
  */
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer;
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress;
 
 /** When we set the state variable we also change the view accordingly. Defaults to offset zero.
  */

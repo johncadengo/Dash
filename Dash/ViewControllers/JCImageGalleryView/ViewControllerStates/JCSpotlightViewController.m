@@ -156,7 +156,7 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 /** If we tap the spotlight view we need to toggle the toolbars.
  */
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer
 {
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
         [self toggleToolbar];
@@ -214,7 +214,6 @@ static CGFloat kStatusBarHeight = 20.0f;
                      }
                      completion:nil];    
     
-    NSLog(@"offset %d", offset);
     CGPoint offsetPoint = CGPointMake(offset * kImageWidth, 0);
     [self.context.view setContentOffset:offsetPoint];
 }

@@ -38,7 +38,7 @@
 
 }
 
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer
 {
     // Subclasses must implement this
 }
