@@ -83,36 +83,31 @@ static int kNumImagesPerRow = 4;
 {
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:YES];
-    
-    self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
-    
-
 }
 
 /** Pinhole view is the first view. So when we init, we also want to lay out the images.
  */
 - (void)layoutWithOffset:(NSInteger)offset
 {
-    CGRect imageFrame;
+    UIImageView *imageView;
+    CGRect rect;
     int numImages = [self.context.imageViews count];
     
     [self.imageViewFrames removeAllObjects];
-    
-    // We only want to lay out one row
-    //int numImagesToLayout = MIN(numImagesPerRow, numImages);
-    
+
     for (int i = 0; i < numImages; i++) {
-        UIImageView *imageView = [self.context.imageViews objectAtIndex:i];
-        imageFrame = CGRectMake([[self class] xForImageIndex:i], kTopPadding, 
+        imageView = [self.context.imageViews objectAtIndex:i];
+        rect = CGRectMake([[self class] xForImageIndex:i], kTopPadding, 
                                 kImageWidth, kImageWidth);
-        imageView.frame = imageFrame;
+        imageView.frame = rect;
         
         // Keep track of our rects
-        [self.imageViewFrames addObject:[NSValue valueWithCGRect:imageFrame]];
+        [self.imageViewFrames addObject:[NSValue valueWithCGRect:rect]];
         
         // Add this imageview to our view
         [self.context.view addSubview:imageView];
     }
+    
     
 }
 
@@ -173,8 +168,8 @@ static int kNumImagesPerRow = 4;
                               delay:0.0
                             options:UIViewAnimationCurveEaseOut
                          animations:^{
-                             self.context.view.frame = newframe;
                              [self layoutWithOffset:offset];
+                              self.context.view.frame = newframe;
                          }
                          completion:^(BOOL finished){
                              [self didLayoutWithOffset:offset];
@@ -187,13 +182,13 @@ static int kNumImagesPerRow = 4;
                              self.context.view.backgroundColor = [UIColor grayColor];
                          }
                          completion:nil];
-        
-        [[UIApplication sharedApplication] setStatusBarHidden:NO   
-                                                withAnimation:UIStatusBarAnimationSlide];
     }
     else {
         [self layoutWithOffset:offset];
     }
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO   
+                                            withAnimation:UIStatusBarAnimationSlide];
     
     // So, depending on what offset we are, we need to first
     // figure out the page that image is indexed at
@@ -202,6 +197,8 @@ static int kNumImagesPerRow = 4;
     // Then, we need to set the contentoffset to the CGPoint origin of that page.
     CGPoint pageOrigin = [[self class] originForPage:page];
     [self.context.view setContentOffset:pageOrigin];
+    
+    self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
 }
 
 - (void)hide
