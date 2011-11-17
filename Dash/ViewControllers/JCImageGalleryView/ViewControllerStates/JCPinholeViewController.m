@@ -83,6 +83,29 @@ static int kNumImagesPerRow = 4;
 {
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:YES];
+    
+    UIImageView *imageView;
+    CGRect rect;
+    CGPoint newOrigin;
+    int numImages = [self.context.imageViews count];
+    
+    int page = [[self class] pageForOffset:offset];
+    
+    for (int i = 0; i < numImages; i++) {
+        imageView = [self.context.imageViews objectAtIndex:i];
+        
+        // If we are on the same page, add it
+        if (page == [[self class] pageForOffset:i]) {
+
+
+            // Add this imageview to our view
+            [self.context.view addSubview:imageView];
+        }
+        // Otherwise, remove it
+        else {
+            [imageView removeFromSuperview];
+        }
+    }
 }
 
 /** Pinhole view is the first view. So when we init, we also want to lay out the images.
@@ -93,12 +116,45 @@ static int kNumImagesPerRow = 4;
     CGRect rect;
     int numImages = [self.context.imageViews count];
     
+    int page = [[self class] pageForOffset:offset];
+    
     [self.imageViewFrames removeAllObjects];
 
     for (int i = 0; i < numImages; i++) {
+        // Want to maintain an invariant, and that is the spacing in between images.
+        // So we adjust the origin only so that as the size changes, the spacing stays.
+        // But we only layout the origins in linear order in after the layout animation finishes.
+        
         imageView = [self.context.imageViews objectAtIndex:i];
-        rect = CGRectMake([[self class] xForImageIndex:i], kTopPadding, 
-                                kImageWidth, kImageWidth);
+        // If we are on the same page, add it
+        if (page == [[self class] pageForOffset:i]) {
+            rect = CGRectMake([[self class] xForImageIndex:i], kTopPadding, 
+                              kImageWidth, kImageWidth);
+            imageView.frame = rect; 
+            
+            imageView.alpha = 1.0f;
+            // Add this imageview to our view
+            [self.context.view addSubview:imageView];
+        }
+        // Otherwise, remove it
+        else {
+            
+        }
+    }
+}
+
+- (void)didLayoutWithOffset:(NSInteger)offset
+{
+    UIImageView *imageView;
+    CGRect rect;
+    int numImages = [self.context.imageViews count];
+    
+    [self.imageViewFrames removeAllObjects];
+    
+    for (int i = 0; i < numImages; i++) {
+        imageView = [self.context.imageViews objectAtIndex:i];
+        rect = CGRectMake([[self class] xForImageIndex:i], [[self class] yForImageIndex:i], 
+                          kImageWidth, kImageWidth);
         imageView.frame = rect;
         
         // Keep track of our rects
@@ -107,15 +163,6 @@ static int kNumImagesPerRow = 4;
         // Add this imageview to our view
         [self.context.view addSubview:imageView];
     }
-    
-    
-}
-
-- (void)didLayoutWithOffset:(NSInteger)offset
-{
-    [self.context.view removeFromSuperview];
-    self.context.view.frame = self.context.frame;
-    [self.context.superview addSubview:self.context.view];
 }
 
 /** If we tap the pinhole, we need to transform to the spotlight view and
@@ -173,6 +220,9 @@ static int kNumImagesPerRow = 4;
                          }
                          completion:^(BOOL finished){
                              [self didLayoutWithOffset:offset];
+                             [self.context.view removeFromSuperview];
+                             self.context.view.frame = self.context.frame;
+                             [self.context.superview addSubview:self.context.view];
                          }];
         
         [UIView animateWithDuration:0.5
@@ -185,6 +235,7 @@ static int kNumImagesPerRow = 4;
     }
     else {
         [self layoutWithOffset:offset];
+        [self didLayoutWithOffset:offset];
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO   
