@@ -89,9 +89,6 @@ static CGFloat kFullSizeImagePadding = 80.0f;
     CGFloat x = [self xForColumn:column withImageWidth:imageWidth];
     CGFloat y = [self yForRow:row withImageHeight:imageWidth];
     
-    NSLog(@"col %d row %d", column, row);
-    NSLog(@"x %f y %f", x, y);
-    
     CGPoint origin = CGPointMake(x, y);
     
     return origin;
@@ -159,9 +156,6 @@ static CGFloat kFullSizeImagePadding = 80.0f;
         rect = imageView.frame;
         rect.origin = [[self class] originForIndex:i imageWidth:width];
         imageView.frame = rect;
-        
-        NSLog(@"size %f %f", rect.size.width, rect.size.height);
-        NSLog(@"origin %f %f", rect.origin.x, rect.origin.y);
         
         // Add this imageview to our view
         [self.context.view addSubview:imageView];

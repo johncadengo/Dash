@@ -113,6 +113,18 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 - (void)willLayoutWithOffset:(NSInteger)offset
 {
+    
+    [self.context.view setScrollEnabled:YES];
+    [self.context.view setPagingEnabled:YES];
+    
+    CGSize contentSize = CGSizeMake(kImageWidth * [self.context.imageViews count], kImageWidth);
+    self.context.view.contentSize = contentSize;
+}
+
+/** Want to lay out the images side by side, one full screen per image
+ */
+- (void)layoutWithOffset:(NSInteger)offset
+{
     CGRect imageFrame;
     UIImageView *imageView;
     
@@ -135,9 +147,7 @@ static CGFloat kStatusBarHeight = 20.0f;
     }
 }
 
-/** Want to lay out the images side by side, one full screen per image
- */
-- (void)layoutWithOffset:(NSInteger)offset
+- (void)didLayoutWithOffset:(NSInteger)offset
 {
     CGRect imageFrame;
     UIImageView *imageView;
@@ -152,11 +162,6 @@ static CGFloat kStatusBarHeight = 20.0f;
         [self.context.view addSubview:imageView];
         //imageView.alpha = 1.0f;
     }
-}
-
-- (void)didLayoutWithOffset:(NSInteger)offset
-{
-    
 }
 
 /** If we tap the spotlight view we need to toggle the toolbars.
@@ -178,26 +183,23 @@ static CGFloat kStatusBarHeight = 20.0f;
 - (void)showOffset:(NSInteger)offset
 {
     [super showOffset:offset];
+    
     if (![self.context.topView.subviews containsObject:self.context.view]) {
         [self.context.topView addSubview:self.context.view];
         
         self.context.view.frame = [self.context.topView convertRect:self.context.view.frame fromView:self.context.superview];
     }
- 
-    [self.context.view setScrollEnabled:YES];
-    [self.context.view setPagingEnabled:YES];
     
-    CGSize contentSize = CGSizeMake(kImageWidth * [self.context.imageViews count], kImageWidth);
-    self.context.view.contentSize = contentSize;
+    [self willLayoutWithOffset:offset];
     
     [UIView animateWithDuration:1.5
                           delay:0.0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
-                         [self willLayoutWithOffset:offset];
+                         [self layoutWithOffset:offset];
                      }
                      completion:^(BOOL finished) {
-                         [self layoutWithOffset:offset];
+                         [self didLayoutWithOffset:offset];
                      }];
     
     [UIView animateWithDuration:1.5
