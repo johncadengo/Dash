@@ -23,16 +23,38 @@ static CGFloat kTopMargin = 64.0f;
 static CGFloat kTopPadding = 6.0f; 
 static CGFloat kLeftPadding = 8.0f;
 
+static CGFloat kFullSizeImageWidth = 320.0f;
+static CGFloat kFullSizeImagePadding = 80.0f;
+
 #pragma mark - Class Methods
 
 + (CGFloat)xForColumn:(NSInteger)column withImageWidth:(CGFloat)imageWidth
 {
-    return kLeftPadding + (column * kLeftPadding) + (column * imageWidth);
+    // TODO: OK. This is a hack. But will fix this eventually
+    CGFloat x;
+    if (imageWidth == kFullSizeImageWidth) {
+        // If we are dealing with full size images, no padding
+        x = column * (kFullSizeImagePadding + imageWidth);   
+    }
+    else {
+        x = kLeftPadding + (column * kLeftPadding) + (column * imageWidth);
+    }
+    
+    return x;
 }
 
 + (CGFloat)yForRow:(NSInteger)row withImageHeight:(CGFloat)imageHeight
 {
-    return ((row + 1) * kTopPadding) + (row * imageHeight);
+    // TODO: Another hack. Blah.
+    CGFloat y;
+    if (imageHeight == kFullSizeImageWidth) {
+        y = row * (kFullSizeImagePadding + imageHeight);
+    }
+    else {
+        y = ((row + 1) * kTopPadding) + (row * imageHeight);
+    }
+    
+    return y;
 }
 
 + (NSInteger)rowForIndex:(NSInteger)index
@@ -56,18 +78,19 @@ static CGFloat kLeftPadding = 8.0f;
 
 + (CGPoint)originForIndex:(NSInteger)index
 {
-    return [self originForIndex:index withOffset:0];
+    return [self originForIndex:index imageWidth:kImageWidth];
 }
 
-+ (CGPoint)originForIndex:(NSInteger)index withOffset:(NSInteger)offset
++ (CGPoint)originForIndex:(NSInteger)index imageWidth:(CGFloat)imageWidth
 {
-    return [self originForIndex:index withOffset:offset imageWidth:kImageWidth];
-}
-
-+ (CGPoint)originForIndex:(NSInteger)index withOffset:(NSInteger)offset imageWidth:(CGFloat)imageWidth
-{
-    CGFloat x = [self xForColumn:[self columnForIndex:index] withImageWidth:imageWidth];
-    CGFloat y = [self yForRow:[self rowForIndex:index] withImageHeight:imageWidth];
+    int column = [self columnForIndex:index];
+    int row = [self rowForIndex:index];
+    
+    CGFloat x = [self xForColumn:column withImageWidth:imageWidth];
+    CGFloat y = [self yForRow:row withImageHeight:imageWidth];
+    
+    NSLog(@"col %d row %d", column, row);
+    NSLog(@"x %f y %f", x, y);
     
     CGPoint origin = CGPointMake(x, y);
     
@@ -116,25 +139,39 @@ static CGFloat kLeftPadding = 8.0f;
 {
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:NO];
-    [self.context.view setContentOffset:CGPointZero];
+    self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
     
     UIImageView *imageView;
     CGRect rect;
     [self.imageViewFrames removeAllObjects];
+
+    
+    UIImageView *curImage = [self.context.imageViews objectAtIndex:offset];
+    CGFloat width = curImage.frame.size.width;
+    CGPoint curImageNewOrigin = [[self class] originForIndex:offset imageWidth:width];
     
     for (int i = 0; i < [self.context.imageViews count]; i++) {
         imageView = [self.context.imageViews objectAtIndex:i];
         
+        // Let's transform the linear order of the images into rows and columns
+        //row = [[self class] rowForIndex:i];
+        //column = [[self class] columnForIndex:i];
         rect = imageView.frame;
-        rect.origin = [[self class] originForIndex:i withOffset:offset imageWidth:rect.size.width];
+        rect.origin = [[self class] originForIndex:i imageWidth:width];
         imageView.frame = rect;
         
-        // Keep track of our rects
-        [self.imageViewFrames addObject:[NSValue valueWithCGRect:imageView.frame]];
+        NSLog(@"size %f %f", rect.size.width, rect.size.height);
+        NSLog(@"origin %f %f", rect.origin.x, rect.origin.y);
         
         // Add this imageview to our view
         [self.context.view addSubview:imageView];
+        //imageView.alpha = 1.0f;
     }
+    
+    // Make sure we are looking at the same current image
+    // to maintain the illusion that nothing has changed
+    curImageNewOrigin = CGPointMake(curImageNewOrigin.x, curImageNewOrigin.y - kFullSizeImagePadding);
+    [self.context.view setContentOffset:curImageNewOrigin];
 }
 
 /** Want to lay out the images side by side, one full screen per image
@@ -240,8 +277,6 @@ static CGFloat kLeftPadding = 8.0f;
     [self.context.topView addSubview:self.toolbar];   
     [[UIApplication sharedApplication] setStatusBarHidden:NO
                                             withAnimation:UIStatusBarAnimationNone];
-    
-    self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
 }
 
 - (void)hide

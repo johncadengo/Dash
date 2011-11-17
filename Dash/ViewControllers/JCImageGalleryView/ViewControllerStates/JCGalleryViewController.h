@@ -25,8 +25,7 @@
 + (NSInteger)columnForIndex:(NSInteger)index;
 + (CGSize)contentSizeForNumImages:(NSInteger)numImages;
 + (CGPoint)originForIndex:(NSInteger)index;
-+ (CGPoint)originForIndex:(NSInteger)index withOffset:(NSInteger)offset;
-+ (CGPoint)originForIndex:(NSInteger)index withOffset:(NSInteger)offset imageWidth:(CGFloat)imageWidth;
++ (CGPoint)originForIndex:(NSInteger)index imageWidth:(CGFloat)imageWidth;
 
 /** Called when the done button is pushed. Will return us back to the pinhole view.
  */
