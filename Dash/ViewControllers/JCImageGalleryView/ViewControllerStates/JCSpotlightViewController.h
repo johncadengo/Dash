@@ -18,11 +18,17 @@
 
 /** Calculates the origin for the page. Page index starts at 0.
  */
-+ (CGPoint)originForPage:(NSInteger)newPage;
++ (CGPoint)originForOffset:(NSInteger)newOffset;
 
 /** Calculate what page we are based on the origin. Page index starts at 0.
  */
-+ (NSInteger)pageForOrigin:(CGPoint)origin;
++ (NSInteger)offsetForOrigin:(CGPoint)origin;
+
++ (CGPoint)originForRow:(NSInteger)row column:(NSInteger)column;
+
++ (CGSize)contentSizeForNumImages:(NSInteger)numImages;
+
++ (CGSize)contentSizeInRowsForNumImages:(NSInteger)numImages;
 
 /** Called in the spotlight view to turn the toolbar visible and hidden.
  */

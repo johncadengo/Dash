@@ -8,6 +8,7 @@
 
 #import "JCSpotlightViewController.h"
 #import "JCPinholeViewController.h"
+#import "JCGalleryViewController.h"
 
 @implementation JCSpotlightViewController
 
@@ -23,11 +24,14 @@ static CGFloat kTopPadding = 80.0f;
 static CGFloat kLeftPadding = 0.0f;
 static CGFloat kStatusBarHeight = 20.0f;
 
+static CGFloat kSmallImageTopPadding = 6.0f;
+static CGFloat kSmallImageLeftPadding = 8.0f;
+
 #pragma mark - Class methods
 
-+ (CGPoint)originForPage:(NSInteger)newPage
++ (CGPoint)originForOffset:(NSInteger)newOffset
 {
-    CGFloat x = kImageWidth * newPage;
+    CGFloat x = kImageWidth * newOffset;
     CGFloat y = 0.0f;
     
     CGPoint origin = CGPointMake(x, y);
@@ -35,11 +39,33 @@ static CGFloat kStatusBarHeight = 20.0f;
     return origin;
 }
 
-+ (NSInteger)pageForOrigin:(CGPoint)origin
++ (NSInteger)offsetForOrigin:(CGPoint)origin
 {
     CGFloat x = origin.x;
     
     return x / kImageWidth;
+}
+
++ (CGPoint)originForRow:(NSInteger)row column:(NSInteger)column
+{
+    CGFloat x = column * (kImageWidth);
+    CGFloat y = ((row + 1) * kTopPadding) + (row * kImageWidth);
+    
+    CGPoint origin = CGPointMake(x, y);
+    
+    return origin;
+}
+
++ (CGSize)contentSizeForNumImages:(NSInteger)numImages
+{
+    return CGSizeMake(kImageWidth * numImages, kImageWidth);
+}
+
++ (CGSize)contentSizeInRowsForNumImages:(NSInteger)numImages
+{
+    int row = [JCGalleryViewController rowForIndex:numImages - 1];
+    
+    return CGSizeMake(kImageWidth * 4, ((row + 1) * kTopPadding) + (row * kImageWidth));
 }
 
 #pragma mark - Initialization
@@ -75,13 +101,13 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 - (void)handleDone:(id)sender
 {
-    NSInteger offset = [[self class] pageForOrigin:self.context.view.contentOffset];
+    NSInteger offset = [[self class] offsetForOrigin:self.context.view.contentOffset];
     [self.context setState:JCImageGalleryViewStatePinhole withOffset:offset];
 }
 
 - (void)handleSeeAll:(id)sender
 {
-    NSInteger offset = [[self class] pageForOrigin:self.context.view.contentOffset];
+    NSInteger offset = [[self class] offsetForOrigin:self.context.view.contentOffset];
     [self.context setState:JCImageGalleryViewStateGallery withOffset:offset];
 }
 
@@ -113,44 +139,94 @@ static CGFloat kStatusBarHeight = 20.0f;
 
 - (void)willLayoutWithOffset:(NSInteger)offset
 {
-    
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:YES];
     
-    CGSize contentSize = CGSizeMake(kImageWidth * [self.context.imageViews count], kImageWidth);
-    self.context.view.contentSize = contentSize;
+    // Update the content size to accomdate our new larger images
+    self.context.view.contentSize = [[self class] contentSizeInRowsForNumImages:[self.context.imageViews count]];
+    
+
+    
+    // How to prepare? Scale? Layout?
 }
 
 /** Want to lay out the images side by side, one full screen per image
  */
 - (void)layoutWithOffset:(NSInteger)offset
 {
-    CGRect imageFrame;
     UIImageView *imageView;
+    CGRect rect;
+    CGSize size;    
+    CGPoint origin;
     
-    int firstRow =  offset + 4;
+    // We need to be able to tell if we're coming from gallery view, 
+    // if things are layed out in rows.
+    imageView = [self.context.imageViews lastObject];
+    BOOL inRows = (imageView.frame.origin.y > 6.0f) ? YES : NO;
+    
+    // We only have to do this if we aren't already the topview frame.
+    if (!inRows) {
+        self.context.view.frame = self.context.topView.frame;
+    }
+    else {
+        // Make sure we are looking at the same current image
+        // to maintain the illusion that nothing has changed
+        
+        int offRow = [JCGalleryViewController rowForIndex:offset];
+        int offColumn = [JCGalleryViewController columnForIndex:offset];
+        
+        CGPoint curImageNewOrigin = [[self class] originForRow:offRow column:offColumn];
+        [self.context.view setContentOffset:curImageNewOrigin];
+        
+        NSLog(@"row %d col %d offset %d %f %f", offRow, offColumn, offset, curImageNewOrigin.x, curImageNewOrigin.y);
+    }
     
     for (int i = 0; i < [self.context.imageViews count]; i++) {
         imageView = [self.context.imageViews objectAtIndex:i];
-        if (i < firstRow) {
-            imageFrame = CGRectMake((i * kImageWidth), kTopPadding, 
-                                    kImageWidth, kImageWidth);
-            imageView.frame = imageFrame;
+  
+        // Get the old frame
+        rect = imageView.frame;
+        
+        // Now scale its size
+        size = CGSizeMake(kImageWidth, kImageWidth);
+        rect.size = size;
+        
+        // Get the old origin
+        origin = rect.origin;
+        
+        // Now adjust it to account for the increased image size
+        if (inRows) {
+            NSLog(@"in rows");
             
-            // Add this imageview to our view
-            [self.context.view addSubview:imageView];
-            //imageView.alpha = 1.0f;
+            int row = [JCGalleryViewController rowForIndex:i];
+            int column = [JCGalleryViewController columnForIndex:i];
+            
+            origin = [[self class] originForRow:row column:column];
+            
+            NSLog(@"origin %f %f size %f %f", origin.x, origin.y, size.width, size.height);
         }
         else {
-            [imageView removeFromSuperview];
+            NSLog(@"not in rows");
+            origin = CGPointMake((i * kImageWidth), kTopPadding);
         }
+        
+        // Now update the frame
+        rect.origin = origin;   
+        imageView.frame = rect;
+        
+        // Add this imageview to our view
+        [self.context.view addSubview:imageView];
     }
+    
+
 }
 
 - (void)didLayoutWithOffset:(NSInteger)offset
 {
     CGRect imageFrame;
     UIImageView *imageView;
+    
+    self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
     
     for (int i = 0; i < [self.context.imageViews count]; i++) {
         imageView = [self.context.imageViews objectAtIndex:i];
@@ -162,6 +238,9 @@ static CGFloat kStatusBarHeight = 20.0f;
         [self.context.view addSubview:imageView];
         //imageView.alpha = 1.0f;
     }
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES   
+                                            withAnimation:UIStatusBarAnimationSlide];
 }
 
 /** If we tap the spotlight view we need to toggle the toolbars.
@@ -200,17 +279,6 @@ static CGFloat kStatusBarHeight = 20.0f;
                      }
                      completion:^(BOOL finished) {
                          [self didLayoutWithOffset:offset];
-                     }];
-    
-    [UIView animateWithDuration:1.5
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseOut
-                     animations:^{
-                         self.context.view.frame = self.context.topView.frame;
-                     }
-                     completion:^(BOOL finished){
-                         [[UIApplication sharedApplication] setStatusBarHidden:YES   
-                                                                 withAnimation:UIStatusBarAnimationSlide];
                      }];
     
     [UIView animateWithDuration:1.0
