@@ -45,6 +45,15 @@ static CGFloat kLeftPadding = 8.0f;
     return index % kNumImagesPerRow;
 }
 
++ (CGSize)contentSizeForNumImages:(NSInteger)numImages
+{
+    // To round up: q = (x + y - 1) / y;
+    int numRows = (numImages + kNumImagesPerRow - 1) / kNumImagesPerRow;
+    CGFloat width = 320.0f;
+    CGFloat height = numRows * (kImageWidth + kTopPadding);
+    return CGSizeMake(width, height);
+}
+
 + (CGPoint)originForIndex:(NSInteger)index
 {
     return [self originForIndex:index withOffset:0];
@@ -52,8 +61,13 @@ static CGFloat kLeftPadding = 8.0f;
 
 + (CGPoint)originForIndex:(NSInteger)index withOffset:(NSInteger)offset
 {
-    CGFloat x = [self xForColumn:[self columnForIndex:index] withImageWidth:kImageWidth];
-    CGFloat y = [self yForRow:[self rowForIndex:index] withImageHeight:kImageWidth];
+    return [self originForIndex:index withOffset:offset imageWidth:kImageWidth];
+}
+
++ (CGPoint)originForIndex:(NSInteger)index withOffset:(NSInteger)offset imageWidth:(CGFloat)imageWidth
+{
+    CGFloat x = [self xForColumn:[self columnForIndex:index] withImageWidth:imageWidth];
+    CGFloat y = [self yForRow:[self rowForIndex:index] withImageHeight:imageWidth];
     
     CGPoint origin = CGPointMake(x, y);
     
@@ -100,6 +114,10 @@ static CGFloat kLeftPadding = 8.0f;
 
 - (void)willLayoutWithOffset:(NSInteger)offset
 {
+    [self.context.view setScrollEnabled:YES];
+    [self.context.view setPagingEnabled:NO];
+    [self.context.view setContentOffset:CGPointZero];
+    
     UIImageView *imageView;
     CGRect rect;
     [self.imageViewFrames removeAllObjects];
@@ -108,7 +126,7 @@ static CGFloat kLeftPadding = 8.0f;
         imageView = [self.context.imageViews objectAtIndex:i];
         
         rect = imageView.frame;
-        rect.origin = [[self class] originForIndex:i withOffset:offset];
+        rect.origin = [[self class] originForIndex:i withOffset:offset imageWidth:rect.size.width];
         imageView.frame = rect;
         
         // Keep track of our rects
@@ -116,7 +134,6 @@ static CGFloat kLeftPadding = 8.0f;
         
         // Add this imageview to our view
         [self.context.view addSubview:imageView];
-        imageView.alpha = 1.0f;
     }
 }
 
@@ -134,6 +151,7 @@ static CGFloat kLeftPadding = 8.0f;
         rect = imageView.frame;
         rect.origin = [[self class] originForIndex:i];
         rect = CGRectOffset(rect, 0.0f, kTopMargin);
+        rect.size = CGSizeMake(kImageWidth, kImageWidth);
         imageView.frame = rect;
         
         // Keep track of our rects
@@ -141,7 +159,6 @@ static CGFloat kLeftPadding = 8.0f;
         
         // Add this imageview to our view
         [self.context.view addSubview:imageView];
-        imageView.alpha = 1.0f;
     }
     
     self.context.view.frame = self.context.topView.frame;
@@ -223,6 +240,8 @@ static CGFloat kLeftPadding = 8.0f;
     [self.context.topView addSubview:self.toolbar];   
     [[UIApplication sharedApplication] setStatusBarHidden:NO
                                             withAnimation:UIStatusBarAnimationNone];
+    
+    self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
 }
 
 - (void)hide

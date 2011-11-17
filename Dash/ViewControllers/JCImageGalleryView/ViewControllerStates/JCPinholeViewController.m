@@ -96,8 +96,6 @@ static int kNumImagesPerRow = 4;
         
         // If we are on the same page, add it
         if (page == [[self class] pageForOffset:i]) {
-
-
             // Add this imageview to our view
             [self.context.view addSubview:imageView];
         }
@@ -190,7 +188,8 @@ static int kNumImagesPerRow = 4;
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
 {
-    [self.context setState:JCImageGalleryViewStateGallery];
+    // TODO: Make this transition work.
+    //[self.context setState:JCImageGalleryViewStateGallery];
 }
 
 /** Returns to pinhole view, which is our initial frame assigned by the coder.
