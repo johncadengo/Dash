@@ -274,6 +274,12 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
     }
 }
 
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
+{
+    // TODO: Make this transition work.
+    [self.context setState:JCImageGalleryViewStateGallery];
+}
+
 /** Takes over the full screen and hides the status bar.
  */
 - (void)show
