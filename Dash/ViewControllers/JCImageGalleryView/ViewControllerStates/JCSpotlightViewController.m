@@ -242,7 +242,6 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
     CGRect imageFrame;
     UIImageView *imageView;
     
-    
     [self.context.view setScrollEnabled:YES];
     [self.context.view setPagingEnabled:YES];
     
@@ -276,8 +275,9 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
 {
-    // TODO: Make this transition work.
-    [self.context setState:JCImageGalleryViewStateGallery];
+    // Make sure that we send the right offset as we transition.
+    NSInteger offset = [[self class] offsetForOrigin:self.context.view.contentOffset];
+    [self.context setState:JCImageGalleryViewStateGallery withOffset:offset];
 }
 
 /** Takes over the full screen and hides the status bar.
@@ -337,8 +337,11 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
     [super hideOffset:offset];
     
     // Hide the toolbar when we are leaving this view.
+    // TODO: For some reason we need to "reset" the toolbar if we transition
+    // from spotlight to gallery through the longPress gesture while the toolbar is hidden.
+    [self setToolbarVisible:YES];
     [self setToolbarVisible:NO];
-    
+        
     // Go back to the first page, which is page 0
     //[self.context.view setContentOffset:[self originForPage:0] animated:NO];
 }

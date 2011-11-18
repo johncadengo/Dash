@@ -61,13 +61,14 @@
         self.currentViewController = self.pinholeViewController;
         [self.currentViewController show];
         
-        self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-        [self.view addGestureRecognizer:self.singleTap];
-        [self.singleTap setDelegate:self];
-        
         self.longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         [self.view addGestureRecognizer:self.longPress];
         [self.longPress setDelegate:self];
+        
+        self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+        [self.view addGestureRecognizer:self.singleTap];
+        [self.singleTap setDelegate:self];
+        [self.singleTap requireGestureRecognizerToFail:self.longPress];
     }
     
     return self;    
