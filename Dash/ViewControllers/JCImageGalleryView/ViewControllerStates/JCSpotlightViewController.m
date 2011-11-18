@@ -56,6 +56,16 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
     return origin;
 }
 
++ (CGPoint)contentViewOffsetForRow:(NSInteger)row column:(NSInteger)column
+{
+    CGFloat x = column * (kImageWidth);
+    CGFloat y = (row * kTopPadding) + (row * kImageWidth);
+    
+    CGPoint origin = CGPointMake(x, y);
+    
+    return origin;    
+}
+
 + (CGSize)contentSizeForNumImages:(NSInteger)numImages
 {
     return CGSizeMake(kImageWidth * numImages, kImageWidth);
@@ -65,7 +75,7 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
 {
     int row = [JCGalleryViewController rowForIndex:numImages - 1];
     
-    return CGSizeMake(kImageWidth * 4, ((row + 1) * kTopPadding) + (row * kImageWidth));
+    return CGSizeMake(kImageWidth * 4, ((row + 2) * kTopPadding) + ((row + 1) * kImageWidth));
 }
 
 #pragma mark - Initialization
@@ -139,12 +149,11 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
 
 - (void)willLayoutWithOffset:(NSInteger)offset
 {
-    [self.context.view setScrollEnabled:YES];
-    [self.context.view setPagingEnabled:YES];
+    // PAGING WAS GETTING IN THE WAY OF SETTING THE CONTENT VIEW OFFSET!
+    [self.context.view setScrollEnabled:NO];
+    [self.context.view setPagingEnabled:NO];
     
     // Update the content size to accomdate our new larger images
-    self.context.view.contentSize = [[self class] contentSizeInRowsForNumImages:[self.context.imageViews count]];
-    
 
     
     // How to prepare? Scale? Layout?
@@ -159,6 +168,8 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
     CGSize size;    
     CGPoint origin;
     
+    NSLog(@"size %f %f", self.context.view.contentSize.width, self.context.view.contentSize.height);
+    
     // We need to be able to tell if we're coming from gallery view, 
     // if things are layed out in rows.
     imageView = [self.context.imageViews lastObject];
@@ -167,15 +178,20 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
     // We only have to do this if we aren't already the topview frame.
     if (!inRows) {
         self.context.view.frame = self.context.topView.frame;
+        
+        //CGPoint offsetPoint = CGPointMake(offset * kImageWidth, 0);
+       //[self.context.view setContentOffset:offsetPoint];
+        
     }
     else {
         // Make sure we are looking at the same current image
         // to maintain the illusion that nothing has changed
+        self.context.view.contentSize = [[self class] contentSizeInRowsForNumImages:[self.context.imageViews count]];
         
         int offRow = [JCGalleryViewController rowForIndex:offset];
         int offColumn = [JCGalleryViewController columnForIndex:offset];
         
-        CGPoint curImageNewOrigin = [[self class] originForRow:offRow column:offColumn];
+        CGPoint curImageNewOrigin = [[self class] contentViewOffsetForRow:offRow column:offColumn];
         [self.context.view setContentOffset:curImageNewOrigin];
         
         NSLog(@"row %d col %d offset %d %f %f", offRow, offColumn, offset, curImageNewOrigin.x, curImageNewOrigin.y);
@@ -203,7 +219,7 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
             
             origin = [[self class] originForRow:row column:column];
             
-            NSLog(@"origin %f %f size %f %f", origin.x, origin.y, size.width, size.height);
+            NSLog(@"i %d origin %f %f size %f %f", i, origin.x, origin.y, size.width, size.height);
         }
         else {
             NSLog(@"not in rows");
@@ -226,6 +242,10 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
     CGRect imageFrame;
     UIImageView *imageView;
     
+    
+    [self.context.view setScrollEnabled:YES];
+    [self.context.view setPagingEnabled:YES];
+    
     self.context.view.contentSize = [[self class] contentSizeForNumImages:[self.context.imageViews count]];
     
     for (int i = 0; i < [self.context.imageViews count]; i++) {
@@ -238,6 +258,8 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
         [self.context.view addSubview:imageView];
         //imageView.alpha = 1.0f;
     }
+    CGPoint offsetPoint = CGPointMake(offset * kImageWidth, 0);
+    [self.context.view setContentOffset:offsetPoint];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES   
                                             withAnimation:UIStatusBarAnimationSlide];
@@ -263,10 +285,14 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
 {
     [super showOffset:offset];
     
+    BOOL inRows = YES;
+    
     if (![self.context.topView.subviews containsObject:self.context.view]) {
         [self.context.topView addSubview:self.context.view];
         
         self.context.view.frame = [self.context.topView convertRect:self.context.view.frame fromView:self.context.superview];
+        
+        inRows = NO;
     }
     
     [self willLayoutWithOffset:offset];
@@ -289,8 +315,10 @@ static CGFloat kSmallImageLeftPadding = 8.0f;
                      }
                      completion:nil];    
     
-    CGPoint offsetPoint = CGPointMake(offset * kImageWidth, 0);
-    [self.context.view setContentOffset:offsetPoint];
+    if (!inRows) {
+        CGPoint offsetPoint = CGPointMake(offset * kImageWidth, 0);
+        [self.context.view setContentOffset:offsetPoint];
+    }
 }
 
 - (void)hide

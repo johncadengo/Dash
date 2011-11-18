@@ -25,6 +25,7 @@
 + (NSInteger)offsetForOrigin:(CGPoint)origin;
 
 + (CGPoint)originForRow:(NSInteger)row column:(NSInteger)column;
++ (CGPoint)contentViewOffsetForRow:(NSInteger)row column:(NSInteger)column;
 
 + (CGSize)contentSizeForNumImages:(NSInteger)numImages;
 
