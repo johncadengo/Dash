@@ -16,10 +16,6 @@
 #import "PersonPhoto+Helper.h"
 #import "UIImage+ProportionalFill.h"
 
-@interface TISwipeableTableViewCell ()
-- (void)initialSetup;
-@end
-
 @implementation ActionViewCell
 @synthesize cellType = _cellType;
 @synthesize delegate;
