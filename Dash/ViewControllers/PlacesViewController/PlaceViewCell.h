@@ -44,7 +44,7 @@ typedef enum {
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType) cellType;
 
-- (void)setCellType:(PlaceViewCellType)cellType;
+- (void)setCellType:(PlaceViewCellType)newCellType;
 - (void)setWithPlace:(Place *)place;
 
 @end

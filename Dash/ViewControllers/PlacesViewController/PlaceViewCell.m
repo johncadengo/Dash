@@ -30,7 +30,15 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
 
 + (CGSize)sizeForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType
 {
+    // TODO: Get the actual name and timestamp for calculating size.
     
+    CGSize nameSize = [self textSizeForName:@"hi"];
+    CGSize addressSize = [self textSizeForAddress:@"hey"];
+    
+    CGFloat height = kPadding + nameSize.height + kPadding + addressSize.height + kPadding;
+    CGSize totalSize = CGSizeMake(kWindowWidth, height);
+    
+    return totalSize;
 }
 
 + (UIFont *)nameFont
@@ -68,19 +76,119 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
 
 #pragma mark - Initialization
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType) cellType
+/** By default we initialize with a list type place cell.
+ */
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    
+    return [self initWithStyle:style reuseIdentifier:reuseIdentifier cellType:PlaceViewCellTypeList];
 }
 
-- (void)setCellType:(PlaceViewCellType)cellType
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType) cellType
 {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    if (self) {
+        [self setCellType:cellType];
+    }
+    
+    return self;
+}
+
+- (void)setCellType:(PlaceViewCellType)newCellType
+{
+    _cellType = newCellType;
+    
+    switch (_cellType) {
+        case PlaceViewCellTypeList:
+            
+            break;
+        case PlaceViewCellTypeSquare:
+            
+            break;
+        default:
+            NSAssert(NO, @"Trying to set PlaceViewCellType that doens't exist %d", _cellType);
+            break;
+    }
+    
     
 }
 
 - (void)setWithPlace:(Place *)place
 {
+    // TODO: Actually get this date from the place.
+    self.name = [NSString stringWithFormat:@"Totto Ramen"];
+    self.address = [NSString stringWithFormat:@"226 Thompson St. 10012"];
     
+    [self setNeedsDisplay];
+}
+
+- (void)buttonWasTapped:(UIButton *)button {
+	
+	if ([self.delegate respondsToSelector:@selector(cellBackButtonWasTapped:)]){
+		[self.delegate cellBackButtonWasTapped:self];
+	}
+}
+
+- (void)backViewWillAppear {
+	
+    
+    
+}
+
+- (void)backViewDidDisappear {
+	// Remove any subviews from the backView.
+	
+	for (UIView * subview in self.backView.subviews){
+		[subview removeFromSuperview];
+	}
+}
+
+- (void)drawContentView:(CGRect)rect {
+	
+	UIColor * textColour = (self.selected || self.highlighted) ? [UIColor whiteColor] : [UIColor blackColor];	
+	[textColour set];
+	CGSize nameSize = [[self class] textSizeForName:self.name];
+	[self.name drawInRect:CGRectMake(kPadding, kPadding,
+                                     nameSize.width, nameSize.height)
+                 withFont:[[self class] nameFont]
+            lineBreakMode:kNameLineBreak];
+    
+    textColour = [UIColor grayColor];
+    [textColour set];
+    
+    CGSize addressSize = [[self class] textSizeForAddress:self.address];
+    CGRect addressRect = CGRectMake(kPadding, nameSize.height + kPadding,
+                                    addressSize.width, addressSize.height);
+    [self.address drawInRect:addressRect 
+                    withFont:[[self class] addressFont] 
+               lineBreakMode:kAddressLineBreak];
+    
+    // If it is a feed item action cell then we draw a detail view indicator on the right side
+    if (self.cellType == PlaceViewCellTypeList) {
+        UIFont *font = [[self class] nameFont];
+        NSString *arrow = [NSString stringWithFormat:@">"];
+        CGSize arrowSize = [arrow sizeWithFont:font];
+        CGPoint point = CGPointMake(kWindowWidth -  (4 * kPadding), 
+                                    (rect.size.height / 2.0f) - (arrowSize.height / 2.0f));
+        [arrow drawAtPoint:point withFont:font];
+    }
+}
+
+- (void)drawBackView:(CGRect)rect {
+	
+	[[UIImage imageNamed:@"meshpattern.png"] drawAsPatternInRect:rect];    
+    NSString *backViewText = [NSString stringWithFormat:@"buddy"];
+    
+    UIColor * textColour = (self.selected || self.highlighted) ? [UIColor whiteColor] : [UIColor blackColor];	
+	[textColour set];
+	
+	UIFont * textFont = [UIFont boldSystemFontOfSize:16];
+	
+	CGSize textSize = [backViewText sizeWithFont:textFont constrainedToSize:rect.size];
+	[backViewText drawInRect:CGRectMake((rect.size.width / 2) - (textSize.width / 2), 
+                                        (rect.size.height / 2) - (textSize.height / 2),
+                                        textSize.width, textSize.height)
+                    withFont:textFont];
 }
 
 @end

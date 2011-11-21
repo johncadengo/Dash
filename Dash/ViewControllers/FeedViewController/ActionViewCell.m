@@ -45,6 +45,8 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 + (CGFloat)heightForAction:(Action *)action withCellType:(ActionViewCellType)cellType
 {
+    // TODO: Get the actual name and timestamp for calculating size.
+    
     //CGSize nameSize = [self textSizeForName:[[action author] name]];
     CGSize nameSize = [self textSizeForName:@"hi"];
     CGSize blurbSize = [self textSizeForBlurb:[action description]];
