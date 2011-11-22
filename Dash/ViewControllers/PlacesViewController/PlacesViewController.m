@@ -40,6 +40,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Connect to our API.
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
+    
+    // Initialize our tableview's array which will represent its model.
+    [self refreshFeed];
+    
+    [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
+    
+    if (_refreshHeaderView == nil) {
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+		view.delegate = self;
+		[self.tableView addSubview:view];
+		_refreshHeaderView = view;
+	}
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -79,6 +97,33 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
+{	
+    // Causes the table view to reload our data source
+    [self.refreshHeaderView performSelector:@selector(egoRefreshScrollViewDataSourceDidFinishedLoading:) withObject:self.tableView afterDelay:2.0];
+    [self refreshFeed];
+	//[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+	
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
+{
+    // The data source is reloading? 
+    // TODO: Figure out how to actually check
+	return (self.feedItems == nil) ? YES : NO;
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
+{	
+    // TODO: Return the date the data source was last changed. THis is fake for now.
+	return [NSDate date];
+	
 }
 
 #pragma mark - Table view delegate
@@ -153,6 +198,60 @@
 - (void)cellBackButtonWasTapped:(PlaceViewCell *)cell
 {
     
+}
+
+#pragma mark - Storyboard Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+
+}
+
+#pragma mark - TISwipeableTableView stuff
+
+
+- (void)tableView:(UITableView *)tableView didSwipeCellAtIndexPath:(NSIndexPath *)indexPath 
+{	
+    NSLog(@"SWIPE");
+	[super tableView:tableView didSwipeCellAtIndexPath:indexPath];
+}
+
+#pragma mark - ListModeCellDelegate
+
+- (void)refreshFeed
+{
+    NSMutableArray *newFeed;
+    
+    // TODO: Gotta make a new call in the api appropriate for the places feed.
+    newFeed = [self.api feedForPerson:nil];
+    
+    self.feedItems = newFeed;
+    
+    // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
+    [self hideVisibleBackView:NO];
+    [self.tableView reloadData];
+    
+    // TODO: Gotta do this asynchronously 
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{	
+    // For TISwipeableTableViewCells
+	[super scrollViewDidScroll:scrollView];
+    
+    // For our EGO pull refresh header
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
 }
 
 @end

@@ -32,4 +32,6 @@ enum {
  */
 - (CGFloat)heightForFeedCellForRow:(NSInteger)row;
 
+- (void)refreshFeed;
+
 @end
