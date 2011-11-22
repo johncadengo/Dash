@@ -10,6 +10,8 @@
 #import "Place.h"
 #import "DashAPI.h"
 #import "Constants.h"
+#import "PlaceViewController.h"
+#import "PlaceAction.h"
 
 @implementation PlaceActionsViewController
 
@@ -194,6 +196,28 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    
+    NSUInteger row = [indexPath row];
+    
+    PlaceAction *placeAction = [self.feedItems objectAtIndex:row];
+    Place *place = [placeAction place];
+    [self performSegueWithIdentifier:kShowPlaceActionDetailsSegueIdentifier sender:place];
+}
+
+#pragma mark - Storyboard Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kShowPlaceActionDetailsSegueIdentifier]) {
+        Place *place = (Place *)sender;
+        PlaceViewController *placeViewController = (PlaceViewController *)[segue destinationViewController];
+        //[PlaceViewController setPlace:place];
+        
+        // Make sure it has a managed object context
+        //[PlaceViewController setManagedObjectContext:self.managedObjectContext];
+    }
 }
 
 #pragma mark - Place view cell delegate
@@ -201,13 +225,6 @@
 - (void)cellBackButtonWasTapped:(PlaceActionViewCell *)cell
 {
     
-}
-
-#pragma mark - Storyboard Segue
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-
 }
 
 #pragma mark - TISwipeableTableView stuff

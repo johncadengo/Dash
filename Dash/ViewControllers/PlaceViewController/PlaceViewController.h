@@ -8,6 +8,6 @@
 
 #import "TISwipeableTableView.h"
 
-@interface PlaceViewController : TISwipeableTableViewCell
+@interface PlaceViewController : TISwipeableTableViewController
 
 @end

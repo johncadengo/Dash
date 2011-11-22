@@ -314,7 +314,7 @@
     // Only perform segue on a row in the feed item section being tapped, not on the very first section.
     if (section != kFeedListModeSection) {
         Highlight *highlight = [self.feedItems objectAtIndex:row];
-        [self performSegueWithIdentifier:@"ShowFeedItemDetails" sender:highlight];
+        [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:highlight];
     }
 }
 
@@ -322,7 +322,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"ShowFeedItemDetails"]) {
+    if ([[segue identifier] isEqualToString:kShowFeedItemDetailsSegueIdentifier]) {
         Highlight *highlight = (Highlight *) sender;
         HighlightViewController *highlightViewController = (HighlightViewController *)[segue destinationViewController];
         [highlightViewController setHighlight:highlight];
