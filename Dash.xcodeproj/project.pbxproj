@@ -92,6 +92,7 @@
 		67BAC80F1459E6D50001C738 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC80E1459E6D50001C738 /* Rate.m */; };
 		67BAC8121459E6D50001C738 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8111459E6D50001C738 /* Save.m */; };
 		67BFB666147C262B005C862F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB665147C262B005C862F /* PlaceViewController.m */; };
+		67BFB669147C4476005C862F /* PlaceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceViewCell.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 		67CCDE8914607D8400CF657D /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8814607D8400CF657D /* LocationTests.m */; };
 		67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8F1460D12C00CF657D /* ListModeCell.m */; };
@@ -350,6 +351,8 @@
 		67BAC8111459E6D50001C738 /* Save.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Save.m; path = "Data Model/Actions/PlaceActions/Save.m"; sourceTree = "<group>"; };
 		67BFB664147C262B005C862F /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceViewController.h; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.h; sourceTree = "<group>"; };
 		67BFB665147C262B005C862F /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewController.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.m; sourceTree = "<group>"; };
+		67BFB667147C4476005C862F /* PlaceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceViewCell.h; path = Dash/ViewControllers/PlaceViewController/PlaceViewCell.h; sourceTree = "<group>"; };
+		67BFB668147C4476005C862F /* PlaceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewCell.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewCell.m; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		67CCDE8714607D8400CF657D /* LocationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationTests.h; path = "Logic Tests/LocationTests.h"; sourceTree = "<group>"; };
 		67CCDE8814607D8400CF657D /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationTests.m; path = "Logic Tests/LocationTests.m"; sourceTree = "<group>"; };
@@ -452,6 +455,8 @@
 			children = (
 				67BFB664147C262B005C862F /* PlaceViewController.h */,
 				67BFB665147C262B005C862F /* PlaceViewController.m */,
+				67BFB667147C4476005C862F /* PlaceViewCell.h */,
+				67BFB668147C4476005C862F /* PlaceViewCell.m */,
 			);
 			name = PlaceViewController;
 			sourceTree = "<group>";
@@ -1266,6 +1271,7 @@
 				6729D056147C1E3B0046C8DB /* PlaceActionsViewController.m in Sources */,
 				6729D057147C1E3B0046C8DB /* PlaceActionViewCell.m in Sources */,
 				67BFB666147C262B005C862F /* PlaceViewController.m in Sources */,
+				67BFB669147C4476005C862F /* PlaceViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

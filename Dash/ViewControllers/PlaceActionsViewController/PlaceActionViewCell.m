@@ -81,7 +81,7 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
  */
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    return [self initWithStyle:style reuseIdentifier:reuseIdentifier cellType:PlaceViewCellTypeList];
+    return [self initWithStyle:style reuseIdentifier:reuseIdentifier cellType:PlaceActionViewCellTypeList];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceActionViewCellType) cellType
@@ -100,10 +100,10 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
     _cellType = newCellType;
     
     switch (_cellType) {
-        case PlaceViewCellTypeList:
+        case PlaceActionViewCellTypeList:
             
             break;
-        case PlaceViewCellTypeSquare:
+        case PlaceActionViewCellTypeSquare:
             
             break;
         default:
@@ -167,7 +167,7 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
                lineBreakMode:kAddressLineBreak];
     
     // If it is a feed item action cell then we draw a detail view indicator on the right side
-    if (self.cellType == PlaceViewCellTypeList) {
+    if (self.cellType == PlaceActionViewCellTypeList) {
         UIFont *font = [[self class] nameFont];
         NSString *arrow = [NSString stringWithFormat:@">"];
         CGSize arrowSize = [arrow sizeWithFont:font];

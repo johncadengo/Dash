@@ -10,8 +10,8 @@
 #import "TISwipeableTableView.h"
 
 typedef enum {
-    PlaceViewCellTypeList = 0,
-    PlaceViewCellTypeSquare = 1
+    PlaceActionViewCellTypeList = 0,
+    PlaceActionViewCellTypeSquare = 1
 } PlaceActionViewCellType;
 
 @class PlaceActionViewCell;
@@ -44,7 +44,6 @@ typedef enum {
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceActionViewCellType) cellType;
 
-- (void)setCellType:(PlaceActionViewCellType)newCellType;
 - (void)setWithPlaceAction:(PlaceAction *)placeAction;
 
 @end

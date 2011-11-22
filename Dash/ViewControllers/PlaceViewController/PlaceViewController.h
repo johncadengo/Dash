@@ -36,9 +36,7 @@ enum {
 
 @class Place;
 @class DashAPI;
-@class JCImageGalleryViewController; // TODO: Make JCImageGallery a single embed view.
-
-// TODO: Include transition state in the state of a JCViewController. Brilliant!
+@class JCImageGalleryViewController;
 
 @interface PlaceViewController : TISwipeableTableViewController
 

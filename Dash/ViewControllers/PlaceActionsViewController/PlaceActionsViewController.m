@@ -153,8 +153,8 @@
 - (CGFloat)heightForFeedCellForRow:(NSInteger)row
 {
     // Get the blurb we are using for that row
-    Place *place = [self.feedItems objectAtIndex:row];
-    return [PlaceActionViewCell heightForPlaceAction:place withCellType:PlaceViewCellTypeList];
+    PlaceAction *placeAction = [self.feedItems objectAtIndex:row];
+    return [PlaceActionViewCell heightForPlaceAction:placeAction withCellType:PlaceActionViewCellTypeList];
 }
 
 #pragma mark - Table view data source
@@ -176,7 +176,7 @@
     PlaceActionViewCell *cell = (PlaceActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
     
     if (cell == nil) {
-        cell = [[PlaceActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier cellType:PlaceViewCellTypeList];
+        cell = [[PlaceActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier cellType:PlaceActionViewCellTypeList];
     }
     
     NSInteger row = [indexPath row];

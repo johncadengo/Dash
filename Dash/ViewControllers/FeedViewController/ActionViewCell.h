@@ -53,10 +53,6 @@ typedef enum {
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(ActionViewCellType) cellType;
 
-/** Sets the type of cell we are going to create.
-    If it is invalid, goes with default header type.
- */
-- (void)setCellType:(ActionViewCellType)cellType;
 - (void)setWithAction:(Action*)action;
 
 - (void)drawShadowsWithHeight:(CGFloat)shadowHeight opacity:(CGFloat)opacity InRect:(CGRect)rect forContext:(CGContextRef)context;
