@@ -7,6 +7,10 @@
 //
 
 #import "PlaceViewController.h"
+#import "DashAPI.h"
+#import "Constants.h"
+#import "JCImageGalleryViewController.h"
+#import "UIImage+ProportionalFill.h"
 
 @implementation PlaceViewController
 
@@ -43,13 +47,20 @@
 }
 */
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Connect to our API.
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
+    
+    // Get the highlights associated with the place
+    self.highlights = [self.api highlightsForPlace:self.place];
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
 }
-*/
+
 
 - (void)viewDidUnload
 {

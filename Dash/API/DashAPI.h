@@ -93,6 +93,15 @@ enum {
  */
 - (NSMutableArray *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count;
 
+/** Returns hightlights associated with a place.
+ */
+- (NSMutableArray *)highlightsForPlace:(Place *)place;
+
+/** Returns count number of highlights associated with a place.
+ */
+- (NSMutableArray *)highlightsForPlace:(Place *)place withCount:(NSUInteger)count;
+
+
 #pragma mark - Posts
 /** Returns a newly made comment by a person on an action.
  */

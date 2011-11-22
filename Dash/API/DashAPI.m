@@ -148,6 +148,25 @@
     return feed;
 }
 
+- (NSMutableArray *)highlightsForPlace:(Place *)place
+{
+    return [self highlightsForPlace:place withCount:kDefaultNumComments];
+}
+
+- (NSMutableArray *)highlightsForPlace:(Place *)place withCount:(NSUInteger)count
+{
+    Highlight *highlight;
+    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:count];
+    
+    for (int i = 0; i < count; ++i) {
+        highlight = [self person:nil addsHighlight:[NSString randomStringOfMaxLength:140] toPlace:nil withPhoto:nil];
+        
+        [feed addObject:highlight];
+    }
+    
+    return feed;
+}
+
 #pragma mark - Posts
 
 - (Comment *)person:(Person *)person comments:(NSString *)text onAction:(Action *)action
