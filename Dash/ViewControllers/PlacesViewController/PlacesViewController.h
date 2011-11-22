@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PlaceViewCell.h"
+#import "PlaceActionViewCell.h"
 #import "EGORefreshTableHeaderView.h"
 
 /** There is only one section.
@@ -19,9 +19,9 @@ enum {
 };
 
 @class DashAPI;
-@class PlaceViewCell;
+@class PlaceActionViewCell;
 
-@interface PlacesViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate,EGORefreshTableHeaderDelegate, PlaceViewCellDelegate>
+@interface PlacesViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate,EGORefreshTableHeaderDelegate, PlaceActionViewCellDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;

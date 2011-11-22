@@ -108,7 +108,7 @@
 		67F22FEC145F0DEB0010A09F /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE9145F0DEB0010A09F /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FED145F0DEB0010A09F /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FF0145F0DF20010A09F /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEF145F0DF20010A09F /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		67FD6311147B005E00549D79 /* PlaceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD6310147B005E00549D79 /* PlaceViewCell.m */; };
+		67FD6311147B005E00549D79 /* PlaceActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD6310147B005E00549D79 /* PlaceActionViewCell.m */; };
 		67FFE58614687B7B00135225 /* NSDate+RandomDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FFE58514687B7B00135225 /* NSDate+RandomDates.m */; };
 /* End PBXBuildFile section */
 
@@ -378,8 +378,8 @@
 		67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGOImageLoader.m; path = Helpers/EGOImageLoading/EGOImageLoader/EGOImageLoader.m; sourceTree = "<group>"; };
 		67F22FEE145F0DF20010A09F /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOImageView.h; path = Helpers/EGOImageLoading/EGOImageView/EGOImageView.h; sourceTree = "<group>"; };
 		67F22FEF145F0DF20010A09F /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGOImageView.m; path = Helpers/EGOImageLoading/EGOImageView/EGOImageView.m; sourceTree = "<group>"; };
-		67FD630F147B005E00549D79 /* PlaceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceViewCell.h; path = Dash/ViewControllers/PlacesViewController/PlaceViewCell.h; sourceTree = "<group>"; };
-		67FD6310147B005E00549D79 /* PlaceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewCell.m; path = Dash/ViewControllers/PlacesViewController/PlaceViewCell.m; sourceTree = "<group>"; };
+		67FD630F147B005E00549D79 /* PlaceActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; name = PlaceActionViewCell.h; path = Dash/ViewControllers/PlacesViewController/PlaceActionViewCell.h; sourceTree = "<group>"; };
+		67FD6310147B005E00549D79 /* PlaceActionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceActionViewCell.m; path = Dash/ViewControllers/PlacesViewController/PlaceActionViewCell.m; sourceTree = "<group>"; };
 		67FFE58414687B7B00135225 /* NSDate+RandomDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+RandomDates.h"; path = "Helpers/RandomStrings/NSDate+RandomDates.h"; sourceTree = "<group>"; };
 		67FFE58514687B7B00135225 /* NSDate+RandomDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+RandomDates.m"; path = "Helpers/RandomStrings/NSDate+RandomDates.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -765,8 +765,8 @@
 			children = (
 				679009ED1450EB9600511E0F /* PlacesViewController.h */,
 				679009EE1450EB9600511E0F /* PlacesViewController.m */,
-				67FD630F147B005E00549D79 /* PlaceViewCell.h */,
-				67FD6310147B005E00549D79 /* PlaceViewCell.m */,
+				67FD630F147B005E00549D79 /* PlaceActionViewCell.h */,
+				67FD6310147B005E00549D79 /* PlaceActionViewCell.m */,
 			);
 			name = PlacesViewController;
 			sourceTree = "<group>";
@@ -1251,7 +1251,7 @@
 				67EDA903146C8D6E00AD3625 /* JCSpotlightViewController.m in Sources */,
 				67EDA906146C8D8300AD3625 /* JCGalleryViewController.m in Sources */,
 				67EDA909146C8DF700AD3625 /* JCViewController.m in Sources */,
-				67FD6311147B005E00549D79 /* PlaceViewCell.m in Sources */,
+				67FD6311147B005E00549D79 /* PlaceActionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

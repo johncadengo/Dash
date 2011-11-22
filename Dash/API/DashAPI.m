@@ -12,6 +12,8 @@
 #import "NSString+RandomStrings.h"
 #import "NSDate+RandomDates.h"
 
+#import "Place.h"
+
 // Private properties
 @interface DashAPI ()
 
@@ -56,7 +58,14 @@
 
 - (Place *)randomCrypt
 {
+    Place *place;
     
+    NSArray *names = [NSArray arrayWithObjects:@"Totto Ramen", @"Mamoun's Falafel", @"Ben's Pizzeria", @"Shake Shack", @"Halal Chicken & Rice", @"Whole Foods", nil];
+    place = (Place *)[NSEntityDescription insertNewObjectForEntityForName:@"Place" inManagedObjectContext:self.managedObjectContext];
+    [place setName:[NSString stringWithFormat:[names randomObject]]];
+    [place setAddress:[NSString stringWithFormat:@"226 Thompson St. 10012"]];
+    
+    return place;
 }
 
 #pragma mark - Gets
@@ -131,7 +140,7 @@
     NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:count];
     
     for (int i = 0; i < count; ++i) {
-        save = [self person:person savesPlace:nil];
+        save = [self person:[self randomGhost] savesPlace:[self randomCrypt]];
         
         [feed addObject:save];
     }
@@ -190,16 +199,7 @@
 {
     Save *save = (Save *)[NSEntityDescription insertNewObjectForEntityForName:@"Save" inManagedObjectContext:self.managedObjectContext];
 
-    Person *author;
-    
-    if (person == nil) {
-        author = [self randomGhost];
-    }
-    else {
-        author = person;
-    }
-    
-    [save setAuthor:author];
+    [save setAuthor:person];
     [save setPlace:place];
     
     return save;

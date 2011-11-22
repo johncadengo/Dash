@@ -152,7 +152,7 @@
 {
     // Get the blurb we are using for that row
     Place *place = [self.feedItems objectAtIndex:row];
-    return [PlaceViewCell heightForPlace:place withCellType:PlaceViewCellTypeList];
+    return [PlaceActionViewCell heightForPlaceAction:place withCellType:PlaceViewCellTypeList];
 }
 
 #pragma mark - Table view data source
@@ -171,11 +171,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PlaceViewCell *cell = (PlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
+    PlaceActionViewCell *cell = (PlaceActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
     
     if (cell == nil) {
-        cell = [[PlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier cellType:PlaceViewCellTypeList];
+        cell = [[PlaceActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier cellType:PlaceViewCellTypeList];
     }
+    
+    NSInteger row = [indexPath row];
+    [cell setWithPlaceAction:[self.feedItems objectAtIndex:row]];
     
     return cell;
 }
@@ -195,7 +198,7 @@
 
 #pragma mark - Place view cell delegate
 
-- (void)cellBackButtonWasTapped:(PlaceViewCell *)cell
+- (void)cellBackButtonWasTapped:(PlaceActionViewCell *)cell
 {
     
 }
@@ -223,7 +226,7 @@
     NSMutableArray *newFeed;
     
     // TODO: Gotta make a new call in the api appropriate for the places feed.
-    newFeed = [self.api feedForPerson:nil];
+    newFeed = [self.api placeActionsForPerson:nil];
     
     self.feedItems = newFeed;
     
