@@ -116,8 +116,6 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
 
 - (void)setWithPlaceAction:(PlaceAction *)placeAction
 {
-    // TODO: Actually get this date from the place.
-    
     Place *place = [placeAction place];
     self.name = [place name];
     self.address = [place address];

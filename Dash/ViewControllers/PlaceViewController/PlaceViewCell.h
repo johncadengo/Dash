@@ -33,7 +33,7 @@ typedef enum {
 + (CGSize)textSizeForName:(NSString *)name;
 + (CGSize)textSizeForBlurb:(NSString *)blurb;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType)cellType;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType)cellType;
 
 - (void)setWithPlace:(Place *)place;
 

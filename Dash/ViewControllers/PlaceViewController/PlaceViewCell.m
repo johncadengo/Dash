@@ -7,6 +7,7 @@
 //
 
 #import "PlaceViewCell.h"
+#import "Place.h"
 
 @implementation PlaceViewCell
 
@@ -73,17 +74,19 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    return [self initWithStyle:style reuseIdentifier:reuseIdentifier cellType:PlaceViewCellTypeHeader];
 }
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType)cellType
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType)cellType
 {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
+    if (self) {
+        [self setCellType:cellType];
+    }
+    
+    return self;
 }
 
 
@@ -96,6 +99,32 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 - (void)setWithPlace:(Place *)place
 {
+    // TODO: actually get this data from the place.
+    
+    self.name = [place name];
+    self.blurb = [NSString stringWithFormat:@"Japanese / $$ / 0.3 mi"];
+    
+    [self setNeedsDisplay];
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    CGSize nameSize = [[self class] textSizeForName:self.name];
+    [self.name drawInRect:CGRectMake(kPicWidth + (2 * kPadding), kPadding,
+                                    nameSize.width, nameSize.height) 
+                 withFont:[[self class] nameFont]
+            lineBreakMode:kNameLineBreak];
+    
+    [[UIColor grayColor] set];
+    
+    CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
+    CGRect blurbRect = CGRectMake(kPicWidth + (kPadding * 2), 
+                                  nameSize.height + (2 * kPadding),
+                                  blurbSize.width, blurbSize.height);
+	[self.blurb drawInRect:blurbRect
+                  withFont:[[self class] blurbFont]
+             lineBreakMode:kBlurbLineBreak];
+    
     
 }
 
