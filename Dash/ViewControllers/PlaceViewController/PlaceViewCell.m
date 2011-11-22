@@ -97,6 +97,25 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     // Configure the view for the selected state
 }
 
+- (void)setCellType:(PlaceViewCellType)cellType
+{
+    _cellType = cellType;
+    
+    switch (_cellType) {
+        case PlaceViewCellTypeHeader:
+            // Cannot be selected
+            [self setSelectionStyle:UITableViewCellSelectionStyleNone];        
+            break;
+        case PlaceViewCellTypeSquare:
+            
+            break;
+        default:
+            NSAssert(NO, @"Trying to set PlaceViewCellType to one that doesn't exist %d", _cellType);
+            break;
+    }
+    
+}
+
 - (void)setWithPlace:(Place *)place
 {
     // TODO: actually get this data from the place.

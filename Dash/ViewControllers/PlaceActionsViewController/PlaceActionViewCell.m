@@ -107,7 +107,7 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
             
             break;
         default:
-            NSAssert(NO, @"Trying to set PlaceViewCellType that doens't exist %d", _cellType);
+            NSAssert(NO, @"Trying to set PlaceViewCellType to one that doens't exist %d", _cellType);
             break;
     }
     
