@@ -14,3 +14,5 @@ extern NSString * const kHighlightFeedbackCellIdentifier;
 extern NSString * const kHighlightCommentCellIdentifier;
 extern NSString * const kListModeOne;
 extern NSString * const kListModeTwo;
+
+extern NSString * const kPlacesPlaceCellIdentifier;

@@ -16,3 +16,5 @@ NSString * const kHighlightFeedbackCellIdentifier = @"com.MadeupStartup.Dash.Hig
 NSString * const kHighlightCommentCellIdentifier = @"com.MadeupStartup.Dash.HighlightCommentCell";
 NSString * const kListModeOne = @"Friends";
 NSString * const kListModeTwo = @"Nearby";
+
+NSString * const kPlacesPlaceCellIdentifier = @"com.MadeupStartup.Dash.PlacesPlaceCell";

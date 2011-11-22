@@ -28,7 +28,7 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
 
 #pragma mark - Class methods
 
-+ (CGSize)sizeForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType
++ (CGFloat)heightForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType
 {
     // TODO: Get the actual name and timestamp for calculating size.
     
@@ -36,9 +36,9 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
     CGSize addressSize = [self textSizeForAddress:@"hey"];
     
     CGFloat height = kPadding + nameSize.height + kPadding + addressSize.height + kPadding;
-    CGSize totalSize = CGSizeMake(kWindowWidth, height);
+    //CGSize totalSize = CGSizeMake(kWindowWidth, height);
     
-    return totalSize;
+    return height;
 }
 
 + (UIFont *)nameFont

@@ -36,7 +36,7 @@ typedef enum {
 
 // Methods
 
-+ (CGSize)sizeForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType;
++ (CGFloat)heightForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType;
 + (UIFont *)nameFont;
 + (UIFont *)addressFont;
 + (CGSize)textSizeForName:(NSString *)name;
