@@ -23,6 +23,8 @@
 #import "PersonPhoto+Helper.h"
 #import "PersonPhoto.h"
 
+#import "Save.h"
+
 #pragma - Enum constants
 // Some defaults
 enum {
@@ -38,6 +40,15 @@ enum {
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 -(id) initWithManagedObjectContext:(NSManagedObjectContext *)context;
+
+#pragma mark - For scaffolding purposes
+/** Generates a random person
+ */
+- (Person *)randomGhost;
+
+/** Generates a random place
+ */
+- (Place *)randomCrypt;
 
 #pragma mark - Gets
 /** Returns a pop for that location.
@@ -74,6 +85,14 @@ enum {
  */
 - (NSMutableArray *)commentsForHighlight:(Highlight *)highlight withCount:(NSUInteger)count;
 
+/** Returns place actions associated with a specific person: saves, likes, invites, etc.
+ */
+- (NSMutableArray *)placeActionsForPerson:(Person *)person;
+
+/** Returns count number of places actions associated with a specific person.
+ */
+- (NSMutableArray *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count;
+
 #pragma mark - Posts
 /** Returns a newly made comment by a person on an action.
  */
@@ -82,5 +101,9 @@ enum {
 /**
  */
 - (Highlight *)person:(Person *)person addsHighlight:(NSString *)text toPlace:(Place *)place withPhoto:(Photo *)photo;
+
+/**
+ */
+- (Save *)person:(Person *)person savesPlace:(Place *)place;
 
 @end

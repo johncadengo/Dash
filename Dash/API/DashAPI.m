@@ -38,6 +38,27 @@
     return self;
 }
 
+#pragma mark - Scaffolding
+
+- (Person *)randomGhost
+{
+    Person *author;
+    
+    NSArray *names = [NSArray arrayWithObjects:@"Laura Byun", @"Grace Chi", @"Chloe Choe", @"Eunice Chung", @"Andrew Park", @"Chris Kim", @"Amos Kim", @"Julia Yang", nil];
+    author = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:self.managedObjectContext];
+    [author setName:[NSString stringWithFormat:[names randomObject]]];
+    
+    PersonPhoto *profilePic = [NSEntityDescription insertNewObjectForEntityForName:@"PersonPhoto" inManagedObjectContext:self.managedObjectContext];
+    [author setProfilepic:profilePic];
+    
+    return author;
+}
+
+- (Place *)randomCrypt
+{
+    
+}
+
 #pragma mark - Gets
 
 -(void) pop:(CLLocation *)location
@@ -99,6 +120,24 @@
     return comments;
 }
 
+- (NSMutableArray *)placeActionsForPerson:(Person *)person
+{
+    return [self placeActionsForPerson:person withCount:kDefaultNumFeedItems];
+}
+
+- (NSMutableArray *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count
+{
+    Save *save;
+    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:count];
+    
+    for (int i = 0; i < count; ++i) {
+        save = [self person:person savesPlace:nil];
+        
+        [feed addObject:save];
+    }
+    
+    return feed;
+}
 
 #pragma mark - Posts
 
@@ -109,16 +148,11 @@
     
     Person *author;
     
-    if (person) {
-        author = person;
+    if (person == nil) {
+        author = [self randomGhost];
     }
     else {
-        NSArray *names = [NSArray arrayWithObjects:@"Laura Byun", @"Grace Chi", @"Chloe Choe", @"Eunice Chung", @"Andrew Park", @"Chris Kim", @"Amos Kim", @"Julia Yang", nil];
-        author = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:self.managedObjectContext];
-        [author setName:[NSString stringWithFormat:[names randomObject]]];
-        
-        PersonPhoto *profilePic = [NSEntityDescription insertNewObjectForEntityForName:@"PersonPhoto" inManagedObjectContext:self.managedObjectContext];
-        [author setProfilepic:profilePic];
+        author = person;
     }
     
     [comment setAuthor:author];
@@ -136,16 +170,11 @@
 
     Person *author;
     
-    if (person) {
-        author = person;
+    if (person == nil) {
+        author = [self randomGhost];
     }
     else {
-        NSArray *names = [NSArray arrayWithObjects:@"Laura Byun", @"Grace Chi", @"Chloe Choe", @"Eunice Chung", @"Andrew Park", @"Chris Kim", @"Amos Kim", @"Julia Yang", nil];
-        author = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:self.managedObjectContext];
-        [author setName:[NSString stringWithFormat:[names randomObject]]];
-        
-        PersonPhoto *profilePic = [NSEntityDescription insertNewObjectForEntityForName:@"PersonPhoto" inManagedObjectContext:self.managedObjectContext];
-        [author setProfilepic:profilePic];
+        author = person;
     }
     
     [highlight setAuthor:author];
@@ -156,5 +185,26 @@
     
     return highlight;
 }
+
+- (Save *)person:(Person *)person savesPlace:(Place *)place
+{
+    Save *save = (Save *)[NSEntityDescription insertNewObjectForEntityForName:@"Save" inManagedObjectContext:self.managedObjectContext];
+
+    Person *author;
+    
+    if (person == nil) {
+        author = [self randomGhost];
+    }
+    else {
+        author = person;
+    }
+    
+    [save setAuthor:author];
+    [save setPlace:place];
+    
+    return save;
+}
+
+
 
 @end
