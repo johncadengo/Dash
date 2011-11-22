@@ -16,31 +16,57 @@
 @synthesize image = _image;
 @synthesize imageGalleryViewController = _imageGalleryViewController;
 
+#pragma mark - Some UI Constants
+
+static CGFloat kWindowWidth = 320.0f;
+static CGFloat kPadding = 5.0f;
+static CGFloat kPicWidth = 100.0f;
+static CGFloat kMinHeight = 110.0f;
+
+static CGFloat kMaxBlurbHeight = 1000.0f;
+
+static UILineBreakMode kNameLineBreak = UILineBreakModeHeadTruncation;
+static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
+
 #pragma mark - Class methods for determining the size of UI elements
 
 + (CGFloat)heightForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType
 {
+    CGSize nameSize = [self textSizeForName:@"hi"];
+    CGSize blurbSize = [self textSizeForBlurb:@"hey hey"];
     
+    CGFloat height = kPadding + nameSize.height + kPadding + blurbSize.height + kPadding;
+    
+    return MAX(height, kMinHeight);
 }
 
 + (UIFont *)nameFont
 {
-    
+    return [UIFont boldSystemFontOfSize:16];
 }
 
 + (UIFont *)blurbFont
 {
-    
+    return [UIFont systemFontOfSize:14];
 }
 
 + (CGSize)textSizeForName:(NSString *)name
 {
-    
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
+    CGSize textSize = [name sizeWithFont:[self nameFont]
+                                forWidth:maxWidth 
+                           lineBreakMode:kNameLineBreak];
+    return textSize;
 }
 
 + (CGSize)textSizeForBlurb:(NSString *)blurb
 {
-    
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
+    CGSize maxSize = CGSizeMake(maxWidth, kMaxBlurbHeight);
+    CGSize textSize = [blurb sizeWithFont:[self nameFont]
+                        constrainedToSize:maxSize
+                            lineBreakMode:kBlurbLineBreak];
+    return textSize;    
 }
 
 #pragma mark - Initialization

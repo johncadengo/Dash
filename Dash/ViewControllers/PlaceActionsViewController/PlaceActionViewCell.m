@@ -27,7 +27,7 @@ static CGFloat kMaxAddressHeight = 1000.0f;
 static UILineBreakMode kNameLineBreak = UILineBreakModeHeadTruncation;
 static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
 
-#pragma mark - Class methods
+#pragma mark - Class methods for determining the size of UI elements
 
 + (CGFloat)heightForPlaceAction:(PlaceAction *)placeAction withCellType:(PlaceActionViewCellType)cellType
 {
