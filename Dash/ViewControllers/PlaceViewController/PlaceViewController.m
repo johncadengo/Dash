@@ -10,6 +10,13 @@
 
 @implementation PlaceViewController
 
+@synthesize place = _place;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize api = _api;
+@synthesize highlights = _highlights;
+@synthesize footprints = _footprints;
+@synthesize imageGalleryViewController = _imageGalleryViewController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

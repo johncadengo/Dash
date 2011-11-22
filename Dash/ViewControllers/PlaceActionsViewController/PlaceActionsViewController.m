@@ -213,10 +213,10 @@
     if ([[segue identifier] isEqualToString:kShowPlaceActionDetailsSegueIdentifier]) {
         Place *place = (Place *)sender;
         PlaceViewController *placeViewController = (PlaceViewController *)[segue destinationViewController];
-        //[PlaceViewController setPlace:place];
+        [placeViewController setPlace:place];
         
         // Make sure it has a managed object context
-        //[PlaceViewController setManagedObjectContext:self.managedObjectContext];
+        [placeViewController setManagedObjectContext:self.managedObjectContext];
     }
 }
 

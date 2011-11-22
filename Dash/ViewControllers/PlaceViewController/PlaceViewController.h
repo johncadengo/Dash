@@ -8,6 +8,47 @@
 
 #import "TISwipeableTableView.h"
 
+#pragma mark - Constants
+/** Sections
+ */
+enum {
+    kPlaceHeaderSection = 0,
+    kPlaceHighlightsSection = 1,
+    kPlaceFootprintsSection = 2,
+    kPlaceNumSections = 3
+};
+
+/** Number of rows.
+    The rest are dynamic.
+ */
+enum {
+    kPlaceNumRowsForHeaderSection = 2   // The place and more info.
+};
+
+/** Rows.
+ */
+enum {
+    kPlaceHeaderRow = 0,
+    kPlaceMoreInfoRow = 1
+};
+
+#pragma mark - Class definition
+
+@class Place;
+@class DashAPI;
+@class JCImageGalleryViewController; // TODO: Make JCImageGallery a single embed view.
+
+// TODO: Include transition state in the state of a JCViewController. Brilliant!
+
 @interface PlaceViewController : TISwipeableTableViewController
+
+@property (nonatomic, strong) Place *place;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) DashAPI *api;
+@property (nonatomic, strong) NSMutableArray *highlights;
+@property (nonatomic, strong) NSMutableArray *footprints;
+@property (nonatomic, strong) JCImageGalleryViewController *imageGalleryViewController;
+
+
 
 @end

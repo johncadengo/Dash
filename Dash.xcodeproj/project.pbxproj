@@ -874,9 +874,9 @@
 			children = (
 				679A49031469F26100E0CDE2 /* JCImageGalleryView */,
 				670956A9145EFBCF00057E32 /* TISwipeableTableView */,
-				6729D058147C1E420046C8DB /* PlaceViewController */,
 				6739F4691464530F00735858 /* HighlightViewController */,
 				679009E61450EB1D00511E0F /* FeedViewController */,
+				6729D058147C1E420046C8DB /* PlaceViewController */,
 				679009E71450EB2900511E0F /* PlaceActionsViewController */,
 				679009D41450D89500511E0F /* DashViewController */,
 				679009E81450EB3A00511E0F /* FriendsViewController */,
