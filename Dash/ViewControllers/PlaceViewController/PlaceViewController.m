@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "JCImageGalleryViewController.h"
 #import "UIImage+ProportionalFill.h"
+#import "PlaceViewCell.h"
 
 @implementation PlaceViewController
 
@@ -73,6 +74,110 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    CGFloat height = 0.0f;
+    
+    switch (section) {
+        case kPlaceHeaderSection:
+            height = [self heightForHeaderSectionCellForRow:row];
+            break;
+        case kPlaceHighlightsSection:
+            
+            break;
+        case kPlaceFootprintsSection:
+            
+            break;
+        default:
+            NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
+            break;
+    }
+    
+    return height;
+}
+
+- (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row 
+{
+    CGFloat height = 0.0f;
+    
+    if (row == kPlaceHeaderRow) {
+        height = [PlaceViewCell heightForPlace:self.place withCellType:PlaceViewCellTypeHeader];
+    }    
+    
+    return height;
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return kPlaceNumSections;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSInteger numRows = 0;
+    
+    switch (section) {
+        case kPlaceHeaderSection:
+            numRows = kPlaceNumRowsForHeaderSection;
+            break;
+        case kPlaceHighlightsSection:
+            
+            break;
+        case kPlaceFootprintsSection:
+            
+            break;
+        default:
+            NSAssert(NO, @"Asking for number of rows in a section that doesn't exist %d", section);
+            break;
+    }
+    
+    return numRows;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    id cell = nil;
+    
+    switch (section) {
+        case kPlaceHeaderSection:
+            cell = [self headerSectionCellForTableView:tableView forRow:row];
+            break;
+        case kPlaceHighlightsSection:
+            
+            break;
+        case kPlaceFootprintsSection:
+            
+            break;
+        default:
+            NSAssert(NO, @"Asking for a cell in a section that doesn't exist %d", section);
+            break;
+    }
+    
+    return cell;
+}
+
+- (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+{
+    PlaceViewCell *cell = (PlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceHeaderCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[PlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceHeaderCellIdentifier cellType:PlaceViewCellTypeHeader];
+    }
+    
+    [cell setWithPlace:self.place];
+    
+    return cell;
 }
 
 @end

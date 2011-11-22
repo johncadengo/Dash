@@ -47,6 +47,8 @@ enum {
 @property (nonatomic, strong) NSMutableArray *footprints;
 @property (nonatomic, strong) JCImageGalleryViewController *imageGalleryViewController;
 
+- (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row;
 
+- (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 
 @end

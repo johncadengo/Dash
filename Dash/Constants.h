@@ -16,6 +16,7 @@ extern NSString * const kListModeOne;
 extern NSString * const kListModeTwo;
 
 extern NSString * const kPlacesPlaceCellIdentifier;
+extern NSString * const kPlaceHeaderCellIdentifier;
 
 // Segues
 extern NSString * const kShowPlaceActionDetailsSegueIdentifier;
