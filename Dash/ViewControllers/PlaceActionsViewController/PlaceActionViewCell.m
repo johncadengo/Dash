@@ -6,10 +6,11 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "PlaceViewCell.h"
+#import "PlaceActionViewCell.h"
 #import "Place.h"
+#import "PlaceAction.h"
 
-@implementation PlaceViewCell
+@implementation PlaceActionViewCell
 
 @synthesize delegate = _delegate;
 @synthesize name = _name;
@@ -28,7 +29,7 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
 
 #pragma mark - Class methods
 
-+ (CGFloat)heightForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType
++ (CGFloat)heightForPlaceAction:(PlaceAction *)placeAction withCellType:(PlaceActionViewCellType)cellType
 {
     // TODO: Get the actual name and timestamp for calculating size.
     
@@ -83,7 +84,7 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
     return [self initWithStyle:style reuseIdentifier:reuseIdentifier cellType:PlaceViewCellTypeList];
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType) cellType
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceActionViewCellType) cellType
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
@@ -94,7 +95,7 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
     return self;
 }
 
-- (void)setCellType:(PlaceViewCellType)newCellType
+- (void)setCellType:(PlaceActionViewCellType)newCellType
 {
     _cellType = newCellType;
     
@@ -113,11 +114,13 @@ static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
     
 }
 
-- (void)setWithPlace:(Place *)place
+- (void)setWithPlaceAction:(PlaceAction *)placeAction
 {
     // TODO: Actually get this date from the place.
-    self.name = [NSString stringWithFormat:@"Totto Ramen"];
-    self.address = [NSString stringWithFormat:@"226 Thompson St. 10012"];
+    
+    Place *place = [placeAction place];
+    self.name = [place name];
+    self.address = [place address];
     
     [self setNeedsDisplay];
 }

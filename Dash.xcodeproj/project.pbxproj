@@ -12,6 +12,9 @@
 		6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E3FF145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E403145F2D410069D5A8 /* UIImage+Tint.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6729D056147C1E3B0046C8DB /* PlaceActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */; };
+		6729D057147C1E3B0046C8DB /* PlaceActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D055147C1E3B0046C8DB /* PlaceActionViewCell.m */; };
+		6729D05B147C1E680046C8DB /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D05A147C1E680046C8DB /* PlaceViewController.m */; };
 		672C2C731459E9A4006A1D6B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6C1459E9A4006A1D6B /* Category.m */; };
 		672C2C741459E9A4006A1D6B /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6E1459E9A4006A1D6B /* Hours.m */; };
 		672C2C751459E9A4006A1D6B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C701459E9A4006A1D6B /* Place.m */; };
@@ -61,7 +64,6 @@
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
-		679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EE1450EB9600511E0F /* PlacesViewController.m */; };
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
 		6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */; };
@@ -108,7 +110,6 @@
 		67F22FEC145F0DEB0010A09F /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE9145F0DEB0010A09F /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FED145F0DEB0010A09F /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FF0145F0DF20010A09F /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEF145F0DF20010A09F /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		67FD6311147B005E00549D79 /* PlaceActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD6310147B005E00549D79 /* PlaceActionViewCell.m */; };
 		67FFE58614687B7B00135225 /* NSDate+RandomDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FFE58514687B7B00135225 /* NSDate+RandomDates.m */; };
 /* End PBXBuildFile section */
 
@@ -216,6 +217,12 @@
 		6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ProportionalFill.m"; path = "Helpers/MGImageUtilities/Classes/UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		6715E402145F2D410069D5A8 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Tint.h"; path = "Helpers/MGImageUtilities/Classes/UIImage+Tint.h"; sourceTree = "<group>"; };
 		6715E403145F2D410069D5A8 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Tint.m"; path = "Helpers/MGImageUtilities/Classes/UIImage+Tint.m"; sourceTree = "<group>"; };
+		6729D052147C1E3B0046C8DB /* PlaceActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionsViewController.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.h; sourceTree = "<group>"; };
+		6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceActionsViewController.m; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.m; sourceTree = "<group>"; };
+		6729D054147C1E3B0046C8DB /* PlaceActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionViewCell.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionViewCell.h; sourceTree = "<group>"; };
+		6729D055147C1E3B0046C8DB /* PlaceActionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceActionViewCell.m; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionViewCell.m; sourceTree = "<group>"; };
+		6729D059147C1E680046C8DB /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceViewController.h; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.h; sourceTree = "<group>"; };
+		6729D05A147C1E680046C8DB /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewController.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.m; sourceTree = "<group>"; };
 		672C2C6B1459E9A4006A1D6B /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = "Data Model/Place/Category.h"; sourceTree = "<group>"; };
 		672C2C6C1459E9A4006A1D6B /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = "Data Model/Place/Category.m"; sourceTree = "<group>"; };
 		672C2C6D1459E9A4006A1D6B /* Hours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hours.h; path = "Data Model/Place/Hours.h"; sourceTree = "<group>"; };
@@ -288,8 +295,6 @@
 		679009E41450E75900511E0F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
 		679009EA1450EB7A00511E0F /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewController.h; path = Dash/ViewControllers/FeedViewController/FeedViewController.h; sourceTree = "<group>"; };
 		679009EB1450EB7A00511E0F /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewController.m; path = Dash/ViewControllers/FeedViewController/FeedViewController.m; sourceTree = "<group>"; };
-		679009ED1450EB9600511E0F /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlacesViewController.h; path = Dash/ViewControllers/PlacesViewController/PlacesViewController.h; sourceTree = "<group>"; };
-		679009EE1450EB9600511E0F /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlacesViewController.m; path = Dash/ViewControllers/PlacesViewController/PlacesViewController.m; sourceTree = "<group>"; };
 		679009F01450ED8800511E0F /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendsViewController.h; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.h; sourceTree = "<group>"; };
 		679009F11450ED8800511E0F /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.m; sourceTree = "<group>"; };
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
@@ -378,8 +383,6 @@
 		67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGOImageLoader.m; path = Helpers/EGOImageLoading/EGOImageLoader/EGOImageLoader.m; sourceTree = "<group>"; };
 		67F22FEE145F0DF20010A09F /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOImageView.h; path = Helpers/EGOImageLoading/EGOImageView/EGOImageView.h; sourceTree = "<group>"; };
 		67F22FEF145F0DF20010A09F /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGOImageView.m; path = Helpers/EGOImageLoading/EGOImageView/EGOImageView.m; sourceTree = "<group>"; };
-		67FD630F147B005E00549D79 /* PlaceActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; name = PlaceActionViewCell.h; path = Dash/ViewControllers/PlacesViewController/PlaceActionViewCell.h; sourceTree = "<group>"; };
-		67FD6310147B005E00549D79 /* PlaceActionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceActionViewCell.m; path = Dash/ViewControllers/PlacesViewController/PlaceActionViewCell.m; sourceTree = "<group>"; };
 		67FFE58414687B7B00135225 /* NSDate+RandomDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+RandomDates.h"; path = "Helpers/RandomStrings/NSDate+RandomDates.h"; sourceTree = "<group>"; };
 		67FFE58514687B7B00135225 /* NSDate+RandomDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+RandomDates.m"; path = "Helpers/RandomStrings/NSDate+RandomDates.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -442,6 +445,15 @@
 				6715E403145F2D410069D5A8 /* UIImage+Tint.m */,
 			);
 			name = MGImageUtilities;
+			sourceTree = "<group>";
+		};
+		6729D058147C1E420046C8DB /* PlaceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6729D059147C1E680046C8DB /* PlaceViewController.h */,
+				6729D05A147C1E680046C8DB /* PlaceViewController.m */,
+			);
+			name = PlaceViewController;
 			sourceTree = "<group>";
 		};
 		672C2C961459EDD9006A1D6B /* LogicTests */ = {
@@ -760,15 +772,15 @@
 			name = FeedViewController;
 			sourceTree = "<group>";
 		};
-		679009E71450EB2900511E0F /* PlacesViewController */ = {
+		679009E71450EB2900511E0F /* PlaceActionsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				679009ED1450EB9600511E0F /* PlacesViewController.h */,
-				679009EE1450EB9600511E0F /* PlacesViewController.m */,
-				67FD630F147B005E00549D79 /* PlaceActionViewCell.h */,
-				67FD6310147B005E00549D79 /* PlaceActionViewCell.m */,
+				6729D052147C1E3B0046C8DB /* PlaceActionsViewController.h */,
+				6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */,
+				6729D054147C1E3B0046C8DB /* PlaceActionViewCell.h */,
+				6729D055147C1E3B0046C8DB /* PlaceActionViewCell.m */,
 			);
-			name = PlacesViewController;
+			name = PlaceActionsViewController;
 			sourceTree = "<group>";
 		};
 		679009E81450EB3A00511E0F /* FriendsViewController */ = {
@@ -862,9 +874,10 @@
 			children = (
 				679A49031469F26100E0CDE2 /* JCImageGalleryView */,
 				670956A9145EFBCF00057E32 /* TISwipeableTableView */,
+				6729D058147C1E420046C8DB /* PlaceViewController */,
 				6739F4691464530F00735858 /* HighlightViewController */,
 				679009E61450EB1D00511E0F /* FeedViewController */,
-				679009E71450EB2900511E0F /* PlacesViewController */,
+				679009E71450EB2900511E0F /* PlaceActionsViewController */,
 				679009D41450D89500511E0F /* DashViewController */,
 				679009E81450EB3A00511E0F /* FriendsViewController */,
 				679009E91450EB4400511E0F /* ProfileViewController */,
@@ -1189,7 +1202,6 @@
 				67348AC41446350700A3160A /* Dash.xcdatamodeld in Sources */,
 				679009DB1450D9B300511E0F /* DashViewController.m in Sources */,
 				679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */,
-				679009EF1450EB9600511E0F /* PlacesViewController.m in Sources */,
 				679009F21450ED8800511E0F /* FriendsViewController.m in Sources */,
 				679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */,
 				673653691455C1DD00E53822 /* DashAPI.m in Sources */,
@@ -1251,7 +1263,9 @@
 				67EDA903146C8D6E00AD3625 /* JCSpotlightViewController.m in Sources */,
 				67EDA906146C8D8300AD3625 /* JCGalleryViewController.m in Sources */,
 				67EDA909146C8DF700AD3625 /* JCViewController.m in Sources */,
-				67FD6311147B005E00549D79 /* PlaceActionViewCell.m in Sources */,
+				6729D056147C1E3B0046C8DB /* PlaceActionsViewController.m in Sources */,
+				6729D057147C1E3B0046C8DB /* PlaceActionViewCell.m in Sources */,
+				6729D05B147C1E680046C8DB /* PlaceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

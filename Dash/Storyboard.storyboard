@@ -158,7 +158,7 @@
         <scene sceneID="0yi-PX-Kun">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xak-M4-wyX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="d0u-3Q-WJe" customClass="PlacesViewController" sceneMemberID="viewController">
+                <tableViewController id="d0u-3Q-WJe" customClass="PlaceActionsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YGW-wT-Qmz">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -281,9 +281,6 @@
         </class>
         <class className="HighlightViewController" superclassName="TISwipeableTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HighlightViewController.h"/>
-        </class>
-        <class className="PlacesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesViewController.h"/>
         </class>
         <class className="ProfileViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
