@@ -12,7 +12,6 @@
 #import "JCImageGalleryViewController.h"
 #import "UIImage+ProportionalFill.h"
 #import "PlaceViewCell.h"
-#import "MoreInfoViewCell.h"
 
 @implementation PlaceViewController
 
@@ -22,6 +21,7 @@
 @synthesize highlights = _highlights;
 @synthesize footprints = _footprints;
 @synthesize imageGalleryViewController = _imageGalleryViewController;
+@synthesize moreInfoCell = _moreInfoCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,7 +59,7 @@
     // Get the highlights associated with the place
     self.highlights = [self.api highlightsForPlace:self.place];
     
-    //[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 
@@ -105,11 +105,19 @@
 
 - (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row 
 {
-    CGFloat height = 40.0f;
+    CGFloat height = 0.0f;
     
-    if (row == kPlaceHeaderRow) {
-        height = [PlaceViewCell heightForPlace:self.place withCellType:PlaceViewCellTypeHeader];
-    }    
+    switch (row) {
+        case kPlaceHeaderRow:
+            height = [PlaceViewCell heightForPlace:self.place withCellType:PlaceViewCellTypeHeader];
+            break;
+        case kPlaceMoreInfoRow:
+            height = [MoreInfoViewCell height];
+            break;
+        default:
+            NSAssert(NO, @"Asking for the height of a row in the header section that doesn't exist %d", row);
+            break;
+    }
     
     return height;
 }
@@ -207,9 +215,37 @@
         cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
     }
     
-    NSLog(@"Hey");
+    // Connect us to the cell
+    [cell setDelegate:self];
+    [self setMoreInfoCell:cell];
     
     return cell;
+}
+
+#pragma mark - table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    if (section == kPlaceHeaderSection && row == kPlaceMoreInfoRow) {
+        [self toggleMoreInfo];
+    }
+}
+
+
+
+#pragma mark - More info cell delegate
+
+- (void)toggleMoreInfo
+{
+    ([self.moreInfoCell.backView isHidden]) ? [self.moreInfoCell revealBackView] : [self.moreInfoCell hideBackView];
+}
+
+- (void)cellBackButtonWasTapped:(MoreInfoViewCell *)cell
+{
+    
 }
 
 

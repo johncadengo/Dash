@@ -7,6 +7,7 @@
 //
 
 #import "TISwipeableTableView.h"
+#import "MoreInfoViewCell.h"
 
 #pragma mark - Constants
 /** Sections
@@ -38,7 +39,7 @@ enum {
 @class DashAPI;
 @class JCImageGalleryViewController;
 
-@interface PlaceViewController : TISwipeableTableViewController
+@interface PlaceViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate, MoreInfoviewCellDelegate>
 
 @property (nonatomic, strong) Place *place;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -47,10 +48,16 @@ enum {
 @property (nonatomic, strong) NSMutableArray *footprints;
 @property (nonatomic, strong) JCImageGalleryViewController *imageGalleryViewController;
 
+@property (nonatomic, strong) MoreInfoViewCell *moreInfoCell;
+
 - (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row;
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)headerRowForTableView:(UITableView *)tableView;
 - (UITableViewCell *)moreInfoRowForTableView:(UITableView *)tableView;
+
+/** Will toggle whether or not the back view of the more info cell is shown.
+ */
+- (void)toggleMoreInfo;
 
 @end
