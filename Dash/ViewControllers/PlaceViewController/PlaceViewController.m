@@ -12,6 +12,7 @@
 #import "JCImageGalleryViewController.h"
 #import "UIImage+ProportionalFill.h"
 #import "PlaceViewCell.h"
+#import "ActionViewCell.h"
 
 @implementation PlaceViewController
 
@@ -90,10 +91,10 @@
             height = [self heightForHeaderSectionCellForRow:row];
             break;
         case kPlaceHighlightsSection:
-            
+            height = [self heightForHighlightSectionCellForRow:row];
             break;
         case kPlaceFootprintsSection:
-            
+            height = [self heightForFootprintSectionCellForRow:row];
             break;
         default:
             NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
@@ -122,6 +123,32 @@
     return height;
 }
 
+- (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row
+{
+    CGFloat height = 0.0f;
+    
+    // This is an if-else situation, not a switch situation,
+    // since, the row value can be anything
+    if (row == kPlaceHeaderRow) {
+        
+    }
+    
+    return height;
+}
+
+- (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row
+{
+    CGFloat height = 0.0f;
+    
+    // This is an if-else situation, not a switch situation,
+    // since, the row value can be anything
+    if (row == kPlaceHeaderRow) {
+        
+    }
+    
+    return height;    
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -138,9 +165,11 @@
             numRows = kPlaceNumRowsForHeaderSection;
             break;
         case kPlaceHighlightsSection:
+            // This is calculated by the header + up to 3 highlights + footer
             
             break;
         case kPlaceFootprintsSection:
+            // This is calculated by the header + up to n footprints + footer
             
             break;
         default:
@@ -162,10 +191,10 @@
             cell = [self headerSectionCellForTableView:tableView forRow:row];
             break;
         case kPlaceHighlightsSection:
-            
+            cell = [self highlightsSectionCellForTableView:tableView forRow:row];
             break;
         case kPlaceFootprintsSection:
-            
+            cell = [self footprintsSectionCellForTableView:tableView forRow:row];
             break;
         default:
             NSAssert(NO, @"Asking for a cell in a section that doesn't exist %d", section);
@@ -174,6 +203,8 @@
     
     return cell;
 }
+
+#pragma mark - Cells for rows in each section
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
@@ -193,6 +224,38 @@
     
     return cell;
 }
+
+- (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+{
+    id cell;
+    
+    
+    if (row == kPlaceHeaderRow) {
+        
+    }
+    else {
+        
+    }
+    
+    return cell;
+}
+
+- (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+{
+    id cell;
+    
+    if (row == kPlaceHeaderRow) {
+        
+    }
+    else {
+        
+    }
+    
+    return cell;
+}
+
+
+#pragma mark - The actual cell
 
 - (UITableViewCell *)headerRowForTableView:(UITableView *)tableView
 {
