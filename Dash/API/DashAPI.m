@@ -65,6 +65,9 @@
     [place setName:[NSString stringWithFormat:[names randomObject]]];
     [place setAddress:[NSString stringWithFormat:@"226 Thompson St. 10012"]];
     
+    PlacePhoto *placePic = [NSEntityDescription insertNewObjectForEntityForName:@"PlacePhoto" inManagedObjectContext:self.managedObjectContext];
+    [place addPhotosObject:placePic];
+    
     return place;
 }
 

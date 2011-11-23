@@ -8,6 +8,8 @@
 
 #import "PlaceViewCell.h"
 #import "Place.h"
+#import "UIImage+ProportionalFill.h"
+#import "PlacePhoto.h"
 
 @implementation PlaceViewCell
 
@@ -119,23 +121,30 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 - (void)setWithPlace:(Place *)place
 {
     // TODO: actually get this data from the place.
+    PlacePhoto *photo = [[place photos] anyObject];
+    NSString *path = [photo localpath];
+    CGSize size = CGSizeMake(kPicWidth, kPicWidth);
     
     self.name = [place name];
     self.blurb = [NSString stringWithFormat:@"Japanese / $$ / 0.3 mi"];
+    self.image = [[UIImage imageNamed:path] imageCroppedToFitSize:size];
     
     [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect
 {
+    // TODO: Only draw within the confines of the rect.
+    
+    // Draw the name
     CGSize nameSize = [[self class] textSizeForName:self.name];
     [self.name drawInRect:CGRectMake(kPicWidth + (2 * kPadding), kPadding,
                                     nameSize.width, nameSize.height) 
                  withFont:[[self class] nameFont]
             lineBreakMode:kNameLineBreak];
     
+    // Draw the blurb, in gray
     [[UIColor grayColor] set];
-    
     CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
     CGRect blurbRect = CGRectMake(kPicWidth + (kPadding * 2), 
                                   nameSize.height + (2 * kPadding),
@@ -144,7 +153,9 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                   withFont:[[self class] blurbFont]
              lineBreakMode:kBlurbLineBreak];
     
-    
+    // Now draw the image
+    CGPoint point = CGPointMake(kPadding, kPadding);
+    [self.image drawAtPoint:point];
 }
 
 @end
