@@ -12,6 +12,7 @@
 #import "JCImageGalleryViewController.h"
 #import "UIImage+ProportionalFill.h"
 #import "PlaceViewCell.h"
+#import "MoreInfoViewCell.h"
 
 @implementation PlaceViewController
 
@@ -58,8 +59,7 @@
     // Get the highlights associated with the place
     self.highlights = [self.api highlightsForPlace:self.place];
     
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
+    //[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 
@@ -105,7 +105,7 @@
 
 - (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row 
 {
-    CGFloat height = 0.0f;
+    CGFloat height = 40.0f;
     
     if (row == kPlaceHeaderRow) {
         height = [PlaceViewCell heightForPlace:self.place withCellType:PlaceViewCellTypeHeader];
@@ -169,6 +169,25 @@
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
+    id cell;
+    
+    switch (row) {
+        case kPlaceHeaderRow:
+            cell = [self headerRowForTableView:tableView];
+            break;
+        case kPlaceMoreInfoRow:
+            cell = [self moreInfoRowForTableView:tableView];
+            break;
+        default:
+            NSAssert(NO, @"Asking for a cell in a row of the header section that doesn't exist %d", row);
+            break;
+    }
+    
+    return cell;
+}
+
+- (UITableViewCell *)headerRowForTableView:(UITableView *)tableView
+{
     PlaceViewCell *cell = (PlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceHeaderCellIdentifier];
     
     if (cell == nil) {
@@ -179,5 +198,19 @@
     
     return cell;
 }
+
+- (UITableViewCell *)moreInfoRowForTableView:(UITableView *)tableView
+{
+    MoreInfoViewCell *cell = (MoreInfoViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
+    }
+    
+    NSLog(@"Hey");
+    
+    return cell;
+}
+
 
 @end

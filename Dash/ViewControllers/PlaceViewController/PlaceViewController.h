@@ -50,5 +50,7 @@ enum {
 - (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row;
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (UITableViewCell *)headerRowForTableView:(UITableView *)tableView;
+- (UITableViewCell *)moreInfoRowForTableView:(UITableView *)tableView;
 
 @end

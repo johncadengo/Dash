@@ -19,6 +19,7 @@ NSString * const kListModeTwo = @"Nearby";
 
 NSString * const kPlacesPlaceCellIdentifier = @"com.MadeupStartup.Dash.PlacesPlaceCell";
 NSString * const kPlaceHeaderCellIdentifier = @"com.MadeupStartup.Dash.PlaceHeaderCell";
+NSString * const kPlaceMoreInfoCellIdentifier = @"com.MadeupStartup.Dash.PlaceMoreInfoCell";
 
 NSString * const kShowPlaceActionDetailsSegueIdentifier = @"ShowPlaceActionDetails";
 NSString * const kShowFeedItemDetailsSegueIdentifier = @"ShowFeedItemDetails";
