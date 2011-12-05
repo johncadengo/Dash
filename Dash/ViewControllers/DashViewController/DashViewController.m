@@ -44,6 +44,13 @@
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
+    // Add our text view
+    self.textView = [[UITextView alloc] init];
+    self.textView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.f - 49.0f - 50.0f);
+    self.textView.text = @"Tap Dash!";
+    self.textView.font = [UIFont systemFontOfSize:12];
+    [self.view addSubview:self.textView];
+    
     // Add our Dash button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:self 
@@ -52,12 +59,7 @@
     [button setTitle:@"Dash" forState:UIControlStateNormal];
     button.frame = CGRectMake(0.0f, 480.f - 44.0f - 64.0f - 50.0f, 320.0f, 50.0f);
     [self.view addSubview:button];
-    
-    self.textView = [[UITextView alloc] init];
-    self.textView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.f - 50.0f);
-    self.textView.text = @"Tap Dash!";
-    self.textView.font = [UIFont systemFontOfSize:12];
-    [self.view addSubview:self.textView];
+
     
 }
 
