@@ -41,14 +41,15 @@
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
+    // Pop it
+    [self.api pop:nil];
+    NSLog(@"Try to pop");
 }
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
+- (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
 }
-*/
 
 - (void)viewDidUnload
 {
@@ -61,6 +62,13 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma RKRequestDelegate
+
+- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
+{
+    NSLog(@"Got it!");
 }
 
 @end

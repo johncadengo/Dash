@@ -54,7 +54,11 @@
 
 #pragma mark - RKRequestDelegate
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {  
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
+{ 
+    //NSLog(@"request %@", [request URL]);
+    //NSLog(@"response %@", [response bodyAsString]);
+    
     if ([request isGET]) {
         // Handling GET /foo.xml
         
@@ -69,6 +73,8 @@
         if ([response isJSON]) {
             NSLog(@"Got a JSON response back from our POST!");
             
+            // Forward the call to notify the delegate we have loaded response
+            [self.delegate request:request didLoadResponse:response];
         }
         
     } else if ([request isDELETE]) {
@@ -78,6 +84,16 @@
             NSLog(@"The resource path '%@' was not found.", [request resourcePath]);
         }
     }
+}
+
+- (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+}
+
+- (void)requestDidTimeout:(RKRequest *)request
+{
+    
 }
 
 #pragma mark - Scaffolding
@@ -115,10 +131,15 @@
 
 -(void) pop:(CLLocation *)location
 {
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"must_fix", @"KAEMyqRkVRgShNWGZW73u2Fk",
-                            @"loc", @"11377", nil];
-    [[RKClient sharedClient] post:@"pop" params:params delegate:self];
+                            @"KAEMyqRkVRgShNWGZW73u2Fk", @"must_fix",
+                            @"11377", @"loc", nil];
+    [[RKClient sharedClient] post:@"pops" params:params delegate:self];
+    //[[RKClient sharedClient] get:@"pops" queryParams:params delegate:self];
+    
+    NSLog(@"Sent pop");
     
 }
 

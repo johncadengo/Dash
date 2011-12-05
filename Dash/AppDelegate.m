@@ -57,7 +57,7 @@ enum {
     RKClient *client = [RKClient clientWithBaseURL:@"http://107.22.230.57/api"];
     
     // This is from the tutorial, but also keep here in case I need to find it.
-    //NSLog(@"I am your RKClient singleton : %@", [RKClient sharedClient]);
+    NSLog(@"I am your RKClient singleton : %@", [RKClient sharedClient]);
     
     return YES;
 }
