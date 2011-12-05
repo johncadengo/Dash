@@ -89,23 +89,16 @@
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
 { 
-    NSLog(@"request %@", [request URL]);
-    NSLog(@"response %@", [response bodyAsString]);
+    //NSLog(@"request %@", [request URL]);
+    //NSLog(@"response %@", [response bodyAsString]);
 }
 
 #pragma mark - RKObjectLoaderDelegate methods
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
-    //Place *place = [NSEntityDescription insertNewObjectForEntityForName:@"Place" inManagedObjectContext:self.managedObjectContext];
-    NSLog(@"%@ %d", objects, [objects count]);
-    //Place *place = [objects objectAtIndex:0];
-    //NSLog(@"Loaded Place-> Name: %@, address: %@", place.name, place.address);
-}
-
--( void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjectDictionary:(NSDictionary *)dictionary
-{
-    NSLog(@"dict %@", dictionary);
+    // Forward this call to the delegate
+    [self.delegate objectLoader:objectLoader didLoadObjects:objects];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 

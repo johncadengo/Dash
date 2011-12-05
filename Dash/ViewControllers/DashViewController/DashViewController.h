@@ -16,4 +16,10 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
 
+// UI Elements
+@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UIButton *popButton;
+
+- (void)pop:(id) sender;
+
 @end
