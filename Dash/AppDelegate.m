@@ -61,7 +61,7 @@ enum {
     
     RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:@"http://107.22.230.57/api"];
     
-    NSLog(@"I am your RKObjectManager singleton: %@", [RKObjectManager sharedManager]);
+    //NSLog(@"I am your RKObjectManager singleton: %@", [RKObjectManager sharedManager]);
     
     return YES;
 }
