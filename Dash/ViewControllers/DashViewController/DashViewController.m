@@ -46,9 +46,10 @@
     
     // Add our text view
     self.textView = [[UITextView alloc] init];
-    self.textView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.f - 20.f - 44.0f - 49.0f - 50.0f);
+    self.textView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.f - 50.0f);
     self.textView.text = @"Tap Dash!";
     self.textView.font = [UIFont systemFontOfSize:12];
+    [self.textView setEditable:NO];
     [self.view addSubview:self.textView];
     
     // Add our Dash button
@@ -85,7 +86,7 @@
 
 - (void)pop:(id) sender
 {
-    self.textView.text = @"Loading";
+    self.textView.text = @"Loading...";
     [self.view setNeedsDisplay];
     [self.api pop:nil];
 }
