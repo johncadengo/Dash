@@ -21,13 +21,6 @@
 
 @end
 
-@implementation FakePlace
-
-@synthesize name;
-@synthesize address;
-
-@end
-
 @implementation DashAPI
 
 @synthesize managedObjectContext = __managedObjectContext;
@@ -124,31 +117,30 @@
 
 -(void) pop:(CLLocation *)location
 {
-    // Params are backwards compared to the way 
-    // it is shown in the http: /pops?key=object
-    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"KAEMyqRkVRgShNWGZW73u2Fk", @"must_fix", nil];
-    //[[RKClient sharedClient] post:@"pops" params:params delegate:self];
-    //[[RKClient sharedClient] get:@"pops" queryParams:params delegate:self];
-    
-    //NSLog(@"Sent pop");
-    
+    // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
     objectManager.objectStore = objectStore;
     
-    //RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[FakePlace class]];
+    // Define an object mapping for the entities involved
     RKManagedObjectMapping *objectMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
-    
     [objectMapping mapKeyPath:@"name" toAttribute:@"name"];
     [objectMapping mapKeyPath:@"address" toAttribute:@"address"];
+    
+    // We expect to find the place entity inside of a dictionary keyed "places"
     [objectManager.mappingProvider setMapping:objectMapping forKeyPath:@"places"];
     
+    // Authentication
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"KAEMyqRkVRgShNWGZW73u2Fk", @"must_fix", nil];
+
+    // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self];
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
-    
 }
 
 - (NSMutableArray *)feedForLocation:(CLLocation *)location
