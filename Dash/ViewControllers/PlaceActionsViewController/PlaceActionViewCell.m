@@ -28,7 +28,7 @@ static UILineBreakMode kNameLineBreak = UILineBreakModeHeadTruncation;
 static UILineBreakMode kAddressLineBreak = UILineBreakModeWordWrap;
 
 #pragma mark - Class methods for determining the size of UI elements
-
+    
 + (CGFloat)heightForPlaceAction:(PlaceAction *)placeAction withCellType:(PlaceActionViewCellType)cellType
 {
     // TODO: Get the actual name and timestamp for calculating size.
