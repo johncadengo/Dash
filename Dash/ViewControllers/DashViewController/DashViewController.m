@@ -14,6 +14,7 @@
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
+@synthesize locationManager = _locationManager;
 @synthesize textView = _textView;
 @synthesize popButton = _popButton;
 
@@ -58,9 +59,14 @@
                action:@selector(pop:)
      forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"Dash" forState:UIControlStateNormal];
-    button.frame = CGRectMake(0.0f, 480.f - 44.0f - 64.0f - 50.0f, 320.0f, 50.0f);
+    button.frame = CGRectMake(0.0f, 480.f - 44.0f - 64.0f - 100.0f, 320.0f, 100.0f);
     [self.view addSubview:button];
 
+    // Figure out where we are
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    [self.locationManager startUpdatingLocation];
     
 }
 
@@ -82,13 +88,34 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-# pragma mark -
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    // If it's a relatively recent event, turn off updates to save power
+    NSDate* eventDate = newLocation.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0)
+    {
+        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+              newLocation.coordinate.latitude,
+              newLocation.coordinate.longitude);
+        [manager stopUpdatingLocation];
+    }
+    // else skip the event and process the next one.
+}
+
+#pragma mark -
 
 - (void)pop:(id) sender
 {
     self.textView.text = @"Loading...";
     [self.view setNeedsDisplay];
-    [self.api pop:nil];
+    
+    // Find out where we are
+    CLLocation *loc = [self.locationManager location];
+    [self.api pop:loc];
 }
 
 #pragma mark - RKObjectLoaderDelegate methods

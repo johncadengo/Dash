@@ -126,8 +126,11 @@
     // Authentication
     // Params are backwards compared to the way 
     // it is shown in the http: /pops?key=object
+    NSString *locParam = [NSString stringWithFormat:@"%f, %f", location.coordinate.latitude,
+                          location.coordinate.longitude];
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"KAEMyqRkVRgShNWGZW73u2Fk", @"must_fix", nil];
+                            @"KAEMyqRkVRgShNWGZW73u2Fk", @"must_fix",
+                            locParam, @"loc",nil];
 
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self];
