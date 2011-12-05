@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
 
-@interface DashViewController : UIViewController
+@class DashAPI;
+
+@interface DashViewController : UIViewController <RKRequestDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) DashAPI *api;
 
 @end

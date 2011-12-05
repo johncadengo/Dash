@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
+#import <RestKit/RestKit.h>
 
 #import "Person.h"
 #import "Person+Helper.h"
@@ -36,11 +36,14 @@ enum {
 
 #pragma - Class definition
 
-@interface DashAPI : NSObject
+@interface DashAPI : NSObject <RKRequestDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, weak) id <RKRequestDelegate> delegate;
 
 -(id) initWithManagedObjectContext:(NSManagedObjectContext *)context;
+-(id) initWithManagedObjectContext:(NSManagedObjectContext *)context delegate:(id)delegate;
+
 
 #pragma mark - For scaffolding purposes
 /** Generates a random person

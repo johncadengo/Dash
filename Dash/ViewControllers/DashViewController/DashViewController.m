@@ -7,10 +7,12 @@
 //
 
 #import "DashViewController.h"
+#import "DashAPI.h"
 
 @implementation DashViewController
 
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize api = _api;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,20 +31,22 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
 #pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Connect to our API.
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
+    
+}
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 */
 

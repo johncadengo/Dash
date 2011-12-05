@@ -22,6 +22,7 @@
 @implementation DashAPI
 
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize delegate = _delegate;
 
 -(id) init
 {
@@ -38,6 +39,45 @@
     }
     
     return self;
+}
+
+-(id) initWithManagedObjectContext:(NSManagedObjectContext *)context delegate:(id)delegate
+{
+    self = [self initWithManagedObjectContext:context];
+    
+    if (self) {
+        self.delegate = delegate;
+    }
+    
+    return self;
+}
+
+#pragma mark - RKRequestDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {  
+    if ([request isGET]) {
+        // Handling GET /foo.xml
+        
+        if ([response isOK]) {
+            // Success! Let's take a look at the data
+            NSLog(@"Retrieved XML: %@", [response bodyAsString]);
+        }
+        
+    } else if ([request isPOST]) {
+        
+        // Handling POST /other.json        
+        if ([response isJSON]) {
+            NSLog(@"Got a JSON response back from our POST!");
+            
+        }
+        
+    } else if ([request isDELETE]) {
+        
+        // Handling DELETE /missing_resource.txt
+        if ([response isNotFound]) {
+            NSLog(@"The resource path '%@' was not found.", [request resourcePath]);
+        }
+    }
 }
 
 #pragma mark - Scaffolding
@@ -75,7 +115,10 @@
 
 -(void) pop:(CLLocation *)location
 {
-    
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"must_fix", @"KAEMyqRkVRgShNWGZW73u2Fk",
+                            @"loc", @"11377", nil];
+    [[RKClient sharedClient] post:@"pop" params:params delegate:self];
     
 }
 

@@ -32,7 +32,7 @@ enum {
 {
     // Get the TabBarController so we can start off on a different index.
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    [tabBarController setSelectedIndex: kPlacesTabIndex];
+    [tabBarController setSelectedIndex: kDashTabIndex];
     
     // Grab our managed object context
     NSManagedObjectContext *context = [self managedObjectContext];
@@ -52,6 +52,12 @@ enum {
             NSLog(@"Something went wrong trying to assign managed object context to one of the view controllers!");    
         }
     }
+    
+    // Configure restkit singleton instance
+    RKClient *client = [RKClient clientWithBaseURL:@"http://107.22.230.57/api"];
+    
+    // This is from the tutorial, but also keep here in case I need to find it.
+    //NSLog(@"I am your RKClient singleton : %@", [RKClient sharedClient]);
     
     return YES;
 }
