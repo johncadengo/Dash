@@ -36,10 +36,15 @@ enum {
 
 #pragma - Class definition
 
-@interface DashAPI : NSObject <RKRequestDelegate>
+@interface FakePlace : NSObject
+@property (nonatomic, retain) NSString* name;
+@property (nonatomic, retain) NSString* address;
+@end
+
+@interface DashAPI : NSObject <RKObjectLoaderDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, weak) id <RKRequestDelegate> delegate;
+@property (nonatomic, weak) id <RKObjectLoaderDelegate> delegate;
 
 -(id) initWithManagedObjectContext:(NSManagedObjectContext *)context;
 -(id) initWithManagedObjectContext:(NSManagedObjectContext *)context delegate:(id)delegate;

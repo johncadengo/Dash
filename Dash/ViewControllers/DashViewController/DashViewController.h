@@ -11,7 +11,7 @@
 
 @class DashAPI;
 
-@interface DashViewController : UIViewController <RKRequestDelegate>
+@interface DashViewController : UIViewController <RKObjectLoaderDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;

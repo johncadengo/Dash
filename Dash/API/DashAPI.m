@@ -14,8 +14,17 @@
 
 #import "Place.h"
 
+#import <RestKit/CoreData/CoreData.h>
+
 // Private properties
 @interface DashAPI ()
+
+@end
+
+@implementation FakePlace
+
+@synthesize name;
+@synthesize address;
 
 @end
 
@@ -52,50 +61,6 @@
     return self;
 }
 
-#pragma mark - RKRequestDelegate
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
-{ 
-    //NSLog(@"request %@", [request URL]);
-    //NSLog(@"response %@", [response bodyAsString]);
-    
-    if ([request isGET]) {
-        // Handling GET /foo.xml
-        
-        if ([response isOK]) {
-            // Success! Let's take a look at the data
-            NSLog(@"Retrieved XML: %@", [response bodyAsString]);
-        }
-        
-    } else if ([request isPOST]) {
-        
-        // Handling POST /other.json        
-        if ([response isJSON]) {
-            NSLog(@"Got a JSON response back from our POST!");
-            
-            // Forward the call to notify the delegate we have loaded response
-            [self.delegate request:request didLoadResponse:response];
-        }
-        
-    } else if ([request isDELETE]) {
-        
-        // Handling DELETE /missing_resource.txt
-        if ([response isNotFound]) {
-            NSLog(@"The resource path '%@' was not found.", [request resourcePath]);
-        }
-    }
-}
-
-- (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error
-{
-    NSLog(@"%@", error);
-}
-
-- (void)requestDidTimeout:(RKRequest *)request
-{
-    
-}
-
 #pragma mark - Scaffolding
 
 - (Person *)randomGhost
@@ -127,6 +92,34 @@
     return place;
 }
 
+#pragma mark - RKRequestDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
+{ 
+    NSLog(@"request %@", [request URL]);
+    NSLog(@"response %@", [response bodyAsString]);
+}
+
+#pragma mark - RKObjectLoaderDelegate methods
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
+{
+    //Place *place = [NSEntityDescription insertNewObjectForEntityForName:@"Place" inManagedObjectContext:self.managedObjectContext];
+    NSLog(@"%@ %d", objects, [objects count]);
+    //Place *place = [objects objectAtIndex:0];
+    //NSLog(@"Loaded Place-> Name: %@, address: %@", place.name, place.address);
+}
+
+-( void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjectDictionary:(NSDictionary *)dictionary
+{
+    NSLog(@"dict %@", dictionary);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
+{
+    NSLog(@"Encountered an error: %@", error);
+}
+
 #pragma mark - Gets
 
 -(void) pop:(CLLocation *)location
@@ -134,12 +127,27 @@
     // Params are backwards compared to the way 
     // it is shown in the http: /pops?key=object
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"KAEMyqRkVRgShNWGZW73u2Fk", @"must_fix",
-                            @"11377", @"loc", nil];
-    [[RKClient sharedClient] post:@"pops" params:params delegate:self];
+                            @"KAEMyqRkVRgShNWGZW73u2Fk", @"must_fix", nil];
+    //[[RKClient sharedClient] post:@"pops" params:params delegate:self];
     //[[RKClient sharedClient] get:@"pops" queryParams:params delegate:self];
     
-    NSLog(@"Sent pop");
+    //NSLog(@"Sent pop");
+    
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
+    objectManager.objectStore = objectStore;
+    
+    //RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[FakePlace class]];
+    RKManagedObjectMapping *objectMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
+    
+    [objectMapping mapKeyPath:@"name" toAttribute:@"name"];
+    [objectMapping mapKeyPath:@"address" toAttribute:@"address"];
+    [objectManager.mappingProvider setMapping:objectMapping forKeyPath:@"places"];
+    
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self];
+    objectLoader.method = RKRequestMethodPOST;
+    objectLoader.params = params;
+    [objectLoader send];
     
 }
 

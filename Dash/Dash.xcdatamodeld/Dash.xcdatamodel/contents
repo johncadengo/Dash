@@ -77,7 +77,7 @@
         <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="places" inverseEntity="Category" syncable="YES"/>
         <relationship name="flags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FlagPlace" inverseName="place" inverseEntity="FlagPlace" syncable="YES"/>
         <relationship name="hours" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hours" inverseName="place" inverseEntity="Hours" syncable="YES"/>
-        <relationship name="location" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="place" inverseEntity="PlaceLocation" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="place" inverseEntity="PlaceLocation" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlacePhoto" inverseName="place" inverseEntity="PlacePhoto" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="places" inverseEntity="Pop" syncable="YES"/>
     </entity>
@@ -123,7 +123,7 @@
         <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
         <element name="PersonPhoto" positionX="250" positionY="174" width="128" height="60"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="Place" positionX="-72" positionY="-36" width="128" height="195"/>
+        <element name="Place" positionX="-72" positionY="-36" width="128" height="210"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
         <element name="PlacePhoto" positionX="252" positionY="72" width="128" height="60"/>

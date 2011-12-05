@@ -64,11 +64,4 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma RKRequestDelegate
-
-- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
-{
-    NSLog(@"Got it!");
-}
-
 @end
