@@ -115,7 +115,34 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 {
     [super drawRect:rect];
     
+    // Custom drawing
+    UIColor * textColor = [UIColor blackColor];	
+	[textColor set];
+	CGSize nameSize = [[self class] sizeForName:self.name];
+	[self.name drawInRect:CGRectMake(kPadding, kPadding,
+                                     nameSize.width, nameSize.height)
+                 withFont:[[self class] nameFont]
+            lineBreakMode:kNameLineBreak];
     
+    textColor = [UIColor grayColor];
+    [textColor set];
+    CGSize infoSize = [[self class] sizeForInfo:self.info];
+    [self.info drawInRect:CGRectMake(kPadding, 
+                                    nameSize.height + (2 * kPadding), 
+                                     infoSize.width, infoSize.height) 
+                 withFont:[[self class] infoFont] 
+            lineBreakMode:kInfoLinebreak];
+    
+    textColor = [UIColor blackColor];
+    [textColor set];
+    
+    CGSize blurbSize = [[self class] sizeForBlurb:self.blurb];
+    CGRect blurbRect = CGRectMake(kPadding, 
+                                  nameSize.height + infoSize.height + (3 * kPadding),
+                                  blurbSize.width, blurbSize.height);
+	[self.blurb drawInRect:blurbRect
+                  withFont:[[self class] blurbFont]
+             lineBreakMode:kBlurbLineBreak];
 
 }
 
