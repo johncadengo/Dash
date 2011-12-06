@@ -11,7 +11,7 @@
 #import "Constants.h"
 #import "JCImageGalleryViewController.h"
 #import "UIImage+ProportionalFill.h"
-#import "PlaceViewCell.h"
+#import "PlaceHeaderViewCell.h"
 #import "ActionViewCell.h"
 
 @implementation PlaceViewController
@@ -110,7 +110,7 @@
     
     switch (row) {
         case kPlaceHeaderRow:
-            height = [PlaceViewCell heightForPlace:self.place withCellType:PlaceViewCellTypeHeader];
+            height = [PlaceHeaderViewCell heightForPlace:self.place withCellType:PlaceViewCellTypeHeader];
             break;
         case kPlaceMoreInfoRow:
             height = [MoreInfoViewCell height];
@@ -259,10 +259,10 @@
 
 - (UITableViewCell *)headerRowForTableView:(UITableView *)tableView
 {
-    PlaceViewCell *cell = (PlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceHeaderCellIdentifier];
+    PlaceHeaderViewCell *cell = (PlaceHeaderViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceHeaderCellIdentifier];
     
     if (cell == nil) {
-        cell = [[PlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceHeaderCellIdentifier cellType:PlaceViewCellTypeHeader];
+        cell = [[PlaceHeaderViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceHeaderCellIdentifier cellType:PlaceViewCellTypeHeader];
     }
     
     [cell setWithPlace:self.place];

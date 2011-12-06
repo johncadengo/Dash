@@ -44,6 +44,7 @@
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
 		6739F46F14646DA800735858 /* HighlightViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6739F46E14646DA800735858 /* HighlightViewControllerTests.m */; };
+		673ABD5C148EAE19004446B2 /* PlaceSquareViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 673ABD5B148EAE19004446B2 /* PlaceSquareViewCell.m */; };
 		675277B91472EA01008BD9CC /* JCImageGalleryViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 675277B81472EA01008BD9CC /* JCImageGalleryViewControllerTests.m */; };
 		676102D1145F1ADA005D23B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 676102D0145F1ADA005D23B1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67697589145A5CA3001191CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697581145A5C82001191CF /* CFNetwork.framework */; };
@@ -93,7 +94,7 @@
 		67BAC80F1459E6D50001C738 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC80E1459E6D50001C738 /* Rate.m */; };
 		67BAC8121459E6D50001C738 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8111459E6D50001C738 /* Save.m */; };
 		67BFB666147C262B005C862F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB665147C262B005C862F /* PlaceViewController.m */; };
-		67BFB669147C4476005C862F /* PlaceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceViewCell.m */; };
+		67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 		67CCDE8914607D8400CF657D /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8814607D8400CF657D /* LocationTests.m */; };
 		67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8F1460D12C00CF657D /* ListModeCell.m */; };
@@ -273,6 +274,8 @@
 		673653681455C1DD00E53822 /* DashAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashAPI.m; path = API/DashAPI.m; sourceTree = "<group>"; };
 		6739F46D14646DA800735858 /* HighlightViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewControllerTests.h; path = ApplicationTests/HighlightViewControllerTests.h; sourceTree = "<group>"; };
 		6739F46E14646DA800735858 /* HighlightViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewControllerTests.m; path = ApplicationTests/HighlightViewControllerTests.m; sourceTree = "<group>"; };
+		673ABD5A148EAE19004446B2 /* PlaceSquareViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSquareViewCell.h; path = Dash/ViewControllers/DashViewController/PlaceSquareViewCell.h; sourceTree = "<group>"; };
+		673ABD5B148EAE19004446B2 /* PlaceSquareViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSquareViewCell.m; path = Dash/ViewControllers/DashViewController/PlaceSquareViewCell.m; sourceTree = "<group>"; };
 		675277B71472EA01008BD9CC /* JCImageGalleryViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCImageGalleryViewControllerTests.h; path = ApplicationTests/JCImageGalleryViewController/JCImageGalleryViewControllerTests.h; sourceTree = "<group>"; };
 		675277B81472EA01008BD9CC /* JCImageGalleryViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCImageGalleryViewControllerTests.m; path = ApplicationTests/JCImageGalleryViewController/JCImageGalleryViewControllerTests.m; sourceTree = "<group>"; };
 		676102CF145F1ADA005D23B1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Helpers/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -354,8 +357,8 @@
 		67BAC8111459E6D50001C738 /* Save.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Save.m; path = "Data Model/Actions/PlaceActions/Save.m"; sourceTree = "<group>"; };
 		67BFB664147C262B005C862F /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceViewController.h; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.h; sourceTree = "<group>"; };
 		67BFB665147C262B005C862F /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewController.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.m; sourceTree = "<group>"; };
-		67BFB667147C4476005C862F /* PlaceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceViewCell.h; path = Dash/ViewControllers/PlaceViewController/PlaceViewCell.h; sourceTree = "<group>"; };
-		67BFB668147C4476005C862F /* PlaceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewCell.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewCell.m; sourceTree = "<group>"; };
+		67BFB667147C4476005C862F /* PlaceHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceHeaderViewCell.h; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.h; sourceTree = "<group>"; };
+		67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceHeaderViewCell.m; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.m; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		67CCDE8714607D8400CF657D /* LocationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationTests.h; path = "Logic Tests/LocationTests.h"; sourceTree = "<group>"; };
 		67CCDE8814607D8400CF657D /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationTests.m; path = "Logic Tests/LocationTests.m"; sourceTree = "<group>"; };
@@ -458,8 +461,8 @@
 			children = (
 				67BFB664147C262B005C862F /* PlaceViewController.h */,
 				67BFB665147C262B005C862F /* PlaceViewController.m */,
-				67BFB667147C4476005C862F /* PlaceViewCell.h */,
-				67BFB668147C4476005C862F /* PlaceViewCell.m */,
+				67BFB667147C4476005C862F /* PlaceHeaderViewCell.h */,
+				67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */,
 				67751E9B147D7EBB0083011D /* MoreInfoViewCell.h */,
 				67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */,
 			);
@@ -747,6 +750,8 @@
 			children = (
 				679009D91450D9B300511E0F /* DashViewController.h */,
 				679009DA1450D9B300511E0F /* DashViewController.m */,
+				673ABD5A148EAE19004446B2 /* PlaceSquareViewCell.h */,
+				673ABD5B148EAE19004446B2 /* PlaceSquareViewCell.m */,
 			);
 			name = DashViewController;
 			sourceTree = "<group>";
@@ -1276,8 +1281,9 @@
 				6729D056147C1E3B0046C8DB /* PlaceActionsViewController.m in Sources */,
 				6729D057147C1E3B0046C8DB /* PlaceActionViewCell.m in Sources */,
 				67BFB666147C262B005C862F /* PlaceViewController.m in Sources */,
-				67BFB669147C4476005C862F /* PlaceViewCell.m in Sources */,
+				67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */,
 				67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */,
+				673ABD5C148EAE19004446B2 /* PlaceSquareViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
