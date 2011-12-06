@@ -7,6 +7,7 @@
 //
 
 #import "PlaceSquareViewCell.h"
+#import "Place.h"
 
 @implementation PlaceSquareViewCell
 
@@ -20,6 +21,48 @@
 
 static CGFloat kWidth = 160.0f;
 static CGFloat kHeight = 160.0f;
+static CGFloat kMaxBlurbHeight = 1000.0f;
+
+static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
+static UILineBreakMode kInfoLinebreak = UILineBreakModeTailTruncation;
+static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
+
+#pragma mark - Class methods for figuring out layout
+
++ (CGSize)size
+{
+    return CGSizeMake(kWidth, kHeight);
+}
+
++ (UIFont *)nameFont
+{
+    return [UIFont systemFontOfSize:16];
+}
+
++ (UIFont *)infoFont
+{
+    return [UIFont systemFontOfSize:12];
+}
+
++ (UIFont *)blurbFont
+{
+    return [UIFont systemFontOfSize:10];
+}
+
++ (CGSize)sizeForName:(NSString *)name
+{
+    
+}
+
++ (CGSize)sizeForInfo:(NSString *)info
+{
+    
+}
+
++ (CGSize)sizeForBlurb:(NSString *)blurb
+{
+    
+}
 
 #pragma mark - Initialization
 
@@ -37,7 +80,9 @@ static CGFloat kHeight = 160.0f;
 - (void)setWithPlace:(Place *)place
 {
     // Set all our instance variables
-    
+    self.name = [place name];
+    self.info = [NSString stringWithFormat:@"%@", [place price]];
+    self.blurb = [NSString stringWithFormat:@"Love this place!!"];
     
     // Draw self
     [self setNeedsDisplay];
@@ -45,13 +90,15 @@ static CGFloat kHeight = 160.0f;
 
 #pragma mark - Draw
 
-/*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    // Drawing code
+    [super drawRect:rect];
+    
+    
+
 }
-*/
+
 
 @end

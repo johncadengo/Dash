@@ -23,7 +23,15 @@
 // Or as predetermined images that are bundled with the product?
 // Or as some hybrid of the two options above?
 
-
+// Class methods for determining size and layout of cell
++ (CGSize)size;
++ (UIFont *)nameFont;
++ (UIFont *)infoFont;
++ (UIFont *)blurbFont;
++ (CGSize)sizeForName:(NSString *)name;
++ (CGSize)sizeForInfo:(NSString *)info;
++ (CGSize)sizeForBlurb:(NSString *)blurb;
+   
 - (void)setWithPlace:(Place *)place;
 
 @end
