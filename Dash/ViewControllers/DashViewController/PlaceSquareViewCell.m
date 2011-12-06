@@ -21,6 +21,7 @@
 
 static CGFloat kWidth = 160.0f;
 static CGFloat kHeight = 160.0f;
+static CGFloat kPadding = 5.0f;
 static CGFloat kMaxBlurbHeight = 1000.0f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
@@ -51,17 +52,35 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (CGSize)sizeForName:(NSString *)name
 {
+    CGFloat maxWidth = kWidth - (2 * kPadding);
+	CGSize textSize = [name sizeWithFont:[self nameFont] 
+                                forWidth:maxWidth 
+                           lineBreakMode:kNameLineBreak];
     
+    return textSize;
 }
 
 + (CGSize)sizeForInfo:(NSString *)info
 {
+    CGFloat maxWidth = kWidth - (2 * kPadding);
+	CGSize textSize = [info sizeWithFont:[self infoFont] 
+                                forWidth:maxWidth 
+                           lineBreakMode:kInfoLinebreak];
     
+    return textSize;
 }
 
 + (CGSize)sizeForBlurb:(NSString *)blurb
 {
+    // TODO: We need to figure out the max size for the blurb
+    // especially in relation to its font size.
+    CGFloat maxWidth = kWidth - (2 * kPadding);
+    CGSize maxSize = CGSizeMake(maxWidth, kMaxBlurbHeight);
+	CGSize textSize = [blurb sizeWithFont:[self blurbFont] 
+                        constrainedToSize:maxSize
+                            lineBreakMode:kBlurbLineBreak];
     
+    return textSize;
 }
 
 #pragma mark - Initialization
