@@ -212,8 +212,20 @@ enum {
     // Find out where we tapped
     CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
     
-    // Figure out which 
+    // Figure out which quadrant was tapped
+    NSInteger quadrant = -1;
+    NSValue *value;
+    CGRect frame;
+    for (int i = 0; i < kPlacesPerPage; ++i) {
+        value = [self.quadrantFrames objectAtIndex:i];
+        frame = [value CGRectValue];
+        if (CGRectContainsPoint(frame, tapPoint)) {
+            quadrant = i;
+            break;
+        }
+    }
     
+    NSLog(@"Quadrant %d was tapped!", quadrant);
 }
 
 #pragma mark -
