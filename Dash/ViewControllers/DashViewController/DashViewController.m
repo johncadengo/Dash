@@ -81,9 +81,10 @@ enum {
     
     // Add our initial label
     self.label = [[UILabel alloc] init];
-    self.label.center = self.view.center;
     self.label.text = @"Tap Dash!";
+    [self.label sizeToFit];
     [self.view addSubview:self.label];
+    [self.label setCenter:self.view.center];
     
     // Add our Dash button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -142,6 +143,9 @@ enum {
 
 - (void)pop:(id) sender
 {
+    // Remove initial view
+    [self.label removeFromSuperview];
+    
     // Indicate we are now loading
     self.progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.progressHUD];
@@ -152,8 +156,16 @@ enum {
     // Find out where we are
     CLLocation *loc = [self.locationManager location];
     
-    // Send a request to the API for a pop
-    [self.api pop:loc];
+    // If there are no more pops to show that have already been loaded, get more
+    NSInteger maxIndexAvailable = self.places.count - 1;
+    NSInteger lastPageWeCanShow = [[self class] pageForIndex:maxIndexAvailable];
+    if (lastPageWeCanShow == self.currentPage) {
+        [self.api pop:loc];
+    }
+    else {
+        // Otherwise, show what we already have
+        [self showNextPage];
+    }
 }
 
 #pragma mark -
@@ -167,7 +179,11 @@ enum {
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
+    // Get the objects we've just loaded and fill our places array with them
     self.places = [[NSMutableArray alloc] initWithArray:objects];
+    
+    // Now, show them
+    [self showNextPage];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
