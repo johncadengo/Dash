@@ -11,17 +11,23 @@
 #import <CoreLocation/CoreLocation.h>
 
 @class DashAPI;
+@class MBProgressHUD;
 
 @interface DashViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSMutableArray *places;
+@property (nonatomic) NSInteger currentPage;
 
-// UI Elements
+@property (nonatomic, strong) MBProgressHUD *progressHUD;
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UIButton *popButton;
 
++ (NSInteger)pageForIndex:(NSInteger) index;
+
 - (void)pop:(id) sender;
+- (void)showNextPage;
 
 @end

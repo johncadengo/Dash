@@ -9,14 +9,33 @@
 #import "DashViewController.h"
 #import "DashAPI.h"
 #import "Place.h"
+#import "MBProgressHUD.h"
 
 @implementation DashViewController
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
 @synthesize locationManager = _locationManager;
+@synthesize places = _places;
+@synthesize currentPage = _currentPage;
+
+@synthesize progressHUD = _progressHUD;
 @synthesize textView = _textView;
 @synthesize popButton = _popButton;
+
+#pragma mark - UI Constants
+static int kPlacesPerPage = 4;
+
+#pragma mark - Class methods for determining layout
+
+/** There are four places per page.
+ */
++ (NSInteger)pageForIndex:(NSInteger) index
+{
+    return (index % kPlacesPerPage);
+}
+
+#pragma mark - Initialization
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +60,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Set page
+    
     
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
@@ -116,6 +138,13 @@
     // Find out where we are
     CLLocation *loc = [self.locationManager location];
     [self.api pop:loc];
+}
+
+#pragma mark -
+
+- (void)showNextPage
+{
+    
 }
 
 #pragma mark - RKObjectLoaderDelegate methods
