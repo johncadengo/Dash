@@ -25,12 +25,10 @@
 @synthesize progressHUD = _progressHUD;
 @synthesize label = _label;
 @synthesize popButton = _popButton;
+@synthesize singleTap = _singleTap;
 
 @synthesize quadrants = _quadrants;
-@synthesize quadI = _quadI;
-@synthesize quadII = _quadII;
-@synthesize quadIII = _quadIII;
-@synthesize quadIV = _quadIV;
+@synthesize quadrantFrames = _quadrantFrames;
 
 #pragma mark - UI Constants
 enum {
@@ -128,7 +126,7 @@ enum {
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     [self.locationManager startUpdatingLocation];
     
-    // Set up the quadrant
+    // Set up the quadrantFrames
     CGFloat squareWidth = PlaceSquareViewCell.size.width;
     CGFloat squareHeight = PlaceSquareViewCell.size.height;
     
@@ -137,16 +135,23 @@ enum {
     CGRect thirdFrame = CGRectMake(0.0f, squareHeight, squareWidth, squareHeight);
     CGRect fourthFrame = CGRectMake(squareWidth, squareHeight, squareWidth, squareHeight);
     
-    self.quadI = [[PlaceSquareViewCell alloc] initWithFrame:firstFrame];
-    self.quadII = [[PlaceSquareViewCell alloc] initWithFrame:secondFrame];
-    self.quadIII = [[PlaceSquareViewCell alloc] initWithFrame:thirdFrame];
-    self.quadIV = [[PlaceSquareViewCell alloc] initWithFrame:fourthFrame];
+    self.quadrantFrames = [[NSMutableArray alloc] initWithObjects:
+                           [NSValue valueWithCGRect:firstFrame],
+                           [NSValue valueWithCGRect:secondFrame],
+                           [NSValue valueWithCGRect:thirdFrame],
+                           [NSValue valueWithCGRect:fourthFrame], nil];
     
-    self.quadrants = [[NSMutableArray alloc] initWithObjects:self.quadI, 
-                      self.quadII, self.quadIII, self.quadIV, nil];
-    
-    for (PlaceSquareViewCell *cell in self.quadrants) {
-        [self.popsScrollView addSubview:cell];
+    // Set up the quadrants
+    self.quadrants = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage];
+    PlaceSquareViewCell *cell;
+    NSValue *value;
+    CGRect cellFrame;
+    for (int i = 0; i < kPlacesPerPage; ++i) {
+        value = [self.quadrantFrames objectAtIndex:i];
+        cellFrame = [value CGRectValue];
+        cell = [[PlaceSquareViewCell alloc] initWithFrame:cellFrame];
+        [self.quadrants addObject:cell];
+        [self.popsScrollView addSubview:cell];       
     }
     
     // Add our progress hud
@@ -154,6 +159,11 @@ enum {
     [self.popsScrollView addSubview:self.progressHUD];
     self.progressHUD.delegate = self;
     self.progressHUD.removeFromSuperViewOnHide = NO;
+    
+    // Add our tap gesture recognizer
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.popsScrollView addGestureRecognizer:self.singleTap];
+    [self.singleTap setDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -191,6 +201,19 @@ enum {
         [self.locationManager startMonitoringSignificantLocationChanges];
     }
     // else skip the event and process the next one.
+}
+
+#pragma mark - UIGestureRecognizer Delegate
+
+/** Receive touch events and respond accordingly.
+ */
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer
+{
+    // Find out where we tapped
+    CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
+    
+    // Figure out which 
+    
 }
 
 #pragma mark -
