@@ -37,7 +37,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (UIFont *)nameFont
 {
-    return [UIFont systemFontOfSize:16];
+    return [UIFont systemFontOfSize:14];
 }
 
 + (UIFont *)infoFont
@@ -89,7 +89,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        [self setBackgroundColor:[UIColor whiteColor]];
     }
     return self;
 }
@@ -100,7 +100,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 {
     // Set all our instance variables
     self.name = [place name];
-    self.info = [NSString stringWithFormat:@"%@", [place price]];
+    self.info = [NSString stringWithFormat:@"%@", [place address]];
     self.blurb = [NSString stringWithFormat:@"Love this place!!"];
     
     // Draw self

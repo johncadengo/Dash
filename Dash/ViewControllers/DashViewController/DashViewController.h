@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 
 @class DashAPI;
+@class PlaceSquareViewCell;
 
 @interface DashViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate>
 
@@ -31,7 +32,19 @@
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UIButton *popButton;
 
+/** The four quadrants are divided up in to a Cartesian system,
+    each bounded by two half-axes: I, II, III, and IV.
+    and ordered by the axes (x,y): (+,+), (-,+), (-,-), and (+,-).
+    That is, we start in the upper right, and progress counter-clockwise.
+ */
+@property (nonatomic, strong) NSMutableArray *quadrants;
+@property (nonatomic, strong) PlaceSquareViewCell *quadI;
+@property (nonatomic, strong) PlaceSquareViewCell *quadII;
+@property (nonatomic, strong) PlaceSquareViewCell *quadIII;
+@property (nonatomic, strong) PlaceSquareViewCell *quadIV;
+
 + (NSInteger)pageForIndex:(NSInteger) index;
++ (NSInteger)firstIndexForPage:(NSInteger) page;
 
 - (void)pop:(id) sender;
 - (BOOL)canShowNextPage;

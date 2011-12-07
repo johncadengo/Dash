@@ -26,6 +26,12 @@
 @synthesize label = _label;
 @synthesize popButton = _popButton;
 
+@synthesize quadrants = _quadrants;
+@synthesize quadI = _quadI;
+@synthesize quadII = _quadII;
+@synthesize quadIII = _quadIII;
+@synthesize quadIV = _quadIV;
+
 #pragma mark - UI Constants
 enum {
     kPrePopPage = -1,
@@ -45,6 +51,16 @@ enum {
     page = (index >= 0) ? (index % kPlacesPerPage) : kPrePopPage;
     
     return page;
+}
+
++ (NSInteger)firstIndexForPage:(NSInteger) page
+{
+    NSInteger index;
+    
+    //
+    index = (page >= 0) ? (page * kPlacesPerPage) : kPrePopPage;
+    
+    return index;
 }
 
 #pragma mark - Initialization
@@ -117,6 +133,26 @@ enum {
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     [self.locationManager startUpdatingLocation];
     
+    // Set up the quadrant
+    CGFloat squareWidth = PlaceSquareViewCell.size.width;
+    CGFloat squareHeight = PlaceSquareViewCell.size.height;
+    
+    CGRect firstFrame = CGRectMake(squareWidth, 0.0f, squareWidth, squareHeight);
+    CGRect secondFrame = CGRectMake(0.0f, 0.0f, squareWidth, squareHeight);
+    CGRect thirdFrame = CGRectMake(0.0f, squareHeight, squareWidth, squareHeight);
+    CGRect fourthFrame = CGRectMake(squareWidth, squareHeight, squareWidth, squareHeight);
+    
+    self.quadI = [[PlaceSquareViewCell alloc] initWithFrame:firstFrame];
+    self.quadII = [[PlaceSquareViewCell alloc] initWithFrame:secondFrame];
+    self.quadIII = [[PlaceSquareViewCell alloc] initWithFrame:thirdFrame];
+    self.quadIV = [[PlaceSquareViewCell alloc] initWithFrame:fourthFrame];
+    
+    self.quadrants = [[NSMutableArray alloc] initWithObjects:self.quadI, 
+                      self.quadII, self.quadIII, self.quadIV, nil];
+    
+    for (PlaceSquareViewCell *cell in self.quadrants) {
+        [self.popsScrollView addSubview:cell];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -151,6 +187,7 @@ enum {
               newLocation.coordinate.latitude,
               newLocation.coordinate.longitude);
         [manager stopUpdatingLocation];
+        [self.locationManager startMonitoringSignificantLocationChanges];
     }
     // else skip the event and process the next one.
 }
@@ -163,7 +200,6 @@ enum {
     if (self.currentPage == kPrePopPage) {
         [self.label removeFromSuperview];
     }
-    
     
     // Find out where we are
     CLLocation *loc = [self.locationManager location];
@@ -201,7 +237,19 @@ enum {
     // Should never happen
     NSAssert([self canShowNextPage], @"Tried to showNextPage when canShowNextPage is false");
     
+    ++self.currentPage;
+    NSInteger firstIndex = [[self class] firstIndexForPage:self.currentPage];
+    NSInteger lastIndex = firstIndex + kPlacesPerPage;
+    Place *place;
+    PlaceSquareViewCell *squareCell;
+    NSInteger quadrant;
     
+    for (int i = firstIndex; i < lastIndex; ++i) {
+        quadrant = i % kPlacesPerPage;
+        place = [self.places objectAtIndex:i];
+        squareCell = [self.quadrants objectAtIndex:quadrant];
+        [squareCell setWithPlace:place];
+    }
 }
 
 #pragma mark - RKObjectLoaderDelegate methods
