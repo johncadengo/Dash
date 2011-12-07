@@ -213,7 +213,7 @@ enum {
     CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
     
     // Figure out which quadrant was tapped
-    NSInteger quadrant = -1;
+    QuadrantIndex quadrant = -1;
     NSValue *value;
     CGRect frame;
     for (int i = 0; i < kPlacesPerPage; ++i) {

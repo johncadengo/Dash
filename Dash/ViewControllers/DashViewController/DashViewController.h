@@ -14,6 +14,15 @@
 @class DashAPI;
 @class PlaceSquareViewCell;
 
+// For mapping the quadrant to array indices
+typedef enum {
+    kQuadUndef = -1,
+    kQuadI = 0,
+    kQuadII = 1,
+    kQuadIII = 2,
+    kQuadIV = 3
+}QuadrantIndex;
+
 @interface DashViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate>
 
 // Model elements
