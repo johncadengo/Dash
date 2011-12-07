@@ -9,6 +9,7 @@
 #import "DashViewController.h"
 #import "DashAPI.h"
 #import "Place.h"
+#import "PlaceSquareViewCell.h"
 
 @implementation DashViewController
 
@@ -79,12 +80,27 @@ enum {
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
+    // Add our pops scroll view
+    self.popsScrollView = [[UIScrollView alloc] init];
+    
+    // 2 x 2
+    CGFloat popsScrollViewWidth = PlaceSquareViewCell.size.width * 2.0f;
+    CGFloat popsScrollViewHeight = PlaceSquareViewCell.size.height * 2.0f;
+    self.popsScrollView.frame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
+    [self.view addSubview:self.popsScrollView];
+    
     // Add our initial label
     self.label = [[UILabel alloc] init];
     self.label.text = @"Tap Dash!";
     [self.label sizeToFit];
     [self.view addSubview:self.label];
-    [self.label setCenter:self.view.center];
+    [self.label setCenter:self.popsScrollView.center];
+    
+    // Add our progress hud
+    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.popsScrollView];
+    [self.popsScrollView addSubview:self.progressHUD];
+    self.progressHUD.delegate = self;
+    self.progressHUD.removeFromSuperViewOnHide = NO;
     
     // Add our Dash button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -144,13 +160,9 @@ enum {
 - (void)pop:(id) sender
 {
     // Remove initial view
-    [self.label removeFromSuperview];
-    
-    // Indicate we are now loading
-    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:self.progressHUD];
-    self.progressHUD.delegate = self;
-    [self.progressHUD show:YES];
+    if (self.currentPage == kPrePopPage) {
+        [self.label removeFromSuperview];
+    }
     
     
     // Find out where we are
@@ -160,6 +172,10 @@ enum {
     NSInteger maxIndexAvailable = self.places.count - 1;
     NSInteger lastPageWeCanShow = [[self class] pageForIndex:maxIndexAvailable];
     if (lastPageWeCanShow == self.currentPage) {
+        // Indicate we are now loading
+        [self.progressHUD show:YES];
+        
+        // Send request to API for more places
         [self.api pop:loc];
     }
     else {
@@ -179,6 +195,9 @@ enum {
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
+    // We are done loading, so stop the progress hud
+    [self.progressHUD hide:YES]; 
+    
     // Get the objects we've just loaded and fill our places array with them
     self.places = [[NSMutableArray alloc] initWithArray:objects];
     
@@ -189,6 +208,12 @@ enum {
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
 {
     //NSLog(@"Encountered an error: %@", error);
+}
+
+#pragma mark - MBProgressHUDDelegate methods
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    
 }
 
 @end
