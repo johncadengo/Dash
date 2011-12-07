@@ -42,7 +42,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (UIFont *)infoFont
 {
-    return [UIFont systemFontOfSize:12];
+    return [UIFont systemFontOfSize:10];
 }
 
 + (UIFont *)blurbFont

@@ -48,7 +48,7 @@ enum {
     
     // Calculate page if it is greater than or equal to zero
     // But otherwise, we are at the PrePopPage
-    page = (index >= 0) ? (index % kPlacesPerPage) : kPrePopPage;
+    page = (index >= 0) ? (index / kPlacesPerPage) : kPrePopPage;
     
     return page;
 }
@@ -92,6 +92,7 @@ enum {
     // Initialize some things
     self.loading = NO;
     self.currentPage = kPrePopPage; // -1
+    self.places = [[NSMutableArray alloc] initWithCapacity:12];
     
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
@@ -111,12 +112,6 @@ enum {
     [self.label sizeToFit];
     [self.view addSubview:self.label];
     [self.label setCenter:self.popsScrollView.center];
-    
-    // Add our progress hud
-    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.popsScrollView];
-    [self.popsScrollView addSubview:self.progressHUD];
-    self.progressHUD.delegate = self;
-    self.progressHUD.removeFromSuperViewOnHide = NO;
     
     // Add our Dash button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -153,6 +148,12 @@ enum {
     for (PlaceSquareViewCell *cell in self.quadrants) {
         [self.popsScrollView addSubview:cell];
     }
+    
+    // Add our progress hud
+    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.popsScrollView];
+    [self.popsScrollView addSubview:self.progressHUD];
+    self.progressHUD.delegate = self;
+    self.progressHUD.removeFromSuperViewOnHide = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -260,7 +261,7 @@ enum {
     [self.progressHUD hide:YES]; 
     
     // Get the objects we've just loaded and fill our places array with them
-    self.places = [[NSMutableArray alloc] initWithArray:objects];
+    [self.places addObjectsFromArray:objects];
     
     // Now, show them
     [self showNextPage];
