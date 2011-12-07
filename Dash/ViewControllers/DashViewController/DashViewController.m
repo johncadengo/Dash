@@ -42,7 +42,7 @@ enum {
     
     // Calculate page if it is greater than or equal to zero
     // But otherwise, we are at the PrePopPage
-    (index >= 0) ? (page = (index % kPlacesPerPage)) : (page = kPrePopPage);
+    page = (index >= 0) ? (index % kPlacesPerPage) : kPrePopPage;
     
     return page;
 }
@@ -168,26 +168,39 @@ enum {
     // Find out where we are
     CLLocation *loc = [self.locationManager location];
     
-    // If there are no more pops to show that have already been loaded, get more
-    NSInteger maxIndexAvailable = self.places.count - 1;
-    NSInteger lastPageWeCanShow = [[self class] pageForIndex:maxIndexAvailable];
-    if (lastPageWeCanShow == self.currentPage) {
-        // Indicate we are now loading
-        [self.progressHUD show:YES];
-        
-        // Send request to API for more places
-        [self.api pop:loc];
+    // If we have enough places to show, show next page
+    if ([self canShowNextPage]) {
+        [self showNextPage];
     }
     else {
-        // Otherwise, show what we already have
-        [self showNextPage];
+        // Otherwise, indicate we are now loading
+        [self.progressHUD show:YES];
+        
+        // And send request to API for more places
+        [self.api pop:loc];
     }
 }
 
-#pragma mark -
+#pragma mark - Paging logic
 
+/** Figures out if we have enough places in our array to show the next page
+ */ 
+- (BOOL)canShowNextPage
+{
+    NSInteger maxIndexAvailable = self.places.count - 1;
+    NSInteger lastPageWeCanShow = [[self class] pageForIndex:maxIndexAvailable];
+    
+    return (lastPageWeCanShow == self.currentPage) ? NO : YES;
+}
+
+/** Assumes that we have enough places to display. 
+    Should not call if there's nothing to show.
+ */
 - (void)showNextPage
 {
+    // Should never happen
+    NSAssert([self canShowNextPage], @"Tried to showNextPage when canShowNextPage is false");
+    
     
 }
 

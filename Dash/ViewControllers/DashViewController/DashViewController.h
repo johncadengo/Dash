@@ -34,6 +34,7 @@
 + (NSInteger)pageForIndex:(NSInteger) index;
 
 - (void)pop:(id) sender;
+- (BOOL)canShowNextPage;
 - (void)showNextPage;
 
 @end
