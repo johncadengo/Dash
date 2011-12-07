@@ -171,6 +171,16 @@ enum {
     [super viewWillAppear:animated];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    // Make sure we turn off location services
+    // TODO: Make sure we restart it when we need it...
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopMonitoringSignificantLocationChanges];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -198,7 +208,7 @@ enum {
               newLocation.coordinate.latitude,
               newLocation.coordinate.longitude);
         [manager stopUpdatingLocation];
-        [self.locationManager startMonitoringSignificantLocationChanges];
+        [manager startMonitoringSignificantLocationChanges];
     }
     // else skip the event and process the next one.
 }
