@@ -15,12 +15,18 @@
 
 @interface DashViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate>
 
+// Model elements
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *places;
+
+// State
+@property (nonatomic, getter=isLoading) BOOL loading;
 @property (nonatomic) NSInteger currentPage;
 
+// UI Elements
+@property (nonatomic, strong) UIScrollView *popsScrollView;
 @property (nonatomic, strong) MBProgressHUD *progressHUD;
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UIButton *popButton;

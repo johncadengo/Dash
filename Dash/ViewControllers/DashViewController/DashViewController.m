@@ -17,8 +17,11 @@
 @synthesize api = _api;
 @synthesize locationManager = _locationManager;
 @synthesize places = _places;
+
+@synthesize loading = _loading;
 @synthesize currentPage = _currentPage;
 
+@synthesize popsScrollView = _popsScrollView;
 @synthesize progressHUD = _progressHUD;
 @synthesize textView = _textView;
 @synthesize popButton = _popButton;
