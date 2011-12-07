@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MBProgressHUD.h"
 
 @class DashAPI;
-@class MBProgressHUD;
 
-@interface DashViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate>
+@interface DashViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate>
 
 // Model elements
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -28,7 +28,7 @@
 // UI Elements
 @property (nonatomic, strong) UIScrollView *popsScrollView;
 @property (nonatomic, strong) MBProgressHUD *progressHUD;
-@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UIButton *popButton;
 
 + (NSInteger)pageForIndex:(NSInteger) index;

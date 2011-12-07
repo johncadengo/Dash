@@ -9,7 +9,6 @@
 #import "DashViewController.h"
 #import "DashAPI.h"
 #import "Place.h"
-#import "MBProgressHUD.h"
 
 @implementation DashViewController
 
@@ -23,11 +22,14 @@
 
 @synthesize popsScrollView = _popsScrollView;
 @synthesize progressHUD = _progressHUD;
-@synthesize textView = _textView;
+@synthesize label = _label;
 @synthesize popButton = _popButton;
 
 #pragma mark - UI Constants
-static int kPlacesPerPage = 4;
+enum {
+    kPrePopPage = -1,
+    kPlacesPerPage = 4
+};
 
 #pragma mark - Class methods for determining layout
 
@@ -35,7 +37,13 @@ static int kPlacesPerPage = 4;
  */
 + (NSInteger)pageForIndex:(NSInteger) index
 {
-    return (index % kPlacesPerPage);
+    NSInteger page;
+    
+    // Calculate page if it is greater than or equal to zero
+    // But otherwise, we are at the PrePopPage
+    (index >= 0) ? (page = (index % kPlacesPerPage)) : (page = kPrePopPage);
+    
+    return page;
 }
 
 #pragma mark - Initialization
@@ -64,19 +72,18 @@ static int kPlacesPerPage = 4;
 {
     [super viewDidLoad];
     
-    // Set page
-    
+    // Initialize some things
+    self.loading = NO;
+    self.currentPage = kPrePopPage; // -1
     
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
-    // Add our text view
-    self.textView = [[UITextView alloc] init];
-    self.textView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.f - 50.0f);
-    self.textView.text = @"Tap Dash!";
-    self.textView.font = [UIFont systemFontOfSize:12];
-    [self.textView setEditable:NO];
-    [self.view addSubview:self.textView];
+    // Add our initial label
+    self.label = [[UILabel alloc] init];
+    self.label.center = self.view.center;
+    self.label.text = @"Tap Dash!";
+    [self.view addSubview:self.label];
     
     // Add our Dash button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -135,11 +142,17 @@ static int kPlacesPerPage = 4;
 
 - (void)pop:(id) sender
 {
-    self.textView.text = @"Loading...";
-    [self.view setNeedsDisplay];
+    // Indicate we are now loading
+    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.progressHUD];
+    self.progressHUD.delegate = self;
+    [self.progressHUD show:YES];
+    
     
     // Find out where we are
     CLLocation *loc = [self.locationManager location];
+    
+    // Send a request to the API for a pop
     [self.api pop:loc];
 }
 
@@ -154,16 +167,7 @@ static int kPlacesPerPage = 4;
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
-    // Create the text
-    NSMutableString *text = [[NSMutableString alloc] init];
-    for (Place *place in objects) {
-        [text appendFormat:@"%@ - %@\n", place.name, place.address];
-    }
-    
-    // Display it in a textview
-    self.textView.text = [NSString stringWithString:text];
-    [self.view setNeedsDisplay];
-    //NSLog(@"text %@", text);
+    self.places = [[NSMutableArray alloc] initWithArray:objects];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
