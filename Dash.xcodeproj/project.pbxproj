@@ -28,6 +28,7 @@
 		672C2C921459E9CC006A1D6B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C911459E9CC006A1D6B /* Constants.m */; };
 		672C2C9A1459EE8F006A1D6B /* PersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C991459EE8F006A1D6B /* PersonTests.m */; };
 		672C2C9D1459FB06006A1D6B /* Person+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C9C1459FB06006A1D6B /* Person+Helper.m */; };
+		6731868114917B370066E64A /* JCLocationManagerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6731868014917B370066E64A /* JCLocationManagerSingleton.m */; };
 		67348AAF1446350700A3160A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AAE1446350700A3160A /* UIKit.framework */; };
 		67348AB11446350700A3160A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB01446350700A3160A /* Foundation.framework */; };
 		67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB21446350700A3160A /* CoreGraphics.framework */; };
@@ -253,6 +254,8 @@
 		672C2C991459EE8F006A1D6B /* PersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonTests.m; path = "Logic Tests/PersonTests.m"; sourceTree = "<group>"; };
 		672C2C9B1459FB06006A1D6B /* Person+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Person+Helper.h"; path = "Data Model/Person/Person+Helper.h"; sourceTree = "<group>"; };
 		672C2C9C1459FB06006A1D6B /* Person+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Person+Helper.m"; path = "Data Model/Person/Person+Helper.m"; sourceTree = "<group>"; };
+		6731867F14917B370066E64A /* JCLocationManagerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCLocationManagerSingleton.h; path = Helpers/JCLocationManager/JCLocationManager/Singleton/JCLocationManagerSingleton.h; sourceTree = "<group>"; };
+		6731868014917B370066E64A /* JCLocationManagerSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCLocationManagerSingleton.m; path = Helpers/JCLocationManager/JCLocationManager/Singleton/JCLocationManagerSingleton.m; sourceTree = "<group>"; };
 		67348AAA1446350700A3160A /* Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67348AAE1446350700A3160A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67348AB01446350700A3160A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -498,6 +501,15 @@
 				6739F46E14646DA800735858 /* HighlightViewControllerTests.m */,
 			);
 			name = ApplicationTests;
+			sourceTree = "<group>";
+		};
+		6731867E14917B1B0066E64A /* JCLocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				6731867F14917B370066E64A /* JCLocationManagerSingleton.h */,
+				6731868014917B370066E64A /* JCLocationManagerSingleton.m */,
+			);
+			name = JCLocationManager;
 			sourceTree = "<group>";
 		};
 		67348A9F1446350700A3160A = {
@@ -931,6 +943,7 @@
 		67F22FCD145F0C520010A09F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6731867E14917B1B0066E64A /* JCLocationManager */,
 				67E7D94B146862CC00E86F31 /* EGOTableViewPullRefresh */,
 				676B64A514648C2400FEEF7C /* RandomStrings */,
 				6715E3FD145F2D1E0069D5A8 /* MGImageUtilities */,
@@ -1288,6 +1301,7 @@
 				67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */,
 				67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */,
 				673ABD5C148EAE19004446B2 /* PlaceSquareViewCell.m in Sources */,
+				6731868114917B370066E64A /* JCLocationManagerSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
