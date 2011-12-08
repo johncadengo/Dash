@@ -10,6 +10,8 @@
 #import "DashAPI.h"
 #import "Place.h"
 #import "PlaceSquareViewCell.h"
+#import "Constants.h"
+#import "PlaceViewController.h"
 
 @implementation DashViewController
 
@@ -222,20 +224,27 @@ enum {
     // Find out where we tapped
     CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
     
-    // Figure out which quadrant was tapped
-    QuadrantIndex quadrant = -1;
-    NSValue *value;
-    CGRect frame;
-    for (int i = 0; i < kPlacesPerPage; ++i) {
-        value = [self.quadrantFrames objectAtIndex:i];
-        frame = [value CGRectValue];
-        if (CGRectContainsPoint(frame, tapPoint)) {
-            quadrant = i;
-            break;
+    // Only care if we have places being displayed
+    if (self.currentPage >= 0) {
+        // Figure out which quadrant was tapped
+        QuadrantIndex quadrant = -1;
+        NSValue *value;
+        CGRect frame;
+        for (int i = 0; i < kPlacesPerPage; ++i) {
+            value = [self.quadrantFrames objectAtIndex:i];
+            frame = [value CGRectValue];
+            if (CGRectContainsPoint(frame, tapPoint)) {
+                quadrant = i;
+                break;
+            }
         }
+        
+        NSLog(@"Quadrant %d was tapped!", quadrant);
+        
+        // Perform segue to place view controller
+        Place *place = [self placeForQuadrant:quadrant];
+        [self performSegueWithIdentifier:kShowDashViewDetailsSegueIdentifier sender:place];
     }
-    
-    NSLog(@"Quadrant %d was tapped!", quadrant);
 }
 
 #pragma mark -
@@ -264,6 +273,14 @@ enum {
 }
 
 #pragma mark - Paging logic
+
+- (Place *)placeForQuadrant:(QuadrantIndex)quadrant
+{
+    NSInteger firstIndex = [[self class] firstIndexForPage:self.currentPage];
+    Place *place = [self.places objectAtIndex:firstIndex + quadrant];
+    
+    return place;
+}
 
 /** Figures out if we have enough places in our array to show the next page
  */ 
@@ -295,6 +312,21 @@ enum {
         place = [self.places objectAtIndex:i];
         squareCell = [self.quadrants objectAtIndex:quadrant];
         [squareCell setWithPlace:place];
+    }
+    
+}
+
+#pragma mark - Storyboard Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kShowDashViewDetailsSegueIdentifier]) {
+        Place *place = (Place *)sender;
+        PlaceViewController *placeViewController = (PlaceViewController *)[segue destinationViewController];
+        [placeViewController setPlace:place];
+        
+        // Make sure it has a managed object context
+        [placeViewController setManagedObjectContext:self.managedObjectContext];
     }
 }
 

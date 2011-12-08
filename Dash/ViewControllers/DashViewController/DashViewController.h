@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 
 @class DashAPI;
+@class Place;
 @class PlaceSquareViewCell;
 
 // For mapping the quadrant to array indices
@@ -56,6 +57,10 @@ typedef enum {
 + (NSInteger)firstIndexForPage:(NSInteger) page;
 
 - (void)pop:(id) sender;
+
+/** Assumes quadrant is located on self.currentPage
+ */
+- (Place *)placeForQuadrant:(QuadrantIndex) quadrant;
 - (BOOL)canShowNextPage;
 - (void)showNextPage;
 

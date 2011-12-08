@@ -22,3 +22,4 @@ extern NSString * const kPlaceMoreInfoCellIdentifier;
 // Segues
 extern NSString * const kShowPlaceActionDetailsSegueIdentifier;
 extern NSString * const kShowFeedItemDetailsSegueIdentifier;
+extern NSString * const kShowDashViewDetailsSegueIdentifier;
