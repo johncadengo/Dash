@@ -16,3 +16,6 @@
 [submodule "Dash/Helpers/EGOTableViewPullRefresh"]
 	path = Dash/Helpers/EGOTableViewPullRefresh
 	url = https://github.com/enormego/EGOTableViewPullRefresh.git
+[submodule "Dash/Helpers/JCLocationManager"]
+	path = Dash/Helpers/JCLocationManager
+	url = git@github.com:johncadengo/JCLocationManager.git
