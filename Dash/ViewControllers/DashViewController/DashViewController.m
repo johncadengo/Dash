@@ -29,7 +29,7 @@
 @synthesize popButton = _popButton;
 @synthesize singleTap = _singleTap;
 
-@synthesize quadrants = _quadrants;
+@synthesize quadrantCells = _quadrants;
 @synthesize quadrantFrames = _quadrantFrames;
 
 #pragma mark - UI Constants
@@ -119,7 +119,7 @@ enum {
                action:@selector(pop:)
      forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"Dash" forState:UIControlStateNormal];
-    button.frame = CGRectMake(0.0f, 480.f - 44.0f - 64.0f - 100.0f, 320.0f, 100.0f);
+    button.frame = CGRectMake(0.0f, 480.f - 44.0f - 64.0f - 107.0f, 320.0f, 107.0f);
     [self.view addSubview:button];
 
     // Figure out where we are
@@ -144,7 +144,7 @@ enum {
                            [NSValue valueWithCGRect:fourthFrame], nil];
     
     // Set up the quadrants
-    self.quadrants = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage];
+    self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage];
     PlaceSquareViewCell *cell;
     NSValue *value;
     CGRect cellFrame;
@@ -152,7 +152,7 @@ enum {
         value = [self.quadrantFrames objectAtIndex:i];
         cellFrame = [value CGRectValue];
         cell = [[PlaceSquareViewCell alloc] initWithFrame:cellFrame];
-        [self.quadrants addObject:cell];
+        [self.quadrantCells addObject:cell];
         [self.popsScrollView addSubview:cell];       
     }
     
@@ -298,7 +298,7 @@ enum {
 - (void)showNextPage
 {
     // Should never happen
-    NSAssert([self canShowNextPage], @"Tried to showNextPage when canShowNextPage is false");
+    NSAssert([self canShowNextPage], @"Tried to showNextPage when canShowNextPage fails");
     
     ++self.currentPage;
     NSInteger firstIndex = [[self class] firstIndexForPage:self.currentPage];
@@ -309,8 +309,8 @@ enum {
     
     for (int i = firstIndex; i < lastIndex; ++i) {
         quadrant = i % kPlacesPerPage;
-        place = [self.places objectAtIndex:i];
-        squareCell = [self.quadrants objectAtIndex:quadrant];
+        place = [self placeForQuadrant:quadrant];
+        squareCell = [self.quadrantCells objectAtIndex:quadrant];
         [squareCell setWithPlace:place];
     }
     

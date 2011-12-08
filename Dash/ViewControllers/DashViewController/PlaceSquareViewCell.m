@@ -20,7 +20,7 @@
 #pragma mark - UI Constants
 
 static CGFloat kWidth = 160.0f;
-static CGFloat kHeight = 160.0f;
+static CGFloat kHeight = 130.0f;
 static CGFloat kPadding = 5.0f;
 static CGFloat kMaxBlurbHeight = 1000.0f;
 

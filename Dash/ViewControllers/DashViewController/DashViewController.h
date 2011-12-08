@@ -50,7 +50,7 @@ typedef enum {
     and ordered by the axes (x,y): (+,+), (-,+), (-,-), and (+,-).
     That is, we start in the upper right, and progress counter-clockwise.
  */
-@property (nonatomic, strong) NSMutableArray *quadrants;
+@property (nonatomic, strong) NSMutableArray *quadrantCells;
 @property (nonatomic, strong) NSMutableArray *quadrantFrames;
 
 + (NSInteger)pageForIndex:(NSInteger) index;
