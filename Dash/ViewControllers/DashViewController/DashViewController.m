@@ -12,6 +12,7 @@
 #import "PlaceSquareViewCell.h"
 #import "Constants.h"
 #import "PlaceViewController.h"
+#import "JCLocationManagerSingleton.h"
 
 @implementation DashViewController
 
@@ -123,7 +124,7 @@ enum {
     [self.view addSubview:button];
 
     // Figure out where we are
-    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager = [JCLocationManagerSingleton sharedInstance];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     [self.locationManager startUpdatingLocation];
