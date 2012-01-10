@@ -88,7 +88,7 @@ enum {
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad];  
     
     // Initialize some things
     self.loading = NO;
