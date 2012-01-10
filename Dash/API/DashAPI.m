@@ -115,13 +115,21 @@
     RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
     objectManager.objectStore = objectStore;
     
-    // Define an object mapping for the entities involved
-    RKManagedObjectMapping *objectMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
-    [objectMapping mapKeyPath:@"name" toAttribute:@"name"];
-    [objectMapping mapKeyPath:@"address" toAttribute:@"address"];
+    // Define our category mapping
+    RKManagedObjectMapping *categoryMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Category"];
+    [categoryMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [categoryMapping mapAttributes:@"name", nil];
+    
+    // Define our place mapping, which also has a relationship with category
+    RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
+    [placeMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [placeMapping mapAttributes:@"name", @"address", @"phone", @"price", nil];
+    
+    // Define the relationship mapping
+    [placeMapping mapKeyPath:@"categories" toRelationship:@"categories" withMapping:categoryMapping];
     
     // We expect to find the place entity inside of a dictionary keyed "places"
-    [objectManager.mappingProvider setMapping:objectMapping forKeyPath:@"places"];
+    [objectManager.mappingProvider setMapping:placeMapping forKeyPath:@"places"];
     
     // Authentication
     // Params are backwards compared to the way 
