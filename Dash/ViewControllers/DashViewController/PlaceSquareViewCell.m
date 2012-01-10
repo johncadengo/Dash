@@ -8,6 +8,7 @@
 
 #import "PlaceSquareViewCell.h"
 #import "Place.h"
+#import "Category.h"
 
 @implementation PlaceSquareViewCell
 
@@ -100,7 +101,23 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 {
     // Set all our instance variables
     self.name = [place name];
-    self.info = [NSString stringWithFormat:@"%@", [place address]];
+    
+    NSMutableString *categoryInfo = [[NSMutableString alloc] init];
+    NSArray *categories = [place.categories allObjects];
+    Category *lastCategory = [categories lastObject];
+    
+    for (Category *category in categories) {
+        if (category == lastCategory) {
+            [categoryInfo appendFormat:@"%@ / ", category.name];
+        }
+        else {
+            [categoryInfo appendFormat:@"%@ / ", category.name];            
+        }
+    }
+    
+    [categoryInfo appendFormat:@"%@", place.price];
+    
+    self.info = categoryInfo;
     self.blurb = [NSString stringWithFormat:@"Love this place!!"];
     
     // Draw self
