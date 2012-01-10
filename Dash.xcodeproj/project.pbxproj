@@ -43,6 +43,7 @@
 		67348ACF1446350700A3160A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB41446350700A3160A /* CoreData.framework */; };
 		67348AD71446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AD51446350700A3160A /* InfoPlist.strings */; };
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
+		6735AEA514BCC450000259AF /* Place+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6735AEA414BCC450000259AF /* Place+Helper.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
 		6739F46F14646DA800735858 /* HighlightViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6739F46E14646DA800735858 /* HighlightViewControllerTests.m */; };
 		673ABD5C148EAE19004446B2 /* PlaceSquareViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 673ABD5B148EAE19004446B2 /* PlaceSquareViewCell.m */; };
@@ -274,6 +275,8 @@
 		67348AD61446350700A3160A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		67348AD81446350700A3160A /* DashTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashTests.h; sourceTree = "<group>"; };
 		67348AD91446350700A3160A /* DashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashTests.m; sourceTree = "<group>"; };
+		6735AEA314BCC450000259AF /* Place+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Place+Helper.h"; path = "Data Model/Place/Place+Helper.h"; sourceTree = "<group>"; };
+		6735AEA414BCC450000259AF /* Place+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Place+Helper.m"; path = "Data Model/Place/Place+Helper.m"; sourceTree = "<group>"; };
 		673653671455C1DD00E53822 /* DashAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashAPI.h; path = API/DashAPI.h; sourceTree = "<group>"; };
 		673653681455C1DD00E53822 /* DashAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashAPI.m; path = API/DashAPI.m; sourceTree = "<group>"; };
 		6739F46D14646DA800735858 /* HighlightViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewControllerTests.h; path = ApplicationTests/HighlightViewControllerTests.h; sourceTree = "<group>"; };
@@ -719,6 +722,8 @@
 				672C2C6E1459E9A4006A1D6B /* Hours.m */,
 				672C2C6F1459E9A4006A1D6B /* Place.h */,
 				672C2C701459E9A4006A1D6B /* Place.m */,
+				6735AEA314BCC450000259AF /* Place+Helper.h */,
+				6735AEA414BCC450000259AF /* Place+Helper.m */,
 				672C2C711459E9A4006A1D6B /* PlaceLocation.h */,
 				672C2C721459E9A4006A1D6B /* PlaceLocation.m */,
 			);
@@ -1302,6 +1307,7 @@
 				67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */,
 				673ABD5C148EAE19004446B2 /* PlaceSquareViewCell.m in Sources */,
 				6731868114917B370066E64A /* JCLocationManagerSingleton.m in Sources */,
+				6735AEA514BCC450000259AF /* Place+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
