@@ -25,8 +25,12 @@ double const COS_RAD_LAT = 0.75780129;
 double const accuracy = 0.00000001;
 
 // 117 MacDougal St 10012
-double const MACLAT = 40.7301659;
-double const MACLNG = -74.000664;
+double const MACLAT = 40.7302133;
+double const MACLNG = -74.0003337;
+
+// Distance
+double const DIST = 0.102;
+double const DISTACC = 0.001;
 
 #pragma mark -
 #pragma mark Setup and TearDown
@@ -64,14 +68,8 @@ double const MACLNG = -74.000664;
     // Create a fictional Place
     Place *place = (Place *)[NSEntityDescription insertNewObjectForEntityForName: @"Place" inManagedObjectContext: self.managedObjectContext];
     [place setUid: [NSNumber numberWithInt: 2]];
-    [place setName: @"Battlesheep"];
-    [place setAddress: @"226 Thompson St."];
-    [place setPhone: @"123-345-6789"];
-    [place setPrice: @"$$"];
-    STAssertNotNil([place name], @"Name failed to stick.");
+    [place setAddress: @"226 Thompson St 10012"];
     STAssertNotNil([place address], @"Address failed to stick.");
-    STAssertNotNil([place phone], @"Phone failed to stick.");
-    STAssertNotNil([place price], @"Price failed to stick.");
     
     // Before saving, attach the Location to the Place
     [place setLocation: location];
@@ -101,7 +99,29 @@ double const MACLNG = -74.000664;
 {
     NSLog(@"%@ testGreatcircleDistanceCalculation", self.name);
     
-    //PlaceLocation *twoTwoSixThompson = [self fetchLastPlaceLocation];
+    PlaceLocation *twoTwoSixThompson = [self fetchLastPlaceLocation];
+    
+    // Create a new location
+    PlaceLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"PlaceLocation" inManagedObjectContext:self.managedObjectContext];
+    
+    // Using the setLatitude:longitude: method, which cascades the calculation for all other values
+    [location setLatitude:[NSNumber numberWithDouble:MACLAT] longitude:[NSNumber numberWithDouble:MACLNG]];
+    
+    // Create its place
+    Place *place = (Place *)[NSEntityDescription insertNewObjectForEntityForName: @"Place" inManagedObjectContext: self.managedObjectContext];
+    [place setUid: [NSNumber numberWithInt: 2]];
+    [place setAddress: @"117 MacDougal St 10012"];
+    
+    // Attach it
+    [place setLocation:location];
+    
+    // Now calculate the great circle distance between the two
+    NSNumber *distance = [twoTwoSixThompson greatCircleDistanceFrom:location];
+    double d = [distance doubleValue];
+    
+    // Check it
+    STAssertEqualsWithAccuracy(DIST, d, DISTACC, @"Wanted: %f Got: %f", DIST, d);
+    
     
     
 }
