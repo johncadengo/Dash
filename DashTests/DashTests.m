@@ -126,6 +126,18 @@
     return place;
 }
 
+- (Location *)fetchLastPlaceLocation
+{
+    NSLog(@"%@ getLastLocation", self.name);
+    
+    NSMutableArray *mutableFetchResults = [self fetchEntity: @"PlaceLocation"];
+    
+    // Get the person from the results of the request
+    PlaceLocation *placeLocation = (PlaceLocation *)[mutableFetchResults lastObject];
+    
+    return placeLocation;
+}
+
 - (Person *)fetchPersonWithName:(NSString *)name
 {
     NSLog(@"%@ getLastPerson", self.name);

@@ -11,6 +11,7 @@
 @class DashAPI;
 @class Person;
 @class Place;
+@class PlaceLocation;
 
 /** Handles testing our model, the managed object context, the persistent store, etc.
     All of our tests which need to access Core Data will inherit from this test case.
@@ -42,6 +43,7 @@
 
 - (Person *)fetchLastPerson;
 - (Place *)fetchLastPlace;
+- (PlaceLocation *)fetchLastPlaceLocation;
 
 - (Person *)fetchPersonWithName:(NSString *)name;
 
