@@ -120,13 +120,26 @@
     [categoryMapping mapKeyPath:@"id" toAttribute:@"uid"];
     [categoryMapping mapAttributes:@"name", nil];
     
-    // Define our place mapping, which also has a relationship with category
+    // Define our author mapping for highlights
+    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    
+    // Define our highlight mapping, which has a relationship with author
+    RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];
+    [highlightMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [highlightMapping mapKeyPath:@"name" toAttribute:@"text"];
+    
+    // Define the relationship mapping between highlight and author
+    [highlightMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    
+    // Define our place mapping, which also has a relationship with category and highlight
     RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
     [placeMapping mapKeyPath:@"id" toAttribute:@"uid"];
     [placeMapping mapAttributes:@"name", @"address", @"phone", @"price", nil];
     
-    // Define the relationship mapping
+    // Define the relationship mappings between place and category, highlight
     [placeMapping mapKeyPath:@"categories" toRelationship:@"categories" withMapping:categoryMapping];
+    [placeMapping mapKeyPath:@"highlights" toRelationship:@"actions" withMapping:highlightMapping];
     
     // We expect to find the place entity inside of a dictionary keyed "places"
     [objectManager.mappingProvider setMapping:placeMapping forKeyPath:@"places"];
@@ -144,9 +157,6 @@
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self];
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
-    //objectLoader.OAuth1ConsumerKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
-    //objectLoader.OAuth1ConsumerSecret = @"De8RWQ646rRrMrWbpRz5gVPf";
-    //objectLoader.authenticationType = RKRequestAuthenticationTypeOAuth1;
     [objectLoader send];
 }
 
