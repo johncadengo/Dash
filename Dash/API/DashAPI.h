@@ -56,7 +56,6 @@ enum {
 
 #pragma mark - Gets
 /** Returns a pop for that location.
-    TODO: Figure this out.
  */
 - (void)pop:(CLLocation *)location;
 

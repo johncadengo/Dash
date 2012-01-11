@@ -199,7 +199,7 @@
 {
     NSLog(@"%@", self.name);
     
-    [self.pinholeViewController layoutImageViews:self.pinholeViewController.context.imageViews inFrame:self.pinholeViewController.context.frame];
+    //[self.pinholeViewController layoutImageViews:self.pinholeViewController.context.imageViews inFrame:self.pinholeViewController.context.frame];
 
     BOOL pass = YES;
     for (UIImageView *imageView in self.pinholeViewController.context.imageViews) {

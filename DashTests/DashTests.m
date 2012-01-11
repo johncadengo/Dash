@@ -58,7 +58,6 @@
     // LAT = 40.7292540
     // LNG = -73.9988530
     PlaceLocation *location = (PlaceLocation *)[NSEntityDescription insertNewObjectForEntityForName: @"PlaceLocation" inManagedObjectContext: self.managedObjectContext];
-    [location setUid: [NSNumber numberWithInt:1]];
     [location setLatitude: [NSNumber numberWithDouble:40.7292540]];
     [location setLongitude: [NSNumber numberWithDouble:-73.9988530]];
 

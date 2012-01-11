@@ -46,10 +46,9 @@ double const accuracy = 0.00000001;
     STAssertEqualsWithAccuracy(COS_RAD_LAT, cos_rad_lat, accuracy, @"Wanted: %f Got: %f", COS_RAD_LAT, cos_rad_lat);
 }
 
-/** TODO: Make a function to calculate the distance between two Locations
-    and create a test to make sure it works.
+/** Tests the greatCircleDistance method of the Location class
  */
-- (void)testDistanceCalculation
+- (void)testGreatCircleDistanceCalculation
 {
     
 }

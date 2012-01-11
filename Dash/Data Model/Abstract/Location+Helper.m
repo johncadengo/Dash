@@ -36,9 +36,25 @@
     [self setSinRadLat:[NSNumber numberWithDouble:sinRadLat]];
 }
 
-- (NSNumber *)distanceFrom:(Location *)location
+ - (NSNumber *)greatCircleDistanceFrom:(Location *)other
 {
-    return nil;
+    // Unpack all the NSNumbers into doubles so we can manipulate them
+    double selfCosRadLat = [self.cosRadLat doubleValue];
+    double otherCosRadLat = [other.cosRadLat doubleValue];
+    double selfRadLng = [self.radLng doubleValue];
+    double otherRadLng = [other.radLng doubleValue];
+    double selfSinRadLat = [self.sinRadLat doubleValue];
+    double otherSinRadLat = [other.sinRadLat doubleValue];
+    
+    // Multiplying by 3959 calculates the distance in miles.
+    double d = acos(selfCosRadLat
+                    * otherCosRadLat
+                    * cos(selfRadLng - otherRadLng)
+                    + selfSinRadLat
+                    * otherSinRadLat
+                    ) * 3959;
+    
+    return [NSNumber numberWithDouble:d];
 }
 
 @end
