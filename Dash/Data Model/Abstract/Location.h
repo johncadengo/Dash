@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Uniqueness.h"
 
-
-@interface Location : Uniqueness
+@interface Location : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * cosRadLat;
 @property (nonatomic, retain) NSNumber * latitude;

@@ -132,14 +132,21 @@
     // Define the relationship mapping between highlight and author
     [highlightMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
     
-    // Define our place mapping, which also has a relationship with category and highlight
+    // Define the location mapping
+    RKManagedObjectMapping *locationMapping = [RKManagedObjectMapping mappingForEntityWithName:@"PlaceLocation"];
+    [locationMapping mapKeyPath:@"lat" toAttribute:@"latitude"];
+    [locationMapping mapKeyPath:@"lng" toAttribute:@"longitude"];
+    
+    // Define our place mapping, which also has 
+    // a relationship with category, highlight, and location
     RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
     [placeMapping mapKeyPath:@"id" toAttribute:@"uid"];
     [placeMapping mapAttributes:@"name", @"address", @"phone", @"price", nil];
     
-    // Define the relationship mappings between place and category, highlight
+    // Define the relationship mappings between place and category, highlight, location
     [placeMapping mapKeyPath:@"categories" toRelationship:@"categories" withMapping:categoryMapping];
     [placeMapping mapKeyPath:@"highlights" toRelationship:@"actions" withMapping:highlightMapping];
+    [placeMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
     
     // We expect to find the place entity inside of a dictionary keyed "places"
     [objectManager.mappingProvider setMapping:placeMapping forKeyPath:@"places"];
