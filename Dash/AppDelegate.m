@@ -61,6 +61,13 @@ enum {
     //NSLog(@"I am your RKClient singleton : %@", [RKClient sharedClient]);
     
     RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:@"http://107.22.230.57/api"];
+//    manager.client.OAuth1ConsumerKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
+//    manager.client.OAuth1ConsumerSecret = @"De8RWQ646rRrMrWbpRz5gVPf";
+//    manager.client.authenticationType = RKRequestAuthenticationTypeOAuth1;
+//    
+    //KEY1 = "KAEMyqRkVRgShNWGZW73u2Fk"
+    //KEY2 = "De8RWQ646rRrMrWbpRz5gVPf"
+    
     
     //NSLog(@"I am your RKObjectManager singleton: %@", [RKObjectManager sharedManager]);
     

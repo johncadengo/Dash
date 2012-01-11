@@ -8,6 +8,7 @@
 
 #import "PlaceHeaderViewCell.h"
 #import "Place.h"
+#import "Place+Helper.h"
 #import "UIImage+ProportionalFill.h"
 #import "PlacePhoto.h"
 
@@ -126,7 +127,11 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     CGSize size = CGSizeMake(kPicWidth, kPicWidth);
     
     self.name = [place name];
-    self.blurb = [NSString stringWithFormat:@"Japanese / $$ / 0.3 mi"];
+    
+    NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescription]];
+    [categoryInfo appendFormat:@" / %@ / 0.3 mi", place.price];
+    
+    self.blurb = categoryInfo;
     self.image = [[UIImage imageNamed:path] imageCroppedToFitSize:size];
     
     [self setNeedsDisplay];

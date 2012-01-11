@@ -89,8 +89,8 @@
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
 { 
-    //NSLog(@"request %@", [request URL]);
-    //NSLog(@"response %@", [response bodyAsString]);
+    NSLog(@"request %@", [request OAuth1ConsumerKey]);
+    NSLog(@"response %@", [response bodyAsString]);
 }
 
 #pragma mark - RKObjectLoaderDelegate methods
@@ -144,6 +144,9 @@
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self];
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
+    //objectLoader.OAuth1ConsumerKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
+    //objectLoader.OAuth1ConsumerSecret = @"De8RWQ646rRrMrWbpRz5gVPf";
+    //objectLoader.authenticationType = RKRequestAuthenticationTypeOAuth1;
     [objectLoader send];
 }
 
