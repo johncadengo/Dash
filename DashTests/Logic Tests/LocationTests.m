@@ -14,6 +14,9 @@
 
 @implementation LocationTests
 
+@synthesize thompsonApt = _thompsonApt;
+@synthesize macDougal = _macDougal;
+
 // Constants we will check to ensure our calcluations are correct
 // 226 Thomson St 10012
 double const LAT = 40.7292540;
@@ -46,6 +49,9 @@ double const DISTACC = 0.001;
     
     // Create a new Location, PlaceLocation because Location is abstract!
     PlaceLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"PlaceLocation" inManagedObjectContext:self.managedObjectContext];
+    
+    // Save a reference to it
+    self.thompsonApt = location;
     
     // Using the setLatitude:longitude: method, which cascades the calculation for all other values
     [location setLatitude:[NSNumber numberWithDouble:LAT] longitude:[NSNumber numberWithDouble:LNG]];
@@ -96,7 +102,7 @@ double const DISTACC = 0.001;
  */
 - (void)testCalculatedValuesStick
 {
-    PlaceLocation *location = [self fetchLastPlaceLocation];
+    PlaceLocation *location = self.thompsonApt; //[self fetchLastPlaceLocation];
     
     NSLog(@"Stick: %@", location);
     
@@ -118,15 +124,16 @@ double const DISTACC = 0.001;
 
 /** Tests the greatCircleDistance method of the Location class
  */
-/*
+
 - (void)testGreatCircleDistanceCalculation
 {
     NSLog(@"%@ testGreatcircleDistanceCalculation", self.name);
     
-    PlaceLocation *twoTwoSixThompson = [self fetchLastPlaceLocation];
-    
     // Create a new location
     PlaceLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"PlaceLocation" inManagedObjectContext:self.managedObjectContext];
+    
+    // Save the reference
+    self.macDougal = location;
     
     // Using the setLatitude:longitude: method, which cascades the calculation for all other values
     [location setLatitude:[NSNumber numberWithDouble:MACLAT] longitude:[NSNumber numberWithDouble:MACLNG]];
@@ -143,20 +150,20 @@ double const DISTACC = 0.001;
     [self saveContext];
     
     // Now calculate the great circle distance between the two
-    NSNumber *distance = [twoTwoSixThompson greatCircleDistanceFrom:location];
+    NSNumber *distance = [self.thompsonApt greatCircleDistanceFrom:location];
     double d = [distance doubleValue];
     
     // Check it
-    NSLog(@"%@ %@ %@ %@", [twoTwoSixThompson latitude], [twoTwoSixThompson longitude],
+    NSLog(@"%@ %@ %@ %@", [self.thompsonApt latitude], [self.thompsonApt longitude],
           [location latitude], [location longitude]);
-    STAssertNotNil([twoTwoSixThompson latitude], @"Latitude nil");
-    STAssertNotNil([twoTwoSixThompson longitude], @"Longitude nil");
+    STAssertNotNil([self.thompsonApt latitude], @"Latitude nil");
+    STAssertNotNil([self.thompsonApt longitude], @"Longitude nil");
     STAssertNotNil([location latitude], @"Latitude nil");
     STAssertNotNil([location longitude], @"Longitude nil");
-    STAssertNotNil(twoTwoSixThompson, @"226 Thompson is nil");
+    STAssertNotNil(self.thompsonApt, @"226 Thompson is nil");
     STAssertNotNil(location, @"117 MacDougal is nil");
     STAssertEqualsWithAccuracy(DIST, d, DISTACC, @"Wanted: %f Got: %f", DIST, d);
-}*/
+}
 
 
 @end

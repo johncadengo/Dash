@@ -11,6 +11,11 @@
 
 #import "DashTests.h"
 
+@class Location;
+
 @interface LocationTests : DashTests
+
+@property (nonatomic, strong) PlaceLocation *thompsonApt;
+@property (nonatomic, strong) PlaceLocation *macDougal;
 
 @end

@@ -65,7 +65,8 @@
     //[location setLatitude: [NSNumber numberWithDouble:40.7292540]];
     //[location setLongitude: [NSNumber numberWithDouble:-73.9988530]];
 
-    [location setLatitude:[NSNumber numberWithDouble:40.7292540] longitude:[NSNumber numberWithDouble:-73.9988530]];
+    [location setLatitude:[NSNumber numberWithDouble:40.7292540] 
+                longitude:[NSNumber numberWithDouble:-73.9988530]];
     
     // Attach the Location to the Place
     [place setLocation: location];
