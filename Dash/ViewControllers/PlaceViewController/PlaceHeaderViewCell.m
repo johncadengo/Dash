@@ -11,6 +11,10 @@
 #import "Place+Helper.h"
 #import "UIImage+ProportionalFill.h"
 #import "PlacePhoto.h"
+#import "JCLocationManagerSingleton.h"
+#import "PlaceLocation.h"
+#import "PopLocation.h"
+#import "Location+Helper.h"
 
 @implementation PlaceHeaderViewCell
 
@@ -18,6 +22,7 @@
 @synthesize name = _name;
 @synthesize blurb = _blurb;
 @synthesize image = _image;
+@synthesize managedObjectContext = _managedObjectContext;
 @synthesize imageGalleryViewController = _imageGalleryViewController;
 
 #pragma mark - Some UI Constants
@@ -119,8 +124,25 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
 }
 
-- (void)setWithPlace:(Place *)place
+- (NSNumber *)calculateDistanceFromPlace:(Place *)place
 {
+    // Find out where we are
+    CLLocationManager *manager = [JCLocationManagerSingleton sharedInstance];
+    CLLocation *loc = [manager location];
+    
+    PopLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"PopLocation" inManagedObjectContext:self.managedObjectContext];
+    
+    //[location setWithCLLocation:loc];
+    
+    return [place.location greatCircleDistanceFrom:location];
+    
+}
+
+- (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
+{
+    // Set our context
+    self.managedObjectContext = context;
+    
     // TODO: actually get this data from the place.
     PlacePhoto *photo = [[place photos] anyObject];
     NSString *path = [photo localpath];
@@ -128,8 +150,10 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     self.name = [place name];
     
+    double distance = [[self calculateDistanceFromPlace:place] doubleValue];
+    
     NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescription]];
-    [categoryInfo appendFormat:@" / %@ / 0.3 mi", place.price];
+    [categoryInfo appendFormat:@" / %@ / %.1f mi", place.price, distance];
     
     self.blurb = categoryInfo;
     self.image = [[UIImage imageNamed:path] imageCroppedToFitSize:size];

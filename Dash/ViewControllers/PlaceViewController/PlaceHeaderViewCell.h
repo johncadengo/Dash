@@ -25,6 +25,7 @@ typedef enum {
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *blurb;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) JCImageGalleryViewController *imageGalleryViewController;
 
 + (CGFloat)heightForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType;
@@ -35,6 +36,7 @@ typedef enum {
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType)cellType;
 
-- (void)setWithPlace:(Place *)place;
+- (NSNumber *)calculateDistanceFromPlace:(Place *)place;
+- (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
 
 @end

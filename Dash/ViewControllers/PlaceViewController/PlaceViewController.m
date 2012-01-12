@@ -265,7 +265,7 @@
         cell = [[PlaceHeaderViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceHeaderCellIdentifier cellType:PlaceViewCellTypeHeader];
     }
     
-    [cell setWithPlace:self.place];
+    [cell setWithPlace:self.place context:self.managedObjectContext];
     
     return cell;
 }

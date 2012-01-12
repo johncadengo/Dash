@@ -10,6 +10,7 @@
 #import "Person.h"
 #import "Place.h"
 #import "PlaceLocation.h"
+#import "Location+Helper.h"
 
 @implementation DashTests
 
@@ -58,9 +59,14 @@
     // LAT = 40.7292540
     // LNG = -73.9988530
     PlaceLocation *location = (PlaceLocation *)[NSEntityDescription insertNewObjectForEntityForName: @"PlaceLocation" inManagedObjectContext: self.managedObjectContext];
-    [location setLatitude: [NSNumber numberWithDouble:40.7292540]];
-    [location setLongitude: [NSNumber numberWithDouble:-73.9988530]];
+    
+    // Oh, you individual non-cascading setters. Caused me so much trouble:
+    // http://stackoverflow.com/questions/8827495/core-data-custom-setter-which-does-cascading-calculation-failing
+    //[location setLatitude: [NSNumber numberWithDouble:40.7292540]];
+    //[location setLongitude: [NSNumber numberWithDouble:-73.9988530]];
 
+    [location setLatitude:[NSNumber numberWithDouble:40.7292540] longitude:[NSNumber numberWithDouble:-73.9988530]];
+    
     // Attach the Location to the Place
     [place setLocation: location];
     

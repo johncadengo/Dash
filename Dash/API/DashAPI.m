@@ -89,8 +89,8 @@
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
 { 
-    NSLog(@"request %@", [request OAuth1ConsumerKey]);
-    NSLog(@"response %@", [response bodyAsString]);
+//    NSLog(@"request %@", [request OAuth1ConsumerKey]);
+//    NSLog(@"response %@", [response bodyAsString]);
 }
 
 #pragma mark - RKObjectLoaderDelegate methods

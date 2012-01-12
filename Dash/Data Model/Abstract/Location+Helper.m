@@ -10,34 +10,44 @@
 
 @implementation Location (Helper)
 
--(NSNumber *)degreesToRadians:(NSNumber *)degrees
+- (double)degreesToRadians:(NSNumber *)degrees
 {
     double radians = ([degrees doubleValue] * M_PI) / 180.0;
-    return [NSNumber numberWithDouble: radians];
+    return radians;
 }
-
-- (void)setLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude
+/*
+- (void)setWithCLLocation:(CLLocation *)location
 {
-    [self setLatitude:latitude];
-    [self setLongitude:longitude];
+    NSNumber *latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
+    NSNumber *longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
+    
+    [self setLatitude:latitude longitude:longitude]; 
+}*/
+
+- (void)setLatitude:(NSNumber *)newLat longitude:(NSNumber *)newLng
+{
+    [self setLatitude:newLat];
+    [self setLongitude:newLng];
     
     // Make calculations
-    double radLat = [[self degreesToRadians:latitude] doubleValue];
-    double radLng = [[self degreesToRadians:longitude] doubleValue];
-    double cosRadLat = cos(radLat);
-    double sinRadLat = sin(radLat);
-    
-    //NSLog(@"%d")
-    
+    double dblRadLat = [self degreesToRadians:newLat];
+    double dblRadLng = [self degreesToRadians:newLng];
+    double dblCosRadLat = cos(dblRadLat);
+    double dblSinRadLat = sin(dblRadLat);
+
     // and set their values
-    [self setRadLat:[NSNumber numberWithDouble:radLat]];
-    [self setRadLng:[NSNumber numberWithDouble:radLng]];
-    [self setCosRadLat:[NSNumber numberWithDouble:cosRadLat]];
-    [self setSinRadLat:[NSNumber numberWithDouble:sinRadLat]];
+    [self setRadLat:[NSNumber numberWithDouble:dblRadLat]];
+    [self setRadLng:[NSNumber numberWithDouble:dblRadLng]];
+    [self setCosRadLat:[NSNumber numberWithDouble:dblCosRadLat]];
+    [self setSinRadLat:[NSNumber numberWithDouble:dblSinRadLat]];
 }
 
  - (NSNumber *)greatCircleDistanceFrom:(Location *)other
 {
+    NSLog(@"Self: %@", self);
+    NSLog(@"Other: %@", other);
+    NSAssert(other, @"Other is nil");
+    
     // Unpack all the NSNumbers into doubles so we can manipulate them
     double selfCosRadLat = [self.cosRadLat doubleValue];
     double otherCosRadLat = [other.cosRadLat doubleValue];
@@ -46,15 +56,31 @@
     double selfSinRadLat = [self.sinRadLat doubleValue];
     double otherSinRadLat = [other.sinRadLat doubleValue];
     
+    /*
+     func.acos(  cls.cos_rad_lat 
+     * other.cos_rad_lat 
+     * func.cos(cls.rad_lng - other.rad_lng)
+     + cls.sin_rad_lat
+     * other.sin_rad_lat
+     ) * 3959
+     */
+    
     // Multiplying by 3959 calculates the distance in miles.
     double d = acos(selfCosRadLat
                     * otherCosRadLat
                     * cos(selfRadLng - otherRadLng)
                     + selfSinRadLat
                     * otherSinRadLat
-                    ) * 3959;
+                    ) * 3959.0;
     
     return [NSNumber numberWithDouble:d];
+}
+
+- (NSString *)description
+{
+    NSString *desc = [NSString stringWithFormat:@"Lat %@\nLng %@\nRadLat %@\nRadLng %@\nCosRadLat %@\nSinRadLat %@",
+                      self.latitude, self.longitude, self.radLat, self.radLng, self.cosRadLat, self.sinRadLat];
+    return desc;
 }
 
 @end

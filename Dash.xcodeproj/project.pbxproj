@@ -65,7 +65,6 @@
 		676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */; };
 		67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
-		679009E51450E75900511E0F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 679009E41450E75900511E0F /* icon@2x.png */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
 		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
@@ -97,12 +96,12 @@
 		67BAC8121459E6D50001C738 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8111459E6D50001C738 /* Save.m */; };
 		67BFB666147C262B005C862F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB665147C262B005C862F /* PlaceViewController.m */; };
 		67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */; };
+		67C46B1914BF9B05006B9301 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C46B1814BF9B05006B9301 /* icon@2x.png */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 		67CCDE8914607D8400CF657D /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8814607D8400CF657D /* LocationTests.m */; };
 		67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8F1460D12C00CF657D /* ListModeCell.m */; };
 		67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A4314606B790047C1E4 /* Location+Helper.m */; };
 		67D15A47146070250047C1E4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A46146070250047C1E4 /* Location.m */; };
-		67E453E414908F430087707F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E453E314908F430087707F /* icon@2x.png */; };
 		67E7CA92146A2C0B00B7CBCF /* Dash.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA90146A2C0B00B7CBCF /* Dash.png */; };
 		67E7CA93146A2C0B00B7CBCF /* DashApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA91146A2C0B00B7CBCF /* DashApp.png */; };
 		67E7D94E146862E000E86F31 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -304,7 +303,6 @@
 		67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreInfoViewCell.m; path = Dash/ViewControllers/PlaceViewController/MoreInfoViewCell.m; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
-		679009E41450E75900511E0F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
 		679009EA1450EB7A00511E0F /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewController.h; path = Dash/ViewControllers/FeedViewController/FeedViewController.h; sourceTree = "<group>"; };
 		679009EB1450EB7A00511E0F /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewController.m; path = Dash/ViewControllers/FeedViewController/FeedViewController.m; sourceTree = "<group>"; };
 		679009F01450ED8800511E0F /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendsViewController.h; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.h; sourceTree = "<group>"; };
@@ -366,6 +364,7 @@
 		67BFB665147C262B005C862F /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewController.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.m; sourceTree = "<group>"; };
 		67BFB667147C4476005C862F /* PlaceHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceHeaderViewCell.h; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.h; sourceTree = "<group>"; };
 		67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceHeaderViewCell.m; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.m; sourceTree = "<group>"; };
+		67C46B1814BF9B05006B9301 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		67CCDE8714607D8400CF657D /* LocationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationTests.h; path = "Logic Tests/LocationTests.h"; sourceTree = "<group>"; };
 		67CCDE8814607D8400CF657D /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationTests.m; path = "Logic Tests/LocationTests.m"; sourceTree = "<group>"; };
@@ -375,7 +374,6 @@
 		67D15A4314606B790047C1E4 /* Location+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+Helper.m"; path = "Data Model/Abstract/Location+Helper.m"; sourceTree = "<group>"; };
 		67D15A45146070250047C1E4 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
 		67D15A46146070250047C1E4 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Abstract/Location.m"; sourceTree = "<group>"; };
-		67E453E314908F430087707F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		67E7CA90146A2C0B00B7CBCF /* Dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dash.png; path = Dash/Images/Icons/Dash.png; sourceTree = "<group>"; };
 		67E7CA91146A2C0B00B7CBCF /* DashApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DashApp.png; path = Dash/Images/Icons/DashApp.png; sourceTree = "<group>"; };
 		67E7D94C146862E000E86F31 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGORefreshTableHeaderView.h; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
@@ -786,10 +784,9 @@
 		679009E11450E6D000511E0F /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				67E453E314908F430087707F /* icon@2x.png */,
+				67C46B1814BF9B05006B9301 /* icon@2x.png */,
 				67E7CA90146A2C0B00B7CBCF /* Dash.png */,
 				67E7CA91146A2C0B00B7CBCF /* DashApp.png */,
-				679009E41450E75900511E0F /* icon@2x.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -1168,10 +1165,9 @@
 			files = (
 				67348ABB1446350700A3160A /* InfoPlist.strings in Resources */,
 				67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */,
-				679009E51450E75900511E0F /* icon@2x.png in Resources */,
 				67E7CA92146A2C0B00B7CBCF /* Dash.png in Resources */,
 				67E7CA93146A2C0B00B7CBCF /* DashApp.png in Resources */,
-				67E453E414908F430087707F /* icon@2x.png in Resources */,
+				67C46B1914BF9B05006B9301 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
