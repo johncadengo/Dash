@@ -44,6 +44,7 @@ typedef enum {
 
 // Gesture recognizers
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
+@property (nonatomic, strong) UIPanGestureRecognizer *drag;
 
 /** The four quadrants are divided up in to a Cartesian system,
     each bounded by two half-axes: I, II, III, and IV.

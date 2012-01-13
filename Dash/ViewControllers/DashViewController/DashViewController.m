@@ -29,6 +29,7 @@
 @synthesize label = _label;
 @synthesize popButton = _popButton;
 @synthesize singleTap = _singleTap;
+@synthesize drag = _drag;
 
 @synthesize quadrantCells = _quadrants;
 @synthesize quadrantFrames = _quadrantFrames;
