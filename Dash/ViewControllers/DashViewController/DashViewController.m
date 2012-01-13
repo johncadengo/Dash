@@ -102,8 +102,8 @@ enum {
     self.popsScrollView = [[UIScrollView alloc] init];
     
     // 2 x 2
-    CGFloat popsScrollViewWidth = PlaceSquareViewCell.size.width * 2.0f;
-    CGFloat popsScrollViewHeight = PlaceSquareViewCell.size.height * 2.0f;
+    CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
+    CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
     self.popsScrollView.frame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
     [self.view addSubview:self.popsScrollView];
     
@@ -130,8 +130,8 @@ enum {
     [self.locationManager startUpdatingLocation];
     
     // Set up the quadrantFrames
-    CGFloat squareWidth = PlaceSquareViewCell.size.width;
-    CGFloat squareHeight = PlaceSquareViewCell.size.height;
+    CGFloat squareWidth = PlaceSquareView.size.width;
+    CGFloat squareHeight = PlaceSquareView.size.height;
     
     CGRect firstFrame = CGRectMake(squareWidth, 0.0f, squareWidth, squareHeight);
     CGRect secondFrame = CGRectMake(0.0f, 0.0f, squareWidth, squareHeight);
