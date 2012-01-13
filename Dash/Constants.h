@@ -23,3 +23,4 @@ extern NSString * const kPlaceMoreInfoCellIdentifier;
 extern NSString * const kShowPlaceActionDetailsSegueIdentifier;
 extern NSString * const kShowFeedItemDetailsSegueIdentifier;
 extern NSString * const kShowDashViewDetailsSegueIdentifier;
+extern NSString * const kPresentFilterViewController;

@@ -134,6 +134,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     [location setWithCLLocation:loc];
     
+    // TODO: Save context here?
+    
     return [place.location greatCircleDistanceFrom:location];
     
 }

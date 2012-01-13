@@ -62,6 +62,7 @@
 
     // Make sure highlight view controller initializes the image gallery
     UITableViewCell *cell = [highlightViewController imageGalleryCellForTableView:highlightViewController.tableView];
+    STAssertNotNil(cell, @"Highlight view controller failed to initialize the image gallery.");
     
     // Grab the image gallery view, and voila
     self.imageGalleryViewController = highlightViewController.imageGalleryViewController;

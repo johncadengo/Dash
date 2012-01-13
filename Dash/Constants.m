@@ -24,3 +24,4 @@ NSString * const kPlaceMoreInfoCellIdentifier = @"com.MadeupStartup.Dash.PlaceMo
 NSString * const kShowPlaceActionDetailsSegueIdentifier = @"ShowPlaceActionDetails";
 NSString * const kShowFeedItemDetailsSegueIdentifier = @"ShowFeedItemDetails";
 NSString * const kShowDashViewDetailsSegueIdentifier = @"ShowDashViewDetails";
+NSString * const kPresentFilterViewController = @"PresentFilterViewController";

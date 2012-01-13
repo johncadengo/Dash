@@ -208,9 +208,9 @@ enum {
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     if (abs(howRecent) < 15.0)
     {
-        NSLog(@"latitude %+.6f, longitude %+.6f\n",
-              newLocation.coordinate.latitude,
-              newLocation.coordinate.longitude);
+        //NSLog(@"latitude %+.6f, longitude %+.6f\n",
+        //      newLocation.coordinate.latitude,
+        //      newLocation.coordinate.longitude);
         [manager stopUpdatingLocation];
         [manager startMonitoringSignificantLocationChanges];
     }
@@ -241,7 +241,7 @@ enum {
             }
         }
         
-        NSLog(@"Quadrant %d was tapped!", quadrant);
+        //NSLog(@"Quadrant %d was tapped!", quadrant);
         
         // Perform segue to place view controller
         Place *place = [self placeForQuadrant:quadrant];
