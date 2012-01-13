@@ -46,7 +46,7 @@
 		6735AEA514BCC450000259AF /* Place+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6735AEA414BCC450000259AF /* Place+Helper.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
 		6739F46F14646DA800735858 /* HighlightViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6739F46E14646DA800735858 /* HighlightViewControllerTests.m */; };
-		673ABD5C148EAE19004446B2 /* PlaceSquareViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 673ABD5B148EAE19004446B2 /* PlaceSquareViewCell.m */; };
+		673ABD5C148EAE19004446B2 /* PlaceSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673ABD5B148EAE19004446B2 /* PlaceSquareView.m */; };
 		675277B91472EA01008BD9CC /* JCImageGalleryViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 675277B81472EA01008BD9CC /* JCImageGalleryViewControllerTests.m */; };
 		676102D1145F1ADA005D23B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 676102D0145F1ADA005D23B1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67697589145A5CA3001191CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697581145A5C82001191CF /* CFNetwork.framework */; };
@@ -59,6 +59,7 @@
 		67697590145A5CAE001191CF /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756B145A5BFA001191CF /* libRestKitObjectMapping.a */; };
 		67697591145A5CAE001191CF /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756D145A5BFA001191CF /* libRestKitSupport.a */; };
 		67697592145A5CAE001191CF /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */; };
+		676A46AB14C0DC2B002F2AC9 /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 676A46AA14C0DC2B002F2AC9 /* FilterView.m */; };
 		676B64A114647E2B00FEEF7C /* HighlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A014647E2B00FEEF7C /* HighlightViewController.m */; };
 		676B64A41464871A00FEEF7C /* Comment+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A31464871A00FEEF7C /* Comment+Helper.m */; };
 		676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */; };
@@ -280,8 +281,8 @@
 		673653681455C1DD00E53822 /* DashAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashAPI.m; path = API/DashAPI.m; sourceTree = "<group>"; };
 		6739F46D14646DA800735858 /* HighlightViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewControllerTests.h; path = ApplicationTests/HighlightViewControllerTests.h; sourceTree = "<group>"; };
 		6739F46E14646DA800735858 /* HighlightViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewControllerTests.m; path = ApplicationTests/HighlightViewControllerTests.m; sourceTree = "<group>"; };
-		673ABD5A148EAE19004446B2 /* PlaceSquareViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSquareViewCell.h; path = Dash/ViewControllers/DashViewController/PlaceSquareViewCell.h; sourceTree = "<group>"; };
-		673ABD5B148EAE19004446B2 /* PlaceSquareViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSquareViewCell.m; path = Dash/ViewControllers/DashViewController/PlaceSquareViewCell.m; sourceTree = "<group>"; };
+		673ABD5A148EAE19004446B2 /* PlaceSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSquareView.h; path = Dash/ViewControllers/DashViewController/PlaceSquareView.h; sourceTree = "<group>"; };
+		673ABD5B148EAE19004446B2 /* PlaceSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSquareView.m; path = Dash/ViewControllers/DashViewController/PlaceSquareView.m; sourceTree = "<group>"; };
 		675277B71472EA01008BD9CC /* JCImageGalleryViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCImageGalleryViewControllerTests.h; path = ApplicationTests/JCImageGalleryViewController/JCImageGalleryViewControllerTests.h; sourceTree = "<group>"; };
 		675277B81472EA01008BD9CC /* JCImageGalleryViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCImageGalleryViewControllerTests.m; path = ApplicationTests/JCImageGalleryViewController/JCImageGalleryViewControllerTests.m; sourceTree = "<group>"; };
 		676102CF145F1ADA005D23B1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Helpers/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -291,6 +292,8 @@
 		67697582145A5C82001191CF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		67697583145A5C82001191CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		67697584145A5C82001191CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		676A46A914C0DC2B002F2AC9 /* FilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterView.h; path = Dash/ViewControllers/DashViewController/FilterView.h; sourceTree = "<group>"; };
+		676A46AA14C0DC2B002F2AC9 /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterView.m; path = Dash/ViewControllers/DashViewController/FilterView.m; sourceTree = "<group>"; };
 		676B649F14647E2B00FEEF7C /* HighlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewController.h; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.h; sourceTree = "<group>"; };
 		676B64A014647E2B00FEEF7C /* HighlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewController.m; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.m; sourceTree = "<group>"; };
 		676B64A21464871A00FEEF7C /* Comment+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Comment+Helper.h"; path = "Data Model/Actions/Feedback/Comment+Helper.h"; sourceTree = "<group>"; };
@@ -767,8 +770,10 @@
 			children = (
 				679009D91450D9B300511E0F /* DashViewController.h */,
 				679009DA1450D9B300511E0F /* DashViewController.m */,
-				673ABD5A148EAE19004446B2 /* PlaceSquareViewCell.h */,
-				673ABD5B148EAE19004446B2 /* PlaceSquareViewCell.m */,
+				673ABD5A148EAE19004446B2 /* PlaceSquareView.h */,
+				673ABD5B148EAE19004446B2 /* PlaceSquareView.m */,
+				676A46A914C0DC2B002F2AC9 /* FilterView.h */,
+				676A46AA14C0DC2B002F2AC9 /* FilterView.m */,
 			);
 			name = DashViewController;
 			sourceTree = "<group>";
@@ -1301,9 +1306,10 @@
 				67BFB666147C262B005C862F /* PlaceViewController.m in Sources */,
 				67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */,
 				67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */,
-				673ABD5C148EAE19004446B2 /* PlaceSquareViewCell.m in Sources */,
+				673ABD5C148EAE19004446B2 /* PlaceSquareView.m in Sources */,
 				6731868114917B370066E64A /* JCLocationManagerSingleton.m in Sources */,
 				6735AEA514BCC450000259AF /* Place+Helper.m in Sources */,
+				676A46AB14C0DC2B002F2AC9 /* FilterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

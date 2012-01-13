@@ -13,7 +13,7 @@
 
 @class DashAPI;
 @class Place;
-@class PlaceSquareViewCell;
+@class PlaceSquareView;
 
 // For mapping the quadrant to array indices
 typedef enum {

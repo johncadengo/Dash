@@ -10,7 +10,7 @@
 
 @class Place;
 
-@interface PlaceSquareViewCell : UIView
+@interface PlaceSquareView : UIView
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *info;

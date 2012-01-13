@@ -6,12 +6,12 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "PlaceSquareViewCell.h"
+#import "PlaceSquareView.h"
 #import "Place.h"
 #import "Place+Helper.h"
 #import "Category.h"
 
-@implementation PlaceSquareViewCell
+@implementation PlaceSquareView
 
 @synthesize name = _name;
 @synthesize info = _info;

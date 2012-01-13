@@ -9,7 +9,7 @@
 #import "DashViewController.h"
 #import "DashAPI.h"
 #import "Place.h"
-#import "PlaceSquareViewCell.h"
+#import "PlaceSquareView.h"
 #import "Constants.h"
 #import "PlaceViewController.h"
 #import "JCLocationManagerSingleton.h"
@@ -146,13 +146,13 @@ enum {
     
     // Set up the quadrants
     self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage];
-    PlaceSquareViewCell *cell;
+    PlaceSquareView *cell;
     NSValue *value;
     CGRect cellFrame;
     for (int i = 0; i < kPlacesPerPage; ++i) {
         value = [self.quadrantFrames objectAtIndex:i];
         cellFrame = [value CGRectValue];
-        cell = [[PlaceSquareViewCell alloc] initWithFrame:cellFrame];
+        cell = [[PlaceSquareView alloc] initWithFrame:cellFrame];
         [self.quadrantCells addObject:cell];
         [self.popsScrollView addSubview:cell];       
     }
@@ -306,7 +306,7 @@ enum {
     NSInteger firstIndex = [[self class] firstIndexForPage:self.currentPage];
     NSInteger lastIndex = firstIndex + kPlacesPerPage;
     Place *place;
-    PlaceSquareViewCell *squareCell;
+    PlaceSquareView *squareCell;
     NSInteger quadrant;
     
     for (int i = firstIndex; i < lastIndex; ++i) {
@@ -329,6 +329,9 @@ enum {
         
         // Make sure it has a managed object context
         [placeViewController setManagedObjectContext:self.managedObjectContext];
+    }
+    else if ([[segue identifier] isEqualToString:kPresentFilterViewController]) {
+        NSLog(@"Presenting filter view controller");
     }
 }
 
