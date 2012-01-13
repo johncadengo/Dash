@@ -80,10 +80,6 @@
 
  - (NSNumber *)greatCircleDistanceFrom:(Location *)other
 {
-    NSLog(@"Self: %@", self);
-    NSLog(@"Other: %@", other);
-    NSAssert(other, @"Other is nil");
-    
     // Unpack all the NSNumbers into doubles so we can manipulate them
     double selfCosRadLat = [self.cosRadLat doubleValue];
     double otherCosRadLat = [other.cosRadLat doubleValue];
@@ -91,15 +87,6 @@
     double otherRadLng = [other.radLng doubleValue];
     double selfSinRadLat = [self.sinRadLat doubleValue];
     double otherSinRadLat = [other.sinRadLat doubleValue];
-    
-    /*
-     func.acos(  cls.cos_rad_lat 
-     * other.cos_rad_lat 
-     * func.cos(cls.rad_lng - other.rad_lng)
-     + cls.sin_rad_lat
-     * other.sin_rad_lat
-     ) * 3959
-     */
     
     // Multiplying by 3959 calculates the distance in miles.
     double d = acos(selfCosRadLat
