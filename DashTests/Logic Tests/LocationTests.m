@@ -95,18 +95,11 @@ double const DISTACC = 0.001;
     [super tearDown];
 }
 
-#pragma mark -
-#pragma mark Tests
+#pragma mark - 
+#pragma mark Helpers
 
-/** Tests to see if the values stick after saving and fetching
- */
-- (void)testCalculatedValuesStick
+- (void) checkCascadingCalculations:(Location *)location
 {
-    PlaceLocation *location = self.thompsonApt; //[self fetchLastPlaceLocation];
-    
-    NSLog(@"Stick: %@", location);
-    
-    // Check if it has properly calculated the values we asked for
     double lat = [[location latitude] doubleValue];
     double lng = [[location longitude] doubleValue];
     double rad_lat = [[location radLat] doubleValue];
@@ -122,9 +115,23 @@ double const DISTACC = 0.001;
     STAssertEqualsWithAccuracy(COS_RAD_LAT, cos_rad_lat, accuracy, @"Wanted: %f Got: %f", COS_RAD_LAT, cos_rad_lat);
 }
 
+#pragma mark -
+#pragma mark Tests
+
+/** Tests to see if the values stick after saving and fetching
+ */
+- (void)testCalculatedValuesStick
+{
+    PlaceLocation *location = self.thompsonApt; //[self fetchLastPlaceLocation];
+    
+    NSLog(@"Stick: %@", location);
+    
+    // Check if it has properly calculated the values we asked for
+    [self checkCascadingCalculations:location];
+}
+
 /** Tests the greatCircleDistance method of the Location class
  */
-
 - (void)testGreatCircleDistanceCalculation
 {
     NSLog(@"%@ testGreatcircleDistanceCalculation", self.name);
@@ -153,15 +160,10 @@ double const DISTACC = 0.001;
     NSNumber *distance = [self.thompsonApt greatCircleDistanceFrom:location];
     double d = [distance doubleValue];
     
-    // Check it
-    NSLog(@"%@ %@ %@ %@", [self.thompsonApt latitude], [self.thompsonApt longitude],
-          [location latitude], [location longitude]);
-    STAssertNotNil([self.thompsonApt latitude], @"Latitude nil");
-    STAssertNotNil([self.thompsonApt longitude], @"Longitude nil");
-    STAssertNotNil([location latitude], @"Latitude nil");
-    STAssertNotNil([location longitude], @"Longitude nil");
-    STAssertNotNil(self.thompsonApt, @"226 Thompson is nil");
-    STAssertNotNil(location, @"117 MacDougal is nil");
+    // Check that macdougal sticks
+    [self checkCascadingCalculations:self.thompsonApt];
+    
+    // Check the distance calcaultion
     STAssertEqualsWithAccuracy(DIST, d, DISTACC, @"Wanted: %f Got: %f", DIST, d);
 }
 

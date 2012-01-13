@@ -18,4 +18,8 @@
 @property (nonatomic, strong) PlaceLocation *thompsonApt;
 @property (nonatomic, strong) PlaceLocation *macDougal;
 
+/** Checks that the cascading values were calculated properly.
+ */
+- (void) checkCascadingCalculations:(Location *)location;
+
 @end
