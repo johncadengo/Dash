@@ -22,6 +22,7 @@
 @synthesize places = _places;
 
 @synthesize loading = _loading;
+@synthesize dragging = _dragging;
 @synthesize currentPage = _currentPage;
 
 @synthesize popsScrollView = _popsScrollView;
@@ -171,7 +172,7 @@ enum {
     
     // Add our drag gesture recognizer
     self.drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDrag:)];
-    [self.popButton addGestureRecognizer:self.drag];
+    [self.view addGestureRecognizer:self.drag];
     [self.drag setDelegate:self];
 }
 
@@ -227,7 +228,7 @@ enum {
 
 /** Receive touch events and respond accordingly.
  */
-- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer
+- (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer
 {
     // Find out where we tapped
     CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
@@ -257,9 +258,10 @@ enum {
 
 /** Perceive a drag and respond accordingly
  */
-- (void)handleDrag:(UIGestureRecognizer *)gestureRecognizer
+- (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer
 {
-    
+    CGPoint velocity = [gestureRecognizer velocityInView:self.view];
+    NSLog(@"x %f y %f", velocity.x, velocity.y);
 }
 
 #pragma mark -

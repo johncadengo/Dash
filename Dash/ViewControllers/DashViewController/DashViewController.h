@@ -34,6 +34,7 @@ typedef enum {
 
 // State
 @property (nonatomic, getter=isLoading) BOOL loading;
+@property (nonatomic, getter=isDragging) BOOL dragging;
 @property (nonatomic) NSInteger currentPage;
 
 // UI Elements
@@ -67,7 +68,7 @@ typedef enum {
 
 /** Receive touch events and respond accordingly.
  */
-- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer;
-- (void)handleDrag:(UIGestureRecognizer *)gestureRecognizer;
+- (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer;
+- (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer;
 
 @end
