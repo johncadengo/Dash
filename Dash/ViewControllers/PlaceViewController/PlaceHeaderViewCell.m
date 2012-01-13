@@ -132,7 +132,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     PopLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"PopLocation" inManagedObjectContext:self.managedObjectContext];
     
-    //[location setWithCLLocation:loc];
+    [location setWithCLLocation:loc];
     
     return [place.location greatCircleDistanceFrom:location];
     

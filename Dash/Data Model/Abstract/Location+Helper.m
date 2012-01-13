@@ -15,31 +15,67 @@
     double radians = ([degrees doubleValue] * M_PI) / 180.0;
     return radians;
 }
-/*
+
 - (void)setWithCLLocation:(CLLocation *)location
 {
     NSNumber *latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
     NSNumber *longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
     
     [self setLatitude:latitude longitude:longitude]; 
-}*/
+}
+
+/** Cascades the calculations of the other values which rely on latitude automatically
+ */
+- (void)setLatitude:(NSNumber *)latitude
+{
+    // Begin changing values
+    [self willChangeValueForKey:@"latitude"];
+    [self willChangeValueForKey:@"radLat"];
+    [self willChangeValueForKey:@"cosRadLat"];
+    [self willChangeValueForKey:@"sinRadLat"];
+    
+    // Make calculations
+    double dblRadLat = [self degreesToRadians:latitude];
+    double dblCosRadLat = cos(dblRadLat);
+    double dblSinRadLat = sin(dblRadLat);
+    
+    // Set their values
+    [self setPrimitiveValue:latitude forKey:@"latitude"];
+    [self setPrimitiveValue:[NSNumber numberWithDouble:dblRadLat] forKey:@"radLat"];
+    [self setPrimitiveValue:[NSNumber numberWithDouble:dblCosRadLat] forKey:@"cosRadLat"];
+    [self setPrimitiveValue:[NSNumber numberWithDouble:dblSinRadLat] forKey:@"sinRadLat"];
+    
+    // And let it know we are done
+    [self didChangeValueForKey:@"latitude"];
+    [self didChangeValueForKey:@"radLat"];
+    [self didChangeValueForKey:@"cosRadLat"];
+    [self didChangeValueForKey:@"sinRadLat"];
+}
+
+/** Cascades the calculations of the other values which rely on longitude automatically
+ */
+- (void)setLongitude:(NSNumber *)longitude 
+{
+    // Begin changing values
+    [self willChangeValueForKey:@"longitude"];
+    [self willChangeValueForKey:@"radLng"];
+    
+    // Make calculations
+    double dblRadLng = [self degreesToRadians:longitude];
+    
+    // Set their values
+    [self setPrimitiveValue:longitude forKey:@"longitude"];
+    [self setPrimitiveValue:[NSNumber numberWithDouble:dblRadLng] forKey:@"radLng"];
+    
+    // And let it know we are done
+    [self didChangeValueForKey:@"longitude"];
+    [self didChangeValueForKey:@"radLng"];
+}
 
 - (void)setLatitude:(NSNumber *)newLat longitude:(NSNumber *)newLng
 {
     [self setLatitude:newLat];
     [self setLongitude:newLng];
-    
-    // Make calculations
-    double dblRadLat = [self degreesToRadians:newLat];
-    double dblRadLng = [self degreesToRadians:newLng];
-    double dblCosRadLat = cos(dblRadLat);
-    double dblSinRadLat = sin(dblRadLat);
-
-    // and set their values
-    [self setRadLat:[NSNumber numberWithDouble:dblRadLat]];
-    [self setRadLng:[NSNumber numberWithDouble:dblRadLng]];
-    [self setCosRadLat:[NSNumber numberWithDouble:dblCosRadLat]];
-    [self setSinRadLat:[NSNumber numberWithDouble:dblSinRadLat]];
 }
 
  - (NSNumber *)greatCircleDistanceFrom:(Location *)other
