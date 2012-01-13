@@ -94,6 +94,7 @@ enum {
     
     // Initialize some things
     self.loading = NO;
+    self.dragging = NO;
     self.currentPage = kPrePopPage; // -1
     self.places = [[NSMutableArray alloc] initWithCapacity:12];
     
@@ -117,13 +118,13 @@ enum {
     [self.label setCenter:self.popsScrollView.center];
     
     // Add our Dash button
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button addTarget:self 
-               action:@selector(pop:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"Dash" forState:UIControlStateNormal];
-    button.frame = CGRectMake(0.0f, 480.f - 44.0f - 64.0f - 107.0f, 320.0f, 107.0f);
-    [self.view addSubview:button];
+    self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.popButton addTarget:self 
+                       action:@selector(pop:)
+             forControlEvents:UIControlEventTouchUpInside];
+    [self.popButton setTitle:@"Dash" forState:UIControlStateNormal];
+    self.popButton.frame = CGRectMake(0.0f, 480.f - 44.0f - 64.0f - 107.0f, 320.0f, 107.0f);
+    [self.view addSubview:self.popButton];
 
     // Figure out where we are
     self.locationManager = [JCLocationManagerSingleton sharedInstance];
@@ -260,8 +261,29 @@ enum {
  */
 - (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer
 {
-    CGPoint velocity = [gestureRecognizer velocityInView:self.view];
-    NSLog(@"x %f y %f", velocity.x, velocity.y);
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        // Reset isDragging
+        self.dragging = NO;
+    }
+    else if (self.isDragging) {
+        // Keep track of where we are
+        CGPoint velocity = [gestureRecognizer velocityInView:self.view];
+        NSLog(@"x %f y %f", velocity.x, velocity.y);
+    }
+    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"Pan begins");
+        
+        // Otherwise, we want to start dragging if the gesture begins in the pop button
+        //CGPoint origin = [self.view convertPoint:[gestureRecognizer locationInView:self.view] 
+        //                                  toView:self.popButton];
+        CGPoint origin = [gestureRecognizer locationInView:self.view];
+        
+        NSLog(@"origin %f %f", origin.x, origin.y);
+
+        if (CGRectContainsPoint(self.popButton.frame, origin)) {
+            NSLog(@"Started in pop button!");
+        }
+    }
 }
 
 #pragma mark -
