@@ -13,6 +13,7 @@
 #import "Constants.h"
 #import "PlaceViewController.h"
 #import "JCLocationManagerSingleton.h"
+#import "FilterView.h"
 
 @implementation DashViewController
 
@@ -29,6 +30,7 @@
 @synthesize progressHUD = _progressHUD;
 @synthesize label = _label;
 @synthesize popButton = _popButton;
+@synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
 @synthesize drag = _drag;
 
@@ -267,8 +269,8 @@ enum {
     }
     else if (self.isDragging) {
         // Keep track of where we are
-        CGPoint velocity = [gestureRecognizer velocityInView:self.view];
-        NSLog(@"x %f y %f", velocity.x, velocity.y);
+        CGPoint origin = [gestureRecognizer locationInView:self.view];
+        self.filterView.center = origin;
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"Pan begins");
@@ -282,6 +284,17 @@ enum {
 
         if (CGRectContainsPoint(self.popButton.frame, origin)) {
             NSLog(@"Started in pop button!");
+            
+            // Now, we are dragging
+            self.dragging = YES;
+            
+            // Make sure we have a filter view to show
+            if (self.filterView == nil) {
+                CGRect filterFrame = CGRectMake(0.0f, 0.0f, 320.0f, 200.0f);
+                self.filterView = [[FilterView alloc] initWithFrame:filterFrame];
+                [self.filterView setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:self.filterView];
+            }
         }
     }
 }
