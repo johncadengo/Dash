@@ -168,6 +168,11 @@ enum {
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.popsScrollView addGestureRecognizer:self.singleTap];
     [self.singleTap setDelegate:self];
+    
+    // Add our drag gesture recognizer
+    self.drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDrag:)];
+    [self.popButton addGestureRecognizer:self.drag];
+    [self.drag setDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -248,6 +253,13 @@ enum {
         Place *place = [self placeForQuadrant:quadrant];
         [self performSegueWithIdentifier:kShowDashViewDetailsSegueIdentifier sender:place];
     }
+}
+
+/** Perceive a drag and respond accordingly
+ */
+- (void)handleDrag:(UIGestureRecognizer *)gestureRecognizer
+{
+    
 }
 
 #pragma mark -

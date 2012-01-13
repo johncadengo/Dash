@@ -68,5 +68,6 @@ typedef enum {
 /** Receive touch events and respond accordingly.
  */
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer;
+- (void)handleDrag:(UIGestureRecognizer *)gestureRecognizer;
 
 @end
