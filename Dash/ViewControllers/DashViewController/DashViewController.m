@@ -270,7 +270,9 @@ enum {
     else if (self.isDragging) {
         // Keep track of where we are
         CGPoint origin = [gestureRecognizer locationInView:self.view];
-        self.filterView.center = origin;
+        CGRect f = self.filterView.frame;
+        CGRect newFrame = CGRectMake(f.origin.x, origin.y, f.size.width, f.size.height);
+        self.filterView.frame = newFrame;
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"Pan begins");
@@ -290,7 +292,7 @@ enum {
             
             // Make sure we have a filter view to show
             if (self.filterView == nil) {
-                CGRect filterFrame = CGRectMake(0.0f, 0.0f, 320.0f, 200.0f);
+                CGRect filterFrame = CGRectMake(0.0f, 0.0f, 320.0f, 260.0f);
                 self.filterView = [[FilterView alloc] initWithFrame:filterFrame];
                 [self.filterView setBackgroundColor:[UIColor blackColor]];
                 [self.view addSubview:self.filterView];
