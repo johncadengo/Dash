@@ -263,6 +263,8 @@ enum {
  */
 - (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    UIView *dragSuperView = self.popsScrollView;
+    
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         // Reset isDragging
         self.dragging = NO;
@@ -270,9 +272,13 @@ enum {
     else if (self.isDragging) {
         // Keep track of where we are
         CGPoint origin = [gestureRecognizer locationInView:self.view];
-        CGRect f = self.filterView.frame;
-        CGRect newFrame = CGRectMake(f.origin.x, origin.y, f.size.width, f.size.height);
-        self.filterView.frame = newFrame;
+        
+        // As long as we aren't going above the top of the view, have it follow the drag
+        if (CGRectContainsPoint(dragSuperView.frame, origin)) {
+            CGRect f = self.filterView.frame;
+            CGRect newFrame = CGRectMake(f.origin.x, origin.y, f.size.width, f.size.height);
+            self.filterView.frame = newFrame;
+        }
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"Pan begins");
@@ -295,7 +301,7 @@ enum {
                 CGRect filterFrame = CGRectMake(0.0f, 0.0f, 320.0f, 260.0f);
                 self.filterView = [[FilterView alloc] initWithFrame:filterFrame];
                 [self.filterView setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:self.filterView];
+                [dragSuperView addSubview:self.filterView];
             }
         }
     }
