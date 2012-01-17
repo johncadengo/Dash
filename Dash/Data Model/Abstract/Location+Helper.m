@@ -14,6 +14,8 @@
 {
     double radians = ([degrees doubleValue] * M_PI) / 180.0;
     return radians;
+    
+    
 }
 
 - (void)setWithCLLocation:(CLLocation *)location

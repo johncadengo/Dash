@@ -44,6 +44,14 @@ enum {
     kPlacesPerPage = 4
 };
 
+#pragma mark - Function to help with tracking views
+
+CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin);
+
+CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
+    return CGRectMake(rect.origin.x, origin.y, rect.size.width, rect.size.height);
+}
+
 #pragma mark - Class methods for determining layout
 
 /** There are four places per page.
@@ -270,30 +278,59 @@ enum {
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         // Reset isDragging
         self.dragging = NO;
+        
+        // If it is over, we check the velocity of the drag
+        // to see if we want to finish dragging it up or down
+        CGPoint origin = [gestureRecognizer velocityInView:dragSuperView];
+        CGFloat vertical = origin.y;
+        
+        NSLog(@"%f %f", origin.x, origin.y);
+        // If the y value is negative, we are moving up and so attach the view
+        if (vertical < 0) {
+            [UIView animateWithDuration:1.0
+                                  delay:0.0
+                                options:UIViewAnimationCurveEaseIn
+                             animations:^{
+                                 self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, dragSuperView.frame.origin);
+                             }
+                             completion:^(BOOL finished){
+                                 self.filterShowing = YES;
+                             }];
+        }
+        else {
+            // Otherwise, at a standstill or moving back, we want to retract the view
+            [UIView animateWithDuration:1.0
+                                  delay:0.0
+                                options:UIViewAnimationCurveEaseIn
+                             animations:^{
+                                 self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, self.popButton.frame.origin);
+                             }
+                             completion:^(BOOL finished){
+                                 self.filterShowing = NO;
+                             }];
+        }
     }
     else if (self.isDragging) {
         // Keep track of where we are
-        CGPoint origin = [gestureRecognizer locationInView:self.view];
+        CGPoint origin = [gestureRecognizer locationInView:dragSuperView];
         
         // As long as we aren't going above the top of the view, have it follow the drag
         if (CGRectContainsPoint(dragSuperView.frame, origin)) {
-            CGRect f = self.filterView.frame;
-            CGRect newFrame = CGRectMake(f.origin.x, origin.y, f.size.width, f.size.height);
-            self.filterView.frame = newFrame;
+            self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, origin);
         }
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"Pan begins");
+        //NSLog(@"Pan begins");
         
         // Otherwise, we want to start dragging if the gesture begins in the pop button
         //CGPoint origin = [self.view convertPoint:[gestureRecognizer locationInView:self.view] 
         //                                  toView:self.popButton];
-        CGPoint origin = [gestureRecognizer locationInView:self.view];
+        CGPoint origin = [gestureRecognizer locationInView:dragSuperView];
         
-        NSLog(@"origin %f %f", origin.x, origin.y);
+        //NSLog(@"origin %f %f", origin.x, origin.y);
 
         if (CGRectContainsPoint(self.popButton.frame, origin)) {
-            NSLog(@"Started in pop button!");
+            //NSLog(@"Started in pop button!");
             
             // Now, we are dragging
             self.dragging = YES;
@@ -309,11 +346,6 @@ enum {
                 [dragSuperView bringSubviewToFront:self.filterView];
             }
         }
-    }
-    else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        // If it is over, we check the velocity of the drag
-        // to see if we want to finish dragging it up or down
-    
     }
 }
 
