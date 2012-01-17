@@ -24,6 +24,7 @@
 
 @synthesize loading = _loading;
 @synthesize dragging = _dragging;
+@synthesize filterShowing = _filterShowing;
 @synthesize currentPage = _currentPage;
 
 @synthesize popsScrollView = _popsScrollView;
@@ -97,6 +98,7 @@ enum {
     // Initialize some things
     self.loading = NO;
     self.dragging = NO;
+    self.filterShowing = NO;
     self.currentPage = kPrePopPage; // -1
     self.places = [[NSMutableArray alloc] initWithCapacity:12];
     
@@ -111,13 +113,6 @@ enum {
     CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
     self.popsScrollView.frame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
     [self.view addSubview:self.popsScrollView];
-    
-    // Add our initial label
-    self.label = [[UILabel alloc] init];
-    self.label.text = @"Tap Dash!";
-    [self.label sizeToFit];
-    [self.view addSubview:self.label];
-    [self.label setCenter:self.popsScrollView.center];
     
     // Add our Dash button
     self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -177,6 +172,13 @@ enum {
     self.drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDrag:)];
     [self.view addGestureRecognizer:self.drag];
     [self.drag setDelegate:self];
+    
+    // Add our initial label
+    self.label = [[UILabel alloc] init];
+    self.label.text = @"Tap Dash!";
+    [self.label sizeToFit];
+    [self.popsScrollView addSubview:self.label];
+    [self.label setCenter:self.popsScrollView.center];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -302,8 +304,16 @@ enum {
                 self.filterView = [[FilterView alloc] initWithFrame:filterFrame];
                 [self.filterView setBackgroundColor:[UIColor blackColor]];
                 [dragSuperView addSubview:self.filterView];
+                
+                // Make sure it is on top
+                [dragSuperView bringSubviewToFront:self.filterView];
             }
         }
+    }
+    else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        // If it is over, we check the velocity of the drag
+        // to see if we want to finish dragging it up or down
+    
     }
 }
 

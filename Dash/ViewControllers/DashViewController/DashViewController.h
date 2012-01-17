@@ -35,6 +35,7 @@ typedef enum {
 // State
 @property (nonatomic, getter=isLoading) BOOL loading;
 @property (nonatomic, getter=isDragging) BOOL dragging;
+@property (nonatomic, getter=isFilterShowing) BOOL filterShowing;
 @property (nonatomic) NSInteger currentPage;
 
 // UI Elements
