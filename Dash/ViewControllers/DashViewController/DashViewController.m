@@ -275,21 +275,28 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
 {
     UIView *dragSuperView = self.popsScrollView;
     
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+    if (self.isDragging && gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         // Reset isDragging
         self.dragging = NO;
         
         // If it is over, we check the velocity of the drag
         // to see if we want to finish dragging it up or down
         CGPoint origin = [gestureRecognizer velocityInView:dragSuperView];
-        CGFloat vertical = origin.y;
+        CGFloat velocity = origin.y;
+        CGFloat vertical;
+        NSTimeInterval duration;
         
-        NSLog(@"%f %f", origin.x, origin.y);
         // If the y value is negative, we are moving up and so attach the view
-        if (vertical < 0) {
-            [UIView animateWithDuration:1.0
+        if (velocity < 0) {
+            // Calculate how many points we have to go before we hit our destination
+            vertical = self.filterView.frame.origin.y - dragSuperView.frame.origin.y;
+            duration = fabsf(vertical / velocity) * 2.5f;
+            
+            NSLog(@"%f %f %f", velocity, vertical, duration);
+            
+            [UIView animateWithDuration:duration
                                   delay:0.0
-                                options:UIViewAnimationCurveEaseIn
+                                options:UIViewAnimationCurveLinear
                              animations:^{
                                  self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, dragSuperView.frame.origin);
                              }
@@ -299,9 +306,12 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         }
         else {
             // Otherwise, at a standstill or moving back, we want to retract the view
-            [UIView animateWithDuration:1.0
+            vertical = self.filterView.frame.origin.y - self.popButton.frame.origin.y;
+            duration = abs(vertical / velocity);
+            
+            [UIView animateWithDuration:duration
                                   delay:0.0
-                                options:UIViewAnimationCurveEaseIn
+                                options:UIViewAnimationCurveLinear
                              animations:^{
                                  self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, self.popButton.frame.origin);
                              }
@@ -319,7 +329,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
             self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, origin);
         }
     }
-    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) { //(!self.isFilterShowing && gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         //NSLog(@"Pan begins");
         
         // Otherwise, we want to start dragging if the gesture begins in the pop button
