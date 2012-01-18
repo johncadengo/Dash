@@ -23,6 +23,7 @@
         dashViewController.filterView = (FilterView *)tableViewController.tableView;
     }
     
+    
     [dashViewController.popsScrollView addSubview:dashViewController.filterView];
     
     /*
