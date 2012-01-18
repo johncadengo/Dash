@@ -348,6 +348,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
             
             // Make sure we have a filter view to show
             if (self.filterView == nil) {
+                /*
                 CGRect filterFrame = CGRectMake(0.0f, 0.0f, 320.0f, 304.0f);
                 self.filterView = [[FilterView alloc] initWithFrame:filterFrame];
                 [self.filterView setBackgroundColor:[UIColor blackColor]];
@@ -355,6 +356,9 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                 
                 // Make sure it is on top
                 [dragSuperView bringSubviewToFront:self.filterView];
+                 */
+                
+                [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
             }
         }
     }
