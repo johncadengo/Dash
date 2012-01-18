@@ -128,7 +128,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                        action:@selector(pop:)
              forControlEvents:UIControlEventTouchUpInside];
     [self.popButton setTitle:@"Dash" forState:UIControlStateNormal];
-    self.popButton.frame = CGRectMake(0.0f, 480.f - 44.0f - 64.0f - 107.0f, 320.0f, 107.0f);
+    self.popButton.frame = CGRectMake(0.0f, 480.0f - 64.0f - 107.0f, 320.0f, 107.0f);
     [self.view addSubview:self.popButton];
 
     // Figure out where we are
@@ -187,6 +187,9 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     [self.label sizeToFit];
     [self.popsScrollView addSubview:self.label];
     [self.label setCenter:self.popsScrollView.center];
+    
+    // Hide our navigation bar
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -260,8 +263,6 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                 break;
             }
         }
-        
-        //NSLog(@"Quadrant %d was tapped!", quadrant);
         
         // Perform segue to place view controller
         Place *place = [self placeForQuadrant:quadrant];
@@ -347,7 +348,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
             
             // Make sure we have a filter view to show
             if (self.filterView == nil) {
-                CGRect filterFrame = CGRectMake(0.0f, 0.0f, 320.0f, 260.0f);
+                CGRect filterFrame = CGRectMake(0.0f, 0.0f, 320.0f, 304.0f);
                 self.filterView = [[FilterView alloc] initWithFrame:filterFrame];
                 [self.filterView setBackgroundColor:[UIColor blackColor]];
                 [dragSuperView addSubview:self.filterView];
