@@ -291,7 +291,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         if (velocity < 0) {
             // Calculate how many points we have to go before we hit our destination
             vertical = self.filterView.frame.origin.y - dragSuperView.frame.origin.y;
-            duration = fabsf(vertical / velocity);// * 2.0f;
+            duration = MIN(ABS(vertical / velocity), 1.0f);
             
             NSLog(@"%f %f %f", velocity, vertical, duration);
             
@@ -308,7 +308,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         else {
             // Otherwise, at a standstill or moving back, we want to retract the view
             vertical = self.filterView.frame.origin.y - self.popButton.frame.origin.y;
-            duration = fabsf(vertical / velocity);
+            duration = MIN(ABS(vertical / velocity), 1.0f);
             
             [UIView animateWithDuration:duration
                                   delay:0.0
