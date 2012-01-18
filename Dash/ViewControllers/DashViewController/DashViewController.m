@@ -290,7 +290,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         if (velocity < 0) {
             // Calculate how many points we have to go before we hit our destination
             vertical = self.filterView.frame.origin.y - dragSuperView.frame.origin.y;
-            duration = fabsf(vertical / velocity) * 2.5f;
+            duration = fabsf(vertical / velocity);// * 2.0f;
             
             NSLog(@"%f %f %f", velocity, vertical, duration);
             
