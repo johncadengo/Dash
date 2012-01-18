@@ -59,7 +59,6 @@
 		67697590145A5CAE001191CF /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756B145A5BFA001191CF /* libRestKitObjectMapping.a */; };
 		67697591145A5CAE001191CF /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756D145A5BFA001191CF /* libRestKitSupport.a */; };
 		67697592145A5CAE001191CF /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */; };
-		676A46AB14C0DC2B002F2AC9 /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 676A46AA14C0DC2B002F2AC9 /* FilterView.m */; };
 		676B64A114647E2B00FEEF7C /* HighlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A014647E2B00FEEF7C /* HighlightViewController.m */; };
 		676B64A41464871A00FEEF7C /* Comment+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A31464871A00FEEF7C /* Comment+Helper.m */; };
 		676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */; };
@@ -79,6 +78,7 @@
 		679E8CBC146062210038E506 /* Action+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBB146062210038E506 /* Action+Helper.m */; };
 		679E8CC01460684E0038E506 /* Flag+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBF1460684E0038E506 /* Flag+Helper.m */; };
 		67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8977314C782DD00494273 /* FilterViewSegue.m */; };
+		67A8977714C7850B00494273 /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8977614C7850B00494273 /* FilterView.m */; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
 		67BA0B30146348E300993B42 /* ActionViewCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0B2F146348E300993B42 /* ActionViewCellTests.m */; };
 		67BA0F34145F662C000CC4E7 /* FootprintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0F33145F662C000CC4E7 /* FootprintTests.m */; };
@@ -293,8 +293,6 @@
 		67697582145A5C82001191CF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		67697583145A5C82001191CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		67697584145A5C82001191CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		676A46A914C0DC2B002F2AC9 /* FilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterView.h; path = Dash/ViewControllers/DashViewController/FilterView.h; sourceTree = "<group>"; };
-		676A46AA14C0DC2B002F2AC9 /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterView.m; path = Dash/ViewControllers/DashViewController/FilterView.m; sourceTree = "<group>"; };
 		676B649F14647E2B00FEEF7C /* HighlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewController.h; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.h; sourceTree = "<group>"; };
 		676B64A014647E2B00FEEF7C /* HighlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewController.m; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.m; sourceTree = "<group>"; };
 		676B64A21464871A00FEEF7C /* Comment+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Comment+Helper.h"; path = "Data Model/Actions/Feedback/Comment+Helper.h"; sourceTree = "<group>"; };
@@ -333,6 +331,8 @@
 		679E8CBF1460684E0038E506 /* Flag+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Flag+Helper.m"; path = "Data Model/Abstract/Flag+Helper.m"; sourceTree = "<group>"; };
 		67A8977214C782DD00494273 /* FilterViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewSegue.h; path = Dash/ViewControllers/DashViewController/FilterViewSegue.h; sourceTree = "<group>"; };
 		67A8977314C782DD00494273 /* FilterViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewSegue.m; path = Dash/ViewControllers/DashViewController/FilterViewSegue.m; sourceTree = "<group>"; };
+		67A8977514C7850B00494273 /* FilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterView.h; path = Dash/ViewControllers/DashViewController/FilterView.h; sourceTree = "<group>"; };
+		67A8977614C7850B00494273 /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterView.m; path = Dash/ViewControllers/DashViewController/FilterView.m; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		67BA0B2E146348E300993B42 /* ActionViewCellTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionViewCellTests.h; path = ApplicationTests/ActionViewCellTests.h; sourceTree = "<group>"; };
 		67BA0B2F146348E300993B42 /* ActionViewCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionViewCellTests.m; path = ApplicationTests/ActionViewCellTests.m; sourceTree = "<group>"; };
@@ -775,10 +775,10 @@
 				679009DA1450D9B300511E0F /* DashViewController.m */,
 				673ABD5A148EAE19004446B2 /* PlaceSquareView.h */,
 				673ABD5B148EAE19004446B2 /* PlaceSquareView.m */,
-				676A46A914C0DC2B002F2AC9 /* FilterView.h */,
-				676A46AA14C0DC2B002F2AC9 /* FilterView.m */,
 				67A8977214C782DD00494273 /* FilterViewSegue.h */,
 				67A8977314C782DD00494273 /* FilterViewSegue.m */,
+				67A8977514C7850B00494273 /* FilterView.h */,
+				67A8977614C7850B00494273 /* FilterView.m */,
 			);
 			name = DashViewController;
 			sourceTree = "<group>";
@@ -1314,8 +1314,8 @@
 				673ABD5C148EAE19004446B2 /* PlaceSquareView.m in Sources */,
 				6731868114917B370066E64A /* JCLocationManagerSingleton.m in Sources */,
 				6735AEA514BCC450000259AF /* Place+Helper.m in Sources */,
-				676A46AB14C0DC2B002F2AC9 /* FilterView.m in Sources */,
 				67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */,
+				67A8977714C7850B00494273 /* FilterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
