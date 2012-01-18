@@ -241,6 +241,12 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
 }
 
 #pragma mark - UIGestureRecognizer Delegate
+/** Want certain events to pass right through
+ */
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    return (self.isFilterShowing) ? NO : YES;
+}
 
 /** Receive touch events and respond accordingly.
  */
