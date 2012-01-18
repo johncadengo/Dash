@@ -307,7 +307,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         else {
             // Otherwise, at a standstill or moving back, we want to retract the view
             vertical = self.filterView.frame.origin.y - self.popButton.frame.origin.y;
-            duration = abs(vertical / velocity);
+            duration = fabsf(vertical / velocity);
             
             [UIView animateWithDuration:duration
                                   delay:0.0
