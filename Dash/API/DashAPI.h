@@ -105,6 +105,10 @@ enum {
 - (NSMutableArray *)highlightsForPlace:(Place *)place withCount:(NSUInteger)count;
 
 
+/** Sends a request to autocomplete a query string for a place
+ */
+- (void)autocomplete:(NSString *)query;
+
 #pragma mark - Posts
 /** Returns a newly made comment by a person on an action.
  */

@@ -442,7 +442,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXs-bS-Lwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Toc-43-LWk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" id="Lci-3r-bf3"/>
+                    <tabBarItem key="tabBarItem" title="Search" id="Lci-3r-bf3"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="9A6-36-YEX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

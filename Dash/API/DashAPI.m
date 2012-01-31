@@ -312,6 +312,16 @@
     return feed;
 }
 
+- (void)autocomplete:(NSString *)query
+{
+    NSNumber *count = [NSNumber numberWithInt:10];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                            query, @"query", 
+                            count, @"count", nil];
+    [[RKClient sharedClient] get:@"/search/autocomplete" queryParams:params delegate:self.delegate];
+}
+
+
 #pragma mark - Posts
 
 - (Comment *)person:(Person *)person comments:(NSString *)text onAction:(Action *)action
