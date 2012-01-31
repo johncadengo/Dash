@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import "MBProgressHUD.h"
 
-@interface SearchViewController : UITableViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
+@class DashAPI;
+
+@interface SearchViewController : UITableViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSMutableArray *results;
-
-- (void)search:(NSTimer *)timer;
 
 @end

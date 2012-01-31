@@ -7,13 +7,13 @@
 //
 
 #import "SearchViewController.h"
-
+#import "DashAPI.h"
 
 @implementation SearchViewController
 
-@synthesize results = _results;
-
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize api = _api;
+@synthesize results = _results;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -44,7 +44,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    // Connect to our API.
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
+    
+    // Prepare our array of results
     self.results = [[NSMutableArray alloc] init];
+    
+    
 }
 
 - (void)viewDidUnload
@@ -103,26 +109,40 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Row %d: %@", indexPath.row, [self.results objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",[self.results objectAtIndex:indexPath.row]];
     
     return cell;
 }
 
-- (void)search:(NSTimer *)timer
-{
-    [self.results removeAllObjects];
-    int count = 1 + random() % 20;
-    for (int i = 0; i < count; i++) {
-        [self.results addObject:timer.userInfo];
-    }
-    
-    [self.searchDisplayController.searchResultsTableView reloadData];
-}
-
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(search:) userInfo:searchString repeats:NO];
+    // Send the request out to autocomplete
+    [self.api autocomplete:searchString];
+    
+    
+//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(search:) userInfo:searchString repeats:NO];
     return NO;
+}
+
+#pragma mark - RKRequestDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {  
+    if ([request isGET]) {
+        if ([response isJSON]) {
+            NSDictionary *dict = [response parsedBody:nil];
+            
+            // Clear it out
+            [self.results removeAllObjects];
+            
+            // Fill it up
+            for (NSString *result in [dict objectForKey:@"data"]) {
+                [self.results addObject:result];
+            }
+            
+            // Display it
+            [self.searchDisplayController.searchResultsTableView reloadData];
+        }
+    }
 }
 
 #pragma mark - Table view delegate
