@@ -67,7 +67,7 @@ enum {
 /** Returns count number of news items nearby.
     Defaults person.
  */
-- (NSMutableArray *)feedForLocation:(CLLocation *)location WithCount:(NSUInteger)count;
+//- (NSMutableArray *)feedForLocation:(CLLocation *)location WithCount:(NSUInteger)count;
 
 /** Returns a feed of news items for a specific person.
     Defaults count.
@@ -77,7 +77,7 @@ enum {
 /** Returns count number of news items for a specific person.
     Defaults nothing.
  */
-- (NSMutableArray *)feedForPerson:(Person *)person withCount:(NSUInteger)count;
+- (void)feedForPerson:(Person *)person withCount:(NSUInteger)count;
 
 /** Returns an array of comments for a particular highlight.
     Defaults count.

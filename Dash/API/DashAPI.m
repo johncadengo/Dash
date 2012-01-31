@@ -170,32 +170,86 @@
 - (NSMutableArray *)feedForLocation:(CLLocation *)location
 {
     // -1 to differentiate between location and person, for now. since im always passing nil haha
-    return [self feedForPerson:nil withCount:kDefaultNumFeedItems - 1];
-}
-
-- (NSMutableArray *)feedForLocation:(CLLocation *)location WithCount:(NSUInteger)count
-{
-    return [self feedForPerson:nil withCount:count];
+    return [self feedForPerson:nil];
 }
 
 - (NSMutableArray *)feedForPerson:(Person *)person
 {
-    return [self feedForPerson:person withCount:kDefaultNumFeedItems];
-}
-
-- (NSMutableArray *)feedForPerson:(Person *)person withCount:(NSUInteger)count
-{
-    // TODO: This is a stub for now. Actually request news items from model!
     Highlight *highlight;
-    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:count];
-
-    for (int i = 0; i < count; ++i) {
+    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:kDefaultNumFeedItems];
+    
+    for (int i = 0; i < kDefaultNumFeedItems; ++i) {
         highlight = [self person:nil addsHighlight:[NSString randomStringOfMaxLength:140] toPlace:nil withPhoto:nil];
         
         [feed addObject:highlight];
     }
     
     return feed;
+}
+
+- (void)feedForPerson:(Person *)person withCount:(NSUInteger)count
+{
+    // Create an object manager and connect core data's persistent store to it
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
+    objectManager.objectStore = objectStore;
+    
+    // Define our category mapping
+    RKManagedObjectMapping *categoryMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Category"];
+    [categoryMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [categoryMapping mapAttributes:@"name", nil];
+    
+    // Define our author mapping for highlights
+    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    
+    // Define our highlight mapping, which has a relationship with author
+    RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];
+    [highlightMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [highlightMapping mapKeyPath:@"name" toAttribute:@"text"];
+    
+    // Define the relationship mapping between highlight and author
+    [highlightMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    
+    // Define the location mapping
+    RKManagedObjectMapping *locationMapping = [RKManagedObjectMapping mappingForEntityWithName:@"PlaceLocation"];
+    [locationMapping mapKeyPath:@"lat" toAttribute:@"latitude"];
+    [locationMapping mapKeyPath:@"lng" toAttribute:@"longitude"];
+    
+    // Define our place mapping, which also has 
+    // a relationship with category, highlight, and location
+    RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
+    [placeMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [placeMapping mapAttributes:@"name", @"address", @"phone", @"price", nil];
+    
+    // Define the relationship mappings between place and category, highlight, location
+    [placeMapping mapKeyPath:@"categories" toRelationship:@"categories" withMapping:categoryMapping];
+    [placeMapping mapKeyPath:@"highlights" toRelationship:@"actions" withMapping:highlightMapping];
+    [placeMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
+    
+    // We expect to find the place entity inside of a dictionary keyed "places"
+    [objectManager.mappingProvider setMapping:placeMapping forKeyPath:@"places"];
+    
+    // Define our comment mapping
+    RKManagedObjectMapping *commentMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Comment"];
+    [commentMapping mapKeyPath:@"comment/id" toAttribute:@"uid"];
+    [commentMapping mapKeyPathsToAttributes:@"comment/text", @"comment/timestamp", nil];
+    
+    [commentMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    [commentMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    
+    // Authentication
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"KAEMyqRkVRgShNWGZW73u2Fk", @"must_fix",nil];
+    
+    // Prepare our object loader to load and map objects from remote server, and send
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self];
+    objectLoader.method = RKRequestMethodPOST;
+    objectLoader.params = params;
+    [objectLoader send];
+    
 }
 
 - (NSMutableArray *)commentsForHighlight:(Highlight *)highlight

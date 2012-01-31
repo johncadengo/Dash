@@ -60,7 +60,7 @@ enum {
     // This is from the tutorial, but also keep here in case I need to find it.
     //NSLog(@"I am your RKClient singleton : %@", [RKClient sharedClient]);
     
-    RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:@"http://107.22.230.57/api"];
+    RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:@"https://thedashapp.com/api"];
     
     //NSLog(@"I am your RKObjectManager singleton: %@", [RKObjectManager sharedManager]);
     
