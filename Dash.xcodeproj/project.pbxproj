@@ -66,7 +66,7 @@
 		67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
-		679009F21450ED8800511E0F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* FriendsViewController.m */; };
+		679009F21450ED8800511E0F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* SearchViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
 		6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */; };
 		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
@@ -307,8 +307,8 @@
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009EA1450EB7A00511E0F /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewController.h; path = Dash/ViewControllers/FeedViewController/FeedViewController.h; sourceTree = "<group>"; };
 		679009EB1450EB7A00511E0F /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewController.m; path = Dash/ViewControllers/FeedViewController/FeedViewController.m; sourceTree = "<group>"; };
-		679009F01450ED8800511E0F /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendsViewController.h; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.h; sourceTree = "<group>"; };
-		679009F11450ED8800511E0F /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = Dash/ViewControllers/FriendsViewController/FriendsViewController.m; sourceTree = "<group>"; };
+		679009F01450ED8800511E0F /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = SearchViewController.h; path = Dash/ViewControllers/FriendsViewController/SearchViewController.h; sourceTree = "<group>"; };
+		679009F11450ED8800511E0F /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = Dash/ViewControllers/FriendsViewController/SearchViewController.m; sourceTree = "<group>"; };
 		679009F31450ED9B00511E0F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.h; sourceTree = "<group>"; };
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
 		6796A8ED1461CC2500F87D93 /* FeedViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewControllerTests.h; path = ApplicationTests/FeedViewControllerTests.h; sourceTree = "<group>"; };
@@ -825,13 +825,13 @@
 			name = PlaceActionsViewController;
 			sourceTree = "<group>";
 		};
-		679009E81450EB3A00511E0F /* FriendsViewController */ = {
+		679009E81450EB3A00511E0F /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
-				679009F01450ED8800511E0F /* FriendsViewController.h */,
-				679009F11450ED8800511E0F /* FriendsViewController.m */,
+				679009F01450ED8800511E0F /* SearchViewController.h */,
+				679009F11450ED8800511E0F /* SearchViewController.m */,
 			);
-			name = FriendsViewController;
+			name = SearchViewController;
 			sourceTree = "<group>";
 		};
 		679009E91450EB4400511E0F /* ProfileViewController */ = {
@@ -921,7 +921,7 @@
 				6729D058147C1E420046C8DB /* PlaceViewController */,
 				679009E71450EB2900511E0F /* PlaceActionsViewController */,
 				679009D41450D89500511E0F /* DashViewController */,
-				679009E81450EB3A00511E0F /* FriendsViewController */,
+				679009E81450EB3A00511E0F /* SearchViewController */,
 				679009E91450EB4400511E0F /* ProfileViewController */,
 			);
 			name = ViewControllers;
@@ -1245,7 +1245,7 @@
 				67348AC41446350700A3160A /* Dash.xcdatamodeld in Sources */,
 				679009DB1450D9B300511E0F /* DashViewController.m in Sources */,
 				679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */,
-				679009F21450ED8800511E0F /* FriendsViewController.m in Sources */,
+				679009F21450ED8800511E0F /* SearchViewController.m in Sources */,
 				679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */,
 				673653691455C1DD00E53822 /* DashAPI.m in Sources */,
 				67BAC7EB1459E5660001C738 /* Comment.m in Sources */,

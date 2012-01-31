@@ -254,7 +254,7 @@
         <scene sceneID="D8r-q8-ko5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hj-t8-BKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="9kF-QB-6qP" customClass="FriendsViewController" sceneMemberID="viewController">
+                <tableViewController id="9kF-QB-6qP" customClass="SearchViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cwr-yy-2es">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -481,9 +481,6 @@
         </class>
         <class className="FilterView" superclassName="UITableView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FilterView.h"/>
-        </class>
-        <class className="FriendsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
         </class>
         <class className="HighlightViewController" superclassName="TISwipeableTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HighlightViewController.h"/>

@@ -6,10 +6,10 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "FriendsViewController.h"
+#import "SearchViewController.h"
 
 
-@implementation FriendsViewController
+@implementation SearchViewController
 
 @synthesize managedObjectContext = __managedObjectContext;
 

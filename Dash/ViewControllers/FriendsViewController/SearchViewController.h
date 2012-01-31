@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendsViewController : UITableViewController
+@interface SearchViewController : UITableViewController
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
