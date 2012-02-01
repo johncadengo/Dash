@@ -71,7 +71,9 @@
     [super viewDidAppear:animated];
     
     // Clear cached results
-    for (NSMutableArray *result in self.resultsForQuery) {
+    NSMutableArray *result;
+    for (NSString *key in self.resultsForQuery) {
+        result = [self.resultsForQuery objectForKey:key];
         [result removeAllObjects];
     }
     
