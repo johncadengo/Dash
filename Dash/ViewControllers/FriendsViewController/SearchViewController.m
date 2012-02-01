@@ -13,7 +13,8 @@
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
-@synthesize results = _results;
+@synthesize resultsForQuery = _results;
+@synthesize currentQuery = _currentQuery;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,7 +49,7 @@
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
     // Prepare our array of results
-    self.results = [[NSMutableArray alloc] init];
+    self.resultsForQuery = [[NSMutableDictionary alloc] init];
     
     
 }
@@ -68,6 +69,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    // Clear cached results
+    for (NSMutableArray *result in self.resultsForQuery) {
+        [result removeAllObjects];
+    }
+    
+    // Now clear the entire dictionary
+    [self.resultsForQuery removeAllObjects];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -97,7 +106,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.results count];
+    return [[self.resultsForQuery objectForKey:self.currentQuery] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,13 +118,19 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",[self.results objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",[[self.resultsForQuery objectForKey:self.currentQuery] objectAtIndex:indexPath.row]];
     
     return cell;
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
+    // Save the current query
+    self.currentQuery = [NSString stringWithString:searchString];
+    
+    // Check if its results are already cached 
+    
+    
     // Send the request out to autocomplete
     [self.api autocomplete:searchString];
     
@@ -130,13 +145,23 @@
     if ([request isGET]) {
         if ([response isJSON]) {
             NSDictionary *dict = [response parsedBody:nil];
+            self.currentQuery = [dict objectForKey:@"query"];
             
-            // Clear it out
-            [self.results removeAllObjects];
-            
+            // Grab the array corresponding with our query
+            NSMutableArray *results = [self.resultsForQuery objectForKey:self.currentQuery];
+            if (results) {
+                // If it exists, clear it out
+                [results removeAllObjects];   
+            }
+            else {
+                // Otherwise, create it
+                results = [[NSMutableArray alloc] init];
+                [self.resultsForQuery setObject:results forKey:self.currentQuery];
+            }
+                
             // Fill it up
             for (NSString *result in [dict objectForKey:@"data"]) {
-                [self.results addObject:result];
+                [results addObject:[NSString stringWithString:result]];
             }
             
             // Display it

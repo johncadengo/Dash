@@ -16,6 +16,11 @@
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
-@property (nonatomic, strong) NSMutableArray *results;
+@property (nonatomic, strong) NSString *currentQuery;
+
+/** Stores the results keyed by query. We clear these results, 
+    because they act as a cache, everytime this view disappears
+ */
+@property (nonatomic, strong) NSMutableDictionary *resultsForQuery;
 
 @end
