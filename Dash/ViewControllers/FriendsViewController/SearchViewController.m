@@ -131,13 +131,16 @@
     self.currentQuery = [NSString stringWithString:searchString];
     
     // Check if its results are already cached 
+    NSMutableArray *result = [self.resultsForQuery objectForKey:self.currentQuery];
+    if (result && [result count]) {
+        [self.searchDisplayController.searchResultsTableView reloadData];
+    }
+    else {
+        // Send the request out to autocomplete
+        [self.api autocomplete:searchString];
+    }
     
-    
-    // Send the request out to autocomplete
-    [self.api autocomplete:searchString];
-    
-    
-//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(search:) userInfo:searchString repeats:NO];
+    //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(search:) userInfo:searchString repeats:NO];
     return NO;
 }
 
