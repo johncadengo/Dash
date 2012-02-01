@@ -14,8 +14,6 @@
 
 #import "Place.h"
 
-#import <RestKit/CoreData/CoreData.h>
-
 // Private properties
 @interface DashAPI ()
 
@@ -25,6 +23,48 @@
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize delegate = _delegate;
+
+
+#pragma mark - Mappings
++ (RKManagedObjectMapping *)placeMapping 
+{
+    // Define our category mapping
+    RKManagedObjectMapping *categoryMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Category"];
+    [categoryMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [categoryMapping mapAttributes:@"name", nil];
+    
+    // Define our author mapping for highlights
+    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    
+    // Define our highlight mapping, which has a relationship with author
+    RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];
+    [highlightMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [highlightMapping mapKeyPath:@"name" toAttribute:@"text"];
+    
+    // Define the relationship mapping between highlight and author
+    [highlightMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    
+    // Define the location mapping
+    RKManagedObjectMapping *locationMapping = [RKManagedObjectMapping mappingForEntityWithName:@"PlaceLocation"];
+    [locationMapping mapKeyPath:@"lat" toAttribute:@"latitude"];
+    [locationMapping mapKeyPath:@"lng" toAttribute:@"longitude"];
+    
+    // Define our place mapping, which also has 
+    // a relationship with category, highlight, and location
+    RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
+    [placeMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [placeMapping mapAttributes:@"name", @"address", @"phone", @"price", nil];
+    
+    // Define the relationship mappings between place and category, highlight, location
+    [placeMapping mapKeyPath:@"categories" toRelationship:@"categories" withMapping:categoryMapping];
+    [placeMapping mapKeyPath:@"highlights" toRelationship:@"actions" withMapping:highlightMapping];
+    [placeMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
+    
+    return placeMapping;
+}
+
+#pragma mark - Init
 
 -(id) init
 {
@@ -115,38 +155,7 @@
     RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
     objectManager.objectStore = objectStore;
     
-    // Define our category mapping
-    RKManagedObjectMapping *categoryMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Category"];
-    [categoryMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    [categoryMapping mapAttributes:@"name", nil];
-    
-    // Define our author mapping for highlights
-    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
-    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    
-    // Define our highlight mapping, which has a relationship with author
-    RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];
-    [highlightMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    [highlightMapping mapKeyPath:@"name" toAttribute:@"text"];
-    
-    // Define the relationship mapping between highlight and author
-    [highlightMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
-    
-    // Define the location mapping
-    RKManagedObjectMapping *locationMapping = [RKManagedObjectMapping mappingForEntityWithName:@"PlaceLocation"];
-    [locationMapping mapKeyPath:@"lat" toAttribute:@"latitude"];
-    [locationMapping mapKeyPath:@"lng" toAttribute:@"longitude"];
-    
-    // Define our place mapping, which also has 
-    // a relationship with category, highlight, and location
-    RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
-    [placeMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    [placeMapping mapAttributes:@"name", @"address", @"phone", @"price", nil];
-    
-    // Define the relationship mappings between place and category, highlight, location
-    [placeMapping mapKeyPath:@"categories" toRelationship:@"categories" withMapping:categoryMapping];
-    [placeMapping mapKeyPath:@"highlights" toRelationship:@"actions" withMapping:highlightMapping];
-    [placeMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
+    RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
     
     // We expect to find the place entity inside of a dictionary keyed "places"
     [objectManager.mappingProvider setMapping:placeMapping forKeyPath:@"places"];

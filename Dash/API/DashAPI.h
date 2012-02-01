@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <RestKit/RestKit.h>
+#import <RestKit/CoreData/CoreData.h>
 
 #import "Person.h"
 #import "Person+Helper.h"
@@ -44,6 +45,10 @@ enum {
 -(id) initWithManagedObjectContext:(NSManagedObjectContext *)context;
 -(id) initWithManagedObjectContext:(NSManagedObjectContext *)context delegate:(id)delegate;
 
+#pragma mark - Mappings
+/**
+ */
++ (RKManagedObjectMapping *)placeMapping;
 
 #pragma mark - For scaffolding purposes
 /** Generates a random person
