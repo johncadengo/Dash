@@ -287,6 +287,7 @@
                     <navigationItem key="navigationItem" title="Search" id="EAV-TG-CPr"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Zfx-8B-OyC" id="CHv-NE-RU3"/>
+                        <segue destination="ZvP-bc-h0g" kind="push" identifier="ShowSearchResultDetailView" id="ty8-Gx-CC2"/>
                     </connections>
                 </tableViewController>
                 <searchDisplayController id="Zfx-8B-OyC">
@@ -495,6 +496,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="J5w-qJ-RMU"/>
+        <segue reference="ty8-Gx-CC2"/>
     </inferredMetricsTieBreakers>
 </document>

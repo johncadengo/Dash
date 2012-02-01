@@ -25,3 +25,4 @@ NSString * const kShowPlaceActionDetailsSegueIdentifier = @"ShowPlaceActionDetai
 NSString * const kShowFeedItemDetailsSegueIdentifier = @"ShowFeedItemDetails";
 NSString * const kShowDashViewDetailsSegueIdentifier = @"ShowDashViewDetails";
 NSString * const kPresentFilterViewController = @"PresentFilterViewController";
+NSString * const kShowSearchResultDetailView = @"ShowSearchResultDetailView";

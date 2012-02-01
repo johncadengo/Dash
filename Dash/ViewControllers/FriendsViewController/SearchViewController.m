@@ -10,6 +10,8 @@
 #import "DashAPI.h"
 #import "Place.h"
 #import "Place+Helper.h"
+#import "Constants.h"
+#import "PlaceViewController.h"
 
 @implementation SearchViewController
 
@@ -81,14 +83,9 @@
         [result removeAllObjects];
     }
     
-    for (NSString *key in self.resultsForSearchQuery) {
-        result = [self.resultsForSearchQuery objectForKey:key];
-        [result removeAllObjects];
-    }
-    
     // Now clear the entire dictionary
     [self.resultsForAutocompleteQuery removeAllObjects];
-    [self.resultsForSearchQuery removeAllObjects];
+    //[self.resultsForSearchQuery removeAllObjects];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -189,6 +186,17 @@
     return NO;
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    // When search is clicked, perform a search with the search string
+    NSString *searchString = searchBar.text;
+    
+    // Send the request
+    [self.api search:searchString];
+    
+    // Dismiss the search display controller
+    [self.searchDisplayController setActive:NO animated:YES];
+}
+
 #pragma mark - RKRequestDelegate
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
@@ -264,6 +272,8 @@
 {
     // Check which table view is being selected
     if (tableView == self.searchDisplayController.searchResultsTableView) {
+        // A row selected in autocomplete means we will send a request to search for a query
+        
         // Get our query
         NSMutableArray *results = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
         NSString *query = [results objectAtIndex:indexPath.row];
@@ -271,14 +281,36 @@
         // Send a new request to the api to search and return places with details
         self. currentSearchRequest = [self.api search:query];
         
-        // Hide the search display controller
-        [self.searchDisplayController setActive:NO animated:YES];
-        
         // Display it
         [self.tableView reloadData];
+        
+        // Hide the search display controller
+        [self.searchDisplayController setActive:NO animated:YES];
+    }
+    else {
+        // A row selected in search means we will segue to the place view controller
+        NSArray *results = [self.resultsForSearchQuery objectForKey:self.currentQuery];
+        Place *place = [results objectAtIndex:indexPath.row];
+        
+        [self performSegueWithIdentifier:kShowSearchResultDetailView sender:place];
     }
     
-    
 }
+
+
+#pragma mark - Storyboard Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kShowSearchResultDetailView]) {
+        Place *place = (Place *)sender;
+        PlaceViewController *placeViewController = (PlaceViewController *)[segue destinationViewController];
+        [placeViewController setPlace:place];
+        
+        // Make sure it has a managed object context
+        [placeViewController setManagedObjectContext:self.managedObjectContext];
+    }
+}
+
 
 @end
