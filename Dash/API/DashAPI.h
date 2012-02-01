@@ -123,7 +123,7 @@ enum {
 /** Senda a request to query a string for a place and 
  *  unlike autocomplete, it returns places with details
  */
-- (RKRequest *)search:(NSString *)query;
+- (RKObjectLoader *)search:(NSString *)query;
 
 #pragma mark - Posts
 /** Returns a newly made comment by a person on an action.

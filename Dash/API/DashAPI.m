@@ -339,13 +339,34 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     return [[RKClient sharedClient] get:@"/search/autocomplete" queryParams:params delegate:self.delegate];
 }
 
-- (RKRequest *)search:(NSString *)query
+- (RKObjectLoader *)search:(NSString *)query
 {
+    // Create an object manager and connect core data's persistent store to it
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
+    objectManager.objectStore = objectStore;
+    
+    RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
+    
+    // We expect to find the place entity inside of a dictionary keyed "places"
+    [objectManager.mappingProvider setMapping:placeMapping forKeyPath:@"places"];
+    
+    // Authentication
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
     NSNumber *count = [NSNumber numberWithInt:10];
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.key, @"must_fix",
                             query, @"query", 
                             count, @"count", nil];
-    return [[RKClient sharedClient] get:@"/search" queryParams:params delegate:self.delegate];    
+    
+    // Prepare our object loader to load and map objects from remote server, and send
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"search" delegate:self];
+    objectLoader.method = RKRequestMethodPOST;
+    objectLoader.params = params;
+    [objectLoader send];
+                            
+    return objectLoader;    
 }
 
 #pragma mark - Posts

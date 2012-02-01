@@ -8,6 +8,8 @@
 
 #import "SearchViewController.h"
 #import "DashAPI.h"
+#import "Place.h"
+#import "Place+Helper.h"
 
 @implementation SearchViewController
 
@@ -139,15 +141,30 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    // Only display results if they exist
-    NSMutableArray *result = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
-    if (result) {
-        NSString *text = [result objectAtIndex:indexPath.row];
-        if (text) {
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",text];
+    NSMutableArray *result;
+    NSString *text;
+    if (self.searchDisplayController.searchResultsTableView == tableView) {
+        // Only display results if they exist
+        result = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
+        if (result) {
+            text = [result objectAtIndex:indexPath.row];
+            if (text) {
+                cell.textLabel.text = [NSString stringWithFormat:@"%@",text];
+            }
+        }
+    }
+    else {
+        // Only display results if they exist
+        result = [self.resultsForSearchQuery objectForKey:self.currentQuery];
+        if (result) {
+            Place *place = [result objectAtIndex:indexPath.row];
+            if (place) {
+                cell.textLabel.text = [NSString stringWithFormat:@"%@",place.name];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", place.address];
+            }
         }
     }
         
@@ -182,19 +199,8 @@
         self.currentQuery = [dict objectForKey:@"query"];
         
         // Prepare pointers to reference appropriate data structures and tableviews
-        UITableView *tableView;
-        NSMutableDictionary *resultsDict;
-        
-        if (self.currentSearchRequest == request) {
-            // Search request
-            tableView = self.tableView;
-            resultsDict = self.resultsForSearchQuery;
-        }
-        else {
-            // Autocomplete request
-            tableView = self.searchDisplayController.searchResultsTableView;
-            resultsDict = self.resultsForAutocompleteQuery;
-        }
+        UITableView *tableView = self.searchDisplayController.searchResultsTableView;
+        NSMutableDictionary *resultsDict = self.resultsForAutocompleteQuery;
         
         // Grab the array corresponding with our query
         NSMutableArray *results = [resultsDict objectForKey:self.currentQuery];
@@ -216,6 +222,40 @@
         // Display it
         [tableView reloadData];
     }
+}
+
+
+#pragma mark - RKObjectLoaderDelegate methods
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
+{
+    UITableView *tableView = self.tableView;
+    NSMutableDictionary *resultsDict = self.resultsForSearchQuery;
+    
+    // Grab the array corresponding with our query
+    NSMutableArray *results = [resultsDict objectForKey:self.currentQuery];
+    if (results) {
+        // If it exists, clear it out
+        [results removeAllObjects];   
+    }
+    else {
+        // Otherwise, create it
+        results = [[NSMutableArray alloc] init];
+        [resultsDict setObject:results forKey:self.currentQuery];
+    }
+    
+    // Fill it up
+    [results addObjectsFromArray:objects];
+    
+    NSLog(@"%@", objects);
+    
+    // Display it
+    [tableView reloadData];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
+{
+    //NSLog(@"Encountered an error: %@", error);
 }
 
 #pragma mark - Table view delegate
