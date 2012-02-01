@@ -17,12 +17,14 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSString *currentQuery;
+@property (nonatomic, strong) RKRequest *currentSearchRequest; // As opposed to autocomplete request
 
 @property (nonatomic, strong) MBProgressHUD *hud;
 
 /** Stores the results keyed by query. We clear these results, 
     because they act as a cache, everytime this view disappears
  */
-@property (nonatomic, strong) NSMutableDictionary *resultsForQuery;
+@property (nonatomic, strong) NSMutableDictionary *resultsForAutocompleteQuery;
+@property (nonatomic, strong) NSMutableDictionary *resultsForSearchQuery;
 
 @end

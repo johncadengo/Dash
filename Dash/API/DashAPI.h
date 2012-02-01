@@ -108,12 +108,12 @@ enum {
 /** Sends a request to autocomplete a query string for a place
  *  Returns a list of suggested names for places
  */
-- (void)autocomplete:(NSString *)query;
+- (RKRequest *)autocomplete:(NSString *)query;
 
 /** Senda a request to query a string for a place and 
  *  unlike autocomplete, it returns places with details
  */
-- (void)search:(NSString *)query;
+- (RKRequest *)search:(NSString *)query;
 
 #pragma mark - Posts
 /** Returns a newly made comment by a person on an action.

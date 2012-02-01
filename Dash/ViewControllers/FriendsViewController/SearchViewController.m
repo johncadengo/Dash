@@ -13,8 +13,10 @@
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
-@synthesize resultsForQuery = _results;
+@synthesize resultsForAutocompleteQuery = _resultsForAutocompleteQuery;
+@synthesize resultsForSearchQuery = _resultsForSearchQuery;
 @synthesize currentQuery = _currentQuery;
+@synthesize currentSearchRequest = _currentSearchRequest;
 @synthesize hud = _hud;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -50,7 +52,8 @@
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
     // Prepare our array of results
-    self.resultsForQuery = [[NSMutableDictionary alloc] init];
+    self.resultsForAutocompleteQuery = [[NSMutableDictionary alloc] init];
+    self.resultsForSearchQuery = [[NSMutableDictionary alloc] init];
 }
 
 - (void)viewDidUnload
@@ -71,13 +74,19 @@
     
     // Clear cached results
     NSMutableArray *result;
-    for (NSString *key in self.resultsForQuery) {
-        result = [self.resultsForQuery objectForKey:key];
+    for (NSString *key in self.resultsForAutocompleteQuery) {
+        result = [self.resultsForAutocompleteQuery objectForKey:key];
+        [result removeAllObjects];
+    }
+    
+    for (NSString *key in self.resultsForSearchQuery) {
+        result = [self.resultsForSearchQuery objectForKey:key];
         [result removeAllObjects];
     }
     
     // Now clear the entire dictionary
-    [self.resultsForQuery removeAllObjects];
+    [self.resultsForAutocompleteQuery removeAllObjects];
+    [self.resultsForSearchQuery removeAllObjects];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -101,13 +110,27 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    if (self.searchDisplayController.searchResultsTableView == tableView) {
+        return 1;
+    }
+    else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[self.resultsForQuery objectForKey:self.currentQuery] count];
+    NSMutableDictionary *resultsDict;
+    
+    if (self.searchDisplayController.searchResultsTableView == tableView) {
+        resultsDict = self.resultsForAutocompleteQuery;
+    }
+    else {
+        resultsDict = self.resultsForSearchQuery;
+    }
+    
+    return [[resultsDict objectForKey:self.currentQuery] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,7 +143,7 @@
     }
     
     // Only display results if they exist
-    NSMutableArray *result = [self.resultsForQuery objectForKey:self.currentQuery];
+    NSMutableArray *result = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
     if (result) {
         NSString *text = [result objectAtIndex:indexPath.row];
         if (text) {
@@ -137,7 +160,7 @@
     self.currentQuery = [NSString stringWithString:searchString];
     
     // Check if its results are already cached 
-    NSMutableArray *result = [self.resultsForQuery objectForKey:self.currentQuery];
+    NSMutableArray *result = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
     if (result && [result count]) {
         [self.searchDisplayController.searchResultsTableView reloadData];
     }
@@ -153,31 +176,45 @@
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
 {
-    if ([request isGET]) {
-        if ([response isJSON]) {
-            NSDictionary *dict = [response parsedBody:nil];
-            self.currentQuery = [dict objectForKey:@"query"];
-            
-            // Grab the array corresponding with our query
-            NSMutableArray *results = [self.resultsForQuery objectForKey:self.currentQuery];
-            if (results) {
-                // If it exists, clear it out
-                [results removeAllObjects];   
-            }
-            else {
-                // Otherwise, create it
-                results = [[NSMutableArray alloc] init];
-                [self.resultsForQuery setObject:results forKey:self.currentQuery];
-            }
-                
-            // Fill it up
-            for (NSString *result in [dict objectForKey:@"data"]) {
-                [results addObject:[NSString stringWithString:result]];
-            }
-            
-            // Display it
-            [self.searchDisplayController.searchResultsTableView reloadData];
+    if ([request isGET] && [response isJSON]) {
+        // Grab the query either way
+        NSDictionary *dict = [response parsedBody:nil];
+        self.currentQuery = [dict objectForKey:@"query"];
+        
+        // Prepare pointers to reference appropriate data structures and tableviews
+        UITableView *tableView;
+        NSMutableDictionary *resultsDict;
+        
+        if (self.currentSearchRequest == request) {
+            // Search request
+            tableView = self.tableView;
+            resultsDict = self.resultsForSearchQuery;
         }
+        else {
+            // Autocomplete request
+            tableView = self.searchDisplayController.searchResultsTableView;
+            resultsDict = self.resultsForAutocompleteQuery;
+        }
+        
+        // Grab the array corresponding with our query
+        NSMutableArray *results = [resultsDict objectForKey:self.currentQuery];
+        if (results) {
+            // If it exists, clear it out
+            [results removeAllObjects];   
+        }
+        else {
+            // Otherwise, create it
+            results = [[NSMutableArray alloc] init];
+            [resultsDict setObject:results forKey:self.currentQuery];
+        }
+        
+        // Fill it up
+        for (NSString *result in [dict objectForKey:@"data"]) {
+            [results addObject:[NSString stringWithString:result]];
+        }
+        
+        // Display it
+        [tableView reloadData];
     }
 }
 
@@ -188,11 +225,17 @@
     // Check which table view is being selected
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         // Get our query
-        NSMutableArray *results = [self.resultsForQuery objectForKey:self.currentQuery];
+        NSMutableArray *results = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
         NSString *query = [results objectAtIndex:indexPath.row];
         
         // Send a new request to the api to search and return places with details
+        self. currentSearchRequest = [self.api search:query];
         
+        // Hide the search display controller
+        [self.searchDisplayController setActive:NO animated:YES];
+        
+        // Display it
+        [self.tableView reloadData];
     }
     
     

@@ -312,22 +312,22 @@
     return feed;
 }
 
-- (void)autocomplete:(NSString *)query
+- (RKRequest *)autocomplete:(NSString *)query
 {
     NSNumber *count = [NSNumber numberWithInt:10];
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
                             query, @"query", 
                             count, @"count", nil];
-    [[RKClient sharedClient] get:@"/search/autocomplete" queryParams:params delegate:self.delegate];
+    return [[RKClient sharedClient] get:@"/search/autocomplete" queryParams:params delegate:self.delegate];
 }
 
-- (void)search:(NSString *)query
+- (RKRequest *)search:(NSString *)query
 {
     NSNumber *count = [NSNumber numberWithInt:10];
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
                             query, @"query", 
                             count, @"count", nil];
-    [[RKClient sharedClient] get:@"/search" queryParams:params delegate:self.delegate];    
+    return [[RKClient sharedClient] get:@"/search" queryParams:params delegate:self.delegate];    
 }
 
 #pragma mark - Posts
