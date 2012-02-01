@@ -12,11 +12,13 @@
 
 @class DashAPI;
 
-@interface SearchViewController : UITableViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate>
+@interface SearchViewController : UITableViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSString *currentQuery;
+
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 /** Stores the results keyed by query. We clear these results, 
     because they act as a cache, everytime this view disappears

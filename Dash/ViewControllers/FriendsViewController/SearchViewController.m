@@ -15,6 +15,7 @@
 @synthesize api = _api;
 @synthesize resultsForQuery = _results;
 @synthesize currentQuery = _currentQuery;
+@synthesize hud = _hud;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -50,8 +51,6 @@
     
     // Prepare our array of results
     self.resultsForQuery = [[NSMutableDictionary alloc] init];
-    
-    
 }
 
 - (void)viewDidUnload
@@ -120,8 +119,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",[[self.resultsForQuery objectForKey:self.currentQuery] objectAtIndex:indexPath.row]];
-    
+    // Only display results if they exist
+    NSMutableArray *result = [self.resultsForQuery objectForKey:self.currentQuery];
+    if (result) {
+        NSString *text = [result objectAtIndex:indexPath.row];
+        if (text) {
+            cell.textLabel.text = [NSString stringWithFormat:@"%@",text];
+        }
+    }
+        
     return cell;
 }
 
@@ -140,13 +146,13 @@
         [self.api autocomplete:searchString];
     }
     
-    //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(search:) userInfo:searchString repeats:NO];
     return NO;
 }
 
 #pragma mark - RKRequestDelegate
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {  
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
+{
     if ([request isGET]) {
         if ([response isJSON]) {
             NSDictionary *dict = [response parsedBody:nil];
@@ -179,13 +185,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    // Check which table view is being selected
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        // Get our query
+        NSMutableArray *results = [self.resultsForQuery objectForKey:self.currentQuery];
+        NSString *query = [results objectAtIndex:indexPath.row];
+        
+        // Send a new request to the api to search and return places with details
+        
+    }
+    
+    
 }
 
 @end
