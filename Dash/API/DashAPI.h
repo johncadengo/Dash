@@ -59,6 +59,11 @@ enum {
  */
 - (Place *)randomCrypt;
 
+#pragma mark - Key
+/** Generates the key
+ */
+- (NSString *)key;
+
 #pragma mark - Gets
 /** Returns a pop for that location.
  */

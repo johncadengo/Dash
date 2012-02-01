@@ -25,6 +25,8 @@
 @synthesize delegate = _delegate;
 
 
+NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
+
 #pragma mark - Mappings
 + (RKManagedObjectMapping *)placeMapping 
 {
@@ -125,6 +127,13 @@
     return place;
 }
 
+#pragma mark - Params
+- (NSString *)key
+{
+    // TODO: Obfuscate
+    return kKey;
+}
+
 #pragma mark - RKRequestDelegate
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
@@ -166,7 +175,7 @@
     NSString *locParam = [NSString stringWithFormat:@"%f, %f", location.coordinate.latitude,
                           location.coordinate.longitude];
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"KAEMyqRkVRgShNWGZW73u2Fk", @"must_fix",
+                            self.key, @"must_fix",
                             locParam, @"loc",nil];
 
     // Prepare our object loader to load and map objects from remote server, and send
