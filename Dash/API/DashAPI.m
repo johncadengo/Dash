@@ -157,7 +157,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 
 #pragma mark - Gets
 
--(void) pop:(CLLocation *)location
+-(RKObjectLoader *) pop:(CLLocation *)location
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -183,6 +183,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
+    
+    return objectLoader;
 }
 
 - (NSMutableArray *)feedForLocation:(CLLocation *)location
@@ -292,23 +294,16 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     return comments;
 }
 
-- (NSMutableArray *)placeActionsForPerson:(Person *)person
+- (RKObjectLoader *)placeActionsForPerson:(Person *)person
 {
     return [self placeActionsForPerson:person withCount:kDefaultNumFeedItems];
 }
 
-- (NSMutableArray *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count
+- (RKObjectLoader *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count
 {
-    Save *save;
-    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:count];
+    // TODO:
     
-    for (int i = 0; i < count; ++i) {
-        save = [self person:[self randomGhost] savesPlace:[self randomCrypt]];
-        
-        [feed addObject:save];
-    }
-    
-    return feed;
+    return nil;
 }
 
 - (NSMutableArray *)highlightsForPlace:(Place *)place

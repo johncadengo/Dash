@@ -67,7 +67,7 @@ enum {
 #pragma mark - Gets
 /** Returns a pop for that location.
  */
-- (void)pop:(CLLocation *)location;
+- (RKObjectLoader *)pop:(CLLocation *)location;
 
 /** Returns a feed of news items nearby.
     Defaults count and person.
@@ -100,11 +100,11 @@ enum {
 
 /** Returns place actions associated with a specific person: saves, likes, invites, etc.
  */
-- (NSMutableArray *)placeActionsForPerson:(Person *)person;
+- (RKObjectLoader *)placeActionsForPerson:(Person *)person;
 
 /** Returns count number of places actions associated with a specific person.
  */
-- (NSMutableArray *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count;
+- (RKObjectLoader *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count;
 
 /** Returns hightlights associated with a place.
  */

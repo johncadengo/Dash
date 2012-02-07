@@ -18,7 +18,10 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
 @synthesize refreshHeaderView = _refreshHeaderView;
+@synthesize hud = _hud;
 @synthesize feedItems = _feedItems;
+@synthesize recommended = _recommended;
+@synthesize hitListed = _hitListed;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,11 +49,17 @@
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
     
-    // Initialize our tableview's array which will represent its model.
-    [self refreshFeed];
+    // Prepare our arrays of place actions
+    self.feedItems = [[NSMutableArray alloc] init];
+    self.recommended = [[NSMutableArray alloc] init];
+    self.hitListed = [[NSMutableArray alloc] init];
+    
+    // Ask for our initial results
+    //self.api 
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     
+    // Make our refresh header view
     if (_refreshHeaderView == nil) {
 		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
 		view.delegate = self;
@@ -60,12 +69,6 @@
 	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -123,7 +126,7 @@
 
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
 {	
-    // TODO: Return the date the data source was last changed. THis is fake for now.
+    // TODO: Return the date the data source was last changed. This is fake for now.
 	return [NSDate date];
 	
 }
