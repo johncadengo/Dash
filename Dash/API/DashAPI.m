@@ -301,9 +301,43 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 
 - (RKObjectLoader *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count
 {
-    // TODO:
+    // Create an object manager and connect core data's persistent store to it
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
+    objectManager.objectStore = objectStore;
     
-    return nil;
+    // Define our author mapping for saved places
+    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    
+    // Define our place mapping
+    RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
+    
+    // Now, connect the two via a save
+    RKManagedObjectMapping *saveMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Save"];
+    [saveMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [saveMapping mapAttributes:@"timestamp", nil];
+    
+    [saveMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
+    [saveMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    
+    // We expect to find the place entity inside of a dictionary keyed "saved"
+    [objectManager.mappingProvider setMapping:saveMapping forKeyPath:@"saved"];
+    
+    // Authentication
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.key, @"must_fix",
+                            [NSNumber numberWithInt:count], @"count",nil];
+    
+    // Prepare our object loader to load and map objects from remote server, and send
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places" delegate:self];
+    objectLoader.method = RKRequestMethodPOST;
+    objectLoader.params = params;
+    [objectLoader send];
+    
+    return objectLoader;
 }
 
 - (NSMutableArray *)highlightsForPlace:(Place *)place

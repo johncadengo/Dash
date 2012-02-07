@@ -33,7 +33,7 @@ enum {
 // so will have different arrays for each type
 @property (nonatomic, strong) NSMutableArray *feedItems;
 @property (nonatomic, strong) NSMutableArray *recommended;
-@property (nonatomic, strong) NSMutableArray *hitListed;
+@property (nonatomic, strong) NSMutableArray *saved;
 
 /** Dynamically generate the row height for feed item cells
  */

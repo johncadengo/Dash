@@ -21,7 +21,7 @@
 @synthesize hud = _hud;
 @synthesize feedItems = _feedItems;
 @synthesize recommended = _recommended;
-@synthesize hitListed = _hitListed;
+@synthesize saved = _saved;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,15 +47,15 @@
     [super viewDidLoad];
     
     // Connect to our API.
-    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
     // Prepare our arrays of place actions
     self.feedItems = [[NSMutableArray alloc] init];
     self.recommended = [[NSMutableArray alloc] init];
-    self.hitListed = [[NSMutableArray alloc] init];
+    self.saved = [[NSMutableArray alloc] init];
     
     // Ask for our initial results
-    //self.api 
+    [self.api placeActionsForPerson:nil]; 
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     
@@ -221,6 +221,18 @@
         // Make sure it has a managed object context
         [placeViewController setManagedObjectContext:self.managedObjectContext];
     }
+}
+
+#pragma mark - RKObjectLoaderDelegate methods
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
+{
+    NSLog(@"%@", objects);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
+{
+    NSLog(@"Encountered an error: %@", error);
 }
 
 #pragma mark - Place view cell delegate
