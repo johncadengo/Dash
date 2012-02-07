@@ -227,7 +227,16 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
-    NSLog(@"%@", objects);
+    // For now, we are only loading saved places
+    [self.saved addObjectsFromArray:objects];
+    [self.feedItems addObjectsFromArray:self.saved];
+    
+    // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
+    [self hideVisibleBackView:NO];
+    [self.tableView reloadData];
+    
+    // TODO: Gotta do this asynchronously 
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
@@ -255,19 +264,8 @@
 
 - (void)refreshFeed
 {
-    NSMutableArray *newFeed;
-    
-    // TODO: Gotta make a new call in the api appropriate for the places feed.
-    newFeed = [self.api placeActionsForPerson:nil];
-    
-    self.feedItems = newFeed;
-    
-    // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
-    [self hideVisibleBackView:NO];
-    [self.tableView reloadData];
-    
-    // TODO: Gotta do this asynchronously 
-    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    // Make a call to the api to request the feed
+    [self.api placeActionsForPerson:nil];
 }
 
 #pragma mark -
