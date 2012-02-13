@@ -59,6 +59,8 @@
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Friendships" inverseName="source" inverseEntity="Friendships" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="party" inverseEntity="Pop" syncable="YES"/>
         <relationship name="profilepic" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PersonPhoto" inverseName="person" inverseEntity="PersonPhoto" syncable="YES"/>
+        <relationship name="recommendedBy" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recommend" inverseName="to" inverseEntity="Recommend" syncable="YES"/>
+        <relationship name="recommendsTo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recommend" inverseName="from" inverseEntity="Recommend" syncable="YES"/>
     </entity>
     <entity name="PersonPhoto" representedClassName="PersonPhoto" parentEntity="Photo" syncable="YES">
         <relationship name="person" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="profilepic" inverseEntity="Person" syncable="YES"/>
@@ -80,6 +82,7 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="place" inverseEntity="PlaceLocation" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlacePhoto" inverseName="place" inverseEntity="PlacePhoto" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="places" inverseEntity="Pop" syncable="YES"/>
+        <relationship name="recommends" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recommend" inverseName="place" inverseEntity="Recommend" syncable="YES"/>
     </entity>
     <entity name="PlaceAction" representedClassName="PlaceAction" isAbstract="YES" parentEntity="Action" syncable="YES">
         <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="actions" inverseEntity="Place" syncable="YES"/>
@@ -101,6 +104,13 @@
     <entity name="Rate" representedClassName="Rate" parentEntity="PlaceAction" syncable="YES">
         <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
+    <entity name="Recommend" syncable="YES">
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="from" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="recommendsTo" inverseEntity="Person" syncable="YES"/>
+        <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="recommends" inverseEntity="Place" syncable="YES"/>
+        <relationship name="to" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="recommendedBy" inverseEntity="Person" syncable="YES"/>
+    </entity>
     <entity name="Save" representedClassName="Save" parentEntity="PlaceAction" syncable="YES"/>
     <entity name="Uniqueness" representedClassName="Uniqueness" isAbstract="YES" syncable="YES">
         <attribute name="uid" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -120,10 +130,10 @@
         <element name="Hours" positionX="-216" positionY="-126" width="128" height="105"/>
         <element name="Like" positionX="360" positionY="-81" width="128" height="60"/>
         <element name="Location" positionX="-315" positionY="-9" width="128" height="135"/>
-        <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
+        <element name="Person" positionX="250" positionY="255" width="128" height="165"/>
         <element name="PersonPhoto" positionX="250" positionY="174" width="128" height="60"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="Place" positionX="-72" positionY="-36" width="128" height="210"/>
+        <element name="Place" positionX="-72" positionY="-36" width="128" height="225"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
         <element name="PlacePhoto" positionX="252" positionY="72" width="128" height="60"/>
@@ -133,5 +143,6 @@
         <element name="Save" positionX="-72" positionY="180" width="128" height="45"/>
         <element name="Uniqueness" positionX="99" positionY="-225" width="128" height="60"/>
         <element name="Visit" positionX="-72" positionY="234" width="128" height="45"/>
+        <element name="Recommend" positionX="117" positionY="495" width="128" height="120"/>
     </elements>
 </model>
