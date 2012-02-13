@@ -19,6 +19,7 @@
 @synthesize api = _api;
 @synthesize refreshHeaderView = _refreshHeaderView;
 @synthesize hud = _hud;
+@synthesize requests = _requests;
 @synthesize feedItems = _feedItems;
 @synthesize recommended = _recommended;
 @synthesize saved = _saved;
@@ -55,7 +56,7 @@
     self.saved = [[NSMutableArray alloc] init];
     
     // Ask for our initial results
-    [self.api placeActionsForPerson:nil]; 
+    self.requests = [self.api placeActionsForPerson:nil]; 
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     
@@ -227,9 +228,22 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
-    // For now, we are only loading saved places
-    [self.saved addObjectsFromArray:objects];
-    [self.feedItems addObjectsFromArray:self.saved];
+    // We currently have two types of place actions coming in: saves, recommends
+    // Process each accordingly
+    RKObjectLoader *savesRequest = [self.requests objectForKey:[NSNumber numberWithInt:kSaves]];
+    RKObjectLoader *recommendsRequest = [self.requests objectForKey:[NSNumber numberWithInt:kRecommends]];
+    
+    if (objectLoader==savesRequest) {
+        // For now, we are only loading saved places
+        [self.saved addObjectsFromArray:objects];
+        [self.feedItems addObjectsFromArray:self.saved];
+        
+    }
+    //else if (objectLoader == recommendsRequest) {
+        // For now, we are only loading saved places
+//        [self.saved addObjectsFromArray:objects];
+//        [self.feedItems addObjectsFromArray:self.saved];
+    //}
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self hideVisibleBackView:NO];
@@ -265,7 +279,7 @@
 - (void)refreshFeed
 {
     // Make a call to the api to request the feed
-    [self.api placeActionsForPerson:nil];
+    self.requests = [NSDictionary dictionaryWithDictionary:[self.api placeActionsForPerson:nil]];
 }
 
 #pragma mark -

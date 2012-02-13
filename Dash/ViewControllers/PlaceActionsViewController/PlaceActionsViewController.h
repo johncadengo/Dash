@@ -29,6 +29,10 @@ enum {
 @property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
+/** The requests stored according to type: saves, recommends, etc.
+ */
+@property (nonatomic, strong) NSDictionary *requests;
+
 // We want to be able to filter through the feed items 
 // so will have different arrays for each type
 @property (nonatomic, strong) NSMutableArray *feedItems;

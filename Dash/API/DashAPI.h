@@ -34,6 +34,11 @@ enum {
     kDefaultNumComments = 4
 };
 
+typedef enum {
+    kSaves = 0,
+    kRecommends = 1,
+    kNumPlaceActionTypes = 2
+} PlaceActionTypes;
 
 #pragma - Class definition
 

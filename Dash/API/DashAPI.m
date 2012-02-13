@@ -337,6 +337,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places/saves" delegate:self];
     objectLoader.method = RKRequestMethodGET;
     objectLoader.params = params;
+    objectLoader.userData = [NSNumber numberWithInt:kSaves];
     [objectLoader send];
     
     return objectLoader;
@@ -387,6 +388,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places/recommends" delegate:self];
     objectLoader.method = RKRequestMethodGET;
     objectLoader.params = params;
+    objectLoader.userData = [NSNumber numberWithInt:kRecommends];
     [objectLoader send];
     
     return objectLoader;
@@ -404,8 +406,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     //RKObjectLoader *recommendsRequest = [self recommendsForPerson:person withCount:count];
     
     NSDictionary *requests = [[NSDictionary alloc] initWithObjectsAndKeys:
-                              savesRequest, @"saves",nil];
-                              //recommendsRequest, @"recommends", nil];
+                              savesRequest, [NSNumber numberWithInt:kSaves],nil];
+                              //recommendsRequest, [NSNumber numberWithInt:kRecommends], nil];
     
     return requests;
 }
