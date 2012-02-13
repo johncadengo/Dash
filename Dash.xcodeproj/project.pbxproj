@@ -98,6 +98,7 @@
 		67BAC8121459E6D50001C738 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8111459E6D50001C738 /* Save.m */; };
 		67BFB666147C262B005C862F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB665147C262B005C862F /* PlaceViewController.m */; };
 		67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */; };
+		67BFDB5314E9A9B1003F265F /* Recommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFDB5214E9A9B1003F265F /* Recommend.m */; };
 		67C46B1914BF9B05006B9301 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C46B1814BF9B05006B9301 /* icon@2x.png */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 		67CCDE8914607D8400CF657D /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8814607D8400CF657D /* LocationTests.m */; };
@@ -370,6 +371,8 @@
 		67BFB665147C262B005C862F /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewController.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.m; sourceTree = "<group>"; };
 		67BFB667147C4476005C862F /* PlaceHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceHeaderViewCell.h; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.h; sourceTree = "<group>"; };
 		67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceHeaderViewCell.m; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.m; sourceTree = "<group>"; };
+		67BFDB5114E9A9B1003F265F /* Recommend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recommend.h; path = "Data Model/Actions/Recommend.h"; sourceTree = "<group>"; };
+		67BFDB5214E9A9B1003F265F /* Recommend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recommend.m; path = "Data Model/Actions/Recommend.m"; sourceTree = "<group>"; };
 		67C46B1814BF9B05006B9301 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		67CCDE8714607D8400CF657D /* LocationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationTests.h; path = "Logic Tests/LocationTests.h"; sourceTree = "<group>"; };
@@ -737,6 +740,8 @@
 		6788829A1459D5DF00F7E826 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				67BFDB5114E9A9B1003F265F /* Recommend.h */,
+				67BFDB5214E9A9B1003F265F /* Recommend.m */,
 				67BAC7E81459E5230001C738 /* Feedback */,
 				67BAC7E71459E4920001C738 /* Photo */,
 				678882B41459DB8900F7E826 /* Pop */,
@@ -1316,6 +1321,7 @@
 				6735AEA514BCC450000259AF /* Place+Helper.m in Sources */,
 				67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */,
 				67A8977714C7850B00494273 /* FilterView.m in Sources */,
+				67BFDB5314E9A9B1003F265F /* Recommend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

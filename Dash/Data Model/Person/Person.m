@@ -2,8 +2,8 @@
 //  Person.m
 //  Dash
 //
-//  Created by John Cadengo on 10/27/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by John Cadengo on 2/13/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "Person.h"
@@ -11,6 +11,7 @@
 #import "Friendships.h"
 #import "PersonPhoto.h"
 #import "Pop.h"
+#import "Recommend.h"
 
 
 @implementation Person
@@ -21,5 +22,7 @@
 @dynamic friends;
 @dynamic pops;
 @dynamic profilepic;
+@dynamic recommendedBy;
+@dynamic recommendsTo;
 
 @end
