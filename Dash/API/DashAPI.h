@@ -64,10 +64,15 @@ enum {
  */
 - (NSString *)key;
 
-#pragma mark - Gets
+/* GETS */
+
+#pragma mark - Pop
+
 /** Returns a pop for that location.
  */
 - (RKObjectLoader *)pop:(CLLocation *)location;
+
+#pragma mark - Feed
 
 /** Returns a feed of news items nearby.
     Defaults count and person.
@@ -98,13 +103,39 @@ enum {
  */
 - (NSMutableArray *)commentsForHighlight:(Highlight *)highlight withCount:(NSUInteger)count;
 
-/** Returns place actions associated with a specific person: saves, likes, invites, etc.
- */
-- (RKObjectLoader *)placeActionsForPerson:(Person *)person;
+#pragma mark - Place actions
+// These are located inside of the Places tab: saves, recommends, and more to be added later.
 
-/** Returns count number of places actions associated with a specific person.
+/** Requests the saves that a person has made.
+ */ 
+- (RKObjectLoader *)savesForPerson:(Person *)person;
+
+/** Requests count number of the saves that a person has made.
  */
-- (RKObjectLoader *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count;
+- (RKObjectLoader *)savesForPerson:(Person *)person withCount:(NSUInteger)count;
+
+/** Requests the recommends that a person has made.
+ */
+- (RKObjectLoader *)recommendsForPerson:(Person *) person;
+
+/** Requests count number of the recommends that a person has made.
+ */
+- (RKObjectLoader *)recommendsForPerson:(Person *) person withCount:(NSUInteger)count;
+
+/** Makes a request for all place actions associated with a specific person: saves, likes, invites, etc.
+ 
+    Returns a dictionary of the RKObjectLoaders corresponding to each request made.
+ */
+- (NSDictionary *)placeActionsForPerson:(Person *)person;
+
+/** Returns count number of all thee places actions associated with a specific person.
+
+    Returns a dictionary of the RKObjectLoaders corresponding to each request made.
+ */
+- (NSDictionary *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count;
+
+
+#pragma mark - 
 
 /** Returns hightlights associated with a place.
  */
@@ -125,7 +156,8 @@ enum {
  */
 - (RKObjectLoader *)search:(NSString *)query;
 
-#pragma mark - Posts
+/* POSTS */
+
 /** Returns a newly made comment by a person on an action.
  */
 - (Comment *)person:(Person *)person comments:(NSString *)text onAction:(Action *)action;

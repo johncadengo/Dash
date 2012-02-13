@@ -294,12 +294,14 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     return comments;
 }
 
-- (RKObjectLoader *)placeActionsForPerson:(Person *)person
+#pragma mark - Place actions
+
+- (RKObjectLoader *)savesForPerson:(Person *)person
 {
-    return [self placeActionsForPerson:person withCount:kDefaultNumFeedItems];
+    return [self savesForPerson:person withCount:kDefaultNumFeedItems];
 }
 
-- (RKObjectLoader *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count
+- (RKObjectLoader *)savesForPerson:(Person *)person withCount:(NSUInteger)count
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -322,7 +324,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [saveMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
     
     // We expect to find the place entity inside of a dictionary keyed "saved"
-    [objectManager.mappingProvider setMapping:saveMapping forKeyPath:@"saved"];
+    [objectManager.mappingProvider setMapping:saveMapping forKeyPath:@"saves"];
     
     // Authentication
     // Params are backwards compared to the way 
@@ -332,12 +334,76 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             [NSNumber numberWithInt:count], @"count",nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places" delegate:self];
-    objectLoader.method = RKRequestMethodPOST;
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places/saves" delegate:self];
+    objectLoader.method = RKRequestMethodGET;
     objectLoader.params = params;
     [objectLoader send];
     
     return objectLoader;
+}
+
+- (RKObjectLoader *)recommendsForPerson:(Person *) person
+{
+    return [self recommendsForPerson:person withCount:kDefaultNumFeedItems];
+}
+
+- (RKObjectLoader *)recommendsForPerson:(Person *) person withCount:(NSUInteger)count
+{
+    // Create an object manager and connect core data's persistent store to it
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
+    objectManager.objectStore = objectStore;
+    
+    // Define our author mapping for saved places
+    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    
+    // Define our place mapping
+    RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
+    
+    // Now, connect the two via a save
+    RKManagedObjectMapping *saveMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Save"];
+    [saveMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [saveMapping mapAttributes:@"timestamp", nil];
+    
+    [saveMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
+    [saveMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    
+    // We expect to find the place entity inside of a dictionary keyed "saved"
+    [objectManager.mappingProvider setMapping:saveMapping forKeyPath:@"saves"];
+    
+    // Authentication
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.key, @"must_fix",
+                            [NSNumber numberWithInt:count], @"count",nil];
+    
+    // Prepare our object loader to load and map objects from remote server, and send
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places/saves" delegate:self];
+    objectLoader.method = RKRequestMethodGET;
+    objectLoader.params = params;
+    [objectLoader send];
+    
+    return objectLoader;
+}
+
+- (NSDictionary *)placeActionsForPerson:(Person *)person
+{
+    return [self placeActionsForPerson:person withCount:kDefaultNumFeedItems];
+}
+
+- (NSDictionary *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count
+{
+    // Right now, we only have saves and recommends. So make a request for each.
+    RKObjectLoader *savesRequest = [self savesForPerson:person withCount:count];
+    //RKObjectLoader *recommendsRequest = [self recommendsForPerson:person withCount:count];
+    
+    NSDictionary *requests = [[NSDictionary alloc] initWithObjectsAndKeys:
+                              savesRequest, @"saves",nil];
+                              //recommendsRequest, @"recommends", nil];
+    
+    return requests;
 }
 
 - (NSMutableArray *)highlightsForPlace:(Place *)place
