@@ -323,7 +323,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [saveMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
     [saveMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
     
-    // We expect to find the place entity inside of a dictionary keyed "saved"
+    // We expect to find the place entity inside of a dictionary keyed "saves"
     [objectManager.mappingProvider setMapping:saveMapping forKeyPath:@"saves"];
     
     // Authentication
@@ -354,23 +354,27 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
     objectManager.objectStore = objectStore;
     
-    // Define our author mapping for saved places
-    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
-    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    // Define our author mapping for recommended places
+    RKManagedObjectMapping *fromMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [fromMapping mapKeyPath:@"id" toAttribute:@"uid"];
+
+    RKManagedObjectMapping *toMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [toMapping mapKeyPath:@"id" toAttribute:@"uid"];
     
     // Define our place mapping
     RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
     
-    // Now, connect the two via a save
-    RKManagedObjectMapping *saveMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Save"];
+    // Now, connect the two via a recommend
+    RKManagedObjectMapping *saveMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Recommend"];
     [saveMapping mapKeyPath:@"id" toAttribute:@"uid"];
     [saveMapping mapAttributes:@"timestamp", nil];
     
     [saveMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
-    [saveMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    [saveMapping mapKeyPath:@"from" toRelationship:@"from" withMapping:fromMapping];
+    [saveMapping mapKeyPath:@"to" toRelationship:@"to" withMapping:toMapping];
     
-    // We expect to find the place entity inside of a dictionary keyed "saved"
-    [objectManager.mappingProvider setMapping:saveMapping forKeyPath:@"saves"];
+    // We expect to find the place entity inside of a dictionary keyed "recommends"
+    [objectManager.mappingProvider setMapping:saveMapping forKeyPath:@"recommends"];
     
     // Authentication
     // Params are backwards compared to the way 
@@ -380,7 +384,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             [NSNumber numberWithInt:count], @"count",nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places/saves" delegate:self];
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places/recommends" delegate:self];
     objectLoader.method = RKRequestMethodGET;
     objectLoader.params = params;
     [objectLoader send];
