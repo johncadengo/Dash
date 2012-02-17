@@ -356,26 +356,22 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectManager.objectStore = objectStore;
     
     // Define our author mapping for recommended places
-    RKManagedObjectMapping *fromMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
-    [fromMapping mapKeyPath:@"id" toAttribute:@"uid"];
-
-    RKManagedObjectMapping *toMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
-    [toMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
     
     // Define our place mapping
     RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
     
     // Now, connect the two via a recommend
-    RKManagedObjectMapping *saveMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Recommend"];
-    [saveMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    [saveMapping mapAttributes:@"timestamp", nil];
+    RKManagedObjectMapping *recommendMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Recommend"];
+    [recommendMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [recommendMapping mapAttributes:@"timestamp", nil];
     
-    [saveMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
-    [saveMapping mapKeyPath:@"from" toRelationship:@"from" withMapping:fromMapping];
-    [saveMapping mapKeyPath:@"to" toRelationship:@"to" withMapping:toMapping];
+    [recommendMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
+    [recommendMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
     
     // We expect to find the place entity inside of a dictionary keyed "recommends"
-    [objectManager.mappingProvider setMapping:saveMapping forKeyPath:@"recommends"];
+    [objectManager.mappingProvider setMapping:recommendMapping forKeyPath:@"recommends"];
     
     // Authentication
     // Params are backwards compared to the way 
@@ -402,12 +398,13 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 - (NSDictionary *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count
 {
     // Right now, we only have saves and recommends. So make a request for each.
-    RKObjectLoader *savesRequest = [self savesForPerson:person withCount:count];
-    //RKObjectLoader *recommendsRequest = [self recommendsForPerson:person withCount:count];
+    
+    RKObjectLoader *recommendsRequest = [self recommendsForPerson:person withCount:count];
+    //RKObjectLoader *savesRequest = [self savesForPerson:person withCount:count];
     
     NSDictionary *requests = [[NSDictionary alloc] initWithObjectsAndKeys:
-                              savesRequest, [NSNumber numberWithInt:kSaves],nil];
-                              //recommendsRequest, [NSNumber numberWithInt:kRecommends], nil];
+                              //savesRequest, [NSNumber numberWithInt:kSaves],nil];
+                              recommendsRequest, [NSNumber numberWithInt:kRecommends], nil];
     
     return requests;
 }

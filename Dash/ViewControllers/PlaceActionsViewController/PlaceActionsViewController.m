@@ -239,11 +239,11 @@
         [self.feedItems addObjectsFromArray:self.saved];
         
     }
-    //else if (objectLoader == recommendsRequest) {
+    else if (objectLoader == recommendsRequest) {
         // For now, we are only loading saved places
-//        [self.saved addObjectsFromArray:objects];
-//        [self.feedItems addObjectsFromArray:self.saved];
-    //}
+        [self.saved addObjectsFromArray:objects];
+        [self.feedItems addObjectsFromArray:self.saved];
+    }
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self hideVisibleBackView:NO];

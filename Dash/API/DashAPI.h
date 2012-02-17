@@ -26,6 +26,7 @@
 #import "PlacePhoto.h"
 
 #import "Save.h"
+#import "Recommend.h"
 
 #pragma - Enum constants
 // Some defaults

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Action" representedClassName="Action" isAbstract="YES" parentEntity="Uniqueness" syncable="YES">
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="author" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="actions" inverseEntity="Person" syncable="YES"/>
@@ -59,8 +59,6 @@
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Friendships" inverseName="source" inverseEntity="Friendships" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="party" inverseEntity="Pop" syncable="YES"/>
         <relationship name="profilepic" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PersonPhoto" inverseName="person" inverseEntity="PersonPhoto" syncable="YES"/>
-        <relationship name="recommendedBy" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recommend" inverseName="to" inverseEntity="Recommend" syncable="YES"/>
-        <relationship name="recommendsTo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recommend" inverseName="from" inverseEntity="Recommend" syncable="YES"/>
     </entity>
     <entity name="PersonPhoto" representedClassName="PersonPhoto" parentEntity="Photo" syncable="YES">
         <relationship name="person" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="profilepic" inverseEntity="Person" syncable="YES"/>
@@ -82,7 +80,6 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="place" inverseEntity="PlaceLocation" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlacePhoto" inverseName="place" inverseEntity="PlacePhoto" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="places" inverseEntity="Pop" syncable="YES"/>
-        <relationship name="recommends" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recommend" inverseName="place" inverseEntity="Recommend" syncable="YES"/>
     </entity>
     <entity name="PlaceAction" representedClassName="PlaceAction" isAbstract="YES" parentEntity="Action" syncable="YES">
         <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="actions" inverseEntity="Place" syncable="YES"/>
@@ -104,13 +101,7 @@
     <entity name="Rate" representedClassName="Rate" parentEntity="PlaceAction" syncable="YES">
         <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="Recommend" representedClassName="Recommend" syncable="YES">
-        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="from" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="recommendsTo" inverseEntity="Person" syncable="YES"/>
-        <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="recommends" inverseEntity="Place" syncable="YES"/>
-        <relationship name="to" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="recommendedBy" inverseEntity="Person" syncable="YES"/>
-    </entity>
+    <entity name="Recommend" representedClassName="Recommend" parentEntity="PlaceAction" syncable="YES"/>
     <entity name="Save" representedClassName="Save" parentEntity="PlaceAction" syncable="YES"/>
     <entity name="Uniqueness" representedClassName="Uniqueness" isAbstract="YES" syncable="YES">
         <attribute name="uid" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
