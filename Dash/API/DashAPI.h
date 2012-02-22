@@ -36,10 +36,15 @@ enum {
 };
 
 typedef enum {
-    kSaves = 0,
-    kRecommends = 1,
-    kNumPlaceActionTypes = 2
-} PlaceActionTypes;
+    kPop,
+    kFeed,
+    kHighlights,
+    kAutocomplete,
+    KSearch,
+    kSaves,
+    kRecommends,
+    kNumDashAPIRequestTypes
+} DashAPIRequestType;
 
 #pragma - Class definition
 
@@ -76,7 +81,7 @@ typedef enum {
 
 /** Returns a pop for that location.
  */
-- (RKObjectLoader *)pop:(CLLocation *)location;
+- (void)pop:(CLLocation *)location;
 
 #pragma mark - Feed
 
@@ -114,19 +119,19 @@ typedef enum {
 
 /** Requests the saves that a person has made.
  */ 
-- (RKObjectLoader *)savesForPerson:(Person *)person;
+- (void)savesForPerson:(Person *)person;
 
 /** Requests count number of the saves that a person has made.
  */
-- (RKObjectLoader *)savesForPerson:(Person *)person withCount:(NSUInteger)count;
+- (void)savesForPerson:(Person *)person withCount:(NSUInteger)count;
 
 /** Requests the recommends that a person has made.
  */
-- (RKObjectLoader *)recommendsForPerson:(Person *) person;
+- (void)recommendsForPerson:(Person *) person;
 
 /** Requests count number of the recommends that a person has made.
  */
-- (RKObjectLoader *)recommendsForPerson:(Person *) person withCount:(NSUInteger)count;
+- (void)recommendsForPerson:(Person *) person withCount:(NSUInteger)count;
 
 /** Makes a request for all place actions associated with a specific person: saves, likes, invites, etc.
  
@@ -155,12 +160,12 @@ typedef enum {
 /** Sends a request to autocomplete a query string for a place
  *  Returns a list of suggested names for places
  */
-- (RKRequest *)autocomplete:(NSString *)query;
+- (void)autocomplete:(NSString *)query;
 
 /** Senda a request to query a string for a place and 
  *  unlike autocomplete, it returns places with details
  */
-- (RKObjectLoader *)search:(NSString *)query;
+- (void)search:(NSString *)query;
 
 /* POSTS */
 

@@ -17,7 +17,6 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSString *currentQuery;
-@property (nonatomic, strong) RKRequest *currentSearchRequest; // As opposed to autocomplete request
 
 @property (nonatomic, strong) MBProgressHUD *hud;
 

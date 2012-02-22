@@ -20,7 +20,6 @@
 @synthesize resultsForAutocompleteQuery = _resultsForAutocompleteQuery;
 @synthesize resultsForSearchQuery = _resultsForSearchQuery;
 @synthesize currentQuery = _currentQuery;
-@synthesize currentSearchRequest = _currentSearchRequest;
 @synthesize hud = _hud;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -279,7 +278,7 @@
         NSString *query = [results objectAtIndex:indexPath.row];
         
         // Send a new request to the api to search and return places with details
-        self. currentSearchRequest = [self.api search:query];
+        [self.api search:query];
         
         // Display it
         [self.tableView reloadData];

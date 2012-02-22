@@ -24,7 +24,6 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize delegate = _delegate;
 
-
 NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 
 #pragma mark - Mappings
@@ -157,7 +156,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 
 #pragma mark - Gets
 
--(RKObjectLoader *) pop:(CLLocation *)location
+-(void) pop:(CLLocation *)location
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -184,7 +183,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.params = params;
     [objectLoader send];
     
-    return objectLoader;
+    
 }
 
 - (NSMutableArray *)feedForLocation:(CLLocation *)location
@@ -296,12 +295,12 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 
 #pragma mark - Place actions
 
-- (RKObjectLoader *)savesForPerson:(Person *)person
+- (void)savesForPerson:(Person *)person
 {
     return [self savesForPerson:person withCount:kDefaultNumFeedItems];
 }
 
-- (RKObjectLoader *)savesForPerson:(Person *)person withCount:(NSUInteger)count
+- (void)savesForPerson:(Person *)person withCount:(NSUInteger)count
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -334,21 +333,21 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             [NSNumber numberWithInt:count], @"count",nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places/saves" delegate:self];
+    RKObjectLoader *objectLoader= [objectManager objectLoaderWithResourcePath:@"places/saves" delegate:self];
     objectLoader.method = RKRequestMethodGET;
     objectLoader.params = params;
     objectLoader.userData = [NSNumber numberWithInt:kSaves];
     [objectLoader send];
     
-    return objectLoader;
+    
 }
 
-- (RKObjectLoader *)recommendsForPerson:(Person *) person
+- (void)recommendsForPerson:(Person *) person
 {
     return [self recommendsForPerson:person withCount:kDefaultNumFeedItems];
 }
 
-- (RKObjectLoader *)recommendsForPerson:(Person *) person withCount:(NSUInteger)count
+- (void)recommendsForPerson:(Person *) person withCount:(NSUInteger)count
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -387,7 +386,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.userData = [NSNumber numberWithInt:kRecommends];
     [objectLoader send];
     
-    return objectLoader;
+    
 }
 
 - (NSDictionary *)placeActionsForPerson:(Person *)person
@@ -399,14 +398,15 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 {
     // Right now, we only have saves and recommends. So make a request for each.
     
-    RKObjectLoader *recommendsRequest = [self recommendsForPerson:person withCount:count];
-    //RKObjectLoader *savesRequest = [self savesForPerson:person withCount:count];
+    // TODO: Cannot for the life of me figure out why both calls can't be made at the same time.
+    [self recommendsForPerson:person withCount:count];
+    //[self savesForPerson:person withCount:count];
     
-    NSDictionary *requests = [[NSDictionary alloc] initWithObjectsAndKeys:
-                              //savesRequest, [NSNumber numberWithInt:kSaves],nil];
-                              recommendsRequest, [NSNumber numberWithInt:kRecommends], nil];
+    //NSDictionary *requests = [[NSDictionary alloc] initWithObjectsAndKeys:
+    //                          savesRequest, [NSNumber numberWithInt:kSaves],
+    //                          recommendsRequest, [NSNumber numberWithInt:kRecommends], nil];
     
-    return requests;
+    return nil;
 }
 
 - (NSMutableArray *)highlightsForPlace:(Place *)place
@@ -437,7 +437,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     return [[RKClient sharedClient] get:@"/search/autocomplete" queryParams:params delegate:self.delegate];
 }
 
-- (RKObjectLoader *)search:(NSString *)query
+- (void)search:(NSString *)query
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -464,7 +464,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.params = params;
     [objectLoader send];
                             
-    return objectLoader;    
+        
 }
 
 #pragma mark - Posts

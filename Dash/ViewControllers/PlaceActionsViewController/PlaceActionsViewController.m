@@ -279,7 +279,8 @@
 - (void)refreshFeed
 {
     // Make a call to the api to request the feed
-    self.requests = [NSDictionary dictionaryWithDictionary:[self.api placeActionsForPerson:nil]];
+    //self.requests = [NSDictionary dictionaryWithDictionary:[self.api placeActionsForPerson:nil]];
+    [self.api placeActionsForPerson:nil];
 }
 
 #pragma mark -
