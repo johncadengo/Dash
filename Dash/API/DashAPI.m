@@ -182,8 +182,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
-    
-    
 }
 
 - (NSMutableArray *)feedForLocation:(CLLocation *)location
@@ -268,7 +266,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
-    
 }
 
 - (NSMutableArray *)commentsForHighlight:(Highlight *)highlight
@@ -305,7 +302,9 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
-    objectManager.objectStore = objectStore;
+    if (!objectManager.objectStore) {
+        objectManager.objectStore = objectStore;
+    }
     
     // Define our author mapping for saved places
     RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
@@ -338,8 +337,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.params = params;
     objectLoader.userData = [NSNumber numberWithInt:kSaves];
     [objectLoader send];
-    
-    
 }
 
 - (void)recommendsForPerson:(Person *) person
@@ -352,7 +349,9 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
-    objectManager.objectStore = objectStore;
+    if (!objectManager.objectStore) {
+        objectManager.objectStore = objectStore;
+    }
     
     // Define our author mapping for recommended places
     RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
@@ -400,7 +399,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     // TODO: Cannot for the life of me figure out why both calls can't be made at the same time.
     [self recommendsForPerson:person withCount:count];
-    //[self savesForPerson:person withCount:count];
+    [self savesForPerson:person withCount:count];
     
     //NSDictionary *requests = [[NSDictionary alloc] initWithObjectsAndKeys:
     //                          savesRequest, [NSNumber numberWithInt:kSaves],
