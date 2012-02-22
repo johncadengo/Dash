@@ -79,6 +79,13 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     if (self) {
         self.managedObjectContext = context;
+        
+        // Set up object store of the shared object manager
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        if (!objectManager.objectStore) {
+            RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
+            objectManager.objectStore = objectStore;
+        }
     }
     
     return self;
@@ -160,8 +167,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
-    objectManager.objectStore = objectStore;
     
     RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
     
@@ -208,8 +213,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
-    objectManager.objectStore = objectStore;
     
     // Define our category mapping
     RKManagedObjectMapping *categoryMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Category"];
@@ -301,10 +304,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
-    if (!objectManager.objectStore) {
-        objectManager.objectStore = objectStore;
-    }
     
     // Define our author mapping for saved places
     RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
@@ -348,10 +347,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
-    if (!objectManager.objectStore) {
-        objectManager.objectStore = objectStore;
-    }
     
     // Define our author mapping for recommended places
     RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
@@ -440,8 +435,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"Dash.sqlite"];
-    objectManager.objectStore = objectStore;
     
     RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
     
