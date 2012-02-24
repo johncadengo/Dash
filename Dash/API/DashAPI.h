@@ -88,17 +88,17 @@ typedef enum {
 /** Returns a feed of news items nearby.
     Defaults count and person.
  */
-- (NSMutableArray *)feedForLocation:(CLLocation *)location;
+- (void)feedForLocation:(CLLocation *)location;
 
 /** Returns count number of news items nearby.
     Defaults person.
  */
-//- (NSMutableArray *)feedForLocation:(CLLocation *)location WithCount:(NSUInteger)count;
+- (void)feedForLocation:(CLLocation *)location WithCount:(NSUInteger)count;
 
 /** Returns a feed of news items for a specific person.
     Defaults count.
  */
-- (NSMutableArray *)feedForPerson:(Person *)person;
+- (void)feedForPerson:(Person *)person;
 
 /** Returns count number of news items for a specific person.
     Defaults nothing.

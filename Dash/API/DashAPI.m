@@ -189,24 +189,14 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [objectLoader send];
 }
 
-- (NSMutableArray *)feedForLocation:(CLLocation *)location
+- (void)feedForLocation:(CLLocation *)location
 {
-    // -1 to differentiate between location and person, for now. since im always passing nil haha
-    return [self feedForPerson:nil];
+    [self feedForPerson:nil];
 }
 
-- (NSMutableArray *)feedForPerson:(Person *)person
+- (void)feedForPerson:(Person *)person
 {
-    Highlight *highlight;
-    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:kDefaultNumFeedItems];
-    
-    for (int i = 0; i < kDefaultNumFeedItems; ++i) {
-        highlight = [self person:nil addsHighlight:[NSString randomStringOfMaxLength:140] toPlace:nil withPhoto:nil];
-        
-        [feed addObject:highlight];
-    }
-    
-    return feed;
+    [self feedForPerson:person withCount:kDefaultNumFeedItems];
 }
 
 - (void)feedForPerson:(Person *)person withCount:(NSUInteger)count
