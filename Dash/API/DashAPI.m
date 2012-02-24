@@ -246,7 +246,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [commentMapping mapKeyPathsToAttributes:@"comment/text", @"comment/timestamp", nil];
     
     [commentMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
-    [commentMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    //[commentMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
     
     // Authentication
     // Params are backwards compared to the way 
