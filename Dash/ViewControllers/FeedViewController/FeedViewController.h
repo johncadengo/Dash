@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import "MBProgressHUD.h"
 #import "ActionViewCell.h"
 #import "ListModeCell.h"
 #import "EGORefreshTableHeaderView.h"
+
 
 #pragma - Enum constants
 /** There are two sections: 
@@ -34,13 +37,14 @@ enum {
 @class ListModeCell;
 @class ActionViewCell;
 
-@interface FeedViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate,EGORefreshTableHeaderDelegate, ListModeCellDelegate, ActionVIewCellDelegate>
+@interface FeedViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate,EGORefreshTableHeaderDelegate, ListModeCellDelegate, ActionVIewCellDelegate, MBProgressHUDDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic) ListMode listMode;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSMutableArray *feedItems;
-@property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;;
+@property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 /** Dynamically generate the row height for feed item cells
  */
@@ -49,5 +53,6 @@ enum {
 - (void)setListMode:(ListMode)listMode;
 - (ListModeCell *)listModeCellForTableView:(UITableView *)tableView;
 - (ActionViewCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+
 
 @end

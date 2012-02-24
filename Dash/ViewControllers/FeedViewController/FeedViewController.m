@@ -343,28 +343,11 @@
 
 }
 
-#pragma mark - ListModeCellDelegate
-/** Overriding synthesized method to make sure that when this value is changed we call reloadData
-    Shouldn't be a problem since ListMode is just an int.
- */
-- (void)setListMode:(ListMode)newListMode
+
+#pragma mark - RKObjectLoaderDelegate methods
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
-    _listMode = newListMode;
-    NSMutableArray *newFeed;
-    
-    switch (self.listMode) {
-        case kFriendsListMode:
-            newFeed = [self.api feedForLocation:nil];
-            break;
-        case kNearbyListMode:
-            newFeed = [self.api feedForPerson:nil];
-            break;
-        default:
-            NSAssert(NO, @"Tried to change to a ListMode that does not exist: %d", newListMode);
-            break; 
-    }
-    
-    self.feedItems = newFeed;
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self hideVisibleBackView:NO];
@@ -372,6 +355,32 @@
     
     // TODO: Gotta do this asynchronously 
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
+{
+    NSLog(@"Encountered an error: %@", error);
+}
+
+#pragma mark - ListModeCellDelegate
+/** Overriding synthesized method to make sure that when this value is changed we call reloadData
+    Shouldn't be a problem since ListMode is just an int.
+ */
+- (void)setListMode:(ListMode)newListMode
+{
+    _listMode = newListMode;
+
+    switch (self.listMode) {
+        case kFriendsListMode:
+            [self.api feedForLocation:nil];
+            break;
+        case kNearbyListMode:
+            [self.api feedForPerson:nil];
+            break;
+        default:
+            NSAssert(NO, @"Tried to change to a ListMode that does not exist: %d", newListMode);
+            break; 
+    }
 }
 
 #pragma mark - FeedItemCellDelegate
