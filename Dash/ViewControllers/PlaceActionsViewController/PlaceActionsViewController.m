@@ -229,17 +229,16 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
     // We currently have two types of place actions coming in: saves, recommends
-    // Process each accordingly
-    RKObjectLoader *savesRequest = [self.requests objectForKey:[NSNumber numberWithInt:kSaves]];
-    RKObjectLoader *recommendsRequest = [self.requests objectForKey:[NSNumber numberWithInt:kRecommends]];
+    // Figure out which kind it is based on the userData passed.
+    NSNumber *requestType = objectLoader.userData;
     
-    if (objectLoader==savesRequest) {
+    if ([requestType isEqualToNumber:[NSNumber numberWithInt:kSaves]]) {
         // For now, we are only loading saved places
         [self.saved addObjectsFromArray:objects];
         [self.feedItems addObjectsFromArray:self.saved];
         
     }
-    else if (objectLoader == recommendsRequest) {
+    else if ([requestType isEqualToNumber:[NSNumber numberWithInt:kRecommends]]) {
         // For now, we are only loading saved places
         [self.saved addObjectsFromArray:objects];
         [self.feedItems addObjectsFromArray:self.saved];
