@@ -223,7 +223,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     // Map the relationships
     [likeMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
-    [likeMapping mapKeyPath:@"highlight/hightlights" toRelationship:@"action" withMapping:highlightMapping];
+    [likeMapping mapKeyPath:@"highlight" toRelationship:@"action" withMapping:highlightMapping];
     
     // We expect to find the place entity inside of a dictionary keyed "saves"
     [objectManager.mappingProvider setMapping:likeMapping forKeyPath:@"news_items"];
