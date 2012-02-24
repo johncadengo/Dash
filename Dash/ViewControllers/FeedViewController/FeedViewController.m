@@ -48,7 +48,7 @@
     [super viewDidLoad];
     
     // Connect to our API.
-    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
     // Initialize our tableview's array which will represent its model.
     [self setListMode:kFriendsListMode];
@@ -348,12 +348,13 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
+    NSLog(@"%@", objects);
+    //self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self hideVisibleBackView:NO];
     [self.tableView reloadData];
     
-    // TODO: Gotta do this asynchronously 
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 

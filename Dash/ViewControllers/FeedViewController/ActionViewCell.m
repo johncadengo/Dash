@@ -162,13 +162,13 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 - (void)setWithAction:(Action*)action
 {
-    NSString *iconPath = [[[action author] profilepic] localpath];
+    //NSString *iconPath = [[[action author] profilepic] localpath];
     CGSize size = CGSizeMake(57.0f, 57.0f);
     
     self.name = [[action author] name];
     self.blurb = [action description];
     self.timestamp = [action relativeTimestamp];
-    self.image = [[UIImage imageNamed:iconPath] imageCroppedToFitSize:size];
+    //self.image = [[UIImage imageNamed:iconPath] imageCroppedToFitSize:size];
     
     [self setNeedsDisplay];
 }
