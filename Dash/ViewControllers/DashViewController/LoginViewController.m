@@ -41,14 +41,23 @@
 {
     // Create our self.view
     //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
-    UIView *view = [[UIView alloc] init];//WithFrame:frame];
+    UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     view.backgroundColor = [UIColor whiteColor];
     
     // Add welcome text
-    CGRect welcomeFrame = CGRectMake(0.0f, 0.0f, 320.0f, 50.0f);
+    CGRect welcomeFrame = CGRectMake(20.0f, 10.0f, 280.0f, 20.0f);
     self.welcome = [[UILabel alloc] initWithFrame:welcomeFrame];
-    self.welcome.text = @"Welcome to Dash";
+    self.welcome.text = kWelcomeText;
     [view addSubview:self.welcome];
+    
+    CGRect introFrame = CGRectMake(20.0f, 30.0f, 280.0f, 100.0f);
+    self.introduction = [[UILabel alloc] initWithFrame:introFrame];
+    self.introduction.text = kIntroText;
+    self.introduction.lineBreakMode = UILineBreakModeWordWrap;
+    self.introduction.numberOfLines = 0;
+    self.introduction.font = [UIFont systemFontOfSize:12.0f];
+    
+    [view addSubview:self.introduction];
     
     // Finally, set our self.view
     // NOTE: Do not get self.view in loadView

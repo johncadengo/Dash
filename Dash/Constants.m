@@ -8,6 +8,12 @@
 
 #import "Constants.h"
 
+#pragma mark - Welcome Text
+NSString * const kWelcomeText = @"Welcome to Dash"; 
+NSString * const kIntroText = @"Your very own personal restaurant consultant. Let's get started with creating an account so that we can make smart, customized suggestions for you, or you can simply make one later.";
+
+#pragma mark - Identifiers
+
 NSString * const kMyFirstConstant = @"FirstConstant";
 NSString * const kFeedItemCellIdentifier = @"com.BoxOutDev.Dash.FeedItemCell";
 NSString * const kListModeCellIdentifier = @"com.BoxOutDev.Dash.ListModeCell";
@@ -20,6 +26,8 @@ NSString * const kListModeTwo = @"Nearby";
 NSString * const kPlacesPlaceCellIdentifier = @"com.BoxOutDev.Dash.PlacesPlaceCell";
 NSString * const kPlaceHeaderCellIdentifier = @"com.BoxOutDev.Dash.PlaceHeaderCell";
 NSString * const kPlaceMoreInfoCellIdentifier = @"com.BoxOutDev.Dash.PlaceMoreInfoCell";
+
+#pragma mark - Segue Identifiers
 
 NSString * const kShowDashViewControllerSegueIdentifier = @"ShowDashViewController";
 NSString * const kShowPlaceActionDetailsSegueIdentifier = @"ShowPlaceActionDetails";

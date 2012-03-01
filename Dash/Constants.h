@@ -6,6 +6,9 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+extern NSString * const kWelcomeText;
+extern NSString * const kIntroText;
+
 extern NSString * const kMyFirstConstant;
 extern NSString * const kFeedItemCellIdentifier;
 extern NSString * const kListModeCellIdentifier;
