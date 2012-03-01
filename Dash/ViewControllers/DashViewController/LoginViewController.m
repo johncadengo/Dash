@@ -13,6 +13,9 @@
 @implementation LoginViewController
 
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize welcome = _welcome;
+@synthesize introduction = _introduction;
+@synthesize skip = _skip;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,12 +36,25 @@
 
 #pragma mark - View lifecycle
 
-/*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
+    // Create our self.view
+    //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
+    UIView *view = [[UIView alloc] init];//WithFrame:frame];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    // Add welcome text
+    CGRect welcomeFrame = CGRectMake(0.0f, 0.0f, 320.0f, 50.0f);
+    self.welcome = [[UILabel alloc] initWithFrame:welcomeFrame];
+    self.welcome.text = @"Welcome to Dash";
+    [view addSubview:self.welcome];
+    
+    // Finally, set our self.view
+    // NOTE: Do not get self.view in loadView
+    self.view = view;
 }
-*/
+
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -48,7 +64,7 @@
 
     // TODO: Some logic in here to check whether we are logged in or not
     // For now, segue immediately to dash view controller
-    [self showDash];
+    //[self showDash];
 }
 
 
