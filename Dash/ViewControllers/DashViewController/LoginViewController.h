@@ -10,4 +10,8 @@
 
 @interface LoginViewController : UIViewController
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+- (void)showDash;
+
 @end

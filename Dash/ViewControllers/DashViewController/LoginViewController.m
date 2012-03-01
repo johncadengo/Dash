@@ -7,8 +7,12 @@
 //
 
 #import "LoginViewController.h"
+#import "DashViewController.h"
+#import "Constants.h"
 
 @implementation LoginViewController
+
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,13 +40,17 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    // TODO: Some logic in here to check whether we are logged in or not
+    // For now, segue immediately to dash view controller
+    [self showDash];
 }
-*/
+
 
 - (void)viewDidUnload
 {
@@ -55,6 +63,26 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Show dash
+
+- (void)showDash
+{
+    [self performSegueWithIdentifier:kShowDashViewControllerSegueIdentifier sender:nil];
+}
+
+
+#pragma mark - Storyboard Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kShowDashViewControllerSegueIdentifier]) {
+        DashViewController *dashViewController = (DashViewController *)[segue destinationViewController];
+        
+        // Make sure it has a managed object context
+        [dashViewController setManagedObjectContext:self.managedObjectContext];
+    }
 }
 
 @end
