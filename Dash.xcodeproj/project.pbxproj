@@ -112,6 +112,7 @@
 		67EDA903146C8D6E00AD3625 /* JCSpotlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA902146C8D6D00AD3625 /* JCSpotlightViewController.m */; };
 		67EDA906146C8D8300AD3625 /* JCGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA905146C8D8200AD3625 /* JCGalleryViewController.m */; };
 		67EDA909146C8DF700AD3625 /* JCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA908146C8DF700AD3625 /* JCViewController.m */; };
+		67F20E911500357D0026CF4A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F20E901500357D0026CF4A /* LoginViewController.m */; };
 		67F22FCC145F09D40010A09F /* ActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FCB145F09D40010A09F /* ActionViewCell.m */; };
 		67F22FE4145F0DDF0010A09F /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE3145F0DDF0010A09F /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FE7145F0DE50010A09F /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE6145F0DE50010A09F /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -395,6 +396,8 @@
 		67EDA905146C8D8200AD3625 /* JCGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCGalleryViewController.m; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCGalleryViewController.m; sourceTree = "<group>"; };
 		67EDA907146C8DF600AD3625 /* JCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = JCViewController.h; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCViewController.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		67EDA908146C8DF700AD3625 /* JCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = JCViewController.m; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCViewController.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		67F20E8F1500357D0026CF4A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Dash/ViewControllers/DashViewController/LoginViewController.h; sourceTree = "<group>"; };
+		67F20E901500357D0026CF4A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Dash/ViewControllers/DashViewController/LoginViewController.m; sourceTree = "<group>"; };
 		67F22FCA145F09D40010A09F /* ActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionViewCell.h; path = Dash/ViewControllers/FeedViewController/ActionViewCell.h; sourceTree = "<group>"; };
 		67F22FCB145F09D40010A09F /* ActionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionViewCell.m; path = Dash/ViewControllers/FeedViewController/ActionViewCell.m; sourceTree = "<group>"; };
 		67F22FE2145F0DDF0010A09F /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOCache.h; path = Helpers/EGOImageLoading/EGOCache/EGOCache.h; sourceTree = "<group>"; };
@@ -782,6 +785,8 @@
 				67A8977314C782DD00494273 /* FilterViewSegue.m */,
 				67A8977514C7850B00494273 /* FilterView.h */,
 				67A8977614C7850B00494273 /* FilterView.m */,
+				67F20E8F1500357D0026CF4A /* LoginViewController.h */,
+				67F20E901500357D0026CF4A /* LoginViewController.m */,
 			);
 			name = DashViewController;
 			sourceTree = "<group>";
@@ -1322,6 +1327,7 @@
 				67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */,
 				67A8977714C7850B00494273 /* FilterView.m in Sources */,
 				67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */,
+				67F20E911500357D0026CF4A /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
