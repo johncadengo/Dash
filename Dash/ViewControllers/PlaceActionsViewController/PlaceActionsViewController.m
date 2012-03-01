@@ -232,6 +232,8 @@
     // Figure out which kind it is based on the userData passed.
     NSNumber *requestType = objectLoader.userData;
     
+    NSLog(@"%@", objects);
+    
     if ([requestType isEqualToNumber:[NSNumber numberWithInt:kSaves]]) {
         // For now, we are only loading saved places
         [self.saved addObjectsFromArray:objects];
