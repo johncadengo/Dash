@@ -12,8 +12,11 @@
 
 @property (nonatomic, strong) UILabel *welcome;
 @property (nonatomic, strong) UILabel *introduction;
+@property (nonatomic, strong) UIButton *fbconnect;
 @property (nonatomic, strong) UIButton *skip;
 
+
+- (void)loginWithConnect:(id) sender;
 - (void)showDash:(id) sender;
 
 @end

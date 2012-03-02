@@ -15,6 +15,7 @@
 @synthesize welcome = _welcome;
 @synthesize introduction = _introduction;
 @synthesize skip = _skip;
+@synthesize fbconnect = _fbconnect;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,13 +59,22 @@
     self.introduction.font = [UIFont systemFontOfSize:12.0f];
     [view addSubview:self.introduction];
     
+    // Fb Connect
+    self.fbconnect = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.fbconnect addTarget:self 
+                       action:@selector(loginWithConnect:) 
+             forControlEvents:UIControlEventTouchUpInside];
+    [self.fbconnect setTitle:@"Login with Facebook" forState:UIControlStateNormal];
+    self.fbconnect.frame = CGRectMake(20.0f, 340.0f, 280.0f, 40.0f);
+    [view addSubview:self.fbconnect];
+    
     // Skip now button
     self.skip = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.skip addTarget:self 
                action:@selector(showDash:)
      forControlEvents:UIControlEventTouchUpInside];
     [self.skip setTitle:@"Skip this for now" forState:UIControlStateNormal];
-    self.skip.frame = CGRectMake(20.0f, 300.0f, 280.0f, 40.0f);
+    self.skip.frame = CGRectMake(20.0f, 390.0f, 280.0f, 40.0f);
     [view addSubview:self.skip];
     
     // Finally, set our self.view
@@ -93,6 +103,12 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Login logic
+- (void)loginWithConnect:(id) sender
+{
+    NSLog(@"FB Connect");
 }
 
 #pragma mark - Show dash
