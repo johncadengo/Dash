@@ -44,20 +44,29 @@
     UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     view.backgroundColor = [UIColor whiteColor];
     
-    // Add welcome text
+    // Add the welcoming
     CGRect welcomeFrame = CGRectMake(20.0f, 10.0f, 280.0f, 20.0f);
     self.welcome = [[UILabel alloc] initWithFrame:welcomeFrame];
     self.welcome.text = kWelcomeText;
     [view addSubview:self.welcome];
     
+    // Add the introduction
     CGRect introFrame = CGRectMake(20.0f, 30.0f, 280.0f, 100.0f);
     self.introduction = [[UILabel alloc] initWithFrame:introFrame];
     self.introduction.text = kIntroText;
     self.introduction.lineBreakMode = UILineBreakModeWordWrap;
     self.introduction.numberOfLines = 0;
     self.introduction.font = [UIFont systemFontOfSize:12.0f];
-    
     [view addSubview:self.introduction];
+    
+    // Skip now button
+    self.skip = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.skip addTarget:self 
+               action:@selector(showDash:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [self.skip setTitle:@"Skip this for now" forState:UIControlStateNormal];
+    self.skip.frame = CGRectMake(20.0f, 300.0f, 280.0f, 40.0f);
+    [view addSubview:self.skip];
     
     // Finally, set our self.view
     // NOTE: Do not get self.view in loadView
@@ -92,7 +101,7 @@
 
 #pragma mark - Show dash
 
-- (void)showDash
+- (void)showDash:(id) sender
 {
     [self performSegueWithIdentifier:kShowDashViewControllerSegueIdentifier sender:nil];
 }

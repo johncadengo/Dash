@@ -16,6 +16,6 @@
 @property (nonatomic, strong) UILabel *introduction;
 @property (nonatomic, strong) UIButton *skip;
 
-- (void)showDash;
+- (void)showDash:(id) sender;
 
 @end
