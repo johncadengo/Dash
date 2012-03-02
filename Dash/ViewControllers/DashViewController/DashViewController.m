@@ -190,6 +190,10 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     
     // Hide our navigation bar
     [self.navigationController setNavigationBarHidden:YES];
+    
+    // TODO: Some logic in here to check whether we are logged in or not
+    // For now, segue immediately to the login view controller
+    [self showLogin];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -442,6 +446,14 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     else if ([[segue identifier] isEqualToString:kPresentFilterViewController]) {
         NSLog(@"Presenting filter view controller");
     }
+    else if ([[segue identifier] isEqualToString:kShowLoginViewControllerSegueIdentifier]) {
+        NSLog(@"Show login view controller");
+    }
+}
+
+- (void)showLogin 
+{
+    [self performSegueWithIdentifier:kShowLoginViewControllerSegueIdentifier sender:nil];
 }
 
 #pragma mark - RKObjectLoaderDelegate methods

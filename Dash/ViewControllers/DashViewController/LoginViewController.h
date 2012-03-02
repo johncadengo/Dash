@@ -10,8 +10,6 @@
 
 @interface LoginViewController : UIViewController
 
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-
 @property (nonatomic, strong) UILabel *welcome;
 @property (nonatomic, strong) UILabel *introduction;
 @property (nonatomic, strong) UIButton *skip;

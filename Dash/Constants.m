@@ -29,7 +29,7 @@ NSString * const kPlaceMoreInfoCellIdentifier = @"com.BoxOutDev.Dash.PlaceMoreIn
 
 #pragma mark - Segue Identifiers
 
-NSString * const kShowDashViewControllerSegueIdentifier = @"ShowDashViewController";
+NSString * const kShowLoginViewControllerSegueIdentifier = @"ShowLoginViewController";
 NSString * const kShowPlaceActionDetailsSegueIdentifier = @"ShowPlaceActionDetails";
 NSString * const kShowFeedItemDetailsSegueIdentifier = @"ShowFeedItemDetails";
 NSString * const kShowDashViewDetailsSegueIdentifier = @"ShowDashViewDetails";

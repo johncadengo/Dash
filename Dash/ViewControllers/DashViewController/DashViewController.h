@@ -73,4 +73,8 @@ typedef enum {
 - (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer;
 - (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer;
 
+/**
+ */
+- (void)showLogin;
+
 @end

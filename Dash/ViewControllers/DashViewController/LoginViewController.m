@@ -12,7 +12,6 @@
 
 @implementation LoginViewController
 
-@synthesize managedObjectContext = _managedObjectContext;
 @synthesize welcome = _welcome;
 @synthesize introduction = _introduction;
 @synthesize skip = _skip;
@@ -80,9 +79,6 @@
 {
     [super viewDidLoad];
 
-    // TODO: Some logic in here to check whether we are logged in or not
-    // For now, segue immediately to dash view controller
-    //[self showDash];
 }
 
 
@@ -103,20 +99,7 @@
 
 - (void)showDash:(id) sender
 {
-    [self performSegueWithIdentifier:kShowDashViewControllerSegueIdentifier sender:nil];
-}
-
-
-#pragma mark - Storyboard Segue
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:kShowDashViewControllerSegueIdentifier]) {
-        DashViewController *dashViewController = (DashViewController *)[segue destinationViewController];
-        
-        // Make sure it has a managed object context
-        [dashViewController setManagedObjectContext:self.managedObjectContext];
-    }
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
