@@ -12,6 +12,7 @@
 		6715E404145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E3FF145F2D410069D5A8 /* MGImageUtilitiesAppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E403145F2D410069D5A8 /* UIImage+Tint.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6722A4401507F01A007B6838 /* Stats.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A43F1507F01A007B6838 /* Stats.m */; };
 		6729D056147C1E3B0046C8DB /* PlaceActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */; };
 		6729D057147C1E3B0046C8DB /* PlaceActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D055147C1E3B0046C8DB /* PlaceActionViewCell.m */; };
 		672C2C731459E9A4006A1D6B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6C1459E9A4006A1D6B /* Category.m */; };
@@ -226,6 +227,8 @@
 		6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ProportionalFill.m"; path = "Helpers/MGImageUtilities/Classes/UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		6715E402145F2D410069D5A8 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Tint.h"; path = "Helpers/MGImageUtilities/Classes/UIImage+Tint.h"; sourceTree = "<group>"; };
 		6715E403145F2D410069D5A8 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Tint.m"; path = "Helpers/MGImageUtilities/Classes/UIImage+Tint.m"; sourceTree = "<group>"; };
+		6722A43E1507F01A007B6838 /* Stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stats.h; path = "Data Model/Person/Stats.h"; sourceTree = "<group>"; };
+		6722A43F1507F01A007B6838 /* Stats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stats.m; path = "Data Model/Person/Stats.m"; sourceTree = "<group>"; };
 		6729D052147C1E3B0046C8DB /* PlaceActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionsViewController.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.h; sourceTree = "<group>"; };
 		6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceActionsViewController.m; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.m; sourceTree = "<group>"; };
 		6729D054147C1E3B0046C8DB /* PlaceActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionViewCell.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionViewCell.h; sourceTree = "<group>"; };
@@ -713,6 +716,8 @@
 		678882981459D5CF00F7E826 /* Person */ = {
 			isa = PBXGroup;
 			children = (
+				6722A43E1507F01A007B6838 /* Stats.h */,
+				6722A43F1507F01A007B6838 /* Stats.m */,
 				672C2C781459E9B1006A1D6B /* Friendships.h */,
 				672C2C791459E9B1006A1D6B /* Friendships.m */,
 				672C2C7A1459E9B1006A1D6B /* Person.h */,
@@ -1328,6 +1333,7 @@
 				67A8977714C7850B00494273 /* FilterView.m in Sources */,
 				67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */,
 				67F20E911500357D0026CF4A /* LoginViewController.m in Sources */,
+				6722A4401507F01A007B6838 /* Stats.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

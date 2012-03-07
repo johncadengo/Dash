@@ -59,6 +59,7 @@
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Friendships" inverseName="source" inverseEntity="Friendships" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="party" inverseEntity="Pop" syncable="YES"/>
         <relationship name="profilepic" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PersonPhoto" inverseName="person" inverseEntity="PersonPhoto" syncable="YES"/>
+        <relationship name="stats" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Stats" inverseName="person" inverseEntity="Stats" syncable="YES"/>
     </entity>
     <entity name="PersonPhoto" representedClassName="PersonPhoto" parentEntity="Photo" syncable="YES">
         <relationship name="person" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="profilepic" inverseEntity="Person" syncable="YES"/>
@@ -103,6 +104,12 @@
     </entity>
     <entity name="Recommend" representedClassName="Recommend" parentEntity="PlaceAction" syncable="YES"/>
     <entity name="Save" representedClassName="Save" parentEntity="PlaceAction" syncable="YES"/>
+    <entity name="Stats" representedClassName="Stats" syncable="YES">
+        <attribute name="highlights" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="recommends" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="saves" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="person" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="stats" inverseEntity="Person" syncable="YES"/>
+    </entity>
     <entity name="Uniqueness" representedClassName="Uniqueness" isAbstract="YES" syncable="YES">
         <attribute name="uid" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
@@ -121,7 +128,7 @@
         <element name="Hours" positionX="-216" positionY="-126" width="128" height="105"/>
         <element name="Like" positionX="360" positionY="-81" width="128" height="60"/>
         <element name="Location" positionX="-315" positionY="-9" width="128" height="135"/>
-        <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
+        <element name="Person" positionX="250" positionY="255" width="128" height="150"/>
         <element name="PersonPhoto" positionX="250" positionY="174" width="128" height="60"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
         <element name="Place" positionX="-72" positionY="-36" width="128" height="210"/>
@@ -131,9 +138,10 @@
         <element name="Pop" positionX="-243" positionY="285" width="128" height="90"/>
         <element name="PopLocation" positionX="-243" positionY="162" width="128" height="60"/>
         <element name="Rate" positionX="-72" positionY="288" width="128" height="60"/>
+        <element name="Recommend" positionX="117" positionY="495" width="128" height="120"/>
         <element name="Save" positionX="-72" positionY="180" width="128" height="45"/>
         <element name="Uniqueness" positionX="99" positionY="-225" width="128" height="60"/>
         <element name="Visit" positionX="-72" positionY="234" width="128" height="45"/>
-        <element name="Recommend" positionX="117" positionY="495" width="128" height="120"/>
+        <element name="Stats" positionX="405" positionY="351" width="128" height="105"/>
     </elements>
 </model>
