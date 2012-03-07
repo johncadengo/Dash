@@ -43,6 +43,7 @@ typedef enum {
     KSearch,
     kSaves,
     kRecommends,
+    kProfile,
     kNumDashAPIRequestTypes
 } DashAPIRequestType;
 

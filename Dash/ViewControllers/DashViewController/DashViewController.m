@@ -190,15 +190,20 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     
     // Hide our navigation bar
     [self.navigationController setNavigationBarHidden:YES];
-    
-    // TODO: Some logic in here to check whether we are logged in or not
-    // For now, segue immediately to the login view controller
-    [self showLogin];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // TODO: Some logic in here to check whether we are logged in or not
+    // For now, segue immediately to the login view controller
+    [self showLogin];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

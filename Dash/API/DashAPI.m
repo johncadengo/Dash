@@ -441,7 +441,37 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 
 - (void)profileForPerson:(Person *)person
 {
+    // Create an object manager and connect core data's persistent store to it
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
+    // Define our author mapping for saved places
+    RKManagedObjectMapping *personMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [personMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [personMapping mapAttributes:@"email", @"name", @"fb_uid", nil];
+    
+    // Define our stats mapping
+    RKManagedObjectMapping *statsMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Stats"];
+    [statsMapping mapAttributes:@"highlights", @"saves", @"recommends", nil];
+    
+    [personMapping mapKeyPath:@"stats" toRelationship:@"stats" withMapping:statsMapping];
+    
+    // We expect to find the place entity inside of a dictionary keyed "saves"
+    [objectManager.mappingProvider setMapping:personMapping forKeyPath:@"profiles"];
+    
+    // Authentication
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
+    // TODO: Paramterize request based on persons' id(s)
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.key, @"must_fix",
+                            @"1", @"id", nil];
+    
+    // Prepare our object loader to load and map objects from remote server, and send
+    RKObjectLoader *objectLoader= [objectManager objectLoaderWithResourcePath:@"people/people" delegate:self];
+    objectLoader.method = RKRequestMethodGET;
+    objectLoader.params = params;
+    objectLoader.userData = [NSNumber numberWithInt:kProfile];
+    [objectLoader send];    
 }
 
 #pragma mark - Posts

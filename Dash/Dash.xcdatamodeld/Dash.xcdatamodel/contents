@@ -54,6 +54,7 @@
     </entity>
     <entity name="Person" representedClassName="Person" parentEntity="Uniqueness" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fb_uid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Action" inverseName="author" inverseEntity="Action" syncable="YES"/>
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Friendships" inverseName="source" inverseEntity="Friendships" syncable="YES"/>
@@ -128,7 +129,7 @@
         <element name="Hours" positionX="-216" positionY="-126" width="128" height="105"/>
         <element name="Like" positionX="360" positionY="-81" width="128" height="60"/>
         <element name="Location" positionX="-315" positionY="-9" width="128" height="135"/>
-        <element name="Person" positionX="250" positionY="255" width="128" height="150"/>
+        <element name="Person" positionX="250" positionY="255" width="128" height="165"/>
         <element name="PersonPhoto" positionX="250" positionY="174" width="128" height="60"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
         <element name="Place" positionX="-72" positionY="-36" width="128" height="210"/>
