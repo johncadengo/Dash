@@ -62,6 +62,9 @@ typedef enum {
  */
 + (RKManagedObjectMapping *)placeMapping;
 
++ (BOOL)skipLogin;
++ (void)setSkipLogin:(BOOL)newValue;
+
 #pragma mark - For scaffolding purposes
 /** Generates a random person
  */

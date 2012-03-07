@@ -19,6 +19,11 @@
 
 @end
 
+// Static class variables
+// Taken from: http://stackoverflow.com/a/1250088/693754
+static BOOL _skipLogin = NO;
+//static Person *currentUser = nil;
+
 @implementation DashAPI
 
 @synthesize managedObjectContext = __managedObjectContext;
@@ -63,6 +68,17 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [placeMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
     
     return placeMapping;
+}
+
+#pragma mark - Class variables
++ (BOOL)skipLogin
+{
+    return _skipLogin;
+}
+
++ (void)setSkipLogin:(BOOL)newValue
+{
+    _skipLogin = newValue;
 }
 
 #pragma mark - Init

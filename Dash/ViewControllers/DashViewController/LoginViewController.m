@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "DashViewController.h"
 #import "Constants.h"
+#import "DashAPI.h"
 
 @implementation LoginViewController
 
@@ -115,6 +116,10 @@
 
 - (void)showDash:(id) sender
 {
+    // Login logic
+    [DashAPI setSkipLogin:YES];
+    
+    // Goodbye!
     [self dismissModalViewControllerAnimated:YES];
 }
 
