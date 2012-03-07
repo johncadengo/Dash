@@ -162,10 +162,21 @@ typedef enum {
  */
 - (void)autocomplete:(NSString *)query;
 
-/** Senda a request to query a string for a place and 
+/** Sends a request to query a string for a place and 
  *  unlike autocomplete, it returns places with details
  */
 - (void)search:(NSString *)query;
+
+#pragma mark - 
+
+/** Gets the profile for the person who is currently logged in
+ */
+- (void)myProfile;
+
+
+/** Get the profile for a person
+ */
+- (void)profileForPerson:(Person *)person;
 
 /* POSTS */
 

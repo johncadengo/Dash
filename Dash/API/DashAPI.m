@@ -427,8 +427,21 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
-                            
-        
+}
+
+#pragma mark -
+
+- (void)myProfile
+{
+    // TODO: Instance variable for currently logged in user?
+    // TODO: Handle login logic?
+    [self profileForPerson:nil];
+}
+
+
+- (void)profileForPerson:(Person *)person
+{
+    
 }
 
 #pragma mark - Posts
