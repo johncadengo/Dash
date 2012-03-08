@@ -72,11 +72,11 @@
                    action:@selector(startDashing:)
          forControlEvents:UIControlEventTouchUpInside];
     [self.start setTitle:@"Start Dashing" forState:UIControlStateNormal];
-    self.start.frame = CGRectMake(20.0f, 150.0f, 280.0f, 40.0f);
+    self.start.frame = CGRectMake(20.0f, 280.0f, 280.0f, 40.0f);
     [view addSubview:self.start];
     
     // Email field
-    self.emailField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 40.0f)];
+    self.emailField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 180.0f, 280.0f, 40.0f)];
     self.emailField.borderStyle = UITextBorderStyleRoundedRect;
     self.emailField.font = [UIFont systemFontOfSize:15];
     self.emailField.placeholder = @"Email";
@@ -87,6 +87,19 @@
     self.emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;    
     self.emailField.delegate = self;
     [view addSubview:self.emailField];
+    
+    // Password field
+    self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 230.0f, 280.0f, 40.0f)];
+    self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
+    self.passwordField.font = [UIFont systemFontOfSize:15];
+    self.passwordField.placeholder = @"Password";
+    self.passwordField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.passwordField.keyboardType = UIKeyboardTypeDefault;
+    self.passwordField.returnKeyType = UIReturnKeyDone;
+    self.passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.passwordField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;    
+    self.passwordField.delegate = self;
+    [view addSubview:self.passwordField];
     
     // Finally, set our self.view
     // NOTE: Do not get self.view in loadView
