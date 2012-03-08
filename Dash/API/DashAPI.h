@@ -63,6 +63,8 @@ typedef enum {
 + (RKManagedObjectMapping *)placeMapping;
 
 + (BOOL)skipLogin;
++ (BOOL)loggedIn;
++ (void)setLoggedIn:(BOOL)newValue;
 + (void)setSkipLogin:(BOOL)newValue;
 
 #pragma mark - For scaffolding purposes

@@ -22,6 +22,7 @@
 // Static class variables
 // Taken from: http://stackoverflow.com/a/1250088/693754
 static BOOL _skipLogin = NO;
+static BOOL _loggedIn = NO;
 //static Person *currentUser = nil;
 
 @implementation DashAPI
@@ -79,6 +80,16 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 + (void)setSkipLogin:(BOOL)newValue
 {
     _skipLogin = newValue;
+}
+
++ (BOOL)loggedIn
+{
+    return _loggedIn;
+}
+
++ (void)setLoggedIn:(BOOL)newValue
+{
+    _loggedIn = newValue;
 }
 
 #pragma mark - Init

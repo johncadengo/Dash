@@ -203,7 +203,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     
     // TODO: Some logic in here to check whether we are logged in or not
     // For now, segue immediately to the login view controller
-    if (![DashAPI skipLogin]) {
+    if (![DashAPI skipLogin] && ![DashAPI loggedIn]) {
         [self showLogin];
     }
 }

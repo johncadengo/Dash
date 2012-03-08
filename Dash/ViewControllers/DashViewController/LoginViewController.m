@@ -109,7 +109,13 @@
 #pragma mark - Login logic
 - (void)loginWithConnect:(id) sender
 {
-    NSLog(@"FB Connect");
+    // Login logic
+    [DashAPI setLoggedIn:YES];
+    
+    // TODO: AND SOME MAGIC
+
+    // See ya!
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - Show dash

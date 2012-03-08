@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "Constants.h"
+#import "DashAPI.h"
 
 // For scrolling the textfields up when keyboard is shown
 #define kOFFSET_FOR_KEYBOARD 140.0f
@@ -115,8 +116,7 @@
 
 #pragma mark - View lifecycle
 
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
+- (void)loadLoginView
 {
     // Create our self.view
     //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
@@ -179,6 +179,40 @@
     // Finally, set our self.view
     // NOTE: Do not get self.view in loadView
     self.view = view;
+}
+
+- (void)loadProfileView
+{
+    // Create our self.view
+    //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
+    UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    // Add the introduction
+    CGRect introFrame = CGRectMake(20.0f, 5.0f, 280.0f, 40.0f);
+    self.introduction = [[UILabel alloc] initWithFrame:introFrame];
+    self.introduction.text = kIntroText;
+    self.introduction.lineBreakMode = UILineBreakModeWordWrap;
+    self.introduction.numberOfLines = 0;
+    self.introduction.font = [UIFont systemFontOfSize:12.0f];
+    [view addSubview:self.introduction];
+    
+    // Finally, set our self.view
+    // NOTE: Do not get self.view in loadView
+    self.view = view;
+}
+
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView
+{
+    // Login logic
+    if (![DashAPI loggedIn]) {
+        // This means we skipped logging in earlier, and consequently are not logged in now.
+        [self loadLoginView];
+    }
+    else {
+        [self loadProfileView];
+    }
 }
 
 - (void)viewDidLoad
