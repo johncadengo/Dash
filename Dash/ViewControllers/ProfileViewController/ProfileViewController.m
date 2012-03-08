@@ -183,23 +183,13 @@
 
 - (void)loadProfileView
 {
-    // Create our self.view
-    //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
-    UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    view.backgroundColor = [UIColor whiteColor];
-    
-    // Add the introduction
-    CGRect introFrame = CGRectMake(20.0f, 5.0f, 280.0f, 40.0f);
-    self.introduction = [[UILabel alloc] initWithFrame:introFrame];
-    self.introduction.text = kIntroText;
-    self.introduction.lineBreakMode = UILineBreakModeWordWrap;
-    self.introduction.numberOfLines = 0;
-    self.introduction.font = [UIFont systemFontOfSize:12.0f];
-    [view addSubview:self.introduction];
+    // When we are in profile view self.view is self.tableview
+    self.tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     // Finally, set our self.view
-    // NOTE: Do not get self.view in loadView
-    self.view = view;
+    self.view = self.tableView;
 }
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -270,16 +260,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -292,6 +280,7 @@
     }
     
     // Configure the cell...
+    cell.textLabel.text = @"Hello";
     
     return cell;
 }
