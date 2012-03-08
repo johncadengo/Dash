@@ -352,7 +352,14 @@
 
 - (void)loginWithConnect:(id) sender
 {
-    NSLog(@"Login with FB");
+    // Assume we are logging in as John
+    [DashAPI setLoggedIn:YES];
+    
+    // TODO: SOME MAGIC HERE
+    
+    // Reload view. 
+    // TODO: Probably some memory leak here right?
+    [self loadView];
 }
 
 - (void)startDashing:(id) sender
