@@ -55,11 +55,18 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    // Dismiss the keyboard
-    [textField resignFirstResponder];
+    if ([textField isEqual:self.emailField]) {
+        // If we are in the email field, we want it to go to the next field, password
+        [self.passwordField becomeFirstResponder];
+    }
+    else {
+        // Otherwise, dismiss the keyboard
+        [textField resignFirstResponder];
+        
+        // Scroll our view back down
+        [self setViewMovedUp:NO];
+    }
     
-    // Scroll our view back down
-    [self setViewMovedUp:NO];
     
     return NO;
 }
@@ -150,7 +157,7 @@
     self.emailField.placeholder = @"Email";
     self.emailField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.emailField.keyboardType = UIKeyboardTypeDefault;
-    self.emailField.returnKeyType = UIReturnKeyDone;
+    self.emailField.returnKeyType = UIReturnKeyNext;
     self.emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;    
     self.emailField.delegate = self;
