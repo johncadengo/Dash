@@ -41,7 +41,9 @@
 #pragma mark - UITextField Delegate
 -(void)textFieldDidBeginEditing:(UITextField *)sender
 {
-    if (YES)//[sender isEqual:_textField])
+    BOOL eitherField = [sender isEqual:self.emailField] || [sender isEqual:self.passwordField];
+    
+    if (eitherField)
     {
         //move the main view, so that the keyboard does not hide it.
         if  (self.view.frame.origin.y >= 0)
@@ -51,11 +53,22 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    // Dismiss the keyboard
+    [textField resignFirstResponder];
+    
+    // Scroll our view back down
+    [self setViewMovedUp:NO];
+    
+    return NO;
+}
+
 //method to move the view up/down whenever the keyboard is shown/dismissed
 -(void)setViewMovedUp:(BOOL)movedUp
 {
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5]; // if you want to slide up the view
+    [UIView setAnimationDuration:0.25f]; // if you want to slide up the view
     
     CGRect rect = self.view.frame;
     if (movedUp)
