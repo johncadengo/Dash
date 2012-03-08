@@ -8,6 +8,7 @@
 
 extern NSString * const kWelcomeText;
 extern NSString * const kIntroText;
+extern NSString * const kSignUpText;
 
 extern NSString * const kMyFirstConstant;
 extern NSString * const kFeedItemCellIdentifier;

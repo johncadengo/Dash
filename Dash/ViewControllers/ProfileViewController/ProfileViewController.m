@@ -44,9 +44,9 @@
     view.backgroundColor = [UIColor whiteColor];
     
     // Add the introduction
-    CGRect introFrame = CGRectMake(20.0f, 30.0f, 280.0f, 100.0f);
+    CGRect introFrame = CGRectMake(20.0f, 0.0f, 280.0f, 40.0f);
     self.introduction = [[UILabel alloc] initWithFrame:introFrame];
-    self.introduction.text = kIntroText;
+    self.introduction.text = kSignUpText;
     self.introduction.lineBreakMode = UILineBreakModeWordWrap;
     self.introduction.numberOfLines = 0;
     self.introduction.font = [UIFont systemFontOfSize:12.0f];
@@ -58,7 +58,7 @@
                        action:@selector(loginWithConnect:) 
              forControlEvents:UIControlEventTouchUpInside];
     [self.fbconnect setTitle:@"Login with Facebook" forState:UIControlStateNormal];
-    self.fbconnect.frame = CGRectMake(20.0f, 340.0f, 280.0f, 40.0f);
+    self.fbconnect.frame = CGRectMake(20.0f, 50.0f, 280.0f, 40.0f);
     [view addSubview:self.fbconnect];
     
     // Skip now button
@@ -67,7 +67,7 @@
                    action:@selector(startDashing:)
          forControlEvents:UIControlEventTouchUpInside];
     [self.start setTitle:@"Skip this for now" forState:UIControlStateNormal];
-    self.start.frame = CGRectMake(20.0f, 390.0f, 280.0f, 40.0f);
+    self.start.frame = CGRectMake(20.0f, 150.0f, 280.0f, 40.0f);
     [view addSubview:self.start];
     
     // Finally, set our self.view
