@@ -35,6 +35,46 @@
 
 #pragma mark - View lifecycle
 
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView
+{
+    // Create our self.view
+    //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
+    UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    // Add the introduction
+    CGRect introFrame = CGRectMake(20.0f, 30.0f, 280.0f, 100.0f);
+    self.introduction = [[UILabel alloc] initWithFrame:introFrame];
+    self.introduction.text = kIntroText;
+    self.introduction.lineBreakMode = UILineBreakModeWordWrap;
+    self.introduction.numberOfLines = 0;
+    self.introduction.font = [UIFont systemFontOfSize:12.0f];
+    [view addSubview:self.introduction];
+    
+    // Fb Connect
+    self.fbconnect = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.fbconnect addTarget:self 
+                       action:@selector(loginWithConnect:) 
+             forControlEvents:UIControlEventTouchUpInside];
+    [self.fbconnect setTitle:@"Login with Facebook" forState:UIControlStateNormal];
+    self.fbconnect.frame = CGRectMake(20.0f, 340.0f, 280.0f, 40.0f);
+    [view addSubview:self.fbconnect];
+    
+    // Skip now button
+    self.start = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.start addTarget:self 
+                   action:@selector(startDashing:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [self.start setTitle:@"Skip this for now" forState:UIControlStateNormal];
+    self.start.frame = CGRectMake(20.0f, 390.0f, 280.0f, 40.0f);
+    [view addSubview:self.start];
+    
+    // Finally, set our self.view
+    // NOTE: Do not get self.view in loadView
+    self.view = view;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
