@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileViewController : UITableViewController
+@interface ProfileViewController : UITableViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
@@ -16,6 +16,8 @@
 @property (nonatomic, strong) UILabel *introduction;
 @property (nonatomic, strong) UIButton *fbconnect;
 @property (nonatomic, strong) UIButton *start;
+@property (nonatomic, strong) UITextField *emailField;
+@property (nonatomic, strong) UITextField *passwordField;
 
 - (void)loginWithConnect:(id) sender;
 - (void)startDashing:(id) sender;

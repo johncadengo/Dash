@@ -9,12 +9,17 @@
 #import "ProfileViewController.h"
 #import "Constants.h"
 
+// For scrolling the textfields up when keyboard is shown
+#define kOFFSET_FOR_KEYBOARD 60.0
+
 @implementation ProfileViewController
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize introduction = _introduction;
 @synthesize fbconnect = _fbconnect;
 @synthesize start = _start;
+@synthesize emailField = _emailField;
+@synthesize passwordField = _passwordField;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -44,7 +49,7 @@
     view.backgroundColor = [UIColor whiteColor];
     
     // Add the introduction
-    CGRect introFrame = CGRectMake(20.0f, 0.0f, 280.0f, 40.0f);
+    CGRect introFrame = CGRectMake(20.0f, 5.0f, 280.0f, 40.0f);
     self.introduction = [[UILabel alloc] initWithFrame:introFrame];
     self.introduction.text = kSignUpText;
     self.introduction.lineBreakMode = UILineBreakModeWordWrap;
@@ -61,14 +66,27 @@
     self.fbconnect.frame = CGRectMake(20.0f, 50.0f, 280.0f, 40.0f);
     [view addSubview:self.fbconnect];
     
-    // Skip now button
+    // Start Dashing button
     self.start = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.start addTarget:self 
                    action:@selector(startDashing:)
          forControlEvents:UIControlEventTouchUpInside];
-    [self.start setTitle:@"Skip this for now" forState:UIControlStateNormal];
+    [self.start setTitle:@"Start Dashing" forState:UIControlStateNormal];
     self.start.frame = CGRectMake(20.0f, 150.0f, 280.0f, 40.0f);
     [view addSubview:self.start];
+    
+    // Email field
+    self.emailField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 40.0f)];
+    self.emailField.borderStyle = UITextBorderStyleRoundedRect;
+    self.emailField.font = [UIFont systemFontOfSize:15];
+    self.emailField.placeholder = @"Email";
+    self.emailField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.emailField.keyboardType = UIKeyboardTypeDefault;
+    self.emailField.returnKeyType = UIReturnKeyDone;
+    self.emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;    
+    self.emailField.delegate = self;
+    [view addSubview:self.emailField];
     
     // Finally, set our self.view
     // NOTE: Do not get self.view in loadView
