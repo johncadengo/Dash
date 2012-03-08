@@ -329,9 +329,6 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="w20-zF-plu"/>
                     <navigationItem key="navigationItem" title="Profile" id="7bW-GD-5hp"/>
-                    <connections>
-                        <segue destination="Typ-Mx-jbY" kind="modal" identifier="ShowLoginViewController" id="0DQ-q8-1AD"/>
-                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="447" y="1319"/>
@@ -552,7 +549,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0DQ-q8-1AD"/>
         <segue reference="QBV-X4-kru"/>
     </inferredMetricsTieBreakers>
 </document>

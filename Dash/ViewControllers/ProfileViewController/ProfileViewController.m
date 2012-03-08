@@ -7,7 +7,7 @@
 //
 
 #import "ProfileViewController.h"
-
+#import "Constants.h"
 
 @implementation ProfileViewController
 
@@ -53,6 +53,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
