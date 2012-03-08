@@ -19,6 +19,8 @@
 @property (nonatomic, strong) UITextField *emailField;
 @property (nonatomic, strong) UITextField *passwordField;
 
+-(void)setViewMovedUp:(BOOL)movedUp;
+
 - (void)loginWithConnect:(id) sender;
 - (void)startDashing:(id) sender;
 
