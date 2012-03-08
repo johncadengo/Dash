@@ -12,6 +12,9 @@
 @implementation ProfileViewController
 
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize introduction = _introduction;
+@synthesize fbconnect = _fbconnect;
+@synthesize start = _start;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -157,6 +160,18 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+#pragma mark - Button Actions
+
+- (void)loginWithConnect:(id) sender
+{
+    NSLog(@"Login with FB");
+}
+
+- (void)startDashing:(id) sender
+{
+    NSLog(@"Start Dashing");
 }
 
 @end
