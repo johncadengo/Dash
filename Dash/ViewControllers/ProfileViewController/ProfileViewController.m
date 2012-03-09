@@ -21,6 +21,7 @@
 @synthesize start = _start;
 @synthesize emailField = _emailField;
 @synthesize passwordField = _passwordField;
+@synthesize api = _api;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

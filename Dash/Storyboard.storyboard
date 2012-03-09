@@ -328,7 +328,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="w20-zF-plu"/>
-                    <navigationItem key="navigationItem" title="Profile" id="7bW-GD-5hp"/>
+                    <navigationItem key="navigationItem" title="Dash" id="7bW-GD-5hp"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="447" y="1319"/>

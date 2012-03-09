@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
 
-@interface ProfileViewController : UITableViewController <UITextFieldDelegate>
+@class DashAPI;
+
+@interface ProfileViewController : UITableViewController <UITextFieldDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
@@ -25,6 +28,7 @@
 - (void)startDashing:(id) sender;
 
 #pragma mark - For when logged in
+@property (nonatomic, strong) DashAPI *api;
 
 - (void)loadProfileView;
 
