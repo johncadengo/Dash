@@ -14,6 +14,7 @@
 #import "Person.h"
 #import "Person+Helper.h"
 #import "Stats.h"
+#import "Stats+Helper.h"
 #import "Highlight.h"
 #import "Highlight+Helper.h"
 #import "Comment.h"
