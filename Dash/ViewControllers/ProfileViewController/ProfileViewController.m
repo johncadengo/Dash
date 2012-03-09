@@ -23,6 +23,7 @@
 @synthesize passwordField = _passwordField;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
+@synthesize person = _person;
 @synthesize stats = _stats;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -297,7 +298,9 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = @"Hello";
+    if (self.person) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", self.person.name];
+    }
     
     return cell;
 }
@@ -377,7 +380,6 @@
 
 - (void)requestProfile
 {
-    NSLog(@"Request Profile %@", self.api);
     [self.api myProfile];
 }
 
@@ -389,8 +391,15 @@
     //[self.progressHUD hide:YES]; 
     
     // Get the objects we've just loaded and fill our places array with them
-    NSLog(@"Profile: %@", objects);
-    //[self.stats addObjectsFromArray:objects];
+    self.person = [objects lastObject];
+    
+    NSLog(@"Profile: %@ %@", objects, self.person.name);
+    
+    //[self.stats addObjectsFromArray:self.person.stats];
+    
+    
+    // Display it
+    [self.tableView reloadData];
     
 }
 

@@ -13,6 +13,7 @@
 		6715E405145F2D410069D5A8 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E401145F2D410069D5A8 /* UIImage+ProportionalFill.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E403145F2D410069D5A8 /* UIImage+Tint.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6722A4401507F01A007B6838 /* Stats.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A43F1507F01A007B6838 /* Stats.m */; };
+		6722A443150A9BBB007B6838 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A442150A9BBB007B6838 /* Person.m */; };
 		6729D056147C1E3B0046C8DB /* PlaceActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */; };
 		6729D057147C1E3B0046C8DB /* PlaceActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D055147C1E3B0046C8DB /* PlaceActionViewCell.m */; };
 		672C2C731459E9A4006A1D6B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6C1459E9A4006A1D6B /* Category.m */; };
@@ -20,7 +21,6 @@
 		672C2C751459E9A4006A1D6B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C701459E9A4006A1D6B /* Place.m */; };
 		672C2C761459E9A4006A1D6B /* PlaceLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C721459E9A4006A1D6B /* PlaceLocation.m */; };
 		672C2C7C1459E9B1006A1D6B /* Friendships.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C791459E9B1006A1D6B /* Friendships.m */; };
-		672C2C7D1459E9B1006A1D6B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C7B1459E9B1006A1D6B /* Person.m */; };
 		672C2C8A1459E9BF006A1D6B /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C7F1459E9BF006A1D6B /* Action.m */; };
 		672C2C8B1459E9BF006A1D6B /* Flag.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C811459E9BF006A1D6B /* Flag.m */; };
 		672C2C8D1459E9BF006A1D6B /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C851459E9BF006A1D6B /* Photo.m */; };
@@ -229,6 +229,8 @@
 		6715E403145F2D410069D5A8 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Tint.m"; path = "Helpers/MGImageUtilities/Classes/UIImage+Tint.m"; sourceTree = "<group>"; };
 		6722A43E1507F01A007B6838 /* Stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stats.h; path = "Data Model/Person/Stats.h"; sourceTree = "<group>"; };
 		6722A43F1507F01A007B6838 /* Stats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stats.m; path = "Data Model/Person/Stats.m"; sourceTree = "<group>"; };
+		6722A441150A9BBB007B6838 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
+		6722A442150A9BBB007B6838 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person/Person.m"; sourceTree = "<group>"; };
 		6729D052147C1E3B0046C8DB /* PlaceActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionsViewController.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.h; sourceTree = "<group>"; };
 		6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceActionsViewController.m; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.m; sourceTree = "<group>"; };
 		6729D054147C1E3B0046C8DB /* PlaceActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionViewCell.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionViewCell.h; sourceTree = "<group>"; };
@@ -243,8 +245,6 @@
 		672C2C721459E9A4006A1D6B /* PlaceLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceLocation.m; path = "Data Model/Place/PlaceLocation.m"; sourceTree = "<group>"; };
 		672C2C781459E9B1006A1D6B /* Friendships.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friendships.h; path = "Data Model/Person/Friendships.h"; sourceTree = "<group>"; };
 		672C2C791459E9B1006A1D6B /* Friendships.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friendships.m; path = "Data Model/Person/Friendships.m"; sourceTree = "<group>"; };
-		672C2C7A1459E9B1006A1D6B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
-		672C2C7B1459E9B1006A1D6B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person/Person.m"; sourceTree = "<group>"; };
 		672C2C7E1459E9BF006A1D6B /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action.h; path = "Data Model/Abstract/Action.h"; sourceTree = "<group>"; };
 		672C2C7F1459E9BF006A1D6B /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Action.m; path = "Data Model/Abstract/Action.m"; sourceTree = "<group>"; };
 		672C2C801459E9BF006A1D6B /* Flag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flag.h; path = "Data Model/Abstract/Flag.h"; sourceTree = "<group>"; };
@@ -716,12 +716,12 @@
 		678882981459D5CF00F7E826 /* Person */ = {
 			isa = PBXGroup;
 			children = (
+				6722A441150A9BBB007B6838 /* Person.h */,
+				6722A442150A9BBB007B6838 /* Person.m */,
 				6722A43E1507F01A007B6838 /* Stats.h */,
 				6722A43F1507F01A007B6838 /* Stats.m */,
 				672C2C781459E9B1006A1D6B /* Friendships.h */,
 				672C2C791459E9B1006A1D6B /* Friendships.m */,
-				672C2C7A1459E9B1006A1D6B /* Person.h */,
-				672C2C7B1459E9B1006A1D6B /* Person.m */,
 				672C2C9B1459FB06006A1D6B /* Person+Helper.h */,
 				672C2C9C1459FB06006A1D6B /* Person+Helper.m */,
 			);
@@ -1282,7 +1282,6 @@
 				672C2C751459E9A4006A1D6B /* Place.m in Sources */,
 				672C2C761459E9A4006A1D6B /* PlaceLocation.m in Sources */,
 				672C2C7C1459E9B1006A1D6B /* Friendships.m in Sources */,
-				672C2C7D1459E9B1006A1D6B /* Person.m in Sources */,
 				672C2C8A1459E9BF006A1D6B /* Action.m in Sources */,
 				672C2C8B1459E9BF006A1D6B /* Flag.m in Sources */,
 				672C2C8D1459E9BF006A1D6B /* Photo.m in Sources */,
@@ -1334,6 +1333,7 @@
 				67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */,
 				67F20E911500357D0026CF4A /* LoginViewController.m in Sources */,
 				6722A4401507F01A007B6838 /* Stats.m in Sources */,
+				6722A443150A9BBB007B6838 /* Person.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

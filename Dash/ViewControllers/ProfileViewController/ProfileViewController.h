@@ -10,6 +10,7 @@
 #import <RestKit/RestKit.h>
 
 @class DashAPI;
+@class Person;
 
 @interface ProfileViewController : UITableViewController <UITextFieldDelegate, RKObjectLoaderDelegate>
 
@@ -30,6 +31,7 @@
 #pragma mark - For when logged in
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
+@property (nonatomic, strong) Person *person;
 @property (nonatomic, strong) NSMutableArray *stats;
 
 - (void)loadProfileView;
