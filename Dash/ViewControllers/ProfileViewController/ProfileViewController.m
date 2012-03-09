@@ -279,13 +279,24 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    if (section == 0) {
+        // One header row
+        return 1;
+    }
+    else if (section == 1) {
+        // A row for each kind of stats
+        return kNumStatsTypes; 
+    }
+    else {
+        // Should never happen
+        return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -299,7 +310,31 @@
     
     // Configure the cell...
     if (self.person) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@", self.person.name];
+        if (indexPath.section == 0) {
+            // This is a header cell
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", self.person.name];
+        }
+        else if (indexPath.section == 1) {
+            // This is a stat cell
+            Stats *stats = self.person.stats;
+            NSNumber *num;
+            
+            switch (indexPath.row) {
+                case kSavesStat:
+                    num = stats.saves;
+                    break;
+                case kRecommendsStat:
+                    num = stats.recommends;
+                    break;
+                case kHightlightsStat:
+                    num = stats.highlights;
+                    break;
+                default:
+                    break;
+            }
+            
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", num];
+        }
     }
     
     return cell;
