@@ -15,19 +15,21 @@
 
 @implementation ProfileViewController
 
-@synthesize managedObjectContext = __managedObjectContext;
+@synthesize showingProfileView = _showingProfileView;
 @synthesize introduction = _introduction;
 @synthesize fbconnect = _fbconnect;
 @synthesize start = _start;
 @synthesize emailField = _emailField;
 @synthesize passwordField = _passwordField;
+@synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
+@synthesize stats = _stats;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -179,6 +181,7 @@
     
     // Finally, set our self.view
     // NOTE: Do not get self.view in loadView
+    self.showingProfileView = NO;
     self.view = view;
 }
 
@@ -189,13 +192,26 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    // Finally, set our self.view
+    // Set our self.view
+    self.showingProfileView = YES;
     self.view = self.tableView;
+    
+    // And finally, every time we show the profile view, 
+    // we need to make a call to our Dash API to request the profile.
+    [self requestProfile];
 }
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
+    // Gotta do this before creating our views
+    
+    // Connect to our API.
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
+    
+    // Default to NO
+    self.showingProfileView = NO;
+    
     // Login logic
     if (![DashAPI loggedIn]) {
         // This means we skipped logging in earlier, and consequently are not logged in now.
@@ -356,5 +372,34 @@
 {
     NSLog(@"Start Dashing");
 }
+
+#pragma mark - API
+
+- (void)requestProfile
+{
+    NSLog(@"Request Profile %@", self.api);
+    [self.api myProfile];
+}
+
+#pragma mark - RKObjectLoaderDelegate methods
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
+{
+    // We are done loading, so stop the progress hud
+    //[self.progressHUD hide:YES]; 
+    
+    // Get the objects we've just loaded and fill our places array with them
+    NSLog(@"Profile: %@", objects);
+    //[self.stats addObjectsFromArray:objects];
+    
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
+{
+    NSLog(@"Encountered an error: %@", error);
+}
+
+
+
 
 @end

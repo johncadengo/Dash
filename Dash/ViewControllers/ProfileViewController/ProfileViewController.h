@@ -13,7 +13,7 @@
 
 @interface ProfileViewController : UITableViewController <UITextFieldDelegate, RKObjectLoaderDelegate>
 
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) BOOL showingProfileView;
 
 #pragma mark - For when not logged in
 @property (nonatomic, strong) UILabel *introduction;
@@ -28,8 +28,11 @@
 - (void)startDashing:(id) sender;
 
 #pragma mark - For when logged in
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
+@property (nonatomic, strong) NSMutableArray *stats;
 
 - (void)loadProfileView;
+- (void)requestProfile;
 
 @end
