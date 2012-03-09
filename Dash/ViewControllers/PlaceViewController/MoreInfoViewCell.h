@@ -10,13 +10,7 @@
 
 @class MoreInfoViewCell;
 
-@protocol MoreInfoviewCellDelegate <NSObject>
-- (void)cellBackButtonWasTapped:(MoreInfoViewCell *) cell;
-@end
-
-@interface MoreInfoViewCell : TISwipeableTableViewCell
-
-@property (nonatomic, weak) id <MoreInfoviewCellDelegate> delegate;
+@interface MoreInfoViewCell : UITableViewCell
 
 + (CGFloat)height;
 

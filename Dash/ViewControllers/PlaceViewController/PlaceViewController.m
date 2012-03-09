@@ -279,7 +279,6 @@
     }
     
     // Connect us to the cell
-    [cell setDelegate:self];
     [self setMoreInfoCell:cell];
     
     return cell;
@@ -303,12 +302,7 @@
 
 - (void)toggleMoreInfo
 {
-    ([self.moreInfoCell.backView isHidden]) ? [self.moreInfoCell revealBackView] : [self.moreInfoCell hideBackView];
-}
-
-- (void)cellBackButtonWasTapped:(MoreInfoViewCell *)cell
-{
-    
+    //([self.moreInfoCell.backView isHidden]) ? [self.moreInfoCell revealBackView] : [self.moreInfoCell hideBackView];
 }
 
 
