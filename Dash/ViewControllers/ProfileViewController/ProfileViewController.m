@@ -317,23 +317,9 @@
         else if (indexPath.section == 1) {
             // This is a stat cell
             Stats *stats = self.person.stats;
-            NSNumber *num;
+            NSString *statDescription = [stats descriptionForType:[NSNumber numberWithInt:indexPath.row]];
             
-            switch (indexPath.row) {
-                case kSavesStat:
-                    num = stats.saves;
-                    break;
-                case kRecommendsStat:
-                    num = stats.recommends;
-                    break;
-                case kHightlightsStat:
-                    num = stats.highlights;
-                    break;
-                default:
-                    break;
-            }
-            
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", num];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", statDescription];
         }
     }
     
