@@ -14,7 +14,9 @@
 #import "Action+Helper.h"
 #import "Highlight.h"
 #import "Highlight+Helper.h"
-#import "HighlightViewController.h"
+#import "Like.h"
+#import "Like+Helper.h"
+#import "PlaceViewController.h"
 
 @implementation FeedViewController
 
@@ -325,8 +327,8 @@
     
     // Only perform segue on a row in the feed item section being tapped, not on the very first section.
     if (section != kFeedListModeSection) {
-        Highlight *highlight = [self.feedItems objectAtIndex:row];
-        [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:highlight];
+        PlaceAction *placeAction = [self.feedItems objectAtIndex:row];
+        [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:placeAction];
     }
 }
 
@@ -335,12 +337,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:kShowFeedItemDetailsSegueIdentifier]) {
-        Highlight *highlight = (Highlight *) sender;
-        HighlightViewController *highlightViewController = (HighlightViewController *)[segue destinationViewController];
-        [highlightViewController setHighlight:highlight];
+        Like *like = (Like *) sender;
+        PlaceAction *placeAction = like.action;
+        Place *place = placeAction.place;
+        
+        PlaceViewController *placeViewController = (PlaceViewController *)[segue destinationViewController];
+        [placeViewController setPlace:place];
         
         // Make sure it has a managed object context
-        [highlightViewController setManagedObjectContext:self.managedObjectContext];
+        [placeViewController setManagedObjectContext:self.managedObjectContext];
     }
 }
 

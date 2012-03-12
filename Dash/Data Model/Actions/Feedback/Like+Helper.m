@@ -9,6 +9,10 @@
 #import "Like+Helper.h"
 #import "Person.h"
 #import "Person+Helper.h"
+#import "Highlight.h"
+#import "Highlight+Helper.h"
+#import "Place.h"
+#import "Place+Helper.h"
 
 @implementation Like (Helper)
 
@@ -17,7 +21,10 @@
     NSString *subject = [NSString stringWithFormat:@"%@", self.author.name];
     NSString *object = [NSString stringWithFormat:@"%@", self.action];
     
-    return [NSString stringWithFormat:@"%@ likes %@", subject, object];
+    Highlight *highlight = (Highlight *)self.action;
+    NSString *source = [NSString stringWithFormat:@"%@", highlight.place.name];
+    
+    return [NSString stringWithFormat:@"%@ likes %@ at %@", subject, object, source];
 }
 
 @end

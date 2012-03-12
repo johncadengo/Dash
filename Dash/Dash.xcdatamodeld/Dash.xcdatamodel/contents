@@ -6,6 +6,11 @@
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="action" inverseEntity="Comment" syncable="YES"/>
         <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="action" inverseEntity="Like" syncable="YES"/>
     </entity>
+    <entity name="Badge" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="places" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="badges" inverseEntity="Place" syncable="YES"/>
+    </entity>
     <entity name="Category" representedClassName="Category" parentEntity="Uniqueness" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="places" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="categories" inverseEntity="Place" syncable="YES"/>
@@ -76,6 +81,7 @@
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceAction" inverseName="place" inverseEntity="PlaceAction" syncable="YES"/>
+        <relationship name="badges" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Badge" inverseName="places" inverseEntity="Badge" syncable="YES"/>
         <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="places" inverseEntity="Category" syncable="YES"/>
         <relationship name="flags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FlagPlace" inverseName="place" inverseEntity="FlagPlace" syncable="YES"/>
         <relationship name="hours" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hours" inverseName="place" inverseEntity="Hours" syncable="YES"/>
@@ -129,10 +135,10 @@
         <element name="Hours" positionX="-216" positionY="-126" width="128" height="105"/>
         <element name="Like" positionX="360" positionY="-81" width="128" height="60"/>
         <element name="Location" positionX="-315" positionY="-9" width="128" height="135"/>
-        <element name="Person" positionX="250" positionY="255" width="128" height="165"/>
+        <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
         <element name="PersonPhoto" positionX="250" positionY="174" width="128" height="60"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="Place" positionX="-72" positionY="-36" width="128" height="210"/>
+        <element name="Place" positionX="-72" positionY="-36" width="128" height="225"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
         <element name="PlacePhoto" positionX="252" positionY="72" width="128" height="60"/>
@@ -144,5 +150,6 @@
         <element name="Uniqueness" positionX="99" positionY="-225" width="128" height="60"/>
         <element name="Visit" positionX="-72" positionY="234" width="128" height="45"/>
         <element name="Stats" positionX="405" positionY="351" width="128" height="105"/>
+        <element name="Badge" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>
