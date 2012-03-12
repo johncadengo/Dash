@@ -232,7 +232,7 @@
     
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                        action:@selector(dismissKeyboard:)];
-    [self.tap setCancelsTouchesInView:NO];
+    [self.tap setDelegate:self];
     [self.view addGestureRecognizer:self.tap];
 }
 
@@ -397,6 +397,15 @@
 - (void)startDashing:(id) sender
 {
     NSLog(@"Start Dashing");
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch 
+{
+    if ([touch.view isKindOfClass:[UIControl class]]) {
+        // we touched a button, slider, or other UIControl
+        return NO; // ignore the touch
+    }
+    return YES; // handle the touch
 }
 
 - (void)dismissKeyboard:(id) sender

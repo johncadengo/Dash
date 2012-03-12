@@ -12,7 +12,7 @@
 @class DashAPI;
 @class Person;
 
-@interface ProfileViewController : UITableViewController <UITextFieldDelegate, RKObjectLoaderDelegate>
+@interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic) BOOL showingProfileView;
 

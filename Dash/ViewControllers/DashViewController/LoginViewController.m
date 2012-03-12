@@ -12,7 +12,7 @@
 #import "DashAPI.h"
 
 // For scrolling the textfields up when keyboard is shown
-#define kOFFSET_FOR_KEYBOARD 140.0f
+#define kOFFSET_FOR_KEYBOARD 120.0f
 
 @implementation LoginViewController
 
@@ -206,7 +206,7 @@
 
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                        action:@selector(dismissKeyboard:)];
-    [self.tap setCancelsTouchesInView:NO];
+    [self.tap setDelegate:self];
     [self.view addGestureRecognizer:self.tap];
 }
 
@@ -245,6 +245,17 @@
     
     // Goodbye!
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Tap gesture delegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isKindOfClass:[UIControl class]]) {
+        // we touched a button, slider, or other UIControl
+        return NO; // ignore the touch
+    }
+    return YES; // handle the touch
 }
 
 
