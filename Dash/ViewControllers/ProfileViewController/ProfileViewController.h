@@ -23,10 +23,15 @@
 @property (nonatomic, strong) UITextField *emailField;
 @property (nonatomic, strong) UITextField *passwordField;
 
+/** For dismissing keyboard when view is tapped
+ */
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
+
 - (void)loadLoginView;
 - (void)setViewMovedUp:(BOOL)movedUp;
 - (void)loginWithConnect:(id) sender;
 - (void)startDashing:(id) sender;
+- (void)dismissKeyboard:(id) sender;
 
 #pragma mark - For when logged in
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;

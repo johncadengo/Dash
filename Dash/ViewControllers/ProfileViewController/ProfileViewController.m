@@ -21,6 +21,7 @@
 @synthesize start = _start;
 @synthesize emailField = _emailField;
 @synthesize passwordField = _passwordField;
+@synthesize tap = _tap;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
 @synthesize person = _person;
@@ -65,11 +66,7 @@
         [self.passwordField becomeFirstResponder];
     }
     else {
-        // Otherwise, dismiss the keyboard
-        [textField resignFirstResponder];
-        
-        // Scroll our view back down
-        [self setViewMovedUp:NO];
+        [self dismissKeyboard:textField];
     }
     
     
@@ -232,6 +229,11 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                       action:@selector(dismissKeyboard:)];
+    [self.tap setCancelsTouchesInView:NO];
+    [self.view addGestureRecognizer:self.tap];
 }
 
 - (void)viewDidUnload
@@ -395,6 +397,19 @@
 - (void)startDashing:(id) sender
 {
     NSLog(@"Start Dashing");
+}
+
+- (void)dismissKeyboard:(id) sender
+{
+    // Only dismiss keyboard if it is showing. Otherwise, tap will pass through
+    if ([self.emailField isFirstResponder] || [self.passwordField isFirstResponder]) {
+        // Should find out who is first responder first, but for now just call both text fields
+        [self.emailField resignFirstResponder];
+        [self.passwordField resignFirstResponder];
+    
+        // Scroll our view back down
+        [self setViewMovedUp:NO];
+    }
 }
 
 #pragma mark - API
