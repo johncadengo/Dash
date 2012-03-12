@@ -338,8 +338,8 @@
 {
     if ([[segue identifier] isEqualToString:kShowFeedItemDetailsSegueIdentifier]) {
         Like *like = (Like *) sender;
-        PlaceAction *placeAction = like.action;
-        Place *place = placeAction.place;
+        Highlight *highlight = like.highlight;
+        Place *place = highlight.place;
         
         PlaceViewController *placeViewController = (PlaceViewController *)[segue destinationViewController];
         [placeViewController setPlace:place];
