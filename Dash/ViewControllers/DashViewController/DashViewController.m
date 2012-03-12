@@ -451,6 +451,9 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         
         // Make sure it has a managed object context
         [placeViewController setManagedObjectContext:self.managedObjectContext];
+        
+        // Make sure the tabbar hides so we can replace it with a toolbar
+        placeViewController.hidesBottomBarWhenPushed = YES;
     }
     else if ([[segue identifier] isEqualToString:kPresentFilterViewController]) {
         NSLog(@"Presenting filter view controller");

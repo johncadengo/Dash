@@ -346,6 +346,9 @@
         
         // Make sure it has a managed object context
         [placeViewController setManagedObjectContext:self.managedObjectContext];
+        
+        // Make sure the tabbar hides so we can replace it with a toolbar
+        placeViewController.hidesBottomBarWhenPushed = YES;
     }
 }
 
