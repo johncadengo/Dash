@@ -57,6 +57,11 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [locationMapping mapKeyPath:@"lat" toAttribute:@"latitude"];
     [locationMapping mapKeyPath:@"lng" toAttribute:@"longitude"];
     
+    // Define the badge mapping
+    RKManagedObjectMapping *badgeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Badge"];
+    [badgeMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [badgeMapping mapAttributes:@"name", nil];
+    
     // Define our place mapping, which also has 
     // a relationship with category, highlight, and location
     RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
@@ -67,6 +72,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [placeMapping mapKeyPath:@"categories" toRelationship:@"categories" withMapping:categoryMapping];
     [placeMapping mapKeyPath:@"highlights" toRelationship:@"actions" withMapping:highlightMapping];
     [placeMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
+    [placeMapping mapKeyPath:@"badges" toRelationship:@"badges" withMapping:badgeMapping];
     
     return placeMapping;
 }

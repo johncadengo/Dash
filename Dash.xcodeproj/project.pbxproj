@@ -16,6 +16,7 @@
 		6722A443150A9BBB007B6838 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A442150A9BBB007B6838 /* Person.m */; };
 		6722A446150AAA9D007B6838 /* Stats+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A445150AAA9D007B6838 /* Stats+Helper.m */; };
 		6722A449150E05D1007B6838 /* Like+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A448150E05D1007B6838 /* Like+Helper.m */; };
+		6722A44C150E1235007B6838 /* Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A44B150E1233007B6838 /* Badge.m */; };
 		6729D056147C1E3B0046C8DB /* PlaceActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */; };
 		6729D057147C1E3B0046C8DB /* PlaceActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D055147C1E3B0046C8DB /* PlaceActionViewCell.m */; };
 		672C2C731459E9A4006A1D6B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6C1459E9A4006A1D6B /* Category.m */; };
@@ -237,6 +238,8 @@
 		6722A445150AAA9D007B6838 /* Stats+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Stats+Helper.m"; path = "Data Model/Person/Stats+Helper.m"; sourceTree = "<group>"; };
 		6722A447150E05D1007B6838 /* Like+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Like+Helper.h"; path = "Data Model/Actions/Feedback/Like+Helper.h"; sourceTree = "<group>"; };
 		6722A448150E05D1007B6838 /* Like+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Like+Helper.m"; path = "Data Model/Actions/Feedback/Like+Helper.m"; sourceTree = "<group>"; };
+		6722A44A150E1231007B6838 /* Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Badge.h; path = "Data Model/Place/Badge.h"; sourceTree = "<group>"; };
+		6722A44B150E1233007B6838 /* Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Badge.m; path = "Data Model/Place/Badge.m"; sourceTree = "<group>"; };
 		6729D052147C1E3B0046C8DB /* PlaceActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionsViewController.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.h; sourceTree = "<group>"; };
 		6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceActionsViewController.m; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.m; sourceTree = "<group>"; };
 		6729D054147C1E3B0046C8DB /* PlaceActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionViewCell.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionViewCell.h; sourceTree = "<group>"; };
@@ -739,6 +742,8 @@
 		678882991459D5D700F7E826 /* Place */ = {
 			isa = PBXGroup;
 			children = (
+				6722A44A150E1231007B6838 /* Badge.h */,
+				6722A44B150E1233007B6838 /* Badge.m */,
 				672C2C6B1459E9A4006A1D6B /* Category.h */,
 				672C2C6C1459E9A4006A1D6B /* Category.m */,
 				672C2C6D1459E9A4006A1D6B /* Hours.h */,
@@ -1346,6 +1351,7 @@
 				6722A443150A9BBB007B6838 /* Person.m in Sources */,
 				6722A446150AAA9D007B6838 /* Stats+Helper.m in Sources */,
 				6722A449150E05D1007B6838 /* Like+Helper.m in Sources */,
+				6722A44C150E1235007B6838 /* Badge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

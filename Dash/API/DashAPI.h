@@ -29,6 +29,7 @@
 
 #import "Save.h"
 #import "Recommend.h"
+#import "Badge.h"
 
 #pragma - Enum constants
 // Some defaults

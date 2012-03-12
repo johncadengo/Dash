@@ -6,7 +6,7 @@
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="action" inverseEntity="Comment" syncable="YES"/>
         <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="action" inverseEntity="Like" syncable="YES"/>
     </entity>
-    <entity name="Badge" syncable="YES">
+    <entity name="Badge" representedClassName="Badge" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="places" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="badges" inverseEntity="Place" syncable="YES"/>
@@ -138,7 +138,7 @@
         <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
         <element name="PersonPhoto" positionX="250" positionY="174" width="128" height="60"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="Place" positionX="-72" positionY="-36" width="128" height="225"/>
+        <element name="Place" positionX="-72" positionY="-36" width="128" height="210"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
         <element name="PlacePhoto" positionX="252" positionY="72" width="128" height="60"/>
