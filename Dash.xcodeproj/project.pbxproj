@@ -17,11 +17,11 @@
 		6722A446150AAA9D007B6838 /* Stats+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A445150AAA9D007B6838 /* Stats+Helper.m */; };
 		6722A449150E05D1007B6838 /* Like+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A448150E05D1007B6838 /* Like+Helper.m */; };
 		6722A44C150E1235007B6838 /* Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A44B150E1233007B6838 /* Badge.m */; };
+		6722A44F150E1514007B6838 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A44E150E1513007B6838 /* Place.m */; };
 		6729D056147C1E3B0046C8DB /* PlaceActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */; };
 		6729D057147C1E3B0046C8DB /* PlaceActionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D055147C1E3B0046C8DB /* PlaceActionViewCell.m */; };
 		672C2C731459E9A4006A1D6B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6C1459E9A4006A1D6B /* Category.m */; };
 		672C2C741459E9A4006A1D6B /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C6E1459E9A4006A1D6B /* Hours.m */; };
-		672C2C751459E9A4006A1D6B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C701459E9A4006A1D6B /* Place.m */; };
 		672C2C761459E9A4006A1D6B /* PlaceLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C721459E9A4006A1D6B /* PlaceLocation.m */; };
 		672C2C7C1459E9B1006A1D6B /* Friendships.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C791459E9B1006A1D6B /* Friendships.m */; };
 		672C2C8A1459E9BF006A1D6B /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 672C2C7F1459E9BF006A1D6B /* Action.m */; };
@@ -63,7 +63,6 @@
 		67697590145A5CAE001191CF /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756B145A5BFA001191CF /* libRestKitObjectMapping.a */; };
 		67697591145A5CAE001191CF /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769756D145A5BFA001191CF /* libRestKitSupport.a */; };
 		67697592145A5CAE001191CF /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697577145A5BFA001191CF /* libRestKitXMLParserLibxml.a */; };
-		676B64A114647E2B00FEEF7C /* HighlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A014647E2B00FEEF7C /* HighlightViewController.m */; };
 		676B64A41464871A00FEEF7C /* Comment+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A31464871A00FEEF7C /* Comment+Helper.m */; };
 		676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */; };
 		676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */; };
@@ -75,7 +74,6 @@
 		6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */; };
 		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
 		679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F91469D19600E0CDE2 /* Photo+Helper.m */; };
-		679A48FD1469D30800E0CDE2 /* PersonPhoto+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48FC1469D30800E0CDE2 /* PersonPhoto+Helper.m */; };
 		679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */; };
 		679E8CB614604BA70038E506 /* Highlight+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB514604BA70038E506 /* Highlight+Helper.m */; };
 		679E8CB9146059CE0038E506 /* HighlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CB8146059CE0038E506 /* HighlightTests.m */; };
@@ -90,9 +88,6 @@
 		67BAC7EE1459E5670001C738 /* FlagPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7ED1459E5670001C738 /* FlagPhoto.m */; };
 		67BAC7F11459E5670001C738 /* FlagPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7F01459E5670001C738 /* FlagPlace.m */; };
 		67BAC7F41459E5670001C738 /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7F31459E5670001C738 /* Like.m */; };
-		67BAC7F71459E60B0001C738 /* PersonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7F61459E60B0001C738 /* PersonPhoto.m */; };
-		67BAC7FA1459E60C0001C738 /* PlacePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7F91459E60C0001C738 /* PlacePhoto.m */; };
-		67BAC7FD1459E60C0001C738 /* HighlightPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7FC1459E60C0001C738 /* HighlightPhoto.m */; };
 		67BAC8001459E6370001C738 /* PopLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7FF1459E6370001C738 /* PopLocation.m */; };
 		67BAC8031459E6370001C738 /* Pop.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8021459E6370001C738 /* Pop.m */; };
 		67BAC8061459E6580001C738 /* Highlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8051459E6580001C738 /* Highlight.m */; };
@@ -240,6 +235,8 @@
 		6722A448150E05D1007B6838 /* Like+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Like+Helper.m"; path = "Data Model/Actions/Feedback/Like+Helper.m"; sourceTree = "<group>"; };
 		6722A44A150E1231007B6838 /* Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Badge.h; path = "Data Model/Place/Badge.h"; sourceTree = "<group>"; };
 		6722A44B150E1233007B6838 /* Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Badge.m; path = "Data Model/Place/Badge.m"; sourceTree = "<group>"; };
+		6722A44D150E1511007B6838 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = "Data Model/Place/Place.h"; sourceTree = "<group>"; };
+		6722A44E150E1513007B6838 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place/Place.m"; sourceTree = "<group>"; };
 		6729D052147C1E3B0046C8DB /* PlaceActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionsViewController.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.h; sourceTree = "<group>"; };
 		6729D053147C1E3B0046C8DB /* PlaceActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceActionsViewController.m; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionsViewController.m; sourceTree = "<group>"; };
 		6729D054147C1E3B0046C8DB /* PlaceActionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceActionViewCell.h; path = Dash/ViewControllers/PlaceActionsViewController/PlaceActionViewCell.h; sourceTree = "<group>"; };
@@ -248,8 +245,6 @@
 		672C2C6C1459E9A4006A1D6B /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = "Data Model/Place/Category.m"; sourceTree = "<group>"; };
 		672C2C6D1459E9A4006A1D6B /* Hours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hours.h; path = "Data Model/Place/Hours.h"; sourceTree = "<group>"; };
 		672C2C6E1459E9A4006A1D6B /* Hours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hours.m; path = "Data Model/Place/Hours.m"; sourceTree = "<group>"; };
-		672C2C6F1459E9A4006A1D6B /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = "Data Model/Place/Place.h"; sourceTree = "<group>"; };
-		672C2C701459E9A4006A1D6B /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place/Place.m"; sourceTree = "<group>"; };
 		672C2C711459E9A4006A1D6B /* PlaceLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceLocation.h; path = "Data Model/Place/PlaceLocation.h"; sourceTree = "<group>"; };
 		672C2C721459E9A4006A1D6B /* PlaceLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceLocation.m; path = "Data Model/Place/PlaceLocation.m"; sourceTree = "<group>"; };
 		672C2C781459E9B1006A1D6B /* Friendships.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friendships.h; path = "Data Model/Person/Friendships.h"; sourceTree = "<group>"; };
@@ -307,8 +302,6 @@
 		67697582145A5C82001191CF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		67697583145A5C82001191CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		67697584145A5C82001191CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		676B649F14647E2B00FEEF7C /* HighlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewController.h; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.h; sourceTree = "<group>"; };
-		676B64A014647E2B00FEEF7C /* HighlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewController.m; path = Dash/ViewControllers/HighlightViewController/HighlightViewController.m; sourceTree = "<group>"; };
 		676B64A21464871A00FEEF7C /* Comment+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Comment+Helper.h"; path = "Data Model/Actions/Feedback/Comment+Helper.h"; sourceTree = "<group>"; };
 		676B64A31464871A00FEEF7C /* Comment+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Comment+Helper.m"; path = "Data Model/Actions/Feedback/Comment+Helper.m"; sourceTree = "<group>"; };
 		676B64A9146493AD00FEEF7C /* NSArray+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Helpers.h"; path = "Helpers/RandomStrings/NSArray+Helpers.h"; sourceTree = "<group>"; };
@@ -331,8 +324,6 @@
 		679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackActivityCell.m; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.m; sourceTree = "<group>"; };
 		679A48F81469D19500E0CDE2 /* Photo+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Photo+Helper.h"; path = "Data Model/Abstract/Photo+Helper.h"; sourceTree = "<group>"; };
 		679A48F91469D19600E0CDE2 /* Photo+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Photo+Helper.m"; path = "Data Model/Abstract/Photo+Helper.m"; sourceTree = "<group>"; };
-		679A48FB1469D30800E0CDE2 /* PersonPhoto+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PersonPhoto+Helper.h"; path = "Data Model/Actions/Photo/PersonPhoto+Helper.h"; sourceTree = "<group>"; };
-		679A48FC1469D30800E0CDE2 /* PersonPhoto+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PersonPhoto+Helper.m"; path = "Data Model/Actions/Photo/PersonPhoto+Helper.m"; sourceTree = "<group>"; };
 		679A49041469F2A900E0CDE2 /* JCImageGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCImageGalleryViewController.h; path = Dash/ViewControllers/JCImageGalleryView/JCImageGalleryViewController.h; sourceTree = "<group>"; };
 		679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCImageGalleryViewController.m; path = Dash/ViewControllers/JCImageGalleryView/JCImageGalleryViewController.m; sourceTree = "<group>"; };
 		679E8CB414604BA70038E506 /* Highlight+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Highlight+Helper.h"; path = "Data Model/Actions/Highlight/Highlight+Helper.h"; sourceTree = "<group>"; };
@@ -360,12 +351,6 @@
 		67BAC7F01459E5670001C738 /* FlagPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlagPlace.m; path = "Data Model/Actions/Feedback/FlagPlace.m"; sourceTree = "<group>"; };
 		67BAC7F21459E5670001C738 /* Like.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Like.h; path = "Data Model/Actions/Feedback/Like.h"; sourceTree = "<group>"; };
 		67BAC7F31459E5670001C738 /* Like.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Like.m; path = "Data Model/Actions/Feedback/Like.m"; sourceTree = "<group>"; };
-		67BAC7F51459E60B0001C738 /* PersonPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonPhoto.h; path = "Data Model/Actions/Photo/PersonPhoto.h"; sourceTree = "<group>"; };
-		67BAC7F61459E60B0001C738 /* PersonPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonPhoto.m; path = "Data Model/Actions/Photo/PersonPhoto.m"; sourceTree = "<group>"; };
-		67BAC7F81459E60C0001C738 /* PlacePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlacePhoto.h; path = "Data Model/Actions/Photo/PlacePhoto.h"; sourceTree = "<group>"; };
-		67BAC7F91459E60C0001C738 /* PlacePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlacePhoto.m; path = "Data Model/Actions/Photo/PlacePhoto.m"; sourceTree = "<group>"; };
-		67BAC7FB1459E60C0001C738 /* HighlightPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightPhoto.h; path = "Data Model/Actions/Photo/HighlightPhoto.h"; sourceTree = "<group>"; };
-		67BAC7FC1459E60C0001C738 /* HighlightPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightPhoto.m; path = "Data Model/Actions/Photo/HighlightPhoto.m"; sourceTree = "<group>"; };
 		67BAC7FE1459E6370001C738 /* PopLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopLocation.h; path = "Data Model/Actions/Pop/PopLocation.h"; sourceTree = "<group>"; };
 		67BAC7FF1459E6370001C738 /* PopLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopLocation.m; path = "Data Model/Actions/Pop/PopLocation.m"; sourceTree = "<group>"; };
 		67BAC8011459E6370001C738 /* Pop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pop.h; path = "Data Model/Actions/Pop/Pop.h"; sourceTree = "<group>"; };
@@ -638,8 +623,6 @@
 		6739F4691464530F00735858 /* HighlightViewController */ = {
 			isa = PBXGroup;
 			children = (
-				676B649F14647E2B00FEEF7C /* HighlightViewController.h */,
-				676B64A014647E2B00FEEF7C /* HighlightViewController.m */,
 				679A48F51469D02F00E0CDE2 /* FeedbackActivityCell.h */,
 				679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */,
 			);
@@ -748,8 +731,8 @@
 				672C2C6C1459E9A4006A1D6B /* Category.m */,
 				672C2C6D1459E9A4006A1D6B /* Hours.h */,
 				672C2C6E1459E9A4006A1D6B /* Hours.m */,
-				672C2C6F1459E9A4006A1D6B /* Place.h */,
-				672C2C701459E9A4006A1D6B /* Place.m */,
+				6722A44D150E1511007B6838 /* Place.h */,
+				6722A44E150E1513007B6838 /* Place.m */,
 				6735AEA314BCC450000259AF /* Place+Helper.h */,
 				6735AEA414BCC450000259AF /* Place+Helper.m */,
 				672C2C711459E9A4006A1D6B /* PlaceLocation.h */,
@@ -762,7 +745,6 @@
 			isa = PBXGroup;
 			children = (
 				67BAC7E81459E5230001C738 /* Feedback */,
-				67BAC7E71459E4920001C738 /* Photo */,
 				678882B41459DB8900F7E826 /* Pop */,
 				678882B31459DB8100F7E826 /* Highlight */,
 				67BAC8131459E6DD0001C738 /* PlaceActions */,
@@ -888,21 +870,6 @@
 				678882981459D5CF00F7E826 /* Person */,
 			);
 			name = "Data Model";
-			sourceTree = "<group>";
-		};
-		67BAC7E71459E4920001C738 /* Photo */ = {
-			isa = PBXGroup;
-			children = (
-				67BAC7FB1459E60C0001C738 /* HighlightPhoto.h */,
-				67BAC7FC1459E60C0001C738 /* HighlightPhoto.m */,
-				67BAC7F81459E60C0001C738 /* PlacePhoto.h */,
-				67BAC7F91459E60C0001C738 /* PlacePhoto.m */,
-				67BAC7F51459E60B0001C738 /* PersonPhoto.h */,
-				67BAC7F61459E60B0001C738 /* PersonPhoto.m */,
-				679A48FB1469D30800E0CDE2 /* PersonPhoto+Helper.h */,
-				679A48FC1469D30800E0CDE2 /* PersonPhoto+Helper.m */,
-			);
-			name = Photo;
 			sourceTree = "<group>";
 		};
 		67BAC7E81459E5230001C738 /* Feedback */ = {
@@ -1282,9 +1249,6 @@
 				67BAC7EE1459E5670001C738 /* FlagPhoto.m in Sources */,
 				67BAC7F11459E5670001C738 /* FlagPlace.m in Sources */,
 				67BAC7F41459E5670001C738 /* Like.m in Sources */,
-				67BAC7F71459E60B0001C738 /* PersonPhoto.m in Sources */,
-				67BAC7FA1459E60C0001C738 /* PlacePhoto.m in Sources */,
-				67BAC7FD1459E60C0001C738 /* HighlightPhoto.m in Sources */,
 				67BAC8001459E6370001C738 /* PopLocation.m in Sources */,
 				67BAC8031459E6370001C738 /* Pop.m in Sources */,
 				67BAC8061459E6580001C738 /* Highlight.m in Sources */,
@@ -1294,7 +1258,6 @@
 				67BAC8121459E6D50001C738 /* Save.m in Sources */,
 				672C2C731459E9A4006A1D6B /* Category.m in Sources */,
 				672C2C741459E9A4006A1D6B /* Hours.m in Sources */,
-				672C2C751459E9A4006A1D6B /* Place.m in Sources */,
 				672C2C761459E9A4006A1D6B /* PlaceLocation.m in Sources */,
 				672C2C7C1459E9B1006A1D6B /* Friendships.m in Sources */,
 				672C2C8A1459E9BF006A1D6B /* Action.m in Sources */,
@@ -1321,7 +1284,6 @@
 				67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */,
 				67D15A47146070250047C1E4 /* Location.m in Sources */,
 				67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */,
-				676B64A114647E2B00FEEF7C /* HighlightViewController.m in Sources */,
 				676B64A41464871A00FEEF7C /* Comment+Helper.m in Sources */,
 				676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */,
 				676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */,
@@ -1329,7 +1291,6 @@
 				67FFE58614687B7B00135225 /* NSDate+RandomDates.m in Sources */,
 				679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */,
 				679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */,
-				679A48FD1469D30800E0CDE2 /* PersonPhoto+Helper.m in Sources */,
 				679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */,
 				67EDA900146C887F00AD3625 /* JCPinholeViewController.m in Sources */,
 				67EDA903146C8D6E00AD3625 /* JCSpotlightViewController.m in Sources */,
@@ -1352,6 +1313,7 @@
 				6722A446150AAA9D007B6838 /* Stats+Helper.m in Sources */,
 				6722A449150E05D1007B6838 /* Like+Helper.m in Sources */,
 				6722A44C150E1235007B6838 /* Badge.m in Sources */,
+				6722A44F150E1514007B6838 /* Place.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

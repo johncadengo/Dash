@@ -9,7 +9,7 @@
 #import "Person.h"
 #import "Action.h"
 #import "Friendships.h"
-#import "PersonPhoto.h"
+#import "Photo.h"
 #import "Pop.h"
 #import "Stats.h"
 

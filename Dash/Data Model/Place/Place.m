@@ -2,19 +2,18 @@
 //  Place.m
 //  Dash
 //
-//  Created by John Cadengo on 2/13/12.
+//  Created by John Cadengo on 3/12/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "Place.h"
+#import "Badge.h"
 #import "Category.h"
 #import "FlagPlace.h"
 #import "Hours.h"
 #import "PlaceAction.h"
 #import "PlaceLocation.h"
-#import "PlacePhoto.h"
 #import "Pop.h"
-#import "Recommend.h"
 
 
 @implementation Place
@@ -28,8 +27,7 @@
 @dynamic flags;
 @dynamic hours;
 @dynamic location;
-@dynamic photos;
 @dynamic pops;
-@dynamic recommends;
+@dynamic badges;
 
 @end

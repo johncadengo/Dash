@@ -13,7 +13,6 @@
 #import "Person+Helper.h"
 #import "NSArray+Helpers.h"
 #import "NSString+RandomStrings.h"
-#import "PersonPhoto+Helper.h"
 #import "UIImage+ProportionalFill.h"
 
 @implementation ActionViewCell

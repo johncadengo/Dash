@@ -9,19 +9,24 @@
 #import "PlaceViewController.h"
 #import "DashAPI.h"
 #import "Constants.h"
-#import "JCImageGalleryViewController.h"
 #import "UIImage+ProportionalFill.h"
 #import "PlaceHeaderViewCell.h"
 #import "ActionViewCell.h"
+#import "Badge.h"
+#import "Place.h"
+#import "Place+Helper.h"
+#import "Highlight.h"
+#import "Highlight+Helper.h"
+
 
 @implementation PlaceViewController
 
 @synthesize place = _place;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize api = _api;
+@synthesize badges = _badges;
 @synthesize highlights = _highlights;
 @synthesize footprints = _footprints;
-@synthesize imageGalleryViewController = _imageGalleryViewController;
 @synthesize moreInfoCell = _moreInfoCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,7 +63,8 @@
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
     
     // Get the highlights associated with the place
-    self.highlights = [self.api highlightsForPlace:self.place];
+    self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
+    self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.actions allObjects]];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }

@@ -23,9 +23,6 @@
 #import "Photo.h"
 
 #import "Action+Helper.h"
-#import "PersonPhoto+Helper.h"
-#import "PersonPhoto.h"
-#import "PlacePhoto.h"
 
 #import "Save.h"
 #import "Recommend.h"

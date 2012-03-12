@@ -7,12 +7,10 @@
 //
 
 #import "Highlight.h"
-#import "HighlightPhoto.h"
 
 
 @implementation Highlight
 
 @dynamic text;
-@dynamic photos;
 
 @end

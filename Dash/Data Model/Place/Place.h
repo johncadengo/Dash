@@ -2,7 +2,7 @@
 //  Place.h
 //  Dash
 //
-//  Created by John Cadengo on 2/13/12.
+//  Created by John Cadengo on 3/12/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Uniqueness.h"
 
-@class Category, FlagPlace, Hours, PlaceAction, PlaceLocation, PlacePhoto, Pop, Recommend;
+@class Badge, Category, FlagPlace, Hours, PlaceAction, PlaceLocation, PlacePhoto, Pop;
 
 @interface Place : Uniqueness
 
@@ -25,7 +25,7 @@
 @property (nonatomic, retain) PlaceLocation *location;
 @property (nonatomic, retain) NSSet *photos;
 @property (nonatomic, retain) NSSet *pops;
-@property (nonatomic, retain) Recommend *recommends;
+@property (nonatomic, retain) NSSet *badges;
 @end
 
 @interface Place (CoreDataGeneratedAccessors)
@@ -59,5 +59,10 @@
 - (void)removePopsObject:(Pop *)value;
 - (void)addPops:(NSSet *)values;
 - (void)removePops:(NSSet *)values;
+
+- (void)addBadgesObject:(Badge *)value;
+- (void)removeBadgesObject:(Badge *)value;
+- (void)addBadges:(NSSet *)values;
+- (void)removeBadges:(NSSet *)values;
 
 @end

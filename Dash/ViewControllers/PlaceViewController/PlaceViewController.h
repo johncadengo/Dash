@@ -37,16 +37,15 @@ enum {
 
 @class Place;
 @class DashAPI;
-@class JCImageGalleryViewController;
 
 @interface PlaceViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) Place *place;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
+@property (nonatomic, strong) NSMutableArray *badges;
 @property (nonatomic, strong) NSMutableArray *highlights;
 @property (nonatomic, strong) NSMutableArray *footprints;
-@property (nonatomic, strong) JCImageGalleryViewController *imageGalleryViewController;
 
 @property (nonatomic, strong) MoreInfoViewCell *moreInfoCell;
 

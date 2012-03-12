@@ -10,7 +10,6 @@
 #import "Place.h"
 #import "Place+Helper.h"
 #import "UIImage+ProportionalFill.h"
-#import "PlacePhoto.h"
 #import "JCLocationManagerSingleton.h"
 #import "PlaceLocation.h"
 #import "PopLocation.h"
@@ -146,9 +145,9 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     self.managedObjectContext = context;
     
     // TODO: actually get this data from the place.
-    PlacePhoto *photo = [[place photos] anyObject];
-    NSString *path = [photo localpath];
-    CGSize size = CGSizeMake(kPicWidth, kPicWidth);
+    //PlacePhoto *photo = [[place photos] anyObject];
+    //NSString *path = [photo localpath];
+    //CGSize size = CGSizeMake(kPicWidth, kPicWidth);
     
     self.name = [place name];
     
@@ -158,7 +157,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     [categoryInfo appendFormat:@" / %@ / %.1f mi", place.price, distance];
     
     self.blurb = categoryInfo;
-    self.image = [[UIImage imageNamed:path] imageCroppedToFitSize:size];
+    //self.image = [[UIImage imageNamed:path] imageCroppedToFitSize:size];
     
     [self setNeedsDisplay];
 }
