@@ -36,7 +36,7 @@
     <entity name="Highlight" representedClassName="Highlight" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES" isSyncIdentityProperty="YES"/>
         <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="highlights" inverseEntity="Person" syncable="YES"/>
         <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="highlight" inverseEntity="Like" syncable="YES"/>
         <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="highlights" inverseEntity="Place" syncable="YES"/>
@@ -129,9 +129,9 @@
         <element name="FlagPhoto" positionX="430" positionY="-153" width="128" height="60"/>
         <element name="FlagPlace" positionX="286" positionY="-153" width="128" height="60"/>
         <element name="Friendships" positionX="405" positionY="252" width="128" height="75"/>
-        <element name="Highlight" positionX="97" positionY="315" width="128" height="60"/>
+        <element name="Highlight" positionX="97" positionY="315" width="128" height="135"/>
         <element name="Hours" positionX="-216" positionY="-126" width="128" height="105"/>
-        <element name="Like" positionX="360" positionY="-81" width="128" height="75"/>
+        <element name="Like" positionX="360" positionY="-81" width="128" height="60"/>
         <element name="Location" positionX="-315" positionY="-9" width="128" height="135"/>
         <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
