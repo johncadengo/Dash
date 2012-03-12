@@ -241,7 +241,7 @@
 
 - (ActionViewCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
+    /*ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
     
     if (cell == nil) {
         cell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
@@ -252,6 +252,17 @@
     [cell setDelegate:self];
     Action *action = [[self feedItems] objectAtIndex:row];
     [cell setWithAction:action];
+    */
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFeedItemCellIdentifier];
+    }
+    
+    Action *action = [self.feedItems objectAtIndex:row];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", action];
     
     return cell;
 }
@@ -350,7 +361,7 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
     NSLog(@"%@", objects);
-    //self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
+    self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self hideVisibleBackView:NO];
