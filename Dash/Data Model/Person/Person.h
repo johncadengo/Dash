@@ -2,7 +2,7 @@
 //  Person.h
 //  Dash
 //
-//  Created by John Cadengo on 3/9/12.
+//  Created by John Cadengo on 3/12/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,18 +10,19 @@
 #import <CoreData/CoreData.h>
 #import "Uniqueness.h"
 
-@class Action, Friendships, PersonPhoto, Pop, Stats;
+@class Action, Friendships, Highlight, Photo, Pop, Stats;
 
 @interface Person : Uniqueness
 
 @property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * fb_uid;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *actions;
 @property (nonatomic, retain) NSSet *friends;
 @property (nonatomic, retain) NSSet *pops;
-@property (nonatomic, retain) PersonPhoto *profilepic;
+@property (nonatomic, retain) Photo *profilepic;
 @property (nonatomic, retain) Stats *stats;
+@property (nonatomic, retain) Highlight *highlights;
 @end
 
 @interface Person (CoreDataGeneratedAccessors)

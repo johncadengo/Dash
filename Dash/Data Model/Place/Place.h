@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Uniqueness.h"
 
-@class Badge, Category, FlagPlace, Hours, PlaceAction, PlaceLocation, PlacePhoto, Pop;
+@class Badge, Category, FlagPlace, Highlight, Hours, PlaceAction, PlaceLocation, Pop;
 
 @interface Place : Uniqueness
 
@@ -19,13 +19,13 @@
 @property (nonatomic, retain) NSString * phone;
 @property (nonatomic, retain) NSString * price;
 @property (nonatomic, retain) NSSet *actions;
+@property (nonatomic, retain) NSSet *badges;
 @property (nonatomic, retain) NSSet *categories;
 @property (nonatomic, retain) NSSet *flags;
 @property (nonatomic, retain) NSSet *hours;
 @property (nonatomic, retain) PlaceLocation *location;
-@property (nonatomic, retain) NSSet *photos;
 @property (nonatomic, retain) NSSet *pops;
-@property (nonatomic, retain) NSSet *badges;
+@property (nonatomic, retain) NSSet *highlights;
 @end
 
 @interface Place (CoreDataGeneratedAccessors)
@@ -34,6 +34,11 @@
 - (void)removeActionsObject:(PlaceAction *)value;
 - (void)addActions:(NSSet *)values;
 - (void)removeActions:(NSSet *)values;
+
+- (void)addBadgesObject:(Badge *)value;
+- (void)removeBadgesObject:(Badge *)value;
+- (void)addBadges:(NSSet *)values;
+- (void)removeBadges:(NSSet *)values;
 
 - (void)addCategoriesObject:(Category *)value;
 - (void)removeCategoriesObject:(Category *)value;
@@ -50,19 +55,14 @@
 - (void)addHours:(NSSet *)values;
 - (void)removeHours:(NSSet *)values;
 
-- (void)addPhotosObject:(PlacePhoto *)value;
-- (void)removePhotosObject:(PlacePhoto *)value;
-- (void)addPhotos:(NSSet *)values;
-- (void)removePhotos:(NSSet *)values;
-
 - (void)addPopsObject:(Pop *)value;
 - (void)removePopsObject:(Pop *)value;
 - (void)addPops:(NSSet *)values;
 - (void)removePops:(NSSet *)values;
 
-- (void)addBadgesObject:(Badge *)value;
-- (void)removeBadgesObject:(Badge *)value;
-- (void)addBadges:(NSSet *)values;
-- (void)removeBadges:(NSSet *)values;
+- (void)addHighlightsObject:(Highlight *)value;
+- (void)removeHighlightsObject:(Highlight *)value;
+- (void)addHighlights:(NSSet *)values;
+- (void)removeHighlights:(NSSet *)values;
 
 @end

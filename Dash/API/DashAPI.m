@@ -43,6 +43,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Define our author mapping for highlights
     RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
     [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [authorMapping mapAttributes:@"name", nil];
     
     // Define our highlight mapping, which has a relationship with author
     RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];
@@ -70,7 +71,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     // Define the relationship mappings between place and category, highlight, location
     [placeMapping mapKeyPath:@"categories" toRelationship:@"categories" withMapping:categoryMapping];
-    [placeMapping mapKeyPath:@"highlights" toRelationship:@"actions" withMapping:highlightMapping];
+    [placeMapping mapKeyPath:@"highlights" toRelationship:@"highlights" withMapping:highlightMapping];
     [placeMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
     [placeMapping mapKeyPath:@"badges" toRelationship:@"badges" withMapping:badgeMapping];
     
@@ -145,7 +146,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     author = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:self.managedObjectContext];
     [author setName:[NSString stringWithFormat:[names randomObject]]];
     
-    PersonPhoto *profilePic = [NSEntityDescription insertNewObjectForEntityForName:@"PersonPhoto" inManagedObjectContext:self.managedObjectContext];
+    Photo *profilePic = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:self.managedObjectContext];
     [author setProfilepic:profilePic];
     
     return author;
@@ -159,9 +160,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     place = (Place *)[NSEntityDescription insertNewObjectForEntityForName:@"Place" inManagedObjectContext:self.managedObjectContext];
     [place setName:[NSString stringWithFormat:[names randomObject]]];
     [place setAddress:[NSString stringWithFormat:@"226 Thompson St. 10012"]];
-    
-    PlacePhoto *placePic = [NSEntityDescription insertNewObjectForEntityForName:@"PlacePhoto" inManagedObjectContext:self.managedObjectContext];
-    [place addPhotosObject:placePic];
     
     return place;
 }
@@ -261,7 +259,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Map the relationships
     [highlightMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
     [likeMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
-    [likeMapping mapKeyPath:@"highlight" toRelationship:@"action" withMapping:highlightMapping];
+    [likeMapping mapKeyPath:@"highlight" toRelationship:@"highlight" withMapping:highlightMapping];
     
     // We expect to find the place entity inside of a dictionary keyed "news_items"
     [objectManager.mappingProvider setMapping:likeMapping forKeyPath:@"news_items"];

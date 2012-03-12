@@ -19,9 +19,9 @@
 - (NSString *)description
 {
     NSString *subject = [NSString stringWithFormat:@"%@", self.author.name];
-    NSString *object = [NSString stringWithFormat:@"%@", self.action];
+    NSString *object = [NSString stringWithFormat:@"%@", self.highlight];
     
-    Highlight *highlight = (Highlight *)self.action;
+    Highlight *highlight = (Highlight *)self.highlight;
     NSString *source = [NSString stringWithFormat:@"%@", highlight.place.name];
     
     return [NSString stringWithFormat:@"%@ likes %@ at %@", subject, object, source];

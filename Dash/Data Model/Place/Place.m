@@ -10,6 +10,7 @@
 #import "Badge.h"
 #import "Category.h"
 #import "FlagPlace.h"
+#import "Highlight.h"
 #import "Hours.h"
 #import "PlaceAction.h"
 #import "PlaceLocation.h"
@@ -23,11 +24,12 @@
 @dynamic phone;
 @dynamic price;
 @dynamic actions;
+@dynamic badges;
 @dynamic categories;
 @dynamic flags;
 @dynamic hours;
 @dynamic location;
 @dynamic pops;
-@dynamic badges;
+@dynamic highlights;
 
 @end
