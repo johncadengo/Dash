@@ -234,7 +234,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Define our author mapping
     RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
     [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    //[authorMapping mapAttributes:@"name", nil];
+    [authorMapping mapAttributes:@"name", nil];
     
     // Highlight mapping
     RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];

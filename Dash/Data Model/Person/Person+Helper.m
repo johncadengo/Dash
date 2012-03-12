@@ -32,7 +32,8 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ %@ %@", self.email, self.name, self.fb_uid];
+    return [NSString stringWithFormat:@"%@", self.name];
+    //return [NSString stringWithFormat:@"%@ %@ %@", self.email, self.name, self.fb_uid];
 }
 
 @end
