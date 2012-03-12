@@ -23,6 +23,7 @@
 @synthesize feedItems = _feedItems;
 @synthesize listMode = _listMode;
 @synthesize refreshHeaderView = _refreshHeaderView;
+@synthesize hud = _hud;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
