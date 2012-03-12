@@ -234,6 +234,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Define our author mapping
     RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
     [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    //[authorMapping mapAttributes:@"name", nil];
     
     // Highlight mapping
     RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];
@@ -243,16 +244,20 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Define the relationship mapping between highlight and author
     [highlightMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
     
+    // Get place mapping
+    RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
+    
     // Define our like mapping
     RKManagedObjectMapping *likeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Like"];
     [likeMapping mapKeyPath:@"id" toAttribute:@"uid"];
     [likeMapping mapAttributes:@"timestamp", nil];
     
     // Map the relationships
+    [highlightMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
     [likeMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
     [likeMapping mapKeyPath:@"highlight" toRelationship:@"action" withMapping:highlightMapping];
     
-    // We expect to find the place entity inside of a dictionary keyed "saves"
+    // We expect to find the place entity inside of a dictionary keyed "news_items"
     [objectManager.mappingProvider setMapping:likeMapping forKeyPath:@"news_items"];
     
     // Authentication
