@@ -14,9 +14,10 @@
  */
 enum {
     kPlaceHeaderSection = 0,
-    kPlaceHighlightsSection = 1,
-    kPlaceFootprintsSection = 2,
-    kPlaceNumSections = 3
+    kPlaceBadgesSection = 1,
+    kPlaceHighlightsSection = 2,
+    kPlaceFootprintsSection = 3,
+    kPlaceNumSections = 4
 };
 
 /** Number of rows.
@@ -55,6 +56,7 @@ enum {
 
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (UITableViewCell *)badgesSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 

@@ -64,7 +64,7 @@
     
     // Get the highlights associated with the place
     self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
-    self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.actions allObjects]];
+    self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
@@ -95,6 +95,9 @@
     switch (section) {
         case kPlaceHeaderSection:
             height = [self heightForHeaderSectionCellForRow:row];
+            break;
+        case kPlaceBadgesSection:
+            height = [self heightForHighlightSectionCellForRow:row];
             break;
         case kPlaceHighlightsSection:
             height = [self heightForHighlightSectionCellForRow:row];
@@ -131,7 +134,7 @@
 
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row
 {
-    CGFloat height = 0.0f;
+    CGFloat height = 40.0f;
     
     // This is an if-else situation, not a switch situation,
     // since, the row value can be anything
@@ -170,9 +173,12 @@
         case kPlaceHeaderSection:
             numRows = kPlaceNumRowsForHeaderSection;
             break;
+        case kPlaceBadgesSection:
+            numRows = [self.badges count];
+            break;
         case kPlaceHighlightsSection:
             // This is calculated by the header + up to 3 highlights + footer
-            
+            numRows = [self.highlights count];
             break;
         case kPlaceFootprintsSection:
             // This is calculated by the header + up to n footprints + footer
@@ -195,6 +201,9 @@
     switch (section) {
         case kPlaceHeaderSection:
             cell = [self headerSectionCellForTableView:tableView forRow:row];
+            break;
+        case kPlaceBadgesSection:
+            cell = [self badgesSectionCellForTableView:tableView forRow:row];
             break;
         case kPlaceHighlightsSection:
             cell = [self highlightsSectionCellForTableView:tableView forRow:row];
@@ -231,17 +240,36 @@
     return cell;
 }
 
+- (UITableViewCell *)badgesSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    Badge *badge = [self.badges objectAtIndex:row];
+    NSString *name = badge.name;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", name];
+    [cell.textLabel sizeToFit];
+    
+    return cell;
+}
+
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    id cell;
+    static NSString *CellIdentifier = @"Cell";
     
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
-    if (row == kPlaceHeaderRow) {
-        
-    }
-    else {
-        
-    }
+    Highlight *highlight = [self.highlights objectAtIndex:row];
+    NSString *name = highlight.text;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", name];
+    [cell.textLabel sizeToFit];
     
     return cell;
 }
