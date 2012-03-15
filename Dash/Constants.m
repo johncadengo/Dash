@@ -13,6 +13,25 @@ NSString * const kWelcomeText = @"Welcome to Dash";
 NSString * const kIntroText = @"Your very own personal restaurant consultant. Let's get started with creating an account so that we can make smart, customized suggestions for you, or you can simply make one later.";
 NSString *const kSignUpText = @"You are not signed in. Please log in with Facebook Connect, or directly into Dash.";
 
+#pragma mark - Fonts
+
+NSString * const kPlutoExtraLight = @"PlutoExtraLight";
+NSString * const kPlutoLight = @"PlutoLight";
+NSString * const kPlutoMedium = @"PlutoMedium";
+NSString * const kPlutoRegular = @"PlutoRegular";
+NSString * const kPlutoBlack = @"PlutoBlack";
+NSString * const kPlutoBold = @"PlutoBold";
+NSString * const kPlutoHeavy = @"PlutoHeavy";
+NSString * const kPlutoCondExtraLight = @"PlutoCondExtraLight";
+NSString * const kPlutoCondLight = @"PlutoCondLight";
+NSString * const kPlutoCondMedium = @"PlutoCondMedium";
+NSString * const kPlutoCondRegular = @"PlutoCondRegular";
+NSString * const kPlutoCondThin = @"PlutoCondThin";
+NSString * const kPlutoThin = @"PlutoThin";
+NSString * const kPlutoCondBlack = @"PlutoCondBlack";
+NSString * const kPlutoCondBold = @"PlutoCondBold";
+NSString * const kPlutoCondHeavy = @"PlutoCondHeavy";
+
 #pragma mark - Identifiers
 
 NSString * const kMyFirstConstant = @"FirstConstant";

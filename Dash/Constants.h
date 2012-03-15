@@ -6,10 +6,30 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+// Text
 extern NSString * const kWelcomeText;
 extern NSString * const kIntroText;
 extern NSString * const kSignUpText;
 
+// Fonts
+extern NSString * const kPlutoExtraLight;
+extern NSString * const kPlutoLight;
+extern NSString * const kPlutoMedium;
+extern NSString * const kPlutoRegular;
+extern NSString * const kPlutoBlack;
+extern NSString * const kPlutoBold;
+extern NSString * const kPlutoHeavy;
+extern NSString * const kPlutoCondExtraLight;
+extern NSString * const kPlutoCondLight;
+extern NSString * const kPlutoCondMedium;
+extern NSString * const kPlutoCondRegular;
+extern NSString * const kPlutoCondThin;
+extern NSString * const kPlutoThin;
+extern NSString * const kPlutoCondBlack;
+extern NSString * const kPlutoCondBold;
+extern NSString * const kPlutoCondHeavy;
+
+// Identifiers
 extern NSString * const kMyFirstConstant;
 extern NSString * const kFeedItemCellIdentifier;
 extern NSString * const kListModeCellIdentifier;
