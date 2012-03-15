@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *blurb;
 @property (nonatomic, strong) NSMutableArray *badges;
 @property (nonatomic, strong) UIImage *icon;
+@property (nonatomic, strong) UIImage *backgroundImage;
 
 // TODO: Trophies, images, badges. How will we store them?
 // As distinct UIImages, each one, downloaded from server, stored and cached on phone?
@@ -32,6 +33,7 @@
 + (CGSize)sizeForInfo:(NSString *)info;
 + (CGSize)sizeForBlurb:(NSString *)blurb;
    
+- (id)initWithFrame:(CGRect)frame backgroundImage:(UIImage *)backgroundImage;
 - (void)setWithPlace:(Place *)place;
 
 @end

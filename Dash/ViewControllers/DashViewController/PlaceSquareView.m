@@ -18,6 +18,7 @@
 @synthesize blurb = _blurb;
 @synthesize badges = _badges;
 @synthesize icon = _icon;
+@synthesize backgroundImage = _backgroundImage;
 
 #pragma mark - UI Constants
 
@@ -87,11 +88,12 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 #pragma mark - Initialization
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame backgroundImage:(UIImage *)backgroundImage
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColor:[UIColor whiteColor]];
+        [self setBackgroundColor:[UIColor blackColor]];
+        self.backgroundImage = backgroundImage;
     }
     return self;
 }
@@ -120,6 +122,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     [super drawRect:rect];
     
     // Custom drawing
+    [self.backgroundImage drawAtPoint:CGPointZero];
+    
     UIColor * textColor = [UIColor blackColor];	
 	[textColor set];
 	CGSize nameSize = [[self class] sizeForName:self.name];

@@ -135,21 +135,23 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     
     self.quadrantImages = [[NSMutableArray alloc] initWithObjects:
                            firstImage, secondImage, thirdImage, fourthImage, nil];
-
-    UIImageView *imageView;
-    UIImage *image;
+    
+    // Set up the quadrants
+    self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage];
+    PlaceSquareView *cell;
     NSValue *value;
     CGRect cellFrame;
-    for (int i = 0; i < [self.quadrantFrames count]; i++) {
-        // Get the image and its corresponding frame
-        image = [self.quadrantImages objectAtIndex:i];
+    UIImage *image;
+    for (int i = 0; i < kPlacesPerPage; ++i) {
+        // Get the frames and images
         value = [self.quadrantFrames objectAtIndex:i];
         cellFrame = [value CGRectValue];
+        image = [self.quadrantImages objectAtIndex:i];
         
-        // Create an imageview and set the frame
-        imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = cellFrame;
-        [self.view addSubview:imageView];
+        // Create the cells
+        cell = [[PlaceSquareView alloc] initWithFrame:cellFrame backgroundImage:image];
+        [self.quadrantCells addObject:cell];
+        [self.popsScrollView addSubview:cell];       
     }
 
 }
@@ -183,19 +185,6 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     [self.locationManager startUpdatingLocation];
-    
-    // Set up the quadrants
-    self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage];
-    PlaceSquareView *cell;
-    NSValue *value;
-    CGRect cellFrame;
-    for (int i = 0; i < kPlacesPerPage; ++i) {
-        value = [self.quadrantFrames objectAtIndex:i];
-        cellFrame = [value CGRectValue];
-        cell = [[PlaceSquareView alloc] initWithFrame:cellFrame];
-        [self.quadrantCells addObject:cell];
-        [self.popsScrollView addSubview:cell];       
-    }
     
     // Add our progress hud
     self.progressHUD = [[MBProgressHUD alloc] initWithView:self.popsScrollView];
