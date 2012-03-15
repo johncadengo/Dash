@@ -29,14 +29,14 @@
 
 @synthesize popsScrollView = _popsScrollView;
 @synthesize progressHUD = _progressHUD;
-@synthesize label = _label;
 @synthesize popButton = _popButton;
 @synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
 @synthesize drag = _drag;
 
-@synthesize quadrantCells = _quadrants;
+@synthesize quadrantCells = _quadrantCells;
 @synthesize quadrantFrames = _quadrantFrames;
+@synthesize quadrantImages = _quadrantImages;
 
 #pragma mark - UI Constants
 enum {
@@ -98,20 +98,10 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
 
 
 #pragma mark - View lifecycle
-
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];  
-    
-    // Initialize some things
-    self.loading = NO;
-    self.dragging = NO;
-    self.filterShowing = NO;
-    self.currentPage = kPrePopPage; // -1
-    self.places = [[NSMutableArray alloc] initWithCapacity:12];
-    
-    // Connect to our API.
-    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
+    // Our view
+    self.view = [[UIView alloc] init];
     
     // Add our pops scroll view
     self.popsScrollView = [[UIScrollView alloc] init];
@@ -121,21 +111,6 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
     self.popsScrollView.frame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
     [self.view addSubview:self.popsScrollView];
-    
-    // Add our Dash button
-    self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.popButton addTarget:self 
-                       action:@selector(pop:)
-             forControlEvents:UIControlEventTouchUpInside];
-    [self.popButton setTitle:@"Dash" forState:UIControlStateNormal];
-    self.popButton.frame = CGRectMake(0.0f, 480.0f - 64.0f - 107.0f, 320.0f, 107.0f);
-    [self.view addSubview:self.popButton];
-
-    // Figure out where we are
-    self.locationManager = [JCLocationManagerSingleton sharedInstance];
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    [self.locationManager startUpdatingLocation];
     
     // Set up the quadrantFrames
     CGFloat squareWidth = PlaceSquareView.size.width;
@@ -151,6 +126,37 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                            [NSValue valueWithCGRect:secondFrame],
                            [NSValue valueWithCGRect:thirdFrame],
                            [NSValue valueWithCGRect:fourthFrame], nil];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];  
+    
+    // Initialize some things
+    self.loading = NO;
+    self.dragging = NO;
+    self.filterShowing = NO;
+    self.currentPage = kPrePopPage; // -1
+    self.places = [[NSMutableArray alloc] initWithCapacity:12];
+    
+    // Connect to our API.
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
+    
+    
+    // Add our Dash button
+    self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.popButton addTarget:self 
+                       action:@selector(pop:)
+             forControlEvents:UIControlEventTouchUpInside];
+    [self.popButton setTitle:@"Dash" forState:UIControlStateNormal];
+    self.popButton.frame = CGRectMake(0.0f, 480.0f - 64.0f - 107.0f, 320.0f, 107.0f);
+    [self.view addSubview:self.popButton];
+
+    // Figure out where we are
+    self.locationManager = [JCLocationManagerSingleton sharedInstance];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    [self.locationManager startUpdatingLocation];
     
     // Set up the quadrants
     self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage];
@@ -181,13 +187,6 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     [self.view addGestureRecognizer:self.drag];
     [self.drag setDelegate:self];
     
-    // Add our initial label
-    self.label = [[UILabel alloc] init];
-    self.label.text = @"Tap Dash!";
-    [self.label sizeToFit];
-    [self.popsScrollView addSubview:self.label];
-    [self.label setCenter:self.popsScrollView.center];
-    
     // Hide our navigation bar
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -206,7 +205,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     // TODO: Some logic in here to check whether we are logged in or not
     // For now, segue immediately to the login view controller
     if (![DashAPI skipLogin] && ![DashAPI loggedIn]) {
-        [self showLogin];
+        //[self showLogin];
     }
 }
 
@@ -375,11 +374,6 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
 
 - (void)pop:(id) sender
 {
-    // Remove initial view
-    if (self.currentPage == kPrePopPage) {
-        [self.label removeFromSuperview];
-    }
-    
     // Find out where we are
     CLLocation *loc = [self.locationManager location];
     

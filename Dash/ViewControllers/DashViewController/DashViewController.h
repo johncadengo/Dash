@@ -41,7 +41,6 @@ typedef enum {
 // UI Elements
 @property (nonatomic, strong) UIScrollView *popsScrollView;
 @property (nonatomic, strong) MBProgressHUD *progressHUD;
-@property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UIButton *popButton;
 @property (nonatomic, strong) FilterView *filterView;
 
@@ -56,6 +55,7 @@ typedef enum {
  */
 @property (nonatomic, strong) NSMutableArray *quadrantCells;
 @property (nonatomic, strong) NSMutableArray *quadrantFrames;
+@property (nonatomic, strong) NSMutableArray *quadrantImages;
 
 + (NSInteger)pageForIndex:(NSInteger) index;
 + (NSInteger)firstIndexForPage:(NSInteger) page;
