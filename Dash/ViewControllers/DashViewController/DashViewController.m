@@ -126,6 +126,32 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                            [NSValue valueWithCGRect:secondFrame],
                            [NSValue valueWithCGRect:thirdFrame],
                            [NSValue valueWithCGRect:fourthFrame], nil];
+    
+    // Set up the quadrantImages
+    UIImage *firstImage = [UIImage imageNamed:@"DashGreenBox.png"]; 
+    UIImage *secondImage = [UIImage imageNamed:@"DashRedBox.png"]; 
+    UIImage *thirdImage = [UIImage imageNamed:@"DashTealBox.png"]; 
+    UIImage *fourthImage = [UIImage imageNamed:@"DashOrangeBox.png"];
+    
+    self.quadrantImages = [[NSMutableArray alloc] initWithObjects:
+                           firstImage, secondImage, thirdImage, fourthImage, nil];
+
+    UIImageView *imageView;
+    UIImage *image;
+    NSValue *value;
+    CGRect cellFrame;
+    for (int i = 0; i < [self.quadrantFrames count]; i++) {
+        // Get the image and its corresponding frame
+        image = [self.quadrantImages objectAtIndex:i];
+        value = [self.quadrantFrames objectAtIndex:i];
+        cellFrame = [value CGRectValue];
+        
+        // Create an imageview and set the frame
+        imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = cellFrame;
+        [self.view addSubview:imageView];
+    }
+
 }
 
 - (void)viewDidLoad
@@ -149,7 +175,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                        action:@selector(pop:)
              forControlEvents:UIControlEventTouchUpInside];
     [self.popButton setTitle:@"Dash" forState:UIControlStateNormal];
-    self.popButton.frame = CGRectMake(0.0f, 480.0f - 64.0f - 107.0f, 320.0f, 107.0f);
+    self.popButton.frame = CGRectMake(0.0f, 480.0f - 64.0f - 92.0f, 320.0f, 92.0f);
     [self.view addSubview:self.popButton];
 
     // Figure out where we are

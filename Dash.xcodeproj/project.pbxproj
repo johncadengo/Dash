@@ -70,6 +70,28 @@
 		674EDEE915126CB20056E056 /* Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEE415126CB20056E056 /* Places@2x.png */; };
 		674EDEEA15126CB20056E056 /* Profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEE515126CB20056E056 /* Profile@2x.png */; };
 		674EDEEB15126CB20056E056 /* Search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEE615126CB20056E056 /* Search@2x.png */; };
+		674EDF02151277DF0056E056 /* DashBlackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEEC151277DF0056E056 /* DashBlackBackground@2x.png */; };
+		674EDF03151277DF0056E056 /* DashBlackBackgroundBehindOrangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEED151277DF0056E056 /* DashBlackBackgroundBehindOrangeButton@2x.png */; };
+		674EDF04151277DF0056E056 /* DashBottomBlackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEEE151277DF0056E056 /* DashBottomBlackBackground@2x.png */; };
+		674EDF05151277DF0056E056 /* DashBurgerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEEF151277DF0056E056 /* DashBurgerIcon@2x.png */; };
+		674EDF06151277DF0056E056 /* DashDash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF0151277DF0056E056 /* DashDash@2x.png */; };
+		674EDF07151277DF0056E056 /* DashFeedIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF1151277DF0056E056 /* DashFeedIcon@2x.png */; };
+		674EDF08151277DF0056E056 /* DashFourSquareIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF2151277DF0056E056 /* DashFourSquareIcon@2x.png */; };
+		674EDF09151277DF0056E056 /* DashFourSquareIcon@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF3151277DF0056E056 /* DashFourSquareIcon@2x.psd */; };
+		674EDF0A151277DF0056E056 /* DashGreenBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF4151277DF0056E056 /* DashGreenBox@2x.png */; };
+		674EDF0B151277DF0056E056 /* DashInformativeText.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF5151277DF0056E056 /* DashInformativeText.png */; };
+		674EDF0C151277DF0056E056 /* DashNoodlesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF6151277DF0056E056 /* DashNoodlesIcon@2x.png */; };
+		674EDF0D151277DF0056E056 /* DashOrangeBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF7151277DF0056E056 /* DashOrangeBox@2x.png */; };
+		674EDF0E151277DF0056E056 /* DashOrangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF8151277DF0056E056 /* DashOrangeButton@2x.png */; };
+		674EDF0F151277DF0056E056 /* DashOrangeButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEF9151277DF0056E056 /* DashOrangeButtonPressed@2x.png */; };
+		674EDF10151277DF0056E056 /* DashPizzaIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEFA151277DF0056E056 /* DashPizzaIcon@2x.png */; };
+		674EDF11151277DF0056E056 /* DashPlacesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEFB151277DF0056E056 /* DashPlacesIcon@2x.png */; };
+		674EDF12151277DF0056E056 /* DASHProfileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEFC151277DF0056E056 /* DASHProfileIcon@2x.png */; };
+		674EDF13151277DF0056E056 /* DashRedBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEFD151277DF0056E056 /* DashRedBox@2x.png */; };
+		674EDF14151277DF0056E056 /* DashRestaurantTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEFE151277DF0056E056 /* DashRestaurantTitle@2x.png */; };
+		674EDF15151277DF0056E056 /* DashSearchIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEFF151277DF0056E056 /* DashSearchIcon@2x.png */; };
+		674EDF16151277DF0056E056 /* DashTacoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDF00151277DF0056E056 /* DashTacoIcon@2x.png */; };
+		674EDF17151277DF0056E056 /* DashTealBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDF01151277DF0056E056 /* DashTealBox@2x.png */; };
 		675277B91472EA01008BD9CC /* JCImageGalleryViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 675277B81472EA01008BD9CC /* JCImageGalleryViewControllerTests.m */; };
 		676102D1145F1ADA005D23B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 676102D0145F1ADA005D23B1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67697589145A5CA3001191CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697581145A5C82001191CF /* CFNetwork.framework */; };
@@ -331,6 +353,28 @@
 		674EDEE415126CB20056E056 /* Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Places@2x.png"; path = "Dash/Images/Tabs/Icons/Places@2x.png"; sourceTree = "<group>"; };
 		674EDEE515126CB20056E056 /* Profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Profile@2x.png"; path = "Dash/Images/Tabs/Icons/Profile@2x.png"; sourceTree = "<group>"; };
 		674EDEE615126CB20056E056 /* Search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Search@2x.png"; path = "Dash/Images/Tabs/Icons/Search@2x.png"; sourceTree = "<group>"; };
+		674EDEEC151277DF0056E056 /* DashBlackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashBlackBackground@2x.png"; path = "Dash/Images/Tabs/Dash/DashBlackBackground@2x.png"; sourceTree = "<group>"; };
+		674EDEED151277DF0056E056 /* DashBlackBackgroundBehindOrangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashBlackBackgroundBehindOrangeButton@2x.png"; path = "Dash/Images/Tabs/Dash/DashBlackBackgroundBehindOrangeButton@2x.png"; sourceTree = "<group>"; };
+		674EDEEE151277DF0056E056 /* DashBottomBlackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashBottomBlackBackground@2x.png"; path = "Dash/Images/Tabs/Dash/DashBottomBlackBackground@2x.png"; sourceTree = "<group>"; };
+		674EDEEF151277DF0056E056 /* DashBurgerIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashBurgerIcon@2x.png"; path = "Dash/Images/Tabs/Dash/DashBurgerIcon@2x.png"; sourceTree = "<group>"; };
+		674EDEF0151277DF0056E056 /* DashDash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashDash@2x.png"; path = "Dash/Images/Tabs/Dash/DashDash@2x.png"; sourceTree = "<group>"; };
+		674EDEF1151277DF0056E056 /* DashFeedIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashFeedIcon@2x.png"; path = "Dash/Images/Tabs/Dash/DashFeedIcon@2x.png"; sourceTree = "<group>"; };
+		674EDEF2151277DF0056E056 /* DashFourSquareIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashFourSquareIcon@2x.png"; path = "Dash/Images/Tabs/Dash/DashFourSquareIcon@2x.png"; sourceTree = "<group>"; };
+		674EDEF3151277DF0056E056 /* DashFourSquareIcon@2x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DashFourSquareIcon@2x.psd"; path = "Dash/Images/Tabs/Dash/DashFourSquareIcon@2x.psd"; sourceTree = "<group>"; };
+		674EDEF4151277DF0056E056 /* DashGreenBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashGreenBox@2x.png"; path = "Dash/Images/Tabs/Dash/DashGreenBox@2x.png"; sourceTree = "<group>"; };
+		674EDEF5151277DF0056E056 /* DashInformativeText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DashInformativeText.png; path = Dash/Images/Tabs/Dash/DashInformativeText.png; sourceTree = "<group>"; };
+		674EDEF6151277DF0056E056 /* DashNoodlesIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashNoodlesIcon@2x.png"; path = "Dash/Images/Tabs/Dash/DashNoodlesIcon@2x.png"; sourceTree = "<group>"; };
+		674EDEF7151277DF0056E056 /* DashOrangeBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashOrangeBox@2x.png"; path = "Dash/Images/Tabs/Dash/DashOrangeBox@2x.png"; sourceTree = "<group>"; };
+		674EDEF8151277DF0056E056 /* DashOrangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashOrangeButton@2x.png"; path = "Dash/Images/Tabs/Dash/DashOrangeButton@2x.png"; sourceTree = "<group>"; };
+		674EDEF9151277DF0056E056 /* DashOrangeButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashOrangeButtonPressed@2x.png"; path = "Dash/Images/Tabs/Dash/DashOrangeButtonPressed@2x.png"; sourceTree = "<group>"; };
+		674EDEFA151277DF0056E056 /* DashPizzaIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashPizzaIcon@2x.png"; path = "Dash/Images/Tabs/Dash/DashPizzaIcon@2x.png"; sourceTree = "<group>"; };
+		674EDEFB151277DF0056E056 /* DashPlacesIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashPlacesIcon@2x.png"; path = "Dash/Images/Tabs/Dash/DashPlacesIcon@2x.png"; sourceTree = "<group>"; };
+		674EDEFC151277DF0056E056 /* DASHProfileIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DASHProfileIcon@2x.png"; path = "Dash/Images/Tabs/Dash/DASHProfileIcon@2x.png"; sourceTree = "<group>"; };
+		674EDEFD151277DF0056E056 /* DashRedBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashRedBox@2x.png"; path = "Dash/Images/Tabs/Dash/DashRedBox@2x.png"; sourceTree = "<group>"; };
+		674EDEFE151277DF0056E056 /* DashRestaurantTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashRestaurantTitle@2x.png"; path = "Dash/Images/Tabs/Dash/DashRestaurantTitle@2x.png"; sourceTree = "<group>"; };
+		674EDEFF151277DF0056E056 /* DashSearchIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashSearchIcon@2x.png"; path = "Dash/Images/Tabs/Dash/DashSearchIcon@2x.png"; sourceTree = "<group>"; };
+		674EDF00151277DF0056E056 /* DashTacoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashTacoIcon@2x.png"; path = "Dash/Images/Tabs/Dash/DashTacoIcon@2x.png"; sourceTree = "<group>"; };
+		674EDF01151277DF0056E056 /* DashTealBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashTealBox@2x.png"; path = "Dash/Images/Tabs/Dash/DashTealBox@2x.png"; sourceTree = "<group>"; };
 		675277B71472EA01008BD9CC /* JCImageGalleryViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCImageGalleryViewControllerTests.h; path = ApplicationTests/JCImageGalleryViewController/JCImageGalleryViewControllerTests.h; sourceTree = "<group>"; };
 		675277B81472EA01008BD9CC /* JCImageGalleryViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCImageGalleryViewControllerTests.m; path = ApplicationTests/JCImageGalleryViewController/JCImageGalleryViewControllerTests.m; sourceTree = "<group>"; };
 		676102CF145F1ADA005D23B1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Helpers/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -669,6 +713,28 @@
 		6734EB5515123EA100D7EA7E /* Dash */ = {
 			isa = PBXGroup;
 			children = (
+				674EDEEC151277DF0056E056 /* DashBlackBackground@2x.png */,
+				674EDEED151277DF0056E056 /* DashBlackBackgroundBehindOrangeButton@2x.png */,
+				674EDEEE151277DF0056E056 /* DashBottomBlackBackground@2x.png */,
+				674EDEEF151277DF0056E056 /* DashBurgerIcon@2x.png */,
+				674EDEF0151277DF0056E056 /* DashDash@2x.png */,
+				674EDEF1151277DF0056E056 /* DashFeedIcon@2x.png */,
+				674EDEF2151277DF0056E056 /* DashFourSquareIcon@2x.png */,
+				674EDEF3151277DF0056E056 /* DashFourSquareIcon@2x.psd */,
+				674EDEF4151277DF0056E056 /* DashGreenBox@2x.png */,
+				674EDEF5151277DF0056E056 /* DashInformativeText.png */,
+				674EDEF6151277DF0056E056 /* DashNoodlesIcon@2x.png */,
+				674EDEF7151277DF0056E056 /* DashOrangeBox@2x.png */,
+				674EDEF8151277DF0056E056 /* DashOrangeButton@2x.png */,
+				674EDEF9151277DF0056E056 /* DashOrangeButtonPressed@2x.png */,
+				674EDEFA151277DF0056E056 /* DashPizzaIcon@2x.png */,
+				674EDEFB151277DF0056E056 /* DashPlacesIcon@2x.png */,
+				674EDEFC151277DF0056E056 /* DASHProfileIcon@2x.png */,
+				674EDEFD151277DF0056E056 /* DashRedBox@2x.png */,
+				674EDEFE151277DF0056E056 /* DashRestaurantTitle@2x.png */,
+				674EDEFF151277DF0056E056 /* DashSearchIcon@2x.png */,
+				674EDF00151277DF0056E056 /* DashTacoIcon@2x.png */,
+				674EDF01151277DF0056E056 /* DashTealBox@2x.png */,
 			);
 			name = Dash;
 			sourceTree = "<group>";
@@ -1323,6 +1389,28 @@
 				674EDEE915126CB20056E056 /* Places@2x.png in Resources */,
 				674EDEEA15126CB20056E056 /* Profile@2x.png in Resources */,
 				674EDEEB15126CB20056E056 /* Search@2x.png in Resources */,
+				674EDF02151277DF0056E056 /* DashBlackBackground@2x.png in Resources */,
+				674EDF03151277DF0056E056 /* DashBlackBackgroundBehindOrangeButton@2x.png in Resources */,
+				674EDF04151277DF0056E056 /* DashBottomBlackBackground@2x.png in Resources */,
+				674EDF05151277DF0056E056 /* DashBurgerIcon@2x.png in Resources */,
+				674EDF06151277DF0056E056 /* DashDash@2x.png in Resources */,
+				674EDF07151277DF0056E056 /* DashFeedIcon@2x.png in Resources */,
+				674EDF08151277DF0056E056 /* DashFourSquareIcon@2x.png in Resources */,
+				674EDF09151277DF0056E056 /* DashFourSquareIcon@2x.psd in Resources */,
+				674EDF0A151277DF0056E056 /* DashGreenBox@2x.png in Resources */,
+				674EDF0B151277DF0056E056 /* DashInformativeText.png in Resources */,
+				674EDF0C151277DF0056E056 /* DashNoodlesIcon@2x.png in Resources */,
+				674EDF0D151277DF0056E056 /* DashOrangeBox@2x.png in Resources */,
+				674EDF0E151277DF0056E056 /* DashOrangeButton@2x.png in Resources */,
+				674EDF0F151277DF0056E056 /* DashOrangeButtonPressed@2x.png in Resources */,
+				674EDF10151277DF0056E056 /* DashPizzaIcon@2x.png in Resources */,
+				674EDF11151277DF0056E056 /* DashPlacesIcon@2x.png in Resources */,
+				674EDF12151277DF0056E056 /* DASHProfileIcon@2x.png in Resources */,
+				674EDF13151277DF0056E056 /* DashRedBox@2x.png in Resources */,
+				674EDF14151277DF0056E056 /* DashRestaurantTitle@2x.png in Resources */,
+				674EDF15151277DF0056E056 /* DashSearchIcon@2x.png in Resources */,
+				674EDF16151277DF0056E056 /* DashTacoIcon@2x.png in Resources */,
+				674EDF17151277DF0056E056 /* DashTealBox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
