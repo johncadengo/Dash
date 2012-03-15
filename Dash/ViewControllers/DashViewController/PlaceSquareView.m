@@ -41,12 +41,12 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (UIFont *)nameFont
 {
-    return [UIFont fontWithName:kPlutoBold size:16.0f];
+    return [UIFont fontWithName:kPlutoBold size:18.0f];
 }
 
 + (UIFont *)infoFont
 {
-    return [UIFont systemFontOfSize:10];
+    return [UIFont fontWithName:kPlutoBold size:10.0f];
 }
 
 + (UIFont *)blurbFont
@@ -156,7 +156,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     [textColor set];
     CGSize infoSize = [[self class] sizeForInfo:self.info];
     [self.info drawInRect:CGRectMake(kPadding, 
-                                    nameSize.height + (2 * kPadding), 
+                                    nameSize.height + kPadding, 
                                      infoSize.width, infoSize.height) 
                  withFont:[[self class] infoFont] 
             lineBreakMode:kInfoLinebreak];
@@ -166,7 +166,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     CGSize blurbSize = [[self class] sizeForBlurb:self.blurb];
     CGRect blurbRect = CGRectMake(kPadding, 
-                                  nameSize.height + infoSize.height + (3 * kPadding),
+                                  nameSize.height + infoSize.height + (2 * kPadding),
                                   blurbSize.width, blurbSize.height);
 	[self.blurb drawInRect:blurbRect
                   withFont:[[self class] blurbFont]
