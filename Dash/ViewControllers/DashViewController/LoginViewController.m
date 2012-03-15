@@ -124,12 +124,15 @@
     UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     view.backgroundColor = UIColorFromRGB(kWelcomeBGColor);
     
+    
+    
     // Add the welcoming
     CGRect welcomeFrame = CGRectMake(20.0f, 10.0f, 280.0f, 40.0f);
     self.welcome = [[UILabel alloc] initWithFrame:welcomeFrame];
     self.welcome.text = kWelcomeText;
     self.welcome.textColor = UIColorFromRGB(kWelcomeTextColor);
-    self.welcome.font = [UIFont fontWithName:kPlutoBold size:28.0f];
+    self.welcome.font = [UIFont fontWithName:kPlutoBold size:29.0f];
+    self.welcome.backgroundColor = [UIColor clearColor];
     [view addSubview:self.welcome];
     
     // Add the introduction
@@ -139,6 +142,7 @@
     self.introduction.lineBreakMode = UILineBreakModeWordWrap;
     self.introduction.numberOfLines = 0;
     self.introduction.font = [UIFont fontWithName:kPlutoRegular size:12.0f];
+    self.introduction.backgroundColor = [UIColor clearColor];
     [view addSubview:self.introduction];
     
     // Fb Connect
@@ -147,7 +151,7 @@
                        action:@selector(loginWithConnect:) 
              forControlEvents:UIControlEventTouchUpInside];
     [self.fbconnect setTitle:@"Login with Facebook" forState:UIControlStateNormal];
-    self.fbconnect.frame = CGRectMake(20.0f, 340.0f, 280.0f, 40.0f);
+    self.fbconnect.frame = CGRectMake(40.0f, 340.0f, 240.0f, 40.0f);
     [view addSubview:self.fbconnect];
     
     // Skip now button
@@ -156,7 +160,7 @@
                action:@selector(showDash:)
      forControlEvents:UIControlEventTouchUpInside];
     [self.skip setTitle:@"Skip this for now" forState:UIControlStateNormal];
-    self.skip.frame = CGRectMake(20.0f, 390.0f, 280.0f, 40.0f);
+    self.skip.frame = CGRectMake(40.0f, 390.0f, 240.0f, 40.0f);
     [view addSubview:self.skip];
     
     // Create account button
@@ -165,11 +169,11 @@
                     action:@selector(loginWithConnect:)
           forControlEvents:UIControlEventTouchUpInside];
     [self.create setTitle:@"Create Account" forState:UIControlStateNormal];
-    self.create.frame = CGRectMake(20.0f, 240.0f, 280.0f, 40.0f);
+    self.create.frame = CGRectMake(20.0f, 270.0f, 280.0f, 40.0f);
     [view addSubview:self.create];
     
     // Email field
-    self.emailField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 140.0f, 280.0f, 40.0f)];
+    self.emailField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 170.0f, 280.0f, 40.0f)];
     self.emailField.borderStyle = UITextBorderStyleRoundedRect;
     self.emailField.font = [UIFont systemFontOfSize:15];
     self.emailField.placeholder = @"Email";
@@ -182,7 +186,7 @@
     [view addSubview:self.emailField];
     
     // Password field
-    self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 190.0f, 280.0f, 40.0f)];
+    self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 220.0f, 280.0f, 40.0f)];
     self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
     self.passwordField.font = [UIFont systemFontOfSize:15];
     self.passwordField.placeholder = @"Password";

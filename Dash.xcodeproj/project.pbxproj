@@ -45,11 +45,6 @@
 		67348ACF1446350700A3160A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB41446350700A3160A /* CoreData.framework */; };
 		67348AD71446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AD51446350700A3160A /* InfoPlist.strings */; };
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
-		6734EB601512417F00D7EA7E /* Dash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB5B1512417F00D7EA7E /* Dash@2x.png */; };
-		6734EB611512417F00D7EA7E /* Feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB5C1512417F00D7EA7E /* Feed@2x.png */; };
-		6734EB621512417F00D7EA7E /* Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB5D1512417F00D7EA7E /* Places@2x.png */; };
-		6734EB631512417F00D7EA7E /* Profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB5E1512417F00D7EA7E /* Profile@2x.png */; };
-		6734EB661512420F00D7EA7E /* Search.png in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB651512420F00D7EA7E /* Search.png */; };
 		6734EB781512520500D7EA7E /* PlutoBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB681512520500D7EA7E /* PlutoBlack.otf */; };
 		6734EB791512520500D7EA7E /* PlutoBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB691512520500D7EA7E /* PlutoBold.otf */; };
 		6734EB7A1512520500D7EA7E /* PlutoCondBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB6A1512520500D7EA7E /* PlutoCondBlack.otf */; };
@@ -70,6 +65,11 @@
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
 		6739F46F14646DA800735858 /* HighlightViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6739F46E14646DA800735858 /* HighlightViewControllerTests.m */; };
 		673ABD5C148EAE19004446B2 /* PlaceSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673ABD5B148EAE19004446B2 /* PlaceSquareView.m */; };
+		674EDEE715126CB20056E056 /* Dash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEE215126CB20056E056 /* Dash@2x.png */; };
+		674EDEE815126CB20056E056 /* Feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEE315126CB20056E056 /* Feed@2x.png */; };
+		674EDEE915126CB20056E056 /* Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEE415126CB20056E056 /* Places@2x.png */; };
+		674EDEEA15126CB20056E056 /* Profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEE515126CB20056E056 /* Profile@2x.png */; };
+		674EDEEB15126CB20056E056 /* Search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 674EDEE615126CB20056E056 /* Search@2x.png */; };
 		675277B91472EA01008BD9CC /* JCImageGalleryViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 675277B81472EA01008BD9CC /* JCImageGalleryViewControllerTests.m */; };
 		676102D1145F1ADA005D23B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 676102D0145F1ADA005D23B1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67697589145A5CA3001191CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67697581145A5C82001191CF /* CFNetwork.framework */; };
@@ -302,11 +302,6 @@
 		67348AD61446350700A3160A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		67348AD81446350700A3160A /* DashTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashTests.h; sourceTree = "<group>"; };
 		67348AD91446350700A3160A /* DashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashTests.m; sourceTree = "<group>"; };
-		6734EB5B1512417F00D7EA7E /* Dash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dash@2x.png"; path = "Dash/Images/Tabs/Icons/Dash@2x.png"; sourceTree = "<group>"; };
-		6734EB5C1512417F00D7EA7E /* Feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Feed@2x.png"; path = "Dash/Images/Tabs/Icons/Feed@2x.png"; sourceTree = "<group>"; };
-		6734EB5D1512417F00D7EA7E /* Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Places@2x.png"; path = "Dash/Images/Tabs/Icons/Places@2x.png"; sourceTree = "<group>"; };
-		6734EB5E1512417F00D7EA7E /* Profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Profile@2x.png"; path = "Dash/Images/Tabs/Icons/Profile@2x.png"; sourceTree = "<group>"; };
-		6734EB651512420F00D7EA7E /* Search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Search.png; path = Dash/Images/Tabs/Icons/Search.png; sourceTree = "<group>"; };
 		6734EB681512520500D7EA7E /* PlutoBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoBlack.otf; path = Dash/Images/Fonts/PlutoBlack.otf; sourceTree = "<group>"; };
 		6734EB691512520500D7EA7E /* PlutoBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoBold.otf; path = Dash/Images/Fonts/PlutoBold.otf; sourceTree = "<group>"; };
 		6734EB6A1512520500D7EA7E /* PlutoCondBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoCondBlack.otf; path = Dash/Images/Fonts/PlutoCondBlack.otf; sourceTree = "<group>"; };
@@ -331,6 +326,11 @@
 		6739F46E14646DA800735858 /* HighlightViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewControllerTests.m; path = ApplicationTests/HighlightViewControllerTests.m; sourceTree = "<group>"; };
 		673ABD5A148EAE19004446B2 /* PlaceSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSquareView.h; path = Dash/ViewControllers/DashViewController/PlaceSquareView.h; sourceTree = "<group>"; };
 		673ABD5B148EAE19004446B2 /* PlaceSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSquareView.m; path = Dash/ViewControllers/DashViewController/PlaceSquareView.m; sourceTree = "<group>"; };
+		674EDEE215126CB20056E056 /* Dash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dash@2x.png"; path = "Dash/Images/Tabs/Icons/Dash@2x.png"; sourceTree = "<group>"; };
+		674EDEE315126CB20056E056 /* Feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Feed@2x.png"; path = "Dash/Images/Tabs/Icons/Feed@2x.png"; sourceTree = "<group>"; };
+		674EDEE415126CB20056E056 /* Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Places@2x.png"; path = "Dash/Images/Tabs/Icons/Places@2x.png"; sourceTree = "<group>"; };
+		674EDEE515126CB20056E056 /* Profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Profile@2x.png"; path = "Dash/Images/Tabs/Icons/Profile@2x.png"; sourceTree = "<group>"; };
+		674EDEE615126CB20056E056 /* Search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Search@2x.png"; path = "Dash/Images/Tabs/Icons/Search@2x.png"; sourceTree = "<group>"; };
 		675277B71472EA01008BD9CC /* JCImageGalleryViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCImageGalleryViewControllerTests.h; path = ApplicationTests/JCImageGalleryViewController/JCImageGalleryViewControllerTests.h; sourceTree = "<group>"; };
 		675277B81472EA01008BD9CC /* JCImageGalleryViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCImageGalleryViewControllerTests.m; path = ApplicationTests/JCImageGalleryViewController/JCImageGalleryViewControllerTests.m; sourceTree = "<group>"; };
 		676102CF145F1ADA005D23B1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Helpers/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -704,11 +704,11 @@
 		6734EB5A1512416C00D7EA7E /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				6734EB5B1512417F00D7EA7E /* Dash@2x.png */,
-				6734EB5C1512417F00D7EA7E /* Feed@2x.png */,
-				6734EB5D1512417F00D7EA7E /* Places@2x.png */,
-				6734EB5E1512417F00D7EA7E /* Profile@2x.png */,
-				6734EB651512420F00D7EA7E /* Search.png */,
+				674EDEE215126CB20056E056 /* Dash@2x.png */,
+				674EDEE315126CB20056E056 /* Feed@2x.png */,
+				674EDEE415126CB20056E056 /* Places@2x.png */,
+				674EDEE515126CB20056E056 /* Profile@2x.png */,
+				674EDEE615126CB20056E056 /* Search@2x.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -1302,11 +1302,6 @@
 				67E7CA92146A2C0B00B7CBCF /* Dash.png in Resources */,
 				67E7CA93146A2C0B00B7CBCF /* DashApp.png in Resources */,
 				67C46B1914BF9B05006B9301 /* icon@2x.png in Resources */,
-				6734EB601512417F00D7EA7E /* Dash@2x.png in Resources */,
-				6734EB611512417F00D7EA7E /* Feed@2x.png in Resources */,
-				6734EB621512417F00D7EA7E /* Places@2x.png in Resources */,
-				6734EB631512417F00D7EA7E /* Profile@2x.png in Resources */,
-				6734EB661512420F00D7EA7E /* Search.png in Resources */,
 				6734EB781512520500D7EA7E /* PlutoBlack.otf in Resources */,
 				6734EB791512520500D7EA7E /* PlutoBold.otf in Resources */,
 				6734EB7A1512520500D7EA7E /* PlutoCondBlack.otf in Resources */,
@@ -1323,6 +1318,11 @@
 				6734EB851512520500D7EA7E /* PlutoMedium.otf in Resources */,
 				6734EB861512520500D7EA7E /* PlutoRegular.otf in Resources */,
 				6734EB871512520500D7EA7E /* PlutoThin.otf in Resources */,
+				674EDEE715126CB20056E056 /* Dash@2x.png in Resources */,
+				674EDEE815126CB20056E056 /* Feed@2x.png in Resources */,
+				674EDEE915126CB20056E056 /* Places@2x.png in Resources */,
+				674EDEEA15126CB20056E056 /* Profile@2x.png in Resources */,
+				674EDEEB15126CB20056E056 /* Search@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

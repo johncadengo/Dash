@@ -337,7 +337,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr1-RU-IBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="V0S-th-8fT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="Z8B-YK-ssI"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="Feed.png" id="Z8B-YK-ssI"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lPd-dH-2lr">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -414,7 +414,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qs2-d7-vbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="jCg-bA-KS5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dash" id="0yL-mB-VgE"/>
+                    <tabBarItem key="tabBarItem" title="Dash" image="Dash.png" id="0yL-mB-VgE"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Bwz-aK-HnF">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -443,7 +443,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ViJ-wf-3jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="IdB-Gh-7Ud" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Places" id="0EB-Vu-1yY"/>
+                    <tabBarItem key="tabBarItem" title="Places" image="Places.png" id="0EB-Vu-1yY"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="56U-ry-ZHk">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -473,7 +473,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9g-F9-mVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="dD0-DX-IST" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="Profile@2x.png" id="t6o-Au-Wag"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile.png" id="t6o-Au-Wag"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="h8f-fc-C5Q">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -506,7 +506,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Profile@2x.png" width="40" height="54"/>
+        <image name="Dash.png" width="83" height="91"/>
+        <image name="Feed.png" width="16" height="16"/>
+        <image name="Places.png" width="16" height="16"/>
+        <image name="Profile.png" width="16" height="16"/>
         <image name="Search.png" width="52" height="54"/>
     </resources>
     <classes>
