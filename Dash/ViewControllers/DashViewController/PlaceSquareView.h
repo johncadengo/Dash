@@ -32,6 +32,8 @@
 + (CGSize)sizeForName:(NSString *)name;
 + (CGSize)sizeForInfo:(NSString *)info;
 + (CGSize)sizeForBlurb:(NSString *)blurb;
+
++ (CGColorRef)black;
    
 - (id)initWithFrame:(CGRect)frame backgroundImage:(UIImage *)backgroundImage;
 - (void)setWithPlace:(Place *)place;

@@ -10,6 +10,7 @@
 #import "Place.h"
 #import "Place+Helper.h"
 #import "Category.h"
+#import "Constants.h"
 
 @implementation PlaceSquareView
 
@@ -40,7 +41,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (UIFont *)nameFont
 {
-    return [UIFont systemFontOfSize:14];
+    return [UIFont fontWithName:kPlutoBold size:16.0f];
 }
 
 + (UIFont *)infoFont
@@ -86,6 +87,18 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     return textSize;
 }
 
++ (CGColorRef)black {
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    static CGColorRef black = NULL;
+    if(black == NULL) {
+        CGFloat values[4] = {0.0, 0.0, 0.0, 1.0};
+        black = CGColorCreate(colorSpace, values);
+    }
+    return black;
+}
+
+
 #pragma mark - Initialization
 
 - (id)initWithFrame:(CGRect)frame backgroundImage:(UIImage *)backgroundImage
@@ -124,7 +137,14 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     // Custom drawing
     [self.backgroundImage drawAtPoint:CGPointZero];
     
-    UIColor * textColor = [UIColor blackColor];	
+    // Drop shadow
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    //CGContextSetShadow(context, CGSizeMake(0.0f, -0.5f), 0.0f);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0f, -0.5f), 0.0f, 
+                                CGColorCreateCopyWithAlpha([[self class] black], 0.6f));
+    
+    
+    UIColor * textColor = [UIColor whiteColor];	
 	[textColor set];
 	CGSize nameSize = [[self class] sizeForName:self.name];
 	[self.name drawInRect:CGRectMake(kPadding, kPadding,
@@ -132,7 +152,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                  withFont:[[self class] nameFont]
             lineBreakMode:kNameLineBreak];
     
-    textColor = [UIColor grayColor];
+    textColor = [UIColor whiteColor];
     [textColor set];
     CGSize infoSize = [[self class] sizeForInfo:self.info];
     [self.info drawInRect:CGRectMake(kPadding, 
@@ -141,7 +161,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                  withFont:[[self class] infoFont] 
             lineBreakMode:kInfoLinebreak];
     
-    textColor = [UIColor blackColor];
+    textColor = [UIColor whiteColor];
     [textColor set];
     
     CGSize blurbSize = [[self class] sizeForBlurb:self.blurb];
