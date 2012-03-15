@@ -122,21 +122,23 @@
     // Create our self.view
     //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
     UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    view.backgroundColor = [UIColor whiteColor];
+    view.backgroundColor = UIColorFromRGB(kWelcomeBGColor);
     
     // Add the welcoming
-    CGRect welcomeFrame = CGRectMake(20.0f, 10.0f, 280.0f, 20.0f);
+    CGRect welcomeFrame = CGRectMake(20.0f, 10.0f, 280.0f, 40.0f);
     self.welcome = [[UILabel alloc] initWithFrame:welcomeFrame];
     self.welcome.text = kWelcomeText;
+    self.welcome.textColor = UIColorFromRGB(kWelcomeTextColor);
+    self.welcome.font = [UIFont fontWithName:kPlutoBold size:28.0f];
     [view addSubview:self.welcome];
     
     // Add the introduction
-    CGRect introFrame = CGRectMake(20.0f, 30.0f, 280.0f, 100.0f);
+    CGRect introFrame = CGRectMake(20.0f, 50.0f, 280.0f, 100.0f);
     self.introduction = [[UILabel alloc] initWithFrame:introFrame];
     self.introduction.text = kIntroText;
     self.introduction.lineBreakMode = UILineBreakModeWordWrap;
     self.introduction.numberOfLines = 0;
-    self.introduction.font = [UIFont systemFontOfSize:12.0f];
+    self.introduction.font = [UIFont fontWithName:kPlutoRegular size:12.0f];
     [view addSubview:self.introduction];
     
     // Fb Connect
