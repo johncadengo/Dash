@@ -399,8 +399,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 - (NSDictionary *)placeActionsForPerson:(Person *)person withCount:(NSUInteger)count
 {
     // Right now, we only have saves and recommends. So make a request for each.
-    
-    // TODO: Cannot for the life of me figure out why both calls can't be made at the same time.
     [self recommendsForPerson:person withCount:count];
     [self savesForPerson:person withCount:count];
     

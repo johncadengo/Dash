@@ -458,7 +458,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXs-bS-Lwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Toc-43-LWk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="Lci-3r-bf3"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="Search.png" id="Lci-3r-bf3"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="9A6-36-YEX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -473,7 +473,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9g-F9-mVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="dD0-DX-IST" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="t6o-Au-Wag"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile@2x.png" id="t6o-Au-Wag"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="h8f-fc-C5Q">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -505,6 +505,10 @@
             <point key="canvasLocation" x="-770" y="8"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Profile@2x.png" width="40" height="54"/>
+        <image name="Search.png" width="52" height="54"/>
+    </resources>
     <classes>
         <class className="ActionViewCell" superclassName="TISwipeableTableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActionViewCell.h"/>
@@ -517,9 +521,6 @@
         </class>
         <class className="FilterView" superclassName="UITableView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FilterView.h"/>
-        </class>
-        <class className="HighlightViewController" superclassName="TISwipeableTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HighlightViewController.h"/>
         </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>

@@ -51,5 +51,24 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PlutoBlack.otf</string>
+		<string>PlutoBold.otf</string>
+		<string>PlutoCondBlack.otf</string>
+		<string>PlutoCondBold.otf</string>
+		<string>PlutoCondExtraLight.otf</string>
+		<string>PlutoCondHeavy.otf</string>
+		<string>PlutoCondLight.otf</string>
+		<string>PlutoCondMedium.otf</string>
+		<string>PlutoCondRegular.otf</string>
+		<string>PlutoCondThin.otf</string>
+		<string>PlutoExtraLight.otf</string>
+		<string>PlutoHeavy.otf</string>
+		<string>PlutoLight.otf</string>
+		<string>PlutoMedium.otf</string>
+		<string>PlutoRegular.otf</string>
+		<string>PlutoThin.otf</string>
+	</array>
 </dict>
 </plist>
