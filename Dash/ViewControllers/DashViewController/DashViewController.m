@@ -129,9 +129,9 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     
     // Set up the quadrantImages
     UIImage *firstImage = [UIImage imageNamed:@"DashGreenBox.png"]; 
-    UIImage *secondImage = [UIImage imageNamed:@"DashRedBox.png"]; 
-    UIImage *thirdImage = [UIImage imageNamed:@"DashTealBox.png"]; 
-    UIImage *fourthImage = [UIImage imageNamed:@"DashOrangeBox.png"];
+    UIImage *secondImage = [UIImage imageNamed:@"DashOrangeBox.png"]; 
+    UIImage *thirdImage = [UIImage imageNamed:@"DashRedBox.png"]; 
+    UIImage *fourthImage = [UIImage imageNamed:@"DashTealBox.png"];
     
     self.quadrantImages = [[NSMutableArray alloc] initWithObjects:
                            firstImage, secondImage, thirdImage, fourthImage, nil];
