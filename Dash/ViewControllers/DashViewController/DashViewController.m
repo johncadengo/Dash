@@ -187,6 +187,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                        action:@selector(pop:)
              forControlEvents:UIControlEventTouchUpInside];
     [self.popButton setTitle:@"Dash" forState:UIControlStateNormal];
+    [self.popButton setBackgroundImage:[UIImage imageNamed:@"DashOrangeButton"] forState:UIControlStateNormal];
     CGFloat kPopButtonYOffset = 15.0f;
     self.popButton.frame = CGRectMake(10.0f, kPopBackgroundY + kPopButtonYOffset, 300.0f, 54.5f);
     [self.view addSubview:self.popButton];
