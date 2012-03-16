@@ -41,6 +41,7 @@ typedef enum {
 // UI Elements
 @property (nonatomic, strong) UIScrollView *popsScrollView;
 @property (nonatomic, strong) MBProgressHUD *progressHUD;
+@property (nonatomic, strong) UIImageView *popBackground;
 @property (nonatomic, strong) UIButton *popButton;
 @property (nonatomic, strong) FilterView *filterView;
 

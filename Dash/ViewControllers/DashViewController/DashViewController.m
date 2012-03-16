@@ -29,6 +29,7 @@
 
 @synthesize popsScrollView = _popsScrollView;
 @synthesize progressHUD = _progressHUD;
+@synthesize popBackground = _popBackground;
 @synthesize popButton = _popButton;
 @synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
@@ -174,13 +175,19 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
     
-    // Add our Dash button
+    // Add our Dash button and its background
+    self.popBackground = [[UIImageView alloc] initWithImage:
+                          [UIImage imageNamed:@"DashBlackBackgroundBehindOrangeButton.png"]];
+    CGFloat kPopBackgroundY = (2 * PlaceSquareView.size.height);
+    self.popBackground.frame = CGRectMake(0.0f, kPopBackgroundY, 320.0f, 92.0f);
+    [self.view addSubview:self.popBackground];
+    
     self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.popButton addTarget:self 
                        action:@selector(pop:)
              forControlEvents:UIControlEventTouchUpInside];
     [self.popButton setTitle:@"Dash" forState:UIControlStateNormal];
-    self.popButton.frame = CGRectMake(0.0f, 480.0f - 64.0f - 92.0f, 320.0f, 92.0f);
+    self.popButton.frame = CGRectMake(10.0f, kPopBackgroundY + ((92.0f - 54.5f) / 2.0f), 300.0f, 54.5f);
     [self.view addSubview:self.popButton];
 
     // Figure out where we are
