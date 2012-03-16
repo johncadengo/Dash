@@ -186,7 +186,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     [self.popButton addTarget:self 
                        action:@selector(pop:)
              forControlEvents:UIControlEventTouchUpInside];
-    [self.popButton setTitle:@"Dash" forState:UIControlStateNormal];
+    [self.popButton setTitle:@"dash" forState:UIControlStateNormal];
     [self.popButton.titleLabel setFont:[UIFont fontWithName:kPlutoBold size:42.5f]];
     [self.popButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.popButton setBackgroundImage:[UIImage imageNamed:@"DashOrangeButton"] forState:UIControlStateNormal];
