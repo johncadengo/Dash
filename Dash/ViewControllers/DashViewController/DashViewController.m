@@ -44,6 +44,8 @@ enum {
     kPlacesPerPage = 4
 };
 
+static double const kRightHalfXOffset = 0.5;
+
 #pragma mark - Function to help with tracking views
 
 CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin);
@@ -116,10 +118,10 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     CGFloat squareWidth = PlaceSquareView.size.width;
     CGFloat squareHeight = PlaceSquareView.size.height;
     
-    CGRect firstFrame = CGRectMake(squareWidth, 0.0f, squareWidth, squareHeight);
+    CGRect firstFrame = CGRectMake(squareWidth + kRightHalfXOffset, 0.0f, squareWidth, squareHeight);
     CGRect secondFrame = CGRectMake(0.0f, 0.0f, squareWidth, squareHeight);
     CGRect thirdFrame = CGRectMake(0.0f, squareHeight, squareWidth, squareHeight);
-    CGRect fourthFrame = CGRectMake(squareWidth, squareHeight, squareWidth, squareHeight);
+    CGRect fourthFrame = CGRectMake(squareWidth + kRightHalfXOffset, squareHeight, squareWidth, squareHeight);
     
     self.quadrantFrames = [[NSMutableArray alloc] initWithObjects:
                            [NSValue valueWithCGRect:firstFrame],
