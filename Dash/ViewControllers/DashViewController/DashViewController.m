@@ -27,6 +27,7 @@
 @synthesize filterShowing = _filterShowing;
 @synthesize currentPage = _currentPage;
 
+@synthesize mainDashView = _mainDashView;
 @synthesize popsScrollView = _popsScrollView;
 @synthesize progressHUD = _progressHUD;
 @synthesize popBackground = _popBackground;
@@ -104,8 +105,12 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
 #pragma mark - View lifecycle
 - (void)loadView
 {
-    // Our view
+    // The visible view at all times
     self.view = [[UIView alloc] init];
+    
+    // The main dash screen's view.. Which can be dragged upwards when filter view segues
+    self.mainDashView = [[UIView alloc] init];
+    [self.view addSubview:self.mainDashView];
     
     // Add our pops scroll view
     self.popsScrollView = [[UIScrollView alloc] init];
@@ -114,7 +119,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
     CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
     self.popsScrollView.frame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
-    [self.view addSubview:self.popsScrollView];
+    [self.mainDashView addSubview:self.popsScrollView];
     
     // Set up the quadrantFrames
     CGFloat squareWidth = PlaceSquareView.size.width;
@@ -180,7 +185,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                           [UIImage imageNamed:@"DashBlackBackgroundBehindOrangeButton.png"]];
     CGFloat kPopBackgroundY = (2 * PlaceSquareView.size.height);
     self.popBackground.frame = CGRectMake(0.0f, kPopBackgroundY, 320.0f, 92.0f);
-    [self.view addSubview:self.popBackground];
+    [self.mainDashView addSubview:self.popBackground];
     
     self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.popButton addTarget:self 
@@ -192,7 +197,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     [self.popButton setBackgroundImage:[UIImage imageNamed:@"DashOrangeButton"] forState:UIControlStateNormal];
     CGFloat kPopButtonYOffset = 15.0f;
     self.popButton.frame = CGRectMake(10.0f, kPopBackgroundY + kPopButtonYOffset, 300.0f, 54.5f);
-    [self.view addSubview:self.popButton];
+    [self.mainDashView addSubview:self.popButton];
 
     // Figure out where we are
     self.locationManager = [JCLocationManagerSingleton sharedInstance];
@@ -322,7 +327,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
  */
 - (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer
 {
-    UIView *dragSuperView = self.popsScrollView;
+    UIView *dragSuperView = self.view;
     
     if (self.isDragging && gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         // Reset isDragging
@@ -341,7 +346,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
             vertical = self.filterView.frame.origin.y - dragSuperView.frame.origin.y;
             duration = MIN(ABS(vertical / velocity), 1.0f);
             
-            NSLog(@"%f %f %f", velocity, vertical, duration);
+            //NSLog(@"%f %f %f", velocity, vertical, duration);
             
             [UIView animateWithDuration:duration
                                   delay:0.0
@@ -388,13 +393,13 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         
         //NSLog(@"origin %f %f", origin.x, origin.y);
 
-        if (CGRectContainsPoint(self.popButton.frame, origin)) {
+        if (CGRectContainsPoint(self.popBackground.frame, origin)) {
             //NSLog(@"Started in pop button!");
             
             // Now, we are dragging
             self.dragging = YES;
             
-            [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
+            //[self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
         }
     }
 }

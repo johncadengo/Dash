@@ -38,13 +38,15 @@ typedef enum {
 @property (nonatomic, getter=isFilterShowing) BOOL filterShowing;
 @property (nonatomic) NSInteger currentPage;
 
-// UI Elements
+// UI Elements, and views
+// Main contains PopsScroll, PopBG, and PopButton
+@property (nonatomic, strong) UIView *mainDashView;
 @property (nonatomic, strong) UIScrollView *popsScrollView;
-@property (nonatomic, strong) MBProgressHUD *progressHUD;
 @property (nonatomic, strong) UIImageView *popBackground;
 @property (nonatomic, strong) UIButton *popButton;
-@property (nonatomic, strong) FilterView *filterView;
 
+@property (nonatomic, strong) FilterView *filterView;
+@property (nonatomic, strong) MBProgressHUD *progressHUD;
 // Gesture recognizers
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
 @property (nonatomic, strong) UIPanGestureRecognizer *drag;
