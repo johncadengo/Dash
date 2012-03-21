@@ -12,6 +12,7 @@
 #import "Category.h"
 #import "Constants.h"
 #import "JCLocationManagerSingleton.h"
+#import "NSArray+Helpers.h"
 
 @implementation PlaceSquareView
 
@@ -148,6 +149,13 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     self.distancePrice = [NSString stringWithFormat:@"%.1f mi  %@", distance, place.price];
     self.blurb = [NSString stringWithFormat:@""];
     
+    // Some logic here
+    NSArray *iconChoices = [NSArray arrayWithObjects:
+                            @"DashBurgerIcon.png", @"DashTacoIcon.png", 
+                            @"DashPizzaIcon.png", @"DashNoodlesIcon.png" ,nil];
+    NSString *iconName = [NSString stringWithFormat:@"%@", [iconChoices randomObject]];
+    self.icon = [UIImage imageNamed:iconName];
+    
     // Draw self
     [self setNeedsDisplay];
 }
@@ -204,6 +212,12 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                   withFont:[[self class] blurbFont]
              lineBreakMode:kBlurbLineBreak];
 
+    
+    CGSize iconSize = CGSizeMake(62.5f, 62.5f);
+    CGRect iconRect = CGRectMake(kWidth - kPadding - iconSize.width,
+                                 nameSize.height + categoriesSize.height + kPadding,
+                                 iconSize.width, iconSize.height);
+    [self.icon drawInRect:iconRect];
 }
 
 
