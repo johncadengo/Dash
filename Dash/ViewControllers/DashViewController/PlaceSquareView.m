@@ -146,7 +146,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     double distance = [[JCLocationManagerSingleton calculateDistanceFromPlace:place withManagedObjectContext:self.managedObjectContext] doubleValue];
     
     self.categories = categoryInfo;
-    self.distancePrice = [NSString stringWithFormat:@"%.1f mi  %@", distance, place.price];
+    self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];
     self.blurb = [NSString stringWithFormat:@""];
     
     // Some logic here

@@ -70,6 +70,9 @@ typedef enum {
 - (BOOL)canShowNextPage;
 - (void)showNextPage;
 
+// For dragging
+- (void)offsetQuadrantFrames:(CGFloat)offset;
+
 /** Receive touch events and respond accordingly.
  */
 - (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer;

@@ -51,9 +51,13 @@ static double const kBottomHalfYOffset = 0.5f;
 #pragma mark - Function to help with tracking views
 
 CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin);
-
 CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     return CGRectMake(rect.origin.x, origin.y, rect.size.width, rect.size.height);
+}
+
+CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset);
+CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset) {
+    return CGRectMake(rect.origin.x, origin.y + offset, rect.size.width, rect.size.height);
 }
 
 #pragma mark - Class methods for determining layout
@@ -325,6 +329,8 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     UIView *dragSuperView = self.view;
     
     if (self.isDragging && gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"Dragging over. Should stick either up or down now.");
+        /*
         // Reset isDragging
         self.dragging = NO;
         
@@ -368,6 +374,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                                  self.filterShowing = NO;
                              }];
         }
+         */
     }
     else if (self.isDragging) {
         // Keep track of where we are
@@ -375,7 +382,10 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         
         // As long as we aren't going above the top of the view, have it follow the drag
         if (CGRectContainsPoint(dragSuperView.frame, origin)) {
-            self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, origin);
+            // Grab all the boxes and drag em
+            [self offsetQuadrantFrames:origin.y];
+            
+            //self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, origin);
         }
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) { //(!self.isFilterShowing && gestureRecognizer.state == UIGestureRecognizerStateBegan) {
@@ -389,7 +399,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         //NSLog(@"origin %f %f", origin.x, origin.y);
 
         if (CGRectContainsPoint(self.popBackground.frame, origin)) {
-            //NSLog(@"Started in pop button!");
+            NSLog(@"Started dragging from pop button!");
             
             // Now, we are dragging
             self.dragging = YES;
@@ -397,6 +407,28 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
             //[self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
         }
     }
+}
+
+- (void)offsetQuadrantFrames:(CGFloat)offset
+{
+    
+    CGFloat squareWidth = PlaceSquareView.size.width;
+    CGFloat squareHeight = PlaceSquareView.size.height;
+    
+    // Set up the quadrants
+    PlaceSquareView *cell;
+    NSValue *value;
+    CGRect cellFrame;
+    for (int i = 0; i < kPlacesPerPage; ++i) {
+        // Get the frames and images
+        value = [self.quadrantFrames objectAtIndex:i];
+        cell = [self.quadrantCells objectAtIndex:i];
+        
+        cellFrame = [value CGRectValue];
+        cellFrame = CGRectOffset(cellFrame, 0.0f, offset - (2 * squareHeight));
+        cell.frame = cellFrame;
+    }
+    
 }
 
 #pragma mark -
