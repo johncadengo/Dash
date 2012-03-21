@@ -30,6 +30,7 @@
 @synthesize popsScrollView = _popsScrollView;
 @synthesize progressHUD = _progressHUD;
 @synthesize popBackground = _popBackground;
+@synthesize popsScrollViewFrame = _popsScrollViewFrame;
 @synthesize popBackgroundFrame = _popBackgroundFrame;
 @synthesize popButtonFrame = _popButtonFrame;
 @synthesize popButton = _popButton;
@@ -119,7 +120,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     // 2 x 2
     CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
     CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
-    self.popsScrollView.frame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
+    self.popsScrollViewFrame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
+    self.popsScrollView.frame = self.popsScrollViewFrame;
     [self.view addSubview:self.popsScrollView];
     
     // Set up the quadrantFrames
@@ -386,6 +388,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         
         // As long as we aren't going above the top of the view, have it follow the drag
         if (CGRectContainsPoint(dragSuperView.frame, origin)) {
+            // Grab the popsscrollview and drag it
+            self.popsScrollView.frame = CGRectOffset(self.popsScrollViewFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
+            
             // Grab all the boxes and drag em
             [self offsetQuadrantFrames:origin.y];
             
