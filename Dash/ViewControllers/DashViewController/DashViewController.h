@@ -39,8 +39,7 @@ typedef enum {
 @property (nonatomic) NSInteger currentPage;
 
 // UI Elements, and views
-// Main contains PopsScroll, PopBG, and PopButton
-@property (nonatomic, strong) UIView *mainDashView;
+// PopsScroll, PopBG, and PopButton
 @property (nonatomic, strong) UIScrollView *popsScrollView;
 @property (nonatomic, strong) UIImageView *popBackground;
 @property (nonatomic, strong) UIButton *popButton;

@@ -27,7 +27,6 @@
 @synthesize filterShowing = _filterShowing;
 @synthesize currentPage = _currentPage;
 
-@synthesize mainDashView = _mainDashView;
 @synthesize popsScrollView = _popsScrollView;
 @synthesize progressHUD = _progressHUD;
 @synthesize popBackground = _popBackground;
@@ -108,10 +107,6 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     // The visible view at all times
     self.view = [[UIView alloc] init];
     
-    // The main dash screen's view.. Which can be dragged upwards when filter view segues
-    self.mainDashView = [[UIView alloc] init];
-    [self.view addSubview:self.mainDashView];
-    
     // Add our pops scroll view
     self.popsScrollView = [[UIScrollView alloc] init];
     
@@ -119,7 +114,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
     CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
     self.popsScrollView.frame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
-    [self.mainDashView addSubview:self.popsScrollView];
+    [self.view addSubview:self.popsScrollView];
     
     // Set up the quadrantFrames
     CGFloat squareWidth = PlaceSquareView.size.width;
@@ -185,7 +180,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
                           [UIImage imageNamed:@"DashBlackBackgroundBehindOrangeButton.png"]];
     CGFloat kPopBackgroundY = (2 * PlaceSquareView.size.height);
     self.popBackground.frame = CGRectMake(0.0f, kPopBackgroundY, 320.0f, 92.0f);
-    [self.mainDashView addSubview:self.popBackground];
+    [self.view addSubview:self.popBackground];
     
     self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.popButton addTarget:self 
@@ -197,7 +192,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
     [self.popButton setBackgroundImage:[UIImage imageNamed:@"DashOrangeButton"] forState:UIControlStateNormal];
     CGFloat kPopButtonYOffset = 15.0f;
     self.popButton.frame = CGRectMake(10.0f, kPopBackgroundY + kPopButtonYOffset, 300.0f, 54.5f);
-    [self.mainDashView addSubview:self.popButton];
+    [self.view addSubview:self.popButton];
 
     // Figure out where we are
     self.locationManager = [JCLocationManagerSingleton sharedInstance];

@@ -11,6 +11,10 @@
 
 @implementation Place (Helper)
 
+enum {
+    kMaxCategoriesDescriptionLength = 22  
+};
+
 - (NSString*)categoriesDescription
 {
     NSMutableString *categoryInfo = [[NSMutableString alloc] init];
@@ -18,15 +22,30 @@
     Category *lastCategory = [categoriesArray lastObject];
     
     for (Category *category in categoriesArray) {
+        NSString *toAdd;
         if (category == lastCategory) {
-            [categoryInfo appendFormat:@"%@", category.name];
+            toAdd = [NSString stringWithFormat:@"%@", category.name];
         }
         else {
-            [categoryInfo appendFormat:@"%@ / ", category.name];            
+            toAdd = [NSString stringWithFormat:@"%@, ", category.name];    
+        }
+        
+        // Add the next category
+        [categoryInfo appendString:toAdd];
+        
+        // Check if the new string is too long
+        if ([categoryInfo length] > kMaxCategoriesDescriptionLength) {
+            // If it is.. Let's remove what we just added
+            [categoryInfo replaceOccurrencesOfString:toAdd withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [categoryInfo length])];
+            
+            // And we may need to remove the trailing comma
+            if ( [categoryInfo length] > 0) {
+                [categoryInfo replaceOccurrencesOfString:@", " withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [categoryInfo length])];
+            }
         }
     }
     
-    return categoryInfo;
+    return [categoryInfo capitalizedString];
 }
 
 @end
