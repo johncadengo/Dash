@@ -145,7 +145,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     double distance = [[JCLocationManagerSingleton calculateDistanceFromPlace:place withManagedObjectContext:self.managedObjectContext] doubleValue];
     
     self.categories = categoryInfo;
-    self.distancePrice = [NSString stringWithFormat:@"%.1f  %@", distance, place.price];
+    self.distancePrice = [NSString stringWithFormat:@"%.1f mi  %@", distance, place.price];
     self.blurb = [NSString stringWithFormat:@""];
     
     // Draw self
@@ -187,7 +187,15 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     textColor = [UIColor whiteColor];
     [textColor set];
+    CGSize distancePriceSize = [[self class] sizeForDistancePrice:self.distancePrice];
+    [self.distancePrice drawInRect:CGRectMake(kPadding, 
+                                              nameSize.height + categoriesSize.height + kPadding, 
+                                              distancePriceSize.width, distancePriceSize.height) 
+                       withFont:[[self class] distancePriceFont] 
+                  lineBreakMode:kInfoLinebreak];
     
+    textColor = [UIColor whiteColor];
+    [textColor set];
     CGSize blurbSize = [[self class] sizeForBlurb:self.blurb];
     CGRect blurbRect = CGRectMake(kPadding, 
                                   nameSize.height + categoriesSize.height + (2 * kPadding),
