@@ -13,11 +13,13 @@
 @interface PlaceSquareView : UIView
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *info;
+@property (nonatomic, strong) NSString *categories;
+@property (nonatomic, strong) NSString *distancePrice;
 @property (nonatomic, strong) NSString *blurb;
 @property (nonatomic, strong) NSMutableArray *badges;
 @property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, strong) UIImage *backgroundImage;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 // TODO: Trophies, images, badges. How will we store them?
 // As distinct UIImages, each one, downloaded from server, stored and cached on phone?
@@ -27,15 +29,17 @@
 // Class methods for determining size and layout of cell
 + (CGSize)size;
 + (UIFont *)nameFont;
-+ (UIFont *)infoFont;
++ (UIFont *)categoriesFont;
++ (UIFont *)distancePriceFont;
 + (UIFont *)blurbFont;
 + (CGSize)sizeForName:(NSString *)name;
-+ (CGSize)sizeForInfo:(NSString *)info;
++ (CGSize)sizeForCategories:(NSString *)categories;
++ (CGSize)sizeForDistancePrice:(NSString *)distancePrice;
 + (CGSize)sizeForBlurb:(NSString *)blurb;
 
 + (CGColorRef)black;
    
 - (id)initWithFrame:(CGRect)frame backgroundImage:(UIImage *)backgroundImage;
-- (void)setWithPlace:(Place *)place;
+- (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
 
 @end

@@ -11,15 +11,18 @@
 #import "Place+Helper.h"
 #import "Category.h"
 #import "Constants.h"
+#import "JCLocationManagerSingleton.h"
 
 @implementation PlaceSquareView
 
 @synthesize name = _name;
-@synthesize info = _info;
+@synthesize categories = _categories;
+@synthesize distancePrice = _distancePrice;
 @synthesize blurb = _blurb;
 @synthesize badges = _badges;
 @synthesize icon = _icon;
 @synthesize backgroundImage = _backgroundImage;
+@synthesize managedObjectContext = _managedObjectContext;
 
 #pragma mark - UI Constants
 
@@ -44,7 +47,12 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     return [UIFont fontWithName:kHelveticaNeueBold size:18.0f];
 }
 
-+ (UIFont *)infoFont
++ (UIFont *)categoriesFont
+{
+    return [UIFont fontWithName:kHelveticaNeueBold size:10.0f];    
+}
+
++ (UIFont *)distancePriceFont
 {
     return [UIFont fontWithName:kHelveticaNeueBold size:10.0f];
 }
@@ -64,14 +72,24 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     return textSize;
 }
 
-+ (CGSize)sizeForInfo:(NSString *)info
++ (CGSize)sizeForCategories:(NSString *)categories
 {
     CGFloat maxWidth = kWidth - (2 * kPadding);
-	CGSize textSize = [info sizeWithFont:[self infoFont] 
-                                forWidth:maxWidth 
-                           lineBreakMode:kInfoLinebreak];
+	CGSize textSize = [categories sizeWithFont:[self categoriesFont] 
+                                      forWidth:maxWidth 
+                                 lineBreakMode:kInfoLinebreak];
     
     return textSize;
+}
+
++ (CGSize)sizeForDistancePrice:(NSString *)distancePrice
+{
+    CGFloat maxWidth = kWidth - (2 * kPadding);
+	CGSize textSize = [distancePrice sizeWithFont:[self distancePriceFont] 
+                                         forWidth:maxWidth 
+                                    lineBreakMode:kInfoLinebreak];
+    
+    return textSize;   
 }
 
 + (CGSize)sizeForBlurb:(NSString *)blurb
@@ -113,15 +131,21 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 #pragma mark - Set
 
-- (void)setWithPlace:(Place *)place
+- (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context
 {
+    // Set our context
+    self.managedObjectContext = context;
+    
     // Set all our instance variables
     self.name = [place name];
     
     NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescriptionShort]];
     //[categoryInfo appendFormat:@" / %@", place.price];
     
-    self.info = categoryInfo;
+    double distance = [[JCLocationManagerSingleton calculateDistanceFromPlace:place withManagedObjectContext:self.managedObjectContext] doubleValue];
+    
+    self.categories = categoryInfo;
+    self.distancePrice = [NSString stringWithFormat:@"%.1f  %@", distance, place.price];
     self.blurb = [NSString stringWithFormat:@""];
     
     // Draw self
@@ -154,11 +178,11 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     textColor = [UIColor whiteColor];
     [textColor set];
-    CGSize infoSize = [[self class] sizeForInfo:self.info];
-    [self.info drawInRect:CGRectMake(kPadding, 
-                                    nameSize.height + kPadding, 
-                                     infoSize.width, infoSize.height) 
-                 withFont:[[self class] infoFont] 
+    CGSize categoriesSize = [[self class] sizeForCategories:self.categories];
+    [self.categories drawInRect:CGRectMake(kPadding, 
+                                           nameSize.height + kPadding, 
+                                           categoriesSize.width, categoriesSize.height) 
+                 withFont:[[self class] categoriesFont] 
             lineBreakMode:kInfoLinebreak];
     
     textColor = [UIColor whiteColor];
@@ -166,7 +190,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     CGSize blurbSize = [[self class] sizeForBlurb:self.blurb];
     CGRect blurbRect = CGRectMake(kPadding, 
-                                  nameSize.height + infoSize.height + (2 * kPadding),
+                                  nameSize.height + categoriesSize.height + (2 * kPadding),
                                   blurbSize.width, blurbSize.height);
 	[self.blurb drawInRect:blurbRect
                   withFont:[[self class] blurbFont]

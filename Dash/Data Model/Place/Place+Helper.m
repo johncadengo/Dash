@@ -13,7 +13,7 @@
 
 enum {
     kCategoriesDescriptionShortLength = 22,
-    kCategoriesDescriptionLongLength = 32,
+    kCategoriesDescriptionLongLength = 60,
 };
 
 

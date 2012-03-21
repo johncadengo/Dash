@@ -458,7 +458,7 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
         quadrant = i % kPlacesPerPage;
         place = [self placeForQuadrant:quadrant];
         squareCell = [self.quadrantCells objectAtIndex:quadrant];
-        [squareCell setWithPlace:place];
+        [squareCell setWithPlace:place context:self.managedObjectContext];
     }
     
 }
