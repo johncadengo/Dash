@@ -388,17 +388,23 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         
         // As long as we aren't going above the top of the view, have it follow the drag
         if (CGRectContainsPoint(dragSuperView.frame, origin)) {
-            // Grab the popsscrollview and drag it
-            self.popsScrollView.frame = CGRectOffset(self.popsScrollViewFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
-            
-            // Grab all the boxes and drag em
-            [self offsetQuadrantFrames:origin.y];
-            
-            // Grab the popbutton and its background and drag em too
-            self.popBackground.frame = CGRectOffset(self.popBackgroundFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
-            self.popButton.frame = CGRectOffset(self.popButtonFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
-            
-            //self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, origin);
+            // Only allow dragging to a certain point. Don't let drag further down.
+            if (origin.y - (2 * PlaceSquareView.size.height) < 0.0f) {
+                // Grab the popsscrollview and drag it
+                self.popsScrollView.frame = CGRectOffset(self.popsScrollViewFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
+        
+                // Grab the popbutton and its background and drag em too
+                self.popBackground.frame = CGRectOffset(self.popBackgroundFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
+                self.popButton.frame = CGRectOffset(self.popButtonFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
+            }
+            else {
+                // Stick to the bottom
+                self.popsScrollView.frame = self.popsScrollViewFrame;
+                
+                // Grab the popbutton and its background and drag em too
+                self.popBackground.frame = self.popBackgroundFrame;
+                self.popButton.frame = self.popButtonFrame;
+            }
         }
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) { //(!self.isFilterShowing && gestureRecognizer.state == UIGestureRecognizerStateBegan) {
@@ -436,8 +442,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         cell = [self.quadrantCells objectAtIndex:i];
         
         cellFrame = [value CGRectValue];
-        cellFrame = CGRectOffset(cellFrame, 0.0f, offset - (2 * squareHeight));
-        cell.frame = cellFrame;
+        cellFrame = CGRectOffset(cellFrame, 0.0f, offset);
+        //cell.frame = cellFrame;
+        //[self.quadrantFrames replaceObjectAtIndex:i withObject:[NSValue valueWithCGRect:cellFrame]];
     }
     
 }
