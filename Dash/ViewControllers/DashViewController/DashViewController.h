@@ -41,6 +41,8 @@ typedef enum {
 // UI Elements, and views
 // PopsScroll, PopBG, and PopButton
 @property (nonatomic, strong) UIScrollView *popsScrollView;
+@property (nonatomic) CGRect popBackgroundFrame;
+@property (nonatomic) CGRect popButtonFrame;
 @property (nonatomic, strong) UIImageView *popBackground;
 @property (nonatomic, strong) UIButton *popButton;
 

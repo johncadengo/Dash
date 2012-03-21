@@ -30,6 +30,8 @@
 @synthesize popsScrollView = _popsScrollView;
 @synthesize progressHUD = _progressHUD;
 @synthesize popBackground = _popBackground;
+@synthesize popBackgroundFrame = _popBackgroundFrame;
+@synthesize popButtonFrame = _popButtonFrame;
 @synthesize popButton = _popButton;
 @synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
@@ -183,7 +185,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     self.popBackground = [[UIImageView alloc] initWithImage:
                           [UIImage imageNamed:@"DashBlackBackgroundBehindOrangeButton.png"]];
     CGFloat kPopBackgroundY = (2 * PlaceSquareView.size.height);
-    self.popBackground.frame = CGRectMake(0.0f, kPopBackgroundY, 320.0f, 92.0f);
+    self.popBackgroundFrame = CGRectMake(0.0f, kPopBackgroundY, 320.0f, 92.0f);
+    self.popBackground.frame = self.popBackgroundFrame;
     [self.view addSubview:self.popBackground];
     
     self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -195,7 +198,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [self.popButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.popButton setBackgroundImage:[UIImage imageNamed:@"DashOrangeButton"] forState:UIControlStateNormal];
     CGFloat kPopButtonYOffset = 15.0f;
-    self.popButton.frame = CGRectMake(10.0f, kPopBackgroundY + kPopButtonYOffset, 300.0f, 54.5f);
+    self.popButtonFrame = CGRectMake(10.0f, kPopBackgroundY + kPopButtonYOffset, 300.0f, 54.5f);
+    self.popButton.frame = self.popButtonFrame;
     [self.view addSubview:self.popButton];
 
     // Figure out where we are
@@ -385,6 +389,10 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             // Grab all the boxes and drag em
             [self offsetQuadrantFrames:origin.y];
             
+            // Grab the popbutton and its background and drag em too
+            self.popBackground.frame = CGRectOffset(self.popBackgroundFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
+            self.popButton.frame = CGRectOffset(self.popButtonFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
+            
             //self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, origin);
         }
     }
@@ -411,8 +419,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 - (void)offsetQuadrantFrames:(CGFloat)offset
 {
-    
-    CGFloat squareWidth = PlaceSquareView.size.width;
     CGFloat squareHeight = PlaceSquareView.size.height;
     
     // Set up the quadrants
