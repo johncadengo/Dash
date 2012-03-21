@@ -31,6 +31,7 @@ NSString * const kPlutoThin = @"PlutoThin";
 NSString * const kPlutoCondBlack = @"PlutoCondBlack";
 NSString * const kPlutoCondBold = @"PlutoCondBold";
 NSString * const kPlutoCondHeavy = @"PlutoCondHeavy";
+NSString * const kHelveticaNeueBold = @"HelveticaNeue-Bold";
 
 #pragma mark - Identifiers
 

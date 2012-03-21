@@ -41,12 +41,12 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (UIFont *)nameFont
 {
-    return [UIFont fontWithName:kPlutoBold size:18.0f];
+    return [UIFont fontWithName:kHelveticaNeueBold size:18.0f];
 }
 
 + (UIFont *)infoFont
 {
-    return [UIFont fontWithName:kPlutoBold size:10.0f];
+    return [UIFont fontWithName:kHelveticaNeueBold size:10.0f];
 }
 
 + (UIFont *)blurbFont
@@ -118,8 +118,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     // Set all our instance variables
     self.name = [place name];
     
-    NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescription]];
-    [categoryInfo appendFormat:@" / %@", place.price];
+    NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescriptionShort]];
+    //[categoryInfo appendFormat:@" / %@", place.price];
     
     self.info = categoryInfo;
     self.blurb = [NSString stringWithFormat:@""];

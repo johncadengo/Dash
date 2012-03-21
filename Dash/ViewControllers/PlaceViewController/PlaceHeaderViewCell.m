@@ -153,7 +153,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     double distance = [[self calculateDistanceFromPlace:place] doubleValue];
     
-    NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescription]];
+    NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescriptionLong]];
     [categoryInfo appendFormat:@" / %@ / %.1f mi", place.price, distance];
     
     self.blurb = categoryInfo;

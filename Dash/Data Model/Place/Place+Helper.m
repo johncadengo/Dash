@@ -12,10 +12,22 @@
 @implementation Place (Helper)
 
 enum {
-    kMaxCategoriesDescriptionLength = 22  
+    kCategoriesDescriptionShortLength = 22,
+    kCategoriesDescriptionLongLength = 32,
 };
 
-- (NSString*)categoriesDescription
+
+- (NSString*)categoriesDescriptionShort
+{
+    return [self categoriesDescriptionWithLimit:kCategoriesDescriptionShortLength];
+}
+
+- (NSString*)categoriesDescriptionLong
+{
+    return [self categoriesDescriptionWithLimit:kCategoriesDescriptionLongLength];    
+}
+
+- (NSString*)categoriesDescriptionWithLimit:(NSInteger)limit
 {
     NSMutableString *categoryInfo = [[NSMutableString alloc] init];
     NSArray *categoriesArray = [self.categories allObjects];
@@ -34,12 +46,12 @@ enum {
         [categoryInfo appendString:toAdd];
         
         // Check if the new string is too long
-        if ([categoryInfo length] > kMaxCategoriesDescriptionLength) {
+        if ([categoryInfo length] > limit) {
             // If it is.. Let's remove what we just added
             [categoryInfo replaceOccurrencesOfString:toAdd withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [categoryInfo length])];
             
             // And we may need to remove the trailing comma
-            if ( [categoryInfo length] > 0) {
+            if ([categoryInfo length] > 0) {
                 [categoryInfo replaceOccurrencesOfString:@", " withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [categoryInfo length])];
             }
         }

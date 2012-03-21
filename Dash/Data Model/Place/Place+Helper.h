@@ -10,6 +10,8 @@
 
 @interface Place (Helper)
 
-- (NSString*)categoriesDescription;
+- (NSString*)categoriesDescriptionShort;
+- (NSString*)categoriesDescriptionLong;
+- (NSString*)categoriesDescriptionWithLimit:(NSInteger)limit;
 
 @end

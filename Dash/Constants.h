@@ -35,6 +35,7 @@ extern NSString * const kPlutoThin;
 extern NSString * const kPlutoCondBlack;
 extern NSString * const kPlutoCondBold;
 extern NSString * const kPlutoCondHeavy;
+extern NSString * const kHelveticaNeueBold;
 
 // Identifiers
 extern NSString * const kMyFirstConstant;
