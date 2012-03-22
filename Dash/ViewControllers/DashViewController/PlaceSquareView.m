@@ -50,12 +50,12 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (UIFont *)categoriesFont
 {
-    return [UIFont fontWithName:kHelveticaNeueBold size:10.0f];    
+    return [UIFont fontWithName:kHelveticaNeueBold size:11.0f];    
 }
 
 + (UIFont *)distancePriceFont
 {
-    return [UIFont fontWithName:kHelveticaNeueBold size:10.0f];
+    return [UIFont fontWithName:kHelveticaNeueBold size:11.0f];
 }
 
 + (UIFont *)blurbFont

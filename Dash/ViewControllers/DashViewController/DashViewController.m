@@ -52,6 +52,7 @@ enum {
 
 static double const kRightHalfXOffset = 0.5f;
 static double const kBottomHalfYOffset = 0.5f;
+static double const kPopButtonYOffset = 15.0f;
 
 #pragma mark - Function to help with tracking views
 
@@ -201,7 +202,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [self.popButton.titleLabel setFont:[UIFont fontWithName:kPlutoBold size:42.5f]];
     [self.popButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.popButton setBackgroundImage:[UIImage imageNamed:@"DashOrangeButton"] forState:UIControlStateNormal];
-    CGFloat kPopButtonYOffset = 15.0f;
     self.popButtonFrame = CGRectMake(10.0f, kPopBackgroundY + kPopButtonYOffset, 300.0f, 54.5f);
     self.popButton.frame = self.popButtonFrame;
     [self.view addSubview:self.popButton];
@@ -232,8 +232,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [self.navigationController setNavigationBarHidden:YES];
 
     // Initial filter view frame
-    CGFloat totalHeight = 480.0f;
-    CGFloat tabBarHeight = 49.0f;
     self.filterViewFrame = CGRectMake(0.0f, 360.0f, 320.0f, 480.0f);
 }
 
@@ -304,7 +302,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
  */
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    return (self.isFilterShowing) ? NO : YES;
+    CGPoint origin = [touch locationInView:self.view];
+    BOOL insideButton = CGRectContainsPoint(self.popBackground.frame, origin);
+    return (self.isFilterShowing && !insideButton) ? NO : YES;
 }
 
 /** Receive touch events and respond accordingly.
@@ -336,6 +336,10 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 }
 
 /** Perceive a drag and respond accordingly
+ 
+    TODO: Track drag from different locations depending if we are going from top down or bottom up.
+    TODO: Don't highlight Dash when dragging.
+    TODO: When Dash, animate the filter view down.
  */
 - (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer
 {
@@ -343,7 +347,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     if (self.isDragging && gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"Dragging over. Should stick either up or down now.");
-        /*
         // Reset isDragging
         self.dragging = NO;
         
@@ -366,7 +369,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
                                   delay:0.0
                                 options:UIViewAnimationCurveLinear
                              animations:^{
-                                 self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, dragSuperView.frame.origin);
+                                 //self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, dragSuperView.frame.origin);
+                                 [self offsetFrames:0.0f];
                              }
                              completion:^(BOOL finished){
                                  self.filterShowing = YES;
@@ -381,13 +385,13 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
                                   delay:0.0
                                 options:UIViewAnimationCurveLinear
                              animations:^{
-                                 self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, self.popButton.frame.origin);
+                                 //self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, self.popButton.frame.origin);
+                                 [self offsetFrames:(PlaceSquareView.size.height * 2)];
                              }
                              completion:^(BOOL finished){
                                  self.filterShowing = NO;
                              }];
         }
-         */
     }
     else if (self.isDragging) {
         // Keep track of where we are
@@ -397,15 +401,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         if (CGRectContainsPoint(dragSuperView.frame, origin)) {
             // Only allow dragging to a certain point. Don't let drag further down.
             if (origin.y - (2 * PlaceSquareView.size.height) < 0.0f) {
-                // Grab the popsscrollview and drag it
-                self.popsScrollView.frame = CGRectOffset(self.popsScrollViewFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
-        
-                // Grab the popbutton and its background and drag em too
-                self.popBackground.frame = CGRectOffset(self.popBackgroundFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
-                self.popButton.frame = CGRectOffset(self.popButtonFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
-                
-                // Grab the filter view and drag it up
-                self.filterView.frame = CGRectOffset(self.filterViewFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height) + 46.0f);
+                [self offsetFrames:origin.y];
             }
             else {
                 // Stick to the bottom
@@ -425,7 +421,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         //                                  toView:self.popButton];
         CGPoint origin = [gestureRecognizer locationInView:dragSuperView];
         
-        //NSLog(@"origin %f %f", origin.x, origin.y);
+        NSLog(@"origin %f %f", origin.x, origin.y);
 
         if (CGRectContainsPoint(self.popBackground.frame, origin)) {
             NSLog(@"Started dragging from pop button!");
@@ -438,25 +434,18 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     }
 }
 
-- (void)offsetQuadrantFrames:(CGFloat)offset
+- (void)offsetFrames:(CGFloat)offset
 {
-    CGFloat squareHeight = PlaceSquareView.size.height;
+    // Grab the popsscrollview and drag it
+    self.popsScrollView.frame = CGRectOffset(self.popsScrollViewFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
     
-    // Set up the quadrants
-    PlaceSquareView *cell;
-    NSValue *value;
-    CGRect cellFrame;
-    for (int i = 0; i < kPlacesPerPage; ++i) {
-        // Get the frames and images
-        value = [self.quadrantFrames objectAtIndex:i];
-        cell = [self.quadrantCells objectAtIndex:i];
-        
-        cellFrame = [value CGRectValue];
-        cellFrame = CGRectOffset(cellFrame, 0.0f, offset);
-        //cell.frame = cellFrame;
-        //[self.quadrantFrames replaceObjectAtIndex:i withObject:[NSValue valueWithCGRect:cellFrame]];
-    }
+    // Grab the popbutton and its background and drag em too
+    self.popBackground.frame = CGRectOffset(self.popBackgroundFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
+    self.popButton.frame = CGRectOffset(self.popButtonFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
     
+    // Grab the filter view and drag it up
+    // 54.5f is the popbutton's height...
+    self.filterView.frame = CGRectOffset(self.filterViewFrame, 0.0f, offset - (2 * PlaceSquareView.size.height) + 51.0f);
 }
 
 #pragma mark -
