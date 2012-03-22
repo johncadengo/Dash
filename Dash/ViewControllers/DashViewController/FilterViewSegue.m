@@ -8,7 +8,7 @@
 
 #import "FilterViewSegue.h"
 #import "DashViewController.h"
-#import "FilterView.h"
+#import "FilterViewController.h"
 
 @implementation FilterViewSegue
 
@@ -16,15 +16,14 @@
 {
     // Get the source and destination view controllers
     DashViewController *dashViewController = (DashViewController *) self.sourceViewController;
-    UITableViewController *tableViewController = (UITableViewController *) self.destinationViewController;
+    FilterViewController *filterViewController = (FilterViewController *) self.destinationViewController;
     
     // Make sure we are connected
     if (dashViewController.filterView == nil) {
-        dashViewController.filterView = (FilterView *)tableViewController.tableView;
+        dashViewController.filterView = filterViewController.view;
     }
     
-    
-    [dashViewController.popsScrollView addSubview:dashViewController.filterView];
+    [dashViewController.view addSubview:dashViewController.filterView];
     
     /*
      CGRect filterFrame = CGRectMake(0.0f, 0.0f, 320.0f, 304.0f);

@@ -2,12 +2,12 @@
 //  FilterView.h
 //  Dash
 //
-//  Created by John Cadengo on 1/18/12.
+//  Created by John Cadengo on 3/22/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface FilterView : UITableView
+@interface FilterViewController : UIViewController
 
 @end

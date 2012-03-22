@@ -13,7 +13,7 @@
 #import "Constants.h"
 #import "PlaceViewController.h"
 #import "JCLocationManagerSingleton.h"
-#import "FilterView.h"
+#import "FilterViewController.h"
 
 @implementation DashViewController
 
@@ -34,6 +34,8 @@
 @synthesize popBackgroundFrame = _popBackgroundFrame;
 @synthesize popButtonFrame = _popButtonFrame;
 @synthesize popButton = _popButton;
+
+@synthesize filterViewFrame = _filterViewFrame;
 @synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
 @synthesize drag = _drag;
@@ -228,6 +230,11 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     // Hide our navigation bar
     [self.navigationController setNavigationBarHidden:YES];
+
+    // Initial filter view frame
+    CGFloat totalHeight = 480.0f;
+    CGFloat tabBarHeight = 49.0f;
+    self.filterViewFrame = CGRectMake(0.0f, 360.0f, 320.0f, 480.0f);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -396,6 +403,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
                 // Grab the popbutton and its background and drag em too
                 self.popBackground.frame = CGRectOffset(self.popBackgroundFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
                 self.popButton.frame = CGRectOffset(self.popButtonFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height));
+                
+                // Grab the filter view and drag it up
+                self.filterView.frame = CGRectOffset(self.filterViewFrame, 0.0f, origin.y - (2 * PlaceSquareView.size.height) + 46.0f);
             }
             else {
                 // Stick to the bottom
@@ -423,7 +433,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             // Now, we are dragging
             self.dragging = YES;
             
-            //[self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
+            [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
         }
     }
 }
