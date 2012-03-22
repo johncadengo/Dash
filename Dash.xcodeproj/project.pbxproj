@@ -121,6 +121,8 @@
 		679E8CBC146062210038E506 /* Action+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBB146062210038E506 /* Action+Helper.m */; };
 		679E8CC01460684E0038E506 /* Flag+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679E8CBF1460684E0038E506 /* Flag+Helper.m */; };
 		67A5D8FC151B817C00924CAB /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A5D8FB151B817C00924CAB /* FilterViewController.m */; };
+		67A5D8FF151B942300924CAB /* FlipGrip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FD151B942300924CAB /* FlipGrip@2x.png */; };
+		67A5D900151B942300924CAB /* BlackGradientBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */; };
 		67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8977314C782DD00494273 /* FilterViewSegue.m */; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
 		67BA0B30146348E300993B42 /* ActionViewCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0B2F146348E300993B42 /* ActionViewCellTests.m */; };
@@ -418,6 +420,8 @@
 		679E8CBF1460684E0038E506 /* Flag+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Flag+Helper.m"; path = "Data Model/Abstract/Flag+Helper.m"; sourceTree = "<group>"; };
 		67A5D8FA151B817C00924CAB /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewController.h; path = Dash/ViewControllers/DashViewController/FilterViewController.h; sourceTree = "<group>"; };
 		67A5D8FB151B817C00924CAB /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewController.m; path = Dash/ViewControllers/DashViewController/FilterViewController.m; sourceTree = "<group>"; };
+		67A5D8FD151B942300924CAB /* FlipGrip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlipGrip@2x.png"; path = "Dash/Images/Tabs/Dash/FlipGrip@2x.png"; sourceTree = "<group>"; };
+		67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BlackGradientBackground@2x.png"; path = "Dash/Images/Tabs/Dash/BlackGradientBackground@2x.png"; sourceTree = "<group>"; };
 		67A8977214C782DD00494273 /* FilterViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewSegue.h; path = Dash/ViewControllers/DashViewController/FilterViewSegue.h; sourceTree = "<group>"; };
 		67A8977314C782DD00494273 /* FilterViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewSegue.m; path = Dash/ViewControllers/DashViewController/FilterViewSegue.m; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -713,6 +717,8 @@
 		6734EB5515123EA100D7EA7E /* Dash */ = {
 			isa = PBXGroup;
 			children = (
+				67A5D8FD151B942300924CAB /* FlipGrip@2x.png */,
+				67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */,
 				674EDEEC151277DF0056E056 /* DashBlackBackground@2x.png */,
 				674EDEED151277DF0056E056 /* DashBlackBackgroundBehindOrangeButton@2x.png */,
 				674EDEEE151277DF0056E056 /* DashBottomBlackBackground@2x.png */,
@@ -1411,6 +1417,8 @@
 				674EDF15151277DF0056E056 /* DashSearchIcon@2x.png in Resources */,
 				674EDF16151277DF0056E056 /* DashTacoIcon@2x.png in Resources */,
 				674EDF17151277DF0056E056 /* DashTealBox@2x.png in Resources */,
+				67A5D8FF151B942300924CAB /* FlipGrip@2x.png in Resources */,
+				67A5D900151B942300924CAB /* BlackGradientBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

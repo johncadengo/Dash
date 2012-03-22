@@ -188,9 +188,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     // Add our Dash button and its background
     self.popBackground = [[UIImageView alloc] initWithImage:
-                          [UIImage imageNamed:@"DashBlackBackgroundBehindOrangeButton.png"]];
+                          [UIImage imageNamed:@"BlackGradientBackground.png"]];
     CGFloat kPopBackgroundY = (2 * PlaceSquareView.size.height);
-    self.popBackgroundFrame = CGRectMake(0.0f, kPopBackgroundY, 320.0f, 92.0f);
+    self.popBackgroundFrame = CGRectMake(0.0f, kPopBackgroundY, 320.0f, 480.0f);
     self.popBackground.frame = self.popBackgroundFrame;
     [self.view addSubview:self.popBackground];
     
