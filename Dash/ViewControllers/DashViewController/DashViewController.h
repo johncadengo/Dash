@@ -46,6 +46,9 @@ typedef enum {
 @property (nonatomic, strong) UIImageView *popBackground;
 @property (nonatomic, strong) UIButton *popButton;
 
+@property (nonatomic) CGRect flipGripFrame;
+@property (nonatomic, strong) UIImageView *flipGrip;
+
 @property (nonatomic) CGRect filterViewFrame;
 @property (nonatomic, strong) UIView *filterView;
 @property (nonatomic, strong) MBProgressHUD *progressHUD;

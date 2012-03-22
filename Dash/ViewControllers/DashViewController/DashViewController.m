@@ -35,6 +35,9 @@
 @synthesize popButtonFrame = _popButtonFrame;
 @synthesize popButton = _popButton;
 
+@synthesize flipGripFrame = _flipGripFrame;
+@synthesize flipGrip = _flipGrip;
+
 @synthesize filterViewFrame = _filterViewFrame;
 @synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
@@ -185,8 +188,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
-    
-    // Add our Dash button and its background
+    // Add our Dash button background
     self.popBackground = [[UIImageView alloc] initWithImage:
                           [UIImage imageNamed:@"BlackGradientBackground.png"]];
     CGFloat kPopBackgroundY = (2 * PlaceSquareView.size.height);
@@ -194,6 +196,15 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     self.popBackground.frame = self.popBackgroundFrame;
     [self.view addSubview:self.popBackground];
     
+    // Flip grip
+    self.flipGrip = [[UIImageView alloc] initWithImage:
+                     [UIImage imageNamed:@"FlipGrip.png"]];
+    // -16.0f.... I'm not sure why right now haha
+    self.flipGripFrame = CGRectMake(0.0f, kPopBackgroundY - 16.0f, 320.0f, 480.0f);
+    self.flipGrip.frame = self.flipGripFrame;
+    [self.view addSubview:self.flipGrip];
+    
+    // Dash button
     self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.popButton addTarget:self 
                        action:@selector(pop:)
@@ -405,11 +416,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             }
             else {
                 // Stick to the bottom
-                self.popsScrollView.frame = self.popsScrollViewFrame;
-                
-                // Grab the popbutton and its background and drag em too
-                self.popBackground.frame = self.popBackgroundFrame;
-                self.popButton.frame = self.popButtonFrame;
+                [self offsetFrames:0.0f];
             }
         }
     }
@@ -442,6 +449,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     // Grab the popbutton and its background and drag em too
     self.popBackground.frame = CGRectOffset(self.popBackgroundFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
     self.popButton.frame = CGRectOffset(self.popButtonFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
+    
+    self.flipGrip.frame = CGRectOffset(self.flipGripFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
     
     // Grab the filter view and drag it up
     // 54.5f is the popbutton's height...
