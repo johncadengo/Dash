@@ -416,7 +416,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             }
             else {
                 // Stick to the bottom
-                [self offsetFrames:0.0f];
+                [self offsetFrames:(PlaceSquareView.size.height * 2)];
             }
         }
     }
