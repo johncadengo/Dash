@@ -461,6 +461,19 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 - (void)pop:(id) sender
 {
+    // If filter is showing.. Animate down and pop
+    if (self.filterShowing) {
+        [UIView animateWithDuration:1.0f
+                              delay:0.0f
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             [self offsetFrames:(2 * PlaceSquareView.size.height)];
+                         }
+                         completion:^(BOOL finished){
+                             self.filterShowing = NO;
+                         }];
+    }
+    
     // Find out where we are
     CLLocation *loc = [self.locationManager location];
     
