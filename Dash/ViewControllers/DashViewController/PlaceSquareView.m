@@ -30,6 +30,7 @@
 static CGFloat kWidth = 160.0f;
 static CGFloat kHeight = 160.0f;
 static CGFloat kPadding = 5.0f;
+static CGFloat kHalfPadding = 2.5f;
 static CGFloat kMaxBlurbHeight = 1000.0f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
@@ -198,7 +199,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     [textColor set];
     CGSize distancePriceSize = [[self class] sizeForDistancePrice:self.distancePrice];
     [self.distancePrice drawInRect:CGRectMake(kPadding, 
-                                              nameSize.height + categoriesSize.height + kPadding, 
+                                              nameSize.height + categoriesSize.height + kHalfPadding, 
                                               distancePriceSize.width, distancePriceSize.height) 
                        withFont:[[self class] distancePriceFont] 
                   lineBreakMode:kInfoLinebreak];
@@ -215,8 +216,13 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
     
     CGSize iconSize = CGSizeMake(62.5f, 62.5f);
-    CGRect iconRect = CGRectMake(kWidth - kPadding - iconSize.width,
-                                 nameSize.height + categoriesSize.height + kPadding,
+    // Old dynamic positioning
+    //CGRect iconRect = CGRectMake(kWidth - kPadding - iconSize.width,
+    //                             nameSize.height + categoriesSize.height + kPadding,
+    //                             iconSize.width, iconSize.height);
+    // New static positioning
+    CGRect iconRect = CGRectMake(kWidth - kPadding - iconSize.width, 
+                                 kHeight - kPadding - iconSize.height, 
                                  iconSize.width, iconSize.height);
     [self.icon drawInRect:iconRect];
 }
