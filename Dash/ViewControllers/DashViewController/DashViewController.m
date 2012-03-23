@@ -100,7 +100,10 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Custom tab bar icon
+//        UIImage *tabBarIcon = [UIImage imageNamed:@"DashFourColorIcon.png"];
+//        UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Dash" image:tabBarIcon tag:0];
+//        self.tabBarItem = tabBarItem;
     }
     return self;
 }

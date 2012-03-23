@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    kFilterTypeQuickEat = 0,
+    kFilterTypeSitDown = 1,
+    kFilterTypeDrinks = 2,
+    kFilterTypeDessert = 3
+} FilterType;
+
 @interface FilterViewController : UIViewController
+
+//@property (nonatomic, strong) UIImageView 
 
 @end

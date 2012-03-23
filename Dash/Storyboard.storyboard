@@ -278,7 +278,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qs2-d7-vbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="jCg-bA-KS5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dash" image="Dash.png" id="0yL-mB-VgE"/>
+                    <tabBarItem key="tabBarItem" title="Dash" id="0yL-mB-VgE"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Bwz-aK-HnF">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -370,12 +370,46 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Dash.png" width="83" height="91"/>
         <image name="Feed.png" width="16" height="16"/>
         <image name="Places.png" width="16" height="16"/>
         <image name="Profile.png" width="16" height="16"/>
         <image name="Search.png" width="52" height="54"/>
     </resources>
+    <classes>
+        <class className="ActionViewCell" superclassName="TISwipeableTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActionViewCell.h"/>
+        </class>
+        <class className="DashViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashViewController.h"/>
+        </class>
+        <class className="FeedViewController" superclassName="TISwipeableTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedViewController.h"/>
+        </class>
+        <class className="FilterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FilterViewController.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+        </class>
+        <class className="PlaceActionsViewController" superclassName="TISwipeableTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceActionsViewController.h"/>
+        </class>
+        <class className="PlaceViewController" superclassName="TISwipeableTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
+        </class>
+        <class className="ProfileViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
+        </class>
+        <class className="SearchViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
+        </class>
+        <class className="TISwipeableTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TISwipeableTableViewCell.h"/>
+        </class>
+        <class className="TISwipeableTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TISwipeableTableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

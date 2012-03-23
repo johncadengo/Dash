@@ -64,6 +64,10 @@ enum {
     
     //NSLog(@"I am your RKObjectManager singleton: %@", [RKObjectManager sharedManager]);
     
+    // Color Dash Tab Bar Icon
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashFourColorIcon.png"]];
+    [tabBarController.tabBar addSubview:imageView];
+    
     return YES;
 }
 

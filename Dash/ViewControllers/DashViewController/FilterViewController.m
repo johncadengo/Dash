@@ -38,6 +38,8 @@
     // The visible view at all times
     self.view = [[UIView alloc] init];
     self.view.backgroundColor = [UIColor clearColor];
+    
+    // Add the types
 }
 
 /*

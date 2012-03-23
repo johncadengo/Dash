@@ -123,6 +123,15 @@
 		67A5D8FC151B817C00924CAB /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A5D8FB151B817C00924CAB /* FilterViewController.m */; };
 		67A5D8FF151B942300924CAB /* FlipGrip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FD151B942300924CAB /* FlipGrip@2x.png */; };
 		67A5D900151B942300924CAB /* BlackGradientBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */; };
+		67A5D906151BA0C200924CAB /* BurgerShakeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D902151BA0C200924CAB /* BurgerShakeIcon@2x.png */; };
+		67A5D907151BA0C200924CAB /* CupcakeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D903151BA0C200924CAB /* CupcakeIcon@2x.png */; };
+		67A5D908151BA0C200924CAB /* ForkKnifeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D904151BA0C200924CAB /* ForkKnifeIcon@2x.png */; };
+		67A5D909151BA0C200924CAB /* WineIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D905151BA0C200924CAB /* WineIcon@2x.png */; };
+		67A5D90E151BA6CE00924CAB /* BikeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D90A151BA6CE00924CAB /* BikeIcon@2x.png */; };
+		67A5D90F151BA6CE00924CAB /* CarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D90B151BA6CE00924CAB /* CarIcon@2x.png */; };
+		67A5D910151BA6CE00924CAB /* RadarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D90C151BA6CE00924CAB /* RadarIcon@2x.png */; };
+		67A5D911151BA6CE00924CAB /* WalkingManIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D90D151BA6CE00924CAB /* WalkingManIcon@2x.png */; };
+		67A5D913151BA70E00924CAB /* DashFourColorIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D912151BA70E00924CAB /* DashFourColorIcon@2x.png */; };
 		67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8977314C782DD00494273 /* FilterViewSegue.m */; };
 		67B9F2251455E8D0009D480C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9F2241455E8D0009D480C /* CoreLocation.framework */; };
 		67BA0B30146348E300993B42 /* ActionViewCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BA0B2F146348E300993B42 /* ActionViewCellTests.m */; };
@@ -422,6 +431,15 @@
 		67A5D8FB151B817C00924CAB /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewController.m; path = Dash/ViewControllers/DashViewController/FilterViewController.m; sourceTree = "<group>"; };
 		67A5D8FD151B942300924CAB /* FlipGrip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlipGrip@2x.png"; path = "Dash/Images/Tabs/Dash/FlipGrip@2x.png"; sourceTree = "<group>"; };
 		67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BlackGradientBackground@2x.png"; path = "Dash/Images/Tabs/Dash/BlackGradientBackground@2x.png"; sourceTree = "<group>"; };
+		67A5D902151BA0C200924CAB /* BurgerShakeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BurgerShakeIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/BurgerShakeIcon@2x.png"; sourceTree = "<group>"; };
+		67A5D903151BA0C200924CAB /* CupcakeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CupcakeIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/CupcakeIcon@2x.png"; sourceTree = "<group>"; };
+		67A5D904151BA0C200924CAB /* ForkKnifeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ForkKnifeIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/ForkKnifeIcon@2x.png"; sourceTree = "<group>"; };
+		67A5D905151BA0C200924CAB /* WineIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "WineIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/WineIcon@2x.png"; sourceTree = "<group>"; };
+		67A5D90A151BA6CE00924CAB /* BikeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BikeIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/BikeIcon@2x.png"; sourceTree = "<group>"; };
+		67A5D90B151BA6CE00924CAB /* CarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CarIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/CarIcon@2x.png"; sourceTree = "<group>"; };
+		67A5D90C151BA6CE00924CAB /* RadarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RadarIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/RadarIcon@2x.png"; sourceTree = "<group>"; };
+		67A5D90D151BA6CE00924CAB /* WalkingManIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "WalkingManIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/WalkingManIcon@2x.png"; sourceTree = "<group>"; };
+		67A5D912151BA70E00924CAB /* DashFourColorIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashFourColorIcon@2x.png"; path = "Dash/Images/Tabs/Icons/DashFourColorIcon@2x.png"; sourceTree = "<group>"; };
 		67A8977214C782DD00494273 /* FilterViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewSegue.h; path = Dash/ViewControllers/DashViewController/FilterViewSegue.h; sourceTree = "<group>"; };
 		67A8977314C782DD00494273 /* FilterViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewSegue.m; path = Dash/ViewControllers/DashViewController/FilterViewSegue.m; sourceTree = "<group>"; };
 		67B9F2241455E8D0009D480C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -717,6 +735,7 @@
 		6734EB5515123EA100D7EA7E /* Dash */ = {
 			isa = PBXGroup;
 			children = (
+				67A5D901151BA0B600924CAB /* Filter */,
 				67A5D8FD151B942300924CAB /* FlipGrip@2x.png */,
 				67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */,
 				674EDEEC151277DF0056E056 /* DashBlackBackground@2x.png */,
@@ -776,6 +795,7 @@
 		6734EB5A1512416C00D7EA7E /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				67A5D912151BA70E00924CAB /* DashFourColorIcon@2x.png */,
 				674EDEE215126CB20056E056 /* Dash@2x.png */,
 				674EDEE315126CB20056E056 /* Feed@2x.png */,
 				674EDEE415126CB20056E056 /* Places@2x.png */,
@@ -1058,6 +1078,21 @@
 				67EDA8FD146C87C200AD3625 /* ViewControllerStates */,
 			);
 			name = JCImageGalleryView;
+			sourceTree = "<group>";
+		};
+		67A5D901151BA0B600924CAB /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				67A5D90A151BA6CE00924CAB /* BikeIcon@2x.png */,
+				67A5D90B151BA6CE00924CAB /* CarIcon@2x.png */,
+				67A5D90C151BA6CE00924CAB /* RadarIcon@2x.png */,
+				67A5D90D151BA6CE00924CAB /* WalkingManIcon@2x.png */,
+				67A5D902151BA0C200924CAB /* BurgerShakeIcon@2x.png */,
+				67A5D903151BA0C200924CAB /* CupcakeIcon@2x.png */,
+				67A5D904151BA0C200924CAB /* ForkKnifeIcon@2x.png */,
+				67A5D905151BA0C200924CAB /* WineIcon@2x.png */,
+			);
+			name = Filter;
 			sourceTree = "<group>";
 		};
 		67B9F22714560ABD009D480C /* Data Model */ = {
@@ -1419,6 +1454,15 @@
 				674EDF17151277DF0056E056 /* DashTealBox@2x.png in Resources */,
 				67A5D8FF151B942300924CAB /* FlipGrip@2x.png in Resources */,
 				67A5D900151B942300924CAB /* BlackGradientBackground@2x.png in Resources */,
+				67A5D906151BA0C200924CAB /* BurgerShakeIcon@2x.png in Resources */,
+				67A5D907151BA0C200924CAB /* CupcakeIcon@2x.png in Resources */,
+				67A5D908151BA0C200924CAB /* ForkKnifeIcon@2x.png in Resources */,
+				67A5D909151BA0C200924CAB /* WineIcon@2x.png in Resources */,
+				67A5D90E151BA6CE00924CAB /* BikeIcon@2x.png in Resources */,
+				67A5D90F151BA6CE00924CAB /* CarIcon@2x.png in Resources */,
+				67A5D910151BA6CE00924CAB /* RadarIcon@2x.png in Resources */,
+				67A5D911151BA6CE00924CAB /* WalkingManIcon@2x.png in Resources */,
+				67A5D913151BA70E00924CAB /* DashFourColorIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
