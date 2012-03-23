@@ -32,6 +32,11 @@
 + (UIFont *)categoriesFont;
 + (UIFont *)distancePriceFont;
 + (UIFont *)blurbFont;
+
++ (CGFloat)nameLeading:(NSString *)name;
++ (CGFloat)categoriesLeading;
++ (CGFloat)distancePriceLeading;
+
 + (CGSize)sizeForCategories:(NSString *)categories;
 + (CGSize)sizeForDistancePrice:(NSString *)distancePrice;
 + (CGSize)sizeForBlurb:(NSString *)blurb;

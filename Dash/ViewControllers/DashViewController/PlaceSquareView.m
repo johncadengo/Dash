@@ -33,8 +33,6 @@ static CGFloat kPadding = 5.0f;
 static CGFloat kHalfPadding = 1.0f;
 static CGFloat kMaxBlurbHeight = 1000.0f;
 
-static CGFloat kNameLeading = -10.0f;
-
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kInfoLinebreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
@@ -76,6 +74,21 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     return (nameSize.height > oneLineHeight) ? 2 : 1;
 }
 
++ (CGFloat)nameLeading:(NSString *)name
+{
+    return ([self numberOfLinesForName:name] == 1) ? -4.0f : -8.0f;
+}
+
++ (CGFloat)categoriesLeading
+{
+    return -4.0f;
+}
+
++ (CGFloat)distancePriceLeading
+{
+    return -4.0f;
+}
+
 + (CGSize)sizeForName:(NSString *)name
 {
     CGFloat maxWidth = kWidth - (2 * kPadding);
@@ -90,8 +103,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 + (CGSize)adjustedSizeForName:(NSString *)name
 {
     CGSize originalSize = [self sizeForName:name];
-    CGSize adjustedSize = CGSizeMake(originalSize.width, originalSize.height + kNameLeading);
-    return ([self numberOfLinesForName:name] > 1) ? adjustedSize : originalSize;
+    CGSize adjustedSize = CGSizeMake(originalSize.width, originalSize.height + [[self class] nameLeading: name]);
+    return ([self numberOfLinesForName:name] == 1) ? originalSize : adjustedSize;
 }
 
 + (CGSize)sizeForCategories:(NSString *)categories
@@ -195,11 +208,11 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
      
     if ([[self class] numberOfLinesForName:self.name] > 1) {
         // If our name is 2 lines tall, clip the top half
-        UIRectClip(CGRectMake(kPadding, kPadding + (nameSize.height / 2.0f), 
+        UIRectClip(CGRectMake(kPadding, kPadding + (nameSize.height / 2.0f) + leading, 
                               nameSize.width, nameSize.height / 2.0f));
         
         // And draw the bottom half first
-        [self.name drawInRect:CGRectMake(kPadding, 0.0f,
+        [self.name drawInRect:CGRectMake(kPadding, kPadding + leading,
                                          nameSize.width, nameSize.height)
                      withFont:[[self class] nameFont]
                 lineBreakMode:kNameLineBreak];
@@ -243,13 +256,13 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                                 CGColorCreateCopyWithAlpha([[self class] black], 0.6f));
     
     CGSize nameSize = [[self class] sizeForName:self.name];
-	[self customLeadingDrawing:self.name withSize:nameSize leading:0.0f];
+	[self customLeadingDrawing:self.name withSize:nameSize leading:[[self class] nameLeading:self.name]];
     
     UIColor *textColor = [UIColor whiteColor];
     [textColor set];
     CGSize categoriesSize = [[self class] sizeForCategories:self.categories];
     [self.categories drawInRect:CGRectMake(kPadding, 
-                                           nameSize.height + kPadding, 
+                                           nameSize.height + [[self class] nameLeading: self.name], 
                                            categoriesSize.width, categoriesSize.height) 
                  withFont:[[self class] categoriesFont] 
             lineBreakMode:kInfoLinebreak];
@@ -258,7 +271,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     [textColor set];
     CGSize distancePriceSize = [[self class] sizeForDistancePrice:self.distancePrice];
     [self.distancePrice drawInRect:CGRectMake(kPadding, 
-                                              nameSize.height + categoriesSize.height + kHalfPadding, 
+                                              nameSize.height + categoriesSize.height + [[self class] nameLeading: self.name] + [[self class] categoriesLeading], 
                                               distancePriceSize.width, distancePriceSize.height) 
                        withFont:[[self class] distancePriceFont] 
                   lineBreakMode:kInfoLinebreak];
