@@ -255,14 +255,15 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     CGContextSetShadowWithColor(context, CGSizeMake(0.0f, -0.5f), 0.0f, 
                                 CGColorCreateCopyWithAlpha([[self class] black], 0.6f));
     
-    CGSize nameSize = [[self class] sizeForName:self.name];
-	[self customLeadingDrawing:self.name withSize:nameSize leading:[[self class] nameLeading:self.name]];
+    CGSize adjustedNameSize = [[self class] adjustedSizeForName:self.name];
+	[self customLeadingDrawing:self.name 
+                      withSize:[[self class] sizeForName:self.name]
+                       leading:[[self class] nameLeading:self.name]];
     
     UIColor *textColor = [UIColor whiteColor];
     [textColor set];
     CGSize categoriesSize = [[self class] sizeForCategories:self.categories];
-    [self.categories drawInRect:CGRectMake(kPadding, 
-                                           nameSize.height + [[self class] nameLeading: self.name], 
+    [self.categories drawInRect:CGRectMake(kPadding, adjustedNameSize.height, 
                                            categoriesSize.width, categoriesSize.height) 
                  withFont:[[self class] categoriesFont] 
             lineBreakMode:kInfoLinebreak];
@@ -271,7 +272,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     [textColor set];
     CGSize distancePriceSize = [[self class] sizeForDistancePrice:self.distancePrice];
     [self.distancePrice drawInRect:CGRectMake(kPadding, 
-                                              nameSize.height + categoriesSize.height + [[self class] nameLeading: self.name] + [[self class] categoriesLeading], 
+                                              adjustedNameSize.height + categoriesSize.height + [[self class] categoriesLeading], 
                                               distancePriceSize.width, distancePriceSize.height) 
                        withFont:[[self class] distancePriceFont] 
                   lineBreakMode:kInfoLinebreak];
@@ -280,7 +281,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     [textColor set];
     CGSize blurbSize = [[self class] sizeForBlurb:self.blurb];
     CGRect blurbRect = CGRectMake(kPadding, 
-                                  nameSize.height + categoriesSize.height + (2 * kPadding),
+                                  adjustedNameSize.height + categoriesSize.height + (2 * kPadding),
                                   blurbSize.width, blurbSize.height);
 	[self.blurb drawInRect:blurbRect
                   withFont:[[self class] blurbFont]
