@@ -174,15 +174,41 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     
-    if (nameSize.height > oneLineHeight) {
+    // Set the color
+    UIColor *textColor = [UIColor whiteColor];
+    [textColor set];
+    
+    // The 1.5 multiplier is just for safe measure in case @"M" isn't the tallest letter..
+    if (nameSize.height > (oneLineHeight * 1.5)) {
+        // If our name is 2 lines tall, clip the top half
         UIRectClip(CGRectMake(kPadding, kPadding + (nameSize.height / 2.0f), 
                               nameSize.width, nameSize.height / 2.0f));
+        
+        // And draw the bottom half first
+        [self.name drawInRect:CGRectMake(kPadding, kPadding,
+                                         nameSize.width, nameSize.height)
+                     withFont:[[self class] nameFont]
+                lineBreakMode:kNameLineBreak];
+        
+        // Then clip the bottom half
+        CGContextRestoreGState(context);
+        CGContextSaveGState(context);
+        UIRectClip(CGRectMake(kPadding, kPadding, 
+                              nameSize.width, nameSize.height / 2.0f));
+        
+        // And draw the top half second
+        [self.name drawInRect:CGRectMake(kPadding, kPadding,
+                                         nameSize.width, nameSize.height)
+                     withFont:[[self class] nameFont]
+                lineBreakMode:kNameLineBreak];
     }
-    
-    [self.name drawInRect:CGRectMake(kPadding, kPadding,
-                                     nameSize.width, nameSize.height)
-                 withFont:[[self class] nameFont]
-            lineBreakMode:kNameLineBreak];
+    else {
+        // Otherwise, it is only 1 line tall, so we just draw it normally
+        [self.name drawInRect:CGRectMake(kPadding, kPadding,
+                                         nameSize.width, nameSize.height)
+                     withFont:[[self class] nameFont]
+                lineBreakMode:kNameLineBreak];
+    }
 
     // After we're all done, let's reset the context
     CGContextRestoreGState(context);
