@@ -33,6 +33,8 @@ static CGFloat kPadding = 5.0f;
 static CGFloat kHalfPadding = 1.0f;
 static CGFloat kMaxBlurbHeight = 1000.0f;
 
+static CGFloat kNameLeading = -5.0f;
+
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kInfoLinebreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
@@ -69,9 +71,11 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     CGFloat maxWidth = kWidth - (2 * kPadding);
     CGFloat maxHeight = 2 * self.nameFont.lineHeight;
     CGSize maxSize = CGSizeMake(maxWidth, maxHeight);
-	CGSize textSize = [name sizeWithFont:self.nameFont 
-                       constrainedToSize:maxSize 
-                           lineBreakMode:kNameLineBreak];
+	CGSize originalSize = [name sizeWithFont:self.nameFont 
+                           constrainedToSize:maxSize 
+                               lineBreakMode:kNameLineBreak];
+    
+    CGSize textSize = CGSizeMake(originalSize.width, originalSize.height + kNameLeading);
     return textSize;
 }
 
@@ -185,7 +189,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                               nameSize.width, nameSize.height / 2.0f));
         
         // And draw the bottom half first
-        [self.name drawInRect:CGRectMake(kPadding, kPadding,
+        [self.name drawInRect:CGRectMake(kPadding, 0.0f,
                                          nameSize.width, nameSize.height)
                      withFont:[[self class] nameFont]
                 lineBreakMode:kNameLineBreak];
