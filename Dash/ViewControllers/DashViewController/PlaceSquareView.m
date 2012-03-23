@@ -76,7 +76,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (CGFloat)nameLeading:(NSString *)name
 {
-    return ([self numberOfLinesForName:name] == 1) ? -4.0f : -8.0f;
+    return ([self numberOfLinesForName:name] == 1) ? -0.0f : -8.0f;
 }
 
 + (CGFloat)categoriesLeading
