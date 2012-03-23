@@ -197,6 +197,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                               nameSize.width, nameSize.height / 2.0f));
         
         // And draw the top half second
+        [textColor set];
         [self.name drawInRect:CGRectMake(kPadding, kPadding,
                                          nameSize.width, nameSize.height)
                      withFont:[[self class] nameFont]
