@@ -33,7 +33,7 @@ static CGFloat kPadding = 5.0f;
 static CGFloat kHalfPadding = 1.0f;
 static CGFloat kMaxBlurbHeight = 1000.0f;
 
-static CGFloat kNameLeading = -5.0f;
+static CGFloat kNameLeading = -10.0f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kInfoLinebreak = UILineBreakModeTailTruncation;
@@ -66,17 +66,32 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     return [UIFont systemFontOfSize:10];
 }
 
++ (NSInteger)numberOfLinesForName:(NSString *)name
+{
+    // For now, just compare it to the M and the y. Tallest letter, and lowest letter
+    CGSize oneLineSize = [[self class] sizeForName:@"My"];
+    CGFloat oneLineHeight = oneLineSize.height;
+    CGSize nameSize = [self sizeForName:name];
+    
+    return (nameSize.height > oneLineHeight) ? 2 : 1;
+}
+
 + (CGSize)sizeForName:(NSString *)name
 {
     CGFloat maxWidth = kWidth - (2 * kPadding);
     CGFloat maxHeight = 2 * self.nameFont.lineHeight;
     CGSize maxSize = CGSizeMake(maxWidth, maxHeight);
-	CGSize originalSize = [name sizeWithFont:self.nameFont 
+	CGSize textSize = [name sizeWithFont:self.nameFont 
                            constrainedToSize:maxSize 
                                lineBreakMode:kNameLineBreak];
-    
-    CGSize textSize = CGSizeMake(originalSize.width, originalSize.height + kNameLeading);
     return textSize;
+}
+
++ (CGSize)adjustedSizeForName:(NSString *)name
+{
+    CGSize originalSize = [self sizeForName:name];
+    CGSize adjustedSize = CGSizeMake(originalSize.width, originalSize.height + kNameLeading);
+    return ([self numberOfLinesForName:name] > 1) ? adjustedSize : originalSize;
 }
 
 + (CGSize)sizeForCategories:(NSString *)categories
@@ -170,10 +185,6 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 - (void)customLeadingDrawing:(NSString *)text withSize:(CGSize)nameSize leading:(CGFloat)leading
 {
-    // First, figure out if we are 1 line or 2 lines
-    CGSize oneLineSize = [[self class] sizeForName:@"M"];
-    CGFloat oneLineHeight = oneLineSize.height;
-    
     // So we can restore the context after we're done playing with clipping
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
@@ -181,9 +192,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     // Set the color
     UIColor *textColor = [UIColor whiteColor];
     [textColor set];
-    
-    // The 1.5 multiplier is just for safe measure in case @"M" isn't the tallest letter..
-    if (nameSize.height > (oneLineHeight * 1.5)) {
+     
+    if ([[self class] numberOfLinesForName:self.name] > 1) {
         // If our name is 2 lines tall, clip the top half
         UIRectClip(CGRectMake(kPadding, kPadding + (nameSize.height / 2.0f), 
                               nameSize.width, nameSize.height / 2.0f));
