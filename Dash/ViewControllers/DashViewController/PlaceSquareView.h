@@ -42,4 +42,10 @@
 - (id)initWithFrame:(CGRect)frame backgroundImage:(UIImage *)backgroundImage;
 - (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
 
+/** Such a hack... Draw the text twice. 
+ *  One cropping the top half, the other cropping the bottom half.
+ *  Then squish them together to get desired leading effect.
+ */
+- (void)customLeadingDrawing:(NSString *)text withSize:(CGSize)nameSize leading:(CGFloat)leading;
+
 @end

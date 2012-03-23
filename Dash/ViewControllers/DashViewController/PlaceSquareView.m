@@ -30,7 +30,7 @@
 static CGFloat kWidth = 160.0f;
 static CGFloat kHeight = 160.0f;
 static CGFloat kPadding = 5.0f;
-static CGFloat kHalfPadding = 2.5f;
+static CGFloat kHalfPadding = 1.0f;
 static CGFloat kMaxBlurbHeight = 1000.0f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
@@ -164,6 +164,30 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 #pragma mark - Draw
 
+- (void)customLeadingDrawing:(NSString *)text withSize:(CGSize)nameSize leading:(CGFloat)leading
+{
+    // First, figure out if we are 1 line or 2 lines
+    CGSize oneLineSize = [[self class] sizeForName:@"M"];
+    CGFloat oneLineHeight = oneLineSize.height;
+    
+    // So we can restore the context after we're done playing with clipping
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    
+    if (nameSize.height > oneLineHeight) {
+        UIRectClip(CGRectMake(kPadding, kPadding + (nameSize.height / 2.0f), 
+                              nameSize.width, nameSize.height / 2.0f));
+    }
+    
+    [self.name drawInRect:CGRectMake(kPadding, kPadding,
+                                     nameSize.width, nameSize.height)
+                 withFont:[[self class] nameFont]
+            lineBreakMode:kNameLineBreak];
+
+    // After we're all done, let's reset the context
+    CGContextRestoreGState(context);
+}
+
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
@@ -177,16 +201,10 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     CGContextSetShadowWithColor(context, CGSizeMake(0.0f, -0.5f), 0.0f, 
                                 CGColorCreateCopyWithAlpha([[self class] black], 0.6f));
     
+    CGSize nameSize = [[self class] sizeForName:self.name];
+	[self customLeadingDrawing:self.name withSize:nameSize leading:0.0f];
     
-    UIColor * textColor = [UIColor whiteColor];	
-	[textColor set];
-	CGSize nameSize = [[self class] sizeForName:self.name];
-	[self.name drawInRect:CGRectMake(kPadding, kPadding,
-                                     nameSize.width, nameSize.height)
-                 withFont:[[self class] nameFont]
-            lineBreakMode:kNameLineBreak];
-    
-    textColor = [UIColor whiteColor];
+    UIColor *textColor = [UIColor whiteColor];
     [textColor set];
     CGSize categoriesSize = [[self class] sizeForCategories:self.categories];
     [self.categories drawInRect:CGRectMake(kPadding, 
