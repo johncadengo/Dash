@@ -66,10 +66,11 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 + (CGSize)sizeForName:(NSString *)name
 {
     CGFloat maxWidth = kWidth - (2 * kPadding);
-	CGSize textSize = [name sizeWithFont:[self nameFont] 
-                                forWidth:maxWidth 
+    CGFloat maxHeight = 2 * self.nameFont.lineHeight;
+    CGSize maxSize = CGSizeMake(maxWidth, maxHeight);
+	CGSize textSize = [name sizeWithFont:self.nameFont 
+                       constrainedToSize:maxSize 
                            lineBreakMode:kNameLineBreak];
-    
     return textSize;
 }
 
