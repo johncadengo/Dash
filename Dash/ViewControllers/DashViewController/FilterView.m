@@ -44,15 +44,18 @@
     [text drawAtPoint:origin withFont:font];
 }
 
-- (void)drawFourImages:(NSArray *)arr at:(CGPoint)origin
+- (void)drawFourImages:(NSArray *)arr at:(CGFloat)y
 {
-    CGFloat totalWidth = self.frame.size.width; // Should be.. 320.0f
-    CGFloat width = 25.0f;
+    CGFloat totalWidth = 320.0f;
+    CGFloat width = 50.0f;
     
-    for (UIImage *image in arr) {
-        [image drawAtPoint:origin];
+    for (int i = 0; i < 4; ++i) {
+        UIImage *image = [arr objectAtIndex:i];
+        CGFloat margins = ((totalWidth - 200.0f) / 5.0f); // 4 images means 5 margins
+        CGFloat x = (i * width) + ((i + 1) * margins);
+        [image drawAtPoint:CGPointMake(x, y)];
     }
-    
+     
 }
 
 - (void)drawRect:(CGRect)rect
@@ -62,7 +65,7 @@
     // Lets draw the two separators
     [self drawHorizontalLineStartingAt:CGPointMake(25.0f, 100.0f) withLength:270.0f];
     [self drawHorizontalLineStartingAt:CGPointMake(25.0f, 160.0f) withLength:270.0f];
-    
+      
     // Draw the headers
     [self drawHeader:[NSString stringWithFormat:@"Type"] at:CGPointMake(10.0f, 0.0f)];
     [self drawHeader:[NSString stringWithFormat:@"Distance"] at:CGPointMake(10.0f, 175.0f)];
@@ -73,7 +76,7 @@
                            [UIImage imageNamed:@"ForkKnifeIcon.png"],
                            [UIImage imageNamed:@"WineIcon.png"],
                            [UIImage imageNamed:@"CupcakeIcon.png"],nil];
-    [self drawFourImages:typeImages at:CGPointMake(10.0f, 20.0f)];
+    [self drawFourImages:typeImages at:20.0f];
     
     
     /*

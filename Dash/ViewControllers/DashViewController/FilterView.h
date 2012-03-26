@@ -16,6 +16,6 @@
 
 /** Assumes that the four images fit in the frame and all have the same dimensions.
  */
-- (void)drawFourImages:(NSArray *)arr at:(CGPoint)origin;
+- (void)drawFourImages:(NSArray *)arr at:(CGFloat)y;
 
 @end
