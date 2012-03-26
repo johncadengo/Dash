@@ -74,13 +74,51 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Handle state of filter view
+- (void)invertTypeCheckedAtIndex:(NSInteger)i
+{
+    // Get current state
+    NSNumber *state = [self.filterView.typesChecked objectAtIndex:i];
+    
+    // Invert it
+    BOOL checked = [state boolValue] ? NO : YES;
+ 
+    // Update current state
+    [self.filterView.typesChecked replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:checked]];
+}
+
 #pragma mark - Tap gestures
 
 /** Receive touch events and respond accordingly.
  */
 - (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer
 {
-   NSLog(@"Tap!");
+    // Find out where we tapped
+    CGPoint tapPoint = [gestureRecognizer locationInView:self.filterView];
+ 
+    
+    NSLog(@"tappoint: %f %f", tapPoint.x, tapPoint.y);
+    
+    // Figure out if any filter was tapped
+    NSInteger typeTapped = -1;
+    NSValue *value;
+    CGRect frame;
+    for (int i = 0; i < 4; ++i) {
+        value = [self.filterView.typesFrames objectAtIndex:i];
+        frame = [value CGRectValue];
+
+        if (CGRectContainsPoint(frame, tapPoint)) {
+            typeTapped = i;
+            break;
+        }
+    }
+    
+    if (typeTapped >= 0) {
+        [self invertTypeCheckedAtIndex:typeTapped];
+    }
+ 
+    // Redraw view to match its new state
+    [self.filterView setNeedsDisplay];
 }
 
 @end
