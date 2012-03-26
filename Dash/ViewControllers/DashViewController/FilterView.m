@@ -11,11 +11,41 @@
 
 @implementation FilterView
 
+@synthesize typesChecked = _typesChecked;
+@synthesize pricesChecked = _pricesChecked;
+@synthesize currentDistanceFilter = _currentDistanceFilter;
+@synthesize typesFrames = _typesFrames;
+@synthesize pricesFrames = _pricesFrames;
+@synthesize distanceFrames = _distanceFrames;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        // By default, none are checked
+        self.typesChecked = [[NSMutableArray alloc] initWithObjects:
+                             [NSNumber numberWithBool:NO], 
+                             [NSNumber numberWithBool:NO],
+                             [NSNumber numberWithBool:NO],
+                             [NSNumber numberWithBool:NO],nil];
+        
+        // By default, the first three are checked, and the last is unchecked
+        self.pricesChecked = [[NSMutableArray alloc] initWithObjects:
+                              [NSNumber numberWithBool:YES],
+                              [NSNumber numberWithBool:YES],
+                              [NSNumber numberWithBool:YES],
+                              [NSNumber numberWithBool:NO],nil];
+        
+        // By default, we use auto distance filter
+        self.currentDistanceFilter = DistanceFilterAuto;
+        
+        // Frames
+        self.typesFrames = [[NSMutableArray alloc] initWithObjects:
+                            [NSValue valueWithCGRect:CGRectZero],
+                            [NSValue valueWithCGRect:CGRectZero],
+                            [NSValue valueWithCGRect:CGRectZero],
+                            [NSValue valueWithCGRect:CGRectZero],nil];
+        
     }
     return self;
 }
@@ -47,13 +77,29 @@
 - (void)drawFourImages:(NSArray *)arr at:(CGFloat)y
 {
     CGFloat totalWidth = 320.0f;
-    CGFloat width = 50.0f;
+    CGFloat width = 70.0f;
+    NSInteger numImages = 4;
+    NSNumber *checked;
+    CGRect frame;
     
-    for (int i = 0; i < 4; ++i) {
+    for (NSInteger i = 0; i < numImages; ++i) {
+        // Get image and calculate its origin
         UIImage *image = [arr objectAtIndex:i];
-        CGFloat margins = ((totalWidth - 200.0f) / 5.0f); // 4 images means 5 margins
+        CGFloat margins = ((totalWidth - (width * numImages)) / (numImages + 1)); // 4 images means 5 margins
         CGFloat x = (i * width) + ((i + 1) * margins);
-        [image drawAtPoint:CGPointMake(x, y)];
+        
+        // Based on its size and origin, calculate its frame and save it
+        frame = CGRectMake(x, y, image.size.width, image.size.height);
+        [self.typesFrames replaceObjectAtIndex:i withObject:[NSValue valueWithCGRect:frame]];
+        
+        // If it is checked, draw it a different way than if it is unchecked.
+        checked = [self.typesChecked objectAtIndex:i];
+        if ([checked boolValue]) {
+            [image drawAtPoint:CGPointMake(x, y) blendMode:kCGBlendModeOverlay alpha:0.25f];
+        }
+        else {
+            [image drawAtPoint:CGPointMake(x, y)];
+        }
     }
      
 }

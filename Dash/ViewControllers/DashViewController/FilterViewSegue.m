@@ -21,6 +21,7 @@
     
     // Make sure we are connected
     if (dashViewController.filterView == nil) {
+        dashViewController.filterViewController = filterViewController;
         dashViewController.filterView = filterViewController.view;
     }
     

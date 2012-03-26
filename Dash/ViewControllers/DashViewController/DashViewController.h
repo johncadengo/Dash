@@ -13,6 +13,7 @@
 
 @class DashAPI;
 @class Place;
+@class FilterViewController;
 
 // For mapping the quadrant to array indices
 typedef enum {
@@ -50,8 +51,10 @@ typedef enum {
 @property (nonatomic, strong) UIImageView *flipGrip;
 
 @property (nonatomic) CGRect filterViewFrame;
+@property (nonatomic, strong) FilterViewController *filterViewController;
 @property (nonatomic, strong) UIView *filterView;
 @property (nonatomic, strong) MBProgressHUD *progressHUD;
+
 // Gesture recognizers
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
 @property (nonatomic, strong) UIPanGestureRecognizer *drag;

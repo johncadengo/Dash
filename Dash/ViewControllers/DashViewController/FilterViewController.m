@@ -12,12 +12,13 @@
 @implementation FilterViewController
 
 @synthesize filterView = _filterView;
+@synthesize singleTap = _singleTap;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -48,13 +49,17 @@
     [self.view addSubview:self.filterView];
 }
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Add our tap gesture recognizer
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.filterView addGestureRecognizer:self.singleTap];
+    [self.singleTap setDelegate:self];
+    
 }
-*/
+
 
 - (void)viewDidUnload
 {
@@ -67,6 +72,15 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Tap gestures
+
+/** Receive touch events and respond accordingly.
+ */
+- (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer
+{
+   NSLog(@"Tap!");
 }
 
 @end

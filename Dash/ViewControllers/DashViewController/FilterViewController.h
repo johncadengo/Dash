@@ -17,10 +17,11 @@ typedef enum {
 
 @class FilterView;
 
-@interface FilterViewController : UIViewController
+@interface FilterViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) FilterView *filterView;
+@property (nonatomic, strong) UITapGestureRecognizer *singleTap;
 
-//@property (nonatomic, strong) UIImageView 
+- (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer;
 
 @end

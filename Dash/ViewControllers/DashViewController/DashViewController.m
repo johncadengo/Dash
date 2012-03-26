@@ -40,6 +40,7 @@
 
 @synthesize filterViewFrame = _filterViewFrame;
 @synthesize filterView = _filterView;
+@synthesize filterViewController = _filterViewController;
 @synthesize singleTap = _singleTap;
 @synthesize drag = _drag;
 
