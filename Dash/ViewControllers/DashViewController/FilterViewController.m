@@ -42,7 +42,7 @@
     self.view.backgroundColor = [UIColor clearColor];
     
     // The visible view at all times
-    self.filterView = [[FilterView alloc] initWithFrame:self.view.frame];
+    self.filterView = [[FilterView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
     self.filterView.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:self.filterView];

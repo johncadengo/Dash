@@ -20,25 +20,29 @@
     return self;
 }
 
-- (void)drawLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
+- (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 {
-    // Custom Drawing
+    // Get the context
     CGContextRef context = UIGraphicsGetCurrentContext();	
     
-    // Set the stroke color
-    CGContextSetStrokeColorWithColor(context, UIColorFromRGB(kFilterLinesColor).CGColor);	
-    
-    // Set the width of the pen mark	
+    // Set the stroke color and width of the pen
+    CGContextSetStrokeColorWithColor(context, UIColorFromRGB(kFilterLinesColor).CGColor);
     CGContextSetLineWidth(context, 1.0f);
     
-	// Start at this point
+	// Set the starting and ending points
 	CGContextMoveToPoint(context, origin.x, origin.y);
-    
-	// Move "pen" around the screen
     CGContextAddLineToPoint(context, origin.x + length, origin.y);
     
-	//Draw it
+	// Draw the line
     CGContextStrokePath(context);    
+}
+
+- (void)drawHeader:(NSString *)text at:(CGPoint)origin
+{
+    [[UIColor whiteColor] set];
+    UIFont *font = [UIFont fontWithName:kHelveticaNeueBold size:14.0f];
+    [text drawAtPoint:origin withFont:font];
+
 }
 
 - (void)drawRect:(CGRect)rect
@@ -46,9 +50,16 @@
     [super drawRect:rect];
     
     // Lets draw the two separators
-    [self drawLineStartingAt:CGPointMake(25.0f, 100.0f) withLength:270.0f];
-    [self drawLineStartingAt:CGPointMake(25.0f, 220.0f) withLength:270.0f];
+    [self drawHorizontalLineStartingAt:CGPointMake(25.0f, 100.0f) withLength:270.0f];
+    [self drawHorizontalLineStartingAt:CGPointMake(25.0f, 160.0f) withLength:270.0f];
     
+    // Draw the headers
+    [self drawHeader:[NSString stringWithFormat:@"Type"] at:CGPointMake(5.0f, 5.0f)];
+    [self drawHeader:[NSString stringWithFormat:@"Distance"] at:CGPointMake(5.0f, 165.0f)];
+
+
+
+
 }
 
 
