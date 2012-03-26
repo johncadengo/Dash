@@ -9,6 +9,7 @@
 #import "FilterViewSegue.h"
 #import "DashViewController.h"
 #import "FilterViewController.h"
+#import "FilterView.h"
 
 @implementation FilterViewSegue
 

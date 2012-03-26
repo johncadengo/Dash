@@ -21,6 +21,8 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    NSLog(@"Filter view draw rect");
+    
     [super drawRect:rect];
     
     // Custom Drawing

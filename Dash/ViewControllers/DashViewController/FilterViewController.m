@@ -38,13 +38,14 @@
 {
     NSLog(@"Filter view load view");
     
+    [super loadView];
+    self.view.backgroundColor = [UIColor clearColor];
+    
     // The visible view at all times
-    self.filterView = [[FilterView alloc] init];
+    self.filterView = [[FilterView alloc] initWithFrame:self.view.frame];
     self.filterView.backgroundColor = [UIColor clearColor];
     
-    // Add the types
-    
-    self.view = self.filterView;
+    [self.view addSubview:self.filterView];
 }
 
 /*

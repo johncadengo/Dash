@@ -121,7 +121,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 - (void)loadView
 {
     // The visible view at all times
-    self.view = [[UIView alloc] init];
+    //self.view = [[UIView alloc] init];
+    [super loadView];
+    self.view.backgroundColor = [UIColor blackColor];
     
     // Add our pops scroll view
     self.popsScrollView = [[UIScrollView alloc] init];
@@ -247,6 +249,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
     // Initial filter view frame
     self.filterViewFrame = CGRectMake(0.0f, 360.0f, 320.0f, 480.0f);
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
