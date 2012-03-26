@@ -211,7 +211,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
         UIRectClip(CGRectMake(kPadding, kPadding + (nameSize.height / 2.0f) + leading, 
                               nameSize.width, nameSize.height / 2.0f));
         
-        // And draw the bottom half first
+        // And draw it
         [self.name drawInRect:CGRectMake(kPadding, kPadding + leading,
                                          nameSize.width, nameSize.height)
                      withFont:[[self class] nameFont]
@@ -223,7 +223,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
         UIRectClip(CGRectMake(kPadding, kPadding, 
                               nameSize.width, nameSize.height / 2.0f));
         
-        // And draw the top half second
+        // And draw it
         [textColor set];
         [self.name drawInRect:CGRectMake(kPadding, kPadding,
                                          nameSize.width, nameSize.height)

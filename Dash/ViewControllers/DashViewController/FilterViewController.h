@@ -15,7 +15,11 @@ typedef enum {
     kFilterTypeDessert = 3
 } FilterType;
 
+@class FilterView;
+
 @interface FilterViewController : UIViewController
+
+@property (nonatomic, strong) FilterView *filterView;
 
 //@property (nonatomic, strong) UIImageView 
 

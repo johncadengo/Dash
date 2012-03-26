@@ -149,6 +149,7 @@
 		67BFB666147C262B005C862F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB665147C262B005C862F /* PlaceViewController.m */; };
 		67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */; };
 		67C46B1914BF9B05006B9301 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C46B1814BF9B05006B9301 /* icon@2x.png */; };
+		67C829091520DB0E0089E95F /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C829081520DB0E0089E95F /* FilterView.m */; };
 		67C84FDA150E2D8B0078CBEF /* Highlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C84FD9150E2D8B0078CBEF /* Highlight.m */; };
 		67C84FDD150E2DB20078CBEF /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C84FDC150E2DB20078CBEF /* Person.m */; };
 		67C84FE0150E2DC20078CBEF /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C84FDF150E2DC20078CBEF /* Place.m */; };
@@ -472,6 +473,8 @@
 		67BFB667147C4476005C862F /* PlaceHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceHeaderViewCell.h; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.h; sourceTree = "<group>"; };
 		67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceHeaderViewCell.m; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.m; sourceTree = "<group>"; };
 		67C46B1814BF9B05006B9301 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
+		67C829071520DB0D0089E95F /* FilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterView.h; path = Dash/ViewControllers/DashViewController/FilterView.h; sourceTree = "<group>"; };
+		67C829081520DB0E0089E95F /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterView.m; path = Dash/ViewControllers/DashViewController/FilterView.m; sourceTree = "<group>"; };
 		67C84FD8150E2D8B0078CBEF /* Highlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Highlight.h; path = "Data Model/Actions/Highlight/Highlight.h"; sourceTree = "<group>"; };
 		67C84FD9150E2D8B0078CBEF /* Highlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Highlight.m; path = "Data Model/Actions/Highlight/Highlight.m"; sourceTree = "<group>"; };
 		67C84FDB150E2DB20078CBEF /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
@@ -1000,6 +1003,8 @@
 				673ABD5B148EAE19004446B2 /* PlaceSquareView.m */,
 				67A5D8FA151B817C00924CAB /* FilterViewController.h */,
 				67A5D8FB151B817C00924CAB /* FilterViewController.m */,
+				67C829071520DB0D0089E95F /* FilterView.h */,
+				67C829081520DB0E0089E95F /* FilterView.m */,
 				67A8977214C782DD00494273 /* FilterViewSegue.h */,
 				67A8977314C782DD00494273 /* FilterViewSegue.m */,
 				67F20E8F1500357D0026CF4A /* LoginViewController.h */,
@@ -1602,6 +1607,7 @@
 				67C84FDD150E2DB20078CBEF /* Person.m in Sources */,
 				67C84FE0150E2DC20078CBEF /* Place.m in Sources */,
 				67A5D8FC151B817C00924CAB /* FilterViewController.m in Sources */,
+				67C829091520DB0E0089E95F /* FilterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

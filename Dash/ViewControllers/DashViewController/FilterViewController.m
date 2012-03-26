@@ -7,8 +7,11 @@
 //
 
 #import "FilterViewController.h"
+#import "FilterView.h"
 
 @implementation FilterViewController
+
+@synthesize filterView = _filterView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,10 +39,12 @@
     NSLog(@"Filter view load view");
     
     // The visible view at all times
-    self.view = [[UIView alloc] init];
-    self.view.backgroundColor = [UIColor clearColor];
+    self.filterView = [[FilterView alloc] init];
+    self.filterView.backgroundColor = [UIColor clearColor];
     
     // Add the types
+    
+    self.view = self.filterView;
 }
 
 /*
