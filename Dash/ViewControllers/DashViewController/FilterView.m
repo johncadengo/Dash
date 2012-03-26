@@ -42,7 +42,17 @@
     [[UIColor whiteColor] set];
     UIFont *font = [UIFont fontWithName:kHelveticaNeueBold size:14.0f];
     [text drawAtPoint:origin withFont:font];
+}
 
+- (void)drawFourImages:(NSArray *)arr at:(CGPoint)origin
+{
+    CGFloat totalWidth = self.frame.size.width; // Should be.. 320.0f
+    CGFloat width = 25.0f;
+    
+    for (UIImage *image in arr) {
+        [image drawAtPoint:origin];
+    }
+    
 }
 
 - (void)drawRect:(CGRect)rect
@@ -54,10 +64,25 @@
     [self drawHorizontalLineStartingAt:CGPointMake(25.0f, 160.0f) withLength:270.0f];
     
     // Draw the headers
-    [self drawHeader:[NSString stringWithFormat:@"Type"] at:CGPointMake(5.0f, 5.0f)];
-    [self drawHeader:[NSString stringWithFormat:@"Distance"] at:CGPointMake(5.0f, 165.0f)];
+    [self drawHeader:[NSString stringWithFormat:@"Type"] at:CGPointMake(10.0f, 0.0f)];
+    [self drawHeader:[NSString stringWithFormat:@"Distance"] at:CGPointMake(10.0f, 175.0f)];
 
-
+    // Draw the type images
+    NSArray *typeImages = [NSArray arrayWithObjects:
+                           [UIImage imageNamed:@"BurgerShakeIcon.png"],
+                           [UIImage imageNamed:@"ForkKnifeIcon.png"],
+                           [UIImage imageNamed:@"WineIcon.png"],
+                           [UIImage imageNamed:@"CupcakeIcon.png"],nil];
+    [self drawFourImages:typeImages at:CGPointMake(10.0f, 20.0f)];
+    
+    
+    /*
+    NSArray *distanceImages = [NSArray arrayWithObjects:
+                               [UIImage imageNamed:@""],
+                               [UIImage imageNamed:@""],
+                               [UIImage imageNamed:@""],
+                               [UIImage imageNamed:@""],nil];
+     */
 
 
 }

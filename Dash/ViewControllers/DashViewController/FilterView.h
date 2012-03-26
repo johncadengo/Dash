@@ -14,4 +14,8 @@
 - (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 - (void)drawHeader:(NSString *)text at:(CGPoint)origin;
 
+/** Assumes that the four images fit in the frame and all have the same dimensions.
+ */
+- (void)drawFourImages:(NSArray *)arr at:(CGPoint)origin;
+
 @end
