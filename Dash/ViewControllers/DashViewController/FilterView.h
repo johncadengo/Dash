@@ -10,4 +10,6 @@
 
 @interface FilterView : UIView
 
+- (void)drawLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
+
 @end

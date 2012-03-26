@@ -7,6 +7,7 @@
 //
 
 #import "FilterView.h"
+#import "Constants.h"
 
 @implementation FilterView
 
@@ -19,31 +20,34 @@
     return self;
 }
 
-- (void)drawRect:(CGRect)rect
+- (void)drawLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 {
-    NSLog(@"Filter view draw rect");
-    
-    [super drawRect:rect];
-    
     // Custom Drawing
     CGContextRef context = UIGraphicsGetCurrentContext();	
     
-    // Set the stroke (pen) color	
-    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);	
+    // Set the stroke color
+    CGContextSetStrokeColorWithColor(context, UIColorFromRGB(kFilterLinesColor).CGColor);	
     
     // Set the width of the pen mark	
-    CGContextSetLineWidth(context, 5.0);
+    CGContextSetLineWidth(context, 1.0f);
     
 	// Start at this point
-	CGContextMoveToPoint(context, 10.0, 30.0);
+	CGContextMoveToPoint(context, origin.x, origin.y);
     
 	// Move "pen" around the screen
-    CGContextAddLineToPoint(context, 310.0, 30.0);	
-    CGContextAddLineToPoint(context, 310.0, 90.0);	
-    CGContextAddLineToPoint(context, 10.0, 90.0);
+    CGContextAddLineToPoint(context, origin.x + length, origin.y);
     
 	//Draw it
-    CGContextStrokePath(context);
+    CGContextStrokePath(context);    
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    
+    // Lets draw the two separators
+    [self drawLineStartingAt:CGPointMake(25.0f, 100.0f) withLength:270.0f];
+    [self drawLineStartingAt:CGPointMake(25.0f, 220.0f) withLength:270.0f];
     
 }
 
