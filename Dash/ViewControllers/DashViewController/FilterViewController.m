@@ -96,8 +96,7 @@
     // Find out where we tapped
     CGPoint tapPoint = [gestureRecognizer locationInView:self.filterView];
  
-    
-    NSLog(@"tappoint: %f %f", tapPoint.x, tapPoint.y);
+    //NSLog(@"tappoint: %f %f", tapPoint.x, tapPoint.y);
     
     // Figure out if any filter was tapped
     NSInteger typeTapped = -1;

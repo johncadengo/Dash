@@ -17,6 +17,9 @@
 @synthesize typesFrames = _typesFrames;
 @synthesize pricesFrames = _pricesFrames;
 @synthesize distanceFrames = _distanceFrames;
+@synthesize typeImages = _typeImages;
+@synthesize priceImages = _priceImages;
+@synthesize distanceImages = _distanceImages;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -45,6 +48,26 @@
                             [NSValue valueWithCGRect:CGRectZero],
                             [NSValue valueWithCGRect:CGRectZero],
                             [NSValue valueWithCGRect:CGRectZero],nil];
+        
+        
+        // Images
+        self.typeImages = [NSArray arrayWithObjects:
+                           [UIImage imageNamed:@"BurgerShakeIcon.png"],
+                           [UIImage imageNamed:@"ForkKnifeIcon.png"],
+                           [UIImage imageNamed:@"WineIcon.png"],
+                           [UIImage imageNamed:@"CupcakeIcon.png"],nil];
+        
+        self.priceImages = [NSArray arrayWithObjects:
+                            [UIImage imageNamed:@"BurgerShakeIcon.png"],
+                            [UIImage imageNamed:@"ForkKnifeIcon.png"],
+                            [UIImage imageNamed:@"WineIcon.png"],
+                            [UIImage imageNamed:@"CupcakeIcon.png"],nil];
+        
+        self.distanceImages = [NSArray arrayWithObjects:
+                               [UIImage imageNamed:@"RadarIcon.png"],
+                               [UIImage imageNamed:@"WalkingManIcon.png"],
+                               [UIImage imageNamed:@"BikeIcon.png"],
+                               [UIImage imageNamed:@"CarIcon.png"],nil];
         
     }
     return self;
@@ -116,22 +139,11 @@
     [self drawHeader:[NSString stringWithFormat:@"Type"] at:CGPointMake(10.0f, 0.0f)];
     [self drawHeader:[NSString stringWithFormat:@"Distance"] at:CGPointMake(10.0f, 175.0f)];
 
-    // Draw the type images
-    NSArray *typeImages = [NSArray arrayWithObjects:
-                           [UIImage imageNamed:@"BurgerShakeIcon.png"],
-                           [UIImage imageNamed:@"ForkKnifeIcon.png"],
-                           [UIImage imageNamed:@"WineIcon.png"],
-                           [UIImage imageNamed:@"CupcakeIcon.png"],nil];
-    [self drawFourImages:typeImages at:20.0f];
+    // Draw the images
+    [self drawFourImages:self.typeImages at:20.0f];
+    [self drawFourImages:self.distanceImages at:195.0f];
     
-    
-    /*
-    NSArray *distanceImages = [NSArray arrayWithObjects:
-                               [UIImage imageNamed:@""],
-                               [UIImage imageNamed:@""],
-                               [UIImage imageNamed:@""],
-                               [UIImage imageNamed:@""],nil];
-     */
+
 
 
 }

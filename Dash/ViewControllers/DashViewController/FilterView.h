@@ -28,6 +28,11 @@ typedef enum {
 @property (nonatomic, strong) NSMutableArray *pricesFrames;
 @property (nonatomic, strong) NSMutableArray *distanceFrames;
 
+// Images
+@property (nonatomic, strong) NSArray *typeImages;
+@property (nonatomic, strong) NSArray *priceImages;
+@property (nonatomic, strong) NSArray *distanceImages;
+
 - (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 - (void)drawHeader:(NSString *)text at:(CGPoint)origin;
 
