@@ -602,7 +602,11 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         place = [self.places objectAtIndex:i];
         squareCell = [self.quadrantCells objectAtIndex:i];
         [squareCell setWithPlace:place context:self.managedObjectContext];
-    }    
+    }
+    
+    // Now scroll to the newest pops
+    CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
+    [self.popsScrollView setContentOffset:CGPointMake(self.currentPage * popsScrollViewWidth, 0.0f) animated:NO];
 }
 
 #pragma mark - Storyboard Segue
