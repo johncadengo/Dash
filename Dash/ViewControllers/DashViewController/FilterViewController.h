@@ -22,10 +22,15 @@ typedef enum {
 
 @property (nonatomic, strong) FilterView *filterView;
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
+@property (nonatomic, strong) UIButton *locationButton;
 
 - (void)invertTypeCheckedAtIndex:(NSInteger)i;
 - (void)invertPriceCheckedAtIndex:(NSInteger)i;
 - (void)setDistanceChecked:(DistanceFilter)i;
+
+/** Sends an action sheet up to prompt for a change in location
+ */
+- (void)promptForLocation:(id)sender;
 
 // Checks if any frames contain the point. Returns index >= 0 if found. -1 if not.
 - (NSInteger)indexOfFrames:(NSArray *)arr containPoint:(CGPoint)point;

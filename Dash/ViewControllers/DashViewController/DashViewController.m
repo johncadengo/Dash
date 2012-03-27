@@ -274,7 +274,13 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         //[self showLogin];
     }
     
-    self.filterView.frame = CGRectMake(0.0f, 400.0f, 320.0f, 320.0f);
+    if (self.isFilterShowing) {
+        [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
+        [self showFilter];
+    }
+    else {
+        self.filterView.frame = CGRectMake(0.0f, 400.0f, 320.0f, 320.0f);
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

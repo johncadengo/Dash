@@ -20,7 +20,6 @@
 @synthesize typesImages = _typesImages;
 @synthesize pricesImages = _pricesImages;
 @synthesize distancesImages = _distancesImages;
-@synthesize locationButton = _locationButton;
 
 - (id)initWithFrame:(CGRect)frame
 {

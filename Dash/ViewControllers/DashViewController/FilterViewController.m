@@ -13,6 +13,7 @@
 
 @synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
+@synthesize locationButton = _locationButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,18 +46,6 @@
     // The visible view at all times
     self.filterView = [[FilterView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
     self.filterView.backgroundColor = [UIColor clearColor];
-    
-    UIButton *locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [locationButton addTarget:self 
-                       action:@selector(promptLocation:) 
-             forControlEvents:UIControlEventTouchUpInside];
-    [locationButton setTitle:@"Current Location" forState:UIControlStateNormal];
-    [locationButton.titleLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:14.0f]];
-    [locationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];    
-    [locationButton setBackgroundImage:[UIImage imageNamed:@"CurrentLocationButton"] forState:UIControlStateNormal];
-    locationButton.frame = CGRectMake(10.0f, 260.0f, 300.0f, 50.0f);
-    self.filterView.locationButton = locationButton;
-    [self.filterView addSubview:locationButton];
     [self.view addSubview:self.filterView];
 }
 
@@ -69,6 +58,17 @@
     [self.filterView addGestureRecognizer:self.singleTap];
     [self.singleTap setDelegate:self];
     
+    self.locationButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.locationButton addTarget:self 
+                            action:@selector(promptForLocation:) 
+                  forControlEvents:UIControlEventTouchUpInside];
+    [self.locationButton setTitle:@"Current Location" forState:UIControlStateNormal];
+    [self.locationButton.titleLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:14.0f]];
+    [self.locationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];    
+    //[self.locationButton setBackgroundImage:[UIImage imageNamed:@"CurrentLocationButton"] forState:UIControlStateNormal];
+    self.locationButton.frame = CGRectMake(10.0f,270.0f, 300.0f, 50.0f);
+    
+    [self.filterView addSubview:self.locationButton];
 }
 
 
@@ -84,6 +84,14 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark - Location Button
+
+- (void)promptForLocation:(id)sender
+{
+    NSLog(@"Hey there!");
+}
+
 
 #pragma mark - Handle state of filter view
 - (void)invertTypeCheckedAtIndex:(NSInteger)i
