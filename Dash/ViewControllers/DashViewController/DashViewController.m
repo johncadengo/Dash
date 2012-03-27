@@ -269,6 +269,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     if (![DashAPI skipLogin] && ![DashAPI loggedIn]) {
         //[self showLogin];
     }
+    
+    self.filterView.frame = CGRectMake(0.0f, 400.0f, 320.0f, 320.0f);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -279,6 +281,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     // TODO: Make sure we restart it when we need it...
     [self.locationManager stopUpdatingLocation];
     [self.locationManager stopMonitoringSignificantLocationChanges];
+    
+    [self.filterView removeFromSuperview];
 }
 
 - (void)viewDidUnload
@@ -286,7 +290,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    NSLog(@"UNLOAD");
+    //NSLog(@"UNLOAD");
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -364,7 +368,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     UIView *dragSuperView = self.view;
     
     if (self.isDragging && gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"Dragging over. Should stick either up or down now.");
+        //NSLog(@"Dragging over. Should stick either up or down now.");
         // Reset isDragging
         self.dragging = NO;
         
@@ -387,8 +391,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
                                   delay:0.0
                                 options:UIViewAnimationCurveLinear
                              animations:^{
-                                 //self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, dragSuperView.frame.origin);
-                                 [self offsetFrames:0.0f];
+                                 [self showFilter];
                              }
                              completion:^(BOOL finished){
                                  self.filterShowing = YES;
@@ -403,8 +406,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
                                   delay:0.0
                                 options:UIViewAnimationCurveLinear
                              animations:^{
-                                 //self.filterView.frame = CGRectMatchCGPointY(self.filterView.frame, self.popButton.frame.origin);
-                                 [self offsetFrames:(PlaceSquareView.size.height * 2)];
+                                 [self hideFilter];
                              }
                              completion:^(BOOL finished){
                                  self.filterShowing = NO;
@@ -419,11 +421,12 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         if (CGRectContainsPoint(dragSuperView.frame, origin)) {
             // Only allow dragging to a certain point. Don't let drag further down.
             if (origin.y - (2 * PlaceSquareView.size.height) < 0.0f) {
+                // Track the drag
                 [self offsetFrames:origin.y];
             }
             else {
                 // Stick to the bottom
-                [self offsetFrames:(PlaceSquareView.size.height * 2)];
+                [self hideFilter];
             }
         }
     }
@@ -435,11 +438,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         //                                  toView:self.popButton];
         CGPoint origin = [gestureRecognizer locationInView:dragSuperView];
         
-        NSLog(@"origin %f %f", origin.x, origin.y);
+        //NSLog(@"origin %f %f", origin.x, origin.y);
 
         if (CGRectContainsPoint(self.popBackground.frame, origin)) {
-            NSLog(@"Started dragging from pop button!");
-            
             // Now, we are dragging
             self.dragging = YES;
             
@@ -448,20 +449,32 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     }
 }
 
+- (void)hideFilter
+{
+    [self offsetFrames:(PlaceSquareView.size.height * 2)];    
+}
+
+- (void)showFilter
+{
+    [self offsetFrames:0.0f];
+}
+
 - (void)offsetFrames:(CGFloat)offset
 {
+    CGFloat trackingOrigin = (2 * PlaceSquareView.size.height);
+    
     // Grab the popsscrollview and drag it
-    self.popsScrollView.frame = CGRectOffset(self.popsScrollViewFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
+    self.popsScrollView.frame = CGRectOffset(self.popsScrollViewFrame, 0.0f, offset - trackingOrigin);
     
     // Grab the popbutton and its background and drag em too
-    self.popBackground.frame = CGRectOffset(self.popBackgroundFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
-    self.popButton.frame = CGRectOffset(self.popButtonFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
+    self.popBackground.frame = CGRectOffset(self.popBackgroundFrame, 0.0f, offset - trackingOrigin);
+    self.popButton.frame = CGRectOffset(self.popButtonFrame, 0.0f, offset - trackingOrigin);
     
-    self.flipGrip.frame = CGRectOffset(self.flipGripFrame, 0.0f, offset - (2 * PlaceSquareView.size.height));
+    self.flipGrip.frame = CGRectOffset(self.flipGripFrame, 0.0f, offset - trackingOrigin);
     
     // Grab the filter view and drag it up
     // 54.5f is the popbutton's height...
-    self.filterView.frame = CGRectOffset(self.filterViewFrame, 0.0f, offset - (2 * PlaceSquareView.size.height) + 51.0f);
+    self.filterView.frame = CGRectOffset(self.filterViewFrame, 0.0f, offset - trackingOrigin + 51.0f);
 }
 
 #pragma mark -
@@ -557,10 +570,10 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         placeViewController.hidesBottomBarWhenPushed = YES;
     }
     else if ([[segue identifier] isEqualToString:kPresentFilterViewController]) {
-        NSLog(@"Presenting filter view controller");
+        //NSLog(@"Presenting filter view controller");
     }
     else if ([[segue identifier] isEqualToString:kShowLoginViewControllerSegueIdentifier]) {
-        NSLog(@"Show login view controller");
+        //NSLog(@"Show login view controller");
     }
 }
 

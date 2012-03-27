@@ -23,6 +23,7 @@
     if (dashViewController.filterView == nil) {
         dashViewController.filterViewController = filterViewController;
         dashViewController.filterView = filterViewController.view;
+        dashViewController.filterView.frame = CGRectMake(0.0f, 400.0f, 320.0f, 320.0f);
     }
     
     [dashViewController.view addSubview:dashViewController.filterView];

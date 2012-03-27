@@ -80,6 +80,8 @@ typedef enum {
 - (void)showNextPage;
 
 // For dragging
+- (void)hideFilter;
+- (void)showFilter;
 - (void)offsetFrames:(CGFloat)offset;
 
 /** Receive touch events and respond accordingly.

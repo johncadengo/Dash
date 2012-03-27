@@ -69,10 +69,10 @@
                             [UIImage imageNamed:@"CupcakeIcon.png"],nil];
         
         self.pricesImages = [NSArray arrayWithObjects:
-                             [UIImage imageNamed:@"$.png"],
-                             [UIImage imageNamed:@"$$.png"],
-                             [UIImage imageNamed:@"$.png"],
-                             [UIImage imageNamed:@"$$.png"],nil];
+                             [UIImage imageNamed:@"1Dollar.png"],
+                             [UIImage imageNamed:@"2Dollar.png"],
+                             [UIImage imageNamed:@"3Dollar.png"],
+                             [UIImage imageNamed:@"4Dollar.png"],nil];
         
         self.distancesImages = [NSArray arrayWithObjects:
                                 [UIImage imageNamed:@"RadarIcon.png"],

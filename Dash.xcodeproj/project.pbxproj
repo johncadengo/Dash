@@ -107,8 +107,11 @@
 		676B64A41464871A00FEEF7C /* Comment+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64A31464871A00FEEF7C /* Comment+Helper.m */; };
 		676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */; };
 		676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */; };
-		677322FC1521457100F17A40 /* $@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 677322FA1521457100F17A40 /* $@2x.png */; };
-		677322FD1521457100F17A40 /* $$@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 677322FB1521457100F17A40 /* $$@2x.png */; };
+		677323071522118100F17A40 /* CurrentLocationButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 677323021522118100F17A40 /* CurrentLocationButton@2x.png */; };
+		6773230C152211CD00F17A40 /* 1Dollar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67732308152211CD00F17A40 /* 1Dollar@2x.png */; };
+		6773230D152211CD00F17A40 /* 2Dollar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67732309152211CD00F17A40 /* 2Dollar@2x.png */; };
+		6773230E152211CD00F17A40 /* 3Dollar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6773230A152211CD00F17A40 /* 3Dollar@2x.png */; };
+		6773230F152211CD00F17A40 /* 4Dollar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6773230B152211CD00F17A40 /* 4Dollar@2x.png */; };
 		67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
@@ -404,8 +407,11 @@
 		676B64AA146493AD00FEEF7C /* NSArray+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Helpers.m"; path = "Helpers/RandomStrings/NSArray+Helpers.m"; sourceTree = "<group>"; };
 		676B64AC146493CA00FEEF7C /* NSString+RandomStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RandomStrings.h"; path = "Helpers/RandomStrings/NSString+RandomStrings.h"; sourceTree = "<group>"; };
 		676B64AD146493CA00FEEF7C /* NSString+RandomStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RandomStrings.m"; path = "Helpers/RandomStrings/NSString+RandomStrings.m"; sourceTree = "<group>"; };
-		677322FA1521457100F17A40 /* $@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "$@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/$@2x.png"; sourceTree = "<group>"; };
-		677322FB1521457100F17A40 /* $$@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "$$@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/$$@2x.png"; sourceTree = "<group>"; };
+		677323021522118100F17A40 /* CurrentLocationButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CurrentLocationButton@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/CurrentLocationButton@2x.png"; sourceTree = "<group>"; };
+		67732308152211CD00F17A40 /* 1Dollar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1Dollar@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/1Dollar@2x.png"; sourceTree = "<group>"; };
+		67732309152211CD00F17A40 /* 2Dollar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "2Dollar@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/2Dollar@2x.png"; sourceTree = "<group>"; };
+		6773230A152211CD00F17A40 /* 3Dollar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "3Dollar@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/3Dollar@2x.png"; sourceTree = "<group>"; };
+		6773230B152211CD00F17A40 /* 4Dollar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "4Dollar@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/4Dollar@2x.png"; sourceTree = "<group>"; };
 		67751E9B147D7EBB0083011D /* MoreInfoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreInfoViewCell.h; path = Dash/ViewControllers/PlaceViewController/MoreInfoViewCell.h; sourceTree = "<group>"; };
 		67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreInfoViewCell.m; path = Dash/ViewControllers/PlaceViewController/MoreInfoViewCell.m; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
@@ -1092,8 +1098,11 @@
 		67A5D901151BA0B600924CAB /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				677322FA1521457100F17A40 /* $@2x.png */,
-				677322FB1521457100F17A40 /* $$@2x.png */,
+				67732308152211CD00F17A40 /* 1Dollar@2x.png */,
+				67732309152211CD00F17A40 /* 2Dollar@2x.png */,
+				6773230A152211CD00F17A40 /* 3Dollar@2x.png */,
+				6773230B152211CD00F17A40 /* 4Dollar@2x.png */,
+				677323021522118100F17A40 /* CurrentLocationButton@2x.png */,
 				67A5D90A151BA6CE00924CAB /* BikeIcon@2x.png */,
 				67A5D90B151BA6CE00924CAB /* CarIcon@2x.png */,
 				67A5D90C151BA6CE00924CAB /* RadarIcon@2x.png */,
@@ -1474,8 +1483,11 @@
 				67A5D910151BA6CE00924CAB /* RadarIcon@2x.png in Resources */,
 				67A5D911151BA6CE00924CAB /* WalkingManIcon@2x.png in Resources */,
 				67A5D913151BA70E00924CAB /* DashFourColorIcon@2x.png in Resources */,
-				677322FC1521457100F17A40 /* $@2x.png in Resources */,
-				677322FD1521457100F17A40 /* $$@2x.png in Resources */,
+				677323071522118100F17A40 /* CurrentLocationButton@2x.png in Resources */,
+				6773230C152211CD00F17A40 /* 1Dollar@2x.png in Resources */,
+				6773230D152211CD00F17A40 /* 2Dollar@2x.png in Resources */,
+				6773230E152211CD00F17A40 /* 3Dollar@2x.png in Resources */,
+				6773230F152211CD00F17A40 /* 4Dollar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
