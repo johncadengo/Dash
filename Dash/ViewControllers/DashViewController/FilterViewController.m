@@ -141,7 +141,8 @@ enum {
 #pragma mark - UIAlertView delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"Hey there");
+    NSString *inputText = [[alertView textFieldAtIndex:0] text];
+    NSLog(@"%@", inputText);
 }
 
 #pragma mark - UIActionSheet delegate
