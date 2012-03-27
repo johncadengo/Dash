@@ -20,6 +20,7 @@
 @synthesize typesImages = _typesImages;
 @synthesize pricesImages = _pricesImages;
 @synthesize distancesImages = _distancesImages;
+@synthesize locationButton = _locationButton;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -145,7 +146,8 @@
 - (void)drawFourImages:(NSArray *)arr withFrames:(NSMutableArray *)frames at:(CGFloat)y
 {
     CGFloat totalWidth = 320.0f;
-    CGFloat width = 70.0f;
+    UIImage *image = [arr objectAtIndex:0];
+    CGFloat width = image.size.width;
     NSInteger numImages = 4;
     CGRect frame;
     

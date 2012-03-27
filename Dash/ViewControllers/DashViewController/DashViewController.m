@@ -35,6 +35,7 @@
 @synthesize popButtonFrame = _popButtonFrame;
 @synthesize popButton = _popButton;
 
+@synthesize draggableFrame = _draggableFrame;
 @synthesize flipGripFrame = _flipGripFrame;
 @synthesize flipGrip = _flipGrip;
 
@@ -201,6 +202,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     self.popBackgroundFrame = CGRectMake(0.0f, kPopBackgroundY, 320.0f, 480.0f);
     self.popBackground.frame = self.popBackgroundFrame;
     [self.view addSubview:self.popBackground];
+    
+    // Draggable frame.. for when filter is showing
+    self.draggableFrame = CGRectMake(0.0f, 0.0f, 320.0f, 120.0f);
     
     // Flip grip
     self.flipGrip = [[UIImageView alloc] initWithImage:
@@ -438,9 +442,11 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         //                                  toView:self.popButton];
         CGPoint origin = [gestureRecognizer locationInView:dragSuperView];
         
-        //NSLog(@"origin %f %f", origin.x, origin.y);
-
-        if (CGRectContainsPoint(self.popBackground.frame, origin)) {
+        NSLog(@"origin %f %f", origin.x, origin.y);
+        BOOL inBackgroundFrame = CGRectContainsPoint(self.popBackground.frame, origin);
+        BOOL inDraggableFrame = CGRectContainsPoint(self.draggableFrame, origin);
+        
+        if ((self.isFilterShowing && inDraggableFrame) || (!self.isFilterShowing && inBackgroundFrame)) {
             // Now, we are dragging
             self.dragging = YES;
             

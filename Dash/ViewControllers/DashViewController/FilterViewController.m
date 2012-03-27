@@ -7,6 +7,7 @@
 //
 
 #import "FilterViewController.h"
+#import "Constants.h"
 
 @implementation FilterViewController
 
@@ -45,6 +46,17 @@
     self.filterView = [[FilterView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
     self.filterView.backgroundColor = [UIColor clearColor];
     
+    UIButton *locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [locationButton addTarget:self 
+                       action:@selector(promptLocation:) 
+             forControlEvents:UIControlEventTouchUpInside];
+    [locationButton setTitle:@"Current Location" forState:UIControlStateNormal];
+    [locationButton.titleLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:14.0f]];
+    [locationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];    
+    [locationButton setBackgroundImage:[UIImage imageNamed:@"CurrentLocationButton"] forState:UIControlStateNormal];
+    locationButton.frame = CGRectMake(10.0f, 260.0f, 300.0f, 50.0f);
+    self.filterView.locationButton = locationButton;
+    [self.filterView addSubview:locationButton];
     [self.view addSubview:self.filterView];
 }
 

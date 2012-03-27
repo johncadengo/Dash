@@ -34,7 +34,7 @@ typedef enum {
 @property (nonatomic, strong) NSArray *distancesImages;
 
 // Current location
-
+@property (nonatomic, strong) UIButton *locationButton;
 
 // State
 - (BOOL)indexSelected:(NSInteger)i ForArray:(NSArray *)arr;
