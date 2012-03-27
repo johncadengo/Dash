@@ -13,6 +13,7 @@
 
 @synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
+@synthesize locationButtonFrame = _locationButtonFrame;
 @synthesize locationButton = _locationButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,15 +59,17 @@
     [self.filterView addGestureRecognizer:self.singleTap];
     [self.singleTap setDelegate:self];
     
-    self.locationButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    // Change the location button
+    self.locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.locationButton addTarget:self 
                             action:@selector(promptForLocation:) 
                   forControlEvents:UIControlEventTouchUpInside];
     [self.locationButton setTitle:@"Current Location" forState:UIControlStateNormal];
     [self.locationButton.titleLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:14.0f]];
     [self.locationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];    
-    //[self.locationButton setBackgroundImage:[UIImage imageNamed:@"CurrentLocationButton"] forState:UIControlStateNormal];
-    self.locationButton.frame = CGRectMake(10.0f,270.0f, 300.0f, 50.0f);
+    [self.locationButton setBackgroundImage:[UIImage imageNamed:@"CurrentLocationButton"] forState:UIControlStateNormal];
+    self.locationButtonFrame = CGRectMake(10.0f,260.0f, 300.0f, 50.0f);
+    self.locationButton.frame = self.locationButtonFrame;
     
     [self.filterView addSubview:self.locationButton];
 }
@@ -94,6 +97,7 @@
 
 
 #pragma mark - Handle state of filter view
+
 - (void)invertTypeCheckedAtIndex:(NSInteger)i
 {
     // Get current state
@@ -121,6 +125,18 @@
 - (void)setDistanceChecked:(DistanceFilter)i
 {
     self.filterView.currentDistanceFilter = i;
+}
+
+#pragma mark - UIGestureRecognizer Delegate
+
+/** Want certain events to pass right through
+ */
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    CGPoint origin = [touch locationInView:self.view];
+    BOOL insideLocationButton = CGRectContainsPoint(self.locationButtonFrame, origin);
+    
+    return (insideLocationButton) ? NO : YES;
 }
 
 #pragma mark - Tap gestures

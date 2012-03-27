@@ -22,6 +22,8 @@ typedef enum {
 
 @property (nonatomic, strong) FilterView *filterView;
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
+
+@property (nonatomic) CGRect locationButtonFrame;
 @property (nonatomic, strong) UIButton *locationButton;
 
 - (void)invertTypeCheckedAtIndex:(NSInteger)i;

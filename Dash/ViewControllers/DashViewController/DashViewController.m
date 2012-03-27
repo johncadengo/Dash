@@ -335,8 +335,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     CGPoint origin = [touch locationInView:self.view];
-    BOOL insideButton = CGRectContainsPoint(self.popBackground.frame, origin);
-    return (self.isFilterShowing && !insideButton) ? NO : YES;
+    BOOL insidePopButton = CGRectContainsPoint(self.popBackground.frame, origin);
+    return (self.isFilterShowing && !insidePopButton) ? NO : YES;
 }
 
 /** Receive touch events and respond accordingly.
