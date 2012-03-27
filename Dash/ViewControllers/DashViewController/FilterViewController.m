@@ -86,9 +86,20 @@
     [self.filterView.typesChecked replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:checked]];
 }
 
-- (void)checkDistance:(DistanceFilter)i
+- (void)invertPriceCheckedAtIndex:(NSInteger)i
 {
-    NSLog(@"%d %d", self.filterView.currentDistanceFilter, i);
+    // Get current state
+    NSNumber *state = [self.filterView.pricesChecked objectAtIndex:i];
+    
+    // Invert it
+    BOOL checked = [state boolValue] ? NO : YES;
+    
+    // Update current state
+    [self.filterView.pricesChecked replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:checked]];
+}
+
+- (void)setDistanceChecked:(DistanceFilter)i
+{
     self.filterView.currentDistanceFilter = i;
 }
 
@@ -115,29 +126,35 @@
 
 - (BOOL)handleTypesTapped:(CGPoint)origin
 {
-    NSInteger typeTapped = [self indexOfFrames:self.filterView.typesFrames containPoint:origin];
+    NSInteger indexTapped = [self indexOfFrames:self.filterView.typesFrames containPoint:origin];
     
-    if (typeTapped >= 0) {
-        [self invertTypeCheckedAtIndex:typeTapped];
+    if (indexTapped >= 0) {
+        [self invertTypeCheckedAtIndex:indexTapped];
     }
     
-    return (typeTapped >= 0) ? YES : NO;
+    return (indexTapped >= 0) ? YES : NO;
 }
 
 - (BOOL)handlePricesTapped:(CGPoint)origin
 {
+    NSInteger indexTapped = [self indexOfFrames:self.filterView.pricesFrames containPoint:origin];
     
+    if (indexTapped >= 0) {
+        [self invertPriceCheckedAtIndex:indexTapped];
+    }
+    
+    return (indexTapped >= 0) ? YES : NO;
 }
 
 - (BOOL)handleDistanceTapped:(CGPoint)origin
 {
-    NSInteger distanceTapped = [self indexOfFrames:self.filterView.distanceFrames containPoint:origin];
+    NSInteger indexTapped = [self indexOfFrames:self.filterView.distancesFrames containPoint:origin];
  
-    if (distanceTapped >= 0) {
-        [self checkDistance:distanceTapped];
+    if (indexTapped >= 0) {
+        [self setDistanceChecked:indexTapped];
     }
     
-    return (distanceTapped >= 0) ? YES : NO;
+    return (indexTapped >= 0) ? YES : NO;
 }
 
 /** Receive touch events and respond accordingly.

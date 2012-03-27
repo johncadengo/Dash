@@ -24,7 +24,8 @@ typedef enum {
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
 
 - (void)invertTypeCheckedAtIndex:(NSInteger)i;
-- (void)checkDistance:(DistanceFilter)i;
+- (void)invertPriceCheckedAtIndex:(NSInteger)i;
+- (void)setDistanceChecked:(DistanceFilter)i;
 
 // Checks if any frames contain the point. Returns index >= 0 if found. -1 if not.
 - (NSInteger)indexOfFrames:(NSArray *)arr containPoint:(CGPoint)point;

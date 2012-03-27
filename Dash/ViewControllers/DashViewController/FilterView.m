@@ -16,10 +16,10 @@
 @synthesize currentDistanceFilter = _currentDistanceFilter;
 @synthesize typesFrames = _typesFrames;
 @synthesize pricesFrames = _pricesFrames;
-@synthesize distanceFrames = _distanceFrames;
-@synthesize typeImages = _typeImages;
-@synthesize priceImages = _priceImages;
-@synthesize distanceImages = _distanceImages;
+@synthesize distancesFrames = _distancesFrames;
+@synthesize typesImages = _typesImages;
+@synthesize pricesImages = _pricesImages;
+@synthesize distancesImages = _distancesImages;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -55,30 +55,30 @@
                              [NSValue valueWithCGRect:CGRectZero],
                              [NSValue valueWithCGRect:CGRectZero],nil];
         
-        self.distanceFrames = [[NSMutableArray alloc] initWithObjects:
-                               [NSValue valueWithCGRect:CGRectZero],
-                               [NSValue valueWithCGRect:CGRectZero],
-                               [NSValue valueWithCGRect:CGRectZero],
-                               [NSValue valueWithCGRect:CGRectZero],nil];
+        self.distancesFrames = [[NSMutableArray alloc] initWithObjects:
+                                [NSValue valueWithCGRect:CGRectZero],
+                                [NSValue valueWithCGRect:CGRectZero],
+                                [NSValue valueWithCGRect:CGRectZero],
+                                [NSValue valueWithCGRect:CGRectZero],nil];
         
         // Images
-        self.typeImages = [NSArray arrayWithObjects:
-                           [UIImage imageNamed:@"BurgerShakeIcon.png"],
-                           [UIImage imageNamed:@"ForkKnifeIcon.png"],
-                           [UIImage imageNamed:@"WineIcon.png"],
-                           [UIImage imageNamed:@"CupcakeIcon.png"],nil];
+        self.typesImages = [NSArray arrayWithObjects:
+                            [UIImage imageNamed:@"BurgerShakeIcon.png"],
+                            [UIImage imageNamed:@"ForkKnifeIcon.png"],
+                            [UIImage imageNamed:@"WineIcon.png"],
+                            [UIImage imageNamed:@"CupcakeIcon.png"],nil];
         
-        self.priceImages = [NSArray arrayWithObjects:
-                            [UIImage imageNamed:@"$.png"],
-                            [UIImage imageNamed:@"$$.png"],
-                            [UIImage imageNamed:@"$.png"],
-                            [UIImage imageNamed:@"$$.png"],nil];
+        self.pricesImages = [NSArray arrayWithObjects:
+                             [UIImage imageNamed:@"$.png"],
+                             [UIImage imageNamed:@"$$.png"],
+                             [UIImage imageNamed:@"$.png"],
+                             [UIImage imageNamed:@"$$.png"],nil];
         
-        self.distanceImages = [NSArray arrayWithObjects:
-                               [UIImage imageNamed:@"RadarIcon.png"],
-                               [UIImage imageNamed:@"WalkingManIcon.png"],
-                               [UIImage imageNamed:@"BikeIcon.png"],
-                               [UIImage imageNamed:@"CarIcon.png"],nil];
+        self.distancesImages = [NSArray arrayWithObjects:
+                                [UIImage imageNamed:@"RadarIcon.png"],
+                                [UIImage imageNamed:@"WalkingManIcon.png"],
+                                [UIImage imageNamed:@"BikeIcon.png"],
+                                [UIImage imageNamed:@"CarIcon.png"],nil];
         
     }
     return self;
@@ -88,10 +88,10 @@
 
 - (BOOL)indexSelected:(NSInteger)i ForArray:(NSArray *)arr
 {
-    if (arr == self.typeImages) {
+    if (arr == self.typesImages) {
         return [self typeSelectedAtIndex:i];
     }
-    else if (arr == self.distanceImages) {
+    else if (arr == self.distancesImages) {
         return [self distanceSelectedAtIndex:i];
     }
     
@@ -164,17 +164,17 @@
 
 - (void)drawTypesAt:(CGFloat)y
 {
-    [self drawFourImages:self.typeImages withFrames:self.typesFrames at:y];
+    [self drawFourImages:self.typesImages withFrames:self.typesFrames at:y];
 }
 
 - (void)drawPricesAt:(CGFloat)y
 {
-    [self drawFourImages:self.priceImages withFrames:self.pricesFrames at:y];
+    [self drawFourImages:self.pricesImages withFrames:self.pricesFrames at:y];
 }
 
 - (void)drawDistancesAt:(CGFloat)y
 {
-    [self drawFourImages:self.distanceImages withFrames:self.distanceFrames at:y];
+    [self drawFourImages:self.distancesImages withFrames:self.distancesFrames at:y];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -191,6 +191,7 @@
 
     // Draw the images
     [self drawTypesAt:20.0f];
+    [self drawPricesAt:110.0f];
     [self drawDistancesAt:195.0f];
     
 

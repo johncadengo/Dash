@@ -26,12 +26,12 @@ typedef enum {
 // Frames
 @property (nonatomic, strong) NSMutableArray *typesFrames;
 @property (nonatomic, strong) NSMutableArray *pricesFrames;
-@property (nonatomic, strong) NSMutableArray *distanceFrames;
+@property (nonatomic, strong) NSMutableArray *distancesFrames;
 
 // Images
-@property (nonatomic, strong) NSArray *typeImages;
-@property (nonatomic, strong) NSArray *priceImages;
-@property (nonatomic, strong) NSArray *distanceImages;
+@property (nonatomic, strong) NSArray *typesImages;
+@property (nonatomic, strong) NSArray *pricesImages;
+@property (nonatomic, strong) NSArray *distancesImages;
 
 // State
 - (BOOL)indexSelected:(NSInteger)i ForArray:(NSArray *)arr;
