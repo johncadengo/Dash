@@ -18,7 +18,7 @@ typedef enum {
 
 @class FilterView;
 
-@interface FilterViewController : UIViewController <UIGestureRecognizerDelegate, UIActionSheetDelegate>
+@interface FilterViewController : UIViewController <UIGestureRecognizerDelegate, UIActionSheetDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) FilterView *filterView;
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
@@ -26,6 +26,7 @@ typedef enum {
 @property (nonatomic, strong) UIButton *locationButton;
 
 @property (nonatomic, strong) UIActionSheet *changeLocationSheet;
+@property (nonatomic, strong) UIAlertView *customLocationAlert;
 
 - (void)invertTypeCheckedAtIndex:(NSInteger)i;
 - (void)invertPriceCheckedAtIndex:(NSInteger)i;
@@ -34,6 +35,9 @@ typedef enum {
 /** Sends an action sheet up to prompt for a change in location
  */
 - (void)promptForLocation:(id)sender;
+
+- (void)useCurrentLocation;
+- (void)promptForCustomLocation;
 
 // Checks if any frames contain the point. Returns index >= 0 if found. -1 if not.
 - (NSInteger)indexOfFrames:(NSArray *)arr containPoint:(CGPoint)point;

@@ -18,11 +18,17 @@ enum {
     kNumberActionSheetButtons = 3
 };
 
+enum {
+    kSubmitCustomLocationButtonIndex = 0,
+    kCancelCustomLocationButtonIndex = 1,
+};
+
 @synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
 @synthesize locationButtonFrame = _locationButtonFrame;
 @synthesize locationButton = _locationButton;
 @synthesize changeLocationSheet = _changeLocationSheet;
+@synthesize customLocationAlert = _customLocationAlert;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -113,6 +119,31 @@ enum {
     
 }
 
+- (void)useCurrentLocation
+{
+    
+}
+
+- (void)promptForCustomLocation
+{
+    if (self.customLocationAlert == nil) {
+        self.customLocationAlert = [[UIAlertView alloc] initWithTitle:@"Custom Location" 
+                                                              message:@"Enter an address or zip code below" 
+                                                             delegate:self 
+                                                    cancelButtonTitle:nil//@"Cancel" 
+                                                    otherButtonTitles:@"Done", nil];
+        [self.customLocationAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    }
+    
+    [self.customLocationAlert show];
+}
+
+#pragma mark - UIAlertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"Hey there");
+}
+
 #pragma mark - UIActionSheet delegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -123,7 +154,7 @@ enum {
                 NSLog(@"Current Location");
                 break;
             case kCustomLocationButtonIndex:
-                NSLog(@"Custom Location");
+                [self promptForCustomLocation];
                 break;
             default:
                 break;
