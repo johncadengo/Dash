@@ -11,10 +11,18 @@
 
 @implementation FilterViewController
 
+enum {
+    kCurrentLocationButtonIndex = 0,
+    kCustomLocationButtonIndex = 1,
+    kCancelButtonIndex = 2,
+    kNumberActionSheetButtons = 3
+};
+
 @synthesize filterView = _filterView;
 @synthesize singleTap = _singleTap;
 @synthesize locationButtonFrame = _locationButtonFrame;
 @synthesize locationButton = _locationButton;
+@synthesize changeLocationSheet = _changeLocationSheet;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -92,7 +100,35 @@
 
 - (void)promptForLocation:(id)sender
 {
-    NSLog(@"Hey there!");
+    if (self.changeLocationSheet == nil) {
+        self.changeLocationSheet = [[UIActionSheet alloc] initWithTitle:@"Change Location" 
+                                                               delegate:self 
+                                                      cancelButtonTitle:@"Cancel" 
+                                                 destructiveButtonTitle:nil 
+                                                      otherButtonTitles:@"Current Location", @"Custom", nil];
+        
+    }
+    
+    [self.changeLocationSheet showInView:self.filterView];
+    
+}
+
+#pragma mark - UIActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (self.changeLocationSheet == actionSheet) {
+        switch (buttonIndex) {
+            case kCurrentLocationButtonIndex:
+                NSLog(@"Current Location");
+                break;
+            case kCustomLocationButtonIndex:
+                NSLog(@"Custom Location");
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 

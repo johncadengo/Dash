@@ -18,13 +18,14 @@ typedef enum {
 
 @class FilterView;
 
-@interface FilterViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface FilterViewController : UIViewController <UIGestureRecognizerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) FilterView *filterView;
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
-
 @property (nonatomic) CGRect locationButtonFrame;
 @property (nonatomic, strong) UIButton *locationButton;
+
+@property (nonatomic, strong) UIActionSheet *changeLocationSheet;
 
 - (void)invertTypeCheckedAtIndex:(NSInteger)i;
 - (void)invertPriceCheckedAtIndex:(NSInteger)i;
