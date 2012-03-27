@@ -49,6 +49,17 @@
                             [NSValue valueWithCGRect:CGRectZero],
                             [NSValue valueWithCGRect:CGRectZero],nil];
         
+        self.pricesFrames = [[NSMutableArray alloc] initWithObjects:
+                             [NSValue valueWithCGRect:CGRectZero],
+                             [NSValue valueWithCGRect:CGRectZero],
+                             [NSValue valueWithCGRect:CGRectZero],
+                             [NSValue valueWithCGRect:CGRectZero],nil];
+        
+        self.distanceFrames = [[NSMutableArray alloc] initWithObjects:
+                               [NSValue valueWithCGRect:CGRectZero],
+                               [NSValue valueWithCGRect:CGRectZero],
+                               [NSValue valueWithCGRect:CGRectZero],
+                               [NSValue valueWithCGRect:CGRectZero],nil];
         
         // Images
         self.typeImages = [NSArray arrayWithObjects:
@@ -58,10 +69,10 @@
                            [UIImage imageNamed:@"CupcakeIcon.png"],nil];
         
         self.priceImages = [NSArray arrayWithObjects:
-                            [UIImage imageNamed:@"BurgerShakeIcon.png"],
-                            [UIImage imageNamed:@"ForkKnifeIcon.png"],
-                            [UIImage imageNamed:@"WineIcon.png"],
-                            [UIImage imageNamed:@"CupcakeIcon.png"],nil];
+                            [UIImage imageNamed:@"$.png"],
+                            [UIImage imageNamed:@"$$.png"],
+                            [UIImage imageNamed:@"$.png"],
+                            [UIImage imageNamed:@"$$.png"],nil];
         
         self.distanceImages = [NSArray arrayWithObjects:
                                [UIImage imageNamed:@"RadarIcon.png"],
@@ -72,6 +83,32 @@
     }
     return self;
 }
+
+#pragma mark -
+
+- (BOOL)indexSelected:(NSInteger)i ForArray:(NSArray *)arr
+{
+    if (arr == self.typeImages) {
+        return [self typeSelectedAtIndex:i];
+    }
+    else if (arr == self.distanceImages) {
+        return [self distanceSelectedAtIndex:i];
+    }
+    
+    return NO;
+}
+
+- (BOOL)typeSelectedAtIndex:(NSInteger)i
+{
+    return [[self.typesChecked objectAtIndex:i] boolValue];
+}
+
+- (BOOL)distanceSelectedAtIndex:(NSInteger)i
+{
+    return (self.currentDistanceFilter == i) ? YES : NO;
+}
+
+#pragma mark -
 
 - (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 {
@@ -97,12 +134,11 @@
     [text drawAtPoint:origin withFont:font];
 }
 
-- (void)drawFourImages:(NSArray *)arr at:(CGFloat)y
+- (void)drawFourImages:(NSArray *)arr withFrames:(NSMutableArray *)frames at:(CGFloat)y
 {
     CGFloat totalWidth = 320.0f;
     CGFloat width = 70.0f;
     NSInteger numImages = 4;
-    NSNumber *checked;
     CGRect frame;
     
     for (NSInteger i = 0; i < numImages; ++i) {
@@ -113,11 +149,10 @@
         
         // Based on its size and origin, calculate its frame and save it
         frame = CGRectMake(x, y, image.size.width, image.size.height);
-        [self.typesFrames replaceObjectAtIndex:i withObject:[NSValue valueWithCGRect:frame]];
+        [frames replaceObjectAtIndex:i withObject:[NSValue valueWithCGRect:frame]];
         
         // If it is checked, draw it a different way than if it is unchecked.
-        checked = [self.typesChecked objectAtIndex:i];
-        if ([checked boolValue]) {
+        if ([self indexSelected:i ForArray:arr]) {
             [image drawAtPoint:CGPointMake(x, y) blendMode:kCGBlendModeOverlay alpha:0.25f];
         }
         else {
@@ -125,6 +160,21 @@
         }
     }
      
+}
+
+- (void)drawTypesAt:(CGFloat)y
+{
+    [self drawFourImages:self.typeImages withFrames:self.typesFrames at:y];
+}
+
+- (void)drawPricesAt:(CGFloat)y
+{
+    [self drawFourImages:self.priceImages withFrames:self.pricesFrames at:y];
+}
+
+- (void)drawDistancesAt:(CGFloat)y
+{
+    [self drawFourImages:self.distanceImages withFrames:self.distanceFrames at:y];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -140,8 +190,8 @@
     [self drawHeader:[NSString stringWithFormat:@"Distance"] at:CGPointMake(10.0f, 175.0f)];
 
     // Draw the images
-    [self drawFourImages:self.typeImages at:20.0f];
-    [self drawFourImages:self.distanceImages at:195.0f];
+    [self drawTypesAt:20.0f];
+    [self drawDistancesAt:195.0f];
     
 
 

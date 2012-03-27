@@ -7,7 +7,6 @@
 //
 
 #import "FilterViewController.h"
-#import "FilterView.h"
 
 @implementation FilterViewController
 
@@ -87,7 +86,59 @@
     [self.filterView.typesChecked replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:checked]];
 }
 
+- (void)checkDistance:(DistanceFilter)i
+{
+    NSLog(@"%d %d", self.filterView.currentDistanceFilter, i);
+    self.filterView.currentDistanceFilter = i;
+}
+
 #pragma mark - Tap gestures
+
+- (NSInteger)indexOfFrames:(NSArray *)arr containPoint:(CGPoint)point
+{
+    // Figure out if any filter was tapped
+    NSInteger indexTapped = -1;
+    NSValue *value;
+    CGRect frame;
+    for (int i = 0; i < [arr count]; ++i) {
+        value = [arr objectAtIndex:i];
+        frame = [value CGRectValue];
+        
+        if (CGRectContainsPoint(frame, point)) {
+            indexTapped = i;
+            break;
+        }
+        
+    }
+    return indexTapped;
+}
+
+- (BOOL)handleTypesTapped:(CGPoint)origin
+{
+    NSInteger typeTapped = [self indexOfFrames:self.filterView.typesFrames containPoint:origin];
+    
+    if (typeTapped >= 0) {
+        [self invertTypeCheckedAtIndex:typeTapped];
+    }
+    
+    return (typeTapped >= 0) ? YES : NO;
+}
+
+- (BOOL)handlePricesTapped:(CGPoint)origin
+{
+    
+}
+
+- (BOOL)handleDistanceTapped:(CGPoint)origin
+{
+    NSInteger distanceTapped = [self indexOfFrames:self.filterView.distanceFrames containPoint:origin];
+ 
+    if (distanceTapped >= 0) {
+        [self checkDistance:distanceTapped];
+    }
+    
+    return (distanceTapped >= 0) ? YES : NO;
+}
 
 /** Receive touch events and respond accordingly.
  */
@@ -95,27 +146,13 @@
 {
     // Find out where we tapped
     CGPoint tapPoint = [gestureRecognizer locationInView:self.filterView];
- 
     //NSLog(@"tappoint: %f %f", tapPoint.x, tapPoint.y);
     
-    // Figure out if any filter was tapped
-    NSInteger typeTapped = -1;
-    NSValue *value;
-    CGRect frame;
-    for (int i = 0; i < 4; ++i) {
-        value = [self.filterView.typesFrames objectAtIndex:i];
-        frame = [value CGRectValue];
-
-        if (CGRectContainsPoint(frame, tapPoint)) {
-            typeTapped = i;
-            break;
-        }
-    }
+    // Check if any filters were tapped
+    [self handleTypesTapped:tapPoint];
+    [self handlePricesTapped:tapPoint];
+    [self handleDistanceTapped:tapPoint];
     
-    if (typeTapped >= 0) {
-        [self invertTypeCheckedAtIndex:typeTapped];
-    }
- 
     // Redraw view to match its new state
     [self.filterView setNeedsDisplay];
 }
