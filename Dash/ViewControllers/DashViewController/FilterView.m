@@ -91,6 +91,9 @@
     if (arr == self.typesImages) {
         return [self typeSelectedAtIndex:i];
     }
+    else if (arr == self.pricesImages) {
+        return [self priceSelectedAtIndex:i];
+    }
     else if (arr == self.distancesImages) {
         return [self distanceSelectedAtIndex:i];
     }
@@ -101,6 +104,11 @@
 - (BOOL)typeSelectedAtIndex:(NSInteger)i
 {
     return [[self.typesChecked objectAtIndex:i] boolValue];
+}
+
+- (BOOL)priceSelectedAtIndex:(NSInteger)i
+{
+    return [[self.pricesChecked objectAtIndex:i] boolValue];
 }
 
 - (BOOL)distanceSelectedAtIndex:(NSInteger)i

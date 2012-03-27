@@ -36,6 +36,7 @@ typedef enum {
 // State
 - (BOOL)indexSelected:(NSInteger)i ForArray:(NSArray *)arr;
 - (BOOL)typeSelectedAtIndex:(NSInteger)i;
+- (BOOL)priceSelectedAtIndex:(NSInteger)i;
 - (BOOL)distanceSelectedAtIndex:(NSInteger)i;
 
 - (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
