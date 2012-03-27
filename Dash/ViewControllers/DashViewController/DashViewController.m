@@ -128,13 +128,12 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     self.view.backgroundColor = [UIColor blackColor];
     
     // Add our pops scroll view
-    self.popsScrollView = [[UIScrollView alloc] init];
-    
-    // 2 x 2
     CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
     CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
     self.popsScrollViewFrame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
-    self.popsScrollView.frame = self.popsScrollViewFrame;
+    self.popsScrollView = [[UIScrollView alloc] initWithFrame:self.popsScrollViewFrame];
+    [self.popsScrollView setScrollEnabled:YES];
+    [self.popsScrollView setPagingEnabled:YES];
     [self.view addSubview:self.popsScrollView];
     
     // Set up the quadrantFrames
@@ -160,25 +159,22 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     self.quadrantImages = [[NSMutableArray alloc] initWithObjects:
                            firstImage, secondImage, thirdImage, fourthImage, nil];
-    
-    // Set up the quadrants
-    self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage];
-    PlaceSquareView *cell;
-    NSValue *value;
-    CGRect cellFrame;
-    UIImage *image;
-    for (int i = 0; i < kPlacesPerPage; ++i) {
-        // Get the frames and images
-        value = [self.quadrantFrames objectAtIndex:i];
-        cellFrame = [value CGRectValue];
-        image = [self.quadrantImages objectAtIndex:i];
-        
-        // Create the cells
-        cell = [[PlaceSquareView alloc] initWithFrame:cellFrame backgroundImage:image];
-        [self.quadrantCells addObject:cell];
-        [self.popsScrollView addSubview:cell];       
-    }
 
+    // Set up the array to contain our cells
+    self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage * 4];
+
+    // Set up our initial four blank cells
+    UIImageView *imageView;
+    UIImage *image;
+    CGRect frame;
+    
+    for (int i = 0; i < kPlacesPerPage; ++i) {
+        image = [self.quadrantImages objectAtIndex:i];
+        frame = [[self.quadrantFrames objectAtIndex:i] CGRectValue];
+        imageView = [[UIImageView alloc] initWithImage: image];
+        imageView.frame = frame;
+        [self.popsScrollView addSubview:imageView];
+    }
 }
 
 - (void)viewDidLoad
@@ -241,12 +237,12 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     // Add our tap gesture recognizer
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    [self.popsScrollView addGestureRecognizer:self.singleTap];
+    //[self.popsScrollView addGestureRecognizer:self.singleTap];
     [self.singleTap setDelegate:self];
     
     // Add our drag gesture recognizer
     self.drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDrag:)];
-    [self.view addGestureRecognizer:self.drag];
+    //[self.view addGestureRecognizer:self.drag];
     [self.drag setDelegate:self];
     
     // Hide our navigation bar
@@ -254,7 +250,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
     // Initial filter view frame
     self.filterViewFrame = CGRectMake(0.0f, 360.0f, 320.0f, 480.0f);
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -532,6 +527,40 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     return place;
 }
 
+
+- (void)adjustScrollViewContentSize
+{
+    // Our content size is determined by what page we are currently on.
+    CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
+    CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
+    self.popsScrollView.contentSize = CGSizeMake(popsScrollViewWidth * (self.currentPage + 1), popsScrollViewHeight);    
+}
+
+- (void)addFourMoreQuadrantCells
+{
+    // Set up the quadrants
+    PlaceSquareView *cell;
+    NSValue *value;
+    CGRect cellFrame;
+    UIImage *image;
+    NSInteger index;
+    NSInteger start = [self.quadrantCells count];
+    CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
+    
+    for (int i = start; i < start + kPlacesPerPage; ++i) {
+        // Get the frames and images
+        index = i % kPlacesPerPage;
+        value = [self.quadrantFrames objectAtIndex:index];
+        cellFrame = CGRectOffset([value CGRectValue], popsScrollViewWidth * self.currentPage, 0.0);
+        image = [self.quadrantImages objectAtIndex:index];
+        
+        // Create the cells
+        cell = [[PlaceSquareView alloc] initWithFrame:cellFrame backgroundImage:image];
+        [self.quadrantCells addObject:cell];
+        [self.popsScrollView addSubview:cell];       
+    }
+}
+
 /** Figures out if we have enough places in our array to show the next page
  */ 
 - (BOOL)canShowNextPage
@@ -550,20 +579,30 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     // Should never happen
     NSAssert([self canShowNextPage], @"Tried to showNextPage when canShowNextPage fails");
     
+    // If this is our first time showing a page, clear out the initial imageviews
+    if (self.currentPage < 0) {
+        for (UIView *subView in self.popsScrollView.subviews) {
+            [subView removeFromSuperview];
+        }
+    }
+    
     ++self.currentPage;
     NSInteger firstIndex = [[self class] firstIndexForPage:self.currentPage];
     NSInteger lastIndex = firstIndex + kPlacesPerPage;
     Place *place;
     PlaceSquareView *squareCell;
-    NSInteger quadrant;
+    
+    // Adjust the content size of the scroll view to accommodate the new places we've just added
+    [self adjustScrollViewContentSize];
+    
+    // Now add more cells to fill up the new content
+    [self addFourMoreQuadrantCells];
     
     for (int i = firstIndex; i < lastIndex; ++i) {
-        quadrant = i % kPlacesPerPage;
-        place = [self placeForQuadrant:quadrant];
-        squareCell = [self.quadrantCells objectAtIndex:quadrant];
+        place = [self.places objectAtIndex:i];
+        squareCell = [self.quadrantCells objectAtIndex:i];
         [squareCell setWithPlace:place context:self.managedObjectContext];
-    }
-    
+    }    
 }
 
 #pragma mark - Storyboard Segue

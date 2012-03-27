@@ -77,6 +77,8 @@ typedef enum {
 /** Assumes quadrant is located on self.currentPage
  */
 - (Place *)placeForQuadrant:(QuadrantIndex) quadrant;
+- (void)adjustScrollViewContentSize;
+- (void)addFourMoreQuadrantCells;
 - (BOOL)canShowNextPage;
 - (void)showNextPage;
 
