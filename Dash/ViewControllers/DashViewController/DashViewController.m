@@ -237,12 +237,12 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     // Add our tap gesture recognizer
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    //[self.popsScrollView addGestureRecognizer:self.singleTap];
+    [self.popsScrollView addGestureRecognizer:self.singleTap];
     [self.singleTap setDelegate:self];
     
     // Add our drag gesture recognizer
     self.drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDrag:)];
-    //[self.view addGestureRecognizer:self.drag];
+    [self.view addGestureRecognizer:self.drag];
     [self.drag setDelegate:self];
     
     // Hide our navigation bar
