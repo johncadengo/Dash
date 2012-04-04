@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "JCLocationManagerSingleton.h"
+#import "Constants.h"
 
 // Category to make sure that we have accessors to managedobjectcontext
 @interface UIViewController (Helper)
@@ -31,6 +32,9 @@ enum {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Custom navigation bar color
+    [[UINavigationBar appearance] setBackgroundImage: [UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
+    
     // Get the TabBarController so we can start off on a different index.
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     [tabBarController setSelectedIndex: kDashTabIndex];

@@ -70,6 +70,9 @@
 {
     [super viewDidLoad];
     
+    // Set the custom nav bar
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBar.png"] forBarMetrics:UIBarMetricsDefault];
+    
     // Set default theme color
     self.themeColor = kPlaceThemeOrange;
     

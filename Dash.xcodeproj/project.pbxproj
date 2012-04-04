@@ -178,6 +178,8 @@
 		67F22FEC145F0DEB0010A09F /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FE9145F0DEB0010A09F /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FED145F0DEB0010A09F /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67F22FF0145F0DF20010A09F /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F22FEF145F0DF20010A09F /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		67F3DA2E152CE45C00A287F6 /* TopBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F3DA2D152CE45C00A287F6 /* TopBar@2x.png */; };
+		67F3DA30152CEE7C00A287F6 /* TopBarWithoutDash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F3DA2F152CEE7C00A287F6 /* TopBarWithoutDash@2x.png */; };
 		67FFE58614687B7B00135225 /* NSDate+RandomDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FFE58514687B7B00135225 /* NSDate+RandomDates.m */; };
 /* End PBXBuildFile section */
 
@@ -528,6 +530,8 @@
 		67F22FEB145F0DEB0010A09F /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGOImageLoader.m; path = Helpers/EGOImageLoading/EGOImageLoader/EGOImageLoader.m; sourceTree = "<group>"; };
 		67F22FEE145F0DF20010A09F /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOImageView.h; path = Helpers/EGOImageLoading/EGOImageView/EGOImageView.h; sourceTree = "<group>"; };
 		67F22FEF145F0DF20010A09F /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGOImageView.m; path = Helpers/EGOImageLoading/EGOImageView/EGOImageView.m; sourceTree = "<group>"; };
+		67F3DA2D152CE45C00A287F6 /* TopBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopBar@2x.png"; path = "Dash/Images/NavBar/TopBar@2x.png"; sourceTree = "<group>"; };
+		67F3DA2F152CEE7C00A287F6 /* TopBarWithoutDash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopBarWithoutDash@2x.png"; path = "Dash/Images/NavBar/TopBarWithoutDash@2x.png"; sourceTree = "<group>"; };
 		67FFE58414687B7B00135225 /* NSDate+RandomDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+RandomDates.h"; path = "Helpers/RandomStrings/NSDate+RandomDates.h"; sourceTree = "<group>"; };
 		67FFE58514687B7B00135225 /* NSDate+RandomDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+RandomDates.m"; path = "Helpers/RandomStrings/NSDate+RandomDates.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1026,6 +1030,7 @@
 		679009E01450E6C700511E0F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				67F3DA2C152CE43700A287F6 /* NavBar */,
 				6734EB67151251F800D7EA7E /* Fonts */,
 				6734EB5415123E9A00D7EA7E /* Tabs */,
 				679009E11450E6D000511E0F /* Icons */,
@@ -1265,6 +1270,15 @@
 			name = EGOImageButton;
 			sourceTree = "<group>";
 		};
+		67F3DA2C152CE43700A287F6 /* NavBar */ = {
+			isa = PBXGroup;
+			children = (
+				67F3DA2D152CE45C00A287F6 /* TopBar@2x.png */,
+				67F3DA2F152CEE7C00A287F6 /* TopBarWithoutDash@2x.png */,
+			);
+			name = NavBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1488,6 +1502,8 @@
 				6773230D152211CD00F17A40 /* 2Dollar@2x.png in Resources */,
 				6773230E152211CD00F17A40 /* 3Dollar@2x.png in Resources */,
 				6773230F152211CD00F17A40 /* 4Dollar@2x.png in Resources */,
+				67F3DA2E152CE45C00A287F6 /* TopBar@2x.png in Resources */,
+				67F3DA30152CEE7C00A287F6 /* TopBarWithoutDash@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
