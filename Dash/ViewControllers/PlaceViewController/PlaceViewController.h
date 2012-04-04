@@ -34,6 +34,15 @@ enum {
     kPlaceMoreInfoRow = 1
 };
 
+/** Color themes
+ */
+typedef enum {
+    kPlaceThemeOrange = 0,
+    kPlaceThemeTeal = 1,
+    kPlaceThemeBlue = 2,
+    kPlaceThemePink = 3
+} PlaceThemeColor;
+
 #pragma mark - Class definition
 
 @class Place;
@@ -49,6 +58,11 @@ enum {
 @property (nonatomic, strong) NSMutableArray *footprints;
 
 @property (nonatomic, strong) MoreInfoViewCell *moreInfoCell;
+@property (nonatomic) PlaceThemeColor themeColor;
+
+/** Should only call after the view loads. Cascades appropriate changes to view properties as necessary.
+ */
+- (void)setThemeColor:(PlaceThemeColor) newColor;
 
 - (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row;

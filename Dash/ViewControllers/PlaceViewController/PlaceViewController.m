@@ -28,12 +28,13 @@
 @synthesize highlights = _highlights;
 @synthesize footprints = _footprints;
 @synthesize moreInfoCell = _moreInfoCell;
+@synthesize themeColor = _themeColor;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -44,6 +45,16 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - Theme Color
+- (void)setThemeColor:(PlaceThemeColor) newColor
+{
+    // Change the color of the background..
+    self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
+    
+    // And finally save the new theme color
+    _themeColor = newColor;
 }
 
 #pragma mark - View lifecycle
@@ -58,6 +69,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Set default theme color
+    self.themeColor = kPlaceThemeOrange;
     
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];

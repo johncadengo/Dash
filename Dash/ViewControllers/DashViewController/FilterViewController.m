@@ -78,12 +78,13 @@ enum {
     [self.locationButton addTarget:self 
                             action:@selector(promptForLocation:) 
                   forControlEvents:UIControlEventTouchUpInside];
-    [self.locationButton setTitle:@"Current Location" forState:UIControlStateNormal];
+    [self.locationButton setTitle:@"  Current Location" forState:UIControlStateNormal];
     [self.locationButton.titleLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:14.0f]];
     [self.locationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];    
     [self.locationButton setBackgroundImage:[UIImage imageNamed:@"CurrentLocationButton"] forState:UIControlStateNormal];
-    self.locationButtonFrame = CGRectMake(10.0f,260.0f, 300.0f, 50.0f);
+    self.locationButtonFrame = CGRectMake(10.0f,265.0f, 300.0f, 50.0f);
     self.locationButton.frame = self.locationButtonFrame;
+    [self.locationButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
     [self.filterView addSubview:self.locationButton];
 }
