@@ -133,7 +133,7 @@
             height = [PlaceHeaderViewCell heightForPlace:self.place withCellType:PlaceViewCellTypeHeader];
             break;
         case kPlaceBadgesSection:
-            height = [self heightForHighlightSectionCellForRow:row];
+            height = [self heightForBadgeSectionCellForRow:row];
             break;
         case kPlaceMoreInfoSection:
             height = [MoreInfoViewCell height];
@@ -159,6 +159,17 @@
     }
     
     CGFloat height = 40.0f;
+    
+    return height;
+}
+
+- (CGFloat)heightForBadgeSectionCellForRow:(NSInteger)row
+{
+    if (row == 0) {
+        return [TitleViewCell height];
+    }
+    
+    CGFloat height = [BadgesViewCell height];
     
     return height;
 }
@@ -208,7 +219,7 @@
 {
     NSInteger section = [indexPath section];
     NSInteger row = [indexPath row];
-    id cell = nil;
+    UITableViewCell *cell = nil;
     
     switch (section) {
         case kPlaceHeaderSection:
@@ -230,6 +241,9 @@
             NSAssert(NO, @"Asking for a cell in a section that doesn't exist %d", section);
             break;
     }
+    
+    // None of our cells should be able to be selected
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -272,11 +286,8 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[BadgesViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    cell.textLabel.text = @"Badge scroll view.";
-    [cell.textLabel sizeToFit];
     
     return cell;
 }

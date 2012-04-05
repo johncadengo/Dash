@@ -13,4 +13,6 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSArray *badges;
 
++ (CGFloat)height;
+
 @end

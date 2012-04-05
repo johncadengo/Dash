@@ -13,11 +13,21 @@
 @synthesize scrollView = _scrollView;
 @synthesize badges = _badges;
 
++ (CGFloat)height 
+{
+    return 100.0f;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        // Scroll view
+        self.scrollView = [[UIScrollView alloc] init];
+        [self addSubview:self.scrollView];
+        
+        [self setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BadgeBubble.png"]]];
+        
     }
     return self;
 }

@@ -294,10 +294,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     //                             nameSize.height + categoriesSize.height + kPadding,
     //                             iconSize.width, iconSize.height);
     // New static positioning
-    CGRect iconRect = CGRectMake(kWidth - kPadding - iconSize.width, 
-                                 kHeight - kPadding - iconSize.height, 
-                                 iconSize.width, iconSize.height);
-    [self.icon drawInRect:iconRect];
+    [self.icon drawAtPoint:CGPointMake(kWidth - kHalfPadding - iconSize.width, 55.0f)];
 }
 
 

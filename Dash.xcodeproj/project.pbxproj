@@ -120,6 +120,13 @@
 		6789D2BE152E0F8B0029BF48 /* Taco-Main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2B9152E0F8B0029BF48 /* Taco-Main@2x.png */; };
 		6789D2C1152E1A920029BF48 /* TitleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6789D2C0152E1A920029BF48 /* TitleViewCell.m */; };
 		6789D2C4152E28A70029BF48 /* BadgesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6789D2C3152E28A70029BF48 /* BadgesViewCell.m */; };
+		6789D2CD152E349C0029BF48 /* BadgeBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C6152E349C0029BF48 /* BadgeBubble@2x.png */; };
+		6789D2CE152E349C0029BF48 /* BottomBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C7152E349C0029BF48 /* BottomBarBackground@2x.png */; };
+		6789D2CF152E349C0029BF48 /* CreateHighlightButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C8152E349C0029BF48 /* CreateHighlightButton@2x.png */; };
+		6789D2D0152E349C0029BF48 /* HighlightsBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C9152E349C0029BF48 /* HighlightsBubble@2x.png */; };
+		6789D2D1152E349C0029BF48 /* MoreInformationBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2CA152E349C0029BF48 /* MoreInformationBubble@2x.png */; };
+		6789D2D2152E349C0029BF48 /* ThumbsDownButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2CB152E349C0029BF48 /* ThumbsDownButton@2x.png */; };
+		6789D2D3152E349C0029BF48 /* ThumbsUpButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2CC152E349C0029BF48 /* ThumbsUpButton@2x.png */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
 		679009F21450ED8800511E0F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* SearchViewController.m */; };
@@ -432,6 +439,13 @@
 		6789D2C0152E1A920029BF48 /* TitleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleViewCell.m; path = Dash/ViewControllers/PlaceViewController/TitleViewCell.m; sourceTree = "<group>"; };
 		6789D2C2152E28A70029BF48 /* BadgesViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BadgesViewCell.h; path = Dash/ViewControllers/PlaceViewController/BadgesViewCell.h; sourceTree = "<group>"; };
 		6789D2C3152E28A70029BF48 /* BadgesViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BadgesViewCell.m; path = Dash/ViewControllers/PlaceViewController/BadgesViewCell.m; sourceTree = "<group>"; };
+		6789D2C6152E349C0029BF48 /* BadgeBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BadgeBubble@2x.png"; path = "Dash/Images/PlaceProfile/BadgeBubble@2x.png"; sourceTree = "<group>"; };
+		6789D2C7152E349C0029BF48 /* BottomBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BottomBarBackground@2x.png"; path = "Dash/Images/PlaceProfile/BottomBarBackground@2x.png"; sourceTree = "<group>"; };
+		6789D2C8152E349C0029BF48 /* CreateHighlightButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CreateHighlightButton@2x.png"; path = "Dash/Images/PlaceProfile/CreateHighlightButton@2x.png"; sourceTree = "<group>"; };
+		6789D2C9152E349C0029BF48 /* HighlightsBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HighlightsBubble@2x.png"; path = "Dash/Images/PlaceProfile/HighlightsBubble@2x.png"; sourceTree = "<group>"; };
+		6789D2CA152E349C0029BF48 /* MoreInformationBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MoreInformationBubble@2x.png"; path = "Dash/Images/PlaceProfile/MoreInformationBubble@2x.png"; sourceTree = "<group>"; };
+		6789D2CB152E349C0029BF48 /* ThumbsDownButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThumbsDownButton@2x.png"; path = "Dash/Images/PlaceProfile/ThumbsDownButton@2x.png"; sourceTree = "<group>"; };
+		6789D2CC152E349C0029BF48 /* ThumbsUpButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThumbsUpButton@2x.png"; path = "Dash/Images/PlaceProfile/ThumbsUpButton@2x.png"; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009EA1450EB7A00511E0F /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewController.h; path = Dash/ViewControllers/FeedViewController/FeedViewController.h; sourceTree = "<group>"; };
@@ -1040,6 +1054,20 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		6789D2C5152E34870029BF48 /* PlaceProfile */ = {
+			isa = PBXGroup;
+			children = (
+				6789D2C6152E349C0029BF48 /* BadgeBubble@2x.png */,
+				6789D2C7152E349C0029BF48 /* BottomBarBackground@2x.png */,
+				6789D2C8152E349C0029BF48 /* CreateHighlightButton@2x.png */,
+				6789D2C9152E349C0029BF48 /* HighlightsBubble@2x.png */,
+				6789D2CA152E349C0029BF48 /* MoreInformationBubble@2x.png */,
+				6789D2CB152E349C0029BF48 /* ThumbsDownButton@2x.png */,
+				6789D2CC152E349C0029BF48 /* ThumbsUpButton@2x.png */,
+			);
+			name = PlaceProfile;
+			sourceTree = "<group>";
+		};
 		679009D41450D89500511E0F /* DashViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1062,6 +1090,7 @@
 		679009E01450E6C700511E0F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6789D2C5152E34870029BF48 /* PlaceProfile */,
 				6789D2B4152E0F3D0029BF48 /* Categories */,
 				67F3DA2C152CE43700A287F6 /* NavBar */,
 				6734EB67151251F800D7EA7E /* Fonts */,
@@ -1542,6 +1571,13 @@
 				6789D2BC152E0F8B0029BF48 /* Noodles-Main@2x.png in Resources */,
 				6789D2BD152E0F8B0029BF48 /* Pizza-Main@2x.png in Resources */,
 				6789D2BE152E0F8B0029BF48 /* Taco-Main@2x.png in Resources */,
+				6789D2CD152E349C0029BF48 /* BadgeBubble@2x.png in Resources */,
+				6789D2CE152E349C0029BF48 /* BottomBarBackground@2x.png in Resources */,
+				6789D2CF152E349C0029BF48 /* CreateHighlightButton@2x.png in Resources */,
+				6789D2D0152E349C0029BF48 /* HighlightsBubble@2x.png in Resources */,
+				6789D2D1152E349C0029BF48 /* MoreInformationBubble@2x.png in Resources */,
+				6789D2D2152E349C0029BF48 /* ThumbsDownButton@2x.png in Resources */,
+				6789D2D3152E349C0029BF48 /* ThumbsUpButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

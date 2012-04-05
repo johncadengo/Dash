@@ -52,6 +52,7 @@ typedef enum {
 - (void)setThemeColor:(PlaceThemeColor) newColor;
 
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row;
+- (CGFloat)heightForBadgeSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row;
 
 
