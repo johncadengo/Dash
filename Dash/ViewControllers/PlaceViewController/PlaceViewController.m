@@ -19,6 +19,7 @@
 #import "Highlight+Helper.h"
 #import "TitleViewCell.h"
 #import "BadgesViewCell.h"
+#import "HighlightViewCell.h"
 
 @implementation PlaceViewController
 
@@ -243,7 +244,7 @@
     }
     
     // None of our cells should be able to be selected
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

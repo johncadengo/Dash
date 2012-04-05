@@ -20,7 +20,7 @@
 
 + (CGFloat)height
 {
-    return [@"My" sizeWithFont:[self font]].height;
+    return [@"Notables" sizeWithFont:[self font]].height - 4.0f; // Negative leading..
 }
 
 
@@ -55,6 +55,8 @@
 - (void)drawRect:(CGRect)rect
 {
     //CGSize size = [self.title sizeWithFont:[[self class] font]];
+    
+    self.clipsToBounds = NO;
     [self.title drawAtPoint:CGPointMake(7.5f, 0.0f) withFont:[[self class] font]];
 }
 

@@ -1,33 +1,20 @@
 //
-//  BadgesViewCell.m
+//  HighlightViewCell.m
 //  Dash
 //
 //  Created by John Cadengo on 4/5/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BadgesViewCell.h"
+#import "HighlightViewCell.h"
 
-@implementation BadgesViewCell
-
-@synthesize scrollView = _scrollView;
-@synthesize badges = _badges;
-
-+ (CGFloat)height 
-{
-    return 164.0f / 2.0f;
-}
+@implementation HighlightViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Scroll view
-        self.scrollView = [[UIScrollView alloc] init];
-        [self addSubview:self.scrollView];
-        
-        [self setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BadgeBubble.png"]]];
-        
+        // Initialization code
     }
     return self;
 }
