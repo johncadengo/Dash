@@ -113,6 +113,11 @@
 		6773230E152211CD00F17A40 /* 3Dollar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6773230A152211CD00F17A40 /* 3Dollar@2x.png */; };
 		6773230F152211CD00F17A40 /* 4Dollar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6773230B152211CD00F17A40 /* 4Dollar@2x.png */; };
 		67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */; };
+		6789D2BA152E0F8B0029BF48 /* Burger-Main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2B5152E0F8B0029BF48 /* Burger-Main@2x.png */; };
+		6789D2BB152E0F8B0029BF48 /* Burger-Profile-Orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2B6152E0F8B0029BF48 /* Burger-Profile-Orange@2x.png */; };
+		6789D2BC152E0F8B0029BF48 /* Noodles-Main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2B7152E0F8B0029BF48 /* Noodles-Main@2x.png */; };
+		6789D2BD152E0F8B0029BF48 /* Pizza-Main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2B8152E0F8B0029BF48 /* Pizza-Main@2x.png */; };
+		6789D2BE152E0F8B0029BF48 /* Taco-Main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2B9152E0F8B0029BF48 /* Taco-Main@2x.png */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
 		679009EC1450EB7A00511E0F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009EB1450EB7A00511E0F /* FeedViewController.m */; };
 		679009F21450ED8800511E0F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* SearchViewController.m */; };
@@ -416,6 +421,11 @@
 		6773230B152211CD00F17A40 /* 4Dollar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "4Dollar@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/4Dollar@2x.png"; sourceTree = "<group>"; };
 		67751E9B147D7EBB0083011D /* MoreInfoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreInfoViewCell.h; path = Dash/ViewControllers/PlaceViewController/MoreInfoViewCell.h; sourceTree = "<group>"; };
 		67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreInfoViewCell.m; path = Dash/ViewControllers/PlaceViewController/MoreInfoViewCell.m; sourceTree = "<group>"; };
+		6789D2B5152E0F8B0029BF48 /* Burger-Main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Burger-Main@2x.png"; path = "Dash/Images/Categories/Burger-Main@2x.png"; sourceTree = "<group>"; };
+		6789D2B6152E0F8B0029BF48 /* Burger-Profile-Orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Burger-Profile-Orange@2x.png"; path = "Dash/Images/Categories/Burger-Profile-Orange@2x.png"; sourceTree = "<group>"; };
+		6789D2B7152E0F8B0029BF48 /* Noodles-Main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Noodles-Main@2x.png"; path = "Dash/Images/Categories/Noodles-Main@2x.png"; sourceTree = "<group>"; };
+		6789D2B8152E0F8B0029BF48 /* Pizza-Main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pizza-Main@2x.png"; path = "Dash/Images/Categories/Pizza-Main@2x.png"; sourceTree = "<group>"; };
+		6789D2B9152E0F8B0029BF48 /* Taco-Main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Taco-Main@2x.png"; path = "Dash/Images/Categories/Taco-Main@2x.png"; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
 		679009DA1450D9B300511E0F /* DashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashViewController.m; path = Dash/ViewControllers/DashViewController/DashViewController.m; sourceTree = "<group>"; };
 		679009EA1450EB7A00511E0F /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewController.h; path = Dash/ViewControllers/FeedViewController/FeedViewController.h; sourceTree = "<group>"; };
@@ -1008,6 +1018,18 @@
 			name = Pop;
 			sourceTree = "<group>";
 		};
+		6789D2B4152E0F3D0029BF48 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				6789D2B5152E0F8B0029BF48 /* Burger-Main@2x.png */,
+				6789D2B6152E0F8B0029BF48 /* Burger-Profile-Orange@2x.png */,
+				6789D2B7152E0F8B0029BF48 /* Noodles-Main@2x.png */,
+				6789D2B8152E0F8B0029BF48 /* Pizza-Main@2x.png */,
+				6789D2B9152E0F8B0029BF48 /* Taco-Main@2x.png */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		679009D41450D89500511E0F /* DashViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1030,6 +1052,7 @@
 		679009E01450E6C700511E0F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6789D2B4152E0F3D0029BF48 /* Categories */,
 				67F3DA2C152CE43700A287F6 /* NavBar */,
 				6734EB67151251F800D7EA7E /* Fonts */,
 				6734EB5415123E9A00D7EA7E /* Tabs */,
@@ -1504,6 +1527,11 @@
 				6773230F152211CD00F17A40 /* 4Dollar@2x.png in Resources */,
 				67F3DA2E152CE45C00A287F6 /* TopBar@2x.png in Resources */,
 				67F3DA30152CEE7C00A287F6 /* TopBarWithoutDash@2x.png in Resources */,
+				6789D2BA152E0F8B0029BF48 /* Burger-Main@2x.png in Resources */,
+				6789D2BB152E0F8B0029BF48 /* Burger-Profile-Orange@2x.png in Resources */,
+				6789D2BC152E0F8B0029BF48 /* Noodles-Main@2x.png in Resources */,
+				6789D2BD152E0F8B0029BF48 /* Pizza-Main@2x.png in Resources */,
+				6789D2BE152E0F8B0029BF48 /* Taco-Main@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

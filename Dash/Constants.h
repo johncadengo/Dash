@@ -14,7 +14,7 @@ enum {
     kFilterLinesColor = 0xbfbfbf,
     kDashNavBarBGColor = 0x454545,
     kPlaceOrangeBGColor = 0xffedd6,
-    kPlaceOrangeTextColor = 0xef9f3b,
+    kPlaceOrangeTextColor = 0xff9933,
 };
 
 // Text

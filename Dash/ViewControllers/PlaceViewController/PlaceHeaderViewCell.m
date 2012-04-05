@@ -36,7 +36,7 @@ static CGFloat kMinHeight = 110.0f;
 
 static CGFloat kMaxBlurbHeight = 1000.0f;
 
-static UILineBreakMode kNameLineBreak = UILineBreakModeHeadTruncation;
+static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 #pragma mark - Class methods for determining the size of UI elements

@@ -41,6 +41,10 @@ typedef enum {
 + (UIFont *)categoriesFont;
 + (UIFont *)distancePriceFont;
 
++ (CGFloat)nameLeading:(NSString *)name;
++ (CGFloat)categoriesLeading;
++ (CGFloat)distancePriceLeading;
+
 + (CGSize)sizeForCategories:(NSString *)categories;
 + (CGSize)sizeForDistancePrice:(NSString *)distancePrice;
 
