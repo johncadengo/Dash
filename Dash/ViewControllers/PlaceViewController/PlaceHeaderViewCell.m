@@ -14,6 +14,7 @@
 #import "PlaceLocation.h"
 #import "PopLocation.h"
 #import "Location+Helper.h"
+#import "Constants.h"
 
 @implementation PlaceHeaderViewCell
 
@@ -50,7 +51,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (UIFont *)nameFont
 {
-    return [UIFont boldSystemFontOfSize:16];
+    return [UIFont fontWithName:kPlutoBold size:27.5f];
 }
 
 + (UIFont *)blurbFont

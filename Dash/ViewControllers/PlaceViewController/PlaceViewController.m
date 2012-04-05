@@ -70,9 +70,6 @@
 {
     [super viewDidLoad];
     
-    // Set the custom nav bar
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBar.png"] forBarMetrics:UIBarMetricsDefault];
-    
     // Set default theme color
     self.themeColor = kPlaceThemeOrange;
     
@@ -100,6 +97,19 @@
     
     // Make sure the top bar show
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    // Set the custom nav bar
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBar.png"] forBarMetrics:UIBarMetricsDefault];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // Reset it
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
