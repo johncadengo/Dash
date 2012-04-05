@@ -12,8 +12,9 @@ enum {
     kWelcomeTextColor = 0x6d6961,
     kWelcomeBGColor = 0xffedd5,
     kFilterLinesColor = 0xbfbfbf,
-    kPlaceOrangeBGColor = 0xffedd6,
     kDashNavBarBGColor = 0x454545,
+    kPlaceOrangeBGColor = 0xffedd6,
+    kPlaceOrangeTextColor = 0xef9f3b,
 };
 
 // Text

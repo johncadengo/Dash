@@ -20,16 +20,18 @@
 
 @synthesize cellType = _cellType;
 @synthesize name = _name;
-@synthesize blurb = _blurb;
+@synthesize categories = _categories;
+@synthesize distancePrice = _distancePrice;
 @synthesize image = _image;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize imageGalleryViewController = _imageGalleryViewController;
+@synthesize themeColor = _themeColor;
 
 #pragma mark - Some UI Constants
 
 static CGFloat kWindowWidth = 320.0f;
-static CGFloat kPadding = 5.0f;
-static CGFloat kPicWidth = 100.0f;
+static CGFloat kPadding = 7.5f;
+static CGFloat kPicWidth = 70.0f;
 static CGFloat kMinHeight = 110.0f;
 
 static CGFloat kMaxBlurbHeight = 1000.0f;
@@ -41,10 +43,11 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (CGFloat)heightForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType
 {
-    CGSize nameSize = [self textSizeForName:@"hi"];
-    CGSize blurbSize = [self textSizeForBlurb:@"hey hey"];
+    CGSize nameSize = [self adjustedSizeForName:@"hi"];
+    CGSize categoriesSize = [self sizeForCategories:@"hey hey"];
+    CGSize distancePriceSize = [self sizeForDistancePrice:@"0.2 mi $$"];
     
-    CGFloat height = kPadding + nameSize.height + kPadding + blurbSize.height + kPadding;
+    CGFloat height = kPadding + nameSize.height + kPadding + categoriesSize.height + kPadding + distancePriceSize.height + kPadding;
     
     return MAX(height, kMinHeight);
 }
@@ -54,28 +57,76 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     return [UIFont fontWithName:kPlutoBold size:27.5f];
 }
 
-+ (UIFont *)blurbFont
++ (UIFont *)categoriesFont
 {
-    return [UIFont systemFontOfSize:14];
+    return [UIFont fontWithName:kPlutoRegular size:14.0f];
 }
 
-+ (CGSize)textSizeForName:(NSString *)name
++ (UIFont *)distancePriceFont
+{
+    return [UIFont fontWithName:kPlutoRegular size:14.0f];
+}
+
++ (CGSize)sizeForCategories:(NSString *)categories
 {
     CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
-    CGSize textSize = [name sizeWithFont:[self nameFont]
-                                forWidth:maxWidth 
+	CGSize textSize = [categories sizeWithFont:[self categoriesFont] 
+                                      forWidth:maxWidth 
+                                 lineBreakMode:kBlurbLineBreak];
+    
+    return textSize;
+}
+
++ (CGSize)sizeForDistancePrice:(NSString *)distancePrice
+{
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
+	CGSize textSize = [distancePrice sizeWithFont:[self distancePriceFont] 
+                                         forWidth:maxWidth 
+                                    lineBreakMode:kBlurbLineBreak];
+    
+    return textSize;   
+}
++ (NSInteger)numberOfLinesForName:(NSString *)name
+{
+    // For now, just compare it to the M and the y. Tallest letter, and lowest letter
+    CGSize oneLineSize = [[self class] sizeForName:@"My"];
+    CGFloat oneLineHeight = oneLineSize.height;
+    CGSize nameSize = [self sizeForName:name];
+    
+    return (nameSize.height > oneLineHeight) ? 2 : 1;
+}
+
++ (CGFloat)nameLeading:(NSString *)name
+{
+    return ([self numberOfLinesForName:name] == 1) ? -0.0f : -8.0f;
+}
+
++ (CGFloat)categoriesLeading
+{
+    return -4.0f;
+}
+
++ (CGFloat)distancePriceLeading
+{
+    return -4.0f;
+}
+
++ (CGSize)sizeForName:(NSString *)name
+{
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
+    CGFloat maxHeight = 2 * self.nameFont.lineHeight;
+    CGSize maxSize = CGSizeMake(maxWidth, maxHeight);
+	CGSize textSize = [name sizeWithFont:self.nameFont 
+                       constrainedToSize:maxSize 
                            lineBreakMode:kNameLineBreak];
     return textSize;
 }
 
-+ (CGSize)textSizeForBlurb:(NSString *)blurb
++ (CGSize)adjustedSizeForName:(NSString *)name
 {
-    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
-    CGSize maxSize = CGSizeMake(maxWidth, kMaxBlurbHeight);
-    CGSize textSize = [blurb sizeWithFont:[self nameFont]
-                        constrainedToSize:maxSize
-                            lineBreakMode:kBlurbLineBreak];
-    return textSize;    
+    CGSize originalSize = [self sizeForName:name];
+    CGSize adjustedSize = CGSizeMake(originalSize.width, originalSize.height + [[self class] nameLeading: name]);
+    return ([self numberOfLinesForName:name] == 1) ? originalSize : adjustedSize;
 }
 
 #pragma mark - Initialization
@@ -124,6 +175,13 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
 }
 
+#pragma mark - Theme Color
+- (void)setThemeColor:(PlaceThemeColor) newColor
+{
+    // And finally save the new theme color
+    _themeColor = newColor;
+}
+
 - (NSNumber *)calculateDistanceFromPlace:(Place *)place
 {
     // Find out where we are
@@ -134,8 +192,6 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     [location setWithCLLocation:loc];
     
-    // TODO: Save context here?
-    
     return [place.location greatCircleDistanceFrom:location];
     
 }
@@ -145,7 +201,6 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     // Set our context
     self.managedObjectContext = context;
     
-    // TODO: actually get this data from the place.
     //PlacePhoto *photo = [[place photos] anyObject];
     //NSString *path = [photo localpath];
     //CGSize size = CGSizeMake(kPicWidth, kPicWidth);
@@ -155,34 +210,89 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     double distance = [[self calculateDistanceFromPlace:place] doubleValue];
     
     NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescriptionLong]];
-    [categoryInfo appendFormat:@" / %@ / %.1f mi", place.price, distance];
     
-    self.blurb = categoryInfo;
+    self.categories = categoryInfo;
+    self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];
     //self.image = [[UIImage imageNamed:path] imageCroppedToFitSize:size];
     
     [self setNeedsDisplay];
 }
 
+#pragma mark - Draw
+
+- (void)customLeadingDrawing:(NSString *)text withSize:(CGSize)nameSize leading:(CGFloat)leading
+{
+    // So we can restore the context after we're done playing with clipping
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    
+    // Set the color
+    UIColor *textColor = UIColorFromRGB(kPlaceOrangeTextColor);
+    [textColor set];
+    
+    if ([[self class] numberOfLinesForName:self.name] > 1) {
+        // If our name is 2 lines tall, clip the top half
+        UIRectClip(CGRectMake(kPadding, kPadding + (nameSize.height / 2.0f) + leading, 
+                              nameSize.width, nameSize.height / 2.0f));
+        
+        // And draw it
+        [self.name drawInRect:CGRectMake(kPadding, kPadding + leading,
+                                         nameSize.width, nameSize.height)
+                     withFont:[[self class] nameFont]
+                lineBreakMode:kNameLineBreak];
+        
+        // Then clip the bottom half
+        CGContextRestoreGState(context);
+        CGContextSaveGState(context);
+        UIRectClip(CGRectMake(kPadding, kPadding, 
+                              nameSize.width, nameSize.height / 2.0f));
+        
+        // And draw it
+        [textColor set];
+        [self.name drawInRect:CGRectMake(kPadding, kPadding,
+                                         nameSize.width, nameSize.height)
+                     withFont:[[self class] nameFont]
+                lineBreakMode:kNameLineBreak];
+    }
+    else {
+        // Otherwise, it is only 1 line tall, so we just draw it normally
+        [self.name drawInRect:CGRectMake(kPadding, kPadding,
+                                         nameSize.width, nameSize.height)
+                     withFont:[[self class] nameFont]
+                lineBreakMode:kNameLineBreak];
+    }
+    
+    // After we're all done, let's reset the context
+    CGContextRestoreGState(context);
+}
+
 - (void)drawRect:(CGRect)rect
 {
-    // TODO: Only draw within the confines of the rect.
+    [super drawRect:rect];
     
     // Draw the name
-    CGSize nameSize = [[self class] textSizeForName:self.name];
-    [self.name drawInRect:CGRectMake(kPicWidth + (2 * kPadding), kPadding,
-                                    nameSize.width, nameSize.height) 
-                 withFont:[[self class] nameFont]
-            lineBreakMode:kNameLineBreak];
+    CGSize adjustedNameSize = [[self class] adjustedSizeForName:self.name];
+	[self customLeadingDrawing:self.name 
+                      withSize:[[self class] sizeForName:self.name]
+                       leading:[[self class] nameLeading:self.name]];
     
-    // Draw the blurb, in gray
-    [[UIColor grayColor] set];
-    CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
-    CGRect blurbRect = CGRectMake(kPicWidth + (kPadding * 2), 
-                                  nameSize.height + (2 * kPadding),
-                                  blurbSize.width, blurbSize.height);
-	[self.blurb drawInRect:blurbRect
-                  withFont:[[self class] blurbFont]
-             lineBreakMode:kBlurbLineBreak];
+    // Draw the categories and price, distance
+    UIColor *textColor = [UIColor blackColor];
+    [textColor set];
+    CGSize categoriesSize = [[self class] sizeForCategories:self.categories];
+    [self.categories drawInRect:CGRectMake(kPadding, adjustedNameSize.height, 
+                                           categoriesSize.width, categoriesSize.height) 
+                       withFont:[[self class] categoriesFont] 
+                  lineBreakMode:kBlurbLineBreak];
+    
+    textColor = [UIColor blackColor];
+    [textColor set];
+    CGSize distancePriceSize = [[self class] sizeForDistancePrice:self.distancePrice];
+    [self.distancePrice drawInRect:CGRectMake(kPadding, 
+                                              adjustedNameSize.height + categoriesSize.height + [[self class] categoriesLeading], 
+                                              distancePriceSize.width, distancePriceSize.height) 
+                          withFont:[[self class] distancePriceFont] 
+                     lineBreakMode:kBlurbLineBreak];
     
     // Now draw the image
     CGPoint point = CGPointMake(kPadding, kPadding);

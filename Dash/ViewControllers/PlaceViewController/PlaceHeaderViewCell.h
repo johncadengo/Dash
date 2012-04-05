@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlaceViewController.h"
 
 typedef enum {
     PlaceViewCellTypeHeader = 0,
@@ -23,20 +24,36 @@ typedef enum {
 
 @property (nonatomic) PlaceViewCellType cellType;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *blurb;
+@property (nonatomic, strong) NSString *categories;
+@property (nonatomic, strong) NSString *distancePrice;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) JCImageGalleryViewController *imageGalleryViewController;
+@property (nonatomic) PlaceThemeColor themeColor;
+
+/** Should only call after the view loads. Cascades appropriate changes to view properties as necessary.
+ */
+- (void)setThemeColor:(PlaceThemeColor) newColor;
 
 + (CGFloat)heightForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType;
+
 + (UIFont *)nameFont;
-+ (UIFont *)blurbFont;
-+ (CGSize)textSizeForName:(NSString *)name;
-+ (CGSize)textSizeForBlurb:(NSString *)blurb;
++ (UIFont *)categoriesFont;
++ (UIFont *)distancePriceFont;
+
++ (CGSize)sizeForCategories:(NSString *)categories;
++ (CGSize)sizeForDistancePrice:(NSString *)distancePrice;
+
++ (NSInteger)numberOfLinesForName:(NSString *)name;
++ (CGSize)sizeForName:(NSString *)name;
++ (CGSize)adjustedSizeForName:(NSString *)name;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellType:(PlaceViewCellType)cellType;
 
 - (NSNumber *)calculateDistanceFromPlace:(Place *)place;
 - (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
+
+- (void)customLeadingDrawing:(NSString *)text withSize:(CGSize)nameSize leading:(CGFloat)leading;
 
 @end
