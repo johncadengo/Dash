@@ -31,6 +31,7 @@
 @synthesize footprints = _footprints;
 @synthesize moreInfoCell = _moreInfoCell;
 @synthesize themeColor = _themeColor;
+@synthesize toolbar = _toolbar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -82,6 +83,11 @@
     self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
     self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
     
+    // Make the toolbar
+    CGRect frame = CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f);
+    self.toolbar = [[UIToolbar alloc] initWithFrame:frame];
+    [self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
+    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
@@ -97,8 +103,9 @@
 {
     [super viewWillAppear:animated];
     
-    // Make sure the top bar show
+    // Make sure the top bar and bottom bar show
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self.navigationController.view addSubview:self.toolbar];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -112,6 +119,7 @@
 {
     // Reset it
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.toolbar removeFromSuperview];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

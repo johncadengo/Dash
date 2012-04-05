@@ -50,7 +50,18 @@
 - (void)setType:(HighlightViewCellType)type
 {
     // Adjust the background bubble accordingly
-    NSLog(@"%d", type);
+    NSString *imageName;
+    switch (type) {
+        case HighlightViewCellTypeFirst:
+            imageName = @"";
+            break;
+        case HighlightViewCellTypeLast:
+            
+            break;
+        default:
+            
+            break;
+    }
     
     // Now save the type
     _type = type;
