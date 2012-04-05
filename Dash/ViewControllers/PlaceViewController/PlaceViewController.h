@@ -15,23 +15,10 @@
 enum {
     kPlaceHeaderSection = 0,
     kPlaceBadgesSection = 1,
-    kPlaceHighlightsSection = 2,
-    kPlaceFootprintsSection = 3,
-    kPlaceNumSections = 4
-};
-
-/** Number of rows.
-    The rest are dynamic.
- */
-enum {
-    kPlaceNumRowsForHeaderSection = 2   // The place and more info.
-};
-
-/** Rows.
- */
-enum {
-    kPlaceHeaderRow = 0,
-    kPlaceMoreInfoRow = 1
+    kPlaceMoreInfoSection = 2,
+    kPlaceHighlightsSection = 3,
+    kPlaceFootprintsSection = 4,
+    kPlaceNumSections = 5
 };
 
 /** Color themes
@@ -64,18 +51,15 @@ typedef enum {
  */
 - (void)setThemeColor:(PlaceThemeColor) newColor;
 
-- (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row;
 
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)badgesSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView;
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
-
-- (UITableViewCell *)headerRowForTableView:(UITableView *)tableView;
-- (UITableViewCell *)moreInfoRowForTableView:(UITableView *)tableView;
 
 /** Will toggle whether or not the back view of the more info cell is shown.
  */

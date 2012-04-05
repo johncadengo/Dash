@@ -129,10 +129,13 @@
     
     switch (section) {
         case kPlaceHeaderSection:
-            height = [self heightForHeaderSectionCellForRow:row];
+            height = [PlaceHeaderViewCell heightForPlace:self.place withCellType:PlaceViewCellTypeHeader];
             break;
         case kPlaceBadgesSection:
             height = [self heightForHighlightSectionCellForRow:row];
+            break;
+        case kPlaceMoreInfoSection:
+            height = [MoreInfoViewCell height];
             break;
         case kPlaceHighlightsSection:
             height = [self heightForHighlightSectionCellForRow:row];
@@ -148,34 +151,9 @@
     return height;
 }
 
-- (CGFloat)heightForHeaderSectionCellForRow:(NSInteger)row 
-{
-    CGFloat height = 0.0f;
-    
-    switch (row) {
-        case kPlaceHeaderRow:
-            height = [PlaceHeaderViewCell heightForPlace:self.place withCellType:PlaceViewCellTypeHeader];
-            break;
-        case kPlaceMoreInfoRow:
-            height = [MoreInfoViewCell height];
-            break;
-        default:
-            NSAssert(NO, @"Asking for the height of a row in the header section that doesn't exist %d", row);
-            break;
-    }
-    
-    return height;
-}
-
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row
 {
     CGFloat height = 40.0f;
-    
-    // This is an if-else situation, not a switch situation,
-    // since, the row value can be anything
-    if (row == kPlaceHeaderRow) {
-        
-    }
     
     return height;
 }
@@ -183,12 +161,6 @@
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row
 {
     CGFloat height = 0.0f;
-    
-    // This is an if-else situation, not a switch situation,
-    // since, the row value can be anything
-    if (row == kPlaceHeaderRow) {
-        
-    }
     
     return height;    
 }
@@ -206,18 +178,15 @@
     
     switch (section) {
         case kPlaceHeaderSection:
-            numRows = kPlaceNumRowsForHeaderSection;
+            numRows = 1;
             break;
         case kPlaceBadgesSection:
             numRows = [self.badges count];
             break;
         case kPlaceHighlightsSection:
-            // This is calculated by the header + up to 3 highlights + footer
             numRows = [self.highlights count];
             break;
         case kPlaceFootprintsSection:
-            // This is calculated by the header + up to n footprints + footer
-            
             break;
         default:
             NSAssert(NO, @"Asking for number of rows in a section that doesn't exist %d", section);
@@ -240,6 +209,9 @@
         case kPlaceBadgesSection:
             cell = [self badgesSectionCellForTableView:tableView forRow:row];
             break;
+        case kPlaceMoreInfoSection:
+            cell = [self moreInfoCellForTableView:tableView];
+            break;
         case kPlaceHighlightsSection:
             cell = [self highlightsSectionCellForTableView:tableView forRow:row];
             break;
@@ -258,19 +230,27 @@
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    id cell;
+    PlaceHeaderViewCell *cell = (PlaceHeaderViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceHeaderCellIdentifier];
     
-    switch (row) {
-        case kPlaceHeaderRow:
-            cell = [self headerRowForTableView:tableView];
-            break;
-        case kPlaceMoreInfoRow:
-            cell = [self moreInfoRowForTableView:tableView];
-            break;
-        default:
-            NSAssert(NO, @"Asking for a cell in a row of the header section that doesn't exist %d", row);
-            break;
+    if (cell == nil) {
+        cell = [[PlaceHeaderViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceHeaderCellIdentifier cellType:PlaceViewCellTypeHeader];
     }
+    
+    [cell setWithPlace:self.place context:self.managedObjectContext];
+    
+    return cell;
+}
+
+- (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView
+{
+    MoreInfoViewCell *cell = (MoreInfoViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
+    }
+    
+    // Connect us to the cell
+    [self setMoreInfoCell:cell];
     
     return cell;
 }
@@ -312,43 +292,7 @@
 - (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
     id cell;
-    
-    if (row == kPlaceHeaderRow) {
-        
-    }
-    else {
-        
-    }
-    
-    return cell;
-}
 
-
-#pragma mark - The actual cell
-
-- (UITableViewCell *)headerRowForTableView:(UITableView *)tableView
-{
-    PlaceHeaderViewCell *cell = (PlaceHeaderViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceHeaderCellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[PlaceHeaderViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceHeaderCellIdentifier cellType:PlaceViewCellTypeHeader];
-    }
-    
-    [cell setWithPlace:self.place context:self.managedObjectContext];
-    
-    return cell;
-}
-
-- (UITableViewCell *)moreInfoRowForTableView:(UITableView *)tableView
-{
-    MoreInfoViewCell *cell = (MoreInfoViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoCellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
-    }
-    
-    // Connect us to the cell
-    [self setMoreInfoCell:cell];
     
     return cell;
 }
@@ -360,7 +304,7 @@
     NSInteger section = [indexPath section];
     NSInteger row = [indexPath row];
     
-    if (section == kPlaceHeaderSection && row == kPlaceMoreInfoRow) {
+    if (section == kPlaceMoreInfoSection) {
         [self toggleMoreInfo];
     }
 }

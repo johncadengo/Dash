@@ -213,7 +213,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     self.categories = categoryInfo;
     self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];
-    //self.image = [[UIImage imageNamed:path] imageCroppedToFitSize:size];
+    self.image = [UIImage imageNamed:@"Burger-Profile-Orange.png"];
     
     [self setNeedsDisplay];
 }
@@ -295,7 +295,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                      lineBreakMode:kBlurbLineBreak];
     
     // Now draw the image
-    CGPoint point = CGPointMake(kPadding, kPadding);
+    CGPoint point = CGPointMake(kWindowWidth - 10.0f - kPicWidth, 0.0f);
     [self.image drawAtPoint:point];
 }
 

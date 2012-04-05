@@ -32,8 +32,9 @@ enum {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Custom navigation bar color
+    // Custom navigation bar color and button color
     [[UINavigationBar appearance] setBackgroundImage: [UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     
     // Get the TabBarController so we can start off on a different index.
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
