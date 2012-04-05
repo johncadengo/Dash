@@ -301,7 +301,7 @@
     // Figure out which type
     HighlightViewCellType type;
     NSInteger firstHighlightRow = 1;
-    NSInteger lastHighlightRow = [self.highlights count] - 2;
+    NSInteger lastHighlightRow = [self.highlights count];
     
     if (row == firstHighlightRow)
         type = HighlightViewCellTypeFirst;
