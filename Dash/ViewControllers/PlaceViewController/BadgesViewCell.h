@@ -10,4 +10,7 @@
 
 @interface BadgesViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) NSArray *badges;
+
 @end

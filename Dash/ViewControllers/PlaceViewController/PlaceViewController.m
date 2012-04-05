@@ -18,6 +18,7 @@
 #import "Highlight.h"
 #import "Highlight+Helper.h"
 #import "TitleViewCell.h"
+#import "BadgesViewCell.h"
 
 @implementation PlaceViewController
 

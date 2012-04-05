@@ -32,7 +32,7 @@
 static CGFloat kWindowWidth = 320.0f;
 static CGFloat kPadding = 7.5f;
 static CGFloat kPicWidth = 70.0f;
-static CGFloat kMinHeight = 110.0f;
+static CGFloat kMinHeight = 85.0f;
 
 static CGFloat kMaxBlurbHeight = 1000.0f;
 
