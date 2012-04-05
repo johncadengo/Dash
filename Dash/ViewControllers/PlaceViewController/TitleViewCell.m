@@ -44,7 +44,7 @@
 #pragma mark - Title setter
 - (void)setTitle:(NSString *)title
 {
-    _title = title;
+    _title = [NSString stringWithFormat:@"%@", title];
     
     // Make sure to refresh view
     [self setNeedsDisplay];

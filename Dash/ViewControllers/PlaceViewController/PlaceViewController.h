@@ -61,6 +61,8 @@ typedef enum {
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 
+- (UITableViewCell *)titleViewCellForTableView:(UITableView *) tableView WithTitle:(NSString *)title;
+
 /** Will toggle whether or not the back view of the more info cell is shown.
  */
 - (void)toggleMoreInfo;

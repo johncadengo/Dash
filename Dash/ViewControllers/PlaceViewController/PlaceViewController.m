@@ -17,7 +17,7 @@
 #import "Place+Helper.h"
 #import "Highlight.h"
 #import "Highlight+Helper.h"
-
+#import "TitleViewCell.h"
 
 @implementation PlaceViewController
 
@@ -153,6 +153,10 @@
 
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row
 {
+    if (row == 0) {
+        return [TitleViewCell height];
+    }
+    
     CGFloat height = 40.0f;
     
     return height;
@@ -181,13 +185,13 @@
             numRows = 1;
             break;
         case kPlaceBadgesSection:
-            numRows = [self.badges count];
+            numRows = 2; // One for the title, the other for the badges scroll view
             break;
         case kPlaceMoreInfoSection:
             numRows = 1;
             break;
         case kPlaceHighlightsSection:
-            numRows = [self.highlights count];
+            numRows = [self.highlights count] + 1; // Plus 1 for the title
             break;
         case kPlaceFootprintsSection:
             break;
@@ -260,6 +264,9 @@
 
 - (UITableViewCell *)badgesSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
+    if (row == 0)
+        return [self titleViewCellForTableView:tableView WithTitle:@"Notables"];
+    
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -267,9 +274,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    Badge *badge = [self.badges objectAtIndex:row];
-    NSString *name = badge.name;
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", name];
+    cell.textLabel.text = @"Badge scroll view.";
     [cell.textLabel sizeToFit];
     
     return cell;
@@ -277,6 +282,9 @@
 
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
+    if (row == 0)
+        return [self titleViewCellForTableView:tableView WithTitle:@"Highlights"];
+    
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -284,7 +292,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    Highlight *highlight = [self.highlights objectAtIndex:row];
+    Highlight *highlight = [self.highlights objectAtIndex:(row - 1)];
     NSString *name = highlight.text;
     cell.textLabel.text = [NSString stringWithFormat:@"%@", name];
     [cell.textLabel sizeToFit];
@@ -296,6 +304,21 @@
 {
     id cell;
 
+    
+    return cell;
+}
+
+- (UITableViewCell *)titleViewCellForTableView:(UITableView *)tableView WithTitle:(NSString *)title
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    TitleViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[TitleViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.title = title;
     
     return cell;
 }
