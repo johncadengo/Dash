@@ -32,9 +32,7 @@
 static CGFloat kWindowWidth = 320.0f;
 static CGFloat kPadding = 7.5f;
 static CGFloat kPicWidth = 70.0f;
-static CGFloat kMinHeight = 85.0f;
-
-static CGFloat kMaxBlurbHeight = 1000.0f;
+static CGFloat kMinHeight = 70.0f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
@@ -43,13 +41,13 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (CGFloat)heightForPlace:(Place *)place withCellType:(PlaceViewCellType)cellType
 {
-    CGSize nameSize = [self adjustedSizeForName:@"hi"];
+    CGSize nameSize = [self adjustedSizeForName:place.name];
     CGSize categoriesSize = [self sizeForCategories:@"hey hey"];
     CGSize distancePriceSize = [self sizeForDistancePrice:@"0.2 mi $$"];
     
-    CGFloat height = kPadding + nameSize.height + kPadding + categoriesSize.height + kPadding + distancePriceSize.height + kPadding;
+    CGFloat height =  nameSize.height + categoriesSize.height + [self categoriesLeading] + distancePriceSize.height + [self distancePriceLeading] + kPadding;
     
-    return MAX(height, kMinHeight);
+    return height;
 }
 
 + (UIFont *)nameFont
