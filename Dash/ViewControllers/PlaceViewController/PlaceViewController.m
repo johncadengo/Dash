@@ -301,12 +301,14 @@
     // Figure out which type
     HighlightViewCellType type;
     NSInteger firstHighlightRow = 1;
-    NSInteger lastHighlightRow = [self.highlights count] - 1;
+    NSInteger lastHighlightRow = [self.highlights count] - 2;
     
     if (row == firstHighlightRow)
         type = HighlightViewCellTypeFirst;
     else if (row == lastHighlightRow)
         type = HighlightViewCellTypeLast;
+    else 
+        type = HighlightViewCellTypeMiddle;
     
     static NSString *CellIdentifier = @"Cell";
     
