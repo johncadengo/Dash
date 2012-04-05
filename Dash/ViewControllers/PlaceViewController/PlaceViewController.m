@@ -84,8 +84,7 @@
     self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
     
     // Make the toolbar
-    CGRect frame = CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f);
-    self.toolbar = [[UIToolbar alloc] initWithFrame:frame];
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f)];
     [self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -119,7 +118,16 @@
 {
     // Reset it
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
-    [self.toolbar removeFromSuperview];
+    
+    if (animated)
+        [UIView animateWithDuration:UINavigationControllerHideShowBarDuration
+                         animations:^{
+                             self.toolbar.frame = CGRectMake(320.0f, 480.0f - 49.0f, 320.0f, 49.0f);
+                         }
+                         completion:^(BOOL finished){ [self.toolbar removeFromSuperview]; }];
+    else
+        [self.toolbar removeFromSuperview];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
