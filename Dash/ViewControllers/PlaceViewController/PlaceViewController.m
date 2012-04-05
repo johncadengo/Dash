@@ -119,8 +119,9 @@
     // Reset it
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
     
+    // Duration must match the popping pushing animation.. It appears to be the perfect #
     if (animated)
-        [UIView animateWithDuration:UINavigationControllerHideShowBarDuration
+        [UIView animateWithDuration:2.75f
                          animations:^{
                              self.toolbar.frame = CGRectMake(320.0f, 480.0f - 49.0f, 320.0f, 49.0f);
                          }

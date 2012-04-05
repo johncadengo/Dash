@@ -45,7 +45,7 @@ typedef enum {
 @property (nonatomic, strong) NSMutableArray *footprints;
 @property (nonatomic, strong) MoreInfoViewCell *moreInfoCell;
 @property (nonatomic) PlaceThemeColor themeColor;
-@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
 
 /** Should only call after the view loads. Cascades appropriate changes to view properties as necessary.
  */
