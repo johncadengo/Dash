@@ -29,7 +29,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MoreInformationButton.png"]];
+        [self setBackgroundView:imageView];
     }
     
     return self;
@@ -41,13 +42,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    // Draw the "More Info"
-    UIFont *font = [UIFont systemFontOfSize:16];
-    NSString *moreInfo = [NSString stringWithFormat:@"More Information"];
-    CGSize size = [moreInfo sizeWithFont:font];
-    CGPoint point = CGPointMake((rect.size.width / 2.0f) - (size.width / 2.0f),
-                                (rect.size.height / 2.0f) - (size.height / 2.0f));
-    [moreInfo drawAtPoint:point withFont:font];
+    [super drawRect:rect];
 }
 
 @end

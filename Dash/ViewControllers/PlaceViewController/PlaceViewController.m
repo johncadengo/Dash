@@ -244,7 +244,7 @@
     }
     
     // None of our cells should be able to be selected
-    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -298,17 +298,25 @@
     if (row == 0)
         return [self titleViewCellForTableView:tableView WithTitle:@"Highlights"];
     
+    // Figure out which type
+    HighlightViewCellType type;
+    NSInteger firstHighlightRow = 1;
+    NSInteger lastHighlightRow = [self.highlights count] - 1;
+    
+    if (row == firstHighlightRow)
+        type = HighlightViewCellTypeFirst;
+    else if (row == lastHighlightRow)
+        type = HighlightViewCellTypeLast;
+    
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HighlightViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[HighlightViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier type:type];
     }
     
     Highlight *highlight = [self.highlights objectAtIndex:(row - 1)];
-    NSString *name = highlight.text;
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", name];
-    [cell.textLabel sizeToFit];
+    [cell setWithHighlight:highlight];
     
     return cell;
 }

@@ -54,7 +54,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    //CGSize size = [self.title sizeWithFont:[[self class] font]];
+    [super drawRect:rect];
     
     self.clipsToBounds = NO;
     [self.title drawAtPoint:CGPointMake(7.5f, 0.0f) withFont:[[self class] font]];

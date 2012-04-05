@@ -15,6 +15,7 @@ enum {
     kDashNavBarBGColor = 0x454545,
     kPlaceOrangeBGColor = 0xffedd6,
     kPlaceOrangeTextColor = 0xff9933,
+    kHighlightTextColor = 0x434546,
 };
 
 // Text
