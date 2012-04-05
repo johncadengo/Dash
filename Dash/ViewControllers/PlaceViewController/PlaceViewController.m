@@ -183,6 +183,9 @@
         case kPlaceBadgesSection:
             numRows = [self.badges count];
             break;
+        case kPlaceMoreInfoSection:
+            numRows = 1;
+            break;
         case kPlaceHighlightsSection:
             numRows = [self.highlights count];
             break;
