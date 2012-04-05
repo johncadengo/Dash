@@ -15,7 +15,7 @@
 
 + (CGFloat)height 
 {
-    return 100.0f;
+    return 79.0f;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
