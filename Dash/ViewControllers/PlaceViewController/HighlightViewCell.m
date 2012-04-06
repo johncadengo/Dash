@@ -164,7 +164,7 @@ static const CGFloat kYOffset = 5.0f;
     // Draw author
     textColor = UIColorFromRGB(kHighlightAuthorColor);
     [textColor set];
-    [self.author drawAtPoint:CGPointMake(16.0f, yOffset + 14.0f) withFont:[[self class] authorFont]];
+    [self.author drawAtPoint:CGPointMake(16.0f, yOffset + 18.0f) withFont:[[self class] authorFont]];
     
     // Draw line at bottom, as long as we aren't the last cell
     if (self.type != HighlightViewCellTypeLast) {
