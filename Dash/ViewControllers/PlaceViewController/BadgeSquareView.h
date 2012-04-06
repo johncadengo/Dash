@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class Badge;
+
 @interface BadgeSquareView : UIView
+
+@property (nonatomic, strong) UIImage *icon;
+@property (nonatomic, strong) NSString *text;
+
++ (CGSize)size;
+
+- (void)setWithBadge:(Badge *)badge;
+
 
 @end

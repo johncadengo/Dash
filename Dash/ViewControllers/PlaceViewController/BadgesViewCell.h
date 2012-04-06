@@ -12,7 +12,10 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSArray *badges;
+@property (nonatomic, strong) NSMutableArray *badgesViews;
 
 + (CGFloat)height;
+
+- (CGRect)frameForBadgeIndex:(NSInteger)n;
 
 @end

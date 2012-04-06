@@ -7,11 +7,14 @@
 //
 
 #import "BadgesViewCell.h"
+#import "BadgeSquareView.h"
+#import "Badge.h"
 
 @implementation BadgesViewCell
 
 @synthesize scrollView = _scrollView;
 @synthesize badges = _badges;
+@synthesize badgesViews = _badgesViews;
 
 + (CGFloat)height 
 {
@@ -23,10 +26,12 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Scroll view
-        self.scrollView = [[UIScrollView alloc] init];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(9.0f, 10.0f, 300.0f, BadgeSquareView.size.height)];
         [self addSubview:self.scrollView];
         
         [self setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BadgeBubble.png"]]];
+        
+        self.badgesViews = [[NSMutableArray alloc] initWithCapacity:4];
         
     }
     return self;
@@ -37,6 +42,29 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (CGRect)frameForBadgeIndex:(NSInteger)n
+{
+    NSLog(@"asdf %d", n);
+    CGRect frame = CGRectMake(BadgeSquareView.size.width * n, 0.0f, BadgeSquareView.size.width, BadgeSquareView.size.height);
+    return frame;
+}
+
+- (void)setBadges:(NSArray *)badges
+{
+    // Save the badges
+    _badges = badges;
+    
+    NSLog(@"badges %@", badges);
+    
+    // Now populate them
+    for (Badge *badge in _badges) {
+        BadgeSquareView *squareView = [[BadgeSquareView alloc] initWithFrame:[self frameForBadgeIndex:[self.badgesViews count]]];
+        [squareView setWithBadge:badge];
+        [self.badgesViews addObject:squareView];
+        [self.scrollView addSubview:squareView];
+    }
 }
 
 @end

@@ -7,25 +7,48 @@
 //
 
 #import "BadgeSquareView.h"
+#import "Badge.h"
 
 @implementation BadgeSquareView
+
+static CGFloat kWidth = 75.0f;
+static CGFloat kHeight = 70.0f;
+
+@synthesize icon = _icon;
+@synthesize text = _text;
+
++ (CGSize)size
+{
+    return CGSizeMake(kWidth, kHeight);
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.backgroundColor = [UIColor clearColor];
+        
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+- (void)setWithBadge:(Badge *)badge
+{
+    self.text = [NSString stringWithFormat:@"%@", badge.name];
+    
+    [self setNeedsDisplay];
+}
+
+#pragma mark - Drawing
+
 - (void)drawRect:(CGRect)rect
 {
-    // Drawing code
+    [super drawRect:rect];
+    
+    // Draw the text
+    [self.text drawAtPoint:CGPointZero withFont:[UIFont systemFontOfSize:10.0f]];
 }
-*/
+
 
 @end
