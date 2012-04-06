@@ -209,7 +209,7 @@ NSString * const kHighlightTitle = @"Highlights";
     
     // Draw like count
     [UIColorFromRGB(kHighlightLikesColor) set];
-    [self.likeCount drawAtPoint:CGPointMake(257.0f + 25.0f, yOffset) withFont:[[self class] likeCountFont]];
+    [self.likeCount drawAtPoint:CGPointMake(257.0f + 30.0f, yOffset + 2.5f) withFont:[[self class] likeCountFont]];
     
     // Draw line at bottom, as long as we aren't the last cell
     if (self.type != HighlightViewCellTypeLast) {
