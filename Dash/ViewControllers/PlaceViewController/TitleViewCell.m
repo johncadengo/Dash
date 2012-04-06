@@ -30,6 +30,8 @@
     if (self) {
         // Initialization code
         self.title = @"";
+        
+        self.clipsToBounds = NO;
     }
     return self;
 }
@@ -56,7 +58,6 @@
 {
     [super drawRect:rect];
     
-    self.clipsToBounds = NO;
     [self.title drawAtPoint:CGPointMake(7.5f, 0.0f) withFont:[[self class] font]];
 }
 

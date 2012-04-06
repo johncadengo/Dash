@@ -18,6 +18,7 @@
 @synthesize name = _name;
 @synthesize author = _author;
 @synthesize type = _type;
+@synthesize backgroundImage = _backgroundImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -53,15 +54,17 @@
     NSString *imageName;
     switch (type) {
         case HighlightViewCellTypeFirst:
-            imageName = @"";
+            imageName = @"HighlightTop.png";
             break;
         case HighlightViewCellTypeLast:
-            
+            imageName = @"HighlightBottom.png";
             break;
         default:
-            
+            imageName = @"HighlightMiddle.png";
             break;
     }
+    
+    self.backgroundImage = [UIImage imageNamed:imageName];
     
     // Now save the type
     _type = type;
@@ -83,11 +86,15 @@
 {
     [super drawRect:rect];
     
+    // Draw background
+    [self.backgroundImage drawAtPoint:CGPointZero];
+    
+    // Draw text
     UIFont *font = [UIFont systemFontOfSize:14.0f];
     UIColor *textColor = UIColorFromRGB(kHighlightTextColor);
     [textColor set];
     
-    [self.name drawAtPoint:CGPointMake(0.0f, 0.0f) withFont:font];
+    [self.name drawAtPoint:CGPointMake(5.0f, 5.0f) withFont:font];
 }
 
 @end
