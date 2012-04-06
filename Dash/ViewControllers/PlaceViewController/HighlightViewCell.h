@@ -34,6 +34,7 @@ typedef enum {
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier type:(HighlightViewCellType)type;
 
+- (void)fakeIncrement:(id)sender;
 - (void)setWithHighlight:(Highlight *)highlight;
 - (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 

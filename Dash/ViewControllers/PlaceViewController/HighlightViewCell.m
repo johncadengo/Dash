@@ -101,6 +101,8 @@ NSString * const kHighlightTitle = @"Highlights";
         [self.heart setFrame:CGRectMake(257.0f, offset, 25.0f, 25.0f)];
         [self addSubview:self.heart];
         
+        [self.heart addTarget:self action:@selector(fakeIncrement:) forControlEvents:UIControlEventTouchUpInside];
+        
         //[self setBackgroundView:[[UIImageView alloc] initWithImage:self.backgroundImage]];
     }
     
@@ -152,6 +154,15 @@ NSString * const kHighlightTitle = @"Highlights";
     // Two digit max
     NSInteger n = [highlight.likes count];
     self.likeCount = [NSString stringWithFormat:@"%d",(n <= 99) ? n : 99];
+    
+    // And draw them
+    [self setNeedsDisplay];
+}
+
+- (void)fakeIncrement:(id)sender
+{
+    // TODO: The BOOL is backwards because of the order that self.heart toggles its selection...
+    self.likeCount = [NSString stringWithFormat:@"%d", (self.heart.selected) ? 0 : 1];
     
     // And draw them
     [self setNeedsDisplay];
