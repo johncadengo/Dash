@@ -18,6 +18,8 @@ enum {
     kPlaceOrangeTextColor = 0xff9933,
     kHighlightTextColor = 0x434546,
     kHighlightAuthorColor = 0x7b7b7b,
+    kPlaceCategoriesTextColor = 0x434546,
+    kPlaceTitlesTextColor = 0x434546,
 };
 
 // Text

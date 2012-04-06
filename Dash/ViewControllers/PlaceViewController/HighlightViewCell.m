@@ -27,7 +27,7 @@ static const CGFloat kBottomHeight = 50.0f;
 static const CGFloat kWidth = 320.0f;
 static const CGFloat kLineLength = 283.0f;
 
-static const CGFloat kTitleHeight = 14.0f;
+static const CGFloat kTitleHeight = 15.0f;
 static const CGFloat kTopYOffset = 10.0f;
 static const CGFloat kYOffset = 5.0f;
 
@@ -169,6 +169,7 @@ NSString * const kHighlightTitle = @"Highlights";
         [self.backgroundImage drawAtPoint:bgOrigin];
         
         // Draw title
+        [UIColorFromRGB(kPlaceTitlesTextColor) set];
         [kHighlightTitle drawAtPoint:CGPointMake(7.5f, 0.0f) withFont:[[self class] titleFont]];
     }
     else {

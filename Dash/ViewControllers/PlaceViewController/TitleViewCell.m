@@ -58,6 +58,7 @@
 {
     [super drawRect:rect];
     
+    [UIColorFromRGB(kPlaceTitlesTextColor) set];
     [self.title drawAtPoint:CGPointMake(7.5f, 0.0f) withFont:[[self class] font]];
 }
 

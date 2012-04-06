@@ -275,7 +275,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                        leading:[[self class] nameLeading:self.name]];
     
     // Draw the categories and price, distance
-    UIColor *textColor = [UIColor blackColor];
+    UIColor *textColor = UIColorFromRGB(kPlaceCategoriesTextColor);
     [textColor set];
     CGSize categoriesSize = [[self class] sizeForCategories:self.categories];
     [self.categories drawInRect:CGRectMake(kPadding, adjustedNameSize.height, 
@@ -283,7 +283,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                        withFont:[[self class] categoriesFont] 
                   lineBreakMode:kBlurbLineBreak];
     
-    textColor = [UIColor blackColor];
+    textColor = UIColorFromRGB(kPlaceCategoriesTextColor);
     [textColor set];
     CGSize distancePriceSize = [[self class] sizeForDistancePrice:self.distancePrice];
     [self.distancePrice drawInRect:CGRectMake(kPadding, 

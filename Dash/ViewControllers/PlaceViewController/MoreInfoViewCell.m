@@ -19,7 +19,7 @@
 
 + (CGFloat)height
 {
-    return 40.0f;
+    return 42.0f;
 }
 
 #pragma mark - Initialization
@@ -29,8 +29,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MoreInformationButton.png"]];
-        [self setBackgroundView:imageView];
+
     }
     
     return self;
@@ -43,6 +42,9 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
+    
+    [[UIImage imageNamed:@"MoreInformationButton.png"] drawAtPoint:CGPointZero]; 
+    
 }
 
 @end
