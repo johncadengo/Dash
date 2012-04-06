@@ -149,7 +149,9 @@ NSString * const kHighlightTitle = @"Highlights";
         author = [NSString stringWithFormat:@"%@", highlight.author.name];
     self.author = author;
     
-    self.likeCount = [NSString stringWithFormat:@"%d", [highlight.likes count]];
+    // Two digit max
+    NSInteger n = [highlight.likes count];
+    self.likeCount = [NSString stringWithFormat:@"%d",(n <= 99) ? n : 99];
     
     // And draw them
     [self setNeedsDisplay];
