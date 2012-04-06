@@ -6,7 +6,6 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "TISwipeableTableView.h"
 #import "MoreInfoViewCell.h"
 #import "HighlightViewCell.h"
 
@@ -37,7 +36,7 @@ typedef enum {
 @class DashAPI;
 @class TitleViewCell;
 
-@interface PlaceViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PlaceViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) Place *place;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;

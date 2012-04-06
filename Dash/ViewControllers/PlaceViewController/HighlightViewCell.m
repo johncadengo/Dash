@@ -19,13 +19,15 @@
 @synthesize author = _author;
 @synthesize type = _type;
 @synthesize backgroundImage = _backgroundImage;
+@synthesize heart = _heart;
+@synthesize likeCount = _likeCount;
 
 static const CGFloat kTopHeight = 43.5f;
 static const CGFloat kMiddleHeight = 40.0f;
 static const CGFloat kBottomHeight = 50.0f;
 
 static const CGFloat kWidth = 320.0f;
-static const CGFloat kLineLength = 283.0f;
+static const CGFloat kLineLength = 284.0f;
 
 static const CGFloat kTitleHeight = 15.0f;
 static const CGFloat kTopYOffset = 10.0f;
@@ -68,6 +70,11 @@ NSString * const kHighlightTitle = @"Highlights";
     return [UIFont systemFontOfSize:10.0f];
 }
 
++ (UIFont *)likeCountFont
+{
+    return [UIFont fontWithName:kHelveticaNeueBold size:15.0f];
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -84,6 +91,13 @@ NSString * const kHighlightTitle = @"Highlights";
     if (self) {
         // Now initiate the type
         self.type = type;
+        
+        CGFloat offset = (self.type == HighlightViewCellTypeFirst) ? kTopYOffset + kTitleHeight : kYOffset;
+        self.heart = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.heart setBackgroundImage:[UIImage imageNamed:@"Heart-Gray.png"] forState:UIControlStateNormal];
+        [self.heart setBackgroundImage:[UIImage imageNamed:@"Heart-Red.png"] forState:UIControlStateSelected];
+        [self.heart setFrame:CGRectMake(257.0f, offset, 25.0f, 25.0f)];
+        [self addSubview:self.heart];
         
         //[self setBackgroundView:[[UIImageView alloc] initWithImage:self.backgroundImage]];
     }
@@ -182,14 +196,16 @@ NSString * const kHighlightTitle = @"Highlights";
     // Draw name
     CGFloat yOffset = (self.type == HighlightViewCellTypeFirst) ? kTopYOffset + kTitleHeight : kYOffset;
     
-    UIColor *textColor = UIColorFromRGB(kHighlightTextColor);
-    [textColor set];
-    [self.name drawAtPoint:CGPointMake(15.0f, yOffset) withFont:[[self class] nameFont]];
+    [UIColorFromRGB(kHighlightTextColor) set];
+    [self.name drawAtPoint:CGPointMake(17.0f, yOffset) withFont:[[self class] nameFont]];
     
     // Draw author
-    textColor = UIColorFromRGB(kHighlightAuthorColor);
-    [textColor set];
-    [self.author drawAtPoint:CGPointMake(16.0f, yOffset + 17.0f) withFont:[[self class] authorFont]];
+    [UIColorFromRGB(kHighlightAuthorColor) set];
+    [self.author drawAtPoint:CGPointMake(18.0f, yOffset + 17.0f) withFont:[[self class] authorFont]];
+    
+    // Draw like count
+    [UIColorFromRGB(kHighlightLikesColor) set];
+    [self.likeCount drawAtPoint:CGPointMake(257.0f + 25.0f, yOffset) withFont:[[self class] likeCountFont]];
     
     // Draw line at bottom, as long as we aren't the last cell
     if (self.type != HighlightViewCellTypeLast) {

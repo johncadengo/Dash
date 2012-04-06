@@ -219,27 +219,19 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfu-Cq-T6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="ZvP-bc-h0g" customClass="PlaceViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CZj-Gj-sfJ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CZj-Gj-sfJ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jbK-aM-D77">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="ZvP-bc-h0g" id="D3A-mh-mGX"/>
                             <outlet property="delegate" destination="ZvP-bc-h0g" id="LFw-Xu-QIB"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="GS4-cH-gb9"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="902" y="-580"/>

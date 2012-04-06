@@ -85,8 +85,8 @@
     self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
     
     // Make the toolbar
-    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f)];
-    [self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
+    //self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f)];
+    //[self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
@@ -105,7 +105,7 @@
     
     // Make sure the top bar and bottom bar show
     [self.navigationController setNavigationBarHidden:NO animated:animated];
-    [self.navigationController.view addSubview:self.toolbar];
+    //[self.navigationController.view addSubview:self.toolbar];
 }
 
 - (void)viewDidAppear:(BOOL)animated

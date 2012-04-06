@@ -22,11 +22,14 @@ typedef enum {
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic) HighlightViewCellType type;
 @property (nonatomic, strong) UIImage *backgroundImage;
+@property (nonatomic, strong) UIButton *heart;
+@property (nonatomic, strong) NSString *likeCount;
 
 + (CGFloat) heightForType:(HighlightViewCellType) type;
 + (UIFont *)titleFont;
 + (UIFont *)nameFont;
 + (UIFont *)authorFont;
++ (UIFont *)likeCountFont;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier type:(HighlightViewCellType)type;
 
