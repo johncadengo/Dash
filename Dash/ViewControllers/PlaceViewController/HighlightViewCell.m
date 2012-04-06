@@ -9,6 +9,8 @@
 #import "HighlightViewCell.h"
 #import "Highlight.h"
 #import "Highlight+Helper.h"
+#import "Like.h"
+#import "Like+Helper.h"
 #import "Person.h"
 #import "Person+Helper.h"
 #import "Constants.h"
@@ -146,6 +148,8 @@ NSString * const kHighlightTitle = @"Highlights";
     else
         author = [NSString stringWithFormat:@"%@", highlight.author.name];
     self.author = author;
+    
+    self.likeCount = [NSString stringWithFormat:@"%d", [highlight.likes count]];
     
     // And draw them
     [self setNeedsDisplay];
