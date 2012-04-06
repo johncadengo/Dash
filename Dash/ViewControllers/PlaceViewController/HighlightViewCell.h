@@ -18,9 +18,10 @@ typedef enum {
 
 @interface HighlightViewCell : UITableViewCell
 
+@property (nonatomic) HighlightViewCellType type;
+
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *author;
-@property (nonatomic) HighlightViewCellType type;
 @property (nonatomic, strong) UIImage *backgroundImage;
 @property (nonatomic, strong) UIButton *heart;
 @property (nonatomic, strong) NSString *likeCount;

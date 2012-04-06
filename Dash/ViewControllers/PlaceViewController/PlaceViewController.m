@@ -334,6 +334,8 @@
     
     Highlight *highlight = [self.highlights objectAtIndex:row];
     [cell setWithHighlight:highlight];
+    [cell.heart setTag:row];
+    [cell.heart addTarget:self action:@selector(heartTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
@@ -380,6 +382,17 @@
 - (void)toggleMoreInfo
 {
     //([self.moreInfoCell.backView isHidden]) ? [self.moreInfoCell revealBackView] : [self.moreInfoCell hideBackView];
+}
+
+#pragma mark - Buttons
+
+- (void)heartTapped:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    NSLog(@"%d", button.tag);
+    
+    // Toggle like
+    button.selected = !button.selected;
 }
 
 

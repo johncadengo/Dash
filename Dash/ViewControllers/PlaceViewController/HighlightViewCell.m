@@ -17,9 +17,9 @@
 
 @implementation HighlightViewCell
 
+@synthesize type = _type;
 @synthesize name = _name;
 @synthesize author = _author;
-@synthesize type = _type;
 @synthesize backgroundImage = _backgroundImage;
 @synthesize heart = _heart;
 @synthesize likeCount = _likeCount;
@@ -91,7 +91,7 @@ NSString * const kHighlightTitle = @"Highlights";
     self = [self initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        // Now initiate the type
+        // Now initiate the type and save the row
         self.type = type;
         
         CGFloat offset = (self.type == HighlightViewCellTypeFirst) ? kTopYOffset + kTitleHeight : kYOffset;

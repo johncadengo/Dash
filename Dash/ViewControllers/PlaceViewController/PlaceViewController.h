@@ -72,4 +72,6 @@ typedef enum {
  */
 - (void)toggleMoreInfo;
 
+- (void)heartTapped:(id)sender;
+
 @end
