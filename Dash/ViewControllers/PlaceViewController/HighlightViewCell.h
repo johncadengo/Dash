@@ -24,6 +24,7 @@ typedef enum {
 @property (nonatomic, strong) UIImage *backgroundImage;
 
 + (CGFloat) heightForType:(HighlightViewCellType) type;
++ (UIFont *)titleFont;
 + (UIFont *)nameFont;
 + (UIFont *)authorFont;
 

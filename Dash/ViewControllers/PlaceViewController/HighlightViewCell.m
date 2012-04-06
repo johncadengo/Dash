@@ -20,15 +20,19 @@
 @synthesize type = _type;
 @synthesize backgroundImage = _backgroundImage;
 
-static const CGFloat kTopHeight = 45.0f;
+static const CGFloat kTopHeight = 43.5f;
 static const CGFloat kMiddleHeight = 40.0f;
 static const CGFloat kBottomHeight = 50.0f;
 
 static const CGFloat kWidth = 320.0f;
 static const CGFloat kLineLength = 283.0f;
 
+static const CGFloat kTitleHeight = 14.0f;
 static const CGFloat kTopYOffset = 10.0f;
 static const CGFloat kYOffset = 5.0f;
+
+extern NSString * const kHighlightTitle;
+NSString * const kHighlightTitle = @"Highlights";
 
 + (CGFloat) heightForType:(HighlightViewCellType) type
 {
@@ -36,7 +40,7 @@ static const CGFloat kYOffset = 5.0f;
     
     switch (type) {
         case HighlightViewCellTypeFirst:
-            height = kTopHeight;
+            height = kTopHeight + kTitleHeight;
             break;
         case HighlightViewCellTypeLast:
             height = kBottomHeight;
@@ -47,6 +51,11 @@ static const CGFloat kYOffset = 5.0f;
     }
     
     return height;
+}
+
++ (UIFont *)titleFont
+{
+    return [UIFont fontWithName:kPlutoBold size:14.0f];
 }
 
 + (UIFont *)nameFont
@@ -151,11 +160,26 @@ static const CGFloat kYOffset = 5.0f;
 {
     [super drawRect:rect];
     
-    // Draw background
-    [self.backgroundImage drawAtPoint:CGPointZero];
+    CGPoint bgOrigin;
+    
+    // If we are the first draw title
+    if (self.type == HighlightViewCellTypeFirst) {
+        // Draw background
+        bgOrigin = CGPointMake(0.0f, kTitleHeight);
+        [self.backgroundImage drawAtPoint:bgOrigin];
+        
+        // Draw title
+        [kHighlightTitle drawAtPoint:CGPointMake(7.5f, 0.0f) withFont:[[self class] titleFont]];
+    }
+    else {
+        // Draw background
+        bgOrigin = CGPointZero;
+        [self.backgroundImage drawAtPoint:bgOrigin];
+    }
+    
     
     // Draw name
-    CGFloat yOffset = (self.type == HighlightViewCellTypeFirst) ? kTopYOffset : kYOffset;
+    CGFloat yOffset = (self.type == HighlightViewCellTypeFirst) ? kTopYOffset + kTitleHeight : kYOffset;
     
     UIColor *textColor = UIColorFromRGB(kHighlightTextColor);
     [textColor set];
@@ -168,7 +192,7 @@ static const CGFloat kYOffset = 5.0f;
     
     // Draw line at bottom, as long as we aren't the last cell
     if (self.type != HighlightViewCellTypeLast) {
-        CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, [[self class] heightForType:self.type] - 1.0f);
+        CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, [[self class] heightForType:self.type]);
         [self drawHorizontalLineStartingAt:origin withLength:kLineLength];
     }
 }

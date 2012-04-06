@@ -20,7 +20,7 @@
 
 + (CGFloat)height
 {
-    return [@"Notables" sizeWithFont:[self font]].height - 4.0f; // Negative leading..
+    return [@"Highlights" sizeWithFont:[self font]].height - 4.0f; // Negative leading..
 }
 
 
@@ -31,7 +31,7 @@
         // Initialization code
         self.title = @"";
         
-        self.clipsToBounds = NO;
+        [self setClipsToBounds:NO];
     }
     return self;
 }

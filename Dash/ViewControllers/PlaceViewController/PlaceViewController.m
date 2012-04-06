@@ -32,6 +32,7 @@
 @synthesize moreInfoCell = _moreInfoCell;
 @synthesize themeColor = _themeColor;
 @synthesize toolbar = _toolbar;
+@synthesize highlightTitle = _highlightTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -111,7 +112,6 @@
 {
     // Set the custom nav bar
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBar.png"] forBarMetrics:UIBarMetricsDefault];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -172,10 +172,6 @@
 
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row
 {
-    if (row == 0) {
-        return [TitleViewCell height];
-    }
-    
     CGFloat height = [HighlightViewCell heightForType:[self highlightViewCellTypeForRow:row]];
     
     return height;
@@ -203,8 +199,8 @@
 {
     // Figure out which type
     HighlightViewCellType type;
-    NSInteger firstHighlightRow = 1;
-    NSInteger lastHighlightRow = [self.highlights count];
+    NSInteger firstHighlightRow = 0;
+    NSInteger lastHighlightRow = [self.highlights count] - 1;
     
     if (row == firstHighlightRow)
         type = HighlightViewCellTypeFirst;
@@ -238,7 +234,7 @@
             numRows = 1;
             break;
         case kPlaceHighlightsSection:
-            numRows = [self.highlights count] + 1; // Plus 1 for the title
+            numRows = [self.highlights count];
             break;
         case kPlaceFootprintsSection:
             break;
@@ -329,9 +325,6 @@
 
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    if (row == 0)
-        return [self titleViewCellForTableView:tableView WithTitle:@"Highlights"];
-    
     static NSString *CellIdentifier = @"Cell";
     
     HighlightViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -339,7 +332,7 @@
         cell = [[HighlightViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier type:[self highlightViewCellTypeForRow:row]];
     }
     
-    Highlight *highlight = [self.highlights objectAtIndex:(row - 1)];
+    Highlight *highlight = [self.highlights objectAtIndex:row];
     [cell setWithHighlight:highlight];
     
     return cell;

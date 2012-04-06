@@ -35,6 +35,7 @@ typedef enum {
 
 @class Place;
 @class DashAPI;
+@class TitleViewCell;
 
 @interface PlaceViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -47,6 +48,8 @@ typedef enum {
 @property (nonatomic, strong) MoreInfoViewCell *moreInfoCell;
 @property (nonatomic) PlaceThemeColor themeColor;
 @property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
+
+@property (nonatomic, strong) TitleViewCell *highlightTitle;
 
 /** Should only call after the view loads. Cascades appropriate changes to view properties as necessary.
  */
