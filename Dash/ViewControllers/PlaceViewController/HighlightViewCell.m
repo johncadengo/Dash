@@ -20,6 +20,29 @@
 @synthesize type = _type;
 @synthesize backgroundImage = _backgroundImage;
 
+static const CGFloat topHeight = 45.0f;
+static const CGFloat middleHeight = 40.0f;
+static const CGFloat bottomHeight = 50.0f;
+
++ (CGFloat) heightForType:(HighlightViewCellType) type
+{
+    CGFloat height;
+    
+    switch (type) {
+        case HighlightViewCellTypeFirst:
+            height = topHeight;
+            break;
+        case HighlightViewCellTypeLast:
+            height = bottomHeight;
+            break;
+        default:
+            height = middleHeight;
+            break;
+    }
+    
+    return height;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -73,7 +96,7 @@
 - (void)setWithHighlight:(Highlight *)highlight
 {
     // Set our properties
-    self.name = [NSString stringWithFormat:@"%@", highlight.text];
+    self.name = [[NSString stringWithFormat:@"%@", highlight.text] capitalizedString];
     self.author = [NSString stringWithFormat:@"%@", highlight.author.name];
     
     // And draw them
@@ -94,7 +117,7 @@
     UIColor *textColor = UIColorFromRGB(kHighlightTextColor);
     [textColor set];
     
-    [self.name drawAtPoint:CGPointMake(5.0f, 5.0f) withFont:font];
+    [self.name drawAtPoint:CGPointMake(15.0f, 10.0f) withFont:font];
 }
 
 @end

@@ -23,6 +23,8 @@ typedef enum {
 @property (nonatomic) HighlightViewCellType type;
 @property (nonatomic, strong) UIImage *backgroundImage;
 
++ (CGFloat) heightForType:(HighlightViewCellType) type;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier type:(HighlightViewCellType)type;
 
 - (void)setWithHighlight:(Highlight *)highlight;

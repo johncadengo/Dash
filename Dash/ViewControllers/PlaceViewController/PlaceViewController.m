@@ -176,7 +176,7 @@
         return [TitleViewCell height];
     }
     
-    CGFloat height = 40.0f;
+    CGFloat height = [HighlightViewCell heightForType:[self highlightViewCellTypeForRow:row]];
     
     return height;
 }
@@ -197,6 +197,23 @@
     CGFloat height = 0.0f;
     
     return height;    
+}
+
+- (HighlightViewCellType)highlightViewCellTypeForRow:(NSInteger)row
+{
+    // Figure out which type
+    HighlightViewCellType type;
+    NSInteger firstHighlightRow = 1;
+    NSInteger lastHighlightRow = [self.highlights count];
+    
+    if (row == firstHighlightRow)
+        type = HighlightViewCellTypeFirst;
+    else if (row == lastHighlightRow)
+        type = HighlightViewCellTypeLast;
+    else 
+        type = HighlightViewCellTypeMiddle;
+    
+    return type;
 }
 
 #pragma mark - Table view data source
@@ -315,23 +332,11 @@
     if (row == 0)
         return [self titleViewCellForTableView:tableView WithTitle:@"Highlights"];
     
-    // Figure out which type
-    HighlightViewCellType type;
-    NSInteger firstHighlightRow = 1;
-    NSInteger lastHighlightRow = [self.highlights count];
-    
-    if (row == firstHighlightRow)
-        type = HighlightViewCellTypeFirst;
-    else if (row == lastHighlightRow)
-        type = HighlightViewCellTypeLast;
-    else 
-        type = HighlightViewCellTypeMiddle;
-    
     static NSString *CellIdentifier = @"Cell";
     
     HighlightViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[HighlightViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier type:type];
+        cell = [[HighlightViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier type:[self highlightViewCellTypeForRow:row]];
     }
     
     Highlight *highlight = [self.highlights objectAtIndex:(row - 1)];

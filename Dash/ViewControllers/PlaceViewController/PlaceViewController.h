@@ -8,6 +8,7 @@
 
 #import "TISwipeableTableView.h"
 #import "MoreInfoViewCell.h"
+#import "HighlightViewCell.h"
 
 #pragma mark - Constants
 /** Sections
@@ -55,6 +56,7 @@ typedef enum {
 - (CGFloat)heightForBadgeSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row;
 
+- (HighlightViewCellType)highlightViewCellTypeForRow:(NSInteger)row;
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)badgesSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
