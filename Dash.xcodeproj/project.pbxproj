@@ -185,6 +185,7 @@
 		67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DDAC0714EEF0E90018CD36 /* Recommend.m */; };
 		67DE842C152F7EFF00556C54 /* Heart-Gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */; };
 		67DE842D152F7EFF00556C54 /* Heart-Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842B152F7EFF00556C54 /* Heart-Red@2x.png */; };
+		67DE8430152F8CCF00556C54 /* BadgeSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DE842F152F8CCE00556C54 /* BadgeSquareView.m */; };
 		67E7CA92146A2C0B00B7CBCF /* Dash.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA90146A2C0B00B7CBCF /* Dash.png */; };
 		67E7CA93146A2C0B00B7CBCF /* DashApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA91146A2C0B00B7CBCF /* DashApp.png */; };
 		67E7D94E146862E000E86F31 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -549,6 +550,8 @@
 		67DDAC0714EEF0E90018CD36 /* Recommend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recommend.m; path = "Data Model/Actions/PlaceActions/Recommend.m"; sourceTree = "<group>"; };
 		67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Heart-Gray@2x.png"; path = "Dash/Images/PlaceProfile/Heart-Gray@2x.png"; sourceTree = "<group>"; };
 		67DE842B152F7EFF00556C54 /* Heart-Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Heart-Red@2x.png"; path = "Dash/Images/PlaceProfile/Heart-Red@2x.png"; sourceTree = "<group>"; };
+		67DE842E152F8CCE00556C54 /* BadgeSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BadgeSquareView.h; path = Dash/ViewControllers/PlaceViewController/BadgeSquareView.h; sourceTree = "<group>"; };
+		67DE842F152F8CCE00556C54 /* BadgeSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BadgeSquareView.m; path = Dash/ViewControllers/PlaceViewController/BadgeSquareView.m; sourceTree = "<group>"; };
 		67E7CA90146A2C0B00B7CBCF /* Dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dash.png; path = Dash/Images/Icons/Dash.png; sourceTree = "<group>"; };
 		67E7CA91146A2C0B00B7CBCF /* DashApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DashApp.png; path = Dash/Images/Icons/DashApp.png; sourceTree = "<group>"; };
 		67E7D94C146862E000E86F31 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGORefreshTableHeaderView.h; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
@@ -656,6 +659,8 @@
 				6789D2C3152E28A70029BF48 /* BadgesViewCell.m */,
 				6789D2D4152E39C60029BF48 /* HighlightViewCell.h */,
 				6789D2D5152E39C60029BF48 /* HighlightViewCell.m */,
+				67DE842E152F8CCE00556C54 /* BadgeSquareView.h */,
+				67DE842F152F8CCE00556C54 /* BadgeSquareView.m */,
 			);
 			name = PlaceViewController;
 			sourceTree = "<group>";
@@ -1750,6 +1755,7 @@
 				6789D2C1152E1A920029BF48 /* TitleViewCell.m in Sources */,
 				6789D2C4152E28A70029BF48 /* BadgesViewCell.m in Sources */,
 				6789D2D6152E39C60029BF48 /* HighlightViewCell.m in Sources */,
+				67DE8430152F8CCF00556C54 /* BadgeSquareView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
