@@ -168,7 +168,7 @@ static const CGFloat kYOffset = 5.0f;
     
     // Draw line at bottom, as long as we aren't the last cell
     if (self.type != HighlightViewCellTypeLast) {
-        CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, [[self class] heightForType:self.type]);
+        CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, [[self class] heightForType:self.type] - 1.0f);
         [self drawHorizontalLineStartingAt:origin withLength:kLineLength];
     }
 }
