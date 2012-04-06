@@ -118,7 +118,7 @@
 
 #pragma mark -
 
-- (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
+- (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length
 {
     // Get the context
     CGContextRef context = UIGraphicsGetCurrentContext();	

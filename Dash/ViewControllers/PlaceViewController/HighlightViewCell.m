@@ -20,9 +20,15 @@
 @synthesize type = _type;
 @synthesize backgroundImage = _backgroundImage;
 
-static const CGFloat topHeight = 45.0f;
-static const CGFloat middleHeight = 40.0f;
-static const CGFloat bottomHeight = 50.0f;
+static const CGFloat kTopHeight = 45.0f;
+static const CGFloat kMiddleHeight = 40.0f;
+static const CGFloat kBottomHeight = 50.0f;
+
+static const CGFloat kWidth = 320.0f;
+static const CGFloat kLineLength = 283.0f;
+
+static const CGFloat kTopYOffset = 10.0f;
+static const CGFloat kYOffset = 5.0f;
 
 + (CGFloat) heightForType:(HighlightViewCellType) type
 {
@@ -30,17 +36,27 @@ static const CGFloat bottomHeight = 50.0f;
     
     switch (type) {
         case HighlightViewCellTypeFirst:
-            height = topHeight;
+            height = kTopHeight;
             break;
         case HighlightViewCellTypeLast:
-            height = bottomHeight;
+            height = kBottomHeight;
             break;
         default:
-            height = middleHeight;
+            height = kMiddleHeight;
             break;
     }
     
     return height;
+}
+
++ (UIFont *)nameFont
+{
+    return [UIFont systemFontOfSize:14.0f];
+}
+
++ (UIFont *)authorFont
+{
+    return [UIFont systemFontOfSize:10.0f];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -59,6 +75,8 @@ static const CGFloat bottomHeight = 50.0f;
     if (self) {
         // Now initiate the type
         self.type = type;
+        
+        //[self setBackgroundView:[[UIImageView alloc] initWithImage:self.backgroundImage]];
     }
     
     return self;
@@ -97,13 +115,37 @@ static const CGFloat bottomHeight = 50.0f;
 {
     // Set our properties
     self.name = [[NSString stringWithFormat:@"%@", highlight.text] capitalizedString];
-    self.author = [NSString stringWithFormat:@"%@", highlight.author.name];
+    
+    // TODO: Test if works with normal users..
+    NSString *author;
+    if ([highlight.author.name isEqualToString:@"John"])
+        author = [NSString stringWithFormat:@"%@", @"The Dash Team"];
+    else
+        author = [NSString stringWithFormat:@"%@", highlight.author.name];
+    self.author = author;
     
     // And draw them
     [self setNeedsDisplay];
 }
 
 #pragma mark - Draw
+
+- (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length
+{
+    // Get the context
+    CGContextRef context = UIGraphicsGetCurrentContext();	
+    
+    // Set the stroke color and width of the pen
+    CGContextSetStrokeColorWithColor(context, UIColorFromRGB(kHighlightLinesColor).CGColor);
+    CGContextSetLineWidth(context, 1.0f);
+    
+	// Set the starting and ending points
+	CGContextMoveToPoint(context, origin.x, origin.y);
+    CGContextAddLineToPoint(context, origin.x + length, origin.y);
+    
+	// Draw the line
+    CGContextStrokePath(context);    
+}
 
 - (void)drawRect:(CGRect)rect
 {
@@ -112,12 +154,23 @@ static const CGFloat bottomHeight = 50.0f;
     // Draw background
     [self.backgroundImage drawAtPoint:CGPointZero];
     
-    // Draw text
-    UIFont *font = [UIFont systemFontOfSize:14.0f];
+    // Draw name
+    CGFloat yOffset = (self.type == HighlightViewCellTypeFirst) ? kTopYOffset : kYOffset;
+    
     UIColor *textColor = UIColorFromRGB(kHighlightTextColor);
     [textColor set];
+    [self.name drawAtPoint:CGPointMake(15.0f, yOffset) withFont:[[self class] nameFont]];
     
-    [self.name drawAtPoint:CGPointMake(15.0f, 10.0f) withFont:font];
+    // Draw author
+    textColor = UIColorFromRGB(kHighlightAuthorColor);
+    [textColor set];
+    [self.author drawAtPoint:CGPointMake(16.0f, yOffset + 14.0f) withFont:[[self class] authorFont]];
+    
+    // Draw line at bottom, as long as we aren't the last cell
+    if (self.type != HighlightViewCellTypeLast) {
+        CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, [[self class] heightForType:self.type]);
+        [self drawHorizontalLineStartingAt:origin withLength:kLineLength];
+    }
 }
 
 @end

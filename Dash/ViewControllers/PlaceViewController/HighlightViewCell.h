@@ -24,9 +24,12 @@ typedef enum {
 @property (nonatomic, strong) UIImage *backgroundImage;
 
 + (CGFloat) heightForType:(HighlightViewCellType) type;
++ (UIFont *)nameFont;
++ (UIFont *)authorFont;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier type:(HighlightViewCellType)type;
 
 - (void)setWithHighlight:(Highlight *)highlight;
+- (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 
 @end
