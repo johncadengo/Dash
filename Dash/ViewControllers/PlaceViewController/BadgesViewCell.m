@@ -81,9 +81,9 @@
     }
     
     // Now adjust content size of the scroll view based on how many badges we have
-    NSInteger pages = ((BadgeSquareView.size.width * [self.badgesViews count]) / BadgeSquareView.size.width) + 1;
-    
-    [self.scrollView setContentSize:CGSizeMake(BadgeSquareView.size.width * pages, BadgeSquareView.size.height)];
+    NSInteger pages = ((BadgeSquareView.size.width * [self.badgesViews count]) / 300) + 1;
+    NSLog(@"%d", pages);
+    [self.scrollView setContentSize:CGSizeMake(300.0f * pages, BadgeSquareView.size.height)];
 }
 
 @end
