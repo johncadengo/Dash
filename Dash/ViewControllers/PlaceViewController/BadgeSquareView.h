@@ -13,7 +13,7 @@
 @interface BadgeSquareView : UIView
 
 @property (nonatomic, strong) UIImage *icon;
-@property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) UILabel *label;
 
 + (CGSize)size;
 

@@ -26,7 +26,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Scroll view
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(9.0f, 10.0f, 300.0f, BadgeSquareView.size.height)];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10.0f, (([[self class] height] - BadgeSquareView.size.height) / 2.0f) - 2.0f, 300.0f, BadgeSquareView.size.height)];
+        [self.scrollView setScrollEnabled:YES];
+        [self.scrollView setPagingEnabled:YES];
         [self addSubview:self.scrollView];
         
         [self setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BadgeBubble.png"]]];
@@ -65,6 +67,23 @@
         [self.badgesViews addObject:squareView];
         [self.scrollView addSubview:squareView];
     }
+    for (Badge *badge in _badges) {
+        BadgeSquareView *squareView = [[BadgeSquareView alloc] initWithFrame:[self frameForBadgeIndex:[self.badgesViews count]]];
+        [squareView setWithBadge:badge];
+        [self.badgesViews addObject:squareView];
+        [self.scrollView addSubview:squareView];
+    }
+    for (Badge *badge in _badges) {
+        BadgeSquareView *squareView = [[BadgeSquareView alloc] initWithFrame:[self frameForBadgeIndex:[self.badgesViews count]]];
+        [squareView setWithBadge:badge];
+        [self.badgesViews addObject:squareView];
+        [self.scrollView addSubview:squareView];
+    }
+    
+    // Now adjust content size of the scroll view based on how many badges we have
+    NSInteger pages = ((BadgeSquareView.size.width * [self.badgesViews count]) / BadgeSquareView.size.width) + 1;
+    
+    [self.scrollView setContentSize:CGSizeMake(BadgeSquareView.size.width * pages, BadgeSquareView.size.height)];
 }
 
 @end
