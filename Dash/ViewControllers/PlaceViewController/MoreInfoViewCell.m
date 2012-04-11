@@ -7,6 +7,7 @@
 //
 
 #import "MoreInfoViewCell.h"
+#import "Constants.h"
 
 @implementation MoreInfoViewCell
 
@@ -39,7 +40,15 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.mapButton.frame = CGRectMake(10.0f, 50.0f, 70.0f, 40.0f);
+        [self.mapButton setImage:[UIImage imageNamed:@"MapButton.png"] forState:UIControlStateNormal];
+        [self addSubview:self.mapButton];
         
+        self.callButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.callButton.frame = CGRectMake(10.0f, 100.0f, 70.0f, 40.0f);
+        [self.callButton setImage:[UIImage imageNamed:@"CallButton.png"] forState:UIControlStateNormal];
+        [self addSubview:self.callButton];
     }
     
     return self;

@@ -27,6 +27,9 @@ enum {
 extern NSString * const kWelcomeText;
 extern NSString * const kIntroText;
 extern NSString * const kSignUpText;
+extern NSString * const kMoreInfoAddress;
+extern NSString * const kMoreInfoPhone;
+extern NSString * const kMoreInfoHours;
 
 // Fonts
 extern NSString * const kPlutoExtraLight;

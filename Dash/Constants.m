@@ -12,6 +12,9 @@
 NSString * const kWelcomeText = @"Welcome to Dash"; 
 NSString * const kIntroText = @"Your very own personal restaurant consultant. Let's get started with creating an account so that we can make smart, customized suggestions for you, or you can simply make one later.";
 NSString *const kSignUpText = @"You are not signed in. Please log in with Facebook Connect, or directly into Dash.";
+NSString * const kMoreInfoAddress = @"Address";
+NSString * const kMoreInfoPhone = @"Phone";
+NSString * const kMoreInfoHours = @"Hours";
 
 #pragma mark - Fonts
 
