@@ -70,6 +70,7 @@
     
     // Draw the titles
     UIFont *titleFont = [UIFont fontWithName:kHelveticaNeueBold size:10.0f];
+    [UIColorFromRGB(kMoreInfoTextColor) set];
     [self.addressTitle drawAtPoint:CGPointMake(90.0f, 40.0f) withFont:titleFont];
     [self.phoneTitle drawAtPoint:CGPointMake(90.0f, 100.0f) withFont:titleFont];
     [self.hoursTitle drawAtPoint:CGPointMake(90.0f, 140.0f) withFont:titleFont];

@@ -21,6 +21,7 @@ enum {
     kHighlightLikesColor = 0x4d4d4d,
     kPlaceCategoriesTextColor = 0x434546,
     kPlaceTitlesTextColor = 0x434546,
+    kMoreInfoTextColor = 0x4d4d4d,
 };
 
 // Text
