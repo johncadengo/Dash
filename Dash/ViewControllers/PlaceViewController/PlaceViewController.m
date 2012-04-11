@@ -362,6 +362,8 @@
 {
     id cell;
 
+    // TODO: Make this happen
+    cell = nil;
     
     return cell;
 }
