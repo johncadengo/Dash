@@ -49,6 +49,10 @@
         self.callButton.frame = CGRectMake(10.0f, 100.0f, 70.0f, 40.0f);
         [self.callButton setImage:[UIImage imageNamed:@"CallButton.png"] forState:UIControlStateNormal];
         [self addSubview:self.callButton];
+        
+        self.addressTitle = kMoreInfoAddress;
+        self.phoneTitle = kMoreInfoPhone;
+        self.hoursTitle = kMoreInfoHours;
     }
     
     return self;
@@ -61,7 +65,15 @@
 {
     [super drawRect:rect];
     
+    // Draw the background
     [[UIImage imageNamed:@"MoreInformationButtonOpen.png"] drawAtPoint:CGPointZero]; 
+    
+    // Draw the titles
+    UIFont *titleFont = [UIFont fontWithName:kHelveticaNeueBold size:10.0f];
+    [self.addressTitle drawAtPoint:CGPointMake(90.0f, 40.0f) withFont:titleFont];
+    [self.phoneTitle drawAtPoint:CGPointMake(90.0f, 100.0f) withFont:titleFont];
+    [self.hoursTitle drawAtPoint:CGPointMake(90.0f, 140.0f) withFont:titleFont];
+    
     
 }
 
