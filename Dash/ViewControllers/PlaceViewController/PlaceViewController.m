@@ -373,7 +373,7 @@
     NSInteger row = [indexPath row];
     
     if (section == kPlaceMoreInfoSection) {
-        [self toggleMoreInfo];
+        self.moreInfoCell.open = !self.moreInfoCell.open;
     }
 }
 

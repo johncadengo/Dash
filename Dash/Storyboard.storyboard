@@ -219,7 +219,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfu-Cq-T6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="ZvP-bc-h0g" customClass="PlaceViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CZj-Gj-sfJ">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CZj-Gj-sfJ">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -369,7 +369,7 @@
         <class className="PlaceActionsViewController" superclassName="TISwipeableTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceActionsViewController.h"/>
         </class>
-        <class className="PlaceViewController" superclassName="TISwipeableTableViewController">
+        <class className="PlaceViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>

@@ -68,10 +68,6 @@ typedef enum {
 
 - (UITableViewCell *)titleViewCellForTableView:(UITableView *) tableView WithTitle:(NSString *)title;
 
-/** Will toggle whether or not the back view of the more info cell is shown.
- */
-- (void)toggleMoreInfo;
-
 - (void)heartTapped:(id)sender;
 
 @end
