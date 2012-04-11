@@ -10,6 +10,16 @@
 
 @implementation MoreInfoViewCell
 
+@synthesize mapButton = _mapButton;
+@synthesize callButton = _callButton;
+@synthesize addressLabel = _addressLabel;
+@synthesize addressTitle = _addressTitle;
+@synthesize phoneLabel = _phoneLabel;
+@synthesize phoneTitle = _phoneTitle;
+@synthesize hoursLabel = _hoursLabel;
+@synthesize hoursTitle = _hoursTitle;
+
+
 #pragma mark - UI Constants
 
 //static CGFloat kWindowWidth = 320.0f;

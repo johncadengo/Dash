@@ -401,8 +401,6 @@
 - (void)toggleMoreInfo
 {
     self.moreInfoOpen = !self.moreInfoOpen;
-    NSLog(@"open %d", self.moreInfoOpen);
-    
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kPlaceMoreInfoSection] 
                   withRowAnimation:UITableViewRowAnimationAutomatic];
 }
