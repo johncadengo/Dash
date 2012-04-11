@@ -6,9 +6,7 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "TISwipeableTableView.h"
-
-@class MoreInfoViewCell;
+@class Place;
 
 @interface MoreInfoViewCell : UITableViewCell <UIGestureRecognizerDelegate>
 
@@ -22,5 +20,9 @@
 @property (nonatomic, strong) UILabel *hoursLabel;
 
 + (CGFloat)height;
+
+- (void)setWithPlace:(Place *)place;
+- (void)call:(id)sender;
+- (void)map:(id)sender;
 
 @end

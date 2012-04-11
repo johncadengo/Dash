@@ -311,6 +311,7 @@
             
             // Connect us to the cell
             [self setMoreInfoCell:(MoreInfoViewCell *)cell];
+            [self.moreInfoCell setWithPlace:self.place];
         }
         else {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
