@@ -40,6 +40,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        // Buttons
         self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.mapButton.frame = CGRectMake(15.0f, 50.0f, 70.0f, 40.0f);
         [self.mapButton setImage:[UIImage imageNamed:@"MapButton.png"] forState:UIControlStateNormal];
@@ -50,9 +51,37 @@
         [self.callButton setImage:[UIImage imageNamed:@"CallButton.png"] forState:UIControlStateNormal];
         [self addSubview:self.callButton];
         
+        // Titles
         self.addressTitle = kMoreInfoAddress;
         self.phoneTitle = kMoreInfoPhone;
         self.hoursTitle = kMoreInfoHours;
+        
+        // Labels
+        UIFont *labelFont = [UIFont fontWithName:kHelveticaNeueBold size:14.0f];
+        UIColor *labelColor = UIColorFromRGB(kMoreInfoTextColor);
+        self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 50.0f, 165.0f, 42.0f)];
+        self.addressLabel.numberOfLines = 2;
+        self.addressLabel.textColor = labelColor;
+        self.addressLabel.font = labelFont;
+        self.addressLabel.lineBreakMode = UILineBreakModeWordWrap;
+        self.addressLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.addressLabel];
+        
+        self.phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 110.0f, 165.0f, 20.0f)];
+        self.phoneLabel.numberOfLines = 1;
+        self.phoneLabel.textColor = labelColor;
+        self.phoneLabel.font = labelFont;
+        self.phoneLabel.lineBreakMode = UILineBreakModeTailTruncation;
+        self.phoneLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.phoneLabel];
+        
+        self.hoursLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 150.0f, 165.0f, 42.0f)];
+        self.hoursLabel.numberOfLines = 2;
+        self.hoursLabel.textColor = labelColor;
+        self.hoursLabel.font = labelFont;
+        self.hoursLabel.lineBreakMode = UILineBreakModeWordWrap;
+        self.hoursLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.hoursLabel];
     }
     
     return self;
@@ -71,9 +100,9 @@
     // Draw the titles
     UIFont *titleFont = [UIFont fontWithName:kHelveticaNeueBold size:10.0f];
     [UIColorFromRGB(kMoreInfoTextColor) set];
-    [self.addressTitle drawAtPoint:CGPointMake(95.0f, 40.0f) withFont:titleFont];
-    [self.phoneTitle drawAtPoint:CGPointMake(95.0f, 100.0f) withFont:titleFont];
-    [self.hoursTitle drawAtPoint:CGPointMake(95.0f, 140.0f) withFont:titleFont];
+    [self.addressTitle drawAtPoint:CGPointMake(100.0f, 40.0f) withFont:titleFont];
+    [self.phoneTitle drawAtPoint:CGPointMake(100.0f, 100.0f) withFont:titleFont];
+    [self.hoursTitle drawAtPoint:CGPointMake(100.0f, 140.0f) withFont:titleFont];
     
     
 }
