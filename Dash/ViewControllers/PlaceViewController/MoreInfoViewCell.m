@@ -41,12 +41,12 @@
     
     if (self) {
         self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.mapButton.frame = CGRectMake(10.0f, 50.0f, 70.0f, 40.0f);
+        self.mapButton.frame = CGRectMake(15.0f, 50.0f, 70.0f, 40.0f);
         [self.mapButton setImage:[UIImage imageNamed:@"MapButton.png"] forState:UIControlStateNormal];
         [self addSubview:self.mapButton];
         
         self.callButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.callButton.frame = CGRectMake(10.0f, 100.0f, 70.0f, 40.0f);
+        self.callButton.frame = CGRectMake(15.0f, 100.0f, 70.0f, 40.0f);
         [self.callButton setImage:[UIImage imageNamed:@"CallButton.png"] forState:UIControlStateNormal];
         [self addSubview:self.callButton];
         
@@ -71,9 +71,9 @@
     // Draw the titles
     UIFont *titleFont = [UIFont fontWithName:kHelveticaNeueBold size:10.0f];
     [UIColorFromRGB(kMoreInfoTextColor) set];
-    [self.addressTitle drawAtPoint:CGPointMake(90.0f, 40.0f) withFont:titleFont];
-    [self.phoneTitle drawAtPoint:CGPointMake(90.0f, 100.0f) withFont:titleFont];
-    [self.hoursTitle drawAtPoint:CGPointMake(90.0f, 140.0f) withFont:titleFont];
+    [self.addressTitle drawAtPoint:CGPointMake(95.0f, 40.0f) withFont:titleFont];
+    [self.phoneTitle drawAtPoint:CGPointMake(95.0f, 100.0f) withFont:titleFont];
+    [self.hoursTitle drawAtPoint:CGPointMake(95.0f, 140.0f) withFont:titleFont];
     
     
 }
