@@ -12,8 +12,6 @@
 
 @interface MoreInfoViewCell : UITableViewCell <UIGestureRecognizerDelegate>
 
-@property (nonatomic) BOOL open;
-
 + (CGFloat)height;
 
 @end

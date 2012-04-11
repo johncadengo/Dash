@@ -118,9 +118,11 @@ NSString * const kHighlightTitle = @"Highlights";
 
 - (void)setType:(HighlightViewCellType)type
 {
+    _type = type;
+    
     // Adjust the background bubble accordingly
     NSString *imageName;
-    switch (type) {
+    switch (_type) {
         case HighlightViewCellTypeFirst:
             imageName = @"HighlightTop.png";
             break;
@@ -133,9 +135,6 @@ NSString * const kHighlightTitle = @"Highlights";
     }
     
     self.backgroundImage = [UIImage imageNamed:imageName];
-    
-    // Now save the type
-    _type = type;
 }
 
 - (void)setWithHighlight:(Highlight *)highlight

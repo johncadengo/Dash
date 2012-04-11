@@ -44,9 +44,10 @@ typedef enum {
 @property (nonatomic, strong) NSMutableArray *badges;
 @property (nonatomic, strong) NSMutableArray *highlights;
 @property (nonatomic, strong) NSMutableArray *footprints;
-@property (nonatomic, strong) MoreInfoViewCell *moreInfoCell;
 @property (nonatomic) PlaceThemeColor themeColor;
 @property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, strong) MoreInfoViewCell *moreInfoCell;
+@property (nonatomic) BOOL moreInfoOpen;
 
 @property (nonatomic, strong) TitleViewCell *highlightTitle;
 
@@ -57,6 +58,7 @@ typedef enum {
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForBadgeSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row;
+- (CGFloat)heightForMoreInforSection;
 
 - (HighlightViewCellType)highlightViewCellTypeForRow:(NSInteger)row;
 
@@ -69,5 +71,6 @@ typedef enum {
 - (UITableViewCell *)titleViewCellForTableView:(UITableView *) tableView WithTitle:(NSString *)title;
 
 - (void)heartTapped:(id)sender;
+- (void)toggleMoreInfo;
 
 @end

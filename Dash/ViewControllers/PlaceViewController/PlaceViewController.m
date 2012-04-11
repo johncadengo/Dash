@@ -29,16 +29,18 @@
 @synthesize badges = _badges;
 @synthesize highlights = _highlights;
 @synthesize footprints = _footprints;
-@synthesize moreInfoCell = _moreInfoCell;
 @synthesize themeColor = _themeColor;
 @synthesize toolbar = _toolbar;
 @synthesize highlightTitle = _highlightTitle;
+@synthesize moreInfoCell = _moreInfoCell;
+@synthesize moreInfoOpen = _moreInfoOpen;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        // By default more info is closed
+        self.moreInfoOpen = NO;
     }
     return self;
 }
@@ -154,7 +156,7 @@
             height = [self heightForBadgeSectionCellForRow:row];
             break;
         case kPlaceMoreInfoSection:
-            height = [MoreInfoViewCell height];
+            height = [self heightForMoreInforSection];
             break;
         case kPlaceHighlightsSection:
             height = [self heightForHighlightSectionCellForRow:row];
@@ -193,6 +195,11 @@
     CGFloat height = 0.0f;
     
     return height;    
+}
+
+- (CGFloat)heightForMoreInforSection
+{
+    return (self.moreInfoOpen) ? [MoreInfoViewCell height] : 40.0f;
 }
 
 - (HighlightViewCellType)highlightViewCellTypeForRow:(NSInteger)row
@@ -296,14 +303,20 @@
 
 - (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView
 {
-    MoreInfoViewCell *cell = (MoreInfoViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoCellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoCellIdentifier];
     
     if (cell == nil) {
-        cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
+        if (self.moreInfoOpen) {
+            cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
+            
+            // Connect us to the cell
+            [self setMoreInfoCell:(MoreInfoViewCell *)cell];
+        }
+        else {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
+            cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MoreInformationButton.png"]];
+        }
     }
-    
-    // Connect us to the cell
-    [self setMoreInfoCell:cell];
     
     return cell;
 }
@@ -333,6 +346,9 @@
     if (cell == nil) {
         cell = [[HighlightViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier type:[self highlightViewCellTypeForRow:row]];
     }
+    
+    // Set the type always, not just when creating a new cell
+    cell.type = [self highlightViewCellTypeForRow:row];
     
     Highlight *highlight = [self.highlights objectAtIndex:row];
     [cell setWithHighlight:highlight];
@@ -370,10 +386,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger section = [indexPath section];
-    NSInteger row = [indexPath row];
     
     if (section == kPlaceMoreInfoSection) {
-        self.moreInfoCell.open = !self.moreInfoCell.open;
+        [self toggleMoreInfo];
     }
 }
 
@@ -383,7 +398,11 @@
 
 - (void)toggleMoreInfo
 {
-    //([self.moreInfoCell.backView isHidden]) ? [self.moreInfoCell revealBackView] : [self.moreInfoCell hideBackView];
+    self.moreInfoOpen = !self.moreInfoOpen;
+    NSLog(@"open %d", self.moreInfoOpen);
+    
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kPlaceMoreInfoSection] 
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Buttons

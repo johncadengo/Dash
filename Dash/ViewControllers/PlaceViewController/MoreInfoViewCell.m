@@ -10,8 +10,6 @@
 
 @implementation MoreInfoViewCell
 
-@synthesize open = _open;
-
 #pragma mark - UI Constants
 
 //static CGFloat kWindowWidth = 320.0f;
@@ -21,7 +19,7 @@
 
 + (CGFloat)height
 {
-    return 42.0f;
+    return 200.0f;
 }
 
 #pragma mark - Initialization
@@ -31,21 +29,10 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        // By default, we are closed
-        self.open = NO;
+        
     }
     
     return self;
-}
-
-#pragma mark - Open/Close Logic
-
-/** Override setter to actually open and close
- */
-- (void)setOpen:(BOOL)open
-{
-    _open = open;
-    NSLog(@"More Info Open: %d", open);
 }
 
 #pragma mark - 
@@ -55,7 +42,7 @@
 {
     [super drawRect:rect];
     
-    [[UIImage imageNamed:@"MoreInformationButton.png"] drawAtPoint:CGPointZero]; 
+    [[UIImage imageNamed:@"MoreInformationButtonOpen.png"] drawAtPoint:CGPointZero]; 
     
 }
 

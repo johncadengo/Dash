@@ -137,6 +137,9 @@
 		679009F21450ED8800511E0F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F11450ED8800511E0F /* SearchViewController.m */; };
 		679009F51450ED9B00511E0F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009F41450ED9B00511E0F /* ProfileViewController.m */; };
 		6796A8EF1461CC2500F87D93 /* FeedViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */; };
+		6798E3B31535EBE800539E1C /* MoreInformationButtonOpen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6798E3B21535EBE800539E1C /* MoreInformationButtonOpen@2x.png */; };
+		6798E3B61535EC2A00539E1C /* CallButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6798E3B41535EC2A00539E1C /* CallButton@2x.png */; };
+		6798E3B71535EC2A00539E1C /* MapButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6798E3B51535EC2A00539E1C /* MapButton@2x.png */; };
 		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
 		679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F91469D19600E0CDE2 /* Photo+Helper.m */; };
 		679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */; };
@@ -476,6 +479,9 @@
 		679009F41450ED9B00511E0F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Dash/ViewControllers/ProfileViewController/ProfileViewController.m; sourceTree = "<group>"; };
 		6796A8ED1461CC2500F87D93 /* FeedViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewControllerTests.h; path = ApplicationTests/FeedViewControllerTests.h; sourceTree = "<group>"; };
 		6796A8EE1461CC2500F87D93 /* FeedViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewControllerTests.m; path = ApplicationTests/FeedViewControllerTests.m; sourceTree = "<group>"; };
+		6798E3B21535EBE800539E1C /* MoreInformationButtonOpen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MoreInformationButtonOpen@2x.png"; path = "Dash/Images/PlaceProfile/MoreInformationButtonOpen@2x.png"; sourceTree = "<group>"; };
+		6798E3B41535EC2A00539E1C /* CallButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CallButton@2x.png"; path = "Dash/Images/PlaceProfile/CallButton@2x.png"; sourceTree = "<group>"; };
+		6798E3B51535EC2A00539E1C /* MapButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MapButton@2x.png"; path = "Dash/Images/PlaceProfile/MapButton@2x.png"; sourceTree = "<group>"; };
 		679A48F51469D02F00E0CDE2 /* FeedbackActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackActivityCell.h; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.h; sourceTree = "<group>"; };
 		679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackActivityCell.m; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.m; sourceTree = "<group>"; };
 		679A48F81469D19500E0CDE2 /* Photo+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Photo+Helper.h"; path = "Data Model/Abstract/Photo+Helper.h"; sourceTree = "<group>"; };
@@ -1106,6 +1112,9 @@
 				6789D2DB152E61A80029BF48 /* HighlightTop@2x.png */,
 				6789D2CA152E349C0029BF48 /* MoreInformationBubble@2x.png */,
 				6789D2D7152E47720029BF48 /* MoreInformationButton@2x.png */,
+				6798E3B21535EBE800539E1C /* MoreInformationButtonOpen@2x.png */,
+				6798E3B41535EC2A00539E1C /* CallButton@2x.png */,
+				6798E3B51535EC2A00539E1C /* MapButton@2x.png */,
 				6789D2CB152E349C0029BF48 /* ThumbsDownButton@2x.png */,
 				6789D2CC152E349C0029BF48 /* ThumbsUpButton@2x.png */,
 			);
@@ -1645,6 +1654,9 @@
 				67B378D01534BE9E00A2A4CB /* NewspaperIcon@2x.png in Resources */,
 				67B378D11534BE9E00A2A4CB /* SpoonForkKnife@2x.png in Resources */,
 				67B378D21534BE9E00A2A4CB /* TVIcon@2x.png in Resources */,
+				6798E3B31535EBE800539E1C /* MoreInformationButtonOpen@2x.png in Resources */,
+				6798E3B61535EC2A00539E1C /* CallButton@2x.png in Resources */,
+				6798E3B71535EC2A00539E1C /* MapButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
