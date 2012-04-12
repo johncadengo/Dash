@@ -32,7 +32,7 @@
 
 static const CGFloat kWidth = 320.0f;
 static const CGFloat kLineLength = 284.0f;
-static const CGFloat kPadding = 15.0f;
+static const CGFloat kPadding = 20.0f;
 
 static const CGFloat kTopHeight = 90.0f;
 static const CGFloat kMiddleHeight = 63.0f;
@@ -184,10 +184,13 @@ static const CGFloat kYOffset = 8.0f;
     [self.backgroundImage drawAtPoint:CGPointZero];
     
     // Draw the title, the name
+    [UIColorFromRGB(kRecommendedPlaceTitleColor) set];
     [self.name drawAtPoint:CGPointMake(kPadding, offset) withFont:[[self class] titleFont]];
     
     // Draw the subtitle, the category and the price and distance
-    
+    [UIColorFromRGB(kRecommendedPlaceSubtitleColor) set];
+    [self.category drawAtPoint:CGPointMake(kPadding, offset + 14.0f) withFont:[[self class] subtitleFont]];
+    [self.distancePrice drawAtPoint:CGPointMake(kPadding, offset + 24.0f) withFont:[[self class] subtitleFont]];
     
     // Icon
     CGSize iconSize = CGSizeMake(50.0f, 50.0f);

@@ -22,6 +22,8 @@ enum {
     kPlaceCategoriesTextColor = 0x434546,
     kPlaceTitlesTextColor = 0x434546,
     kMoreInfoTextColor = 0x4d4d4d,
+    kRecommendedPlaceTitleColor = 0x434546,
+    kRecommendedPlaceSubtitleColor = 0x7b7b7b,
 };
 
 // Text
