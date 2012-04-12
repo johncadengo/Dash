@@ -24,7 +24,8 @@
 
 #pragma mark - Some UI Constants
 
-static CGFloat kWindowWidth = 320.0f;
+static CGFloat kWidth = 320.0f;
+static CGFloat kLineLength = 284.0f;
 static CGFloat kPadding = 15.0f;
 
 static CGFloat kTopHeight = 80.0f;
@@ -120,7 +121,25 @@ static CGFloat kBottomHeight = 72.0f;
     [self setNeedsDisplay];    
 }
 
-#pragma mark - Drawing
+#pragma mark - Draw
+
+
+- (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length
+{
+    // Get the context
+    CGContextRef context = UIGraphicsGetCurrentContext();	
+    
+    // Set the stroke color and width of the pen
+    CGContextSetStrokeColorWithColor(context, UIColorFromRGB(kHighlightLinesColor).CGColor);
+    CGContextSetLineWidth(context, 1.0f);
+    
+	// Set the starting and ending points
+	CGContextMoveToPoint(context, origin.x, origin.y);
+    CGContextAddLineToPoint(context, origin.x + length, origin.y);
+    
+	// Draw the line
+    CGContextStrokePath(context);    
+}
 
 - (void)drawRect:(CGRect)rect
 {
@@ -131,7 +150,13 @@ static CGFloat kBottomHeight = 72.0f;
     
     // TODO: Some logic here
     CGSize iconSize = CGSizeMake(50.0f, 50.0f);
-    [self.icon drawAtPoint:CGPointMake(kWindowWidth - kPadding - iconSize.width, kPadding)];
+    [self.icon drawAtPoint:CGPointMake(kWidth - kPadding - iconSize.width, kPadding)];
+    
+    // Draw line at bottom, as long as we aren't the last cell
+    if (self.type != RecommendedPlaceViewCellTypeLast) {
+        CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, [[self class] heightForType:self.type]);
+        [self drawHorizontalLineStartingAt:origin withLength:kLineLength];
+    }
 }
 
 @end

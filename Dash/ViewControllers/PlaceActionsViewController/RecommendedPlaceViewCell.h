@@ -34,4 +34,6 @@ typedef enum {
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier type:(RecommendedPlaceViewCellType) cellType;
 - (void)setWithPlace:(Place *)place;
 
+- (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
+
 @end
