@@ -25,9 +25,9 @@
 #pragma mark - Some UI Constants
 
 static CGFloat kWindowWidth = 320.0f;
-static CGFloat kPadding = 5.0f;
+static CGFloat kPadding = 15.0f;
 
-static CGFloat kTopHeight = 68.0f;
+static CGFloat kTopHeight = 80.0f;
 static CGFloat kMiddleHeight = 64.0f;
 static CGFloat kBottomHeight = 72.0f;
 
@@ -130,7 +130,7 @@ static CGFloat kBottomHeight = 72.0f;
     [self.backgroundImage drawAtPoint:CGPointZero];
     
     // TODO: Some logic here
-    CGSize iconSize = CGSizeMake(62.5f, 62.5f);
+    CGSize iconSize = CGSizeMake(50.0f, 50.0f);
     [self.icon drawAtPoint:CGPointMake(kWindowWidth - kPadding - iconSize.width, kPadding)];
 }
 

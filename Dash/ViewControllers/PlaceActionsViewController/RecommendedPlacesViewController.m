@@ -63,6 +63,9 @@
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
     
+    // Change the color of the background..
+    self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
+    
     // Make a call to the api
     [self refreshFeed]; 
 }
@@ -177,6 +180,7 @@
     // Always update type
     [cell setType:[self recommendedPlaceViewCellTypeForRow:row]];
     [cell setWithPlace:[[self.feedItems objectAtIndex:row] place]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -185,8 +189,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    
     NSUInteger row = [indexPath row];
     
     PlaceAction *placeAction = [self.feedItems objectAtIndex:row];
