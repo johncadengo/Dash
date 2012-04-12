@@ -12,9 +12,15 @@
 #import "PlaceAction.h"
 #import "Constants.h"
 #import "NSArray+Helpers.h"
+#import "JCLocationManagerSingleton.h"
+#import "PopLocation.h"
+#import "PlaceLocation.h"
+#import "Location+Helper.h"
+#import "Location.h"
 
 @implementation RecommendedPlaceViewCell
 
+@synthesize context = _context;
 @synthesize type = _type;
 @synthesize name = _name;
 @synthesize category = _category;
@@ -111,16 +117,40 @@ static const CGFloat kYOffset = 8.0f;
     self.backgroundImage = [UIImage imageNamed:imageName];
 }
 
-- (void)setWithPlace:(Place *)place
+
+- (NSNumber *)calculateDistanceFromPlace:(Place *)place
 {
+    // Find out where we are
+    CLLocationManager *manager = [JCLocationManagerSingleton sharedInstance];
+    CLLocation *loc = [manager location];
+    
+    PopLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"PopLocation" inManagedObjectContext:self.context];
+    
+    [location setWithCLLocation:loc];
+    
+    return [place.location greatCircleDistanceFrom:location];
+    
+}
+
+- (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
+{
+    // Set our context
+    self.context = context;
+
+    self.name = [place name];
+    double distance = [[self calculateDistanceFromPlace:place] doubleValue];
+    
+    NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescriptionLong]];
+    self.category= categoryInfo;
+    self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];
+    
     // Some logic here
     NSArray *iconChoices = [NSArray arrayWithObjects:
                             @"Coffee-Places.png", @"FastFood-Places.png" ,nil];
     NSString *iconName = [NSString stringWithFormat:@"%@", [iconChoices randomObject]];
     self.icon = [UIImage imageNamed:iconName];
     
-    // Draw self
-    [self setNeedsDisplay];    
+    [self setNeedsDisplay];
 }
 
 #pragma mark - Draw
@@ -147,12 +177,19 @@ static const CGFloat kYOffset = 8.0f;
 {
     [super drawRect:rect];
     
+    CGFloat offset = (self.type == RecommendedPlaceViewCellTypeFirst) ? kTopYOffset : kYOffset;
+    CGFloat height = [[self class] heightForType:self.type];
+    
     // Draw the background
     [self.backgroundImage drawAtPoint:CGPointZero];
     
+    // Draw the title, the name
+    [self.name drawAtPoint:CGPointMake(kPadding, offset) withFont:[[self class] titleFont]];
+    
+    // Draw the subtitle, the category and the price and distance
+    
+    
     // Icon
-    CGFloat offset = (self.type == RecommendedPlaceViewCellTypeFirst) ? kTopYOffset : kYOffset;
-    CGFloat height = [[self class] heightForType:self.type];
     CGSize iconSize = CGSizeMake(50.0f, 50.0f);
     [self.icon drawAtPoint:CGPointMake(kWidth - kPadding - iconSize.width, offset)];
     

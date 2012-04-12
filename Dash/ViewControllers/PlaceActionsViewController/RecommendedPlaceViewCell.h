@@ -19,6 +19,7 @@ typedef enum {
 @interface RecommendedPlaceViewCell : UITableViewCell
 
 // Model
+@property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic) RecommendedPlaceViewCellType type;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *category;
@@ -32,7 +33,9 @@ typedef enum {
 + (UIFont *)subtitleFont;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier type:(RecommendedPlaceViewCellType) cellType;
-- (void)setWithPlace:(Place *)place;
+
+- (NSNumber *)calculateDistanceFromPlace:(Place *)place;
+- (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
 
 - (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 

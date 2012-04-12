@@ -179,7 +179,7 @@
     
     // Always update type
     [cell setType:[self recommendedPlaceViewCellTypeForRow:row]];
-    [cell setWithPlace:[[self.feedItems objectAtIndex:row] place]];
+    [cell setWithPlace:[[self.feedItems objectAtIndex:row] place] context:self.managedObjectContext];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
