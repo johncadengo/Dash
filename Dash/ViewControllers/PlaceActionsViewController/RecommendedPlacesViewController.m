@@ -6,14 +6,14 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "PlaceActionsViewController.h"
+#import "RecommendedPlacesViewController.h"
 #import "Place.h"
 #import "DashAPI.h"
 #import "Constants.h"
 #import "PlaceViewController.h"
 #import "PlaceAction.h"
 
-@implementation PlaceActionsViewController
+@implementation RecommendedPlacesViewController
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
@@ -158,7 +158,7 @@
 {
     // Get the blurb we are using for that row
     PlaceAction *placeAction = [self.feedItems objectAtIndex:row];
-    return [PlaceActionViewCell heightForPlaceAction:placeAction withCellType:PlaceActionViewCellTypeList];
+    return [RecommendedPlaceViewCell heightForPlaceAction:placeAction withCellType:PlaceActionViewCellTypeList];
 }
 
 #pragma mark - Table view data source
@@ -177,10 +177,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PlaceActionViewCell *cell = (PlaceActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
+    RecommendedPlaceViewCell *cell = (RecommendedPlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
     
     if (cell == nil) {
-        cell = [[PlaceActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier cellType:PlaceActionViewCellTypeList];
+        cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier cellType:PlaceActionViewCellTypeList];
     }
     
     NSInteger row = [indexPath row];
@@ -251,7 +251,6 @@
     }
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
-    [self hideVisibleBackView:NO];
     [self.tableView reloadData];
     
     // TODO: Gotta do this asynchronously 
@@ -265,19 +264,10 @@
 
 #pragma mark - Place view cell delegate
 
-- (void)cellBackButtonWasTapped:(PlaceActionViewCell *)cell
+- (void)cellBackButtonWasTapped:(RecommendedPlaceViewCell *)cell
 {
     
-}
-
-#pragma mark - TISwipeableTableView stuff
-
-
-- (void)tableView:(UITableView *)tableView didSwipeCellAtIndexPath:(NSIndexPath *)indexPath 
-{	
-    NSLog(@"SWIPE");
-	[super tableView:tableView didSwipeCellAtIndexPath:indexPath];
-}
+} 
 
 #pragma mark - ListModeCellDelegate
 

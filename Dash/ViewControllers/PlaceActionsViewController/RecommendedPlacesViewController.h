@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import "MBProgressHUD.h"
-#import "PlaceActionViewCell.h"
+#import "RecommendedPlaceViewCell.h"
 #import "EGORefreshTableHeaderView.h"
 
 /** There is only one section.
@@ -20,9 +20,8 @@ enum {
 };
 
 @class DashAPI;
-@class PlaceActionViewCell;
 
-@interface PlaceActionsViewController : TISwipeableTableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate, EGORefreshTableHeaderDelegate, PlaceActionViewCellDelegate>
+@interface RecommendedPlacesViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate, EGORefreshTableHeaderDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
