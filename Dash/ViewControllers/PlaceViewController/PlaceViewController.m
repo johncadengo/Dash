@@ -141,7 +141,7 @@
     outerNegative.width = -7.0f; // 12 - 7 = 5.0f
     
     UIBarButtonItem *innerNegative = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    innerNegative.width = -6.0f; // 11 - 6 = 5.0f
+    innerNegative.width = -5.0f; // 10 - 5 = 5.0f
     
     // Add them. Sidenote: 320 - (3 * 100) = 20. 20 / 4 = 5.0f
     self.toolbar.items = [NSArray arrayWithObjects:outerNegative, self.createHighlightButton, 
