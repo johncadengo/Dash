@@ -24,13 +24,16 @@
 
 #pragma mark - Some UI Constants
 
-static CGFloat kWidth = 320.0f;
-static CGFloat kLineLength = 284.0f;
-static CGFloat kPadding = 15.0f;
+static const CGFloat kWidth = 320.0f;
+static const CGFloat kLineLength = 284.0f;
+static const CGFloat kPadding = 15.0f;
 
-static CGFloat kTopHeight = 80.0f;
-static CGFloat kMiddleHeight = 64.0f;
-static CGFloat kBottomHeight = 72.0f;
+static const CGFloat kTopHeight = 90.0f;
+static const CGFloat kMiddleHeight = 63.0f;
+static const CGFloat kBottomHeight = 72.0f;
+
+static const CGFloat kTopYOffset = 35.0f;
+static const CGFloat kYOffset = 8.0f;
 
 #pragma mark - Class methods for determining the size of UI elements
     
@@ -112,8 +115,7 @@ static CGFloat kBottomHeight = 72.0f;
 {
     // Some logic here
     NSArray *iconChoices = [NSArray arrayWithObjects:
-                            @"Burger-Places.png", @"Taco-Places.png", 
-                            @"Pizza-Places.png", @"Noodles-Places.png" ,nil];
+                            @"Coffee-Places.png", @"FastFood-Places.png" ,nil];
     NSString *iconName = [NSString stringWithFormat:@"%@", [iconChoices randomObject]];
     self.icon = [UIImage imageNamed:iconName];
     
@@ -148,13 +150,15 @@ static CGFloat kBottomHeight = 72.0f;
     // Draw the background
     [self.backgroundImage drawAtPoint:CGPointZero];
     
-    // TODO: Some logic here
+    // Icon
+    CGFloat offset = (self.type == RecommendedPlaceViewCellTypeFirst) ? kTopYOffset : kYOffset;
+    CGFloat height = [[self class] heightForType:self.type];
     CGSize iconSize = CGSizeMake(50.0f, 50.0f);
-    [self.icon drawAtPoint:CGPointMake(kWidth - kPadding - iconSize.width, kPadding)];
+    [self.icon drawAtPoint:CGPointMake(kWidth - kPadding - iconSize.width, offset)];
     
     // Draw line at bottom, as long as we aren't the last cell
     if (self.type != RecommendedPlaceViewCellTypeLast) {
-        CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, [[self class] heightForType:self.type]);
+        CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, height);
         [self drawHorizontalLineStartingAt:origin withLength:kLineLength];
     }
 }
