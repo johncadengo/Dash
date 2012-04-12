@@ -63,7 +63,11 @@ extern NSString * const kListModeTwo;
 
 extern NSString * const kPlacesPlaceCellIdentifier;
 extern NSString * const kPlaceHeaderCellIdentifier;
+extern NSString * const kPlaceMoreInfoOpenCellIdentifier;
 extern NSString * const kPlaceMoreInfoCellIdentifier;
+extern NSString * const kPlaceBadgesCellIdentifier;
+extern NSString * const kPlaceHighlightCellIdentifier;
+extern NSString * const kPlaceTitleCellIdentifier;
 
 // Segues
 extern NSString * const kShowLoginViewControllerSegueIdentifier;

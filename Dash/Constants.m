@@ -49,7 +49,11 @@ NSString * const kListModeTwo = @"Nearby";
 
 NSString * const kPlacesPlaceCellIdentifier = @"com.BoxOutDev.Dash.PlacesPlaceCell";
 NSString * const kPlaceHeaderCellIdentifier = @"com.BoxOutDev.Dash.PlaceHeaderCell";
+NSString * const kPlaceMoreInfoOpenCellIdentifier = @"com.BoxOutDev.Dash.PlaceMoreInfoOpenCell";
 NSString * const kPlaceMoreInfoCellIdentifier = @"com.BoxOutDev.Dash.PlaceMoreInfoCell";
+NSString * const kPlaceBadgesCellIdentifier = @"com.BoxOutDev.Dash.PlaceBadgesCell";
+NSString * const kPlaceHighlightCellIdentifier = @"com.BoxOutDev.Dash.PlaceHighlightCell";
+NSString * const kPlaceTitleCellIdentifier = @"com.BoxOutDev.Dash.PlaceTitleCell";
 
 #pragma mark - Segue Identifiers
 

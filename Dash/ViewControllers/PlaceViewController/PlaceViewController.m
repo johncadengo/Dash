@@ -87,10 +87,14 @@
     self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
     
     // Make the toolbar
-    //self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f)];
-    //[self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f)];
+    [self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    // Adjust tableview's frame to account for the toolbar
+    CGRect frame = self.tableView.frame;
+    self.tableView.frame = CGRectMake(frame.origin.x, frame.origin.y, 320.0f, frame.size.height - 49.0f);
 }
 
 
@@ -107,7 +111,7 @@
     
     // Make sure the top bar and bottom bar show
     [self.navigationController setNavigationBarHidden:NO animated:animated];
-    //[self.navigationController.view addSubview:self.toolbar];
+    [self.navigationController.view addSubview:self.toolbar];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -303,11 +307,17 @@
 
 - (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoCellIdentifier];
+    UITableViewCell *cell;
+    if (self.moreInfoOpen) {
+        cell = [tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoOpenCellIdentifier];
+    }
+    else {
+        cell = [tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoCellIdentifier];        
+    }
     
     if (cell == nil) {
         if (self.moreInfoOpen) {
-            cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
+            cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoOpenCellIdentifier];
             
             // Connect us to the cell
             [self setMoreInfoCell:(MoreInfoViewCell *)cell];
@@ -327,11 +337,9 @@
     if (row == 0)
         return [self titleViewCellForTableView:tableView WithTitle:@"Notables"];
     
-    static NSString *CellIdentifier = @"Cell";
-    
-    BadgesViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    BadgesViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceBadgesCellIdentifier];
     if (cell == nil) {
-        cell = [[BadgesViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[BadgesViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceBadgesCellIdentifier];
     }
     
     [cell setBadges:self.badges];
@@ -341,11 +349,9 @@
 
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    HighlightViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HighlightViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceHighlightCellIdentifier];
     if (cell == nil) {
-        cell = [[HighlightViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier type:[self highlightViewCellTypeForRow:row]];
+        cell = [[HighlightViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceHighlightCellIdentifier type:[self highlightViewCellTypeForRow:row]];
     }
     
     // Set the type always, not just when creating a new cell
@@ -371,12 +377,10 @@
 
 - (UITableViewCell *)titleViewCellForTableView:(UITableView *)tableView WithTitle:(NSString *)title
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    TitleViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TitleViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceTitleCellIdentifier];
     
     if (cell == nil) {
-        cell = [[TitleViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[TitleViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceTitleCellIdentifier];
     }
     
     cell.title = title;
