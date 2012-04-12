@@ -61,6 +61,11 @@
 		6734EB851512520500D7EA7E /* PlutoMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB751512520500D7EA7E /* PlutoMedium.otf */; };
 		6734EB861512520500D7EA7E /* PlutoRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB761512520500D7EA7E /* PlutoRegular.otf */; };
 		6734EB871512520500D7EA7E /* PlutoThin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB771512520500D7EA7E /* PlutoThin.otf */; };
+		67350A90153763E700A7306E /* BubbleBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8B153763E700A7306E /* BubbleBottom@2x.png */; };
+		67350A91153763E700A7306E /* BubbleMiddle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8C153763E700A7306E /* BubbleMiddle@2x.png */; };
+		67350A92153763E700A7306E /* BubbleTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8D153763E700A7306E /* BubbleTop@2x.png */; };
+		67350A93153763E700A7306E /* TopBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8E153763E700A7306E /* TopBar@2x.png */; };
+		67350A94153763E700A7306E /* TopBarWithoutPlaces@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8F153763E700A7306E /* TopBarWithoutPlaces@2x.png */; };
 		6735AEA514BCC450000259AF /* Place+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6735AEA414BCC450000259AF /* Place+Helper.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
 		6739F46F14646DA800735858 /* HighlightViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6739F46E14646DA800735858 /* HighlightViewControllerTests.m */; };
@@ -390,6 +395,11 @@
 		6734EB751512520500D7EA7E /* PlutoMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoMedium.otf; path = Dash/Images/Fonts/PlutoMedium.otf; sourceTree = "<group>"; };
 		6734EB761512520500D7EA7E /* PlutoRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoRegular.otf; path = Dash/Images/Fonts/PlutoRegular.otf; sourceTree = "<group>"; };
 		6734EB771512520500D7EA7E /* PlutoThin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoThin.otf; path = Dash/Images/Fonts/PlutoThin.otf; sourceTree = "<group>"; };
+		67350A8B153763E700A7306E /* BubbleBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BubbleBottom@2x.png"; path = "Dash/Images/Tabs/Places/BubbleBottom@2x.png"; sourceTree = "<group>"; };
+		67350A8C153763E700A7306E /* BubbleMiddle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BubbleMiddle@2x.png"; path = "Dash/Images/Tabs/Places/BubbleMiddle@2x.png"; sourceTree = "<group>"; };
+		67350A8D153763E700A7306E /* BubbleTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BubbleTop@2x.png"; path = "Dash/Images/Tabs/Places/BubbleTop@2x.png"; sourceTree = "<group>"; };
+		67350A8E153763E700A7306E /* TopBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopBar@2x.png"; path = "Dash/Images/Tabs/Places/TopBar@2x.png"; sourceTree = "<group>"; };
+		67350A8F153763E700A7306E /* TopBarWithoutPlaces@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopBarWithoutPlaces@2x.png"; path = "Dash/Images/Tabs/Places/TopBarWithoutPlaces@2x.png"; sourceTree = "<group>"; };
 		6735AEA314BCC450000259AF /* Place+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Place+Helper.h"; path = "Data Model/Place/Place+Helper.h"; sourceTree = "<group>"; };
 		6735AEA414BCC450000259AF /* Place+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Place+Helper.m"; path = "Data Model/Place/Place+Helper.m"; sourceTree = "<group>"; };
 		673653671455C1DD00E53822 /* DashAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashAPI.h; path = API/DashAPI.h; sourceTree = "<group>"; };
@@ -866,6 +876,11 @@
 		6734EB5715123EB100D7EA7E /* Places */ = {
 			isa = PBXGroup;
 			children = (
+				67350A8B153763E700A7306E /* BubbleBottom@2x.png */,
+				67350A8C153763E700A7306E /* BubbleMiddle@2x.png */,
+				67350A8D153763E700A7306E /* BubbleTop@2x.png */,
+				67350A8E153763E700A7306E /* TopBar@2x.png */,
+				67350A8F153763E700A7306E /* TopBarWithoutPlaces@2x.png */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -1657,6 +1672,11 @@
 				6798E3B31535EBE800539E1C /* MoreInformationButtonOpen@2x.png in Resources */,
 				6798E3B61535EC2A00539E1C /* CallButton@2x.png in Resources */,
 				6798E3B71535EC2A00539E1C /* MapButton@2x.png in Resources */,
+				67350A90153763E700A7306E /* BubbleBottom@2x.png in Resources */,
+				67350A91153763E700A7306E /* BubbleMiddle@2x.png in Resources */,
+				67350A92153763E700A7306E /* BubbleTop@2x.png in Resources */,
+				67350A93153763E700A7306E /* TopBar@2x.png in Resources */,
+				67350A94153763E700A7306E /* TopBarWithoutPlaces@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
