@@ -86,15 +86,11 @@
     self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
     self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
     
-    // Make the toolbar
-    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f)];
-    [self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
-    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     // Adjust tableview's frame to account for the toolbar
-    CGRect frame = self.tableView.frame;
-    self.tableView.frame = CGRectMake(frame.origin.x, frame.origin.y, 320.0f, frame.size.height - 49.0f);
+    //CGRect frame = self.tableView.frame;
+    //self.tableView.frame = CGRectMake(frame.origin.x, frame.origin.y, 320.0f, frame.size.height - 49.0f);
 }
 
 
@@ -111,6 +107,10 @@
     
     // Make sure the top bar and bottom bar show
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    
+    // Make the toolbar
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f)];
+    [self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
     [self.navigationController.view addSubview:self.toolbar];
 }
 
@@ -196,7 +196,7 @@
 
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row
 {
-    CGFloat height = 0.0f;
+    CGFloat height = 60.0f; // TODO: For now, this will just make it so toolbar doesn't cover last cell
     
     return height;    
 }
@@ -248,6 +248,7 @@
             numRows = [self.highlights count];
             break;
         case kPlaceFootprintsSection:
+            numRows = 1; // TODO: Just a filler cell to accomdate for toolbar
             break;
         default:
             NSAssert(NO, @"Asking for number of rows in a section that doesn't exist %d", section);
@@ -367,10 +368,14 @@
 
 - (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    id cell;
-
-    // TODO: Make this happen
-    cell = nil;
+    static NSString *identifier = @"FillerCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
