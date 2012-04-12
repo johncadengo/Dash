@@ -45,11 +45,11 @@ typedef enum {
 @property (nonatomic, strong) NSMutableArray *highlights;
 @property (nonatomic, strong) NSMutableArray *footprints;
 @property (nonatomic) PlaceThemeColor themeColor;
-@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, strong) TitleViewCell *highlightTitle;
 @property (nonatomic, strong) MoreInfoViewCell *moreInfoCell;
 @property (nonatomic) BOOL moreInfoOpen;
-
-@property (nonatomic, strong) TitleViewCell *highlightTitle;
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIBarButtonItem *createHighlightButton;
 
 /** Should only call after the view loads. Cascades appropriate changes to view properties as necessary.
  */
@@ -72,5 +72,9 @@ typedef enum {
 
 - (void)heartTapped:(id)sender;
 - (void)toggleMoreInfo;
+
+- (void)createHighlight:(id)sender;
+- (void)thumbsUp:(id)sender;
+- (void)thumbsDown:(id)sender;
 
 @end

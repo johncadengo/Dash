@@ -30,10 +30,11 @@
 @synthesize highlights = _highlights;
 @synthesize footprints = _footprints;
 @synthesize themeColor = _themeColor;
-@synthesize toolbar = _toolbar;
 @synthesize highlightTitle = _highlightTitle;
 @synthesize moreInfoCell = _moreInfoCell;
 @synthesize moreInfoOpen = _moreInfoOpen;
+@synthesize toolbar = _toolbar;
+@synthesize createHighlightButton = _createHighlightButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -112,6 +113,15 @@
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f)];
     [self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
     [self.navigationController.view addSubview:self.toolbar];
+    
+    // Add its items
+    CGRect frame = CGRectMake(0.0f, 0.0f, 100.0f, 40.0f);
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"CreateHighlightButton.png"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(createHighlight:) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = frame;
+    self.createHighlightButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.toolbar.items = [NSArray arrayWithObjects:self.createHighlightButton, nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -424,6 +434,21 @@
     
     // Toggle like
     button.selected = !button.selected;
+}
+
+- (void)createHighlight:(id)sender
+{
+    
+}
+
+- (void)thumbsUp:(id)sender
+{
+    
+}
+
+- (void)thumbsDown:(id)sender
+{
+    
 }
 
 
