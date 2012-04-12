@@ -50,6 +50,8 @@ typedef enum {
 @property (nonatomic) BOOL moreInfoOpen;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *createHighlightButton;
+@property (nonatomic, strong) UIBarButtonItem *thumbsUpButton;
+@property (nonatomic, strong) UIBarButtonItem *thumbsDownButton;
 
 /** Should only call after the view loads. Cascades appropriate changes to view properties as necessary.
  */

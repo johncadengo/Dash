@@ -35,6 +35,8 @@
 @synthesize moreInfoOpen = _moreInfoOpen;
 @synthesize toolbar = _toolbar;
 @synthesize createHighlightButton = _createHighlightButton;
+@synthesize thumbsUpButton = _thumbsUpButton;
+@synthesize thumbsDownButton = _thumbsDownButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -114,14 +116,28 @@
     [self.toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BottomBarBackground.png"]] atIndex:1];
     [self.navigationController.view addSubview:self.toolbar];
     
-    // Add its items
+    // Create its items
     CGRect frame = CGRectMake(0.0f, 0.0f, 100.0f, 40.0f);
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
     [button setImage:[UIImage imageNamed:@"CreateHighlightButton.png"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(createHighlight:) forControlEvents:UIControlEventTouchUpInside];
-    button.frame = frame;
     self.createHighlightButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.toolbar.items = [NSArray arrayWithObjects:self.createHighlightButton, nil];
+    
+    button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    [button setImage:[UIImage imageNamed:@"ThumbsUpButton"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(thumbsUp:) forControlEvents:UIControlEventTouchUpInside];
+    self.thumbsUpButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    [button setImage:[UIImage imageNamed:@"ThumbsDownButton"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(thumbsDown:) forControlEvents:UIControlEventTouchUpInside];
+    self.thumbsDownButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    // Add them
+    self.toolbar.items = [NSArray arrayWithObjects:self.createHighlightButton, self.thumbsUpButton, self.thumbsDownButton, nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
