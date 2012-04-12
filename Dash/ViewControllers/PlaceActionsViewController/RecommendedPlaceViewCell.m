@@ -189,8 +189,8 @@ static const CGFloat kYOffset = 8.0f;
     
     // Draw the subtitle, the category and the price and distance
     [UIColorFromRGB(kRecommendedPlaceSubtitleColor) set];
-    [self.category drawAtPoint:CGPointMake(kPadding, offset + 14.0f) withFont:[[self class] subtitleFont]];
-    [self.distancePrice drawAtPoint:CGPointMake(kPadding, offset + 24.0f) withFont:[[self class] subtitleFont]];
+    [self.category drawAtPoint:CGPointMake(kPadding, offset + 14.0f + 5.0f) withFont:[[self class] subtitleFont]];
+    [self.distancePrice drawAtPoint:CGPointMake(kPadding, offset + 14.0f + 5.0f + 10.0f + 5.0f) withFont:[[self class] subtitleFont]];
     
     // Icon
     CGSize iconSize = CGSizeMake(50.0f, 50.0f);
