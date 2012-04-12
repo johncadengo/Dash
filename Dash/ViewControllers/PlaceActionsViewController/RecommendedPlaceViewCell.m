@@ -131,7 +131,7 @@ static CGFloat kBottomHeight = 72.0f;
     
     // TODO: Some logic here
     CGSize iconSize = CGSizeMake(62.5f, 62.5f);
-    [self.icon drawAtPoint:CGPointMake(kWindowWidth - kPadding - iconSize.width, 55.0f)];
+    [self.icon drawAtPoint:CGPointMake(kWindowWidth - kPadding - iconSize.width, kPadding)];
 }
 
 @end
