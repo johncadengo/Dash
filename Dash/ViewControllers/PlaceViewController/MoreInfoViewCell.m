@@ -119,7 +119,6 @@
 
 - (void)map:(id)sender
 {
-    NSLog(@"Map");
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", self.addressLabel.text]]];
 }
 
