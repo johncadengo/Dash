@@ -111,8 +111,8 @@ static CGFloat kBottomHeight = 72.0f;
 {
     // Some logic here
     NSArray *iconChoices = [NSArray arrayWithObjects:
-                            @"DashBurgerIcon.png", @"DashTacoIcon.png", 
-                            @"DashPizzaIcon.png", @"DashNoodlesIcon.png" ,nil];
+                            @"Burger-Places.png", @"Taco-Places.png", 
+                            @"Pizza-Places.png", @"Noodles-Places.png" ,nil];
     NSString *iconName = [NSString stringWithFormat:@"%@", [iconChoices randomObject]];
     self.icon = [UIImage imageNamed:iconName];
     

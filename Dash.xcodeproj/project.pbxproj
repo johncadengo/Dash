@@ -64,6 +64,21 @@
 		67350A90153763E700A7306E /* PlacesBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8B153763E700A7306E /* PlacesBottom@2x.png */; };
 		67350A91153763E700A7306E /* PlacesMiddle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8C153763E700A7306E /* PlacesMiddle@2x.png */; };
 		67350A92153763E700A7306E /* PlacesTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8D153763E700A7306E /* PlacesTop@2x.png */; };
+		67350AA4153774DF00A7306E /* Noodles-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A95153774DD00A7306E /* Noodles-Places@2x.png */; };
+		67350AA5153774DF00A7306E /* Beer-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A96153774DD00A7306E /* Beer-Places@2x.png */; };
+		67350AA6153774DF00A7306E /* Bread-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A97153774DD00A7306E /* Bread-Places@2x.png */; };
+		67350AA7153774DF00A7306E /* Burger-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A98153774DD00A7306E /* Burger-Places@2x.png */; };
+		67350AA8153774DF00A7306E /* Coffee-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A99153774DD00A7306E /* Coffee-Places@2x.png */; };
+		67350AA9153774DF00A7306E /* Egg-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A9A153774DE00A7306E /* Egg-Places@2x.png */; };
+		67350AAA153774DF00A7306E /* FastFood-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A9B153774DE00A7306E /* FastFood-Places@2x.png */; };
+		67350AAB153774DF00A7306E /* Fish-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A9C153774DE00A7306E /* Fish-Places@2x.png */; };
+		67350AAC153774DF00A7306E /* FoodStand-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A9D153774DE00A7306E /* FoodStand-Places@2x.png */; };
+		67350AAD153774DF00A7306E /* HotDog-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A9E153774DE00A7306E /* HotDog-Places@2x.png */; };
+		67350AAE153774DF00A7306E /* IceCream-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A9F153774DE00A7306E /* IceCream-Places@2x.png */; };
+		67350AAF153774DF00A7306E /* Pizza-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350AA0153774DE00A7306E /* Pizza-Places@2x.png */; };
+		67350AB0153774DF00A7306E /* Steak-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350AA1153774DE00A7306E /* Steak-Places@2x.png */; };
+		67350AB1153774DF00A7306E /* Taco-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350AA2153774DF00A7306E /* Taco-Places@2x.png */; };
+		67350AB2153774DF00A7306E /* Tomato-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350AA3153774DF00A7306E /* Tomato-Places@2x.png */; };
 		6735AEA514BCC450000259AF /* Place+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6735AEA414BCC450000259AF /* Place+Helper.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
 		6739F46F14646DA800735858 /* HighlightViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6739F46E14646DA800735858 /* HighlightViewControllerTests.m */; };
@@ -396,6 +411,21 @@
 		67350A8B153763E700A7306E /* PlacesBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesBottom@2x.png"; path = "Dash/Images/Tabs/Places/PlacesBottom@2x.png"; sourceTree = "<group>"; };
 		67350A8C153763E700A7306E /* PlacesMiddle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesMiddle@2x.png"; path = "Dash/Images/Tabs/Places/PlacesMiddle@2x.png"; sourceTree = "<group>"; };
 		67350A8D153763E700A7306E /* PlacesTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesTop@2x.png"; path = "Dash/Images/Tabs/Places/PlacesTop@2x.png"; sourceTree = "<group>"; };
+		67350A95153774DD00A7306E /* Noodles-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Noodles-Places@2x.png"; path = "Dash/Images/Tabs/Places/Noodles-Places@2x.png"; sourceTree = "<group>"; };
+		67350A96153774DD00A7306E /* Beer-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Beer-Places@2x.png"; path = "Dash/Images/Tabs/Places/Beer-Places@2x.png"; sourceTree = "<group>"; };
+		67350A97153774DD00A7306E /* Bread-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Bread-Places@2x.png"; path = "Dash/Images/Tabs/Places/Bread-Places@2x.png"; sourceTree = "<group>"; };
+		67350A98153774DD00A7306E /* Burger-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Burger-Places@2x.png"; path = "Dash/Images/Tabs/Places/Burger-Places@2x.png"; sourceTree = "<group>"; };
+		67350A99153774DD00A7306E /* Coffee-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Coffee-Places@2x.png"; path = "Dash/Images/Tabs/Places/Coffee-Places@2x.png"; sourceTree = "<group>"; };
+		67350A9A153774DE00A7306E /* Egg-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Egg-Places@2x.png"; path = "Dash/Images/Tabs/Places/Egg-Places@2x.png"; sourceTree = "<group>"; };
+		67350A9B153774DE00A7306E /* FastFood-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FastFood-Places@2x.png"; path = "Dash/Images/Tabs/Places/FastFood-Places@2x.png"; sourceTree = "<group>"; };
+		67350A9C153774DE00A7306E /* Fish-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Fish-Places@2x.png"; path = "Dash/Images/Tabs/Places/Fish-Places@2x.png"; sourceTree = "<group>"; };
+		67350A9D153774DE00A7306E /* FoodStand-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FoodStand-Places@2x.png"; path = "Dash/Images/Tabs/Places/FoodStand-Places@2x.png"; sourceTree = "<group>"; };
+		67350A9E153774DE00A7306E /* HotDog-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HotDog-Places@2x.png"; path = "Dash/Images/Tabs/Places/HotDog-Places@2x.png"; sourceTree = "<group>"; };
+		67350A9F153774DE00A7306E /* IceCream-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IceCream-Places@2x.png"; path = "Dash/Images/Tabs/Places/IceCream-Places@2x.png"; sourceTree = "<group>"; };
+		67350AA0153774DE00A7306E /* Pizza-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pizza-Places@2x.png"; path = "Dash/Images/Tabs/Places/Pizza-Places@2x.png"; sourceTree = "<group>"; };
+		67350AA1153774DE00A7306E /* Steak-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Steak-Places@2x.png"; path = "Dash/Images/Tabs/Places/Steak-Places@2x.png"; sourceTree = "<group>"; };
+		67350AA2153774DF00A7306E /* Taco-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Taco-Places@2x.png"; path = "Dash/Images/Tabs/Places/Taco-Places@2x.png"; sourceTree = "<group>"; };
+		67350AA3153774DF00A7306E /* Tomato-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Tomato-Places@2x.png"; path = "Dash/Images/Tabs/Places/Tomato-Places@2x.png"; sourceTree = "<group>"; };
 		6735AEA314BCC450000259AF /* Place+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Place+Helper.h"; path = "Data Model/Place/Place+Helper.h"; sourceTree = "<group>"; };
 		6735AEA414BCC450000259AF /* Place+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Place+Helper.m"; path = "Data Model/Place/Place+Helper.m"; sourceTree = "<group>"; };
 		673653671455C1DD00E53822 /* DashAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashAPI.h; path = API/DashAPI.h; sourceTree = "<group>"; };
@@ -875,6 +905,21 @@
 				67350A8B153763E700A7306E /* PlacesBottom@2x.png */,
 				67350A8C153763E700A7306E /* PlacesMiddle@2x.png */,
 				67350A8D153763E700A7306E /* PlacesTop@2x.png */,
+				67350A95153774DD00A7306E /* Noodles-Places@2x.png */,
+				67350A96153774DD00A7306E /* Beer-Places@2x.png */,
+				67350A97153774DD00A7306E /* Bread-Places@2x.png */,
+				67350A98153774DD00A7306E /* Burger-Places@2x.png */,
+				67350A99153774DD00A7306E /* Coffee-Places@2x.png */,
+				67350A9A153774DE00A7306E /* Egg-Places@2x.png */,
+				67350A9B153774DE00A7306E /* FastFood-Places@2x.png */,
+				67350A9C153774DE00A7306E /* Fish-Places@2x.png */,
+				67350A9D153774DE00A7306E /* FoodStand-Places@2x.png */,
+				67350A9E153774DE00A7306E /* HotDog-Places@2x.png */,
+				67350A9F153774DE00A7306E /* IceCream-Places@2x.png */,
+				67350AA0153774DE00A7306E /* Pizza-Places@2x.png */,
+				67350AA1153774DE00A7306E /* Steak-Places@2x.png */,
+				67350AA2153774DF00A7306E /* Taco-Places@2x.png */,
+				67350AA3153774DF00A7306E /* Tomato-Places@2x.png */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -1669,6 +1714,21 @@
 				67350A90153763E700A7306E /* PlacesBottom@2x.png in Resources */,
 				67350A91153763E700A7306E /* PlacesMiddle@2x.png in Resources */,
 				67350A92153763E700A7306E /* PlacesTop@2x.png in Resources */,
+				67350AA4153774DF00A7306E /* Noodles-Places@2x.png in Resources */,
+				67350AA5153774DF00A7306E /* Beer-Places@2x.png in Resources */,
+				67350AA6153774DF00A7306E /* Bread-Places@2x.png in Resources */,
+				67350AA7153774DF00A7306E /* Burger-Places@2x.png in Resources */,
+				67350AA8153774DF00A7306E /* Coffee-Places@2x.png in Resources */,
+				67350AA9153774DF00A7306E /* Egg-Places@2x.png in Resources */,
+				67350AAA153774DF00A7306E /* FastFood-Places@2x.png in Resources */,
+				67350AAB153774DF00A7306E /* Fish-Places@2x.png in Resources */,
+				67350AAC153774DF00A7306E /* FoodStand-Places@2x.png in Resources */,
+				67350AAD153774DF00A7306E /* HotDog-Places@2x.png in Resources */,
+				67350AAE153774DF00A7306E /* IceCream-Places@2x.png in Resources */,
+				67350AAF153774DF00A7306E /* Pizza-Places@2x.png in Resources */,
+				67350AB0153774DF00A7306E /* Steak-Places@2x.png in Resources */,
+				67350AB1153774DF00A7306E /* Taco-Places@2x.png in Resources */,
+				67350AB2153774DF00A7306E /* Tomato-Places@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

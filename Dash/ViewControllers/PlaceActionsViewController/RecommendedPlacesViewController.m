@@ -19,10 +19,7 @@
 @synthesize api = _api;
 @synthesize refreshHeaderView = _refreshHeaderView;
 @synthesize hud = _hud;
-@synthesize requests = _requests;
 @synthesize feedItems = _feedItems;
-@synthesize recommended = _recommended;
-@synthesize saved = _saved;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -52,11 +49,6 @@
     
     // Prepare our arrays of place actions
     self.feedItems = [[NSMutableArray alloc] init];
-    self.recommended = [[NSMutableArray alloc] init];
-    self.saved = [[NSMutableArray alloc] init];
-    
-    // Ask for our initial results
-    self.requests = [self.api placeActionsForPerson:nil]; 
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     
@@ -70,6 +62,9 @@
 	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
+    
+    // Make a call to the api
+    [self refreshFeed]; 
 }
 
 - (void)viewDidUnload
@@ -113,7 +108,6 @@
     // Causes the table view to reload our data source
     [self.refreshHeaderView performSelector:@selector(egoRefreshScrollViewDataSourceDidFinishedLoading:) withObject:self.tableView afterDelay:2.0];
     [self refreshFeed];
-	//[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
 	
 }
 
@@ -142,11 +136,12 @@
 - (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row
 {
     RecommendedPlaceViewCellType type;
+    NSInteger last = [self.feedItems count] - 1;
     
     if (row == 0) {
         type = RecommendedPlaceViewCellTypeFirst;
     }
-    else if (row == [self.feedItems count]) {
+    else if (row == last) {
         type = RecommendedPlaceViewCellTypeLast;
     }
     else {
@@ -179,6 +174,8 @@
         cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:row]];
     }
     
+    // Always update type
+    [cell setType:[self recommendedPlaceViewCellTypeForRow:row]];
     [cell setWithPlace:[[self.feedItems objectAtIndex:row] place]];
     
     return cell;
@@ -188,14 +185,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
     NSUInteger row = [indexPath row];
@@ -233,17 +222,7 @@
     
     NSLog(@"%@", objects);
     
-    if ([requestType isEqualToNumber:[NSNumber numberWithInt:kSaves]]) {
-        // For now, we are only loading saved places
-        [self.saved addObjectsFromArray:objects];
-        [self.feedItems addObjectsFromArray:self.saved];
-        
-    }
-    else if ([requestType isEqualToNumber:[NSNumber numberWithInt:kRecommends]]) {
-        // For now, we are only loading saved places
-        [self.saved addObjectsFromArray:objects];
-        [self.feedItems addObjectsFromArray:self.saved];
-    }
+    [self.feedItems addObjectsFromArray:objects];
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self.tableView reloadData];
@@ -256,13 +235,6 @@
 {
     NSLog(@"Encountered an error: %@", error);
 }
-
-#pragma mark - Place view cell delegate
-
-- (void)cellBackButtonWasTapped:(RecommendedPlaceViewCell *)cell
-{
-    
-} 
 
 #pragma mark - ListModeCellDelegate
 
@@ -278,9 +250,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {	
-    // For TISwipeableTableViewCells
-	[super scrollViewDidScroll:scrollView];
-    
     // For our EGO pull refresh header
 	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
     
