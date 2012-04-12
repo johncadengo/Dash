@@ -136,37 +136,31 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger section = [indexPath section];
-    NSInteger row = [indexPath row];
-    
-    CGFloat height = 0.0;
-    
-    switch (section) {
-        case kPlaceListSection:
-            height = [self heightForFeedCellForRow:row];
-            break;
-        default:
-            // Should never happen
-            NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
-            break;
-    }
-    
-    return height;
+    return [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:[indexPath row]]];
 }
 
-- (CGFloat)heightForFeedCellForRow:(NSInteger)row
+- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row
 {
-    // Get the blurb we are using for that row
-    PlaceAction *placeAction = [self.feedItems objectAtIndex:row];
-    return [RecommendedPlaceViewCell heightForPlaceAction:placeAction withCellType:PlaceActionViewCellTypeList];
+    RecommendedPlaceViewCellType type;
+    
+    if (row == 0) {
+        type = RecommendedPlaceViewCellTypeFirst;
+    }
+    else if (row == [self.feedItems count]) {
+        type = RecommendedPlaceViewCellTypeLast;
+    }
+    else {
+        type = RecommendedPlaceViewCellTypeMiddle;
+    }
+    
+    return type;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return kNumSections;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -179,12 +173,13 @@
 {
     RecommendedPlaceViewCell *cell = (RecommendedPlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
     
+    NSInteger row = [indexPath row];
+    
     if (cell == nil) {
-        cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier cellType:PlaceActionViewCellTypeList];
+        cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:row]];
     }
     
-    NSInteger row = [indexPath row];
-    [cell setWithPlaceAction:[self.feedItems objectAtIndex:row]];
+    [cell setWithPlace:[[self.feedItems objectAtIndex:row] place]];
     
     return cell;
 }

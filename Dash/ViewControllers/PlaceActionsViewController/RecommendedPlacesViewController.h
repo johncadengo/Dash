@@ -12,13 +12,6 @@
 #import "RecommendedPlaceViewCell.h"
 #import "EGORefreshTableHeaderView.h"
 
-/** There is only one section.
- */
-enum {
-    kPlaceListSection = 0,
-    kNumSections = 1
-};
-
 @class DashAPI;
 
 @interface RecommendedPlacesViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate, EGORefreshTableHeaderDelegate>
@@ -38,10 +31,7 @@ enum {
 @property (nonatomic, strong) NSMutableArray *recommended;
 @property (nonatomic, strong) NSMutableArray *saved;
 
-/** Dynamically generate the row height for feed item cells
- */
-- (CGFloat)heightForFeedCellForRow:(NSInteger)row;
-
+- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row;
 - (void)refreshFeed;
 
 @end
