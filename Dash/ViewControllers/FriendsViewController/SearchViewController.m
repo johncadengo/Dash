@@ -111,7 +111,7 @@
 - (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row
 {
     RecommendedPlaceViewCellType type;
-    NSInteger last = [self.resultsForSearchQuery count] - 1;
+    NSInteger last = [[self.resultsForSearchQuery objectForKey:self.currentQuery] count] - 1;
     
     if (row == 0) {
         type = RecommendedPlaceViewCellTypeFirst;
@@ -130,7 +130,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:[indexPath row]]];
+    CGFloat height;
+    
+    if (self.searchDisplayController.searchResultsTableView == tableView) {
+        height = self.tableView.rowHeight;
+    }
+    else {
+        height = [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:[indexPath row]]];
+    }
+    
+    return height;
 }
 
 #pragma mark - Table view data source
@@ -170,6 +179,7 @@
     }
     else {
         cell = [self tableView:tableView cellForSearchQueryRow:indexPath.row];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
         
     return cell;
@@ -181,6 +191,9 @@
     if (cell == nil) {
         cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:row]];
     }
+    
+    // Always set the type
+    [cell setType:[self recommendedPlaceViewCellTypeForRow:row]];
     
     // Only display results if they exist
     NSMutableArray *result = [self.resultsForSearchQuery objectForKey:self.currentQuery];
