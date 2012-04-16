@@ -81,3 +81,7 @@ extern NSString * const kShowFeedItemDetailsSegueIdentifier;
 extern NSString * const kShowDashViewDetailsSegueIdentifier;
 extern NSString * const kPresentFilterViewController;
 extern NSString * const kShowSearchResultDetailView;
+
+// Distance cutoff
+static double const kDistanceCutoff = 50.0;
+extern NSString * const kDistanceCutOffString;

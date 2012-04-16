@@ -65,3 +65,6 @@ NSString * const kShowFeedItemDetailsSegueIdentifier = @"ShowFeedItemDetails";
 NSString * const kShowDashViewDetailsSegueIdentifier = @"ShowDashViewDetails";
 NSString * const kPresentFilterViewController = @"PresentFilterViewController";
 NSString * const kShowSearchResultDetailView = @"ShowSearchResultDetailView";
+
+#pragma mark - Distance cutoff
+NSString * const kDistanceCutOffString = @"50+";

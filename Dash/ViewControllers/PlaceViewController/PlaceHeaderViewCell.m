@@ -212,8 +212,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     self.categories = categoryInfo;
     
     // 50+ miles
-    if (distance >= 50.0f) {
-        self.distancePrice = [NSString stringWithFormat:@"50.0+ mi   %@", place.price];   
+    if (distance >= kDistanceCutoff) {
+        self.distancePrice = [NSString stringWithFormat:@"%@ mi   %@", kDistanceCutOffString, place.price];   
     }
     else {
         self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];    
