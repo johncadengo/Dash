@@ -63,6 +63,7 @@
     self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
     
     // Search bar
+    [self.searchDisplayController.searchBar setTintColor:[UIColor blackColor]];
     [self clearSearchBarBackground];
     
     // Search text field
