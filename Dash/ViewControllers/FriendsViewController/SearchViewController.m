@@ -63,8 +63,15 @@
     self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
     
     // Search bar
-    self.searchDisplayController.searchBar.backgroundImage = [UIImage imageNamed:@"SearchBar.png"];
-    
+    for (UIView *view in self.searchDisplayController.searchBar.subviews)
+    {
+        if ([view isKindOfClass:NSClassFromString
+             (@"UISearchBarBackground")])
+        {
+            [view removeFromSuperview];
+            break;
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -181,6 +188,7 @@
     
     if (self.searchDisplayController.searchResultsTableView == tableView) {
         cell = [self tableView:tableView cellForAutocompleteRow:indexPath.row];
+        cell.backgroundColor = [UIColor clearColor];
     }
     else {
         cell = [self tableView:tableView cellForSearchQueryRow:indexPath.row];
