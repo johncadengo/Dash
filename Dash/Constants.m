@@ -55,6 +55,8 @@ NSString * const kPlaceBadgesCellIdentifier = @"com.BoxOutDev.Dash.PlaceBadgesCe
 NSString * const kPlaceHighlightCellIdentifier = @"com.BoxOutDev.Dash.PlaceHighlightCell";
 NSString * const kPlaceTitleCellIdentifier = @"com.BoxOutDev.Dash.PlaceTitleCell";
 
+NSString * const kSearchAutocompleteCellIdentifier = @"com.BoxOutDev.Dash.SearchAutocompleteCell";
+
 #pragma mark - Segue Identifiers
 
 NSString * const kShowLoginViewControllerSegueIdentifier = @"ShowLoginViewController";

@@ -71,6 +71,8 @@ extern NSString * const kPlaceBadgesCellIdentifier;
 extern NSString * const kPlaceHighlightCellIdentifier;
 extern NSString * const kPlaceTitleCellIdentifier;
 
+extern NSString * const kSearchAutocompleteCellIdentifier;
+
 // Segues
 extern NSString * const kShowLoginViewControllerSegueIdentifier;
 extern NSString * const kShowPlaceActionDetailsSegueIdentifier;

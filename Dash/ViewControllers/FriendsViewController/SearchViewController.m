@@ -57,6 +57,9 @@
     // Prepare our array of results
     self.resultsForAutocompleteQuery = [[NSMutableDictionary alloc] init];
     self.resultsForSearchQuery = [[NSMutableDictionary alloc] init];
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
 }
 
 - (void)viewDidUnload
@@ -103,6 +106,33 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - 
+
+- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row
+{
+    RecommendedPlaceViewCellType type;
+    NSInteger last = [self.resultsForSearchQuery count] - 1;
+    
+    if (row == 0) {
+        type = RecommendedPlaceViewCellTypeFirst;
+    }
+    else if (row == last) {
+        type = RecommendedPlaceViewCellTypeLast;
+    }
+    else {
+        type = RecommendedPlaceViewCellTypeMiddle;
+    }
+    
+    return type;
+}
+
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:[indexPath row]]];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -133,37 +163,54 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    
-    NSMutableArray *result;
-    NSString *text;
     if (self.searchDisplayController.searchResultsTableView == tableView) {
-        // Only display results if they exist
-        result = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
-        if (result) {
-            text = [result objectAtIndex:indexPath.row];
-            if (text) {
-                cell.textLabel.text = [NSString stringWithFormat:@"%@",text];
-            }
-        }
+        cell = [self tableView:tableView cellForAutocompleteRow:indexPath.row];
     }
     else {
-        // Only display results if they exist
-        result = [self.resultsForSearchQuery objectForKey:self.currentQuery];
-        if (result) {
-            Place *place = [result objectAtIndex:indexPath.row];
-            if (place) {
-                cell.textLabel.text = [NSString stringWithFormat:@"%@",place.name];
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", place.address];
-            }
-        }
+        cell = [self tableView:tableView cellForSearchQueryRow:indexPath.row];
     }
         
+    return cell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForSearchQueryRow:(NSInteger)row
+{
+    RecommendedPlaceViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
+    if (cell == nil) {
+        cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:row]];
+    }
+    
+    // Only display results if they exist
+    NSMutableArray *result = [self.resultsForSearchQuery objectForKey:self.currentQuery];
+    if (result) {
+        Place *place = [result objectAtIndex:row];
+        if (place) {
+            [cell setWithPlace:place context:self.managedObjectContext];
+        }
+    }
+    
+    return cell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForAutocompleteRow:(NSInteger)row
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchAutocompleteCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchAutocompleteCellIdentifier];
+    }
+    
+    // Only display results if they exist
+    NSMutableArray *result = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
+    if (result) {
+        NSString *text = [result objectAtIndex:row];
+        if (text) {
+            cell.textLabel.text = [NSString stringWithFormat:@"%@",text];
+        }
+    }
+    
     return cell;
 }
 
@@ -230,7 +277,6 @@
         [tableView reloadData];
     }
 }
-
 
 #pragma mark - RKObjectLoaderDelegate methods
 

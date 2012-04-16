@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import "MBProgressHUD.h"
+#import "RecommendedPlaceViewCell.h"
 
 @class DashAPI;
 
@@ -25,5 +26,10 @@
  */
 @property (nonatomic, strong) NSMutableDictionary *resultsForAutocompleteQuery;
 @property (nonatomic, strong) NSMutableDictionary *resultsForSearchQuery;
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForSearchQueryRow:(NSInteger)row;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForAutocompleteRow:(NSInteger)row;
+
+- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row;
 
 @end
