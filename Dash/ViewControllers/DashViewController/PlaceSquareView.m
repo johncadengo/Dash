@@ -180,8 +180,15 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     double distance = [[JCLocationManagerSingleton calculateDistanceFromPlace:place withManagedObjectContext:self.managedObjectContext] doubleValue];
     
     self.categories = categoryInfo;
-    self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];
     self.blurb = [NSString stringWithFormat:@""];
+    
+    // 50+ miles
+    if (distance >= 50.0f) {
+        self.distancePrice = [NSString stringWithFormat:@"50.0+ mi   %@", place.price];   
+    }
+    else {
+        self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];    
+    }
     
     // Some logic here
     NSArray *iconChoices = [NSArray arrayWithObjects:

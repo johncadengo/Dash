@@ -142,7 +142,14 @@ static const CGFloat kYOffset = 8.0f;
     
     NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescriptionLong]];
     self.category= categoryInfo;
-    self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];
+    
+    // 50+ miles
+    if (distance >= 50.0f) {
+        self.distancePrice = [NSString stringWithFormat:@"50.0+ mi   %@", place.price];   
+    }
+    else {
+        self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];    
+    }
     
     // Some logic here
     NSArray *iconChoices = [NSArray arrayWithObjects:

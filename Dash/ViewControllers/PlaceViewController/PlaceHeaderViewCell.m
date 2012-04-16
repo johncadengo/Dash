@@ -210,7 +210,16 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescriptionLong]];
     
     self.categories = categoryInfo;
-    self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];
+    
+    // 50+ miles
+    if (distance >= 50.0f) {
+        self.distancePrice = [NSString stringWithFormat:@"50.0+ mi   %@", place.price];   
+    }
+    else {
+        self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];    
+    }
+    
+    
     self.image = [UIImage imageNamed:@"Burger-Profile-Orange.png"];
     
     [self setNeedsDisplay];
