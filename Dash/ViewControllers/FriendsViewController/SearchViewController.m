@@ -63,12 +63,30 @@
     self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
     
     // Search bar
-    for (UIView *view in self.searchDisplayController.searchBar.subviews)
+    [self clearSearchBarBackground];
+    
+    // Search text field
+    UITextField *searchField;
+    for(int i = 0; i < [self.searchDisplayController.searchBar.subviews count]; i++) {
+        if([[self.searchDisplayController.searchBar.subviews objectAtIndex:i] isKindOfClass:[UITextField class]]) {
+            searchField = [self.searchDisplayController.searchBar.subviews objectAtIndex:i];
+            break;
+        }
+    }
+    
+    // Adjust some things
+    searchField.borderStyle = UITextBorderStyleRoundedRect;
+    searchField.backgroundColor = UIColorFromRGB(kSearchTextFieldBGColor);
+}
+
+- (void)clearSearchBarBackground
+{
+    for (UIImageView *view in self.searchDisplayController.searchBar.subviews)
     {
         if ([view isKindOfClass:NSClassFromString
              (@"UISearchBarBackground")])
         {
-            [view removeFromSuperview];
+            [view setImage:nil];
             break;
         }
     }
@@ -188,7 +206,7 @@
     
     if (self.searchDisplayController.searchResultsTableView == tableView) {
         cell = [self tableView:tableView cellForAutocompleteRow:indexPath.row];
-        cell.backgroundColor = [UIColor clearColor];
+        cell.backgroundView.backgroundColor = [UIColor clearColor];
     }
     else {
         cell = [self tableView:tableView cellForSearchQueryRow:indexPath.row];
@@ -267,6 +285,18 @@
     
     // Dismiss the search display controller
     [self.searchDisplayController setActive:NO animated:YES];
+}
+
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    // Change the background
+    [controller.searchBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"]];
+}
+
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
+{
+    // Clear the background
+    [self clearSearchBarBackground];
 }
 
 #pragma mark - RKRequestDelegate

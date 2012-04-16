@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) MBProgressHUD *hud;
 
+- (void)clearSearchBarBackground;
+
 /** Stores the results keyed by query. We clear these results, 
     because they act as a cache, everytime this view disappears
  */
