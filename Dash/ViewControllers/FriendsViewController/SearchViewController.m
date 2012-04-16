@@ -58,8 +58,13 @@
     self.resultsForAutocompleteQuery = [[NSMutableDictionary alloc] init];
     self.resultsForSearchQuery = [[NSMutableDictionary alloc] init];
     
+    // Tableview
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
+    
+    // Search bar
+    self.searchDisplayController.searchBar.backgroundImage = [UIImage imageNamed:@"SearchBar.png"];
+    
 }
 
 - (void)viewDidUnload
