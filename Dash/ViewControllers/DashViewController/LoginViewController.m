@@ -45,16 +45,12 @@
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SplashPagePlain.png"]];
     [view addSubview:backgroundView];
     
-    UIFont *buttonFont = [UIFont fontWithName:kPlutoBold size:16.0f];
-    
     // Fb Connect
     self.fbconnect = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.fbconnect setBackgroundImage:[UIImage imageNamed:@"FacebookSignIn.png"] forState:UIControlStateNormal];
     [self.fbconnect addTarget:self 
                        action:@selector(loginWithConnect:) 
              forControlEvents:UIControlEventTouchUpInside];
-    [self.fbconnect setTitle:@"sign in with facebook" forState:UIControlStateNormal];
-    [self.fbconnect.titleLabel setFont:buttonFont];
     self.fbconnect.frame = CGRectMake(0.0f, 298.0f, 320.0f, 50.0f);
     [view addSubview:self.fbconnect];
     
@@ -64,8 +60,6 @@
     [self.skip addTarget:self 
                action:@selector(showDash:)
      forControlEvents:UIControlEventTouchUpInside];
-    [self.skip setTitle:@"dash it now" forState:UIControlStateNormal];
-    [self.skip.titleLabel setFont:buttonFont];
     self.skip.frame = CGRectMake(0.0f, 398.0f, 320.0f, 50.0f);
     [view addSubview:self.skip];
     
