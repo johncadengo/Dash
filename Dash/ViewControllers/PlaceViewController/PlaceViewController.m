@@ -273,7 +273,7 @@
             numRows = 1;
             break;
         case kPlaceBadgesSection:
-            numRows = 2; // One for the title, the other for the badges scroll view
+            numRows = ([self.badges count] == 0) ? 0 : 2; // One for the title, the other for the badges scroll view
             break;
         case kPlaceMoreInfoSection:
             numRows = 1;
