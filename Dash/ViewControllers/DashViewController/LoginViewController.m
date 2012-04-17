@@ -46,21 +46,23 @@
     [view addSubview:backgroundView];
     
     // Fb Connect
-    self.fbconnect = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.fbconnect = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.fbconnect setBackgroundImage:[UIImage imageNamed:@"FacebookSignIn.png"] forState:UIControlStateNormal];
     [self.fbconnect addTarget:self 
                        action:@selector(loginWithConnect:) 
              forControlEvents:UIControlEventTouchUpInside];
     [self.fbconnect setTitle:@"Login with Facebook" forState:UIControlStateNormal];
-    self.fbconnect.frame = CGRectMake(40.0f, 340.0f, 240.0f, 40.0f);
+    self.fbconnect.frame = CGRectMake(0.0f, 298.0f, 320.0f, 50.0f);
     [view addSubview:self.fbconnect];
     
     // Skip now button
-    self.skip = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.skip = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.skip setBackgroundImage:[UIImage imageNamed:@"DashItNow.png"] forState:UIControlStateNormal];
     [self.skip addTarget:self 
                action:@selector(showDash:)
      forControlEvents:UIControlEventTouchUpInside];
     [self.skip setTitle:@"Skip this for now" forState:UIControlStateNormal];
-    self.skip.frame = CGRectMake(40.0f, 390.0f, 240.0f, 40.0f);
+    self.skip.frame = CGRectMake(0.0f, 398.0f, 320.0f, 50.0f);
     [view addSubview:self.skip];
     
     // Finally, set our self.view
