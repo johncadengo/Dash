@@ -400,7 +400,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 {
     // Right now, we only have saves and recommends. So make a request for each.
     [self recommendsForPerson:person withCount:count];
-    [self savesForPerson:person withCount:count];
+    //[self savesForPerson:person withCount:count];
     
     //NSDictionary *requests = [[NSDictionary alloc] initWithObjectsAndKeys:
     //                          savesRequest, [NSNumber numberWithInt:kSaves],

@@ -62,6 +62,14 @@
 		6734EB861512520500D7EA7E /* PlutoRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB761512520500D7EA7E /* PlutoRegular.otf */; };
 		6734EB871512520500D7EA7E /* PlutoThin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB771512520500D7EA7E /* PlutoThin.otf */; };
 		67350A90153763E700A7306E /* PlacesBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8B153763E700A7306E /* PlacesBottom@2x.png */; };
+		67354C2B153DF2CA00A7555C /* Dash.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C23153DF2C900A7555C /* Dash.png */; };
+		67354C2C153DF2CA00A7555C /* DashApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C24153DF2C900A7555C /* DashApp.png */; };
+		67354C2D153DF2CA00A7555C /* DashItNow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C25153DF2C900A7555C /* DashItNow@2x.png */; };
+		67354C2E153DF2CA00A7555C /* FacebookSignIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C26153DF2C900A7555C /* FacebookSignIn@2x.png */; };
+		67354C2F153DF2CA00A7555C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C27153DF2CA00A7555C /* icon@2x.png */; };
+		67354C30153DF2CA00A7555C /* oldicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C28153DF2CA00A7555C /* oldicon.png */; };
+		67354C31153DF2CA00A7555C /* SplashPagePlain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C29153DF2CA00A7555C /* SplashPagePlain@2x.png */; };
+		67354C36153DF32200A7555C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C35153DF32200A7555C /* Default@2x.png */; };
 		6735AEA514BCC450000259AF /* Place+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6735AEA414BCC450000259AF /* Place+Helper.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
 		6739F46F14646DA800735858 /* HighlightViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6739F46E14646DA800735858 /* HighlightViewControllerTests.m */; };
@@ -182,7 +190,6 @@
 		67BAC8121459E6D50001C738 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8111459E6D50001C738 /* Save.m */; };
 		67BFB666147C262B005C862F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB665147C262B005C862F /* PlaceViewController.m */; };
 		67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */; };
-		67C46B1914BF9B05006B9301 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C46B1814BF9B05006B9301 /* icon@2x.png */; };
 		67C829091520DB0E0089E95F /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C829081520DB0E0089E95F /* FilterView.m */; };
 		67C84FDA150E2D8B0078CBEF /* Highlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C84FD9150E2D8B0078CBEF /* Highlight.m */; };
 		67C84FDD150E2DB20078CBEF /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C84FDC150E2DB20078CBEF /* Person.m */; };
@@ -202,8 +209,6 @@
 		67DE8430152F8CCF00556C54 /* BadgeSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DE842F152F8CCE00556C54 /* BadgeSquareView.m */; };
 		67DEF893153C8DAE0079C097 /* SearchBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF891153C8DAE0079C097 /* SearchBar@2x.png */; };
 		67DEF894153C8DAE0079C097 /* SearchBarWithMGlass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF892153C8DAE0079C097 /* SearchBarWithMGlass@2x.png */; };
-		67E7CA92146A2C0B00B7CBCF /* Dash.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA90146A2C0B00B7CBCF /* Dash.png */; };
-		67E7CA93146A2C0B00B7CBCF /* DashApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7CA91146A2C0B00B7CBCF /* DashApp.png */; };
 		67E7D94E146862E000E86F31 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67EDA900146C887F00AD3625 /* JCPinholeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA8FF146C887F00AD3625 /* JCPinholeViewController.m */; };
 		67EDA903146C8D6E00AD3625 /* JCSpotlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA902146C8D6D00AD3625 /* JCSpotlightViewController.m */; };
@@ -398,6 +403,14 @@
 		6734EB761512520500D7EA7E /* PlutoRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoRegular.otf; path = Dash/Images/Fonts/PlutoRegular.otf; sourceTree = "<group>"; };
 		6734EB771512520500D7EA7E /* PlutoThin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoThin.otf; path = Dash/Images/Fonts/PlutoThin.otf; sourceTree = "<group>"; };
 		67350A8B153763E700A7306E /* PlacesBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesBottom@2x.png"; path = "Dash/Images/Tabs/Places/PlacesBottom@2x.png"; sourceTree = "<group>"; };
+		67354C23153DF2C900A7555C /* Dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dash.png; path = Dash/Images/IconsSplash/Dash.png; sourceTree = "<group>"; };
+		67354C24153DF2C900A7555C /* DashApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DashApp.png; path = Dash/Images/IconsSplash/DashApp.png; sourceTree = "<group>"; };
+		67354C25153DF2C900A7555C /* DashItNow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashItNow@2x.png"; path = "Dash/Images/IconsSplash/DashItNow@2x.png"; sourceTree = "<group>"; };
+		67354C26153DF2C900A7555C /* FacebookSignIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FacebookSignIn@2x.png"; path = "Dash/Images/IconsSplash/FacebookSignIn@2x.png"; sourceTree = "<group>"; };
+		67354C27153DF2CA00A7555C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/IconsSplash/icon@2x.png"; sourceTree = "<group>"; };
+		67354C28153DF2CA00A7555C /* oldicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = oldicon.png; path = Dash/Images/IconsSplash/oldicon.png; sourceTree = "<group>"; };
+		67354C29153DF2CA00A7555C /* SplashPagePlain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SplashPagePlain@2x.png"; path = "Dash/Images/IconsSplash/SplashPagePlain@2x.png"; sourceTree = "<group>"; };
+		67354C35153DF32200A7555C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Dash/Images/IconsSplash/Default@2x.png"; sourceTree = "<group>"; };
 		6735AEA314BCC450000259AF /* Place+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Place+Helper.h"; path = "Data Model/Place/Place+Helper.h"; sourceTree = "<group>"; };
 		6735AEA414BCC450000259AF /* Place+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Place+Helper.m"; path = "Data Model/Place/Place+Helper.m"; sourceTree = "<group>"; };
 		673653671455C1DD00E53822 /* DashAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashAPI.h; path = API/DashAPI.h; sourceTree = "<group>"; };
@@ -555,7 +568,6 @@
 		67BFB665147C262B005C862F /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewController.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.m; sourceTree = "<group>"; };
 		67BFB667147C4476005C862F /* PlaceHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceHeaderViewCell.h; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.h; sourceTree = "<group>"; };
 		67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceHeaderViewCell.m; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.m; sourceTree = "<group>"; };
-		67C46B1814BF9B05006B9301 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Dash/Images/Icons/icon@2x.png"; sourceTree = "<group>"; };
 		67C829071520DB0D0089E95F /* FilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterView.h; path = Dash/ViewControllers/DashViewController/FilterView.h; sourceTree = "<group>"; };
 		67C829081520DB0E0089E95F /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterView.m; path = Dash/ViewControllers/DashViewController/FilterView.m; sourceTree = "<group>"; };
 		67C84FD8150E2D8B0078CBEF /* Highlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Highlight.h; path = "Data Model/Actions/Highlight/Highlight.h"; sourceTree = "<group>"; };
@@ -585,8 +597,6 @@
 		67DE842F152F8CCE00556C54 /* BadgeSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BadgeSquareView.m; path = Dash/ViewControllers/PlaceViewController/BadgeSquareView.m; sourceTree = "<group>"; };
 		67DEF891153C8DAE0079C097 /* SearchBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SearchBar@2x.png"; path = "Dash/Images/Tabs/Search/SearchBar@2x.png"; sourceTree = "<group>"; };
 		67DEF892153C8DAE0079C097 /* SearchBarWithMGlass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SearchBarWithMGlass@2x.png"; path = "Dash/Images/Tabs/Search/SearchBarWithMGlass@2x.png"; sourceTree = "<group>"; };
-		67E7CA90146A2C0B00B7CBCF /* Dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dash.png; path = Dash/Images/Icons/Dash.png; sourceTree = "<group>"; };
-		67E7CA91146A2C0B00B7CBCF /* DashApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DashApp.png; path = Dash/Images/Icons/DashApp.png; sourceTree = "<group>"; };
 		67E7D94C146862E000E86F31 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGORefreshTableHeaderView.h; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGORefreshTableHeaderView.m; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		67EDA8FE146C887F00AD3625 /* JCPinholeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCPinholeViewController.h; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCPinholeViewController.h; sourceTree = "<group>"; };
@@ -1169,19 +1179,24 @@
 				67F3DA2C152CE43700A287F6 /* NavBar */,
 				6734EB67151251F800D7EA7E /* Fonts */,
 				6734EB5415123E9A00D7EA7E /* Tabs */,
-				679009E11450E6D000511E0F /* Icons */,
+				679009E11450E6D000511E0F /* IconsSplash */,
 			);
 			name = Images;
 			sourceTree = "<group>";
 		};
-		679009E11450E6D000511E0F /* Icons */ = {
+		679009E11450E6D000511E0F /* IconsSplash */ = {
 			isa = PBXGroup;
 			children = (
-				67C46B1814BF9B05006B9301 /* icon@2x.png */,
-				67E7CA90146A2C0B00B7CBCF /* Dash.png */,
-				67E7CA91146A2C0B00B7CBCF /* DashApp.png */,
+				67354C35153DF32200A7555C /* Default@2x.png */,
+				67354C23153DF2C900A7555C /* Dash.png */,
+				67354C24153DF2C900A7555C /* DashApp.png */,
+				67354C25153DF2C900A7555C /* DashItNow@2x.png */,
+				67354C26153DF2C900A7555C /* FacebookSignIn@2x.png */,
+				67354C27153DF2CA00A7555C /* icon@2x.png */,
+				67354C28153DF2CA00A7555C /* oldicon.png */,
+				67354C29153DF2CA00A7555C /* SplashPagePlain@2x.png */,
 			);
-			name = Icons;
+			name = IconsSplash;
 			sourceTree = "<group>";
 		};
 		679009E61450EB1D00511E0F /* FeedViewController */ = {
@@ -1588,9 +1603,6 @@
 			files = (
 				67348ABB1446350700A3160A /* InfoPlist.strings in Resources */,
 				67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */,
-				67E7CA92146A2C0B00B7CBCF /* Dash.png in Resources */,
-				67E7CA93146A2C0B00B7CBCF /* DashApp.png in Resources */,
-				67C46B1914BF9B05006B9301 /* icon@2x.png in Resources */,
 				6734EB781512520500D7EA7E /* PlutoBlack.otf in Resources */,
 				6734EB791512520500D7EA7E /* PlutoBold.otf in Resources */,
 				6734EB7A1512520500D7EA7E /* PlutoCondBlack.otf in Resources */,
@@ -1685,6 +1697,14 @@
 				67CF25061537826E006468C9 /* PlacesTop@2x.png in Resources */,
 				67DEF893153C8DAE0079C097 /* SearchBar@2x.png in Resources */,
 				67DEF894153C8DAE0079C097 /* SearchBarWithMGlass@2x.png in Resources */,
+				67354C2B153DF2CA00A7555C /* Dash.png in Resources */,
+				67354C2C153DF2CA00A7555C /* DashApp.png in Resources */,
+				67354C2D153DF2CA00A7555C /* DashItNow@2x.png in Resources */,
+				67354C2E153DF2CA00A7555C /* FacebookSignIn@2x.png in Resources */,
+				67354C2F153DF2CA00A7555C /* icon@2x.png in Resources */,
+				67354C30153DF2CA00A7555C /* oldicon.png in Resources */,
+				67354C31153DF2CA00A7555C /* SplashPagePlain@2x.png in Resources */,
+				67354C36153DF32200A7555C /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

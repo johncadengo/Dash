@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="k9c-Gj-ADy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="k9c-Gj-ADy">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
+        <!--Feed View Controller - Feed-->
         <scene sceneID="nEa-y7-DTw">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdl-sn-eOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -27,6 +29,7 @@
             </objects>
             <point key="canvasLocation" x="447" y="-1200"/>
         </scene>
+        <!--Highlight View Controller - Detail View-->
         <scene sceneID="oNg-Nb-Z2g">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lot-FR-rOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,6 +68,7 @@
             </objects>
             <point key="canvasLocation" x="902" y="-1200"/>
         </scene>
+        <!--Dash View Controller - Dash-->
         <scene sceneID="fkx-2H-wDy">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7T-bs-WSM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -86,6 +90,7 @@
             </objects>
             <point key="canvasLocation" x="447" y="31"/>
         </scene>
+        <!--Search View Controller - Search-->
         <scene sceneID="D8r-q8-ko5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hj-t8-BKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -137,6 +142,7 @@
             </objects>
             <point key="canvasLocation" x="447" y="685"/>
         </scene>
+        <!--Profile View Controller - Dash-->
         <scene sceneID="g0H-Km-RHi">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMs-8Z-85d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,6 +173,7 @@
             </objects>
             <point key="canvasLocation" x="447" y="1319"/>
         </scene>
+        <!--Navigation Controller - Feed-->
         <scene sceneID="ags-LZ-PSs">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr1-RU-IBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -182,6 +189,7 @@
             </objects>
             <point key="canvasLocation" x="-26" y="-1200"/>
         </scene>
+        <!--Recommended Places View Controller - Places-->
         <scene sceneID="0yi-PX-Kun">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xak-M4-wyX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,6 +223,7 @@
             </objects>
             <point key="canvasLocation" x="447" y="-585"/>
         </scene>
+        <!--Place View Controller-->
         <scene sceneID="Cox-XS-V9E">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfu-Cq-T6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,6 +245,7 @@
             </objects>
             <point key="canvasLocation" x="902" y="-580"/>
         </scene>
+        <!--Navigation Controller - Dash-->
         <scene sceneID="phr-Xt-Zrw">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qs2-d7-vbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,6 +261,7 @@
             </objects>
             <point key="canvasLocation" x="-26" y="8"/>
         </scene>
+        <!--Filter View Controller-->
         <scene sceneID="oJX-04-mqz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ry-vU-dTo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,6 +275,7 @@
             </objects>
             <point key="canvasLocation" x="1338" y="-103"/>
         </scene>
+        <!--Login View Controller-->
         <scene sceneID="dhA-gW-S2n">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32C-oL-jt7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -278,11 +290,12 @@
             </objects>
             <point key="canvasLocation" x="1334" y="511"/>
         </scene>
+        <!--Navigation Controller - Favorites-->
         <scene sceneID="NMc-mT-qex">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ViJ-wf-3jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="IdB-Gh-7Ud" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Places" image="Places.png" id="0EB-Vu-1yY"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Places.png" id="0EB-Vu-1yY"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="56U-ry-ZHk">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -293,6 +306,7 @@
             </objects>
             <point key="canvasLocation" x="-26" y="-580"/>
         </scene>
+        <!--Navigation Controller - Search-->
         <scene sceneID="F5X-gs-bmU">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXs-bS-Lwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -308,6 +322,7 @@
             </objects>
             <point key="canvasLocation" x="-26" y="685"/>
         </scene>
+        <!--Navigation Controller - Profile-->
         <scene sceneID="odL-1M-OjX">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9g-F9-mVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,6 +338,7 @@
             </objects>
             <point key="canvasLocation" x="-26" y="1319"/>
         </scene>
+        <!--Tab Bar Controller-->
         <scene sceneID="crZ-BU-uHh">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QT8-ae-9Je" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -368,12 +384,12 @@
         </class>
         <class className="PlaceViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-            </relationships>
         </class>
         <class className="ProfileViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
+        </class>
+        <class className="RecommendedPlacesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecommendedPlacesViewController.h"/>
         </class>
         <class className="SearchViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>

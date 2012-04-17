@@ -49,7 +49,6 @@
 
 - (CGRect)frameForBadgeIndex:(NSInteger)n
 {
-    NSLog(@"asdf %d", n);
     CGRect frame = CGRectMake(BadgeSquareView.size.width * n, 0.0f, BadgeSquareView.size.width, BadgeSquareView.size.height);
     return frame;
 }
@@ -59,21 +58,7 @@
     // Save the badges
     _badges = badges;
     
-    NSLog(@"badges %@", badges);
-    
     // Now populate them
-    for (Badge *badge in _badges) {
-        BadgeSquareView *squareView = [[BadgeSquareView alloc] initWithFrame:[self frameForBadgeIndex:[self.badgesViews count]]];
-        [squareView setWithBadge:badge];
-        [self.badgesViews addObject:squareView];
-        [self.scrollView addSubview:squareView];
-    }
-    for (Badge *badge in _badges) {
-        BadgeSquareView *squareView = [[BadgeSquareView alloc] initWithFrame:[self frameForBadgeIndex:[self.badgesViews count]]];
-        [squareView setWithBadge:badge];
-        [self.badgesViews addObject:squareView];
-        [self.scrollView addSubview:squareView];
-    }
     for (Badge *badge in _badges) {
         BadgeSquareView *squareView = [[BadgeSquareView alloc] initWithFrame:[self frameForBadgeIndex:[self.badgesViews count]]];
         [squareView setWithBadge:badge];
