@@ -162,10 +162,10 @@
         
         // If it is checked, draw it a different way than if it is unchecked.
         if ([self indexSelected:i ForArray:arr]) {
-            [image drawAtPoint:CGPointMake(x, y) blendMode:kCGBlendModeOverlay alpha:0.25f];
+            [image drawAtPoint:CGPointMake(x, y) blendMode:kCGBlendModeOverlay alpha:1.0f];
         }
         else {
-            [image drawAtPoint:CGPointMake(x, y)];
+            [image drawAtPoint:CGPointMake(x, y) blendMode:kCGBlendModeOverlay alpha:0.25f];
         }
     }
      

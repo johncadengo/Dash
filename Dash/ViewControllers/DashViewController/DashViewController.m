@@ -261,6 +261,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     // TODO: Some logic in here to check whether we are logged in or not
     // For now, segue immediately to the login view controller
     if (![DashAPI skipLogin] && ![DashAPI loggedIn]) {
+        self.filterShowing = YES;
+        [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
+        [self showFilter];
         [self showLogin];
     }
 }
