@@ -15,6 +15,7 @@
 
 @synthesize skip = _skip;
 @synthesize fbconnect = _fbconnect;
+@synthesize dashViewController = _dashViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,7 +52,7 @@
     [self.fbconnect addTarget:self 
                        action:@selector(loginWithConnect:) 
              forControlEvents:UIControlEventTouchUpInside];
-    self.fbconnect.frame = CGRectMake(0.0f, 298.0f, 320.0f, 50.0f);
+    self.fbconnect.frame = CGRectMake(0.0f, 298.0f, 320.0f, 51.0f);
     [view addSubview:self.fbconnect];
     
     // Skip now button
@@ -96,7 +97,7 @@
     [DashAPI setLoggedIn:YES];
     
     // TODO: AND SOME MAGIC
-
+    
     // See ya!
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -107,6 +108,9 @@
 {
     // Login logic
     [DashAPI setSkipLogin:YES];
+    
+    // Pop it
+    [self.dashViewController pop:self];
     
     // Goodbye!
     [self dismissModalViewControllerAnimated:YES];

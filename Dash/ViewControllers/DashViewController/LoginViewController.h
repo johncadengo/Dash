@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class DashViewController;
+
 @interface LoginViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIButton *fbconnect;
 @property (nonatomic, strong) UIButton *skip;
+@property (nonatomic, strong) DashViewController *dashViewController;
 
 - (void)setViewMovedUp:(BOOL)movedUp;
 - (void)startDashing:(id) sender;

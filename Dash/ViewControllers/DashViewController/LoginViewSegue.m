@@ -7,11 +7,17 @@
 //
 
 #import "LoginViewSegue.h"
+#import "LoginViewController.h"
 
 @implementation LoginViewSegue
 
 - (void)perform
 {
+    // Hook up
+    LoginViewController *loginViewController = (LoginViewController *)self.destinationViewController;
+    loginViewController.dashViewController = self.sourceViewController;
+    
+    // And make out
     [self.sourceViewController presentModalViewController:self.destinationViewController animated:NO];
 }
 
