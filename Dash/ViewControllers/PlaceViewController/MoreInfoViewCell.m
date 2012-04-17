@@ -117,9 +117,19 @@
     }
 }
 
+-(NSString *) URLEncodeString:(NSString *) str
+{
+    
+    NSMutableString *tempStr = [NSMutableString stringWithString:str];
+    [tempStr replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tempStr length])];
+    
+    
+    return [[NSString stringWithFormat:@"%@",tempStr] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
 - (void)map:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", self.addressLabel.text]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self URLEncodeString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", self.addressLabel.text]]]];
 }
 
 #pragma mark - 

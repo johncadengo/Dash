@@ -24,5 +24,6 @@
 - (void)setWithPlace:(Place *)place;
 - (void)call:(id)sender;
 - (void)map:(id)sender;
+- (NSString *) URLEncodeString:(NSString *) str;
 
 @end
