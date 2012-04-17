@@ -70,6 +70,7 @@
 		67354C30153DF2CA00A7555C /* oldicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C28153DF2CA00A7555C /* oldicon.png */; };
 		67354C31153DF2CA00A7555C /* SplashPagePlain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C29153DF2CA00A7555C /* SplashPagePlain@2x.png */; };
 		67354C36153DF32200A7555C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C35153DF32200A7555C /* Default@2x.png */; };
+		67354C39153E026000A7555C /* LoginViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67354C38153E025F00A7555C /* LoginViewSegue.m */; };
 		6735AEA514BCC450000259AF /* Place+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6735AEA414BCC450000259AF /* Place+Helper.m */; };
 		673653691455C1DD00E53822 /* DashAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 673653681455C1DD00E53822 /* DashAPI.m */; };
 		6739F46F14646DA800735858 /* HighlightViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6739F46E14646DA800735858 /* HighlightViewControllerTests.m */; };
@@ -411,6 +412,8 @@
 		67354C28153DF2CA00A7555C /* oldicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = oldicon.png; path = Dash/Images/IconsSplash/oldicon.png; sourceTree = "<group>"; };
 		67354C29153DF2CA00A7555C /* SplashPagePlain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SplashPagePlain@2x.png"; path = "Dash/Images/IconsSplash/SplashPagePlain@2x.png"; sourceTree = "<group>"; };
 		67354C35153DF32200A7555C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Dash/Images/IconsSplash/Default@2x.png"; sourceTree = "<group>"; };
+		67354C37153E025F00A7555C /* LoginViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewSegue.h; path = Dash/ViewControllers/DashViewController/LoginViewSegue.h; sourceTree = "<group>"; };
+		67354C38153E025F00A7555C /* LoginViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewSegue.m; path = Dash/ViewControllers/DashViewController/LoginViewSegue.m; sourceTree = "<group>"; };
 		6735AEA314BCC450000259AF /* Place+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Place+Helper.h"; path = "Data Model/Place/Place+Helper.h"; sourceTree = "<group>"; };
 		6735AEA414BCC450000259AF /* Place+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Place+Helper.m"; path = "Data Model/Place/Place+Helper.m"; sourceTree = "<group>"; };
 		673653671455C1DD00E53822 /* DashAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashAPI.h; path = API/DashAPI.h; sourceTree = "<group>"; };
@@ -1167,6 +1170,8 @@
 				67A8977314C782DD00494273 /* FilterViewSegue.m */,
 				67F20E8F1500357D0026CF4A /* LoginViewController.h */,
 				67F20E901500357D0026CF4A /* LoginViewController.m */,
+				67354C37153E025F00A7555C /* LoginViewSegue.h */,
+				67354C38153E025F00A7555C /* LoginViewSegue.m */,
 			);
 			name = DashViewController;
 			sourceTree = "<group>";
@@ -1850,6 +1855,7 @@
 				6789D2D6152E39C60029BF48 /* HighlightViewCell.m in Sources */,
 				67DE8430152F8CCF00556C54 /* BadgeSquareView.m in Sources */,
 				67B378D51534BF7A00A2A4CB /* Badge+Helper.m in Sources */,
+				67354C39153E026000A7555C /* LoginViewSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

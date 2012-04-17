@@ -83,7 +83,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="ZvP-bc-h0g" kind="push" identifier="ShowDashViewDetails" id="QBV-X4-kru"/>
-                        <segue destination="Typ-Mx-jbY" kind="modal" identifier="ShowLoginViewController" modalTransitionStyle="crossDissolve" id="oEx-Hd-Vb9"/>
+                        <segue destination="Typ-Mx-jbY" kind="custom" identifier="ShowLoginViewController" customClass="LoginViewSegue" id="oEx-Hd-Vb9"/>
                         <segue destination="kd2-xu-Of4" kind="custom" identifier="PresentFilterViewController" customClass="FilterViewSegue" id="4wE-Yi-lCa"/>
                     </connections>
                 </viewController>

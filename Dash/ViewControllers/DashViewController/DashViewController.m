@@ -257,17 +257,17 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
     // TODO: Some logic in here to check whether we are logged in or not
     // For now, segue immediately to the login view controller
     if (![DashAPI skipLogin] && ![DashAPI loggedIn]) {
         [self showLogin];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
     if (self.isFilterShowing) {
         [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
