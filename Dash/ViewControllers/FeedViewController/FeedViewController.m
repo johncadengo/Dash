@@ -169,8 +169,8 @@
     
     Action *action = [[self feedItems] objectAtIndex:indexPath.row];
     [cell setWithAction:action];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    NSLog(@"action %@", action);
     return cell;
 }
 

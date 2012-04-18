@@ -16,6 +16,7 @@
 #import "UIImage+ProportionalFill.h"
 #import "Action.h"
 #import "Action+Helper.h"
+#import "Constants.h"
 
 @implementation ActionViewCell
 
@@ -35,7 +36,6 @@ static CGFloat kDetailDisclosureWidth = 30.0f;
  */
 static CGFloat kMaxBlurbHeight = 1000.0f;
 
-static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
@@ -44,42 +44,22 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 + (CGFloat)heightForAction:(Action *)action
 {
-    // TODO: Get the actual name and timestamp for calculating size.
-    
-    //CGSize nameSize = [self textSizeForName:[[action author] name]];
-    CGSize nameSize = [self textSizeForName:@"hi"];
     CGSize blurbSize = [self textSizeForBlurb:[action description]];
     //CGSize timestampSize = [self textSizeForTimestamp:[[action timestamp] description]];
     CGSize timestampSize = [self textSizeForTimestamp:@"hi"];
-    CGFloat height = kPadding + nameSize.height + kPadding + blurbSize.height + kPadding + timestampSize.height + kPadding;
+    CGFloat height = kPadding + blurbSize.height + kPadding + timestampSize.height + kPadding;
 
     return MAX(kDefaultHeight, height);
 }
 
-+ (UIFont *)nameFont
-{
-    return [UIFont boldSystemFontOfSize:16];    
-}
-
 + (UIFont *)blurbFont
 {
-    return [UIFont systemFontOfSize:14];
+    return [UIFont fontWithName:kHelveticaNeueBold size:14.0f];
 }
 
 + (UIFont *)timestampFont
 {
-    return [UIFont boldSystemFontOfSize:12];
-}
-
-+ (CGSize)textSizeForName:(NSString *)name
-{
-    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
-	CGSize textSize = [name sizeWithFont:[self nameFont] 
-                                     forWidth:maxWidth 
-                                lineBreakMode:kNameLineBreak];
-    
-    return textSize;
-
+    return [UIFont systemFontOfSize:10.0f];
 }
 
 + (CGSize)textSizeForBlurb:(NSString *)blurb
@@ -129,8 +109,8 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 - (void)drawRect:(CGRect)rect
 {
     [[UIColor blackColor] set];
-    [self.blurb drawAtPoint:CGPointZero withFont:[[self class] blurbFont]];
-    [self.timestamp drawAtPoint:CGPointMake(0.0f, 10.0f) withFont:[[self class] timestampFont]];
+    [self.blurb drawAtPoint:CGPointMake(15.0f, 10.0f) withFont:[[self class] blurbFont]];
+    [self.timestamp drawAtPoint:CGPointMake(15.0f, 30.0f) withFont:[[self class] timestampFont]];
 	
 }
 
