@@ -25,4 +25,6 @@
 @property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
+@property (nonatomic, strong) UIImageView *backgroundBubble;
+
 @end

@@ -24,6 +24,7 @@
 @synthesize feedItems = _feedItems;
 @synthesize refreshHeaderView = _refreshHeaderView;
 @synthesize hud = _hud;
+@synthesize backgroundBubble = _backgroundBubble;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -64,6 +65,12 @@
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
     
+    // Set up the fake background view
+    self.backgroundBubble = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundBubble.png"]];
+    self.tableView.backgroundView = self.backgroundBubble;
+    self.tableView.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
+    
+    // Make the call
     [self.api feedForPerson:nil];
 }
 
