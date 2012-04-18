@@ -120,18 +120,15 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 - (void)setWithAction:(Action*)action
 {
-    //NSString *iconPath = [[[action author] profilepic] localpath];
-    CGSize size = CGSizeMake(57.0f, 57.0f);
-    
     self.blurb = [action description];
     self.timestamp = [action relativeTimestamp];
-    //self.icon = [[UIImage imageNamed:iconPath] imageCroppedToFitSize:size];
     
     [self setNeedsDisplay];
 }
 
-- (void)drawContentView:(CGRect)rect 
+- (void)drawRect:(CGRect)rect
 {
+    [[UIColor blackColor] set];
     [self.blurb drawAtPoint:CGPointZero withFont:[[self class] blurbFont]];
     [self.timestamp drawAtPoint:CGPointMake(0.0f, 10.0f) withFont:[[self class] timestampFont]];
 	
