@@ -64,11 +64,7 @@
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.api feedForPerson:nil];
 }
 
 - (void)viewDidUnload
@@ -81,8 +77,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    // 
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -168,6 +162,8 @@
     
     Action *action = [[self feedItems] objectAtIndex:indexPath.row];
     [cell setWithAction:action];
+    
+    NSLog(@"action %@", action);
     return cell;
 }
 
@@ -175,8 +171,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-
     PlaceAction *placeAction = [self.feedItems objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:placeAction];
 }
@@ -205,7 +199,7 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
-    NSLog(@"%@", objects);
+    NSLog(@"Feed items: %@", objects);
     self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
@@ -224,9 +218,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {	
-    // For TISwipeableTableViewCells
-	[super scrollViewDidScroll:scrollView];
-		
     // For our EGO pull refresh header
 	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
     
