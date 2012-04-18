@@ -7,7 +7,6 @@
 //
 
 #import "FeedViewController.h"
-#import "ListModeCell.h"
 #import "Constants.h"
 #import "DashAPI.h"
 #import "Action.h"
@@ -23,7 +22,6 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
 @synthesize feedItems = _feedItems;
-@synthesize listMode = _listMode;
 @synthesize refreshHeaderView = _refreshHeaderView;
 @synthesize hud = _hud;
 
@@ -52,9 +50,6 @@
     
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
-    
-    // Initialize our tableview's array which will represent its model.
-    [self setListMode:kFriendsListMode];
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
 
@@ -118,7 +113,6 @@
 {	
     // Causes the table view to reload our data source
     [self.refreshHeaderView performSelector:@selector(egoRefreshScrollViewDataSourceDidFinishedLoading:) withObject:self.tableView afterDelay:2.0];
-    [self setListMode:self.listMode];
 	//[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
 	
 }
@@ -142,194 +136,49 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger section = [indexPath section];
-    NSInteger row = [indexPath row];
-    
-    CGFloat height = 0.0;
-    
-    switch (section) {
-        case kFeedListModeSection:
-            // TODO: Make this a constant and figure out where to put it.
-            height = 40.0;
-            break;
-        case kFeedFeedItemsSection:
-            height = [self heightForFeedCellForRow:row];
-            break;
-        default:
-            // Should never happen
-            NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
-            break;
-    }
-    
-    return height;
+    // Get the blurb we are using for that row
+    Action *action = [self.feedItems objectAtIndex:indexPath.row];
+    return [ActionViewCell heightForAction:action];
 }
 
-- (CGFloat)heightForFeedCellForRow:(NSInteger)row
-{
-    // Get the blurb we are using for that row
-    Action *action = [self.feedItems objectAtIndex:row];
-    return [ActionViewCell heightForAction:action withCellType:ActionViewCellTypeFeedItem];
-}
 
 #pragma mark - Table view data source
 
-/** Two sections:
-    1) Segmented control for list mode
-    2) Items in the news feed
- */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return kFeedNumSections;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numRows = 0;
-    
-    switch (section) {
-        case kFeedListModeSection:
-            numRows = kNumRowsForListModeSection;
-            break;
-        case kFeedFeedItemsSection:
-            numRows = [self.feedItems count];
-            break;
-        default:
-            // Should never happen
-            NSAssert(NO, @"Asking for number of rows in a section that doesn't exist: %d", section);
-            break;
-    }
+    NSInteger numRows = [self.feedItems count];
     
     return numRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger section = [indexPath section];
-    NSInteger row = [indexPath row];
-    id cell = nil;
-
-    switch (section) {
-        case kFeedListModeSection:
-            cell = [self listModeCellForTableView:tableView];
-            break;
-        case kFeedFeedItemsSection:
-            cell = [self feedCellForTableView:tableView forRow:row];
-            break;
-        default:
-            // Should never happen
-            NSAssert(NO, @"Asking for cell in a section that doesn't exist: %d", section);
-            break;
-    }
-    
-    return cell;
-}
-
-
-- (ListModeCell *)listModeCellForTableView:(UITableView *)tableView
-{
-    ListModeCell *cell = (ListModeCell*)[tableView dequeueReusableCellWithIdentifier:kListModeCellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[ListModeCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                   reuseIdentifier:kListModeCellIdentifier 
-                              selectedSegmentIndex:self.listMode];
-    }
-    
-    [cell setDelegate:self];
-    
-    return cell;
-}
-
-- (ActionViewCell *)feedCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
-{
-    /*ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
+    ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
     
     if (cell == nil) {
         cell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                     reuseIdentifier:kFeedItemCellIdentifier
-                                  cellType:ActionViewCellTypeFeedItem];
+                                     reuseIdentifier:kFeedItemCellIdentifier];
     }
-   
-    [cell setDelegate:self];
-    Action *action = [[self feedItems] objectAtIndex:row];
+    
+    Action *action = [[self feedItems] objectAtIndex:indexPath.row];
     [cell setWithAction:action];
-    */
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFeedItemCellIdentifier];
-    }
-    
-    Action *action = [self.feedItems objectAtIndex:row];
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", action];
-    
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    
-    NSInteger section = [indexPath section];
-    NSInteger row = [indexPath row];
-    
-    // Only perform segue on a row in the feed item section being tapped, not on the very first section.
-    if (section != kFeedListModeSection) {
-        PlaceAction *placeAction = [self.feedItems objectAtIndex:row];
-        [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:placeAction];
-    }
+
+    PlaceAction *placeAction = [self.feedItems objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:placeAction];
 }
 
 #pragma mark - Storyboard Segue
@@ -352,18 +201,6 @@
     }
 }
 
-#pragma mark - TISwipeableTableView stuff
-
-
-- (void)tableView:(UITableView *)tableView didSwipeCellAtIndexPath:(NSIndexPath *)indexPath 
-{	
-    NSLog(@"SWIPE");
-	[super tableView:tableView didSwipeCellAtIndexPath:indexPath];
-	
-
-}
-
-
 #pragma mark - RKObjectLoaderDelegate methods
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
@@ -372,7 +209,6 @@
     self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
-    [self hideVisibleBackView:NO];
     [self.tableView reloadData];
     
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
@@ -381,40 +217,6 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
 {
     NSLog(@"Encountered an error: %@", error);
-}
-
-#pragma mark - ListModeCellDelegate
-/** Overriding synthesized method to make sure that when this value is changed we call reloadData
-    Shouldn't be a problem since ListMode is just an int.
- */
-- (void)setListMode:(ListMode)newListMode
-{
-    _listMode = newListMode;
-
-    switch (self.listMode) {
-        case kFriendsListMode:
-            [self.api feedForLocation:nil];
-            break;
-        case kNearbyListMode:
-            [self.api feedForPerson:nil];
-            break;
-        default:
-            NSAssert(NO, @"Tried to change to a ListMode that does not exist: %d", newListMode);
-            break; 
-    }
-}
-
-#pragma mark - FeedItemCellDelegate
-
-- (void)cellBackButtonWasTapped:(ActionViewCell *)cell {
-	
-	UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"BackView Button" 
-														 message:@"WHOA! YOU TAPPED A BACKVIEW BUTTON!" 
-														delegate:nil cancelButtonTitle:@"Sorry" 
-											   otherButtonTitles:nil];
-	[alertView show];
-	
-	[self hideVisibleBackView:YES];
 }
 
 #pragma mark -

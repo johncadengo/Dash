@@ -197,7 +197,6 @@
 		67C84FE0150E2DC20078CBEF /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C84FDF150E2DC20078CBEF /* Place.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 		67CCDE8914607D8400CF657D /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8814607D8400CF657D /* LocationTests.m */; };
-		67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8F1460D12C00CF657D /* ListModeCell.m */; };
 		67CF25011537819B006468C9 /* Coffee-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CF24FF1537819B006468C9 /* Coffee-Places@2x.png */; };
 		67CF25021537819B006468C9 /* FastFood-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CF25001537819B006468C9 /* FastFood-Places@2x.png */; };
 		67CF25051537826E006468C9 /* PlacesMiddle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CF25031537826E006468C9 /* PlacesMiddle@2x.png */; };
@@ -582,8 +581,6 @@
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		67CCDE8714607D8400CF657D /* LocationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationTests.h; path = "Logic Tests/LocationTests.h"; sourceTree = "<group>"; };
 		67CCDE8814607D8400CF657D /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationTests.m; path = "Logic Tests/LocationTests.m"; sourceTree = "<group>"; };
-		67CCDE8E1460D12B00CF657D /* ListModeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListModeCell.h; path = Dash/ViewControllers/FeedViewController/ListModeCell.h; sourceTree = "<group>"; };
-		67CCDE8F1460D12C00CF657D /* ListModeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListModeCell.m; path = Dash/ViewControllers/FeedViewController/ListModeCell.m; sourceTree = "<group>"; };
 		67CF24FF1537819B006468C9 /* Coffee-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Coffee-Places@2x.png"; path = "Dash/Images/Tabs/Places/Coffee-Places@2x.png"; sourceTree = "<group>"; };
 		67CF25001537819B006468C9 /* FastFood-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FastFood-Places@2x.png"; path = "Dash/Images/Tabs/Places/FastFood-Places@2x.png"; sourceTree = "<group>"; };
 		67CF25031537826E006468C9 /* PlacesMiddle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesMiddle@2x.png"; path = "Dash/Images/Tabs/Places/PlacesMiddle@2x.png"; sourceTree = "<group>"; };
@@ -1211,8 +1208,6 @@
 				679009EB1450EB7A00511E0F /* FeedViewController.m */,
 				67F22FCA145F09D40010A09F /* ActionViewCell.h */,
 				67F22FCB145F09D40010A09F /* ActionViewCell.m */,
-				67CCDE8E1460D12B00CF657D /* ListModeCell.h */,
-				67CCDE8F1460D12C00CF657D /* ListModeCell.m */,
 			);
 			name = FeedViewController;
 			sourceTree = "<group>";
@@ -1817,7 +1812,6 @@
 				679E8CC01460684E0038E506 /* Flag+Helper.m in Sources */,
 				67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */,
 				67D15A47146070250047C1E4 /* Location.m in Sources */,
-				67CCDE901460D12C00CF657D /* ListModeCell.m in Sources */,
 				676B64A41464871A00FEEF7C /* Comment+Helper.m in Sources */,
 				676B64AB146493AD00FEEF7C /* NSArray+Helpers.m in Sources */,
 				676B64AE146493CA00FEEF7C /* NSString+RandomStrings.m in Sources */,
