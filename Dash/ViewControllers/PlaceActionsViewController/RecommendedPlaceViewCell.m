@@ -37,7 +37,7 @@ static const CGFloat kPadding = 20.0f;
 static const CGFloat kTopHeight = 80.0f;
 static const CGFloat kMiddleHeight = 63.0f;
 static const CGFloat kBottomHeight = 73.0f;
-static const CGFloat kOnlyHeight = 75.0f;
+static const CGFloat kOnlyHeight = 90.0f;
 
 static const CGFloat kTopYOffset = 25.0f;
 static const CGFloat kYOffset = 8.0f;
