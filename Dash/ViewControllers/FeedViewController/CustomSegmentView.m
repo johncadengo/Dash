@@ -52,11 +52,12 @@
     // Find out where we tapped
     CGPoint tapPoint = [gestureRecognizer locationInView:self];
 
+    // Set selected based on that
     if (CGRectContainsPoint(self.leftHalf, tapPoint)) {
-        NSLog(@"Left");
+        [self setLeftSelected:YES];
     }
     else {
-        NSLog(@"Right");
+        [self setLeftSelected:NO];
     }
 }
 #pragma mark - Draw
