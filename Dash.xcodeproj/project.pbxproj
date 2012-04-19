@@ -61,7 +61,6 @@
 		6734EB851512520500D7EA7E /* PlutoMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB751512520500D7EA7E /* PlutoMedium.otf */; };
 		6734EB861512520500D7EA7E /* PlutoRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB761512520500D7EA7E /* PlutoRegular.otf */; };
 		6734EB871512520500D7EA7E /* PlutoThin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB771512520500D7EA7E /* PlutoThin.otf */; };
-		67350A90153763E700A7306E /* PlacesBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67350A8B153763E700A7306E /* PlacesBottom@2x.png */; };
 		67354C2B153DF2CA00A7555C /* Dash.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C23153DF2C900A7555C /* Dash.png */; };
 		67354C2C153DF2CA00A7555C /* DashApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C24153DF2C900A7555C /* DashApp.png */; };
 		67354C2D153DF2CA00A7555C /* DashItNow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67354C25153DF2C900A7555C /* DashItNow@2x.png */; };
@@ -175,6 +174,10 @@
 		67A85968153F5DF800B451D9 /* TopBarNearbySelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A85964153F5DF800B451D9 /* TopBarNearbySelected@2x.png */; };
 		67A8596A1540224300B451D9 /* defaultProfile@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 67A859691540224300B451D9 /* defaultProfile@2x.jpg */; };
 		67A8596D154037E600B451D9 /* CustomSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8596C154037E600B451D9 /* CustomSegmentView.m */; };
+		67A859721540926600B451D9 /* PlacesBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A8596E1540926600B451D9 /* PlacesBottom@2x.png */; };
+		67A859731540926600B451D9 /* PlacesMiddle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A8596F1540926600B451D9 /* PlacesMiddle@2x.png */; };
+		67A859751540926600B451D9 /* PlacesTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A859711540926600B451D9 /* PlacesTop@2x.png */; };
+		67A859771540944900B451D9 /* PlacesOnePiece@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A859761540944900B451D9 /* PlacesOnePiece@2x.png */; };
 		67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8977314C782DD00494273 /* FilterViewSegue.m */; };
 		67B378CE1534BE9E00A2A4CB /* DashGold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378C91534BE9E00A2A4CB /* DashGold@2x.png */; };
 		67B378CF1534BE9E00A2A4CB /* LaptopIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378CA1534BE9E00A2A4CB /* LaptopIcon@2x.png */; };
@@ -205,8 +208,6 @@
 		67CCDE8914607D8400CF657D /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8814607D8400CF657D /* LocationTests.m */; };
 		67CF25011537819B006468C9 /* Coffee-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CF24FF1537819B006468C9 /* Coffee-Places@2x.png */; };
 		67CF25021537819B006468C9 /* FastFood-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CF25001537819B006468C9 /* FastFood-Places@2x.png */; };
-		67CF25051537826E006468C9 /* PlacesMiddle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CF25031537826E006468C9 /* PlacesMiddle@2x.png */; };
-		67CF25061537826E006468C9 /* PlacesTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CF25041537826E006468C9 /* PlacesTop@2x.png */; };
 		67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A4314606B790047C1E4 /* Location+Helper.m */; };
 		67D15A47146070250047C1E4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A46146070250047C1E4 /* Location.m */; };
 		67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DDAC0714EEF0E90018CD36 /* Recommend.m */; };
@@ -408,7 +409,6 @@
 		6734EB751512520500D7EA7E /* PlutoMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoMedium.otf; path = Dash/Images/Fonts/PlutoMedium.otf; sourceTree = "<group>"; };
 		6734EB761512520500D7EA7E /* PlutoRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoRegular.otf; path = Dash/Images/Fonts/PlutoRegular.otf; sourceTree = "<group>"; };
 		6734EB771512520500D7EA7E /* PlutoThin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoThin.otf; path = Dash/Images/Fonts/PlutoThin.otf; sourceTree = "<group>"; };
-		67350A8B153763E700A7306E /* PlacesBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesBottom@2x.png"; path = "Dash/Images/Tabs/Places/PlacesBottom@2x.png"; sourceTree = "<group>"; };
 		67354C23153DF2C900A7555C /* Dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dash.png; path = Dash/Images/IconsSplash/Dash.png; sourceTree = "<group>"; };
 		67354C24153DF2C900A7555C /* DashApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DashApp.png; path = Dash/Images/IconsSplash/DashApp.png; sourceTree = "<group>"; };
 		67354C25153DF2C900A7555C /* DashItNow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashItNow@2x.png"; path = "Dash/Images/IconsSplash/DashItNow@2x.png"; sourceTree = "<group>"; };
@@ -545,6 +545,10 @@
 		67A859691540224300B451D9 /* defaultProfile@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "defaultProfile@2x.jpg"; path = "Dash/Images/IconsSplash/defaultProfile@2x.jpg"; sourceTree = "<group>"; };
 		67A8596B154037E500B451D9 /* CustomSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomSegmentView.h; path = Dash/ViewControllers/FeedViewController/CustomSegmentView.h; sourceTree = "<group>"; };
 		67A8596C154037E600B451D9 /* CustomSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomSegmentView.m; path = Dash/ViewControllers/FeedViewController/CustomSegmentView.m; sourceTree = "<group>"; };
+		67A8596E1540926600B451D9 /* PlacesBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesBottom@2x.png"; path = "Dash/Images/Tabs/Places/PlacesBottom@2x.png"; sourceTree = "<group>"; };
+		67A8596F1540926600B451D9 /* PlacesMiddle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesMiddle@2x.png"; path = "Dash/Images/Tabs/Places/PlacesMiddle@2x.png"; sourceTree = "<group>"; };
+		67A859711540926600B451D9 /* PlacesTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesTop@2x.png"; path = "Dash/Images/Tabs/Places/PlacesTop@2x.png"; sourceTree = "<group>"; };
+		67A859761540944900B451D9 /* PlacesOnePiece@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesOnePiece@2x.png"; path = "Dash/Images/Tabs/Places/PlacesOnePiece@2x.png"; sourceTree = "<group>"; };
 		67A8977214C782DD00494273 /* FilterViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewSegue.h; path = Dash/ViewControllers/DashViewController/FilterViewSegue.h; sourceTree = "<group>"; };
 		67A8977314C782DD00494273 /* FilterViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewSegue.m; path = Dash/ViewControllers/DashViewController/FilterViewSegue.m; sourceTree = "<group>"; };
 		67B378C91534BE9E00A2A4CB /* DashGold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashGold@2x.png"; path = "Dash/Images/PlaceProfile/BadgeIcons/DashGold@2x.png"; sourceTree = "<group>"; };
@@ -596,8 +600,6 @@
 		67CCDE8814607D8400CF657D /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationTests.m; path = "Logic Tests/LocationTests.m"; sourceTree = "<group>"; };
 		67CF24FF1537819B006468C9 /* Coffee-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Coffee-Places@2x.png"; path = "Dash/Images/Tabs/Places/Coffee-Places@2x.png"; sourceTree = "<group>"; };
 		67CF25001537819B006468C9 /* FastFood-Places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FastFood-Places@2x.png"; path = "Dash/Images/Tabs/Places/FastFood-Places@2x.png"; sourceTree = "<group>"; };
-		67CF25031537826E006468C9 /* PlacesMiddle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesMiddle@2x.png"; path = "Dash/Images/Tabs/Places/PlacesMiddle@2x.png"; sourceTree = "<group>"; };
-		67CF25041537826E006468C9 /* PlacesTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesTop@2x.png"; path = "Dash/Images/Tabs/Places/PlacesTop@2x.png"; sourceTree = "<group>"; };
 		67D15A4214606B790047C1E4 /* Location+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Location+Helper.h"; path = "Data Model/Abstract/Location+Helper.h"; sourceTree = "<group>"; };
 		67D15A4314606B790047C1E4 /* Location+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+Helper.m"; path = "Data Model/Abstract/Location+Helper.m"; sourceTree = "<group>"; };
 		67D15A45146070250047C1E4 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
@@ -907,9 +909,10 @@
 		6734EB5715123EB100D7EA7E /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				67CF25031537826E006468C9 /* PlacesMiddle@2x.png */,
-				67CF25041537826E006468C9 /* PlacesTop@2x.png */,
-				67350A8B153763E700A7306E /* PlacesBottom@2x.png */,
+				67A859761540944900B451D9 /* PlacesOnePiece@2x.png */,
+				67A8596E1540926600B451D9 /* PlacesBottom@2x.png */,
+				67A8596F1540926600B451D9 /* PlacesMiddle@2x.png */,
+				67A859711540926600B451D9 /* PlacesTop@2x.png */,
 				67CF24FF1537819B006468C9 /* Coffee-Places@2x.png */,
 				67CF25001537819B006468C9 /* FastFood-Places@2x.png */,
 			);
@@ -1710,11 +1713,8 @@
 				6798E3B31535EBE800539E1C /* MoreInformationButtonOpen@2x.png in Resources */,
 				6798E3B61535EC2A00539E1C /* CallButton@2x.png in Resources */,
 				6798E3B71535EC2A00539E1C /* MapButton@2x.png in Resources */,
-				67350A90153763E700A7306E /* PlacesBottom@2x.png in Resources */,
 				67CF25011537819B006468C9 /* Coffee-Places@2x.png in Resources */,
 				67CF25021537819B006468C9 /* FastFood-Places@2x.png in Resources */,
-				67CF25051537826E006468C9 /* PlacesMiddle@2x.png in Resources */,
-				67CF25061537826E006468C9 /* PlacesTop@2x.png in Resources */,
 				67DEF893153C8DAE0079C097 /* SearchBar@2x.png in Resources */,
 				67DEF894153C8DAE0079C097 /* SearchBarWithMGlass@2x.png in Resources */,
 				67354C2B153DF2CA00A7555C /* Dash.png in Resources */,
@@ -1730,6 +1730,10 @@
 				67A85967153F5DF800B451D9 /* TopBarNearbyFriends@2x.png in Resources */,
 				67A85968153F5DF800B451D9 /* TopBarNearbySelected@2x.png in Resources */,
 				67A8596A1540224300B451D9 /* defaultProfile@2x.jpg in Resources */,
+				67A859721540926600B451D9 /* PlacesBottom@2x.png in Resources */,
+				67A859731540926600B451D9 /* PlacesMiddle@2x.png in Resources */,
+				67A859751540926600B451D9 /* PlacesTop@2x.png in Resources */,
+				67A859771540944900B451D9 /* PlacesOnePiece@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

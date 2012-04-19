@@ -12,6 +12,7 @@ typedef enum {
     RecommendedPlaceViewCellTypeFirst = 0,
     RecommendedPlaceViewCellTypeMiddle = 1,
     RecommendedPlaceViewCellTypeLast = 2,
+    RecommendedPlaceViewCellTypeOnly = 3,
 } RecommendedPlaceViewCellType;
 
 @class Place;

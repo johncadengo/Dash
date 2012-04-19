@@ -141,7 +141,10 @@
     RecommendedPlaceViewCellType type;
     NSInteger last = [self.feedItems count] - 1;
     
-    if (row == 0) {
+    if (last == 0) {
+        type = RecommendedPlaceViewCellTypeOnly;
+    }
+    else if (row == 0) {
         type = RecommendedPlaceViewCellTypeFirst;
     }
     else if (row == last) {
@@ -222,9 +225,12 @@
     // Figure out which kind it is based on the userData passed.
     NSNumber *requestType = objectLoader.userData;
     
-    NSLog(@"%@", objects);
+    //NSLog(@"%@", objects);
     
-    self.feedItems = [NSMutableArray arrayWithArray:objects];
+    
+    [self.feedItems addObjectsFromArray:objects];
+    // Real one: 
+    //self.feedItems = [NSMutableArray arrayWithArray:objects];
      
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self.tableView reloadData];

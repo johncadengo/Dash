@@ -34,9 +34,10 @@ static const CGFloat kWidth = 320.0f;
 static const CGFloat kLineLength = 284.0f;
 static const CGFloat kPadding = 20.0f;
 
-static const CGFloat kTopHeight = 90.0f;
+static const CGFloat kTopHeight = 80.0f;
 static const CGFloat kMiddleHeight = 63.0f;
-static const CGFloat kBottomHeight = 72.0f;
+static const CGFloat kBottomHeight = 73.0f;
+static const CGFloat kOnlyHeight = 75.0f;
 
 static const CGFloat kTopYOffset = 35.0f;
 static const CGFloat kYOffset = 8.0f;
@@ -53,6 +54,9 @@ static const CGFloat kYOffset = 8.0f;
             break;
         case RecommendedPlaceViewCellTypeLast:
             height = kBottomHeight;
+            break;
+        case RecommendedPlaceViewCellTypeOnly:
+            height = kOnlyHeight;
             break;
         default:
             height = kMiddleHeight;
@@ -108,6 +112,9 @@ static const CGFloat kYOffset = 8.0f;
             break;
         case RecommendedPlaceViewCellTypeLast:
             imageName = @"PlacesBottom.png";
+            break;
+        case RecommendedPlaceViewCellTypeOnly:
+            imageName = @"PlacesOnePiece.png";
             break;
         default:
             imageName = @"PlacesMiddle.png";
@@ -204,7 +211,7 @@ static const CGFloat kYOffset = 8.0f;
     [self.icon drawAtPoint:CGPointMake(kWidth - kPadding - iconSize.width, offset)];
     
     // Draw line at bottom, as long as we aren't the last cell
-    if (self.type != RecommendedPlaceViewCellTypeLast) {
+    if (self.type != RecommendedPlaceViewCellTypeLast || self.type != RecommendedPlaceViewCellTypeOnly) {
         CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, height);
         [self drawHorizontalLineStartingAt:origin withLength:kLineLength];
     }
