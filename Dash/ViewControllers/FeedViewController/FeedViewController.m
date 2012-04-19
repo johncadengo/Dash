@@ -78,8 +78,6 @@
     // Segmented control
     self.customSegmentView = [[CustomSegmentView alloc] initWithFrame:
                               CGRectMake(70.25, 7.25f, 359.0f / 2.0f, 59.0f / 2.0f)];
-    [self.navigationController.navigationBar addSubview:self.customSegmentView];
-    
 }
 
 - (void)viewDidUnload
@@ -92,6 +90,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar addSubview:self.customSegmentView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -102,6 +102,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    [self.customSegmentView removeFromSuperview];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
