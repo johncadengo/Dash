@@ -28,6 +28,7 @@
 
 static CGFloat kWindowWidth = 320.0f;
 static CGFloat kDefaultHeight = 90.0f;
+static CGFloat kLeftRightMargin = 18.0f;
 static CGFloat kPadding = 5.0f;
 static CGFloat kPicWidth = 50.0f;
 static CGFloat kDetailDisclosureWidth = 30.0f;
@@ -64,7 +65,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 + (CGSize)textSizeForBlurb:(NSString *)blurb
 {
-    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding) - kDetailDisclosureWidth;
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (2 * kLeftRightMargin) - (2 * kPadding);
     CGSize maxSize = CGSizeMake(maxWidth, kMaxBlurbHeight);
 	CGSize textSize = [blurb sizeWithFont:[self blurbFont] 
                         constrainedToSize:maxSize
@@ -76,7 +77,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 + (CGSize)textSizeForTimestamp:(NSString *)timestamp
 {
-    CGFloat maxWidth = kWindowWidth - kPicWidth - (3 * kPadding);
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (2 * kLeftRightMargin) - (2 * kPadding);
 	CGSize textSize = [timestamp sizeWithFont:[self timestampFont] 
                                      forWidth:maxWidth 
                                 lineBreakMode:kTimestampLineBreak];
@@ -101,10 +102,10 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 - (void)setWithAction:(Action*)action
 {
     self.blurb = [action description];
-    self.timestamp = [action relativeTimestamp];
+    self.timestamp = @"4 mins ago";//[action relativeTimestamp];
     
     // TODO: Get real photo
-    self.icon = [UIImage imageNamed:@"defaultProfile.jpg"];
+    self.icon = [[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)];
     
     [self setNeedsDisplay];
 }
@@ -112,12 +113,19 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 - (void)drawRect:(CGRect)rect
 {
     // Draw icon
-    [self.icon drawAtPoint:CGPointMake(18.0f, 10.0f)];
+    [self.icon drawAtPoint:CGPointMake(kLeftRightMargin, 10.0f)];
     
     // Draw text
-    [[UIColor blackColor] set];
-    [self.blurb drawAtPoint:CGPointMake(68.0f, 10.0f) withFont:[[self class] blurbFont]];
-    [self.timestamp drawAtPoint:CGPointMake(68.0f, 30.0f) withFont:[[self class] timestampFont]];
+    CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
+    [UIColorFromRGB(kFeedBlurbColor) set];
+    [self.blurb drawInRect:CGRectMake(kLeftRightMargin + kPicWidth + kPadding, 10.0f,
+                                      blurbSize.width, blurbSize.height) 
+                  withFont:[[self class] blurbFont] lineBreakMode:kBlurbLineBreak];
+    
+    [UIColorFromRGB(kFeedTimestampColor) set];
+    [self.timestamp drawAtPoint:CGPointMake(kLeftRightMargin + kPicWidth + kPadding, 
+                                            blurbSize.height + 10.0f) 
+                       withFont:[[self class] timestampFont]];
 	
 }
 
