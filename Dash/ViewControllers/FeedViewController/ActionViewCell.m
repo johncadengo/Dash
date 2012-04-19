@@ -32,6 +32,7 @@ static CGFloat kLeftRightMargin = 18.0f;
 static CGFloat kPadding = 5.0f;
 static CGFloat kPicWidth = 50.0f;
 static CGFloat kDetailDisclosureWidth = 30.0f;
+static CGFloat kLineLength = 284.0f;
 
 /** Should never get THIS big.. Just wanted to leave room
  */
@@ -110,6 +111,25 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     [self setNeedsDisplay];
 }
 
+#pragma mark -
+
+- (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length
+{
+    // Get the context
+    CGContextRef context = UIGraphicsGetCurrentContext();	
+    
+    // Set the stroke color and width of the pen
+    CGContextSetStrokeColorWithColor(context, UIColorFromRGB(kFilterLinesColor).CGColor);
+    CGContextSetLineWidth(context, 1.0f);
+    
+	// Set the starting and ending points
+	CGContextMoveToPoint(context, origin.x, origin.y);
+    CGContextAddLineToPoint(context, origin.x + length, origin.y);
+    
+	// Draw the line
+    CGContextStrokePath(context);    
+}
+
 - (void)drawRect:(CGRect)rect
 {
     // Draw icon
@@ -126,6 +146,11 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     [self.timestamp drawAtPoint:CGPointMake(kLeftRightMargin + kPicWidth + kPadding, 
                                             blurbSize.height + 10.0f) 
                        withFont:[[self class] timestampFont]];
+    
+    // Draw line
+    [self drawHorizontalLineStartingAt:CGPointMake(kLeftRightMargin, 
+                                                   blurbSize.height + 30.0f) 
+                            withLength:kLineLength];
 	
 }
 

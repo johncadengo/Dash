@@ -24,7 +24,7 @@
 + (CGSize)textSizeForTimestamp:(NSString *)timestamp;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
-
 - (void)setWithAction:(Action*)action;
+- (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 
 @end
