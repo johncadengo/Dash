@@ -221,16 +221,10 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
-    // We currently have two types of place actions coming in: saves, recommends
-    // Figure out which kind it is based on the userData passed.
-    NSNumber *requestType = objectLoader.userData;
-    
     //NSLog(@"%@", objects);
     
-    
-    [self.feedItems addObjectsFromArray:objects];
-    // Real one: 
-    //self.feedItems = [NSMutableArray arrayWithArray:objects];
+    //[self.feedItems addObjectsFromArray:objects];
+    self.feedItems = [NSMutableArray arrayWithArray:objects];
      
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self.tableView reloadData];

@@ -17,7 +17,7 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
 @synthesize person = _person;
-@synthesize stats = _stats;
+@synthesize recommends = _recommends;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -85,7 +85,10 @@
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
     // Default to NO
-    self.showingProfileView = YES; // NO;
+    self.showingProfileView = NO;
+    
+    // TODO: Fix this
+    [DashAPI setLoggedIn:YES];
     
     // Login logic
     if (![DashAPI loggedIn]) {
@@ -101,6 +104,7 @@
 {
     [super viewDidLoad];
 
+    self.recommends = [[NSMutableArray alloc] initWithCapacity:12];
 }
 
 - (void)viewDidUnload
@@ -113,10 +117,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
-    //                                            name:UIKeyboardWillShowNotification object:self.view.window]; 
-    
+
     // Set the custom nav bar
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBar.png"] forBarMetrics:UIBarMetricsDefault];
 }
@@ -132,8 +133,6 @@
     
     // Reset it
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
-    
-    //[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -164,7 +163,7 @@
     }
     else if (section == 1) {
         // A row for each kind of stats
-        return kNumStatsTypes; 
+        return [self.recommends count]; 
     }
     else {
         // Should never happen

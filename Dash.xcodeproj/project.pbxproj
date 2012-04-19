@@ -186,6 +186,7 @@
 		67A8598B1540BE3400B451D9 /* FriendsBubbleTop(Following)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A859821540BE3300B451D9 /* FriendsBubbleTop(Following)@2x.png */; };
 		67A8598C1540BE3400B451D9 /* InformationBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A859831540BE3300B451D9 /* InformationBubble@2x.png */; };
 		67A8598D1540BE3400B451D9 /* SettingsButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A859841540BE3300B451D9 /* SettingsButton@2x.png */; };
+		67A859901540C32F00B451D9 /* ProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8598F1540C32F00B451D9 /* ProfileHeaderCell.m */; };
 		67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8977314C782DD00494273 /* FilterViewSegue.m */; };
 		67B378CE1534BE9E00A2A4CB /* DashGold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378C91534BE9E00A2A4CB /* DashGold@2x.png */; };
 		67B378CF1534BE9E00A2A4CB /* LaptopIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378CA1534BE9E00A2A4CB /* LaptopIcon@2x.png */; };
@@ -565,6 +566,8 @@
 		67A859821540BE3300B451D9 /* FriendsBubbleTop(Following)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FriendsBubbleTop(Following)@2x.png"; path = "Dash/Images/Tabs/Profile/FriendsBubbleTop(Following)@2x.png"; sourceTree = "<group>"; };
 		67A859831540BE3300B451D9 /* InformationBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InformationBubble@2x.png"; path = "Dash/Images/Tabs/Profile/InformationBubble@2x.png"; sourceTree = "<group>"; };
 		67A859841540BE3300B451D9 /* SettingsButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SettingsButton@2x.png"; path = "Dash/Images/Tabs/Profile/SettingsButton@2x.png"; sourceTree = "<group>"; };
+		67A8598E1540C32F00B451D9 /* ProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileHeaderCell.h; path = Dash/ViewControllers/ProfileViewController/ProfileHeaderCell.h; sourceTree = "<group>"; };
+		67A8598F1540C32F00B451D9 /* ProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileHeaderCell.m; path = Dash/ViewControllers/ProfileViewController/ProfileHeaderCell.m; sourceTree = "<group>"; };
 		67A8977214C782DD00494273 /* FilterViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewSegue.h; path = Dash/ViewControllers/DashViewController/FilterViewSegue.h; sourceTree = "<group>"; };
 		67A8977314C782DD00494273 /* FilterViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewSegue.m; path = Dash/ViewControllers/DashViewController/FilterViewSegue.m; sourceTree = "<group>"; };
 		67B378C91534BE9E00A2A4CB /* DashGold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashGold@2x.png"; path = "Dash/Images/PlaceProfile/BadgeIcons/DashGold@2x.png"; sourceTree = "<group>"; };
@@ -1284,6 +1287,8 @@
 			children = (
 				679009F31450ED9B00511E0F /* ProfileViewController.h */,
 				679009F41450ED9B00511E0F /* ProfileViewController.m */,
+				67A8598E1540C32F00B451D9 /* ProfileHeaderCell.h */,
+				67A8598F1540C32F00B451D9 /* ProfileHeaderCell.m */,
 			);
 			name = ProfileViewController;
 			sourceTree = "<group>";
@@ -1912,6 +1917,7 @@
 				67B378D51534BF7A00A2A4CB /* Badge+Helper.m in Sources */,
 				67354C39153E026000A7555C /* LoginViewSegue.m in Sources */,
 				67A8596D154037E600B451D9 /* CustomSegmentView.m in Sources */,
+				67A859901540C32F00B451D9 /* ProfileHeaderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,7 +26,7 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) Person *person;
-@property (nonatomic, strong) NSMutableArray *stats;
+@property (nonatomic, strong) NSMutableArray *recommends;
 
 - (void)loadProfileView;
 - (void)requestProfile;
