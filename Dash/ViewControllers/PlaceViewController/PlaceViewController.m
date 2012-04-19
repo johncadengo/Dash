@@ -454,10 +454,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger section = [indexPath section];
-    
-    if (section == kPlaceMoreInfoSection) {
+    if (indexPath.section == kPlaceMoreInfoSection) {
         [self toggleMoreInfo];
+    }
+    if (indexPath.section == kPlaceHighlightsSection && indexPath.row == [self.highlights count]) {
+        // This is the create highlights row
+        [self createHighlight:self];
     }
 }
 
@@ -485,7 +487,7 @@
 
 - (void)createHighlight:(id)sender
 {
-    
+    NSLog(@"Create highlight");
 }
 
 - (void)thumbsUp:(id)sender
