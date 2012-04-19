@@ -29,7 +29,7 @@
 static CGFloat kWindowWidth = 320.0f;
 static CGFloat kDefaultHeight = 90.0f;
 static CGFloat kPadding = 5.0f;
-static CGFloat kPicWidth = 57.0f;
+static CGFloat kPicWidth = 50.0f;
 static CGFloat kDetailDisclosureWidth = 30.0f;
 
 /** Should never get THIS big.. Just wanted to leave room
@@ -46,7 +46,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 {
     CGSize blurbSize = [self textSizeForBlurb:[action description]];
     //CGSize timestampSize = [self textSizeForTimestamp:[[action timestamp] description]];
-    CGSize timestampSize = [self textSizeForTimestamp:@"hi"];
+    CGSize timestampSize = [self textSizeForTimestamp:@"My"];
     CGFloat height = kPadding + blurbSize.height + kPadding + timestampSize.height + kPadding;
 
     return MAX(kDefaultHeight, height);
@@ -103,14 +103,21 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     self.blurb = [action description];
     self.timestamp = [action relativeTimestamp];
     
+    // TODO: Get real photo
+    self.icon = [UIImage imageNamed:@"defaultProfile.jpg"];
+    
     [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect
 {
+    // Draw icon
+    [self.icon drawAtPoint:CGPointMake(18.0f, 10.0f)];
+    
+    // Draw text
     [[UIColor blackColor] set];
-    [self.blurb drawAtPoint:CGPointMake(15.0f, 10.0f) withFont:[[self class] blurbFont]];
-    [self.timestamp drawAtPoint:CGPointMake(15.0f, 30.0f) withFont:[[self class] timestampFont]];
+    [self.blurb drawAtPoint:CGPointMake(68.0f, 10.0f) withFont:[[self class] blurbFont]];
+    [self.timestamp drawAtPoint:CGPointMake(68.0f, 30.0f) withFont:[[self class] timestampFont]];
 	
 }
 

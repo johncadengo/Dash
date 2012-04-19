@@ -173,6 +173,7 @@
 		67A85966153F5DF800B451D9 /* TopBarFriendsSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A85962153F5DF800B451D9 /* TopBarFriendsSelected@2x.png */; };
 		67A85967153F5DF800B451D9 /* TopBarNearbyFriends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A85963153F5DF800B451D9 /* TopBarNearbyFriends@2x.png */; };
 		67A85968153F5DF800B451D9 /* TopBarNearbySelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A85964153F5DF800B451D9 /* TopBarNearbySelected@2x.png */; };
+		67A8596A1540224300B451D9 /* defaultProfile@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 67A859691540224300B451D9 /* defaultProfile@2x.jpg */; };
 		67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8977314C782DD00494273 /* FilterViewSegue.m */; };
 		67B378CE1534BE9E00A2A4CB /* DashGold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378C91534BE9E00A2A4CB /* DashGold@2x.png */; };
 		67B378CF1534BE9E00A2A4CB /* LaptopIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378CA1534BE9E00A2A4CB /* LaptopIcon@2x.png */; };
@@ -540,6 +541,7 @@
 		67A85962153F5DF800B451D9 /* TopBarFriendsSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopBarFriendsSelected@2x.png"; path = "Dash/Images/Tabs/Feed/TopBarFriendsSelected@2x.png"; sourceTree = "<group>"; };
 		67A85963153F5DF800B451D9 /* TopBarNearbyFriends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopBarNearbyFriends@2x.png"; path = "Dash/Images/Tabs/Feed/TopBarNearbyFriends@2x.png"; sourceTree = "<group>"; };
 		67A85964153F5DF800B451D9 /* TopBarNearbySelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopBarNearbySelected@2x.png"; path = "Dash/Images/Tabs/Feed/TopBarNearbySelected@2x.png"; sourceTree = "<group>"; };
+		67A859691540224300B451D9 /* defaultProfile@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "defaultProfile@2x.jpg"; path = "Dash/Images/IconsSplash/defaultProfile@2x.jpg"; sourceTree = "<group>"; };
 		67A8977214C782DD00494273 /* FilterViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewSegue.h; path = Dash/ViewControllers/DashViewController/FilterViewSegue.h; sourceTree = "<group>"; };
 		67A8977314C782DD00494273 /* FilterViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewSegue.m; path = Dash/ViewControllers/DashViewController/FilterViewSegue.m; sourceTree = "<group>"; };
 		67B378C91534BE9E00A2A4CB /* DashGold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashGold@2x.png"; path = "Dash/Images/PlaceProfile/BadgeIcons/DashGold@2x.png"; sourceTree = "<group>"; };
@@ -1201,6 +1203,7 @@
 		679009E11450E6D000511E0F /* IconsSplash */ = {
 			isa = PBXGroup;
 			children = (
+				67A859691540224300B451D9 /* defaultProfile@2x.jpg */,
 				67354C35153DF32200A7555C /* Default@2x.png */,
 				67354C23153DF2C900A7555C /* Dash.png */,
 				67354C24153DF2C900A7555C /* DashApp.png */,
@@ -1721,6 +1724,7 @@
 				67A85966153F5DF800B451D9 /* TopBarFriendsSelected@2x.png in Resources */,
 				67A85967153F5DF800B451D9 /* TopBarNearbyFriends@2x.png in Resources */,
 				67A85968153F5DF800B451D9 /* TopBarNearbySelected@2x.png in Resources */,
+				67A8596A1540224300B451D9 /* defaultProfile@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
