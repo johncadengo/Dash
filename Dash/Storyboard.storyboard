@@ -142,7 +142,7 @@
             </objects>
             <point key="canvasLocation" x="447" y="685"/>
         </scene>
-        <!--Profile View Controller - Dash-->
+        <!--Profile View Controller - Item-->
         <scene sceneID="g0H-Km-RHi">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMs-8Z-85d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -168,7 +168,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="w20-zF-plu"/>
-                    <navigationItem key="navigationItem" title="Dash" id="7bW-GD-5hp"/>
+                    <navigationItem key="navigationItem" id="7bW-GD-5hp"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="447" y="1319"/>
