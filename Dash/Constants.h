@@ -27,6 +27,7 @@ enum {
     kSearchTextFieldBGColor = 0xf5f5f5,
     kFeedBlurbColor = 0x434546,
     kFeedTimestampColor = 0x7b7b7b,
+    kFeedLinesColor = 0xacacac,
 };
 
 // Text

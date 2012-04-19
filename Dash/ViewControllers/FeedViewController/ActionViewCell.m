@@ -27,12 +27,11 @@
 #pragma mark - Some UI constants
 
 static CGFloat kWindowWidth = 320.0f;
-static CGFloat kDefaultHeight = 90.0f;
 static CGFloat kLeftRightMargin = 18.0f;
 static CGFloat kPadding = 5.0f;
 static CGFloat kPicWidth = 50.0f;
-static CGFloat kDetailDisclosureWidth = 30.0f;
 static CGFloat kLineLength = 284.0f;
+static CGFloat kLineHeight = 4.0f;
 
 /** Should never get THIS big.. Just wanted to leave room
  */
@@ -47,11 +46,13 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 + (CGFloat)heightForAction:(Action *)action
 {
     CGSize blurbSize = [self textSizeForBlurb:[action description]];
-    //CGSize timestampSize = [self textSizeForTimestamp:[[action timestamp] description]];
     CGSize timestampSize = [self textSizeForTimestamp:@"My"];
-    CGFloat height = kPadding + blurbSize.height + kPadding + timestampSize.height + kPadding;
-
-    return MAX(kDefaultHeight, height);
+    
+    CGFloat textHeight = kPadding + blurbSize.height + kPadding + 
+                            timestampSize.height + kPadding + kLineHeight;
+    CGFloat iconHeight = kPadding + kPicWidth + kPadding + kLineHeight;
+    
+    return MAX(iconHeight, textHeight);
 }
 
 + (UIFont *)blurbFont
@@ -119,7 +120,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     CGContextRef context = UIGraphicsGetCurrentContext();	
     
     // Set the stroke color and width of the pen
-    CGContextSetStrokeColorWithColor(context, UIColorFromRGB(kFilterLinesColor).CGColor);
+    CGContextSetStrokeColorWithColor(context, UIColorFromRGB(kFeedLinesColor).CGColor);
     CGContextSetLineWidth(context, 1.0f);
     
 	// Set the starting and ending points
