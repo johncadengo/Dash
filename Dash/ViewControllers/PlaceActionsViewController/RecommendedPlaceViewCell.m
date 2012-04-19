@@ -39,7 +39,7 @@ static const CGFloat kMiddleHeight = 63.0f;
 static const CGFloat kBottomHeight = 73.0f;
 static const CGFloat kOnlyHeight = 75.0f;
 
-static const CGFloat kTopYOffset = 35.0f;
+static const CGFloat kTopYOffset = 25.0f;
 static const CGFloat kYOffset = 8.0f;
 
 #pragma mark - Class methods for determining the size of UI elements
@@ -191,7 +191,7 @@ static const CGFloat kYOffset = 8.0f;
 {
     [super drawRect:rect];
     
-    CGFloat offset = (self.type == RecommendedPlaceViewCellTypeFirst) ? kTopYOffset : kYOffset;
+    CGFloat offset = (self.type == RecommendedPlaceViewCellTypeFirst || self.type == RecommendedPlaceViewCellTypeOnly) ? kTopYOffset : kYOffset;
     CGFloat height = [[self class] heightForType:self.type];
     
     // Draw the background
@@ -211,7 +211,7 @@ static const CGFloat kYOffset = 8.0f;
     [self.icon drawAtPoint:CGPointMake(kWidth - kPadding - iconSize.width, offset)];
     
     // Draw line at bottom, as long as we aren't the last cell
-    if (self.type != RecommendedPlaceViewCellTypeLast || self.type != RecommendedPlaceViewCellTypeOnly) {
+    if (self.type != RecommendedPlaceViewCellTypeLast && self.type != RecommendedPlaceViewCellTypeOnly) {
         CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, height);
         [self drawHorizontalLineStartingAt:origin withLength:kLineLength];
     }
