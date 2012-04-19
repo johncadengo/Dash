@@ -212,6 +212,10 @@
 
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row
 {
+    if (row == [self.highlights count]) {
+        return 50.0f;
+    }
+    
     CGFloat height = [HighlightViewCell heightForType:[self highlightViewCellTypeForRow:row]];
     
     return height;
@@ -229,7 +233,7 @@
 }
 
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row
-{
+{    
     CGFloat height = 60.0f; // TODO: For now, this will just make it so toolbar doesn't cover last cell
     
     return height;    
@@ -249,8 +253,10 @@
     
     if (row == firstHighlightRow)
         type = HighlightViewCellTypeFirst;
-    else if (row == lastHighlightRow)
+    /*
+     else if (row == lastHighlightRow)
         type = HighlightViewCellTypeLast;
+     */
     else 
         type = HighlightViewCellTypeMiddle;
     
@@ -279,7 +285,7 @@
             numRows = 1;
             break;
         case kPlaceHighlightsSection:
-            numRows = [self.highlights count];
+            numRows = [self.highlights count] + 1; // +1 for create highlight cell
             break;
         case kPlaceFootprintsSection:
             numRows = 1; // TODO: Just a filler cell to accomdate for toolbar
@@ -384,6 +390,10 @@
 
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
+    if (row == [self.highlights count]) {
+        return [self createHighlightViewCellForTableView:tableView];
+    }
+    
     HighlightViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceHighlightCellIdentifier];
     if (cell == nil) {
         cell = [[HighlightViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceHighlightCellIdentifier type:[self highlightViewCellTypeForRow:row]];
@@ -423,6 +433,19 @@
     }
     
     cell.title = title;
+    
+    return cell;
+}
+
+- (UITableViewCell *)createHighlightViewCellForTableView:(UITableView *)tableView
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceCreateHighlightCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceCreateHighlightCellIdentifier];
+    }
+    
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HighlightCreate.png"]];
     
     return cell;
 }

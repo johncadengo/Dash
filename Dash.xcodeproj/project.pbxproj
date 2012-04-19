@@ -132,13 +132,11 @@
 		6789D2CD152E349C0029BF48 /* BadgeBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C6152E349C0029BF48 /* BadgeBubble@2x.png */; };
 		6789D2CE152E349C0029BF48 /* BottomBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C7152E349C0029BF48 /* BottomBarBackground@2x.png */; };
 		6789D2CF152E349C0029BF48 /* CreateHighlightButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C8152E349C0029BF48 /* CreateHighlightButton@2x.png */; };
-		6789D2D0152E349C0029BF48 /* HighlightsBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C9152E349C0029BF48 /* HighlightsBubble@2x.png */; };
 		6789D2D1152E349C0029BF48 /* MoreInformationBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2CA152E349C0029BF48 /* MoreInformationBubble@2x.png */; };
 		6789D2D2152E349C0029BF48 /* ThumbsDownButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2CB152E349C0029BF48 /* ThumbsDownButton@2x.png */; };
 		6789D2D3152E349C0029BF48 /* ThumbsUpButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2CC152E349C0029BF48 /* ThumbsUpButton@2x.png */; };
 		6789D2D6152E39C60029BF48 /* HighlightViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6789D2D5152E39C60029BF48 /* HighlightViewCell.m */; };
 		6789D2D8152E47720029BF48 /* MoreInformationButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2D7152E47720029BF48 /* MoreInformationButton@2x.png */; };
-		6789D2DC152E61A80029BF48 /* HighlightBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2D9152E61A80029BF48 /* HighlightBottom@2x.png */; };
 		6789D2DD152E61A80029BF48 /* HighlightMiddle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2DA152E61A80029BF48 /* HighlightMiddle@2x.png */; };
 		6789D2DE152E61A80029BF48 /* HighlightTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2DB152E61A80029BF48 /* HighlightTop@2x.png */; };
 		679009DB1450D9B300511E0F /* DashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679009DA1450D9B300511E0F /* DashViewController.m */; };
@@ -178,6 +176,7 @@
 		67A859731540926600B451D9 /* PlacesMiddle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A8596F1540926600B451D9 /* PlacesMiddle@2x.png */; };
 		67A859751540926600B451D9 /* PlacesTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A859711540926600B451D9 /* PlacesTop@2x.png */; };
 		67A85979154097D800B451D9 /* PlacesOnePiece@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A85978154097D800B451D9 /* PlacesOnePiece@2x.png */; };
+		67A8597B1540B28100B451D9 /* HighlightCreate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A8597A1540B28100B451D9 /* HighlightCreate@2x.png */; };
 		67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8977314C782DD00494273 /* FilterViewSegue.m */; };
 		67B378CE1534BE9E00A2A4CB /* DashGold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378C91534BE9E00A2A4CB /* DashGold@2x.png */; };
 		67B378CF1534BE9E00A2A4CB /* LaptopIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378CA1534BE9E00A2A4CB /* LaptopIcon@2x.png */; };
@@ -488,14 +487,12 @@
 		6789D2C6152E349C0029BF48 /* BadgeBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BadgeBubble@2x.png"; path = "Dash/Images/PlaceProfile/BadgeBubble@2x.png"; sourceTree = "<group>"; };
 		6789D2C7152E349C0029BF48 /* BottomBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BottomBarBackground@2x.png"; path = "Dash/Images/PlaceProfile/BottomBarBackground@2x.png"; sourceTree = "<group>"; };
 		6789D2C8152E349C0029BF48 /* CreateHighlightButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CreateHighlightButton@2x.png"; path = "Dash/Images/PlaceProfile/CreateHighlightButton@2x.png"; sourceTree = "<group>"; };
-		6789D2C9152E349C0029BF48 /* HighlightsBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HighlightsBubble@2x.png"; path = "Dash/Images/PlaceProfile/HighlightsBubble@2x.png"; sourceTree = "<group>"; };
 		6789D2CA152E349C0029BF48 /* MoreInformationBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MoreInformationBubble@2x.png"; path = "Dash/Images/PlaceProfile/MoreInformationBubble@2x.png"; sourceTree = "<group>"; };
 		6789D2CB152E349C0029BF48 /* ThumbsDownButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThumbsDownButton@2x.png"; path = "Dash/Images/PlaceProfile/ThumbsDownButton@2x.png"; sourceTree = "<group>"; };
 		6789D2CC152E349C0029BF48 /* ThumbsUpButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThumbsUpButton@2x.png"; path = "Dash/Images/PlaceProfile/ThumbsUpButton@2x.png"; sourceTree = "<group>"; };
 		6789D2D4152E39C60029BF48 /* HighlightViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightViewCell.h; path = Dash/ViewControllers/PlaceViewController/HighlightViewCell.h; sourceTree = "<group>"; };
 		6789D2D5152E39C60029BF48 /* HighlightViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightViewCell.m; path = Dash/ViewControllers/PlaceViewController/HighlightViewCell.m; sourceTree = "<group>"; };
 		6789D2D7152E47720029BF48 /* MoreInformationButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MoreInformationButton@2x.png"; path = "Dash/Images/PlaceProfile/MoreInformationButton@2x.png"; sourceTree = "<group>"; };
-		6789D2D9152E61A80029BF48 /* HighlightBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HighlightBottom@2x.png"; path = "Dash/Images/PlaceProfile/HighlightBottom@2x.png"; sourceTree = "<group>"; };
 		6789D2DA152E61A80029BF48 /* HighlightMiddle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HighlightMiddle@2x.png"; path = "Dash/Images/PlaceProfile/HighlightMiddle@2x.png"; sourceTree = "<group>"; };
 		6789D2DB152E61A80029BF48 /* HighlightTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HighlightTop@2x.png"; path = "Dash/Images/PlaceProfile/HighlightTop@2x.png"; sourceTree = "<group>"; };
 		679009D91450D9B300511E0F /* DashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashViewController.h; path = Dash/ViewControllers/DashViewController/DashViewController.h; sourceTree = "<group>"; };
@@ -549,6 +546,7 @@
 		67A8596F1540926600B451D9 /* PlacesMiddle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesMiddle@2x.png"; path = "Dash/Images/Tabs/Places/PlacesMiddle@2x.png"; sourceTree = "<group>"; };
 		67A859711540926600B451D9 /* PlacesTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesTop@2x.png"; path = "Dash/Images/Tabs/Places/PlacesTop@2x.png"; sourceTree = "<group>"; };
 		67A85978154097D800B451D9 /* PlacesOnePiece@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlacesOnePiece@2x.png"; path = "Dash/Images/Tabs/Places/PlacesOnePiece@2x.png"; sourceTree = "<group>"; };
+		67A8597A1540B28100B451D9 /* HighlightCreate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HighlightCreate@2x.png"; path = "Dash/Images/PlaceProfile/HighlightCreate@2x.png"; sourceTree = "<group>"; };
 		67A8977214C782DD00494273 /* FilterViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewSegue.h; path = Dash/ViewControllers/DashViewController/FilterViewSegue.h; sourceTree = "<group>"; };
 		67A8977314C782DD00494273 /* FilterViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewSegue.m; path = Dash/ViewControllers/DashViewController/FilterViewSegue.m; sourceTree = "<group>"; };
 		67B378C91534BE9E00A2A4CB /* DashGold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashGold@2x.png"; path = "Dash/Images/PlaceProfile/BadgeIcons/DashGold@2x.png"; sourceTree = "<group>"; };
@@ -1157,10 +1155,9 @@
 				6789D2C6152E349C0029BF48 /* BadgeBubble@2x.png */,
 				6789D2C7152E349C0029BF48 /* BottomBarBackground@2x.png */,
 				6789D2C8152E349C0029BF48 /* CreateHighlightButton@2x.png */,
-				6789D2C9152E349C0029BF48 /* HighlightsBubble@2x.png */,
-				6789D2D9152E61A80029BF48 /* HighlightBottom@2x.png */,
 				6789D2DA152E61A80029BF48 /* HighlightMiddle@2x.png */,
 				6789D2DB152E61A80029BF48 /* HighlightTop@2x.png */,
+				67A8597A1540B28100B451D9 /* HighlightCreate@2x.png */,
 				6789D2CA152E349C0029BF48 /* MoreInformationBubble@2x.png */,
 				6789D2D7152E47720029BF48 /* MoreInformationButton@2x.png */,
 				6798E3B21535EBE800539E1C /* MoreInformationButtonOpen@2x.png */,
@@ -1695,12 +1692,10 @@
 				6789D2CD152E349C0029BF48 /* BadgeBubble@2x.png in Resources */,
 				6789D2CE152E349C0029BF48 /* BottomBarBackground@2x.png in Resources */,
 				6789D2CF152E349C0029BF48 /* CreateHighlightButton@2x.png in Resources */,
-				6789D2D0152E349C0029BF48 /* HighlightsBubble@2x.png in Resources */,
 				6789D2D1152E349C0029BF48 /* MoreInformationBubble@2x.png in Resources */,
 				6789D2D2152E349C0029BF48 /* ThumbsDownButton@2x.png in Resources */,
 				6789D2D3152E349C0029BF48 /* ThumbsUpButton@2x.png in Resources */,
 				6789D2D8152E47720029BF48 /* MoreInformationButton@2x.png in Resources */,
-				6789D2DC152E61A80029BF48 /* HighlightBottom@2x.png in Resources */,
 				6789D2DD152E61A80029BF48 /* HighlightMiddle@2x.png in Resources */,
 				6789D2DE152E61A80029BF48 /* HighlightTop@2x.png in Resources */,
 				67DE842C152F7EFF00556C54 /* Heart-Gray@2x.png in Resources */,
@@ -1734,6 +1729,7 @@
 				67A859731540926600B451D9 /* PlacesMiddle@2x.png in Resources */,
 				67A859751540926600B451D9 /* PlacesTop@2x.png in Resources */,
 				67A85979154097D800B451D9 /* PlacesOnePiece@2x.png in Resources */,
+				67A8597B1540B28100B451D9 /* HighlightCreate@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

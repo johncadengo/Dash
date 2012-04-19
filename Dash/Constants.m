@@ -53,6 +53,7 @@ NSString * const kPlaceMoreInfoOpenCellIdentifier = @"com.BoxOutDev.Dash.PlaceMo
 NSString * const kPlaceMoreInfoCellIdentifier = @"com.BoxOutDev.Dash.PlaceMoreInfoCell";
 NSString * const kPlaceBadgesCellIdentifier = @"com.BoxOutDev.Dash.PlaceBadgesCell";
 NSString * const kPlaceHighlightCellIdentifier = @"com.BoxOutDev.Dash.PlaceHighlightCell";
+NSString * const kPlaceCreateHighlightCellIdentifier = @"com.BoxOutDev.Dash.PlaceCreateHighlightCell";
 NSString * const kPlaceTitleCellIdentifier = @"com.BoxOutDev.Dash.PlaceTitleCell";
 
 NSString * const kSearchAutocompleteCellIdentifier = @"com.BoxOutDev.Dash.SearchAutocompleteCell";

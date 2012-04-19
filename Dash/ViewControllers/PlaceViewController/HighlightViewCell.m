@@ -46,9 +46,11 @@ NSString * const kHighlightTitle = @"Highlights";
         case HighlightViewCellTypeFirst:
             height = kTopHeight + kTitleHeight;
             break;
+        /*
         case HighlightViewCellTypeLast:
             height = kBottomHeight;
             break;
+         */
         default:
             height = kMiddleHeight;
             break;
@@ -126,9 +128,11 @@ NSString * const kHighlightTitle = @"Highlights";
         case HighlightViewCellTypeFirst:
             imageName = @"HighlightTop.png";
             break;
-        case HighlightViewCellTypeLast:
+        /*
+         case HighlightViewCellTypeLast:
             imageName = @"HighlightBottom.png";
             break;
+         */
         default:
             imageName = @"HighlightMiddle.png";
             break;
@@ -224,7 +228,7 @@ NSString * const kHighlightTitle = @"Highlights";
     [self.likeCount drawAtPoint:CGPointMake(257.0f + 30.0f, yOffset + 2.5f) withFont:[[self class] likeCountFont]];
     
     // Draw line at bottom, as long as we aren't the last cell
-    if (self.type != HighlightViewCellTypeLast) {
+    if (YES) { //self.type != HighlightViewCellTypeLast) {
         CGPoint origin = CGPointMake((kWidth - kLineLength) / 2.0f, [[self class] heightForType:self.type]);
         [self drawHorizontalLineStartingAt:origin withLength:kLineLength];
     }

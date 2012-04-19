@@ -70,7 +70,8 @@ typedef enum {
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 
-- (UITableViewCell *)titleViewCellForTableView:(UITableView *) tableView WithTitle:(NSString *)title;
+- (UITableViewCell *)titleViewCellForTableView:(UITableView *)tableView WithTitle:(NSString *)title;
+- (UITableViewCell *)createHighlightViewCellForTableView:(UITableView *)tableView;
 
 - (void)heartTapped:(id)sender;
 - (void)toggleMoreInfo;

@@ -11,7 +11,7 @@
 typedef enum {
     HighlightViewCellTypeFirst = 0,
     HighlightViewCellTypeMiddle = 1,
-    HighlightViewCellTypeLast = 2
+//    HighlightViewCellTypeLast = 2
 } HighlightViewCellType;
 
 @class Highlight;
