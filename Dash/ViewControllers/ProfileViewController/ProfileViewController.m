@@ -9,11 +9,13 @@
 #import "ProfileViewController.h"
 #import "Constants.h"
 #import "DashAPI.h"
+#import "ProfileHeaderCell.h"
 
 @implementation ProfileViewController
 
 @synthesize showingProfileView = _showingProfileView;
 @synthesize fbconnect = _fbconnect;
+@synthesize backgroundView = _backgroundView;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
 @synthesize person = _person;
@@ -43,7 +45,9 @@
     // Create our self.view
     //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
     UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    view.backgroundColor = [UIColor whiteColor];
+    self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SignInScreen.png"]];
+    self.backgroundView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 693.0f / 2.0f);
+    [view addSubview:self.backgroundView];
     
     // Fb Connect
     self.fbconnect = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -58,6 +62,9 @@
     // NOTE: Do not get self.view in loadView
     self.showingProfileView = NO;
     self.view = view;
+    
+    // Get rid of top bar
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)loadProfileView
@@ -74,6 +81,9 @@
     // And finally, every time we show the profile view, 
     // we need to make a call to our Dash API to request the profile.
     [self requestProfile];
+    
+    // Put top bar back
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -88,7 +98,7 @@
     self.showingProfileView = NO;
     
     // TODO: Fix this
-    [DashAPI setLoggedIn:YES];
+    //[DashAPI setLoggedIn:YES];
     
     // Login logic
     if (![DashAPI loggedIn]) {
@@ -198,56 +208,11 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    //
 }
 
 #pragma mark - Button Actions

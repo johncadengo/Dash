@@ -21,6 +21,8 @@
 @synthesize numFollowers = _numFollowers;
 @synthesize numFollowing = _numFollowing;
 
+static CGFloat const kPadding = 5.0f;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -30,6 +32,9 @@
         
         // and the infoBubble
         self.infoBubble = [UIImage imageNamed:@"InformationBubble.png"];
+        
+        // Clear background
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -38,13 +43,17 @@
 
 - (void)setWithPerson:(Person *)person
 {
-
+    
+    
+    [self setNeedsDisplay];
 }
 
 #pragma mark - Draw
 
 - (void)drawRect:(CGRect)rect
 {
+    [super drawRect:rect];
+    
     
 }
 

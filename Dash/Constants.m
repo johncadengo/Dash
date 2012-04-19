@@ -55,8 +55,8 @@ NSString * const kPlaceBadgesCellIdentifier = @"com.BoxOutDev.Dash.PlaceBadgesCe
 NSString * const kPlaceHighlightCellIdentifier = @"com.BoxOutDev.Dash.PlaceHighlightCell";
 NSString * const kPlaceCreateHighlightCellIdentifier = @"com.BoxOutDev.Dash.PlaceCreateHighlightCell";
 NSString * const kPlaceTitleCellIdentifier = @"com.BoxOutDev.Dash.PlaceTitleCell";
-
 NSString * const kSearchAutocompleteCellIdentifier = @"com.BoxOutDev.Dash.SearchAutocompleteCell";
+ NSString * const kProfileHeaderCellIdentifier = @"com.BoxOutDev.Dash.ProfileHeaderCellIdentifier";
 
 #pragma mark - Segue Identifiers
 

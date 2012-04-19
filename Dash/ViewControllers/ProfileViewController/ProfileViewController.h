@@ -18,6 +18,7 @@
 
 #pragma mark - For when not logged in
 @property (nonatomic, strong) UIButton *fbconnect;
+@property (nonatomic, strong) UIImageView *backgroundView;
 
 - (void)loadLoginView;
 - (void)loginWithConnect:(id) sender;
