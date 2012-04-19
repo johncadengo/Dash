@@ -25,6 +25,7 @@
 @synthesize refreshHeaderView = _refreshHeaderView;
 @synthesize hud = _hud;
 @synthesize backgroundBubble = _backgroundBubble;
+@synthesize segmentedControl = _segmentedControl;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -72,6 +73,13 @@
     
     // Make the call
     [self.api feedForPerson:nil];
+    
+    // Segmented control
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:
+                             [NSArray arrayWithObjects:@"Friends", @"Nearby", nil]];
+    self.segmentedControl.frame = CGRectMake(70.25, 7.25f, 359.0f / 2.0f, 59.0f / 2.0f);
+    [self.navigationController.navigationBar addSubview:self.segmentedControl];
+    
 }
 
 - (void)viewDidUnload

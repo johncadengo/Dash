@@ -25,6 +25,7 @@
 @property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
 @property (nonatomic, strong) UIImageView *backgroundBubble;
 
 /** Want to be able to display recommending a place, liking a highlight, or adding a highlight.

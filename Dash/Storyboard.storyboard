@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Feed View Controller - Feed-->
+        <!--Feed View Controller - Item-->
         <scene sceneID="nEa-y7-DTw">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdl-sn-eOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -21,7 +21,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="P4Y-XY-TTB"/>
-                    <navigationItem key="navigationItem" title="Feed" id="noZ-FV-T1W"/>
+                    <navigationItem key="navigationItem" id="noZ-FV-T1W"/>
                     <connections>
                         <segue destination="ZvP-bc-h0g" kind="push" identifier="ShowFeedItemDetails" id="Jel-Sw-X4d"/>
                     </connections>
@@ -189,7 +189,7 @@
             </objects>
             <point key="canvasLocation" x="-26" y="-1200"/>
         </scene>
-        <!--Recommended Places View Controller - Places-->
+        <!--Recommended Places View Controller - Favorites-->
         <scene sceneID="0yi-PX-Kun">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xak-M4-wyX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,7 +215,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="5vL-6S-Ajf"/>
-                    <navigationItem key="navigationItem" title="Places" id="Xdx-WY-A6D"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="Xdx-WY-A6D"/>
                     <connections>
                         <segue destination="ZvP-bc-h0g" kind="push" identifier="ShowPlaceActionDetails" id="J5w-qJ-RMU"/>
                     </connections>
@@ -367,13 +367,13 @@
         <image name="Search.png" width="52" height="54"/>
     </resources>
     <classes>
-        <class className="ActionViewCell" superclassName="TISwipeableTableViewCell">
+        <class className="ActionViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActionViewCell.h"/>
         </class>
         <class className="DashViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DashViewController.h"/>
         </class>
-        <class className="FeedViewController" superclassName="TISwipeableTableViewController">
+        <class className="FeedViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedViewController.h"/>
         </class>
         <class className="FilterViewController" superclassName="UIViewController">
@@ -394,12 +394,6 @@
         <class className="SearchViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
         </class>
-        <class className="TISwipeableTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TISwipeableTableViewCell.h"/>
-        </class>
-        <class className="TISwipeableTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TISwipeableTableViewController.h"/>
-        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -407,6 +401,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QBV-X4-kru"/>
+        <segue reference="J5w-qJ-RMU"/>
     </inferredMetricsTieBreakers>
 </document>
