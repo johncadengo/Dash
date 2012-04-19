@@ -11,6 +11,8 @@
 #import "Person+Helper.h"
 #import "Stats.h"
 #import "Stats+Helper.h"
+#import "UIImage+ProportionalFill.h"
+#import "Constants.h"
 
 @implementation ProfileHeaderCell
 
@@ -22,15 +24,26 @@
 @synthesize numFollowing = _numFollowing;
 
 static CGFloat const kPadding = 5.0f;
+static CGFloat const kPicWidth = 50.0f;
+
+#pragma mark - 
++ (UIFont *)nameFont
+{
+    return [UIFont fontWithName:kPlutoBold size:14.0f];
+}
+
++ (CGFloat) height
+{
+    return 70.0f;
+}
+
+#pragma mark - 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Set the default icon, 
-        self.icon = [UIImage imageNamed:@"defaultProfile.jpg"];
-        
-        // and the infoBubble
+        // Set the infoBubble
         self.infoBubble = [UIImage imageNamed:@"InformationBubble.png"];
         
         // Clear background
@@ -43,7 +56,13 @@ static CGFloat const kPadding = 5.0f;
 
 - (void)setWithPerson:(Person *)person
 {
+    // TODO: Get real photo
+    self.icon = [[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)];
     
+    self.name = @"Laura Byun";
+    self.numFavorites = @"1";
+    self.numFollowers = @"1";
+    self.numFollowing = @"1";
     
     [self setNeedsDisplay];
 }
@@ -53,6 +72,16 @@ static CGFloat const kPadding = 5.0f;
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
+    
+    // Draw the icon
+    [self.icon drawAtPoint:CGPointMake(kPadding, kPadding)];
+    
+    // Draw the name
+    [UIColorFromRGB(kProfileHeaderNameFontColor) set];
+    [self.name drawAtPoint:CGPointMake(kPadding + kPicWidth + kPadding, kPadding) withFont:[[self class] nameFont]];
+    
+    // Draw the info bubble
+    [self.infoBubble drawAtPoint:CGPointMake(kPadding + kPicWidth + kPadding, kPadding + 14.0f + kPadding)];
     
     
 }

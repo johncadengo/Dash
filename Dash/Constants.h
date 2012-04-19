@@ -28,6 +28,7 @@ enum {
     kFeedBlurbColor = 0x434546,
     kFeedTimestampColor = 0x7b7b7b,
     kFeedLinesColor = 0xacacac,
+    kProfileHeaderNameFontColor = 0x333333,
 };
 
 // Text

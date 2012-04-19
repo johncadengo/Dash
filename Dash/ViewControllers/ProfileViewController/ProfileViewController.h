@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
+#import "RecommendedPlaceViewCell.h"
 
 @class DashAPI;
 @class Person;
+@class ProfileHeaderCell;
+@class RecommendedPlaceViewCell;
 
 @interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate>
 
@@ -31,5 +34,9 @@
 
 - (void)loadProfileView;
 - (void)requestProfile;
+
+- (ProfileHeaderCell *)headerCellForTableView:(UITableView *)tableView;
+- (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSInteger)row;
+- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row;
 
 @end

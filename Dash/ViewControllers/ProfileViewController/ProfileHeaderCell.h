@@ -19,6 +19,9 @@
 @property (nonatomic, strong) NSString *numFollowers;
 @property (nonatomic, strong) NSString *numFollowing;
 
++ (UIFont *)nameFont;
++ (CGFloat) height;
+
 - (void)setWithPerson:(Person *)person;
 
 @end

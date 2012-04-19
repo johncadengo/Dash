@@ -46,7 +46,7 @@
     //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
     UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SignInScreen.png"]];
-    self.backgroundView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 693.0f / 2.0f);
+    self.backgroundView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 415.0f);
     [view addSubview:self.backgroundView];
     
     // Fb Connect
@@ -55,7 +55,7 @@
     [self.fbconnect addTarget:self 
                        action:@selector(loginWithConnect:) 
              forControlEvents:UIControlEventTouchUpInside];
-    self.fbconnect.frame = CGRectMake(0.0f, 298.0f, 320.0f, 51.0f);
+    self.fbconnect.frame = CGRectMake(0.0f, 320.0f, 320.0f, 51.0f);
     [view addSubview:self.fbconnect];
     
     // Finally, set our self.view
@@ -73,6 +73,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     // Set our self.view
     self.showingProfileView = YES;
@@ -84,6 +85,8 @@
     
     // Put top bar back
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    [self.view setBackgroundColor:UIColorFromRGB(kPlaceOrangeBGColor)];
 }
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -156,6 +159,46 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark -
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat height;
+    
+    switch (indexPath.section) {
+        case 0:
+            height = [ProfileHeaderCell height];
+            break;
+            
+        default:
+            height = [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:indexPath.row]];
+            break;
+    }
+    
+    return height;
+}
+
+- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row
+{
+    RecommendedPlaceViewCellType type;
+    NSInteger last = [self.recommends count] - 1;
+    
+    if (last == 0) {
+        type = RecommendedPlaceViewCellTypeOnly;
+    }
+    else if (row == 0) {
+        type = RecommendedPlaceViewCellTypeFirst;
+    }
+    else if (row == last) {
+        type = RecommendedPlaceViewCellTypeLast;
+    }
+    else {
+        type = RecommendedPlaceViewCellTypeMiddle;
+    }
+    
+    return type;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -183,27 +226,47 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    switch (indexPath.section) {
+        case 0:
+            cell = [self headerCellForTableView:tableView];
+            break;
+        default:
+            cell = [self recommendCellForTableView:tableView row:indexPath.row];
+            break;
+    }
+    
+    // None should have a selection style
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    return cell;
+}
+
+- (ProfileHeaderCell *)headerCellForTableView:(UITableView *)tableView
+{
+    ProfileHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfileHeaderCellIdentifier];
+    
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ProfileHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kProfileHeaderCellIdentifier];
     }
     
-    // Configure the cell...
-    if (self.person) {
-        if (indexPath.section == 0) {
-            // This is a header cell
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", self.person.name];
-        }
-        else if (indexPath.section == 1) {
-            // This is a stat cell
-            Stats *stats = self.person.stats;
-            NSString *statDescription = [stats descriptionForType:[NSNumber numberWithInt:indexPath.row]];
-            
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", statDescription];
-        }
+    [cell setWithPerson:self.person];
+    
+    return cell;
+}
+
+- (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSInteger)row
+{
+    RecommendedPlaceViewCell *cell = (RecommendedPlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:row]];
     }
+    
+    // Always update type
+    [cell setType:[self recommendedPlaceViewCellTypeForRow:row]];
+    [cell setWithPlace:[[self.recommends objectAtIndex:row] place] context:self.managedObjectContext];
     
     return cell;
 }
@@ -234,6 +297,7 @@
 - (void)requestProfile
 {
     [self.api myProfile];
+    [self.api recommendsForPerson:nil];
 }
 
 #pragma mark - RKObjectLoaderDelegate methods
@@ -243,13 +307,15 @@
     // We are done loading, so stop the progress hud
     //[self.progressHUD hide:YES]; 
     
-    // Get the objects we've just loaded and fill our places array with them
-    self.person = [objects lastObject];
-    
-    NSLog(@"Profile: %@ %@", objects, self.person.name);
-    
-    //[self.stats addObjectsFromArray:self.person.stats];
-    
+    if ([objectLoader.userData isEqualToNumber:[NSNumber numberWithInt:kRecommends]]) {
+        [self.recommends addObjectsFromArray:objects];
+    }
+    else {
+        // Get the objects we've just loaded and fill our places array with them
+        self.person = [objects lastObject];
+        
+        NSLog(@"Profile: %@ %@", objects, self.person.actions);    
+    }
     
     // Display it
     [self.tableView reloadData];
