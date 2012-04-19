@@ -10,18 +10,10 @@
 #import "Constants.h"
 #import "DashAPI.h"
 
-// For scrolling the textfields up when keyboard is shown
-#define kOFFSET_FOR_KEYBOARD 140.0f
-
 @implementation ProfileViewController
 
 @synthesize showingProfileView = _showingProfileView;
-@synthesize introduction = _introduction;
 @synthesize fbconnect = _fbconnect;
-@synthesize start = _start;
-@synthesize emailField = _emailField;
-@synthesize passwordField = _passwordField;
-@synthesize tap = _tap;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
 @synthesize person = _person;
@@ -44,77 +36,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - UITextField Delegate
--(void)textFieldDidBeginEditing:(UITextField *)sender
-{
-    BOOL eitherField = [sender isEqual:self.emailField] || [sender isEqual:self.passwordField];
-    
-    if (eitherField)
-    {
-        //move the main view, so that the keyboard does not hide it.
-        if  (self.view.frame.origin.y >= 0)
-        {
-            [self setViewMovedUp:YES];
-        }
-    }
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if ([textField isEqual:self.emailField]) {
-        // If we are in the email field, we want it to go to the next field, password
-        [self.passwordField becomeFirstResponder];
-    }
-    else {
-        [self dismissKeyboard:textField];
-    }
-    
-    
-    return NO;
-}
-
-//method to move the view up/down whenever the keyboard is shown/dismissed
--(void)setViewMovedUp:(BOOL)movedUp
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25f]; // if you want to slide up the view
-    
-    CGRect rect = self.view.frame;
-    if (movedUp)
-    {
-        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
-        // 2. increase the size of the view so that the area behind the keyboard is covered up.
-        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
-        rect.size.height += kOFFSET_FOR_KEYBOARD;
-    }
-    else
-    {
-        // revert back to the normal state.
-        rect.origin.y += kOFFSET_FOR_KEYBOARD;
-        rect.size.height -= kOFFSET_FOR_KEYBOARD;
-    }
-    self.view.frame = rect;
-    
-    [UIView commitAnimations];
-}
-
-
-- (void)keyboardWillShow:(NSNotification *)notif
-{
-    //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
-    
-    BOOL eitherField = [self.emailField isFirstResponder] || [self.passwordField isFirstResponder];
-    
-    if (eitherField && self.view.frame.origin.y >= 0)
-    {
-        [self setViewMovedUp:YES];
-    }
-    else if (!eitherField && self.view.frame.origin.y < 0)
-    {
-        [self setViewMovedUp:NO];
-    }
-}
-
 #pragma mark - View lifecycle
 
 - (void)loadLoginView
@@ -124,58 +45,14 @@
     UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     view.backgroundColor = [UIColor whiteColor];
     
-    // Add the introduction
-    CGRect introFrame = CGRectMake(20.0f, 5.0f, 280.0f, 40.0f);
-    self.introduction = [[UILabel alloc] initWithFrame:introFrame];
-    self.introduction.text = kSignUpText;
-    self.introduction.lineBreakMode = UILineBreakModeWordWrap;
-    self.introduction.numberOfLines = 0;
-    self.introduction.font = [UIFont systemFontOfSize:12.0f];
-    [view addSubview:self.introduction];
-    
     // Fb Connect
-    self.fbconnect = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.fbconnect = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.fbconnect setBackgroundImage:[UIImage imageNamed:@"FacebookSignIn.png"] forState:UIControlStateNormal];
     [self.fbconnect addTarget:self 
                        action:@selector(loginWithConnect:) 
              forControlEvents:UIControlEventTouchUpInside];
-    [self.fbconnect setTitle:@"Login with Facebook" forState:UIControlStateNormal];
-    self.fbconnect.frame = CGRectMake(20.0f, 50.0f, 280.0f, 40.0f);
+    self.fbconnect.frame = CGRectMake(0.0f, 298.0f, 320.0f, 51.0f);
     [view addSubview:self.fbconnect];
-    
-    // Start Dashing button
-    self.start = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.start addTarget:self 
-                   action:@selector(startDashing:)
-         forControlEvents:UIControlEventTouchUpInside];
-    [self.start setTitle:@"Start Dashing" forState:UIControlStateNormal];
-    self.start.frame = CGRectMake(20.0f, 280.0f, 280.0f, 40.0f);
-    [view addSubview:self.start];
-    
-    // Email field
-    self.emailField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 180.0f, 280.0f, 40.0f)];
-    self.emailField.borderStyle = UITextBorderStyleRoundedRect;
-    self.emailField.font = [UIFont systemFontOfSize:15];
-    self.emailField.placeholder = @"Email";
-    self.emailField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.emailField.keyboardType = UIKeyboardTypeDefault;
-    self.emailField.returnKeyType = UIReturnKeyNext;
-    self.emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;    
-    self.emailField.delegate = self;
-    [view addSubview:self.emailField];
-    
-    // Password field
-    self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 230.0f, 280.0f, 40.0f)];
-    self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
-    self.passwordField.font = [UIFont systemFontOfSize:15];
-    self.passwordField.placeholder = @"Password";
-    self.passwordField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.passwordField.keyboardType = UIKeyboardTypeDefault;
-    self.passwordField.returnKeyType = UIReturnKeyDone;
-    self.passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.passwordField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;    
-    self.passwordField.delegate = self;
-    [view addSubview:self.passwordField];
     
     // Finally, set our self.view
     // NOTE: Do not get self.view in loadView
@@ -224,16 +101,6 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                       action:@selector(dismissKeyboard:)];
-    [self.tap setDelegate:self];
-    [self.view addGestureRecognizer:self.tap];
 }
 
 - (void)viewDidUnload
@@ -396,33 +263,6 @@
     // Reload view. 
     // TODO: Probably some memory leak here right?
     [self loadView];
-}
-
-- (void)startDashing:(id) sender
-{
-    NSLog(@"Start Dashing");
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch 
-{
-    if ([touch.view isKindOfClass:[UIControl class]]) {
-        // we touched a button, slider, or other UIControl
-        return NO; // ignore the touch
-    }
-    return YES; // handle the touch
-}
-
-- (void)dismissKeyboard:(id) sender
-{
-    // Only dismiss keyboard if it is showing. Otherwise, tap will pass through
-    if ([self.emailField isFirstResponder] || [self.passwordField isFirstResponder]) {
-        // Should find out who is first responder first, but for now just call both text fields
-        [self.emailField resignFirstResponder];
-        [self.passwordField resignFirstResponder];
-    
-        // Scroll our view back down
-        [self setViewMovedUp:NO];
-    }
 }
 
 #pragma mark - API
