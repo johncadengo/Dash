@@ -12,6 +12,8 @@
 
 @synthesize backgroundImage = _backgroundImage;
 @synthesize leftSelected = _leftSelected;
+@synthesize leftHalf = _leftHalf;
+@synthesize tap = _tap;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -21,6 +23,12 @@
         
         // By default, left is selected
         self.leftSelected = YES;
+        self.leftHalf = CGRectMake(0.0f, 0.0f, frame.size.width / 2.0f, frame.size.height);
+        
+        // Make sure we handle touches
+        self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [self.tap setDelegate:self];
+        [self addGestureRecognizer:self.tap];
     }
     return self;
 }
@@ -37,6 +45,20 @@
     [self setNeedsDisplay];
 }
 
+#pragma mark - Handle tap
+
+- (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer
+{
+    // Find out where we tapped
+    CGPoint tapPoint = [gestureRecognizer locationInView:self];
+
+    if (CGRectContainsPoint(self.leftHalf, tapPoint)) {
+        NSLog(@"Left");
+    }
+    else {
+        NSLog(@"Right");
+    }
+}
 #pragma mark - Draw
 
 - (void)drawRect:(CGRect)rect

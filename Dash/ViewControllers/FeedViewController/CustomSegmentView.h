@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomSegmentView : UIView
+@interface CustomSegmentView : UIView <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIImage *backgroundImage;
 @property (nonatomic, getter=isLeftSelected) BOOL leftSelected;
+@property (nonatomic) CGRect leftHalf;
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
+
+- (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer;
 
 @end
