@@ -16,6 +16,7 @@
 #import "Like.h"
 #import "Like+Helper.h"
 #import "PlaceViewController.h"
+#import "CustomSegmentView.h"
 
 @implementation FeedViewController
 
@@ -25,7 +26,7 @@
 @synthesize refreshHeaderView = _refreshHeaderView;
 @synthesize hud = _hud;
 @synthesize backgroundBubble = _backgroundBubble;
-@synthesize segmentedControl = _segmentedControl;
+@synthesize customSegmentView = _customSegmentView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -75,10 +76,9 @@
     [self.api feedForPerson:nil];
     
     // Segmented control
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:
-                             [NSArray arrayWithObjects:@"Friends", @"Nearby", nil]];
-    self.segmentedControl.frame = CGRectMake(70.25, 7.25f, 359.0f / 2.0f, 59.0f / 2.0f);
-    [self.navigationController.navigationBar addSubview:self.segmentedControl];
+    self.customSegmentView = [[CustomSegmentView alloc] initWithFrame:
+                              CGRectMake(70.25, 7.25f, 359.0f / 2.0f, 59.0f / 2.0f)];
+    [self.navigationController.navigationBar addSubview:self.customSegmentView];
     
 }
 
