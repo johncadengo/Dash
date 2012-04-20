@@ -58,7 +58,13 @@
     // Save the badges
     _badges = badges;
     
-    // Now populate them
+    // Clear out the old badges
+    [self.badgesViews removeAllObjects];
+    for (UIView *view in self.scrollView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    // Now populate the new badges
     for (Badge *badge in _badges) {
         BadgeSquareView *squareView = [[BadgeSquareView alloc] initWithFrame:[self frameForBadgeIndex:[self.badgesViews count]]];
         [squareView setWithBadge:badge];
