@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "DashAPI.h"
 #import "ProfileHeaderCell.h"
+#import "PlaceViewController.h"
 
 @implementation ProfileViewController
 
@@ -275,9 +276,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //
+    if (indexPath.section == 1) {
+        Place *place = [[self.recommends objectAtIndex:indexPath.row] place];
+        [self performSegueWithIdentifier:kShowProfileViewDetailsIdentifier sender:place];
+    }
 }
 
+#pragma mark - Storyboard Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kShowProfileViewDetailsIdentifier]) {
+        Place *place = (Place *)sender;
+        PlaceViewController *placeViewController = (PlaceViewController *)[segue destinationViewController];
+        [placeViewController setPlace:place];
+        
+        // Make sure it has a managed object context
+        [placeViewController setManagedObjectContext:self.managedObjectContext];
+        
+        
+        // Make sure the tabbar hides so we can replace it with a toolbar
+        placeViewController.hidesBottomBarWhenPushed = YES;
+    }
+}
 #pragma mark - Button Actions
 
 - (void)loginWithConnect:(id) sender

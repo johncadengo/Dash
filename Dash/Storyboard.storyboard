@@ -169,6 +169,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="w20-zF-plu"/>
                     <navigationItem key="navigationItem" id="7bW-GD-5hp"/>
+                    <connections>
+                        <segue destination="ZvP-bc-h0g" kind="push" identifier="ShowProfileViewDetails" id="aF9-w5-jJ6"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="447" y="1319"/>
@@ -366,41 +369,12 @@
         <image name="Profile.png" width="16" height="16"/>
         <image name="Search.png" width="52" height="54"/>
     </resources>
-    <classes>
-        <class className="ActionViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActionViewCell.h"/>
-        </class>
-        <class className="DashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashViewController.h"/>
-        </class>
-        <class className="FeedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedViewController.h"/>
-        </class>
-        <class className="FilterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FilterViewController.h"/>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-        </class>
-        <class className="PlaceViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
-        </class>
-        <class className="ProfileViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-        </class>
-        <class className="RecommendedPlacesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecommendedPlacesViewController.h"/>
-        </class>
-        <class className="SearchViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="J5w-qJ-RMU"/>
+        <segue reference="aF9-w5-jJ6"/>
     </inferredMetricsTieBreakers>
 </document>

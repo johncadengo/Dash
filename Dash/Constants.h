@@ -84,6 +84,7 @@ extern NSString * const kShowLoginViewControllerSegueIdentifier;
 extern NSString * const kShowPlaceActionDetailsSegueIdentifier;
 extern NSString * const kShowFeedItemDetailsSegueIdentifier;
 extern NSString * const kShowDashViewDetailsSegueIdentifier;
+extern NSString * const kShowProfileViewDetailsIdentifier;
 extern NSString * const kPresentFilterViewController;
 extern NSString * const kShowSearchResultDetailView;
 

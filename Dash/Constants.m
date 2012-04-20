@@ -64,6 +64,7 @@ NSString * const kShowLoginViewControllerSegueIdentifier = @"ShowLoginViewContro
 NSString * const kShowPlaceActionDetailsSegueIdentifier = @"ShowPlaceActionDetails";
 NSString * const kShowFeedItemDetailsSegueIdentifier = @"ShowFeedItemDetails";
 NSString * const kShowDashViewDetailsSegueIdentifier = @"ShowDashViewDetails";
+NSString * const kShowProfileViewDetailsIdentifier = @"ShowProfileViewDetails";
 NSString * const kPresentFilterViewController = @"PresentFilterViewController";
 NSString * const kShowSearchResultDetailView = @"ShowSearchResultDetailView";
 
