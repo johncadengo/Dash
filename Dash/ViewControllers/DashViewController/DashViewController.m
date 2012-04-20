@@ -9,7 +9,6 @@
 #import "DashViewController.h"
 #import "DashAPI.h"
 #import "Place.h"
-#import "PlaceSquareView.h"
 #import "Constants.h"
 #import "PlaceViewController.h"
 #import "JCLocationManagerSingleton.h"
@@ -42,7 +41,6 @@
 @synthesize filterViewFrame = _filterViewFrame;
 @synthesize filterView = _filterView;
 @synthesize filterViewController = _filterViewController;
-@synthesize singleTap = _singleTap;
 @synthesize drag = _drag;
 
 @synthesize quadrantCells = _quadrantCells;
@@ -161,7 +159,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
                            firstImage, secondImage, thirdImage, fourthImage, nil];
 
     // Set up the array to contain our cells
-    self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage * 4];
+    self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage * 16];
 
     // Set up our initial four blank cells
     UIImageView *imageView;
@@ -234,11 +232,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [self.popsScrollView addSubview:self.progressHUD];
     self.progressHUD.delegate = self;
     self.progressHUD.removeFromSuperViewOnHide = NO;
-    
-    // Add our tap gesture recognizer
-    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    [self.popsScrollView addGestureRecognizer:self.singleTap];
-    [self.singleTap setDelegate:self];
     
     // Add our drag gesture recognizer
     self.drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDrag:)];
@@ -338,34 +331,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     CGPoint origin = [touch locationInView:self.view];
     BOOL insidePopButton = CGRectContainsPoint(self.popBackground.frame, origin);
     return (self.isFilterShowing && !insidePopButton) ? NO : YES;
-}
-
-/** Receive touch events and respond accordingly.
- */
-- (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer
-{
-    // Find out where we tapped
-    CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
-    
-    // Only care if we have places being displayed
-    if (self.currentPage >= 0) {
-        // Figure out which quadrant was tapped
-        QuadrantIndex quadrant = -1;
-        NSValue *value;
-        CGRect frame;
-        for (int i = 0; i < kPlacesPerPage; ++i) {
-            value = [self.quadrantFrames objectAtIndex:i];
-            frame = [value CGRectValue];
-            if (CGRectContainsPoint(frame, tapPoint)) {
-                quadrant = i;
-                break;
-            }
-        }
-        
-        // Perform segue to place view controller
-        Place *place = [self placeForQuadrant:quadrant];
-        [self performSegueWithIdentifier:kShowDashViewDetailsSegueIdentifier sender:place];
-    }
 }
 
 /** Perceive a drag and respond accordingly
@@ -562,6 +527,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         
         // Create the cells
         cell = [[PlaceSquareView alloc] initWithFrame:cellFrame backgroundImage:image];
+        cell.delegate = self;
+        cell.index = i;
+        
         [self.quadrantCells addObject:cell];
         [self.popsScrollView addSubview:cell];       
     }
@@ -641,6 +609,15 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 - (void)showLogin 
 {
     [self performSegueWithIdentifier:kShowLoginViewControllerSegueIdentifier sender:nil];
+}
+
+#pragma mark - PlaceSquareViewDelegate
+
+- (void)pushPlaceAtIndex:(NSInteger)index
+{
+    // Perform segue to place view controller
+    Place *place = [self.places objectAtIndex:index];
+    [self performSegueWithIdentifier:kShowDashViewDetailsSegueIdentifier sender:place];
 }
 
 #pragma mark - RKObjectLoaderDelegate methods

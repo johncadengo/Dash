@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PlaceSquareViewDelegate <NSObject>
+
+- (void)pushPlaceAtIndex:(NSInteger)index;
+
+@end
+
 @class Place;
 
-@interface PlaceSquareView : UIView
+@interface PlaceSquareView : UIView <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *categories;
@@ -20,6 +26,9 @@
 @property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, strong) UIImage *backgroundImage;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) NSInteger index;
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
+@property (nonatomic, weak) id <PlaceSquareViewDelegate> delegate;
 
 // TODO: Trophies, images, badges. How will we store them?
 // As distinct UIImages, each one, downloaded from server, stored and cached on phone?
@@ -49,6 +58,8 @@
    
 - (id)initWithFrame:(CGRect)frame backgroundImage:(UIImage *)backgroundImage;
 - (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
+
+- (void)handleTap:(UIGestureRecognizer *)tap;
 
 /** Such a hack... Draw the text twice. 
  *  One cropping the top half, the other cropping the bottom half.

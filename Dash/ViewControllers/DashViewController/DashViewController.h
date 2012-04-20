@@ -10,6 +10,7 @@
 #import <RestKit/RestKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
+#import "PlaceSquareView.h"
 
 @class DashAPI;
 @class Place;
@@ -24,7 +25,7 @@ typedef enum {
     kQuadIV = 3
 }QuadrantIndex;
 
-@interface DashViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate>
+@interface DashViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate, PlaceSquareViewDelegate>
 
 // Model elements
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -57,7 +58,6 @@ typedef enum {
 @property (nonatomic, strong) MBProgressHUD *progressHUD;
 
 // Gesture recognizers
-@property (nonatomic, strong) UITapGestureRecognizer *singleTap;
 @property (nonatomic, strong) UIPanGestureRecognizer *drag;
 
 /** The four quadrants are divided up in to a Cartesian system,
@@ -89,11 +89,14 @@ typedef enum {
 
 /** Receive touch events and respond accordingly.
  */
-- (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer;
 - (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer;
 
 /**
  */
 - (void)showLogin;
+
+/**
+ */
+- (void)pushPlaceAtIndex:(NSInteger)index;
 
 @end

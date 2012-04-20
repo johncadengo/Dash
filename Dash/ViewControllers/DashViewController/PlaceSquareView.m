@@ -24,6 +24,9 @@
 @synthesize icon = _icon;
 @synthesize backgroundImage = _backgroundImage;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize index = _index;
+@synthesize tap = _tap;
+@synthesize delegate = _delegate;
 
 #pragma mark - UI Constants
 
@@ -160,6 +163,11 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     if (self) {
         [self setBackgroundColor:[UIColor blackColor]];
         self.backgroundImage = backgroundImage;
+        
+        // Add our tap gesture recognizer
+        self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [self addGestureRecognizer:self.tap];
+        [self.tap setDelegate:self];
     }
     return self;
 }
@@ -200,6 +208,18 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     // Draw self
     [self setNeedsDisplay];
 }
+
+#pragma mark - Gestures
+
+/** Receive touch events and respond accordingly.
+ */
+- (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer
+{
+    if ([self.delegate conformsToProtocol:@protocol(PlaceSquareViewDelegate)]) {
+        [self.delegate pushPlaceAtIndex:self.index];
+    }
+}
+
 
 #pragma mark - Draw
 
