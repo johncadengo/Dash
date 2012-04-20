@@ -66,6 +66,12 @@
     // Change the color of the background..
     self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
     
+    // Make our progress hud
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.hud];
+    [self.hud setDelegate:self];
+    self.hud.removeFromSuperViewOnHide = NO;
+    
     // Make a call to the api
     [self refreshFeed]; 
 }
@@ -221,7 +227,8 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
-    //NSLog(@"%@", objects);
+    // Let them know we're done
+    [self.hud hide:YES];
     
     //[self.feedItems addObjectsFromArray:objects];
     self.feedItems = [NSMutableArray arrayWithArray:objects];
@@ -242,6 +249,9 @@
 
 - (void)refreshFeed
 {
+    // Let them know we're working on it
+    [self.hud show:YES];
+    
     // Make a call to the api to request the feed
     //self.requests = [NSDictionary dictionaryWithDictionary:[self.api placeActionsForPerson:nil]];
     [self.api placeActionsForPerson:nil];

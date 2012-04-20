@@ -33,4 +33,6 @@
  *  Also, if a friend has joined dash.
  */
 
+- (void)refreshFeed;
+
 @end

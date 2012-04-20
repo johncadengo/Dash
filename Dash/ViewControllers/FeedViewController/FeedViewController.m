@@ -72,8 +72,14 @@
     self.tableView.backgroundView = self.backgroundBubble;
     self.tableView.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
     
+    // Make our progress hud
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.hud];
+    [self.hud setDelegate:self];
+    self.hud.removeFromSuperViewOnHide = NO;
+    
     // Make the call
-    [self.api feedForPerson:nil];
+    [self refreshFeed];
     
     // Segmented control
     self.customSegmentView = [[CustomSegmentView alloc] initWithFrame:
@@ -124,8 +130,7 @@
 {	
     // Causes the table view to reload our data source
     [self.refreshHeaderView performSelector:@selector(egoRefreshScrollViewDataSourceDidFinishedLoading:) withObject:self.tableView afterDelay:2.0];
-	//[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
-	
+    [self refreshFeed];
 }
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
@@ -212,10 +217,21 @@
     }
 }
 
+#pragma mark -
+
+- (void) refreshFeed
+{
+    [self.hud show:YES];
+    [self.api feedForPerson:nil];
+}
+
 #pragma mark - RKObjectLoaderDelegate methods
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
+    // Let them know we're done
+    [self.hud hide:YES];
+    
     NSLog(@"Feed items: %@", objects);
     self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
     

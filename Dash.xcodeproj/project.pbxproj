@@ -189,6 +189,14 @@
 		67A859901540C32F00B451D9 /* ProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8598F1540C32F00B451D9 /* ProfileHeaderCell.m */; };
 		67A859921540C9C800B451D9 /* SignInScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A859911540C9C800B451D9 /* SignInScreen@2x.png */; };
 		67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A8977314C782DD00494273 /* FilterViewSegue.m */; };
+		67ACE2EB1541D6D9005487D6 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 67ACE2E31541D6D9005487D6 /* blackArrow.png */; };
+		67ACE2EC1541D6D9005487D6 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67ACE2E41541D6D9005487D6 /* blackArrow@2x.png */; };
+		67ACE2ED1541D6D9005487D6 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 67ACE2E51541D6D9005487D6 /* blueArrow.png */; };
+		67ACE2EE1541D6D9005487D6 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67ACE2E61541D6D9005487D6 /* blueArrow@2x.png */; };
+		67ACE2EF1541D6D9005487D6 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 67ACE2E71541D6D9005487D6 /* grayArrow.png */; };
+		67ACE2F01541D6D9005487D6 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67ACE2E81541D6D9005487D6 /* grayArrow@2x.png */; };
+		67ACE2F11541D6D9005487D6 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 67ACE2E91541D6D9005487D6 /* whiteArrow.png */; };
+		67ACE2F21541D6D9005487D6 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67ACE2EA1541D6D9005487D6 /* whiteArrow@2x.png */; };
 		67B378CE1534BE9E00A2A4CB /* DashGold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378C91534BE9E00A2A4CB /* DashGold@2x.png */; };
 		67B378CF1534BE9E00A2A4CB /* LaptopIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378CA1534BE9E00A2A4CB /* LaptopIcon@2x.png */; };
 		67B378D01534BE9E00A2A4CB /* NewspaperIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B378CB1534BE9E00A2A4CB /* NewspaperIcon@2x.png */; };
@@ -572,6 +580,14 @@
 		67A859911540C9C800B451D9 /* SignInScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SignInScreen@2x.png"; path = "Dash/Images/Tabs/Profile/SignInScreen@2x.png"; sourceTree = "<group>"; };
 		67A8977214C782DD00494273 /* FilterViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewSegue.h; path = Dash/ViewControllers/DashViewController/FilterViewSegue.h; sourceTree = "<group>"; };
 		67A8977314C782DD00494273 /* FilterViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewSegue.m; path = Dash/ViewControllers/DashViewController/FilterViewSegue.m; sourceTree = "<group>"; };
+		67ACE2E31541D6D9005487D6 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackArrow.png; path = Dash/Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blackArrow.png; sourceTree = "<group>"; };
+		67ACE2E41541D6D9005487D6 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blackArrow@2x.png"; path = "Dash/Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blackArrow@2x.png"; sourceTree = "<group>"; };
+		67ACE2E51541D6D9005487D6 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueArrow.png; path = Dash/Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blueArrow.png; sourceTree = "<group>"; };
+		67ACE2E61541D6D9005487D6 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueArrow@2x.png"; path = "Dash/Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blueArrow@2x.png"; sourceTree = "<group>"; };
+		67ACE2E71541D6D9005487D6 /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grayArrow.png; path = Dash/Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/grayArrow.png; sourceTree = "<group>"; };
+		67ACE2E81541D6D9005487D6 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "grayArrow@2x.png"; path = "Dash/Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/grayArrow@2x.png"; sourceTree = "<group>"; };
+		67ACE2E91541D6D9005487D6 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whiteArrow.png; path = Dash/Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow.png; sourceTree = "<group>"; };
+		67ACE2EA1541D6D9005487D6 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "whiteArrow@2x.png"; path = "Dash/Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow@2x.png"; sourceTree = "<group>"; };
 		67B378C91534BE9E00A2A4CB /* DashGold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashGold@2x.png"; path = "Dash/Images/PlaceProfile/BadgeIcons/DashGold@2x.png"; sourceTree = "<group>"; };
 		67B378CA1534BE9E00A2A4CB /* LaptopIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LaptopIcon@2x.png"; path = "Dash/Images/PlaceProfile/BadgeIcons/LaptopIcon@2x.png"; sourceTree = "<group>"; };
 		67B378CB1534BE9E00A2A4CB /* NewspaperIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewspaperIcon@2x.png"; path = "Dash/Images/PlaceProfile/BadgeIcons/NewspaperIcon@2x.png"; sourceTree = "<group>"; };
@@ -1226,6 +1242,7 @@
 		679009E01450E6C700511E0F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				67ACE2E21541D6CB005487D6 /* EGORefreshTableHeaderView */,
 				6789D2C5152E34870029BF48 /* PlaceProfile */,
 				6789D2B4152E0F3D0029BF48 /* Categories */,
 				67F3DA2C152CE43700A287F6 /* NavBar */,
@@ -1324,6 +1341,21 @@
 				67A5D905151BA0C200924CAB /* WineIcon@2x.png */,
 			);
 			name = Filter;
+			sourceTree = "<group>";
+		};
+		67ACE2E21541D6CB005487D6 /* EGORefreshTableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				67ACE2E31541D6D9005487D6 /* blackArrow.png */,
+				67ACE2E41541D6D9005487D6 /* blackArrow@2x.png */,
+				67ACE2E51541D6D9005487D6 /* blueArrow.png */,
+				67ACE2E61541D6D9005487D6 /* blueArrow@2x.png */,
+				67ACE2E71541D6D9005487D6 /* grayArrow.png */,
+				67ACE2E81541D6D9005487D6 /* grayArrow@2x.png */,
+				67ACE2E91541D6D9005487D6 /* whiteArrow.png */,
+				67ACE2EA1541D6D9005487D6 /* whiteArrow@2x.png */,
+			);
+			name = EGORefreshTableHeaderView;
 			sourceTree = "<group>";
 		};
 		67B378C81534BE8300A2A4CB /* BadgeIcons */ = {
@@ -1775,6 +1807,14 @@
 				67A8598C1540BE3400B451D9 /* InformationBubble@2x.png in Resources */,
 				67A8598D1540BE3400B451D9 /* SettingsButton@2x.png in Resources */,
 				67A859921540C9C800B451D9 /* SignInScreen@2x.png in Resources */,
+				67ACE2EB1541D6D9005487D6 /* blackArrow.png in Resources */,
+				67ACE2EC1541D6D9005487D6 /* blackArrow@2x.png in Resources */,
+				67ACE2ED1541D6D9005487D6 /* blueArrow.png in Resources */,
+				67ACE2EE1541D6D9005487D6 /* blueArrow@2x.png in Resources */,
+				67ACE2EF1541D6D9005487D6 /* grayArrow.png in Resources */,
+				67ACE2F01541D6D9005487D6 /* grayArrow@2x.png in Resources */,
+				67ACE2F11541D6D9005487D6 /* whiteArrow.png in Resources */,
+				67ACE2F21541D6D9005487D6 /* whiteArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
