@@ -485,7 +485,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     // Define our stats mapping
     RKManagedObjectMapping *statsMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Stats"];
-    [statsMapping mapAttributes:@"highlights", @"saves", @"recommends", nil];
+    [statsMapping mapAttributes:@"favorites", @"following", @"followers", nil];
     
     [personMapping mapKeyPath:@"stats" toRelationship:@"stats" withMapping:statsMapping];
     
