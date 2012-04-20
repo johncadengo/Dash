@@ -79,6 +79,7 @@
     self.hud.removeFromSuperViewOnHide = NO;
     
     // Make the call
+    [self.hud show:YES];
     [self refreshFeed];
     
     // Segmented control
@@ -221,7 +222,6 @@
 
 - (void) refreshFeed
 {
-    [self.hud show:YES];
     [self.api feedForPerson:nil];
 }
 

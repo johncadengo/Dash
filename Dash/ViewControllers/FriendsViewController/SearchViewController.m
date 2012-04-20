@@ -78,6 +78,12 @@
     // Adjust some things
     searchField.borderStyle = UITextBorderStyleRoundedRect;
     searchField.backgroundColor = UIColorFromRGB(kSearchTextFieldBGColor);
+    
+    // Make our progress hud
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.hud];
+    [self.hud setDelegate:self];
+    self.hud.removeFromSuperViewOnHide = NO;
 }
 
 - (void)clearSearchBarBackground
@@ -280,7 +286,11 @@
     return NO;
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar 
+{
+    // Let them know we're working on it
+    [self.hud show:YES];
+    
     // When search is clicked, perform a search with the search string
     NSString *searchString = searchBar.text;
     
@@ -342,6 +352,9 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
+    // And we're done
+    [self.hud hide:YES];
+    
     UITableView *tableView = self.tableView;
     NSMutableDictionary *resultsDict = self.resultsForSearchQuery;
     

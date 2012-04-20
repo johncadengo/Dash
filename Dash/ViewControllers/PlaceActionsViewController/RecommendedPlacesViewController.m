@@ -17,7 +17,6 @@
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
-@synthesize refreshHeaderView = _refreshHeaderView;
 @synthesize hud = _hud;
 @synthesize feedItems = _feedItems;
 
@@ -51,17 +50,6 @@
     self.feedItems = [[NSMutableArray alloc] init];
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
-    
-    // Make our refresh header view
-    if (_refreshHeaderView == nil) {
-		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
-		view.delegate = self;
-		[self.tableView addSubview:view];
-		_refreshHeaderView = view;
-	}
-	
-	//  update the last update date
-	[_refreshHeaderView refreshLastUpdatedDate];
     
     // Change the color of the background..
     self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
@@ -107,32 +95,6 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark -
-#pragma mark EGORefreshTableHeaderDelegate Methods
-
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
-{	
-    // Causes the table view to reload our data source
-    [self.refreshHeaderView performSelector:@selector(egoRefreshScrollViewDataSourceDidFinishedLoading:) withObject:self.tableView afterDelay:2.0];
-    [self refreshFeed];
-	
-}
-
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
-{
-    // The data source is reloading? 
-    // TODO: Figure out how to actually check
-	return (self.feedItems == nil) ? YES : NO;
-	
-}
-
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
-{	
-    // TODO: Return the date the data source was last changed. This is fake for now.
-	return [NSDate date];
-	
 }
 
 #pragma mark - Table view delegate
@@ -235,9 +197,6 @@
      
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self.tableView reloadData];
-    
-    // TODO: Gotta do this asynchronously 
-    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
@@ -257,20 +216,5 @@
     [self.api placeActionsForPerson:nil];
 }
 
-#pragma mark -
-#pragma mark UIScrollViewDelegate Methods
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{	
-    // For our EGO pull refresh header
-	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-    
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{	
-	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-	
-}
 
 @end

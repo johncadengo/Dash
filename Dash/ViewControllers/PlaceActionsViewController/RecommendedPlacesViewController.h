@@ -10,15 +10,13 @@
 #import <RestKit/RestKit.h>
 #import "MBProgressHUD.h"
 #import "RecommendedPlaceViewCell.h"
-#import "EGORefreshTableHeaderView.h"
 
 @class DashAPI;
 
-@interface RecommendedPlacesViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate, EGORefreshTableHeaderDelegate>
+@interface RecommendedPlacesViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
-@property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
 // We want to be able to filter through the feed items 
