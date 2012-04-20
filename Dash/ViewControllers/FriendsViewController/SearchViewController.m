@@ -144,7 +144,10 @@
     RecommendedPlaceViewCellType type;
     NSInteger last = [[self.resultsForSearchQuery objectForKey:self.currentQuery] count] - 1;
     
-    if (row == 0) {
+    if (last == 0) {
+        type = RecommendedPlaceViewCellTypeOnly;
+    }
+    else if (row == 0) {
         type = RecommendedPlaceViewCellTypeFirst;
     }
     else if (row == last) {
