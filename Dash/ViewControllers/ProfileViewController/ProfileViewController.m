@@ -21,6 +21,7 @@
 @synthesize api = _api;
 @synthesize person = _person;
 @synthesize recommends = _recommends;
+@synthesize settingsButton = _settingsButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -87,7 +88,16 @@
     // Put top bar back
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
+    // Set the bg color
     [self.view setBackgroundColor:UIColorFromRGB(kPlaceOrangeBGColor)];
+        
+    // Add the settings button
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(320.0f - 55.0f, 5.0f, 49.0f, 39.0f);
+    [button setImage:[UIImage imageNamed:@"SettingsButton.png"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(showSettingsView:) forControlEvents:UIControlEventTouchUpInside];
+    self.settingsButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    [self.navigationItem setRightBarButtonItem:self.settingsButton];
 }
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -311,6 +321,11 @@
     // Reload view. 
     // TODO: Probably some memory leak here right?
     [self loadView];
+}
+
+- (void)showSettingsView:(id)sender
+{
+    NSLog(@"HI");
 }
 
 #pragma mark - API

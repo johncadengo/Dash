@@ -31,9 +31,11 @@
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) Person *person;
 @property (nonatomic, strong) NSMutableArray *recommends;
+@property (nonatomic, strong) UIBarButtonItem *settingsButton;
 
 - (void)loadProfileView;
 - (void)requestProfile;
+- (void)showSettingsView:(id)sender;
 
 - (ProfileHeaderCell *)headerCellForTableView:(UITableView *)tableView;
 - (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSInteger)row;
