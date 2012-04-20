@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Action" representedClassName="Action" isAbstract="YES" parentEntity="Uniqueness" syncable="YES">
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="author" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="actions" inverseEntity="Person" syncable="YES"/>
@@ -110,9 +110,9 @@
     <entity name="Recommend" representedClassName="Recommend" parentEntity="PlaceAction" syncable="YES"/>
     <entity name="Save" representedClassName="Save" parentEntity="PlaceAction" syncable="YES"/>
     <entity name="Stats" representedClassName="Stats" syncable="YES">
-        <attribute name="highlights" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="recommends" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="saves" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="favorites" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="followers" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="following" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="person" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="stats" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Uniqueness" representedClassName="Uniqueness" isAbstract="YES" syncable="YES">

@@ -10,9 +10,9 @@
 
 // The kinds of stats we are going to display in the profile
 typedef enum {
-    kSavesStat = 0,
-    kRecommendsStat = 1,
-    kHightlightsStat = 2,
+    kFavoritesStat = 0,
+    kFollowersStat = 1,
+    kFollowingStat = 2,
     kNumStatsTypes = 3
 } StatsTypes;
 

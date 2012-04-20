@@ -12,9 +12,9 @@
 
 @implementation Stats
 
-@dynamic highlights;
-@dynamic recommends;
-@dynamic saves;
+@dynamic favorites;
+@dynamic followers;
+@dynamic following;
 @dynamic person;
 
 @end

@@ -13,9 +13,9 @@
 
 @interface Stats : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * highlights;
-@property (nonatomic, retain) NSNumber * recommends;
-@property (nonatomic, retain) NSNumber * saves;
+@property (nonatomic, retain) NSNumber * favorites;
+@property (nonatomic, retain) NSNumber * followers;
+@property (nonatomic, retain) NSNumber * following;
 @property (nonatomic, retain) Person *person;
 
 @end

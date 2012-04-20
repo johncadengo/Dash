@@ -16,9 +16,9 @@ static NSDictionary *types = nil;
 {
     if (!types) {
         types = [[NSDictionary alloc] initWithObjectsAndKeys:
-                 @"Saves:", [NSNumber numberWithInt:kSavesStat],
-                 @"Recommends:", [NSNumber numberWithInt:kRecommendsStat],
-                 @"Highlights:", [NSNumber numberWithInt:kHightlightsStat],
+                 @"Saves:", [NSNumber numberWithInt:kFavoritesStat],
+                 @"Recommends:", [NSNumber numberWithInt:kFollowersStat],
+                 @"Highlights:", [NSNumber numberWithInt:kFollowingStat],
                  nil];
     }
     
@@ -33,14 +33,14 @@ static NSDictionary *types = nil;
     NSNumber *stat;
     
     switch ([type intValue]) {
-        case kSavesStat:
-            stat = self.saves;
+        case kFavoritesStat:
+            stat = self.favorites;
             break;
-        case kRecommendsStat:
-            stat = self.recommends;
+        case kFollowersStat:
+            stat = self.followers;
             break;
-        case kHightlightsStat:
-            stat = self.highlights;
+        case kFollowingStat:
+            stat = self.following;
             break;
         default:
             // Should never happen
