@@ -22,6 +22,7 @@
 @synthesize person = _person;
 @synthesize recommends = _recommends;
 @synthesize settingsButton = _settingsButton;
+@synthesize settingsSheet = _settingsSheet;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -93,7 +94,7 @@
         
     // Add the settings button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(320.0f - 55.0f, 5.0f, 49.0f, 39.0f);
+    button.frame = CGRectMake(265.0f, 10.0f, 49.0f, 34.0f);
     [button setImage:[UIImage imageNamed:@"SettingsButton.png"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(showSettingsView:) forControlEvents:UIControlEventTouchUpInside];
     self.settingsButton = [[UIBarButtonItem alloc] initWithCustomView:button];
@@ -325,7 +326,15 @@
 
 - (void)showSettingsView:(id)sender
 {
-    NSLog(@"HI");
+    if (self.settingsSheet == nil) {
+        self.settingsSheet = [[UIActionSheet alloc] initWithTitle:@"Settings" 
+                                                         delegate:self 
+                                                cancelButtonTitle:@"Cancel" 
+                                           destructiveButtonTitle:nil 
+                                                otherButtonTitles:@"Log out", nil];
+    }
+    
+    [self.settingsSheet showFromTabBar:self.tabBarController.tabBar];
 }
 
 #pragma mark - API

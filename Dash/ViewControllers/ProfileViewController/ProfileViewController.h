@@ -15,7 +15,7 @@
 @class ProfileHeaderCell;
 @class RecommendedPlaceViewCell;
 
-@interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate>
+@interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate, UIActionSheetDelegate>
 
 @property (nonatomic) BOOL showingProfileView;
 
@@ -32,6 +32,7 @@
 @property (nonatomic, strong) Person *person;
 @property (nonatomic, strong) NSMutableArray *recommends;
 @property (nonatomic, strong) UIBarButtonItem *settingsButton;
+@property (nonatomic, strong) UIActionSheet *settingsSheet;
 
 - (void)loadProfileView;
 - (void)requestProfile;
