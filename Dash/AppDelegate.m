@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "JCLocationManagerSingleton.h"
 #import "Constants.h"
+#import "DashAPI.h"
 
 // Category to make sure that we have accessors to managedobjectcontext
 @interface UIViewController (Helper)
@@ -18,10 +19,10 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
+@synthesize facebook = _facebook;
 
 // Make sure we start out on the Dash Tab.
 enum {
@@ -59,21 +60,44 @@ enum {
         }
     }
     
-    // Configure restkit singleton instance
-    //RKClient *client = [RKClient clientWithBaseURL:@"http://107.22.230.57/api"];
-    
-    // This is from the tutorial, but also keep here in case I need to find it.
-    //NSLog(@"I am your RKClient singleton : %@", [RKClient sharedClient]);
-    
+    // Configure manager
     RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:@"https://thedashapp.com/api"];
-    
-    //NSLog(@"I am your RKObjectManager singleton: %@", [RKObjectManager sharedManager]);
     
     // Color Dash Tab Bar Icon
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashFourColorIcon.png"]];
     [tabBarController.tabBar addSubview:imageView];
     
+    // Handle fb connect
+    self.facebook = [[Facebook alloc] initWithAppId:kFBAppID andDelegate:self];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
+    
+    if ([self.facebook isSessionValid]) {
+        [DashAPI setLoggedIn:YES];
+    }
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation 
+{
+    return [self.facebook handleOpenURL:url]; 
+}
+
+- (void)fbDidLogin 
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    
+    [DashAPI setLoggedIn:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

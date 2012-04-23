@@ -91,3 +91,6 @@ extern NSString * const kShowSearchResultDetailView;
 // Distance cutoff
 static double const kDistanceCutoff = 50.0;
 extern NSString * const kDistanceCutOffString;
+
+// FB Connect
+extern NSString *const kFBAppID;

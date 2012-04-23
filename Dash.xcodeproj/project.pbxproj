@@ -1619,7 +1619,7 @@
 		67348AA11446350700A3160A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 67348AA41446350700A3160A /* Build configuration list for PBXProject "Dash" */;
 			compatibilityVersion = "Xcode 3.2";

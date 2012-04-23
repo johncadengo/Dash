@@ -70,3 +70,7 @@ NSString * const kShowSearchResultDetailView = @"ShowSearchResultDetailView";
 
 #pragma mark - Distance cutoff
 NSString * const kDistanceCutOffString = @"50+";
+
+#pragma mark - FB Connect
+
+NSString * const kFBAppID = @"101827883286265";

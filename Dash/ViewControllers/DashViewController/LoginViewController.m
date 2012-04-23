@@ -16,6 +16,7 @@
 @synthesize skip = _skip;
 @synthesize fbconnect = _fbconnect;
 @synthesize dashViewController = _dashViewController;
+@synthesize facebook = _facebook;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,6 +75,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.facebook = [[Facebook alloc] initWithAppId:kFBAppID andDelegate:self];
 }
 
 
@@ -93,12 +96,26 @@
 #pragma mark - Login logic
 - (void)loginWithConnect:(id) sender
 {
-    // Login logic
+    if (![self.facebook isSessionValid]) {
+        [self.facebook authorize:nil];
+    }
+    else {
+        [DashAPI setLoggedIn:YES];
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
+- (void)fbDidLogin 
+{
+    // Save it
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    
+    // and pop it
     [DashAPI setLoggedIn:YES];
-    
-    // TODO: AND SOME MAGIC
-    
-    // See ya!
+    [self.dashViewController pop:self];
     [self dismissModalViewControllerAnimated:YES];
 }
 
