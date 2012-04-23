@@ -40,7 +40,7 @@ static CGFloat kMaxBlurbHeight = 30.0f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kInfoLinebreak = UILineBreakModeTailTruncation;
-static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
+static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
 
 #pragma mark - Class methods for figuring out layout
 
@@ -66,7 +66,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (UIFont *)blurbFont
 {
-    return [UIFont fontWithName:kPlutoRegular size:12.0f];
+    return [UIFont systemFontOfSize:12.0f]; //[UIFont fontWithName:kPlutoRegular size:12.0f];
 }
 
 + (NSInteger)numberOfLinesForName:(NSString *)name
@@ -191,7 +191,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     NSMutableString *highlights = [[NSMutableString alloc] init];
     for (Highlight* highlight in place.highlights) {
-        [highlights appendFormat:@"%@ ", highlight.text];
+        [highlights appendFormat:@"%@, ", highlight.text];
     }
     self.blurb = [NSString stringWithFormat:@"Highlights: %@", highlights];
     

@@ -234,6 +234,8 @@
 		67DE8430152F8CCF00556C54 /* BadgeSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DE842F152F8CCE00556C54 /* BadgeSquareView.m */; };
 		67DEF893153C8DAE0079C097 /* SearchBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF891153C8DAE0079C097 /* SearchBar@2x.png */; };
 		67DEF894153C8DAE0079C097 /* SearchBarWithMGlass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF892153C8DAE0079C097 /* SearchBarWithMGlass@2x.png */; };
+		67E2AA181545944A0002E641 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67E2AA0B1545944A0002E641 /* FBDialog.bundle */; };
+		67E2AA191545944A0002E641 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E2AA111545944A0002E641 /* libfacebook_ios_sdk.a */; };
 		67E7D94E146862E000E86F31 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67EDA900146C887F00AD3625 /* JCPinholeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA8FF146C887F00AD3625 /* JCPinholeViewController.m */; };
 		67EDA903146C8D6E00AD3625 /* JCSpotlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EDA902146C8D6D00AD3625 /* JCSpotlightViewController.m */; };
@@ -649,6 +651,21 @@
 		67DE842F152F8CCE00556C54 /* BadgeSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BadgeSquareView.m; path = Dash/ViewControllers/PlaceViewController/BadgeSquareView.m; sourceTree = "<group>"; };
 		67DEF891153C8DAE0079C097 /* SearchBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SearchBar@2x.png"; path = "Dash/Images/Tabs/Search/SearchBar@2x.png"; sourceTree = "<group>"; };
 		67DEF892153C8DAE0079C097 /* SearchBarWithMGlass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SearchBarWithMGlass@2x.png"; path = "Dash/Images/Tabs/Search/SearchBarWithMGlass@2x.png"; sourceTree = "<group>"; };
+		67E2AA091545944A0002E641 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
+		67E2AA0A1545944A0002E641 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
+		67E2AA0B1545944A0002E641 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
+		67E2AA0C1545944A0002E641 /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
+		67E2AA0D1545944A0002E641 /* FBFrictionlessRequestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFrictionlessRequestSettings.h; sourceTree = "<group>"; };
+		67E2AA0E1545944A0002E641 /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginDialog.h; sourceTree = "<group>"; };
+		67E2AA0F1545944A0002E641 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
+		67E2AA101545944A0002E641 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		67E2AA111545944A0002E641 /* libfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfacebook_ios_sdk.a; sourceTree = "<group>"; };
+		67E2AA121545944A0002E641 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		67E2AA131545944A0002E641 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		67E2AA141545944A0002E641 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		67E2AA151545944A0002E641 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		67E2AA161545944A0002E641 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		67E2AA171545944A0002E641 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		67E7D94C146862E000E86F31 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGORefreshTableHeaderView.h; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		67E7D94D146862E000E86F31 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGORefreshTableHeaderView.m; path = Helpers/EGOTableViewPullRefresh/EGOTableViewPullRefresh/Classes/View/EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		67EDA8FE146C887F00AD3625 /* JCPinholeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCPinholeViewController.h; path = Dash/ViewControllers/JCImageGalleryView/ViewControllerStates/JCPinholeViewController.h; sourceTree = "<group>"; };
@@ -700,6 +717,7 @@
 				67348AB11446350700A3160A /* Foundation.framework in Frameworks */,
 				67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */,
 				67348AB51446350700A3160A /* CoreData.framework in Frameworks */,
+				67E2AA191545944A0002E641 /* libfacebook_ios_sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1434,6 +1452,29 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		67E2AA081545944A0002E641 /* facebook-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				67E2AA091545944A0002E641 /* Facebook.h */,
+				67E2AA0A1545944A0002E641 /* FBConnect.h */,
+				67E2AA0B1545944A0002E641 /* FBDialog.bundle */,
+				67E2AA0C1545944A0002E641 /* FBDialog.h */,
+				67E2AA0D1545944A0002E641 /* FBFrictionlessRequestSettings.h */,
+				67E2AA0E1545944A0002E641 /* FBLoginDialog.h */,
+				67E2AA0F1545944A0002E641 /* FBRequest.h */,
+				67E2AA101545944A0002E641 /* JSON.h */,
+				67E2AA111545944A0002E641 /* libfacebook_ios_sdk.a */,
+				67E2AA121545944A0002E641 /* NSObject+SBJSON.h */,
+				67E2AA131545944A0002E641 /* NSString+SBJSON.h */,
+				67E2AA141545944A0002E641 /* SBJSON.h */,
+				67E2AA151545944A0002E641 /* SBJsonBase.h */,
+				67E2AA161545944A0002E641 /* SBJsonParser.h */,
+				67E2AA171545944A0002E641 /* SBJsonWriter.h */,
+			);
+			name = "facebook-ios-sdk";
+			path = "Helpers/facebook-ios-sdk/lib/facebook-ios-sdk";
+			sourceTree = "<group>";
+		};
 		67E7D94B146862CC00E86F31 /* EGOTableViewPullRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -1461,6 +1502,7 @@
 		67F22FCD145F0C520010A09F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				67E2AA081545944A0002E641 /* facebook-ios-sdk */,
 				6731867E14917B1B0066E64A /* JCLocationManager */,
 				67E7D94B146862CC00E86F31 /* EGOTableViewPullRefresh */,
 				676B64A514648C2400FEEF7C /* RandomStrings */,
@@ -1815,6 +1857,7 @@
 				67ACE2F01541D6D9005487D6 /* grayArrow@2x.png in Resources */,
 				67ACE2F11541D6D9005487D6 /* whiteArrow.png in Resources */,
 				67ACE2F21541D6D9005487D6 /* whiteArrow@2x.png in Resources */,
+				67E2AA181545944A0002E641 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2070,6 +2113,10 @@
 				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
 				INFOPLIST_FILE = "Dash/Dash-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Dash/Helpers/facebook-ios-sdk/lib/facebook-ios-sdk\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -2086,9 +2133,13 @@
 				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
 				INFOPLIST_FILE = "Dash/Dash-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Dash/Helpers/facebook-ios-sdk/lib/facebook-ios-sdk\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8BEA8B62-058F-43C9-9718-B9B776DC924A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F276A0FD-5739-468A-BDC7-C52EBD98E7E4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

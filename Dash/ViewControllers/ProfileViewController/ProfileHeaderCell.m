@@ -59,7 +59,7 @@ static CGFloat const kPicWidth = 50.0f;
     // TODO: Get real photo
     self.icon = [[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)];
     
-    self.name = @"Laura Byun";
+    self.name = @"Grace Chi";
     self.numFavorites = @"1";
     self.numFollowers = @"1";
     self.numFollowing = @"1";
