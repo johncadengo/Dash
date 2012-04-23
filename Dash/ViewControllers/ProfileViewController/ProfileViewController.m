@@ -15,6 +15,7 @@
 @implementation ProfileViewController
 
 @synthesize showingProfileView = _showingProfileView;
+@synthesize facebook = _facebook;
 @synthesize fbconnect = _fbconnect;
 @synthesize backgroundView = _backgroundView;
 @synthesize managedObjectContext = __managedObjectContext;
@@ -112,9 +113,6 @@
     // Default to NO
     self.showingProfileView = NO;
     
-    // TODO: Fix this
-    //[DashAPI setLoggedIn:YES];
-    
     // Login logic
     if (![DashAPI loggedIn]) {
         // This means we skipped logging in earlier, and consequently are not logged in now.
@@ -130,6 +128,8 @@
     [super viewDidLoad];
 
     self.recommends = [[NSMutableArray alloc] initWithCapacity:12];
+    
+    self.facebook = [[Facebook alloc] initWithAppId:kFBAppID andDelegate:self];
 }
 
 - (void)viewDidUnload
@@ -337,12 +337,47 @@
     [self.settingsSheet showFromTabBar:self.tabBarController.tabBar];
 }
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case kLogoutButtonIndex:
+            [self logout];
+            break;
+        case kCancelButtonIndex:
+            NSLog(@"Cancel");
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - API
 
 - (void)requestProfile
 {
     [self.api myProfile];
     [self.api recommendsForPerson:nil];
+}
+
+#pragma mark - FB Connect
+
+- (void)logout
+{
+    [self.facebook logout];
+}
+
+- (void)fbDidLogout 
+{
+    // Remove saved authorization information if it exists
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"]) {
+        [defaults removeObjectForKey:@"FBAccessTokenKey"];
+        [defaults removeObjectForKey:@"FBExpirationDateKey"];
+        [defaults synchronize];
+    }
+    
+    [DashAPI setLoggedIn:NO];
+    [self loadView];
 }
 
 #pragma mark - RKObjectLoaderDelegate methods

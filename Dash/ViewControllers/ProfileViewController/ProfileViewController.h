@@ -9,15 +9,27 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import "RecommendedPlaceViewCell.h"
+#import "FBConnect.h"
 
 @class DashAPI;
 @class Person;
 @class ProfileHeaderCell;
 @class RecommendedPlaceViewCell;
 
-@interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate, UIActionSheetDelegate>
+// For our settings actionsheet
+enum {
+    kLogoutButtonIndex = 0,
+    kCancelButtonIndex = 1,
+    kNumberOfButtons = 2,
+};
+
+@interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate, UIActionSheetDelegate, FBSessionDelegate>
 
 @property (nonatomic) BOOL showingProfileView;
+@property (nonatomic, strong) Facebook *facebook;
+
+- (void)logout;
+- (void)fbDidLogout;
 
 #pragma mark - For when not logged in
 @property (nonatomic, strong) UIButton *fbconnect;
