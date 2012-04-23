@@ -13,6 +13,8 @@
 #import "Constants.h"
 #import "JCLocationManagerSingleton.h"
 #import "NSArray+Helpers.h"
+#import "Highlight.h"
+#import "Highlight+Helper.h"
 
 @implementation PlaceSquareView
 
@@ -34,7 +36,7 @@ static CGFloat kWidth = 160.0f;
 static CGFloat kHeight = 160.0f;
 static CGFloat kPadding = 5.0f;
 static CGFloat kHalfPadding = 1.0f;
-static CGFloat kMaxBlurbHeight = 1000.0f;
+static CGFloat kMaxBlurbHeight = 30.0f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kInfoLinebreak = UILineBreakModeTailTruncation;
@@ -64,7 +66,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (UIFont *)blurbFont
 {
-    return [UIFont systemFontOfSize:10];
+    return [UIFont fontWithName:kPlutoRegular size:12.0f];
 }
 
 + (NSInteger)numberOfLinesForName:(NSString *)name
@@ -132,8 +134,6 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 
 + (CGSize)sizeForBlurb:(NSString *)blurb
 {
-    // TODO: We need to figure out the max size for the blurb
-    // especially in relation to its font size.
     CGFloat maxWidth = kWidth - (2 * kPadding);
     CGSize maxSize = CGSizeMake(maxWidth, kMaxBlurbHeight);
 	CGSize textSize = [blurb sizeWithFont:[self blurbFont] 
@@ -188,7 +188,12 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     double distance = [[JCLocationManagerSingleton calculateDistanceFromPlace:place withManagedObjectContext:self.managedObjectContext] doubleValue];
     
     self.categories = categoryInfo;
-    self.blurb = [NSString stringWithFormat:@""];
+    
+    NSMutableString *highlights = [[NSMutableString alloc] init];
+    for (Highlight* highlight in place.highlights) {
+        [highlights appendFormat:@"%@ ", highlight.text];
+    }
+    self.blurb = [NSString stringWithFormat:@"Highlights: %@", highlights];
     
     // 50+ miles
     if (distance >= kDistanceCutoff) {
@@ -304,11 +309,10 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
                        withFont:[[self class] distancePriceFont] 
                   lineBreakMode:kInfoLinebreak];
     
-    textColor = [UIColor whiteColor];
-    [textColor set];
+    [UIColorFromRGB(0x434546) set];
     CGSize blurbSize = [[self class] sizeForBlurb:self.blurb];
     CGRect blurbRect = CGRectMake(kPadding, 
-                                  adjustedNameSize.height + categoriesSize.height + (2 * kPadding),
+                                  kHeight - blurbSize.height - kPadding,
                                   blurbSize.width, blurbSize.height);
 	[self.blurb drawInRect:blurbRect
                   withFont:[[self class] blurbFont]

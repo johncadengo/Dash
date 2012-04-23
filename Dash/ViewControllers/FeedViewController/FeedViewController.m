@@ -235,14 +235,6 @@
     NSLog(@"Feed items: %@", objects);
     self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
     
-    // TODO: These are fakes
-    [self.feedItems addObjectsFromArray:objects];
-    [self.feedItems addObjectsFromArray:objects];
-    [self.feedItems addObjectsFromArray:objects];
-    [self.feedItems addObjectsFromArray:objects];
-    [self.feedItems addObjectsFromArray:objects];
-    [self.feedItems addObjectsFromArray:objects];
-    
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
     [self.tableView reloadData];
     
