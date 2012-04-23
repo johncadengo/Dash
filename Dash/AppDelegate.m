@@ -10,6 +10,7 @@
 #import "JCLocationManagerSingleton.h"
 #import "Constants.h"
 #import "DashAPI.h"
+#import "LoginViewController.h"
 
 // Category to make sure that we have accessors to managedobjectcontext
 @interface UIViewController (Helper)
@@ -22,6 +23,7 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
+@synthesize loginViewController = _loginViewController;
 @synthesize facebook = _facebook;
 
 // Make sure we start out on the Dash Tab.
@@ -98,6 +100,21 @@ enum {
     [defaults synchronize];
     
     [DashAPI setLoggedIn:YES];
+    
+    if (self.loginViewController) {
+        [self.loginViewController dismissModalViewControllerAnimated:YES];
+    }
+}
+
+- (void)fbDidNotLogin:(BOOL)cancelled
+{
+    NSLog(@"Uh oh");
+}
+
+- (void)fbDidExtendToken:(NSString*)accessToken
+               expiresAt:(NSDate*)expiresAt
+{
+    [self fbDidLogin];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

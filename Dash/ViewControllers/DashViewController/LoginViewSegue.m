@@ -8,6 +8,7 @@
 
 #import "LoginViewSegue.h"
 #import "LoginViewController.h"
+#import "AppDelegate.h"
 
 @implementation LoginViewSegue
 
@@ -16,6 +17,10 @@
     // Hook up
     LoginViewController *loginViewController = (LoginViewController *)self.destinationViewController;
     loginViewController.dashViewController = self.sourceViewController;
+    
+    // Mack out
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.loginViewController = loginViewController;
     
     // And make out
     [self.sourceViewController presentModalViewController:self.destinationViewController animated:NO];

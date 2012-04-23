@@ -87,6 +87,13 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ([self.facebook isSessionValid]) {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -97,9 +104,11 @@
 - (void)loginWithConnect:(id) sender
 {
     if (![self.facebook isSessionValid]) {
+        NSLog(@"session not valid");
         [self.facebook authorize:nil];
     }
     else {
+        NSLog(@"session valid");
         [DashAPI setLoggedIn:YES];
         [self dismissModalViewControllerAnimated:YES];
     }
@@ -118,6 +127,18 @@
     [self.dashViewController pop:self];
     [self dismissModalViewControllerAnimated:YES];
 }
+
+- (void)fbDidNotLogin:(BOOL)cancelled
+{
+    NSLog(@"Uh oh");
+}
+
+- (void)fbDidExtendToken:(NSString*)accessToken
+               expiresAt:(NSDate*)expiresAt
+{
+    [self fbDidLogin];
+}
+
 
 #pragma mark - Show dash
 
