@@ -14,7 +14,7 @@
 
 @interface Person (Helper)
 
-+ (id)personWithFBResult:(id)result context:(NSManagedObjectContext *)context;
++ (Person *)personWithFBResult:(id)result context:(NSManagedObjectContext *)context;
 
 /** Saves a Place to this Person's list.
     

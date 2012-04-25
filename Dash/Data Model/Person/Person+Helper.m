@@ -24,25 +24,33 @@
  "updated_time" = "2012-04-23T15:46:06+0000";
  }
  */
-+ (id)personWithFBResult:(id)result context:(NSManagedObjectContext *)context
++ (Person *)personWithFBResult:(id)result context:(NSManagedObjectContext *)context
 {
     // The result of this query should only be one, and as such a dictionary
     NSDictionary *dict = (NSDictionary *)result;
-    
-    // TODO: Check if the person is already stored in our database
-    Person *person = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
-    
     NSString *name = [dict objectForKey:@"name"];
     NSString *email = [dict objectForKey:@"email"];
     NSString *uid = [dict objectForKey:@"id"];
     
-    [person setName:name];
-    [person setEmail:email];
-    [person setFb_uid:uid];
+    Person *person = nil;
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    request.entity = [NSEntityDescription entityForName:@"Person" inManagedObjectContext:context];
+    request.predicate = [NSPredicate predicateWithFormat:@"fb_uid == %@", uid];
+    
+    NSError *error = nil;
+    person = [[context executeFetchRequest:request error:&error] lastObject];
+    
+    if (!error && !person) 
+    {
+        // if phone number can't be found, create new contact
+        person = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
+        [person setName:name];
+        [person setEmail:email];
+        [person setFb_uid:uid];
+    }
     
     // Saves the managed object context into the persistent store.
-    NSError *saveError = nil; 
-    [context save:&saveError];
+    [context save:&error];
     
     return person;
 }

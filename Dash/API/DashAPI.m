@@ -99,6 +99,16 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     _loggedIn = newValue;
 }
 
++ (Person *)meWithFBResult:(id)result context:(NSManagedObjectContext *)context
+{
+    static dispatch_once_t pred;
+    static Person *sharedInstance = nil;
+    dispatch_once(&pred, ^{
+        sharedInstance = [Person personWithFBResult:result context:context];
+    });
+    return sharedInstance;
+}
+
 #pragma mark - Init
 
 -(id) init
