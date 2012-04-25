@@ -395,6 +395,7 @@
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
     self.person = [Person personWithFBResult:result context:self.managedObjectContext];
+    [self.api createPerson:self.person];
     [self.tableView reloadData];
 }
 
@@ -411,6 +412,7 @@
     //[self.progressHUD hide:YES]; 
     
     if ([objectLoader.userData isEqualToNumber:[NSNumber numberWithInt:kRecommends]]) {
+        [self.recommends removeAllObjects];
         [self.recommends addObjectsFromArray:objects];
     }
     else {

@@ -105,6 +105,8 @@
 #pragma mark - Login logic
 - (void)loginWithConnect:(id) sender
 {
+    [self.dashViewController pop:self];
+    
     if (![self.facebook isSessionValid]) {
         NSLog(@"session not valid");
         [self.facebook authorize:nil];

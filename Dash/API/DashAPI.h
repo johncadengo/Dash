@@ -177,6 +177,12 @@ typedef enum {
  */
 - (void)search:(NSString *)query near:(CLLocation *)location;
 
+#pragma mark -
+
+/** Uploads the person to our database backend.
+ */
+- (void)createPerson:(Person *)person;
+
 #pragma mark - 
 
 /** Gets the profile for the person who is currently logged in

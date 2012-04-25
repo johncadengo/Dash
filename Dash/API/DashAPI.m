@@ -476,6 +476,18 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [objectLoader send];
 }
 
+#pragma mark - 
+
+- (void)createPerson:(Person *)person
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.key, @"must_fix",
+                            person.name, @"name",
+                            person.fb_uid, @"fb_uid",
+                            person.email, @"email", nil];
+    [[RKClient sharedClient] post:@"/people/people" params:params delegate:self.delegate];
+}
+
 #pragma mark -
 
 - (void)myProfile
