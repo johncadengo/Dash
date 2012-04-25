@@ -27,6 +27,7 @@
 @property (nonatomic, retain) PlaceLocation *location;
 @property (nonatomic, retain) NSSet *pops;
 @property (nonatomic, retain) NSSet *newsItems;
+
 @end
 
 @interface Place (CoreDataGeneratedAccessors)

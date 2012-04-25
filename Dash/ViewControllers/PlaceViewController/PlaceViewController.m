@@ -36,6 +36,8 @@
 @synthesize createHighlightButton = _createHighlightButton;
 @synthesize thumbsUpButton = _thumbsUpButton;
 @synthesize thumbsDownButton = _thumbsDownButton;
+@synthesize upLabel = _upLabel;
+@synthesize downLabel = _downLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -129,11 +131,23 @@
     [button addTarget:self action:@selector(thumbsUp:) forControlEvents:UIControlEventTouchUpInside];
     self.thumbsUpButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     
+    self.upLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 0.0f, 80.0f, 49.0f)];
+    [self.upLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:20.0f]];
+    [self.upLabel setTextColor:[UIColor whiteColor]];
+    [self.upLabel setText:[NSString stringWithFormat:@"1"]];
+    [self.upLabel setBackgroundColor:UIColorFromRGB(kPlaceToolbarTextColor)];
+    
     button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = frame;
     [button setImage:[UIImage imageNamed:@"ThumbsDownButton"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(thumbsDown:) forControlEvents:UIControlEventTouchUpInside];
     self.thumbsDownButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    self.downLabel = [[UILabel alloc] initWithFrame:CGRectMake(280.0f, 0.0f, 80.0f, 49.0f)];
+    [self.downLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:20.0f]];
+    [self.downLabel setTextColor:[UIColor whiteColor]];
+    [self.downLabel setText:[NSString stringWithFormat:@"0"]];
+    [self.downLabel setBackgroundColor:UIColorFromRGB(kPlaceToolbarTextColor)];
     
     // Adjust padding
     UIBarButtonItem *outerNegative = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -145,6 +159,8 @@
     // Add them. Sidenote: 320 - (3 * 100) = 20. 20 / 4 = 5.0f
     self.toolbar.items = [NSArray arrayWithObjects:outerNegative, self.createHighlightButton, 
                           innerNegative, self.thumbsUpButton, innerNegative, self.thumbsDownButton, nil];
+    [self.toolbar addSubview:self.upLabel];
+    [self.toolbar addSubview:self.downLabel];
 }
 
 - (void)viewDidAppear:(BOOL)animated
