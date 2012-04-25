@@ -196,6 +196,12 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 
 -(void) pop:(CLLocation *)location
 {
+    [self pop:location types:@"" prices:@"$, $$, $$$," distance:@""];
+}
+
+- (void)pop:(CLLocation *)location types:(NSString *)type prices:(NSString *)prices distance:(NSString *)distance;
+{
+    
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
@@ -209,10 +215,14 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // it is shown in the http: /pops?key=object
     NSString *locParam = [NSString stringWithFormat:@"%f, %f", location.coordinate.latitude,
                           location.coordinate.longitude];
+    NSString *rangeStr = (distance == @"") ? @"fake_range": @"range";
+    NSLog(@"%@ %@", rangeStr, distance);
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                             self.key, @"must_fix",
-                            locParam, @"loc",nil];
-
+                            locParam, @"loc",
+                            distance, rangeStr,
+                            prices, @"prices", nil];
+    
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self];
     objectLoader.method = RKRequestMethodPOST;

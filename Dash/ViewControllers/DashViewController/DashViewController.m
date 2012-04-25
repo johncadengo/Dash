@@ -481,8 +481,39 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         // Otherwise, indicate we are now loading
         [self.progressHUD show:YES];
         
+        // Figure out the filters
+        NSMutableString *prices = [[NSMutableString alloc] initWithCapacity:16];
+        BOOL check;
+        for (int i = 0; i < 4; i++) {
+            check = [[self.filterViewController.filterView.pricesChecked objectAtIndex:i] boolValue];
+            
+            if (check) {
+                for (int j = 0; j < i + 1; j++) {
+                    [prices appendFormat:@"$"];
+                }
+                
+                [prices appendFormat:@","];
+            }
+        }
+        
+        NSString *distance;
+        switch (self.filterViewController.filterView.currentDistanceFilter) {
+            case DistanceFilter5Blocks:
+                distance = @"0.3";
+                break;
+            case DistanceFilter1Mile:
+                distance = @"1.0";
+                break;
+            case DistanceFilter5Miles:
+                distance = @"5.0";
+                break;
+            default:
+                distance = @"";
+                break;
+        }
+        
         // And send request to API for more places
-        [self.api pop:loc];
+        [self.api pop:loc types:@"" prices:prices distance:distance];
     }
 }
 

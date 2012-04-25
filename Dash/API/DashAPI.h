@@ -89,6 +89,10 @@ typedef enum {
  */
 - (void)pop:(CLLocation *)location;
 
+/** Pop with filters.
+ */
+- (void)pop:(CLLocation *)location types:(NSString *)type prices:(NSString *)prices distance:(NSString *)distance;
+
 #pragma mark - Feed
 
 /** Returns a feed of news items nearby.
