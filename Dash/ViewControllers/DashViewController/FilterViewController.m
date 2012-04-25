@@ -199,6 +199,30 @@ enum {
     self.filterView.currentDistanceFilter = i;
 }
 
+#pragma mark - 
+
+- (NSString *)stringForDistanceFilter:(DistanceFilter)filter
+{
+    NSString *distance;
+    
+    switch (filter) {
+        case DistanceFilter5Blocks:
+            distance = @"0.3";
+            break;
+        case DistanceFilter1Mile:
+            distance = @"1.0";
+            break;
+        case DistanceFilter5Miles:
+            distance = @"5.0";
+            break;
+        default:
+            distance = @"";
+            break;
+    }
+    
+    return distance;
+}
+
 #pragma mark - UIGestureRecognizer Delegate
 
 /** Want certain events to pass right through

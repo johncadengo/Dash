@@ -496,21 +496,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             }
         }
         
-        NSString *distance;
-        switch (self.filterViewController.filterView.currentDistanceFilter) {
-            case DistanceFilter5Blocks:
-                distance = @"0.3";
-                break;
-            case DistanceFilter1Mile:
-                distance = @"1.0";
-                break;
-            case DistanceFilter5Miles:
-                distance = @"5.0";
-                break;
-            default:
-                distance = @"";
-                break;
-        }
+        NSString *distance = [self.filterViewController stringForDistanceFilter:self.filterViewController.filterView.currentDistanceFilter];
         
         // And send request to API for more places
         NSString *locParam;

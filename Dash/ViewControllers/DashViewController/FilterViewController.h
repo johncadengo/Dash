@@ -49,4 +49,7 @@ typedef enum {
 - (BOOL)handleDistanceTapped:(CGPoint)origin;
 - (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer;
 
+
+- (NSString *)stringForDistanceFilter:(DistanceFilter)filter;
+
 @end
