@@ -131,11 +131,11 @@
     [button addTarget:self action:@selector(thumbsUp:) forControlEvents:UIControlEventTouchUpInside];
     self.thumbsUpButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     
-    self.upLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 0.0f, 80.0f, 49.0f)];
+    self.upLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 0.0f, 40.0f, 49.0f)];
     [self.upLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:20.0f]];
-    [self.upLabel setTextColor:[UIColor whiteColor]];
+    [self.upLabel setTextColor:UIColorFromRGB(kPlaceToolbarTextColor)];
     [self.upLabel setText:[NSString stringWithFormat:@"1"]];
-    [self.upLabel setBackgroundColor:UIColorFromRGB(kPlaceToolbarTextColor)];
+    [self.upLabel setBackgroundColor:[UIColor clearColor]];
     
     button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = frame;
@@ -143,11 +143,11 @@
     [button addTarget:self action:@selector(thumbsDown:) forControlEvents:UIControlEventTouchUpInside];
     self.thumbsDownButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     
-    self.downLabel = [[UILabel alloc] initWithFrame:CGRectMake(280.0f, 0.0f, 80.0f, 49.0f)];
+    self.downLabel = [[UILabel alloc] initWithFrame:CGRectMake(280.0f, 0.0f, 40.0f, 49.0f)];
     [self.downLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:20.0f]];
-    [self.downLabel setTextColor:[UIColor whiteColor]];
+    [self.downLabel setTextColor:UIColorFromRGB(kPlaceToolbarTextColor)];
     [self.downLabel setText:[NSString stringWithFormat:@"0"]];
-    [self.downLabel setBackgroundColor:UIColorFromRGB(kPlaceToolbarTextColor)];
+    [self.downLabel setBackgroundColor:[UIColor clearColor]];
     
     // Adjust padding
     UIBarButtonItem *outerNegative = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
