@@ -513,7 +513,15 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         }
         
         // And send request to API for more places
-        [self.api pop:loc types:@"" prices:prices distance:distance];
+        NSString *locParam;
+        if (self.filterViewController.customLocation) {
+            locParam = self.filterViewController.customLocation;
+        }
+        else {
+            locParam = [NSString stringWithFormat:@"%f, %f", loc.coordinate.latitude,
+                                  loc.coordinate.longitude];
+        }
+        [self.api pop:locParam types:@"" prices:prices distance:distance];
     }
 }
 

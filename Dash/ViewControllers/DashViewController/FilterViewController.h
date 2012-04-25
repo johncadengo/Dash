@@ -27,6 +27,7 @@ typedef enum {
 
 @property (nonatomic, strong) UIActionSheet *changeLocationSheet;
 @property (nonatomic, strong) UIAlertView *customLocationAlert;
+@property (nonatomic, strong) NSString *customLocation;
 
 - (void)invertTypeCheckedAtIndex:(NSInteger)i;
 - (void)invertPriceCheckedAtIndex:(NSInteger)i;

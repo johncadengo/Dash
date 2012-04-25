@@ -196,10 +196,12 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 
 -(void) pop:(CLLocation *)location
 {
-    [self pop:location types:@"" prices:@"$, $$, $$$," distance:@""];
+    NSString *locParam = [NSString stringWithFormat:@"%f, %f", location.coordinate.latitude,
+                          location.coordinate.longitude];
+    [self pop:locParam types:@"" prices:@"$, $$, $$$," distance:@""];
 }
 
-- (void)pop:(CLLocation *)location types:(NSString *)type prices:(NSString *)prices distance:(NSString *)distance;
+- (void)pop:(NSString *)loc types:(NSString *)type prices:(NSString *)prices distance:(NSString *)distance;
 {
     
     // Create an object manager and connect core data's persistent store to it
@@ -213,13 +215,11 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Authentication
     // Params are backwards compared to the way 
     // it is shown in the http: /pops?key=object
-    NSString *locParam = [NSString stringWithFormat:@"%f, %f", location.coordinate.latitude,
-                          location.coordinate.longitude];
     NSString *rangeStr = (distance == @"") ? @"fake_range": @"range";
     NSLog(@"%@ %@", rangeStr, distance);
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                             self.key, @"must_fix",
-                            locParam, @"loc",
+                            loc, @"loc",
                             distance, rangeStr,
                             prices, @"prices", nil];
     

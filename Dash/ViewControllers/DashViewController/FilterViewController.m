@@ -29,6 +29,7 @@ enum {
 @synthesize locationButton = _locationButton;
 @synthesize changeLocationSheet = _changeLocationSheet;
 @synthesize customLocationAlert = _customLocationAlert;
+@synthesize customLocation = _customLocation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -122,7 +123,7 @@ enum {
 
 - (void)useCurrentLocation
 {
-    
+    self.customLocation = nil;
 }
 
 - (void)promptForCustomLocation
@@ -144,6 +145,8 @@ enum {
 {
     NSString *inputText = [[alertView textFieldAtIndex:0] text];
     NSLog(@"%@", inputText);
+    
+    self.customLocation = [NSString stringWithFormat:@"%@", inputText];
 }
 
 #pragma mark - UIActionSheet delegate
