@@ -9,7 +9,7 @@
 #import "ActionViewCellTests.h"
 
 #import <UIKit/UIKit.h>
-#import "ActionViewCell.h"
+#import "NewsItemViewCell.h"
 #import "FeedViewController.h"
 //#import "application_headers" as required
 
@@ -40,7 +40,7 @@
     STAssertNotNil(feedViewController, @"Could not obtain the FeedViewController");
     
     // Grab the first action view cell we encounter
-    self.actionViewCell = (ActionViewCell *)[feedViewController feedCellForTableView:feedViewController.tableView forRow:0];
+    self.actionViewCell = (NewsItemViewCell *)[feedViewController feedCellForTableView:feedViewController.tableView forRow:0];
 }
 
 /** Run after each test, makes sure to dispose of everything we've created during setup.
@@ -61,20 +61,20 @@
  */
 - (void)testActionTableViewCellTypes
 {
-    ActionViewCell *actionViewCell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier" cellType:ActionViewCellTypeHeader];
+    NewsItemViewCell *actionViewCell = [[NewsItemViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier" cellType:ActionViewCellTypeHeader];
     UITableViewCellSelectionStyle selectionStyle = actionViewCell.selectionStyle;
     STAssertEquals(selectionStyle, UITableViewCellSelectionStyleNone, @"Header Action View Cell failed to set selection style to none: %d", selectionStyle);
     STAssertNotNil(actionViewCell, @"Failed to initialize a properly typed action view cell");
     
     // Using default initializer
-    actionViewCell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier"];
+    actionViewCell = [[NewsItemViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier"];
     ActionViewCellType cellType = actionViewCell.cellType;
     selectionStyle = actionViewCell.selectionStyle;
     STAssertEquals(selectionStyle, UITableViewCellSelectionStyleNone, @"Header Action View Cell failed to set selection style to none: %d", selectionStyle);
     STAssertEquals(cellType, ActionViewCellTypeHeader, @"Failed to catch an invalid ActionViewCellType and set it to the default value of header cell. Wanted %d Got: %d", ActionViewCellTypeHeader, cellType);
     
     // Using custom initializer
-    actionViewCell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier" cellType:kNumActionViewCellTypes];
+    actionViewCell = [[NewsItemViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TestIdentifier" cellType:kNumActionViewCellTypes];
     cellType = actionViewCell.cellType;
     selectionStyle = actionViewCell.selectionStyle;
     STAssertEquals(selectionStyle, UITableViewCellSelectionStyleNone, @"Header Action View Cell failed to set selection style to none: %d", selectionStyle);

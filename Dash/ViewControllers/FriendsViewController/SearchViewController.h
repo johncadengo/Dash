@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
 #import "RecommendedPlaceViewCell.h"
 
 @class DashAPI;
 
-@interface SearchViewController : UITableViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate>
+@interface SearchViewController : UITableViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSString *currentQuery;
 

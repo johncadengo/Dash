@@ -235,34 +235,18 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
-    // Define our author mapping
-    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
-    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    [authorMapping mapAttributes:@"name", nil];
-    
-    // Highlight mapping
-    RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];
-    [highlightMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    [highlightMapping mapKeyPath:@"name" toAttribute:@"text"];
-    
-    // Define the relationship mapping between highlight and author
-    [highlightMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    // Define our news item mapping
+    RKManagedObjectMapping *newsItemMapping = [RKManagedObjectMapping mappingForEntityWithName:@"NewsItem"];
+    [newsItemMapping mapAttributes:@"blurb", @"timestamp", nil];
     
     // Get place mapping
     RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
     
-    // Define our like mapping
-    RKManagedObjectMapping *likeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Like"];
-    [likeMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    [likeMapping mapAttributes:@"timestamp", nil];
-    
     // Map the relationships
-    [highlightMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
-    [likeMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
-    [likeMapping mapKeyPath:@"highlight" toRelationship:@"highlight" withMapping:highlightMapping];
-    
-    // We expect to find the place entity inside of a dictionary keyed "news_items"
-    [objectManager.mappingProvider setMapping:likeMapping forKeyPath:@"news_items"];
+    [newsItemMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
+
+    // We expect to find the place entity inside of a dictionary keyed "feed"
+    [objectManager.mappingProvider setMapping:newsItemMapping forKeyPath:@"feed"];
     
     // Authentication
     // Params are backwards compared to the way 
@@ -458,6 +442,35 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"search" delegate:self];
+    objectLoader.method = RKRequestMethodPOST;
+    objectLoader.params = params;
+    [objectLoader send];
+}
+
+- (void)search:(NSString *)query near:(CLLocation *)location
+{
+    // Create an object manager and connect core data's persistent store to it
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    
+    RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
+    
+    // We expect to find the place entity inside of a dictionary keyed "places"
+    [objectManager.mappingProvider setMapping:placeMapping forKeyPath:@"places"];
+    
+    // Authentication
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
+    NSNumber *count = [NSNumber numberWithInt:10];
+    NSString *locParam = [NSString stringWithFormat:@"%f, %f", location.coordinate.latitude,
+                          location.coordinate.longitude];
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.key, @"must_fix",
+                            query, @"query", 
+                            count, @"count",
+                            locParam, @"loc", nil];
+    
+    // Prepare our object loader to load and map objects from remote server, and send
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"search_nearby" delegate:self];
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];

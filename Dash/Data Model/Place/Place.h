@@ -2,7 +2,7 @@
 //  Place.h
 //  Dash
 //
-//  Created by John Cadengo on 3/12/12.
+//  Created by John Cadengo on 4/25/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Uniqueness.h"
 
-@class Badge, Category, FlagPlace, Highlight, Hours, PlaceAction, PlaceLocation, Pop;
+@class Badge, Category, FlagPlace, Highlight, Hours, NewsItem, PlaceAction, PlaceLocation, Pop;
 
 @interface Place : Uniqueness
 
@@ -22,10 +22,11 @@
 @property (nonatomic, retain) NSSet *badges;
 @property (nonatomic, retain) NSSet *categories;
 @property (nonatomic, retain) NSSet *flags;
+@property (nonatomic, retain) NSSet *highlights;
 @property (nonatomic, retain) NSSet *hours;
 @property (nonatomic, retain) PlaceLocation *location;
 @property (nonatomic, retain) NSSet *pops;
-@property (nonatomic, retain) NSSet *highlights;
+@property (nonatomic, retain) NSSet *newsItems;
 @end
 
 @interface Place (CoreDataGeneratedAccessors)
@@ -50,6 +51,11 @@
 - (void)addFlags:(NSSet *)values;
 - (void)removeFlags:(NSSet *)values;
 
+- (void)addHighlightsObject:(Highlight *)value;
+- (void)removeHighlightsObject:(Highlight *)value;
+- (void)addHighlights:(NSSet *)values;
+- (void)removeHighlights:(NSSet *)values;
+
 - (void)addHoursObject:(Hours *)value;
 - (void)removeHoursObject:(Hours *)value;
 - (void)addHours:(NSSet *)values;
@@ -60,9 +66,9 @@
 - (void)addPops:(NSSet *)values;
 - (void)removePops:(NSSet *)values;
 
-- (void)addHighlightsObject:(Highlight *)value;
-- (void)removeHighlightsObject:(Highlight *)value;
-- (void)addHighlights:(NSSet *)values;
-- (void)removeHighlights:(NSSet *)values;
+- (void)addNewsItemsObject:(NewsItem *)value;
+- (void)removeNewsItemsObject:(NewsItem *)value;
+- (void)addNewsItems:(NSSet *)values;
+- (void)removeNewsItems:(NSSet *)values;
 
 @end

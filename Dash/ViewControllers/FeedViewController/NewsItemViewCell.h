@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class Action;
+@class NewsItem;
 
-@interface ActionViewCell : UITableViewCell
+@interface NewsItemViewCell : UITableViewCell
 
 @property (nonatomic, strong) NSString *blurb;
 @property (nonatomic, strong) NSString *timestamp;
 @property (nonatomic, strong) UIImage *icon;
 
-+ (CGFloat)heightForAction:(Action *)action;
++ (CGFloat)heightForNewsItem:(NewsItem *)newsItem;
 
 + (UIFont *)blurbFont;
 + (UIFont *)timestampFont;
@@ -24,7 +24,7 @@
 + (CGSize)textSizeForTimestamp:(NSString *)timestamp;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
-- (void)setWithAction:(Action*)action;
+- (void)setWithNewsItem:(NewsItem *)newsItem;
 - (void)drawHorizontalLineStartingAt:(CGPoint)origin withLength:(CGFloat)length;
 
 @end

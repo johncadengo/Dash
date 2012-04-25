@@ -7,11 +7,14 @@
 //
 
 #import "Person.h"
+#import "FBConnect.h"
 
 @class Like, FlagPlace, FlagPhoto, Comment, Pop;
 @class Highlight, Save, Rate, Email, Visit, Place;
 
 @interface Person (Helper)
+
++ (id)personWithFBResult:(id)result context:(NSManagedObjectContext *)context;
 
 /** Saves a Place to this Person's list.
     

@@ -10,6 +10,8 @@
 #import "DashViewController.h"
 #import "Constants.h"
 #import "DashAPI.h"
+#import "Person.h"
+#import "Person+Helper.h"
 
 @implementation LoginViewController
 

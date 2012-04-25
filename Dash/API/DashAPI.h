@@ -173,6 +173,10 @@ typedef enum {
  */
 - (void)search:(NSString *)query;
 
+/** Orders search request by proximity to given location.
+ */
+- (void)search:(NSString *)query near:(CLLocation *)location;
+
 #pragma mark - 
 
 /** Gets the profile for the person who is currently logged in

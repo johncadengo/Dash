@@ -59,6 +59,11 @@
         <attribute name="radLng" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="sinRadLat" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="NewsItem" representedClassName="NewsItem" syncable="YES">
+        <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="newsItems" inverseEntity="Place" syncable="YES"/>
+    </entity>
     <entity name="Person" representedClassName="Person" parentEntity="Uniqueness" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fb_uid" optional="YES" attributeType="String" syncable="YES"/>
@@ -88,6 +93,7 @@
         <relationship name="highlights" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Highlight" inverseName="place" inverseEntity="Highlight" syncable="YES"/>
         <relationship name="hours" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hours" inverseName="place" inverseEntity="Hours" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="place" inverseEntity="PlaceLocation" syncable="YES"/>
+        <relationship name="newsItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsItem" inverseName="place" inverseEntity="NewsItem" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="places" inverseEntity="Pop" syncable="YES"/>
     </entity>
     <entity name="PlaceAction" representedClassName="PlaceAction" isAbstract="YES" parentEntity="Action" syncable="YES">
@@ -146,5 +152,6 @@
         <element name="Stats" positionX="405" positionY="351" width="128" height="105"/>
         <element name="Uniqueness" positionX="99" positionY="-225" width="128" height="60"/>
         <element name="Visit" positionX="-72" positionY="234" width="128" height="45"/>
+        <element name="NewsItem" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

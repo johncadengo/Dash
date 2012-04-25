@@ -129,7 +129,21 @@
 
     self.recommends = [[NSMutableArray alloc] initWithCapacity:12];
     
+    // FB
     self.facebook = [[Facebook alloc] initWithAppId:kFBAppID andDelegate:self];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
+    
+    if ([self.facebook isSessionValid]) {
+        [DashAPI setLoggedIn:YES];
+        [self.facebook requestWithGraphPath:@"me" andDelegate:self];
+    }
+
 }
 
 - (void)viewDidUnload
@@ -317,8 +331,6 @@
     // Assume we are logging in as John
     [DashAPI setLoggedIn:YES];
     
-    // TODO: SOME MAGIC HERE
-    
     // Reload view. 
     // TODO: Probably some memory leak here right?
     [self loadView];
@@ -380,6 +392,17 @@
     [self loadView];
 }
 
+- (void)request:(FBRequest *)request didLoad:(id)result
+{
+    self.person = [Person personWithFBResult:result context:self.managedObjectContext];
+    [self.tableView reloadData];
+}
+
+- (void)request:(FBRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"Request %@ Error %@", request, error);
+}
+
 #pragma mark - RKObjectLoaderDelegate methods
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
@@ -392,9 +415,9 @@
     }
     else {
         // Get the objects we've just loaded and fill our places array with them
-        self.person = [objects lastObject];
+        //self.person = [objects lastObject];
         
-        NSLog(@"Profile: %@ %@", objects, self.person.actions);    
+        //NSLog(@"Profile: %@ %@", objects, self.person.actions);    
     }
     
     // Display it

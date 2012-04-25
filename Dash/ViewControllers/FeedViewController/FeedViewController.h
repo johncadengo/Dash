@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import "MBProgressHUD.h"
-#import "ActionViewCell.h"
+#import "NewsItemViewCell.h"
 #import "EGORefreshTableHeaderView.h"
 
 #pragma - Class definition
 
 @class DashAPI;
-@class ActionViewCell;
+@class NewsItemViewCell;
 @class CustomSegmentView;
 
 @interface FeedViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate,EGORefreshTableHeaderDelegate, MBProgressHUDDelegate, RKObjectLoaderDelegate>

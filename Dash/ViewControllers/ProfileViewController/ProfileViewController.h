@@ -23,7 +23,7 @@ enum {
     kNumberOfButtons = 2,
 };
 
-@interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate, UIActionSheetDelegate, FBSessionDelegate>
+@interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate, UIActionSheetDelegate, FBSessionDelegate, FBRequestDelegate>
 
 @property (nonatomic) BOOL showingProfileView;
 @property (nonatomic, strong) Facebook *facebook;

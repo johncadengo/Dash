@@ -6,19 +6,15 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "ActionViewCell.h"
-#import "Highlight.h"
-#import "Highlight+Helper.h"
-#import "Person.h"
-#import "Person+Helper.h"
+#import "NewsItemViewCell.h"
+#import "NewsItem.h"
+#import "NewsItem+Helper.h"
 #import "NSArray+Helpers.h"
 #import "NSString+RandomStrings.h"
 #import "UIImage+ProportionalFill.h"
-#import "Action.h"
-#import "Action+Helper.h"
 #import "Constants.h"
 
-@implementation ActionViewCell
+@implementation NewsItemViewCell
 
 @synthesize blurb = _blurb;
 @synthesize timestamp = _timestamp;
@@ -43,9 +39,9 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 #pragma mark - Class methods
 
-+ (CGFloat)heightForAction:(Action *)action
++ (CGFloat)heightForNewsItem:(NewsItem *)newsItem;
 {
-    CGSize blurbSize = [self textSizeForBlurb:[action description]];
+    CGSize blurbSize = [self textSizeForBlurb:newsItem.blurb];
     CGSize timestampSize = [self textSizeForTimestamp:@"My"];
     
     CGFloat textHeight = kPadding + blurbSize.height + kPadding + 
@@ -101,10 +97,10 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     return self;
 }
 
-- (void)setWithAction:(Action*)action
+- (void)setWithNewsItem:(NewsItem *)newsItem;
 {
-    self.blurb = [action description];
-    self.timestamp = @"4 mins ago";//[action relativeTimestamp];
+    self.blurb =  newsItem.blurb;
+    self.timestamp = [newsItem relativeTimestamp];
     
     // TODO: Get real photo
     self.icon = [[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)];

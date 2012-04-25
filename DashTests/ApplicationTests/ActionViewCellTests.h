@@ -11,10 +11,10 @@
 
 #import "DashTests.h"
 
-@class ActionViewCell;
+@class NewsItemViewCell;
 
 @interface ActionViewCellTests : DashTests
 
-@property (nonatomic, strong) ActionViewCell *actionViewCell;
+@property (nonatomic, strong) NewsItemViewCell *actionViewCell;
 
 @end

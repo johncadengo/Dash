@@ -9,14 +9,10 @@
 #import "FeedViewController.h"
 #import "Constants.h"
 #import "DashAPI.h"
-#import "Action.h"
-#import "Action+Helper.h"
-#import "Highlight.h"
-#import "Highlight+Helper.h"
-#import "Like.h"
-#import "Like+Helper.h"
 #import "PlaceViewController.h"
 #import "CustomSegmentView.h"
+#import "NewsItem.h"
+#import "NewsItem+Helper.h"
 
 @implementation FeedViewController
 
@@ -155,7 +151,7 @@
 {
     // Get the blurb we are using for that row
     Action *action = [self.feedItems objectAtIndex:indexPath.row];
-    return [ActionViewCell heightForAction:action];
+    return [NewsItemViewCell heightForNewsItem:action];
 }
 
 
@@ -176,15 +172,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ActionViewCell *cell = (ActionViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
+    NewsItemViewCell *cell = (NewsItemViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
     
     if (cell == nil) {
-        cell = [[ActionViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+        cell = [[NewsItemViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                      reuseIdentifier:kFeedItemCellIdentifier];
     }
     
-    Action *action = [[self feedItems] objectAtIndex:indexPath.row];
-    [cell setWithAction:action];
+    NewsItem *newsItem = [[self feedItems] objectAtIndex:indexPath.row];
+    [cell setWithNewsItem:newsItem];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
@@ -194,8 +190,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PlaceAction *placeAction = [self.feedItems objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:placeAction];
+    NewsItem *newsItem = [self.feedItems objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:newsItem];
 }
 
 #pragma mark - Storyboard Segue
@@ -203,9 +199,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:kShowFeedItemDetailsSegueIdentifier]) {
-        Like *like = (Like *) sender;
-        Highlight *highlight = like.highlight;
-        Place *place = highlight.place;
+        NewsItem *newsItem = (NewsItem *)sender;
+        Place *place = newsItem.place;
         
         PlaceViewController *placeViewController = (PlaceViewController *)[segue destinationViewController];
         [placeViewController setPlace:place];

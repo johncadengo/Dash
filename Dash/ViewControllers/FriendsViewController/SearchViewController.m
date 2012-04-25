@@ -12,10 +12,12 @@
 #import "Place+Helper.h"
 #import "Constants.h"
 #import "PlaceViewController.h"
+#import "JCLocationManagerSingleton.h"
 
 @implementation SearchViewController
 
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize locationManager = _locationManager;
 @synthesize api = _api;
 @synthesize resultsForAutocompleteQuery = _resultsForAutocompleteQuery;
 @synthesize resultsForSearchQuery = _resultsForSearchQuery;
@@ -84,6 +86,13 @@
     [self.view addSubview:self.hud];
     [self.hud setDelegate:self];
     self.hud.removeFromSuperViewOnHide = NO;
+
+    // Figure out where we are
+    self.locationManager = [JCLocationManagerSingleton sharedInstance];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    //[self.locationManager startUpdatingLocation];
+
 }
 
 - (void)clearSearchBarBackground
@@ -294,8 +303,11 @@
     // When search is clicked, perform a search with the search string
     NSString *searchString = searchBar.text;
     
+    // Find out where we are
+    CLLocation *loc = [self.locationManager location];
+    
     // Send the request
-    [self.api search:searchString];
+    [self.api search:searchString near:loc];
     
     // Dismiss the search display controller
     [self.searchDisplayController setActive:NO animated:YES];
@@ -396,8 +408,11 @@
         NSMutableArray *results = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
         NSString *query = [results objectAtIndex:indexPath.row];
         
+        // Find out where we are
+        CLLocation *loc = [self.locationManager location];
+        
         // Send a new request to the api to search and return places with details
-        [self.api search:query];
+        [self.api search:query near:loc];
         
         // Display it
         [self.tableView reloadData];
