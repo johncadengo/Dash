@@ -144,9 +144,8 @@ enum {
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *inputText = [[alertView textFieldAtIndex:0] text];
-    NSLog(@"%@", inputText);
-    
     self.customLocation = [NSString stringWithFormat:@"%@", inputText];
+    [self.locationButton setTitle:[NSString stringWithFormat:@"  Custom Location: %@", self.customLocation] forState:UIControlStateNormal];
 }
 
 #pragma mark - UIActionSheet delegate
@@ -156,7 +155,8 @@ enum {
     if (self.changeLocationSheet == actionSheet) {
         switch (buttonIndex) {
             case kCurrentLocationButtonIndex:
-                NSLog(@"Current Location");
+                self.customLocation = nil;
+                [self.locationButton setTitle:[NSString stringWithFormat:@"  Current Location"] forState:UIControlStateNormal];
                 break;
             case kCustomLocationButtonIndex:
                 [self promptForCustomLocation];
