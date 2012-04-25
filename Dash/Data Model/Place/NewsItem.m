@@ -13,7 +13,7 @@
 @implementation NewsItem
 
 @dynamic blurb;
-@dynamic time;
+@dynamic timestamp;
 @dynamic place;
 
 @end
