@@ -100,7 +100,7 @@ NSString * const kHighlightTitle = @"Highlights";
         self.heart = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.heart setImage:[UIImage imageNamed:@"Heart-Gray.png"] forState:UIControlStateNormal];
         [self.heart setImage:[UIImage imageNamed:@"Heart-Red.png"] forState:UIControlStateSelected];
-        [self.heart setFrame:CGRectMake(257.0f - 20.0f, offset - 20.0f, 25.0f + 20.0f, 25.0f + 20.0f)];
+        [self.heart setFrame:CGRectMake(257.0f - 10.0f, offset - 10.0f, 25.0f + 20.0f, 25.0f + 20.0f)];
         [self.heart setImageEdgeInsets:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)];
         [self addSubview:self.heart];
         
