@@ -75,6 +75,11 @@
     
 }
 
+- (NSURL *)photoURL
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", self.fb_uid]];
+}
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@", self.name];

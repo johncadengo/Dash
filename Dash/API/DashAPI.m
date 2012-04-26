@@ -104,16 +104,9 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     return _me;
 }
 
-+ (void)setMe:(Person *)newMe inContext:(NSManagedObjectContext *)context
++ (void)setMe:(Person *)newMe
 {
     _me = newMe;
-    
-    Photo *photo = (Photo *)[NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
-    [photo setUrl:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", _me.fb_uid]];
-    
-    // Saves the managed object context into the persistent store.
-    NSError *error = nil;
-    [context save:&error];
 }
 
 #pragma mark - Init

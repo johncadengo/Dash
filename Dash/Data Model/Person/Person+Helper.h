@@ -40,4 +40,6 @@
  */
 - (void)visit:(Place *)place;
 
+- (NSURL *)photoURL;
+
 @end

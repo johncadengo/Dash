@@ -23,13 +23,13 @@
 @synthesize numFollowers = _numFollowers;
 @synthesize numFollowing = _numFollowing;
 
-static CGFloat const kPadding = 5.0f;
+static CGFloat const kPadding = 10.0f;
 static CGFloat const kPicWidth = 50.0f;
 
 #pragma mark - 
 + (UIFont *)nameFont
 {
-    return [UIFont fontWithName:kPlutoBold size:14.0f];
+    return [UIFont fontWithName:kPlutoBold size:13.0f];
 }
 
 + (CGFloat) height
@@ -48,6 +48,10 @@ static CGFloat const kPicWidth = 50.0f;
         
         // Clear background
         self.backgroundColor = [UIColor clearColor];
+        
+        self.icon = [[EGOImageView alloc] initWithPlaceholderImage:[[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)] delegate:self];
+        self.icon.frame = CGRectMake(kPadding, kPadding, kPicWidth, kPicWidth);
+        [self addSubview:self.icon];
     }
     return self;
 }
@@ -56,8 +60,7 @@ static CGFloat const kPicWidth = 50.0f;
 
 - (void)setWithPerson:(Person *)person
 {
-    // TODO: Get real photo
-    self.icon = [[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)];
+    [self.icon setImageURL:person.photoURL];
     
     self.name = person.name;
     self.numFavorites = @"1";
@@ -73,15 +76,12 @@ static CGFloat const kPicWidth = 50.0f;
 {
     [super drawRect:rect];
     
-    // Draw the icon
-    [self.icon drawAtPoint:CGPointMake(kPadding, kPadding)];
-    
     // Draw the name
     [UIColorFromRGB(kProfileHeaderNameFontColor) set];
-    [self.name drawAtPoint:CGPointMake(kPadding + kPicWidth + kPadding, kPadding) withFont:[[self class] nameFont]];
+    [self.name drawAtPoint:CGPointMake(kPadding + kPicWidth + kPadding + 2.0f, kPadding) withFont:[[self class] nameFont]];
     
     // Draw the info bubble
-    [self.infoBubble drawAtPoint:CGPointMake(kPadding + kPicWidth + kPadding, kPadding + 14.0f + kPadding)];
+    [self.infoBubble drawAtPoint:CGPointMake(kPadding + kPicWidth + 5.0f, 13.0f + kPadding)];
     
     
 }

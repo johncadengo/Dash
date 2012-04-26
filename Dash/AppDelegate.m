@@ -126,7 +126,7 @@ enum {
 
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
-    [DashAPI setMe:[Person personWithFBResult:result context:self.managedObjectContext] inContext:self.managedObjectContext];
+    [DashAPI setMe:[Person personWithFBResult:result context:self.managedObjectContext]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
