@@ -19,7 +19,7 @@
 @synthesize place = _place;
 @synthesize context = _context;
 @synthesize toolbar = _toolbar;
-@synthesize textField = _textField;
+@synthesize textView = _textView;
 @synthesize cancelButton = _cancelButton;
 @synthesize doneButton = _doneButton;
 
@@ -37,26 +37,32 @@
     [super viewDidLoad];
     
     // Set up the textfield
-    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(5.0f, 49.0f, 320.0f - 10.0f, 159.0f - 10.0f)];
-    [self.view addSubview:self.textField];
-    [self.textField becomeFirstResponder];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 49.0f, 320.0f - 10.0f, 159.0f - 10.0f)];
+    [self.textView setFont:[UIFont systemFontOfSize:15.0f]];
+    [self.textView becomeFirstResponder];
+    [self.view addSubview:self.textView];
     
     // Add the cancel button
     self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
                                                          style:UIBarButtonItemStyleBordered 
                                                         target:self 
                                                         action:@selector(dismissModalViewControllerAnimated:)];
+    [self.cancelButton setTintColor:[UIColor blackColor]];
+    
+    // Add the space inbetween
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] 
+                                  initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
+                                                                               target:nil action:nil];
     
     // Add the done button
     self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Post" 
                                                        style:UIBarButtonItemStyleDone 
                                                       target:self 
                                                       action:@selector(createHighlight:)];
-    //[self.navigationItem setRightBarButtonItem:self.doneButton];
  
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0f, 44.0f)];
     [self.toolbar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton, self.doneButton, nil]];
+    [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton, flexibleSpace, self.doneButton, nil]];
     [self.view addSubview:self.toolbar];
 }
 

@@ -10,12 +10,12 @@
 
 @class Place;
 
-@interface CreateHighlightViewController : UIViewController <UITextFieldDelegate>
+@interface CreateHighlightViewController : UIViewController <UITextViewDelegate>
 
 @property (nonatomic, strong) Place *place;
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic, strong) UIToolbar *toolbar;
-@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
 
