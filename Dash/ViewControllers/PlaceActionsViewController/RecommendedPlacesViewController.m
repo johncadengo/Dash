@@ -202,6 +202,9 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
 {
     NSLog(@"Encountered an error: %@", error);
+    
+    // Let them know we're done
+    [self.hud hide:YES];
 }
 
 #pragma mark - ListModeCellDelegate
@@ -213,7 +216,7 @@
     
     // Make a call to the api to request the feed
     //self.requests = [NSDictionary dictionaryWithDictionary:[self.api placeActionsForPerson:nil]];
-    [self.api placeActionsForPerson:nil];
+    [self.api recommendsForPerson:DashAPI.me];
 }
 
 

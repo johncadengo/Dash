@@ -368,7 +368,7 @@
 - (void)requestProfile
 {
     [self.api myProfile];
-    [self.api recommendsForPerson:nil];
+    [self.api recommendsForPerson:DashAPI.me];
 }
 
 #pragma mark - FB Connect

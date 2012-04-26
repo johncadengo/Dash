@@ -521,6 +521,8 @@
 {
     if ([DashAPI loggedIn]) {
         // Check if we're logged in
+        [self.api thumbsUpPlace:self.place];
+        [self.upLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsupcount integerValue] + 1)]];
     }
     else {
         // Otherwise, let them know they can't do that yet
@@ -535,6 +537,8 @@
 {
     if ([DashAPI loggedIn]) {
         // Check if we're logged in
+        [self.api thumbsDownPlace:self.place];
+        [self.downLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsdowncount integerValue] + 1)]];
     }
     else {
         // Otherwise, let them know they can't do that yet
