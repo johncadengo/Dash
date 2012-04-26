@@ -19,6 +19,7 @@
 #import "TitleViewCell.h"
 #import "BadgesViewCell.h"
 #import "HighlightViewCell.h"
+#import "CreateHighlightViewController.h"
 
 @implementation PlaceViewController
 
@@ -502,7 +503,14 @@
 
 - (void)createHighlight:(id)sender
 {
-    NSLog(@"Create highlight");
+    if ([DashAPI loggedIn]) {
+        // Check if we're logged in
+        [self performSegueWithIdentifier:kShowCreateHighlightSegueIdentifier sender:self.place];   
+    }
+    else {
+        // Otherwise, let them know they can't do that yet
+        
+    }
 }
 
 - (void)thumbsUp:(id)sender
@@ -513,6 +521,20 @@
 - (void)thumbsDown:(id)sender
 {
     
+}
+
+
+#pragma mark - Storyboard Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kShowCreateHighlightSegueIdentifier]) {
+        CreateHighlightViewController *createHighlightViewController = (CreateHighlightViewController *)[segue destinationViewController];
+        Place *place = (Place *)sender;
+        
+        [createHighlightViewController setPlace:place];
+        [createHighlightViewController setContext:self.managedObjectContext];
+    }
 }
 
 
