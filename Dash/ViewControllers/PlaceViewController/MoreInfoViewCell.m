@@ -95,7 +95,7 @@
 
 - (void)setWithPlace:(Place *)place
 {
-    self.addressLabel.text = [place.address capitalizedString];
+    self.addressLabel.text = place.address;
     [self.addressLabel sizeToFit];
     
     self.phoneLabel.text = place.phone;

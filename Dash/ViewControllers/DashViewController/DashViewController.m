@@ -413,7 +413,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         //                                  toView:self.popButton];
         CGPoint origin = [gestureRecognizer locationInView:dragSuperView];
         
-        NSLog(@"origin %f %f", origin.x, origin.y);
+        //NSLog(@"origin %f %f", origin.x, origin.y);
         BOOL inBackgroundFrame = CGRectContainsPoint(self.popBackground.frame, origin);
         BOOL inDraggableFrame = CGRectContainsPoint(self.draggableFrame, origin);
         
