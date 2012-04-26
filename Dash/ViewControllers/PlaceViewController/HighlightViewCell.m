@@ -98,9 +98,10 @@ NSString * const kHighlightTitle = @"Highlights";
         
         CGFloat offset = (self.type == HighlightViewCellTypeFirst) ? kTopYOffset + kTitleHeight : kYOffset;
         self.heart = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.heart setBackgroundImage:[UIImage imageNamed:@"Heart-Gray.png"] forState:UIControlStateNormal];
-        [self.heart setBackgroundImage:[UIImage imageNamed:@"Heart-Red.png"] forState:UIControlStateSelected];
-        [self.heart setFrame:CGRectMake(257.0f, offset, 25.0f, 25.0f)];
+        [self.heart setImage:[UIImage imageNamed:@"Heart-Gray.png"] forState:UIControlStateNormal];
+        [self.heart setImage:[UIImage imageNamed:@"Heart-Red.png"] forState:UIControlStateSelected];
+        [self.heart setFrame:CGRectMake(257.0f - 20.0f, offset - 20.0f, 25.0f + 20.0f, 25.0f + 20.0f)];
+        [self.heart setImageEdgeInsets:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)];
         [self addSubview:self.heart];
         
         [self.heart addTarget:self action:@selector(fakeIncrement:) forControlEvents:UIControlEventTouchUpInside];
