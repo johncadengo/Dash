@@ -28,6 +28,7 @@
 
 @synthesize popsScrollView = _popsScrollView;
 @synthesize progressHUD = _progressHUD;
+@synthesize alertView = _alertView;
 @synthesize popBackground = _popBackground;
 @synthesize popsScrollViewFrame = _popsScrollViewFrame;
 @synthesize popBackgroundFrame = _popBackgroundFrame;
@@ -654,7 +655,21 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [self.places addObjectsFromArray:objects];
     
     // Now, show them
-    [self showNextPage];
+    if ([self canShowNextPage]) {
+        [self showNextPage];
+    }
+    else {
+        // Alert the user that we were unable to obtain results
+        if (self.alertView == nil) {
+            self.alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" 
+                                                        message:@"We were unable to retrive any results with the criteria you've specified! Please change your filter options." 
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok" 
+                                              otherButtonTitles:nil];
+        }
+        
+        [self.alertView show];
+    }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 

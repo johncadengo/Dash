@@ -30,12 +30,12 @@
     NSDictionary *dict = (NSDictionary *)result;
     NSString *name = [dict objectForKey:@"name"];
     NSString *email = [dict objectForKey:@"email"];
-    NSString *uid = [dict objectForKey:@"id"];
+    NSString *fb_uid = [dict objectForKey:@"id"];
     
     Person *person = nil;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     request.entity = [NSEntityDescription entityForName:@"Person" inManagedObjectContext:context];
-    request.predicate = [NSPredicate predicateWithFormat:@"fb_uid == %@", uid];
+    request.predicate = [NSPredicate predicateWithFormat:@"fb_uid == %@", fb_uid];
     
     NSError *error = nil;
     person = [[context executeFetchRequest:request error:&error] lastObject];
@@ -46,7 +46,7 @@
         person = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
         [person setName:name];
         [person setEmail:email];
-        [person setFb_uid:uid];
+        [person setFb_uid:fb_uid];
     }
     
     // Saves the managed object context into the persistent store.
