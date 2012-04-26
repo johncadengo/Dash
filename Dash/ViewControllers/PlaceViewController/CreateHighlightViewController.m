@@ -18,7 +18,10 @@
 
 @synthesize place = _place;
 @synthesize context = _context;
+@synthesize toolbar = _toolbar;
 @synthesize textField = _textField;
+@synthesize cancelButton = _cancelButton;
+@synthesize doneButton = _doneButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,14 +36,28 @@
 {
     [super viewDidLoad];
     
-    // Make sure the top bar and bottom bar show
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-    
-    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 208.0f)];
+    // Set up the textfield
+    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(5.0f, 49.0f, 320.0f - 10.0f, 159.0f - 10.0f)];
     [self.view addSubview:self.textField];
     [self.textField becomeFirstResponder];
     
+    // Add the cancel button
+    self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
+                                                         style:UIBarButtonItemStyleBordered 
+                                                        target:self 
+                                                        action:@selector(dismissModalViewControllerAnimated:)];
+    
+    // Add the done button
+    self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Post" 
+                                                       style:UIBarButtonItemStyleDone 
+                                                      target:self 
+                                                      action:@selector(createHighlight:)];
+    //[self.navigationItem setRightBarButtonItem:self.doneButton];
+ 
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0f, 44.0f)];
+    [self.toolbar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton, self.doneButton, nil]];
+    [self.view addSubview:self.toolbar];
 }
 
 - (void)viewDidUnload
@@ -49,9 +66,22 @@
     // Release any retained subviews of the main view.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - 
+
+- (void)createHighlight:(id)sender
+{
+    NSLog(@"Done");
 }
 
 @end
