@@ -236,7 +236,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [self pop:locParam types:@"" prices:@"$, $$, $$$," distance:@""];
 }
 
-- (void)pop:(NSString *)loc types:(NSString *)type prices:(NSString *)prices distance:(NSString *)distance;
+- (void)pop:(NSString *)loc types:(NSString *)types prices:(NSString *)prices distance:(NSString *)distance;
 {
     
     // Create an object manager and connect core data's persistent store to it
@@ -256,7 +256,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             self.key, @"must_fix",
                             loc, @"loc",
                             distance, rangeStr,
-                            prices, @"prices", nil];
+                            prices, @"prices",
+                            types, @"types", nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self];

@@ -97,7 +97,7 @@ typedef enum {
 
 /** Pop with filters.
  */
-- (void)pop:(NSString *)loc types:(NSString *)type prices:(NSString *)prices distance:(NSString *)distance;
+- (void)pop:(NSString *)loc types:(NSString *)types prices:(NSString *)prices distance:(NSString *)distance;
 
 #pragma mark - Feed
 

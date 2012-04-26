@@ -508,7 +508,16 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             locParam = [NSString stringWithFormat:@"%f, %f", loc.coordinate.latitude,
                                   loc.coordinate.longitude];
         }
-        [self.api pop:locParam types:@"" prices:prices distance:distance];
+        
+        NSMutableString *types = [[NSMutableString alloc] initWithCapacity:16];;
+        for (int i = 0; i < 4; i++) {
+            check = [[self.filterViewController.filterView.typesChecked objectAtIndex:i] boolValue];
+            if (check) {
+                [types appendFormat:@"%d,", i];
+            }
+        }
+        
+        [self.api pop:locParam types:types prices:prices distance:distance];
     }
 }
 
