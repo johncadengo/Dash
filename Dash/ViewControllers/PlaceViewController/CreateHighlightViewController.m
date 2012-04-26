@@ -9,6 +9,7 @@
 #import "CreateHighlightViewController.h"
 #import "Place.h"
 #import "Place+Helper.h"
+#import "Constants.h"
 
 @interface CreateHighlightViewController ()
 
@@ -22,6 +23,8 @@
 @synthesize textView = _textView;
 @synthesize cancelButton = _cancelButton;
 @synthesize doneButton = _doneButton;
+@synthesize toolbarTitle = _toolbarTitle;
+@synthesize characterCountLabel = _characterCountLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,6 +57,15 @@
                                   initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
                                                                                target:nil action:nil];
     
+    // Add the title
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 190.0f, 23.0f)];
+    [titleLabel setText:@"Create Highlight"];
+    [titleLabel setFont:[UIFont boldSystemFontOfSize:20.0f]];
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    [titleLabel setTextAlignment:UITextAlignmentCenter];
+    self.toolbarTitle = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
+    
     // Add the done button
     self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Post" 
                                                        style:UIBarButtonItemStyleDone 
@@ -62,7 +74,7 @@
  
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0f, 44.0f)];
     [self.toolbar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton, flexibleSpace, self.doneButton, nil]];
+    [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton, flexibleSpace, self.toolbarTitle, flexibleSpace, self.doneButton, nil]];
     [self.view addSubview:self.toolbar];
 }
 

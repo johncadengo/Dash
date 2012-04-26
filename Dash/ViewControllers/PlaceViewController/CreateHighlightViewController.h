@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
+@property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
+@property (nonatomic, strong) UILabel *characterCountLabel;
 
 - (void)createHighlight:(id)sender;
 
