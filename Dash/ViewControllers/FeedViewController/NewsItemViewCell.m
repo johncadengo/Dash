@@ -91,7 +91,9 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        
+        self.icon = [[EGOImageView alloc] initWithPlaceholderImage:[[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)] delegate:self];
+        self.icon.frame = CGRectMake(kLeftRightMargin, 10.0f, kPicWidth, kPicWidth);
+        [self addSubview:self.icon];
     }
 	
     return self;
@@ -101,9 +103,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 {
     self.blurb =  newsItem.blurb;
     self.timestamp = [newsItem relativeTimestamp];
-    
-    // TODO: Get real photo
-    self.icon = [[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)];
+    [self.icon setImageURL:[NSURL URLWithString:[NSString stringWithFormat: @"https://graph.facebook.com/%@/picture", newsItem.fb_uid]]];
     
     [self setNeedsDisplay];
 }
@@ -129,9 +129,6 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 - (void)drawRect:(CGRect)rect
 {
-    // Draw icon
-    [self.icon drawAtPoint:CGPointMake(kLeftRightMargin, 10.0f)];
-    
     // Draw text
     CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
     [UIColorFromRGB(kFeedBlurbColor) set];

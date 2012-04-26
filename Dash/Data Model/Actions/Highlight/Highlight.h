@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSNumber * uid;
+@property (nonatomic, retain) NSNumber * likecount;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) Place *place;
 @property (nonatomic, retain) Person *author;

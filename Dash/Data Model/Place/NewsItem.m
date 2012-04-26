@@ -13,6 +13,7 @@
 @implementation NewsItem
 
 @dynamic blurb;
+@dynamic fb_uid;
 @dynamic timestamp;
 @dynamic place;
 

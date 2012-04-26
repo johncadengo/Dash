@@ -27,6 +27,8 @@
 @property (nonatomic, retain) PlaceLocation *location;
 @property (nonatomic, retain) NSSet *pops;
 @property (nonatomic, retain) NSSet *newsItems;
+@property (nonatomic, retain) NSNumber * thumbsdowncount;
+@property (nonatomic, retain) NSNumber * thumbsupcount;
 
 @end
 

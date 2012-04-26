@@ -49,6 +49,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];
     [highlightMapping mapKeyPath:@"id" toAttribute:@"uid"];
     [highlightMapping mapKeyPath:@"name" toAttribute:@"text"];
+    [highlightMapping mapKeyPath:@"likecount" toAttribute:@"likecount"];
     
     // Define the relationship mapping between highlight and author
     [highlightMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
@@ -67,6 +68,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // a relationship with category, highlight, and location
     RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
     [placeMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [placeMapping mapKeyPath:@"up" toAttribute:@"thumbsupcount"];
+    [placeMapping mapKeyPath:@"down" toAttribute:@"thumbsdowncount"];
     [placeMapping mapAttributes:@"name", @"address", @"phone", @"price", nil];
     
     // Define the relationship mappings between place and category, highlight, location
@@ -257,7 +260,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     // Define our news item mapping
     RKManagedObjectMapping *newsItemMapping = [RKManagedObjectMapping mappingForEntityWithName:@"NewsItem"];
-    [newsItemMapping mapAttributes:@"blurb", @"timestamp", nil];
+    [newsItemMapping mapAttributes:@"blurb", @"timestamp", @"fb_uid", nil];
     
     // Get place mapping
     RKManagedObjectMapping *placeMapping = [[self class] placeMapping];

@@ -34,6 +34,7 @@
         <relationship name="source" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="friends" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Highlight" representedClassName="Highlight" syncable="YES">
+        <attribute name="likecount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES" isSyncIdentityProperty="YES"/>
@@ -61,6 +62,7 @@
     </entity>
     <entity name="NewsItem" representedClassName="NewsItem" syncable="YES">
         <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fb_uid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="newsItems" inverseEntity="Place" syncable="YES"/>
     </entity>
@@ -86,6 +88,8 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbsdowncount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="thumbsupcount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceAction" inverseName="place" inverseEntity="PlaceAction" syncable="YES"/>
         <relationship name="badges" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Badge" inverseName="places" inverseEntity="Badge" syncable="YES"/>
         <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="places" inverseEntity="Category" syncable="YES"/>
@@ -135,13 +139,14 @@
         <element name="FlagPhoto" positionX="430" positionY="-153" width="128" height="60"/>
         <element name="FlagPlace" positionX="286" positionY="-153" width="128" height="60"/>
         <element name="Friendships" positionX="405" positionY="252" width="128" height="75"/>
-        <element name="Highlight" positionX="97" positionY="315" width="128" height="135"/>
+        <element name="Highlight" positionX="97" positionY="315" width="128" height="150"/>
         <element name="Hours" positionX="-216" positionY="-126" width="128" height="105"/>
         <element name="Like" positionX="360" positionY="-81" width="128" height="60"/>
         <element name="Location" positionX="-315" positionY="-9" width="128" height="135"/>
+        <element name="NewsItem" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="Place" positionX="-72" positionY="-36" width="128" height="210"/>
+        <element name="Place" positionX="-72" positionY="-36" width="128" height="270"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
         <element name="Pop" positionX="-243" positionY="285" width="128" height="90"/>
@@ -152,6 +157,5 @@
         <element name="Stats" positionX="405" positionY="351" width="128" height="105"/>
         <element name="Uniqueness" positionX="99" positionY="-225" width="128" height="60"/>
         <element name="Visit" positionX="-72" positionY="234" width="128" height="45"/>
-        <element name="NewsItem" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EGOImageView.h"
 
 @class NewsItem;
 
-@interface NewsItemViewCell : UITableViewCell
+@interface NewsItemViewCell : UITableViewCell <EGOImageViewDelegate>
 
 @property (nonatomic, strong) NSString *blurb;
 @property (nonatomic, strong) NSString *timestamp;
-@property (nonatomic, strong) UIImage *icon;
+@property (nonatomic, strong) EGOImageView *icon;
 
 + (CGFloat)heightForNewsItem:(NewsItem *)newsItem;
 

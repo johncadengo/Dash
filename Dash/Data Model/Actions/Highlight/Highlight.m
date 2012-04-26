@@ -17,6 +17,7 @@
 @dynamic text;
 @dynamic uid;
 @dynamic timestamp;
+@dynamic likecount;
 @dynamic place;
 @dynamic author;
 @dynamic likes;

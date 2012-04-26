@@ -33,5 +33,7 @@
 @dynamic location;
 @dynamic pops;
 @dynamic newsItems;
+@dynamic thumbsupcount;
+@dynamic thumbsdowncount;
 
 @end

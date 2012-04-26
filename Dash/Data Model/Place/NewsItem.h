@@ -14,6 +14,7 @@
 @interface NewsItem : NSManagedObject
 
 @property (nonatomic, retain) NSString * blurb;
+@property (nonatomic, retain) NSString * fb_uid;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) Place *place;
 
