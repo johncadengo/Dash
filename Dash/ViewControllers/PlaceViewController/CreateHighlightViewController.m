@@ -42,6 +42,7 @@
     // Set up the textfield
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 49.0f, 320.0f - 10.0f, 159.0f - 10.0f)];
     [self.textView setFont:[UIFont systemFontOfSize:15.0f]];
+    [self.textView setDelegate:self];
     [self.textView becomeFirstResponder];
     [self.view addSubview:self.textView];
     
@@ -72,10 +73,19 @@
                                                       target:self 
                                                       action:@selector(createHighlight:)];
  
+    // Add the toolbar
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0f, 44.0f)];
     [self.toolbar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton, flexibleSpace, self.toolbarTitle, flexibleSpace, self.doneButton, nil]];
     [self.view addSubview:self.toolbar];
+    
+    // Add the character count label
+    self.characterCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0f, 170.0f, 100.0f, 25.0f)];
+    [self.characterCountLabel setTextColor:[UIColor blackColor]];
+    [self.characterCountLabel setBackgroundColor:[UIColor clearColor]];
+    [self.characterCountLabel setText:[NSString stringWithFormat:@"%i", kHighlightCharacterLimit]];
+    [self.view addSubview:self.characterCountLabel];
+    
 }
 
 - (void)viewDidUnload
@@ -95,11 +105,40 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - 
+#pragma mark - Button actions
 
 - (void)createHighlight:(id)sender
 {
-    NSLog(@"Done");
+    NSLog(@"Post");
 }
+
+#pragma mark - Text View Delegate
+
+-(void)textViewDidChange:(UITextView *)textView 
+{
+    int len = textView.text.length;
+    self.characterCountLabel.text=[NSString stringWithFormat:@"%i",kHighlightCharacterLimit-len];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    BOOL flag = NO;
+    if([text length] == 0)
+    {
+        if([textView.text length] != 0)
+        {
+            flag = YES;
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    else if([[textView text] length] > (kHighlightCharacterLimit - 1))
+    {
+        return NO;
+    }
+    return YES;
+} 
 
 @end

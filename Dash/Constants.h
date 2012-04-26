@@ -32,6 +32,10 @@ enum {
     kProfileHeaderNameFontColor = 0x333333,
 };
 
+enum {
+    kHighlightCharacterLimit = 64,
+};
+
 // Text
 extern NSString * const kWelcomeText;
 extern NSString * const kIntroText;
