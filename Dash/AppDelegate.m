@@ -81,6 +81,10 @@ enum {
     
     if ([self.facebook isSessionValid]) {
         [DashAPI setLoggedIn:YES];
+        
+        if (DashAPI.me == nil) {
+            [self.facebook requestWithGraphPath:@"me" andDelegate:self];
+        }
     }
     
     return YES;
@@ -100,6 +104,7 @@ enum {
     [defaults synchronize];
     
     [DashAPI setLoggedIn:YES];
+    [self.facebook requestWithGraphPath:@"me" andDelegate:self];
     
     if (self.loginViewController) {
         [self.loginViewController dismissModalViewControllerAnimated:YES];
@@ -117,6 +122,11 @@ enum {
     [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
     [defaults setObject:expiresAt forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
+}
+
+- (void)request:(FBRequest *)request didLoad:(id)result
+{
+    [DashAPI setMe:[Person personWithFBResult:result context:self.managedObjectContext] inContext:self.managedObjectContext];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -66,7 +66,8 @@ typedef enum {
 + (BOOL)loggedIn;
 + (void)setLoggedIn:(BOOL)newValue;
 + (void)setSkipLogin:(BOOL)newValue;
-+ (Person *)meWithFBResult:(id)result context:(NSManagedObjectContext *)context;
++ (Person *)me;
++ (void)setMe:(Person *)newMe inContext:(NSManagedObjectContext *)context;
 
 #pragma mark - For scaffolding purposes
 /** Generates a random person

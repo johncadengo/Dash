@@ -12,7 +12,7 @@
 
 @class LoginViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, FBSessionDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, FBSessionDelegate, FBRequestDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

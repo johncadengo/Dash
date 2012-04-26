@@ -23,7 +23,7 @@
 // Taken from: http://stackoverflow.com/a/1250088/693754
 static BOOL _skipLogin = NO;
 static BOOL _loggedIn = NO;
-//static Person *currentUser = nil;
+static Person *_me = nil;
 
 @implementation DashAPI
 
@@ -99,14 +99,21 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     _loggedIn = newValue;
 }
 
-+ (Person *)meWithFBResult:(id)result context:(NSManagedObjectContext *)context
++ (Person *)me
 {
-    static dispatch_once_t pred;
-    static Person *sharedInstance = nil;
-    dispatch_once(&pred, ^{
-        sharedInstance = [Person personWithFBResult:result context:context];
-    });
-    return sharedInstance;
+    return _me;
+}
+
++ (void)setMe:(Person *)newMe inContext:(NSManagedObjectContext *)context
+{
+    _me = newMe;
+    
+    Photo *photo = (Photo *)[NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
+    [photo setUrl:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", _me.fb_uid]];
+    
+    // Saves the managed object context into the persistent store.
+    NSError *error = nil;
+    [context save:&error];
 }
 
 #pragma mark - Init

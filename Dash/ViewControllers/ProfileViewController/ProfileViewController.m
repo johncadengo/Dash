@@ -396,6 +396,7 @@
 {
     self.person = [Person personWithFBResult:result context:self.managedObjectContext];
     [self.api createPerson:self.person];
+    [DashAPI setMe:self.person inContext:self.managedObjectContext];
     [self.tableView reloadData];
 }
 
