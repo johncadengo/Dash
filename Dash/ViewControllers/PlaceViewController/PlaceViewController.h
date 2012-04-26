@@ -54,6 +54,7 @@ typedef enum {
 @property (nonatomic, strong) UIBarButtonItem *thumbsDownButton;
 @property (nonatomic, strong) UILabel *upLabel;
 @property (nonatomic, strong) UILabel *downLabel;
+@property (nonatomic, strong) UIAlertView *alertView;
 
 /** Should only call after the view loads. Cascades appropriate changes to view properties as necessary.
  */

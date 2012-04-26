@@ -16,7 +16,7 @@ typedef enum {
 
 @class Highlight;
 
-@interface HighlightViewCell : UITableViewCell
+@interface HighlightViewCell : UITableViewCell <UIAlertViewDelegate>
 
 @property (nonatomic) HighlightViewCellType type;
 
@@ -25,6 +25,7 @@ typedef enum {
 @property (nonatomic, strong) UIImage *backgroundImage;
 @property (nonatomic, strong) UIButton *heart;
 @property (nonatomic, strong) NSString *likeCount;
+@property (nonatomic, strong) UIAlertView *alertView;
 
 + (CGFloat) heightForType:(HighlightViewCellType) type;
 + (UIFont *)titleFont;

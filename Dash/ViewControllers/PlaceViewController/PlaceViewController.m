@@ -39,6 +39,7 @@
 @synthesize thumbsDownButton = _thumbsDownButton;
 @synthesize upLabel = _upLabel;
 @synthesize downLabel = _downLabel;
+@synthesize alertView = _alertView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -135,7 +136,7 @@
     self.upLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 0.0f, 40.0f, 49.0f)];
     [self.upLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:15.0f]];
     [self.upLabel setTextColor:UIColorFromRGB(kPlaceToolbarTextColor)];
-    [self.upLabel setText:[NSString stringWithFormat:@"1"]];
+    [self.upLabel setText:[NSString stringWithFormat:@"%@", self.place.thumbsupcount]];
     [self.upLabel setBackgroundColor:[UIColor clearColor]];
     
     button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -147,7 +148,7 @@
     self.downLabel = [[UILabel alloc] initWithFrame:CGRectMake(280.0f, 0.0f, 40.0f, 49.0f)];
     [self.downLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:15.0f]];
     [self.downLabel setTextColor:UIColorFromRGB(kPlaceToolbarTextColor)];
-    [self.downLabel setText:[NSString stringWithFormat:@"0"]];
+    [self.downLabel setText:[NSString stringWithFormat:@"%@", self.place.thumbsdowncount]];
     [self.downLabel setBackgroundColor:[UIColor clearColor]];
     
     // Adjust padding
@@ -509,18 +510,39 @@
     }
     else {
         // Otherwise, let them know they can't do that yet
-        
+        if (self.alertView == nil) {
+            self.alertView = [[UIAlertView alloc] initWithTitle:kLoginAlertTitle message:kLoginAlertMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        }
+        [self.alertView show];
     }
 }
 
 - (void)thumbsUp:(id)sender
 {
-    
+    if ([DashAPI loggedIn]) {
+        // Check if we're logged in
+    }
+    else {
+        // Otherwise, let them know they can't do that yet
+        if (self.alertView == nil) {
+            self.alertView = [[UIAlertView alloc] initWithTitle:kLoginAlertTitle message:kLoginAlertMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        }
+        [self.alertView show];
+    }
 }
 
 - (void)thumbsDown:(id)sender
 {
-    
+    if ([DashAPI loggedIn]) {
+        // Check if we're logged in
+    }
+    else {
+        // Otherwise, let them know they can't do that yet
+        if (self.alertView == nil) {
+            self.alertView = [[UIAlertView alloc] initWithTitle:kLoginAlertTitle message:kLoginAlertMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        }
+        [self.alertView show];
+    }
 }
 
 

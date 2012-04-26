@@ -43,6 +43,8 @@ extern NSString * const kSignUpText;
 extern NSString * const kMoreInfoAddress;
 extern NSString * const kMoreInfoPhone;
 extern NSString * const kMoreInfoHours;
+extern NSString * const kLoginAlertTitle;
+extern NSString * const kLoginAlertMessage;
 
 // Fonts
 extern NSString * const kPlutoExtraLight;

@@ -14,6 +14,7 @@
 @property (nonatomic, getter=isLeftSelected) BOOL leftSelected;
 @property (nonatomic) CGRect leftHalf;
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
+@property (nonatomic, strong) UIAlertView *alertView;
 
 - (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer;
 

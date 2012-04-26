@@ -7,6 +7,8 @@
 //
 
 #import "CustomSegmentView.h"
+#import "DashAPI.h"
+#import "Constants.h"
 
 @implementation CustomSegmentView
 
@@ -14,6 +16,7 @@
 @synthesize leftSelected = _leftSelected;
 @synthesize leftHalf = _leftHalf;
 @synthesize tap = _tap;
+@synthesize alertView = _alertView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -57,7 +60,15 @@
         [self setLeftSelected:YES];
     }
     else {
-        [self setLeftSelected:NO];
+        if ([DashAPI loggedIn]) {
+            [self setLeftSelected:NO];     
+        }
+        else {  
+            if (self.alertView == nil) {
+                self.alertView = [[UIAlertView alloc] initWithTitle:kLoginAlertTitle message:kLoginAlertMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            }
+            [self.alertView show];
+        }
     }
 }
 #pragma mark - Draw

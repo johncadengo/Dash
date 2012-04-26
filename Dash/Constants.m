@@ -15,6 +15,8 @@ NSString *const kSignUpText = @"You are not signed in. Please log in with Facebo
 NSString * const kMoreInfoAddress = @"Address";
 NSString * const kMoreInfoPhone = @"Phone";
 NSString * const kMoreInfoHours = @"Hours";
+NSString * const kLoginAlertTitle = @"Please Log In";
+NSString * const kLoginAlertMessage = @"Please log into Facebook to use this feature.";
 
 #pragma mark - Fonts
 

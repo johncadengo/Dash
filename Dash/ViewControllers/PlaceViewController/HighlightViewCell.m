@@ -14,6 +14,7 @@
 #import "Person.h"
 #import "Person+Helper.h"
 #import "Constants.h"
+#import "DashAPI.h"
 
 @implementation HighlightViewCell
 
@@ -23,6 +24,7 @@
 @synthesize backgroundImage = _backgroundImage;
 @synthesize heart = _heart;
 @synthesize likeCount = _likeCount;
+@synthesize alertView = _alertView;
 
 static const CGFloat kTopHeight = 43.5f;
 static const CGFloat kMiddleHeight = 40.0f;
@@ -146,17 +148,10 @@ NSString * const kHighlightTitle = @"Highlights";
 {
     // Set our properties
     self.name = [[NSString stringWithFormat:@"%@", highlight.text] capitalizedString];
-    
-    // TODO: Test if works with normal users..
-    NSString *author;
-    if ([highlight.author.name isEqualToString:@"John"])
-        author = [NSString stringWithFormat:@"%@", @"The Dash Team"];
-    else
-        author = [NSString stringWithFormat:@"%@", highlight.author.name];
-    self.author = author;
+    self.author = [NSString stringWithFormat:@"%@", highlight.author.name];
     
     // Two digit max
-    NSInteger n = [highlight.likes count];
+    NSInteger n = highlight.likecount.integerValue;
     self.likeCount = [NSString stringWithFormat:@"%d",(n <= 99) ? n : 99];
     
     // And draw them
@@ -165,11 +160,26 @@ NSString * const kHighlightTitle = @"Highlights";
 
 - (void)fakeIncrement:(id)sender
 {
-    // TODO: The BOOL is backwards because of the order that self.heart toggles its selection...
-    self.likeCount = [NSString stringWithFormat:@"%d", (self.heart.selected) ? 0 : 1];
-    
-    // And draw them
-    [self setNeedsDisplay];
+    if ([DashAPI loggedIn]) {
+        self.likeCount = [NSString stringWithFormat:@"%d", (self.heart.selected) ? 0 : 1];
+        
+        // And draw them
+        [self setNeedsDisplay];
+    }
+    else {
+        if (self.alertView == nil) {
+            self.alertView = [[UIAlertView alloc] initWithTitle:kLoginAlertTitle message:kLoginAlertMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        }
+        [self.alertView show];
+    }
+}
+
+#pragma mark - Alert View Delegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    // After we dismiss the alert, make sure to deselect the heart
+    self.heart.selected = NO;    
 }
 
 #pragma mark - Draw
