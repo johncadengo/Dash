@@ -63,9 +63,13 @@ typedef enum {
 + (RKManagedObjectMapping *)placeMapping;
 
 + (BOOL)skipLogin;
-+ (BOOL)loggedIn;
 + (void)setLoggedIn:(BOOL)newValue;
++ (BOOL)loggedIn;
 + (void)setSkipLogin:(BOOL)newValue;
++ (BOOL)shouldRefreshFavorites;
++ (void)setShouldRefreshFavorites:(BOOL)newValue;
++ (BOOL)shouldRefreshProfile;
++ (void)setShouldRefreshProfile:(BOOL)newValue;
 + (Person *)me;
 + (void)setMe:(Person *)newMe;
 

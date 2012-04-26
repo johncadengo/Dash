@@ -159,6 +159,11 @@
 
     // Set the custom nav bar
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBar.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    if (DashAPI.shouldRefreshProfile) {
+        [self requestProfile];
+        [DashAPI setShouldRefreshProfile:NO];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

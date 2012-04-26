@@ -23,6 +23,8 @@
 // Taken from: http://stackoverflow.com/a/1250088/693754
 static BOOL _skipLogin = NO;
 static BOOL _loggedIn = NO;
+static BOOL _shouldRefreshFavorites = NO;
+static BOOL _shouldRefreshProfile = NO;
 static Person *_me = nil;
 
 @implementation DashAPI
@@ -100,6 +102,26 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 + (void)setLoggedIn:(BOOL)newValue
 {
     _loggedIn = newValue;
+}
+
++ (BOOL)shouldRefreshFavorites
+{
+    return _shouldRefreshFavorites;
+}
+
++ (void)setShouldRefreshFavorites:(BOOL)newValue
+{
+    _shouldRefreshFavorites = newValue;
+}
+
++ (BOOL)shouldRefreshProfile
+{
+    return _shouldRefreshProfile;
+}
+
++ (void)setShouldRefreshProfile:(BOOL)newValue
+{
+    _shouldRefreshProfile = newValue;
 }
 
 + (Person *)me
@@ -417,6 +439,9 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             person.fb_uid, @"fb_uid",
                             place.uid, @"place_id", nil];
     [[RKClient sharedClient] post:@"/places/recommends" params:params delegate:self.delegate];
+    
+    [self.class setShouldRefreshFavorites:YES];
+    [self.class setShouldRefreshProfile:YES];
 }
 
 - (void)thumbsDownPlace:(Place *)place
@@ -427,6 +452,9 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             person.fb_uid, @"fb_uid",
                             place.uid, @"place_id", nil];
     [[RKClient sharedClient] post:@"/places/saves" params:params delegate:self.delegate];
+    
+    [self.class setShouldRefreshFavorites:YES];
+    [self.class setShouldRefreshProfile:YES];
 }
 
 #pragma mark -

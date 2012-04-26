@@ -74,6 +74,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (DashAPI.shouldRefreshFavorites) {
+        [self refreshFeed];
+        [DashAPI setShouldRefreshFavorites:NO];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
