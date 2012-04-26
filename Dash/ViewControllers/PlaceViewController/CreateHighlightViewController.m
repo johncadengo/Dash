@@ -80,7 +80,7 @@
     [self.view addSubview:self.toolbar];
     
     // Add the character count label
-    self.characterCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0f, 170.0f, 100.0f, 25.0f)];
+    self.characterCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(280.0f, 200.0f, 20.0f, 25.0f)];
     [self.characterCountLabel setTextColor:[UIColor blackColor]];
     [self.characterCountLabel setBackgroundColor:[UIColor clearColor]];
     [self.characterCountLabel setText:[NSString stringWithFormat:@"%i", kHighlightCharacterLimit]];
