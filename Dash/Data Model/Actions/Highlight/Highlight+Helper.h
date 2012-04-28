@@ -23,4 +23,6 @@
  */
 - (NSString *)description;
 
+- (BOOL)likedByMe;
+
 @end

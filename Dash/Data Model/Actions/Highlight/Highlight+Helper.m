@@ -7,6 +7,7 @@
 //
 
 #import "Highlight+Helper.h"
+#import "DashAPI.h"
 
 @implementation Highlight (Helper)
 
@@ -20,6 +21,15 @@
 - (NSString *)description
 {
     return [self text];
+}
+
+- (BOOL)likedByMe
+{
+    return [[self.likes objectsPassingTest:^BOOL(id obj,BOOL *stop){
+            Person *author = (Person *)obj;
+            Person *me = DashAPI.me;
+            return ([me.fb_uid isEqualToString:author.fb_uid]) ? YES : NO;
+            }] count];
 }
 
 @end

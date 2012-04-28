@@ -578,4 +578,11 @@
     //NSLog(@"Encountered an error: %@", error);
 }
 
+#pragma mark - RKRequestDelegate methods
+
+- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
+{
+    NSLog(@"Request response %@", [response bodyAsString]);
+}
+
 @end

@@ -24,7 +24,8 @@ typedef enum {
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) UIImage *backgroundImage;
 @property (nonatomic, strong) UIButton *heart;
-@property (nonatomic, strong) NSString *likeCount;
+@property (nonatomic, strong) NSString *likeCountString;
+@property (nonatomic) NSInteger likeCount;
 @property (nonatomic, strong) UIAlertView *alertView;
 
 + (CGFloat) heightForType:(HighlightViewCellType) type;

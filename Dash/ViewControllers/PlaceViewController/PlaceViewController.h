@@ -37,7 +37,7 @@ typedef enum {
 @class DashAPI;
 @class TitleViewCell;
 
-@interface PlaceViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate>
+@interface PlaceViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, RKRequestDelegate>
 
 @property (nonatomic, strong) Place *place;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;

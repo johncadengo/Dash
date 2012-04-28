@@ -22,6 +22,7 @@
 @synthesize backgroundImage = _backgroundImage;
 @synthesize heart = _heart;
 @synthesize likeCount = _likeCount;
+@synthesize likeCountString = _likeCountString;
 @synthesize alertView = _alertView;
 
 static const CGFloat kTopHeight = 43.5f;
@@ -149,16 +150,12 @@ NSString * const kHighlightTitle = @"Highlights";
     self.author = [NSString stringWithFormat:@"%@", highlight.author.name];
     
     // Find out if we're one of the people who liked it
-    if ([[highlight.likes objectsPassingTest:^BOOL(id obj,BOOL *stop){
-        Person *author = (Person *)obj;
-        Person *me = DashAPI.me;
-        return ([me.fb_uid isEqualToString:author.fb_uid]) ? YES : NO;
-        }] count]) {
+    if ([highlight likedByMe]) {
         self.heart.selected = YES;
     }
     // Two digit max
-    NSInteger n = highlight.likecount.integerValue;
-    self.likeCount = [NSString stringWithFormat:@"%d",(n <= 99) ? n : 99];
+    self.likeCount = highlight.likecount.integerValue;
+    self.likeCountString = [NSString stringWithFormat:@"%d",(self.likeCount <= 99) ? self.likeCount : 99];
     
     // And draw them
     [self setNeedsDisplay];
@@ -167,7 +164,8 @@ NSString * const kHighlightTitle = @"Highlights";
 - (void)fakeIncrement:(id)sender
 {
     if ([DashAPI loggedIn]) {
-        self.likeCount = [NSString stringWithFormat:@"%d", (self.heart.selected) ? 0 : 1];
+        self.likeCount += (self.heart.selected) ? -1 : 1;
+        self.likeCountString = [NSString stringWithFormat:@"%d",(self.likeCount <= 99) ? self.likeCount : 99];
         
         // And draw them
         [self setNeedsDisplay];
@@ -242,7 +240,7 @@ NSString * const kHighlightTitle = @"Highlights";
     
     // Draw like count
     [UIColorFromRGB(kHighlightLikesColor) set];
-    [self.likeCount drawAtPoint:CGPointMake(257.0f + 30.0f, yOffset + 2.5f) withFont:[[self class] likeCountFont]];
+    [self.likeCountString drawAtPoint:CGPointMake(257.0f + 30.0f, yOffset + 2.5f) withFont:[[self class] likeCountFont]];
     
     // Draw line at bottom, as long as we aren't the last cell
     if (YES) { //self.type != HighlightViewCellTypeLast) {

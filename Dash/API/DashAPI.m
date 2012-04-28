@@ -507,8 +507,18 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             highlight.uid, @"hl_id",
                             highlightAuthor.uid, @"hl_author_id", nil];
     
-    NSLog(@"params %@", params);
-    [[RKClient sharedClient] post:@"/feedback/likes" params:params delegate:self.delegate];
+    // Lazy. Toggle, for now
+    if ([highlight likedByMe]) {
+        // If we already have liked it, this means we are unliking it
+        NSLog(@"Trying to delete like highlight");
+        // TODO: Right now this is wrong...
+        NSString *resourceEndPoint = [NSString stringWithFormat:@"/feedback/likes/%d", 1];
+        [[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate];
+    }
+    else {
+        // Create new heart
+        [[RKClient sharedClient] post:@"/feedback/likes" params:params delegate:self.delegate];
+    }
 }
 #pragma mark -
 
