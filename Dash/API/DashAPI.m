@@ -45,7 +45,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Define our author mapping for highlights
     RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
     [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
-    [authorMapping mapAttributes:@"name", nil];
+    [authorMapping mapAttributes:@"name", @"fb_uid", nil];
     
     // Define our highlight mapping, which has a relationship with author
     RKManagedObjectMapping *highlightMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Highlight"];
@@ -260,7 +260,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             types, @"types", nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self];
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self.delegate];
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
@@ -302,7 +302,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             [NSNumber numberWithInt:count], @"count",nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader= [objectManager objectLoaderWithResourcePath:@"feed" delegate:self];
+    RKObjectLoader *objectLoader= [objectManager objectLoaderWithResourcePath:@"feed" delegate:self.delegate];
     objectLoader.method = RKRequestMethodGET;
     objectLoader.params = params;
     objectLoader.userData = [NSNumber numberWithInt:kFeed];
@@ -348,7 +348,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             [NSNumber numberWithInt:count], @"count",nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:RKPathAppendQueryParams(@"places/recommends", params) delegate:self];
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:RKPathAppendQueryParams(@"places/recommends", params) delegate:self.delegate];
     objectLoader.method = RKRequestMethodGET;
     objectLoader.userData = [NSNumber numberWithInt:kRecommends];
     [objectLoader send];
@@ -356,13 +356,39 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
 }
 
-- (RKRequest *)autocomplete:(NSString *)query
+#pragma mark - 
+
+- (void)placeByID:(NSNumber *)uid
+{
+    // Create an object manager and connect core data's persistent store to it
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    
+    RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
+    
+    // We expect to find the place entity inside of a dictionary keyed "places"
+    [objectManager.mappingProvider addObjectMapping:placeMapping];
+    
+    // Params
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.key, @"must_fix",
+                            uid, @"uid", nil];
+    
+    // Prepare our object loader to load and map objects from remote server, and send
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"places" delegate:self.delegate];
+    objectLoader.method = RKRequestMethodPOST;
+    objectLoader.params = params;
+    [objectLoader send];
+}
+
+#pragma mark -
+
+- (void)autocomplete:(NSString *)query
 {
     NSNumber *count = [NSNumber numberWithInt:10];
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
                             query, @"query", 
                             count, @"count", nil];
-    return [[RKClient sharedClient] get:@"/search/autocomplete" queryParams:params delegate:self.delegate];
+    [[RKClient sharedClient] get:@"/search/autocomplete" queryParams:params delegate:self.delegate];
 }
 
 - (void)search:(NSString *)query
@@ -385,7 +411,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             count, @"count", nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"search" delegate:self];
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"search" delegate:self.delegate];
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
@@ -414,7 +440,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             locParam, @"loc", nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"search_nearby" delegate:self];
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"search_nearby" delegate:self.delegate];
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
@@ -458,13 +484,36 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [self.class setShouldRefreshProfile:YES];
 }
 
+- (void)createHighlight:(NSString *)text atPlace:(Place *)place
+{
+    Person *person = self.class.me;
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.key, @"must_fix",
+                            person.fb_uid, @"fb_uid",
+                            place.uid, @"place_id",
+                            text, @"text", nil];
+    [[RKClient sharedClient] post:@"/places/highlights" params:params delegate:self.delegate];
+}
+
+- (void)likeHighlight:(Highlight *)highlight
+{
+    Person *person = self.class.me;
+    Person *highlightAuthor = highlight.author;
+    
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.key, @"must_fix",
+                            person.fb_uid, @"fb_uid",
+                            highlight.uid, @"hl_id",
+                            highlightAuthor.uid, @"hl_author_id", nil];
+    
+    NSLog(@"params %@", params);
+    [[RKClient sharedClient] post:@"/feedback/likes" params:params delegate:self.delegate];
+}
 #pragma mark -
 
 - (void)myProfile
 {
-    // TODO: Instance variable for currently logged in user?
-    // TODO: Handle login logic?
-    [self profileForPerson:nil];
+    [self profileForPerson:[self.class me]];
 }
 
 
@@ -496,11 +545,11 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             @"1", @"id", nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader= [objectManager objectLoaderWithResourcePath:@"people/people" delegate:self];
+    RKObjectLoader *objectLoader= [objectManager objectLoaderWithResourcePath:@"people/people" delegate:self.delegate];
     objectLoader.method = RKRequestMethodGET;
     objectLoader.params = params;
     objectLoader.userData = [NSNumber numberWithInt:kProfile];
-    [objectLoader send];    
+    //[objectLoader send];    
     
     NSLog(@"Profile For Person");
 }

@@ -86,7 +86,7 @@
     self.themeColor = kPlaceThemeOrange;
     
     // Connect to our API.
-    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext];
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
     // Get the highlights associated with the place
     self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
@@ -496,10 +496,8 @@
 - (void)heartTapped:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-    NSLog(@"%d", button.tag);
-    
-    // Toggle like
     button.selected = !button.selected;
+    [self.api likeHighlight:[self.highlights objectAtIndex:button.tag]];
 }
 
 - (void)createHighlight:(id)sender
@@ -560,8 +558,24 @@
         
         [createHighlightViewController setPlace:place];
         [createHighlightViewController setContext:self.managedObjectContext];
+        [createHighlightViewController setApi:self.api];
     }
 }
 
+
+
+#pragma mark - RKObjectLoaderDelegate methods
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
+{
+    self.place = [objects lastObject];
+    
+    [self.tableView reloadData];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
+{
+    //NSLog(@"Encountered an error: %@", error);
+}
 
 @end

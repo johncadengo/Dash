@@ -108,11 +108,9 @@
     [self.dashViewController pop:self];
     
     if (![self.facebook isSessionValid]) {
-        NSLog(@"session not valid");
         [self.facebook authorize:nil];
     }
     else {
-        NSLog(@"session valid");
         [DashAPI setLoggedIn:YES];
         [self dismissModalViewControllerAnimated:YES];
     }

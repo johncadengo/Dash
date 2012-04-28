@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class Place;
+@class DashAPI;
 
 @interface CreateHighlightViewController : UIViewController <UITextViewDelegate>
 
 @property (nonatomic, strong) Place *place;
+@property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UITextView *textView;

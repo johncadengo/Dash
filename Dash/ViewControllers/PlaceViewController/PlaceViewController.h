@@ -8,6 +8,7 @@
 
 #import "MoreInfoViewCell.h"
 #import "HighlightViewCell.h"
+#import <RestKit/RestKit.h>
 
 #pragma mark - Constants
 /** Sections
@@ -36,7 +37,7 @@ typedef enum {
 @class DashAPI;
 @class TitleViewCell;
 
-@interface PlaceViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PlaceViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic, strong) Place *place;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;

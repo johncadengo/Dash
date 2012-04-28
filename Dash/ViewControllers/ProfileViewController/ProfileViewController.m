@@ -333,8 +333,12 @@
 
 - (void)loginWithConnect:(id) sender
 {
-    // Assume we are logging in as John
-    [DashAPI setLoggedIn:YES];
+    if (![self.facebook isSessionValid]) {
+        [self.facebook authorize:nil];
+    }
+    else {
+        [DashAPI setLoggedIn:YES];
+    }
     
     // Reload view. 
     // TODO: Probably some memory leak here right?
@@ -394,6 +398,18 @@
     }
     
     [DashAPI setLoggedIn:NO];
+    [self loadView];
+}
+
+- (void)fbDidLogin 
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    
+    [DashAPI setLoggedIn:YES];
+    [self.facebook requestWithGraphPath:@"me" andDelegate:self];
     [self loadView];
 }
 

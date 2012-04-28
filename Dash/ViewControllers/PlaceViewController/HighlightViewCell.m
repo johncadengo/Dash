@@ -150,6 +150,8 @@ NSString * const kHighlightTitle = @"Highlights";
     self.name = [[NSString stringWithFormat:@"%@", highlight.text] capitalizedString];
     self.author = [NSString stringWithFormat:@"%@", highlight.author.name];
     
+    NSLog(@"hl id %@ lc %@", highlight.uid, highlight.likecount);
+    
     // Two digit max
     NSInteger n = highlight.likecount.integerValue;
     self.likeCount = [NSString stringWithFormat:@"%d",(n <= 99) ? n : 99];

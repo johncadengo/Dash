@@ -10,6 +10,7 @@
 #import "Place.h"
 #import "Place+Helper.h"
 #import "Constants.h"
+#import "DashAPI.h"
 
 @interface CreateHighlightViewController ()
 
@@ -18,6 +19,7 @@
 @implementation CreateHighlightViewController
 
 @synthesize place = _place;
+@synthesize api = _api;
 @synthesize context = _context;
 @synthesize toolbar = _toolbar;
 @synthesize textView = _textView;
@@ -109,7 +111,9 @@
 
 - (void)createHighlight:(id)sender
 {
-    NSLog(@"Post");
+    [self.api createHighlight:self.textView.text atPlace:self.place];
+    [self.api placeByID:self.place.uid];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - Text View Delegate

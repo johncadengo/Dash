@@ -134,6 +134,10 @@ typedef enum {
 
 #pragma mark - 
 
+- (void)placeByID:(NSNumber *)uid;
+
+#pragma mark - 
+
 /** Sends a request to autocomplete a query string for a place
  *  Returns a list of suggested names for places
  */
@@ -158,6 +162,10 @@ typedef enum {
  */
 - (void)thumbsUpPlace:(Place *)place;
 - (void)thumbsDownPlace:(Place *)place;
+
+- (void)createHighlight:(NSString *)text atPlace:(Place *)place;
+- (void)likeHighlight:(Highlight *)highlight;
+
 
 #pragma mark - 
 
