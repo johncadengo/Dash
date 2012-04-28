@@ -14,7 +14,6 @@
 		6715E406145F2D410069D5A8 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6715E403145F2D410069D5A8 /* UIImage+Tint.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6722A4401507F01A007B6838 /* Stats.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A43F1507F01A007B6838 /* Stats.m */; };
 		6722A446150AAA9D007B6838 /* Stats+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A445150AAA9D007B6838 /* Stats+Helper.m */; };
-		6722A449150E05D1007B6838 /* Like+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A448150E05D1007B6838 /* Like+Helper.m */; };
 		6722A44C150E1235007B6838 /* Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6722A44B150E1233007B6838 /* Badge.m */; };
 		6729D056147C1E3B0046C8DB /* RecommendedPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D053147C1E3B0046C8DB /* RecommendedPlacesViewController.m */; };
 		6729D057147C1E3B0046C8DB /* RecommendedPlaceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6729D055147C1E3B0046C8DB /* RecommendedPlaceViewCell.m */; };
@@ -209,7 +208,6 @@
 		67BAC7EB1459E5660001C738 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7EA1459E5660001C738 /* Comment.m */; };
 		67BAC7EE1459E5670001C738 /* FlagPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7ED1459E5670001C738 /* FlagPhoto.m */; };
 		67BAC7F11459E5670001C738 /* FlagPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7F01459E5670001C738 /* FlagPlace.m */; };
-		67BAC7F41459E5670001C738 /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7F31459E5670001C738 /* Like.m */; };
 		67BAC8001459E6370001C738 /* PopLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC7FF1459E6370001C738 /* PopLocation.m */; };
 		67BAC8031459E6370001C738 /* Pop.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8021459E6370001C738 /* Pop.m */; };
 		67BAC8091459E6D40001C738 /* Visit.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8081459E6D40001C738 /* Visit.m */; };
@@ -220,7 +218,6 @@
 		67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */; };
 		67C829091520DB0E0089E95F /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C829081520DB0E0089E95F /* FilterView.m */; };
 		67C84FDA150E2D8B0078CBEF /* Highlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C84FD9150E2D8B0078CBEF /* Highlight.m */; };
-		67C84FDD150E2DB20078CBEF /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C84FDC150E2DB20078CBEF /* Person.m */; };
 		67CC26551450D7BA00B618C0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67CC26541450D7BA00B618C0 /* Storyboard.storyboard */; };
 		67CCDE8914607D8400CF657D /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CCDE8814607D8400CF657D /* LocationTests.m */; };
 		67CF25011537819B006468C9 /* Coffee-Places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CF24FF1537819B006468C9 /* Coffee-Places@2x.png */; };
@@ -228,6 +225,7 @@
 		67CF56381548DE3500BA65FC /* CreateHighlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CF56371548DE3500BA65FC /* CreateHighlightViewController.m */; };
 		67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A4314606B790047C1E4 /* Location+Helper.m */; };
 		67D15A47146070250047C1E4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A46146070250047C1E4 /* Location.m */; };
+		67DD83F2154B92F300E65B8B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83F1154B92F300E65B8B /* Person.m */; };
 		67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DDAC0714EEF0E90018CD36 /* Recommend.m */; };
 		67DE842C152F7EFF00556C54 /* Heart-Gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */; };
 		67DE842D152F7EFF00556C54 /* Heart-Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842B152F7EFF00556C54 /* Heart-Red@2x.png */; };
@@ -364,8 +362,6 @@
 		6722A43F1507F01A007B6838 /* Stats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stats.m; path = "Data Model/Person/Stats.m"; sourceTree = "<group>"; };
 		6722A444150AAA9D007B6838 /* Stats+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Stats+Helper.h"; path = "Data Model/Person/Stats+Helper.h"; sourceTree = "<group>"; };
 		6722A445150AAA9D007B6838 /* Stats+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Stats+Helper.m"; path = "Data Model/Person/Stats+Helper.m"; sourceTree = "<group>"; };
-		6722A447150E05D1007B6838 /* Like+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Like+Helper.h"; path = "Data Model/Actions/Feedback/Like+Helper.h"; sourceTree = "<group>"; };
-		6722A448150E05D1007B6838 /* Like+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Like+Helper.m"; path = "Data Model/Actions/Feedback/Like+Helper.m"; sourceTree = "<group>"; };
 		6722A44A150E1231007B6838 /* Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Badge.h; path = "Data Model/Place/Badge.h"; sourceTree = "<group>"; };
 		6722A44B150E1233007B6838 /* Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Badge.m; path = "Data Model/Place/Badge.m"; sourceTree = "<group>"; };
 		6729D052147C1E3B0046C8DB /* RecommendedPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendedPlacesViewController.h; path = Dash/ViewControllers/PlaceActionsViewController/RecommendedPlacesViewController.h; sourceTree = "<group>"; };
@@ -611,8 +607,6 @@
 		67BAC7ED1459E5670001C738 /* FlagPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlagPhoto.m; path = "Data Model/Actions/Feedback/FlagPhoto.m"; sourceTree = "<group>"; };
 		67BAC7EF1459E5670001C738 /* FlagPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlagPlace.h; path = "Data Model/Actions/Feedback/FlagPlace.h"; sourceTree = "<group>"; };
 		67BAC7F01459E5670001C738 /* FlagPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlagPlace.m; path = "Data Model/Actions/Feedback/FlagPlace.m"; sourceTree = "<group>"; };
-		67BAC7F21459E5670001C738 /* Like.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Like.h; path = "Data Model/Actions/Feedback/Like.h"; sourceTree = "<group>"; };
-		67BAC7F31459E5670001C738 /* Like.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Like.m; path = "Data Model/Actions/Feedback/Like.m"; sourceTree = "<group>"; };
 		67BAC7FE1459E6370001C738 /* PopLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopLocation.h; path = "Data Model/Actions/Pop/PopLocation.h"; sourceTree = "<group>"; };
 		67BAC7FF1459E6370001C738 /* PopLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopLocation.m; path = "Data Model/Actions/Pop/PopLocation.m"; sourceTree = "<group>"; };
 		67BAC8011459E6370001C738 /* Pop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pop.h; path = "Data Model/Actions/Pop/Pop.h"; sourceTree = "<group>"; };
@@ -633,8 +627,6 @@
 		67C829081520DB0E0089E95F /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterView.m; path = Dash/ViewControllers/DashViewController/FilterView.m; sourceTree = "<group>"; };
 		67C84FD8150E2D8B0078CBEF /* Highlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Highlight.h; path = "Data Model/Actions/Highlight/Highlight.h"; sourceTree = "<group>"; };
 		67C84FD9150E2D8B0078CBEF /* Highlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Highlight.m; path = "Data Model/Actions/Highlight/Highlight.m"; sourceTree = "<group>"; };
-		67C84FDB150E2DB20078CBEF /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
-		67C84FDC150E2DB20078CBEF /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person/Person.m"; sourceTree = "<group>"; };
 		67CC26541450D7BA00B618C0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		67CCDE8714607D8400CF657D /* LocationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationTests.h; path = "Logic Tests/LocationTests.h"; sourceTree = "<group>"; };
 		67CCDE8814607D8400CF657D /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationTests.m; path = "Logic Tests/LocationTests.m"; sourceTree = "<group>"; };
@@ -646,6 +638,8 @@
 		67D15A4314606B790047C1E4 /* Location+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+Helper.m"; path = "Data Model/Abstract/Location+Helper.m"; sourceTree = "<group>"; };
 		67D15A45146070250047C1E4 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Data Model/Abstract/Location.h"; sourceTree = "<group>"; };
 		67D15A46146070250047C1E4 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Abstract/Location.m"; sourceTree = "<group>"; };
+		67DD83F0154B92F300E65B8B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
+		67DD83F1154B92F300E65B8B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person/Person.m"; sourceTree = "<group>"; };
 		67DDAC0614EEF0E90018CD36 /* Recommend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recommend.h; path = "Data Model/Actions/PlaceActions/Recommend.h"; sourceTree = "<group>"; };
 		67DDAC0714EEF0E90018CD36 /* Recommend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recommend.m; path = "Data Model/Actions/PlaceActions/Recommend.m"; sourceTree = "<group>"; };
 		67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Heart-Gray@2x.png"; path = "Dash/Images/PlaceProfile/Heart-Gray@2x.png"; sourceTree = "<group>"; };
@@ -1144,8 +1138,8 @@
 		678882981459D5CF00F7E826 /* Person */ = {
 			isa = PBXGroup;
 			children = (
-				67C84FDB150E2DB20078CBEF /* Person.h */,
-				67C84FDC150E2DB20078CBEF /* Person.m */,
+				67DD83F0154B92F300E65B8B /* Person.h */,
+				67DD83F1154B92F300E65B8B /* Person.m */,
 				672C2C9B1459FB06006A1D6B /* Person+Helper.h */,
 				672C2C9C1459FB06006A1D6B /* Person+Helper.m */,
 				672C2C781459E9B1006A1D6B /* Friendships.h */,
@@ -1417,10 +1411,6 @@
 		67BAC7E81459E5230001C738 /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
-				67BAC7F21459E5670001C738 /* Like.h */,
-				67BAC7F31459E5670001C738 /* Like.m */,
-				6722A447150E05D1007B6838 /* Like+Helper.h */,
-				6722A448150E05D1007B6838 /* Like+Helper.m */,
 				67BAC7EF1459E5670001C738 /* FlagPlace.h */,
 				67BAC7F01459E5670001C738 /* FlagPlace.m */,
 				67BAC7EC1459E5670001C738 /* FlagPhoto.h */,
@@ -1946,7 +1936,6 @@
 				67BAC7EB1459E5660001C738 /* Comment.m in Sources */,
 				67BAC7EE1459E5670001C738 /* FlagPhoto.m in Sources */,
 				67BAC7F11459E5670001C738 /* FlagPlace.m in Sources */,
-				67BAC7F41459E5670001C738 /* Like.m in Sources */,
 				67BAC8001459E6370001C738 /* PopLocation.m in Sources */,
 				67BAC8031459E6370001C738 /* Pop.m in Sources */,
 				67BAC8091459E6D40001C738 /* Visit.m in Sources */,
@@ -2005,10 +1994,8 @@
 				67F20E911500357D0026CF4A /* LoginViewController.m in Sources */,
 				6722A4401507F01A007B6838 /* Stats.m in Sources */,
 				6722A446150AAA9D007B6838 /* Stats+Helper.m in Sources */,
-				6722A449150E05D1007B6838 /* Like+Helper.m in Sources */,
 				6722A44C150E1235007B6838 /* Badge.m in Sources */,
 				67C84FDA150E2D8B0078CBEF /* Highlight.m in Sources */,
-				67C84FDD150E2DB20078CBEF /* Person.m in Sources */,
 				67A5D8FC151B817C00924CAB /* FilterViewController.m in Sources */,
 				67C829091520DB0E0089E95F /* FilterView.m in Sources */,
 				6789D2C1152E1A920029BF48 /* TitleViewCell.m in Sources */,
@@ -2023,6 +2010,7 @@
 				67E2AA1F15482A170002E641 /* Place.m in Sources */,
 				67E2AA2215482C430002E641 /* NewsItem+Helper.m in Sources */,
 				67CF56381548DE3500BA65FC /* CreateHighlightViewController.m in Sources */,
+				67DD83F2154B92F300E65B8B /* Person.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

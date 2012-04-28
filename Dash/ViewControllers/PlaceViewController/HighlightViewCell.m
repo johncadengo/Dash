@@ -9,8 +9,6 @@
 #import "HighlightViewCell.h"
 #import "Highlight.h"
 #import "Highlight+Helper.h"
-#import "Like.h"
-#import "Like+Helper.h"
 #import "Person.h"
 #import "Person+Helper.h"
 #import "Constants.h"
@@ -150,8 +148,14 @@ NSString * const kHighlightTitle = @"Highlights";
     self.name = [[NSString stringWithFormat:@"%@", highlight.text] capitalizedString];
     self.author = [NSString stringWithFormat:@"%@", highlight.author.name];
     
-    NSLog(@"hl id %@ lc %@", highlight.uid, highlight.likecount);
-    
+    // Find out if we're one of the people who liked it
+    if ([[highlight.likes objectsPassingTest:^BOOL(id obj,BOOL *stop){
+        Person *author = (Person *)obj;
+        Person *me = DashAPI.me;
+        return ([me.fb_uid isEqualToString:author.fb_uid]) ? YES : NO;
+        }] count]) {
+        self.heart.selected = YES;
+    }
     // Two digit max
     NSInteger n = highlight.likecount.integerValue;
     self.likeCount = [NSString stringWithFormat:@"%d",(n <= 99) ? n : 99];

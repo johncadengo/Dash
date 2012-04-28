@@ -2,7 +2,7 @@
 //  Person.h
 //  Dash
 //
-//  Created by John Cadengo on 3/12/12.
+//  Created by John Cadengo on 4/27/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -19,10 +19,11 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *actions;
 @property (nonatomic, retain) NSSet *friends;
+@property (nonatomic, retain) Highlight *highlights;
 @property (nonatomic, retain) NSSet *pops;
 @property (nonatomic, retain) Photo *profilepic;
 @property (nonatomic, retain) Stats *stats;
-@property (nonatomic, retain) Highlight *highlights;
+@property (nonatomic, retain) NSSet *liked_highlights;
 @end
 
 @interface Person (CoreDataGeneratedAccessors)
@@ -41,5 +42,10 @@
 - (void)removePopsObject:(Pop *)value;
 - (void)addPops:(NSSet *)values;
 - (void)removePops:(NSSet *)values;
+
+- (void)addLiked_highlightsObject:(Highlight *)value;
+- (void)removeLiked_highlightsObject:(Highlight *)value;
+- (void)addLiked_highlights:(NSSet *)values;
+- (void)removeLiked_highlights:(NSSet *)values;
 
 @end

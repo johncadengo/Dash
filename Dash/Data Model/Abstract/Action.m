@@ -8,7 +8,6 @@
 
 #import "Action.h"
 #import "Comment.h"
-#import "Like.h"
 #import "Person.h"
 
 

@@ -55,6 +55,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     // Define the relationship mapping between highlight and author
     [highlightMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    [highlightMapping mapKeyPath:@"likes" toRelationship:@"likes" withMapping:authorMapping];
     
     // Define the location mapping
     RKManagedObjectMapping *locationMapping = [RKManagedObjectMapping mappingForEntityWithName:@"PlaceLocation"];

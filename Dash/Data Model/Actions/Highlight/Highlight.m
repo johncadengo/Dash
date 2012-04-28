@@ -7,7 +7,6 @@
 //
 
 #import "Highlight.h"
-#import "Like.h"
 #import "Person.h"
 #import "Place.h"
 

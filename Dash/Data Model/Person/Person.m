@@ -2,7 +2,7 @@
 //  Person.m
 //  Dash
 //
-//  Created by John Cadengo on 3/12/12.
+//  Created by John Cadengo on 4/27/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -22,9 +22,10 @@
 @dynamic name;
 @dynamic actions;
 @dynamic friends;
+@dynamic highlights;
 @dynamic pops;
 @dynamic profilepic;
 @dynamic stats;
-@dynamic highlights;
+@dynamic liked_highlights;
 
 @end
