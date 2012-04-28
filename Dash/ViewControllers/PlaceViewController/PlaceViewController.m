@@ -129,8 +129,10 @@
     
     button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = frame;
-    [button setImage:[UIImage imageNamed:@"ThumbsUpButton"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"ThumbsUpButton.png"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"ThumbsUpButtonSelected.png"] forState:UIControlStateSelected];
     [button addTarget:self action:@selector(thumbsUp:) forControlEvents:UIControlEventTouchUpInside];
+    [button setSelected:YES];
     self.thumbsUpButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     
     self.upLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 0.0f, 40.0f, 49.0f)];
@@ -142,6 +144,7 @@
     button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = frame;
     [button setImage:[UIImage imageNamed:@"ThumbsDownButton"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"ThumbsDownButtonSelected.png"] forState:UIControlStateSelected];
     [button addTarget:self action:@selector(thumbsDown:) forControlEvents:UIControlEventTouchUpInside];
     self.thumbsDownButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     
