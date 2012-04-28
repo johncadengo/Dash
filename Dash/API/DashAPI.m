@@ -366,8 +366,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
     
-    // We expect to find the place entity inside of a dictionary keyed "places"
-    [objectManager.mappingProvider addObjectMapping:placeMapping];
+    // We expect to find the place entity inside of a dictionary keyed "place"
+    [objectManager.mappingProvider setMapping:placeMapping forKeyPath:@"place"];
     
     // Params
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -493,7 +493,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             person.fb_uid, @"fb_uid",
                             place.uid, @"place_id",
                             text, @"text", nil];
-    [[RKClient sharedClient] post:@"/places/highlights" params:params delegate:self.delegate];
+    [[[RKClient sharedClient] post:@"/places/highlights" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kHighlights]];
 }
 
 - (void)likeHighlight:(Highlight *)highlight

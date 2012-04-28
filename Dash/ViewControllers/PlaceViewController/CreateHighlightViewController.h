@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
 
 @class Place;
 @class DashAPI;
 
-@interface CreateHighlightViewController : UIViewController <UITextViewDelegate>
+@interface CreateHighlightViewController : UIViewController <UITextViewDelegate, RKRequestDelegate>
 
 @property (nonatomic, strong) Place *place;
 @property (nonatomic, strong) DashAPI *api;
+@property (nonatomic, weak) id <RKObjectLoaderDelegate> delegate;
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UITextView *textView;

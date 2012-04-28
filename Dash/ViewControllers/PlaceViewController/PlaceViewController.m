@@ -560,7 +560,7 @@
         
         [createHighlightViewController setPlace:place];
         [createHighlightViewController setContext:self.managedObjectContext];
-        [createHighlightViewController setApi:self.api];
+        [createHighlightViewController setDelegate:self];
     }
 }
 
@@ -577,7 +577,7 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
 {
-    //NSLog(@"Encountered an error: %@", error);
+    NSLog(@"Encountered an error: %@", error);
 }
 
 #pragma mark - RKRequestDelegate methods

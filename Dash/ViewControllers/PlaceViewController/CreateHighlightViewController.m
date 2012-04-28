@@ -21,6 +21,7 @@
 @synthesize place = _place;
 @synthesize api = _api;
 @synthesize context = _context;
+@synthesize delegate = _delegate;
 @synthesize toolbar = _toolbar;
 @synthesize textView = _textView;
 @synthesize cancelButton = _cancelButton;
@@ -40,6 +41,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.context delegate:self];
     
     // Set up the textfield
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 49.0f, 320.0f - 10.0f, 159.0f - 10.0f)];
@@ -111,9 +114,7 @@
 
 - (void)createHighlight:(id)sender
 {
-    [self.api createHighlight:self.textView.text atPlace:self.place];
-    [self.api placeByID:self.place.uid];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.api createHighlight:self.textView.text atPlace:self.place];    
 }
 
 #pragma mark - Text View Delegate
@@ -144,5 +145,17 @@
     }
     return YES;
 } 
+
+#pragma mark - RKRequest
+
+- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
+{
+    // Make sure we refresh the place
+    if ([request.userData isEqualToNumber:[NSNumber numberWithInt:kHighlights]]) {
+        [self.api setDelegate:self.delegate];
+        [self.api placeByID:self.place.uid];
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
 
 @end
