@@ -153,6 +153,9 @@ NSString * const kHighlightTitle = @"Highlights";
     if ([highlight likedByMe]) {
         self.heart.selected = YES;
     }
+    else {
+        self.heart.selected = NO;
+    }
     // Two digit max
     self.likeCount = highlight.likecount.integerValue;
     self.likeCountString = [NSString stringWithFormat:@"%d",(self.likeCount <= 99) ? self.likeCount : 99];

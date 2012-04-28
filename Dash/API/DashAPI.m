@@ -468,17 +468,17 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             self.key, @"must_fix",
                             person.fb_uid, @"fb_uid",
                             place.uid, @"place_id", nil];
-    if ([place savedByMe]) {
-        // Undo
-        NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/saves/%d", 1];
-        [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
-    }
     if ([place recommendedByMe]) {
         // Toggle
         NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/recommends/%d", 1];
         [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
     }
     else {
+        if ([place savedByMe]) {
+            // Undo
+            NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/saves/%d", 1];
+            [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
+        }
         // Create
         [[[RKClient sharedClient] post:@"/places/recommends" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
     }
@@ -494,18 +494,19 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             self.key, @"must_fix",
                             person.fb_uid, @"fb_uid",
                             place.uid, @"place_id", nil];
-    if ([place recommendedByMe]) {
-        // Undo
-        NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/recommends/%d", 1];
-        [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
-    }
     if ([place savedByMe]) {
         // Toggle
         NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/saves/%d", 1];
         [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
     }
     else {
+        if ([place recommendedByMe]) {
+            // Undo
+            NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/recommends/%d", 1];
+            [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
+        }
         // Create
+        NSLog(@"Trying to thumbs down! %@ %@", person.fb_uid, place.uid);
         [[[RKClient sharedClient] post:@"/places/saves" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
     }
     

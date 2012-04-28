@@ -229,6 +229,8 @@
 		67DD83F9154BC3E200E65B8B /* Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83F8154BC3E200E65B8B /* Badge.m */; };
 		67DD83FC154BC3FA00E65B8B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83FB154BC3FA00E65B8B /* Place.m */; };
 		67DD83FF154BC41900E65B8B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83FE154BC41900E65B8B /* Person.m */; };
+		67DD8401154BD15600E65B8B /* Icon(Orange,114x114)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DD8400154BD15600E65B8B /* Icon(Orange,114x114)@2x.png */; };
+		67DD8403154BD45900E65B8B /* Icon(Orange,57x57)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DD8402154BD45900E65B8B /* Icon(Orange,57x57)@2x.png */; };
 		67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DDAC0714EEF0E90018CD36 /* Recommend.m */; };
 		67DE842C152F7EFF00556C54 /* Heart-Gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */; };
 		67DE842D152F7EFF00556C54 /* Heart-Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842B152F7EFF00556C54 /* Heart-Red@2x.png */; };
@@ -646,6 +648,8 @@
 		67DD83FB154BC3FA00E65B8B /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place/Place.m"; sourceTree = "<group>"; };
 		67DD83FD154BC41900E65B8B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
 		67DD83FE154BC41900E65B8B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person/Person.m"; sourceTree = "<group>"; };
+		67DD8400154BD15600E65B8B /* Icon(Orange,114x114)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon(Orange,114x114)@2x.png"; sourceTree = "<group>"; };
+		67DD8402154BD45900E65B8B /* Icon(Orange,57x57)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon(Orange,57x57)@2x.png"; sourceTree = "<group>"; };
 		67DDAC0614EEF0E90018CD36 /* Recommend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recommend.h; path = "Data Model/Actions/PlaceActions/Recommend.h"; sourceTree = "<group>"; };
 		67DDAC0714EEF0E90018CD36 /* Recommend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recommend.m; path = "Data Model/Actions/PlaceActions/Recommend.m"; sourceTree = "<group>"; };
 		67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Heart-Gray@2x.png"; path = "Dash/Images/PlaceProfile/Heart-Gray@2x.png"; sourceTree = "<group>"; };
@@ -828,6 +832,8 @@
 		67348A9F1446350700A3160A = {
 			isa = PBXGroup;
 			children = (
+				67DD8402154BD45900E65B8B /* Icon(Orange,57x57)@2x.png */,
+				67DD8400154BD15600E65B8B /* Icon(Orange,114x114)@2x.png */,
 				67697554145A5BFA001191CF /* RestKit.xcodeproj */,
 				67348AB61446350700A3160A /* Dash */,
 				67348AD21446350700A3160A /* DashTests */,
@@ -1871,6 +1877,8 @@
 				67E2AA181545944A0002E641 /* FBDialog.bundle in Resources */,
 				67DD83F5154BA8D400E65B8B /* ThumbsDownButtonSelected@2x.png in Resources */,
 				67DD83F6154BA8D400E65B8B /* ThumbsUpButtonSelected@2x.png in Resources */,
+				67DD8401154BD15600E65B8B /* Icon(Orange,114x114)@2x.png in Resources */,
+				67DD8403154BD45900E65B8B /* Icon(Orange,57x57)@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
