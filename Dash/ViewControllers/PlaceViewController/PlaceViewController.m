@@ -37,6 +37,8 @@
 @synthesize createHighlightButton = _createHighlightButton;
 @synthesize thumbsUpButton = _thumbsUpButton;
 @synthesize thumbsDownButton = _thumbsDownButton;
+@synthesize upButton = _upButton;
+@synthesize downButton = _downButton;
 @synthesize upLabel = _upLabel;
 @synthesize downLabel = _downLabel;
 @synthesize alertView = _alertView;
@@ -119,24 +121,24 @@
     [button addTarget:self action:@selector(createHighlight:) forControlEvents:UIControlEventTouchUpInside];
     self.createHighlightButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = frame;
-    [button setImage:[UIImage imageNamed:@"ThumbsUpButton.png"] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"ThumbsUpButtonSelected.png"] forState:UIControlStateSelected];
-    [button addTarget:self action:@selector(thumbsUp:) forControlEvents:UIControlEventTouchUpInside];
-    self.thumbsUpButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.upButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.upButton.frame = frame;
+    [self.upButton setImage:[UIImage imageNamed:@"ThumbsUpButton.png"] forState:UIControlStateNormal];
+    [self.upButton setImage:[UIImage imageNamed:@"ThumbsUpButtonSelected.png"] forState:UIControlStateSelected];
+    [self.upButton addTarget:self action:@selector(thumbsUp:) forControlEvents:UIControlEventTouchUpInside];
+    self.thumbsUpButton = [[UIBarButtonItem alloc] initWithCustomView:self.upButton];
     
     self.upLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 0.0f, 40.0f, 49.0f)];
     [self.upLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:15.0f]];
     [self.upLabel setTextColor:UIColorFromRGB(kPlaceToolbarTextColor)];
     [self.upLabel setBackgroundColor:[UIColor clearColor]];
     
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = frame;
-    [button setImage:[UIImage imageNamed:@"ThumbsDownButton"] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"ThumbsDownButtonSelected.png"] forState:UIControlStateSelected];
-    [button addTarget:self action:@selector(thumbsDown:) forControlEvents:UIControlEventTouchUpInside];
-    self.thumbsDownButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.downButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.downButton.frame = frame;
+    [self.downButton setImage:[UIImage imageNamed:@"ThumbsDownButton"] forState:UIControlStateNormal];
+    [self.downButton setImage:[UIImage imageNamed:@"ThumbsDownButtonSelected.png"] forState:UIControlStateSelected];
+    [self.downButton addTarget:self action:@selector(thumbsDown:) forControlEvents:UIControlEventTouchUpInside];
+    self.thumbsDownButton = [[UIBarButtonItem alloc] initWithCustomView:self.downButton];
     
     self.downLabel = [[UILabel alloc] initWithFrame:CGRectMake(280.0f, 0.0f, 40.0f, 49.0f)];
     [self.downLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:15.0f]];
@@ -149,6 +151,12 @@
     
     UIBarButtonItem *innerNegative = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     innerNegative.width = -5.0f; // 10 - 5 = 5.0f
+    
+    // Initial values
+    [self.upButton setSelected:[self.place recommendedByMe]];
+    [self.downButton setSelected:[self.place savedByMe]];
+    [self.downLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsdowncount integerValue])]];
+    [self.upLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsupcount integerValue])]];
     
     // Add them. Sidenote: 320 - (3 * 100) = 20. 20 / 4 = 5.0f
     self.toolbar.items = [NSArray arrayWithObjects:outerNegative, self.createHighlightButton, 
@@ -568,11 +576,10 @@
     [self.tableView reloadData];
     
     // Tool bar stuff
+    [self.upButton setSelected:[self.place recommendedByMe]];
+    [self.downButton setSelected:[self.place savedByMe]];
     [self.downLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsdowncount integerValue])]];
     [self.upLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsupcount integerValue])]];
-    
-    // Check if we upped or downed
-    
 }
 
 #pragma mark - RKObjectLoaderDelegate methods

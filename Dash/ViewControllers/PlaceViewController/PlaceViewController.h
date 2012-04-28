@@ -53,6 +53,8 @@ typedef enum {
 @property (nonatomic, strong) UIBarButtonItem *createHighlightButton;
 @property (nonatomic, strong) UIBarButtonItem *thumbsUpButton;
 @property (nonatomic, strong) UIBarButtonItem *thumbsDownButton;
+@property (nonatomic, strong) UIButton *upButton;
+@property (nonatomic, strong) UIButton *downButton;
 @property (nonatomic, strong) UILabel *upLabel;
 @property (nonatomic, strong) UILabel *downLabel;
 @property (nonatomic, strong) UIAlertView *alertView;
