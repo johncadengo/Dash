@@ -226,6 +226,8 @@
 		67D15A4414606B790047C1E4 /* Location+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A4314606B790047C1E4 /* Location+Helper.m */; };
 		67D15A47146070250047C1E4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D15A46146070250047C1E4 /* Location.m */; };
 		67DD83F2154B92F300E65B8B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83F1154B92F300E65B8B /* Person.m */; };
+		67DD83F5154BA8D400E65B8B /* ThumbsDownButtonSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DD83F3154BA8D400E65B8B /* ThumbsDownButtonSelected@2x.png */; };
+		67DD83F6154BA8D400E65B8B /* ThumbsUpButtonSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DD83F4154BA8D400E65B8B /* ThumbsUpButtonSelected@2x.png */; };
 		67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DDAC0714EEF0E90018CD36 /* Recommend.m */; };
 		67DE842C152F7EFF00556C54 /* Heart-Gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */; };
 		67DE842D152F7EFF00556C54 /* Heart-Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842B152F7EFF00556C54 /* Heart-Red@2x.png */; };
@@ -640,6 +642,8 @@
 		67D15A46146070250047C1E4 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Data Model/Abstract/Location.m"; sourceTree = "<group>"; };
 		67DD83F0154B92F300E65B8B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
 		67DD83F1154B92F300E65B8B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person/Person.m"; sourceTree = "<group>"; };
+		67DD83F3154BA8D400E65B8B /* ThumbsDownButtonSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThumbsDownButtonSelected@2x.png"; path = "Dash/Images/PlaceProfile/ThumbsDownButtonSelected@2x.png"; sourceTree = "<group>"; };
+		67DD83F4154BA8D400E65B8B /* ThumbsUpButtonSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThumbsUpButtonSelected@2x.png"; path = "Dash/Images/PlaceProfile/ThumbsUpButtonSelected@2x.png"; sourceTree = "<group>"; };
 		67DDAC0614EEF0E90018CD36 /* Recommend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recommend.h; path = "Data Model/Actions/PlaceActions/Recommend.h"; sourceTree = "<group>"; };
 		67DDAC0714EEF0E90018CD36 /* Recommend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recommend.m; path = "Data Model/Actions/PlaceActions/Recommend.m"; sourceTree = "<group>"; };
 		67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Heart-Gray@2x.png"; path = "Dash/Images/PlaceProfile/Heart-Gray@2x.png"; sourceTree = "<group>"; };
@@ -1241,6 +1245,8 @@
 				6798E3B51535EC2A00539E1C /* MapButton@2x.png */,
 				6789D2CB152E349C0029BF48 /* ThumbsDownButton@2x.png */,
 				6789D2CC152E349C0029BF48 /* ThumbsUpButton@2x.png */,
+				67DD83F3154BA8D400E65B8B /* ThumbsDownButtonSelected@2x.png */,
+				67DD83F4154BA8D400E65B8B /* ThumbsUpButtonSelected@2x.png */,
 			);
 			name = PlaceProfile;
 			sourceTree = "<group>";
@@ -1863,6 +1869,8 @@
 				67ACE2F11541D6D9005487D6 /* whiteArrow.png in Resources */,
 				67ACE2F21541D6D9005487D6 /* whiteArrow@2x.png in Resources */,
 				67E2AA181545944A0002E641 /* FBDialog.bundle in Resources */,
+				67DD83F5154BA8D400E65B8B /* ThumbsDownButtonSelected@2x.png in Resources */,
+				67DD83F6154BA8D400E65B8B /* ThumbsUpButtonSelected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
