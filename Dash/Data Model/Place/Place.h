@@ -2,7 +2,7 @@
 //  Place.h
 //  Dash
 //
-//  Created by John Cadengo on 4/25/12.
+//  Created by John Cadengo on 4/28/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Uniqueness.h"
 
-@class Badge, Category, FlagPlace, Highlight, Hours, NewsItem, PlaceAction, PlaceLocation, Pop;
+@class Badge, Category, FlagPlace, Highlight, Hours, NewsItem, Person, PlaceAction, PlaceLocation, Pop;
 
 @interface Place : Uniqueness
 
@@ -18,6 +18,8 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * phone;
 @property (nonatomic, retain) NSString * price;
+@property (nonatomic, retain) NSNumber * thumbsdowncount;
+@property (nonatomic, retain) NSNumber * thumbsupcount;
 @property (nonatomic, retain) NSSet *actions;
 @property (nonatomic, retain) NSSet *badges;
 @property (nonatomic, retain) NSSet *categories;
@@ -25,11 +27,10 @@
 @property (nonatomic, retain) NSSet *highlights;
 @property (nonatomic, retain) NSSet *hours;
 @property (nonatomic, retain) PlaceLocation *location;
-@property (nonatomic, retain) NSSet *pops;
 @property (nonatomic, retain) NSSet *newsItems;
-@property (nonatomic, retain) NSNumber * thumbsdowncount;
-@property (nonatomic, retain) NSNumber * thumbsupcount;
-
+@property (nonatomic, retain) NSSet *pops;
+@property (nonatomic, retain) NSSet *recommends;
+@property (nonatomic, retain) NSSet *saves;
 @end
 
 @interface Place (CoreDataGeneratedAccessors)
@@ -64,14 +65,24 @@
 - (void)addHours:(NSSet *)values;
 - (void)removeHours:(NSSet *)values;
 
+- (void)addNewsItemsObject:(NewsItem *)value;
+- (void)removeNewsItemsObject:(NewsItem *)value;
+- (void)addNewsItems:(NSSet *)values;
+- (void)removeNewsItems:(NSSet *)values;
+
 - (void)addPopsObject:(Pop *)value;
 - (void)removePopsObject:(Pop *)value;
 - (void)addPops:(NSSet *)values;
 - (void)removePops:(NSSet *)values;
 
-- (void)addNewsItemsObject:(NewsItem *)value;
-- (void)removeNewsItemsObject:(NewsItem *)value;
-- (void)addNewsItems:(NSSet *)values;
-- (void)removeNewsItems:(NSSet *)values;
+- (void)addRecommendsObject:(Person *)value;
+- (void)removeRecommendsObject:(Person *)value;
+- (void)addRecommends:(NSSet *)values;
+- (void)removeRecommends:(NSSet *)values;
+
+- (void)addSavesObject:(Person *)value;
+- (void)removeSavesObject:(Person *)value;
+- (void)addSaves:(NSSet *)values;
+- (void)removeSaves:(NSSet *)values;
 
 @end

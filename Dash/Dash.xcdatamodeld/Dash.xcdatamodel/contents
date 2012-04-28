@@ -71,6 +71,8 @@
         <relationship name="liked_highlights" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Highlight" inverseName="likes" inverseEntity="Highlight" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="party" inverseEntity="Pop" syncable="YES"/>
         <relationship name="profilepic" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="person" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="recommended_places" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="recommends" inverseEntity="Place" syncable="YES"/>
+        <relationship name="saved_places" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="saves" inverseEntity="Place" syncable="YES"/>
         <relationship name="stats" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Stats" inverseName="person" inverseEntity="Stats" syncable="YES"/>
     </entity>
     <entity name="Photo" representedClassName="Photo" syncable="YES">
@@ -95,6 +97,8 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="place" inverseEntity="PlaceLocation" syncable="YES"/>
         <relationship name="newsItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsItem" inverseName="place" inverseEntity="NewsItem" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="places" inverseEntity="Pop" syncable="YES"/>
+        <relationship name="recommends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="recommended_places" inverseEntity="Person" syncable="YES"/>
+        <relationship name="saves" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="saved_places" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="PlaceAction" representedClassName="PlaceAction" isAbstract="YES" parentEntity="Action" syncable="YES">
         <relationship name="place" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="actions" inverseEntity="Place" syncable="YES"/>
@@ -139,9 +143,9 @@
         <element name="Hours" positionX="-216" positionY="-126" width="128" height="105"/>
         <element name="Location" positionX="-315" positionY="-9" width="128" height="135"/>
         <element name="NewsItem" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Person" positionX="250" positionY="255" width="128" height="135"/>
+        <element name="Person" positionX="250" positionY="255" width="128" height="225"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="Place" positionX="-72" positionY="-36" width="128" height="270"/>
+        <element name="Place" positionX="-72" positionY="-36" width="128" height="300"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
         <element name="Pop" positionX="-243" positionY="285" width="128" height="90"/>

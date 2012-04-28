@@ -12,7 +12,7 @@
 @class Place;
 @class DashAPI;
 
-@interface CreateHighlightViewController : UIViewController <UITextViewDelegate, RKRequestDelegate>
+@interface CreateHighlightViewController : UIViewController <UITextViewDelegate, RKRequestDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic, strong) Place *place;
 @property (nonatomic, strong) DashAPI *api;

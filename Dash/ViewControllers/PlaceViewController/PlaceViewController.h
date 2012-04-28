@@ -84,4 +84,6 @@ typedef enum {
 - (void)thumbsUp:(id)sender;
 - (void)thumbsDown:(id)sender;
 
+- (void)refresh;
+
 @end

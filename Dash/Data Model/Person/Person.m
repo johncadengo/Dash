@@ -2,7 +2,7 @@
 //  Person.m
 //  Dash
 //
-//  Created by John Cadengo on 4/27/12.
+//  Created by John Cadengo on 4/28/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 #import "Friendships.h"
 #import "Highlight.h"
 #import "Photo.h"
+#import "Place.h"
 #import "Pop.h"
 #import "Stats.h"
 
@@ -27,5 +28,7 @@
 @dynamic profilepic;
 @dynamic stats;
 @dynamic liked_highlights;
+@dynamic recommended_places;
+@dynamic saved_places;
 
 @end

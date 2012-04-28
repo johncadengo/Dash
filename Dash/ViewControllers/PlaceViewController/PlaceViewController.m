@@ -87,16 +87,8 @@
     
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
-    
-    // Get the highlights associated with the place
-    self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
-    self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
-    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-    // Adjust tableview's frame to account for the toolbar
-    //CGRect frame = self.tableView.frame;
-    //self.tableView.frame = CGRectMake(frame.origin.x, frame.origin.y, 320.0f, frame.size.height - 49.0f);
+    [self refresh];
 }
 
 
@@ -137,7 +129,6 @@
     self.upLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 0.0f, 40.0f, 49.0f)];
     [self.upLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:15.0f]];
     [self.upLabel setTextColor:UIColorFromRGB(kPlaceToolbarTextColor)];
-    [self.upLabel setText:[NSString stringWithFormat:@"%@", self.place.thumbsupcount]];
     [self.upLabel setBackgroundColor:[UIColor clearColor]];
     
     button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -150,7 +141,6 @@
     self.downLabel = [[UILabel alloc] initWithFrame:CGRectMake(280.0f, 0.0f, 40.0f, 49.0f)];
     [self.downLabel setFont:[UIFont fontWithName:kHelveticaNeueBold size:15.0f]];
     [self.downLabel setTextColor:UIColorFromRGB(kPlaceToolbarTextColor)];
-    [self.downLabel setText:[NSString stringWithFormat:@"%@", self.place.thumbsdowncount]];
     [self.downLabel setBackgroundColor:[UIColor clearColor]];
     
     // Adjust padding
@@ -165,6 +155,11 @@
                           innerNegative, self.thumbsUpButton, innerNegative, self.thumbsDownButton, nil];
     [self.toolbar addSubview:self.upLabel];
     [self.toolbar addSubview:self.downLabel];
+    
+    // Make this smarter, but for now
+    if ([DashAPI shouldRefreshFavorites] || [DashAPI shouldRefreshProfile]) {
+        [self.api placeByID:self.place.uid];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -522,7 +517,6 @@
     if ([DashAPI loggedIn]) {
         // Check if we're logged in
         [self.api thumbsUpPlace:self.place];
-        [self.upLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsupcount integerValue] + 1)]];
     }
     else {
         // Otherwise, let them know they can't do that yet
@@ -538,7 +532,6 @@
     if ([DashAPI loggedIn]) {
         // Check if we're logged in
         [self.api thumbsDownPlace:self.place];
-        [self.downLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsdowncount integerValue] + 1)]];
     }
     else {
         // Otherwise, let them know they can't do that yet
@@ -565,14 +558,29 @@
 }
 
 
+#pragma mark -
+
+- (void)refresh
+{
+    // Table view cells
+    self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
+    self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
+    [self.tableView reloadData];
+    
+    // Tool bar stuff
+    [self.downLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsdowncount integerValue])]];
+    [self.upLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsupcount integerValue])]];
+    
+    // Check if we upped or downed
+    
+}
 
 #pragma mark - RKObjectLoaderDelegate methods
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
     self.place = [objects lastObject];
-    
-    [self.tableView reloadData];
+    [self refresh];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
@@ -584,7 +592,9 @@
 
 - (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
 {
-    NSLog(@"Request response %@", [response bodyAsString]);
+    if ([request.userData isEqualToNumber:[NSNumber numberWithInt:kRecommends]] || [request.userData isEqualToNumber:[NSNumber numberWithInt:kSaves]]) {
+        [self.api placeByID:self.place.uid];
+    }
 }
 
 @end

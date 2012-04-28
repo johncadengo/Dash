@@ -80,6 +80,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [placeMapping mapKeyPath:@"highlights" toRelationship:@"highlights" withMapping:highlightMapping];
     [placeMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
     [placeMapping mapKeyPath:@"badges" toRelationship:@"badges" withMapping:badgeMapping];
+    [placeMapping mapKeyPath:@"recommends" toRelationship:@"recommends" withMapping:authorMapping];
+    [placeMapping mapKeyPath:@"saves" toRelationship:@"saves" withMapping:authorMapping];
     
     return placeMapping;
 }
@@ -466,7 +468,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             self.key, @"must_fix",
                             person.fb_uid, @"fb_uid",
                             place.uid, @"place_id", nil];
-    [[RKClient sharedClient] post:@"/places/recommends" params:params delegate:self.delegate];
+    [[[RKClient sharedClient] post:@"/places/recommends" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
     
     [self.class setShouldRefreshFavorites:YES];
     [self.class setShouldRefreshProfile:YES];
@@ -479,7 +481,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             self.key, @"must_fix",
                             person.fb_uid, @"fb_uid",
                             place.uid, @"place_id", nil];
-    [[RKClient sharedClient] post:@"/places/saves" params:params delegate:self.delegate];
+    [[[RKClient sharedClient] post:@"/places/saves" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
     
     [self.class setShouldRefreshFavorites:YES];
     [self.class setShouldRefreshProfile:YES];

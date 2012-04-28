@@ -2,7 +2,7 @@
 //  Person.h
 //  Dash
 //
-//  Created by John Cadengo on 4/27/12.
+//  Created by John Cadengo on 4/28/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Uniqueness.h"
 
-@class Action, Friendships, Highlight, Photo, Pop, Stats;
+@class Action, Friendships, Highlight, Photo, Place, Pop, Stats;
 
 @interface Person : Uniqueness
 
@@ -24,6 +24,8 @@
 @property (nonatomic, retain) Photo *profilepic;
 @property (nonatomic, retain) Stats *stats;
 @property (nonatomic, retain) NSSet *liked_highlights;
+@property (nonatomic, retain) NSSet *recommended_places;
+@property (nonatomic, retain) NSSet *saved_places;
 @end
 
 @interface Person (CoreDataGeneratedAccessors)
@@ -47,5 +49,15 @@
 - (void)removeLiked_highlightsObject:(Highlight *)value;
 - (void)addLiked_highlights:(NSSet *)values;
 - (void)removeLiked_highlights:(NSSet *)values;
+
+- (void)addRecommended_placesObject:(Place *)value;
+- (void)removeRecommended_placesObject:(Place *)value;
+- (void)addRecommended_places:(NSSet *)values;
+- (void)removeRecommended_places:(NSSet *)values;
+
+- (void)addSaved_placesObject:(Place *)value;
+- (void)removeSaved_placesObject:(Place *)value;
+- (void)addSaved_places:(NSSet *)values;
+- (void)removeSaved_places:(NSSet *)values;
 
 @end

@@ -148,13 +148,27 @@
 
 #pragma mark - RKRequest
 
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    // Now forward this to the place
+    NSLog(@"Hello %@ %@", self.delegate, objects);
+    [self.delegate objectLoader:objectLoader didLoadObjects:objects];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
+{
+    NSLog(@"Encountered an error: %@", error);
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Uh oh" message:@"We had trouble processing your highlight. Please try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alertView show];
+}
+
 - (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
 {
     // Make sure we refresh the place
     if ([request.userData isEqualToNumber:[NSNumber numberWithInt:kHighlights]]) {
-        [self.api setDelegate:self.delegate];
         [self.api placeByID:self.place.uid];
-        [self dismissModalViewControllerAnimated:YES];
     }
 }
 

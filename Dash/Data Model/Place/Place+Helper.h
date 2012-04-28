@@ -14,4 +14,7 @@
 - (NSString*)categoriesDescriptionLong;
 - (NSString*)categoriesDescriptionWithLimit:(NSInteger)limit;
 
+- (BOOL)recommendedByMe;
+- (BOOL)savedByMe;
+
 @end

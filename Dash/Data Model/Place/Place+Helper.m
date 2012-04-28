@@ -8,6 +8,7 @@
 
 #import "Place+Helper.h"
 #import "Category.h"
+#import "DashAPI.h"
 
 @implementation Place (Helper)
 
@@ -58,6 +59,24 @@ enum {
     }
     
     return [categoryInfo capitalizedString];
+}
+
+- (BOOL)recommendedByMe
+{
+    return [[self.recommends objectsPassingTest:^BOOL(id obj,BOOL *stop){
+        Person *author = (Person *)obj;
+        Person *me = DashAPI.me;
+        return ([me.fb_uid isEqualToString:author.fb_uid]) ? YES : NO;
+    }] count];
+}
+
+- (BOOL)savedByMe
+{
+    return [[self.saves objectsPassingTest:^BOOL(id obj,BOOL *stop){
+        Person *author = (Person *)obj;
+        Person *me = DashAPI.me;
+        return ([me.fb_uid isEqualToString:author.fb_uid]) ? YES : NO;
+    }] count];
 }
 
 @end
