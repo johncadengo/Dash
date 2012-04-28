@@ -13,6 +13,7 @@
 		<string>Icon(Orange,114x114)@2x.png</string>
 		<string>Default@2x.png</string>
 		<string>Icon(Orange,57x57)@2x.png</string>
+		<string>Default.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -23,6 +24,7 @@
 				<string>Icon(Orange,114x114)@2x.png</string>
 				<string>Default@2x.png</string>
 				<string>Icon(Orange,57x57)@2x.png</string>
+				<string>Default.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>
