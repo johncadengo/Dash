@@ -11,8 +11,8 @@
 #import "NSArray+Helpers.h"
 #import "NSString+RandomStrings.h"
 #import "NSDate+RandomDates.h"
-
 #import "Place.h"
+#import "Place+Helper.h"
 
 // Private properties
 @interface DashAPI ()
@@ -468,7 +468,20 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             self.key, @"must_fix",
                             person.fb_uid, @"fb_uid",
                             place.uid, @"place_id", nil];
-    [[[RKClient sharedClient] post:@"/places/recommends" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
+    if ([place savedByMe]) {
+        // Undo
+        NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/saves/%d", 1];
+        [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
+    }
+    if ([place recommendedByMe]) {
+        // Toggle
+        NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/recommends/%d", 1];
+        [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
+    }
+    else {
+        // Create
+        [[[RKClient sharedClient] post:@"/places/recommends" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
+    }
     
     [self.class setShouldRefreshFavorites:YES];
     [self.class setShouldRefreshProfile:YES];
@@ -481,7 +494,20 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             self.key, @"must_fix",
                             person.fb_uid, @"fb_uid",
                             place.uid, @"place_id", nil];
-    [[[RKClient sharedClient] post:@"/places/saves" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
+    if ([place recommendedByMe]) {
+        // Undo
+        NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/recommends/%d", 1];
+        [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
+    }
+    if ([place savedByMe]) {
+        // Toggle
+        NSString *resourceEndPoint = [NSString stringWithFormat:@"/places/saves/%d", 1];
+        [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
+    }
+    else {
+        // Create
+        [[[RKClient sharedClient] post:@"/places/saves" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
+    }
     
     [self.class setShouldRefreshFavorites:YES];
     [self.class setShouldRefreshProfile:YES];
@@ -512,8 +538,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Lazy. Toggle, for now
     if ([highlight likedByMe]) {
         // If we already have liked it, this means we are unliking it
-        NSLog(@"Trying to delete like highlight");
-        // TODO: Right now this is wrong...
+        // TODO: Right now this URL scheme is funky...
         NSString *resourceEndPoint = [NSString stringWithFormat:@"/feedback/likes/%d", 1];
         [[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate];
     }

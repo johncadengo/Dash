@@ -523,7 +523,6 @@
 - (void)thumbsUp:(id)sender
 {
     if ([DashAPI loggedIn]) {
-        // Check if we're logged in
         [self.api thumbsUpPlace:self.place];
     }
     else {
@@ -537,8 +536,7 @@
 
 - (void)thumbsDown:(id)sender
 {
-    if ([DashAPI loggedIn]) {
-        // Check if we're logged in
+    if ([DashAPI loggedIn]) {        
         [self.api thumbsDownPlace:self.place];
     }
     else {
