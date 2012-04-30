@@ -147,6 +147,8 @@
 		6799127A154ED194007CD93A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67991279154ED194007CD93A /* MapViewController.m */; };
 		6799127C154EE237007CD93A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6799127B154EE236007CD93A /* MapKit.framework */; };
 		6799127F154EF113007CD93A /* DashMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6799127E154EF112007CD93A /* DashMapAnnotation.m */; };
+		67991298154F1712007CD93A /* Dislike.m in Sources */ = {isa = PBXBuildFile; fileRef = 67991297154F1712007CD93A /* Dislike.m */; };
+		6799129B154F1713007CD93A /* Recommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 6799129A154F1713007CD93A /* Recommend.m */; };
 		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
 		679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F91469D19600E0CDE2 /* Photo+Helper.m */; };
 		679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */; };
@@ -214,7 +216,6 @@
 		67BAC8091459E6D40001C738 /* Visit.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8081459E6D40001C738 /* Visit.m */; };
 		67BAC80C1459E6D50001C738 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC80B1459E6D50001C738 /* Email.m */; };
 		67BAC80F1459E6D50001C738 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC80E1459E6D50001C738 /* Rate.m */; };
-		67BAC8121459E6D50001C738 /* Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8111459E6D50001C738 /* Save.m */; };
 		67BFB666147C262B005C862F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB665147C262B005C862F /* PlaceViewController.m */; };
 		67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */; };
 		67C829091520DB0E0089E95F /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C829081520DB0E0089E95F /* FilterView.m */; };
@@ -231,7 +232,6 @@
 		67DD83F9154BC3E200E65B8B /* Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83F8154BC3E200E65B8B /* Badge.m */; };
 		67DD83FC154BC3FA00E65B8B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83FB154BC3FA00E65B8B /* Place.m */; };
 		67DD83FF154BC41900E65B8B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83FE154BC41900E65B8B /* Person.m */; };
-		67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DDAC0714EEF0E90018CD36 /* Recommend.m */; };
 		67DE842C152F7EFF00556C54 /* Heart-Gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */; };
 		67DE842D152F7EFF00556C54 /* Heart-Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842B152F7EFF00556C54 /* Heart-Red@2x.png */; };
 		67DE8430152F8CCF00556C54 /* BadgeSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DE842F152F8CCE00556C54 /* BadgeSquareView.m */; };
@@ -534,6 +534,10 @@
 		6799127B154EE236007CD93A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6799127D154EF112007CD93A /* DashMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashMapAnnotation.h; path = Dash/ViewControllers/PlaceViewController/DashMapAnnotation.h; sourceTree = "<group>"; };
 		6799127E154EF112007CD93A /* DashMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashMapAnnotation.m; path = Dash/ViewControllers/PlaceViewController/DashMapAnnotation.m; sourceTree = "<group>"; };
+		67991296154F1712007CD93A /* Dislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dislike.h; path = "Data Model/Actions/PlaceActions/Dislike.h"; sourceTree = "<group>"; };
+		67991297154F1712007CD93A /* Dislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dislike.m; path = "Data Model/Actions/PlaceActions/Dislike.m"; sourceTree = "<group>"; };
+		67991299154F1713007CD93A /* Recommend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recommend.h; path = "Data Model/Actions/PlaceActions/Recommend.h"; sourceTree = "<group>"; };
+		6799129A154F1713007CD93A /* Recommend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recommend.m; path = "Data Model/Actions/PlaceActions/Recommend.m"; sourceTree = "<group>"; };
 		679A48F51469D02F00E0CDE2 /* FeedbackActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackActivityCell.h; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.h; sourceTree = "<group>"; };
 		679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackActivityCell.m; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.m; sourceTree = "<group>"; };
 		679A48F81469D19500E0CDE2 /* Photo+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Photo+Helper.h"; path = "Data Model/Abstract/Photo+Helper.h"; sourceTree = "<group>"; };
@@ -623,8 +627,6 @@
 		67BAC80B1459E6D50001C738 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Email.m; path = "Data Model/Actions/PlaceActions/Email.m"; sourceTree = "<group>"; };
 		67BAC80D1459E6D50001C738 /* Rate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rate.h; path = "Data Model/Actions/PlaceActions/Rate.h"; sourceTree = "<group>"; };
 		67BAC80E1459E6D50001C738 /* Rate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rate.m; path = "Data Model/Actions/PlaceActions/Rate.m"; sourceTree = "<group>"; };
-		67BAC8101459E6D50001C738 /* Save.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Save.h; path = "Data Model/Actions/PlaceActions/Save.h"; sourceTree = "<group>"; };
-		67BAC8111459E6D50001C738 /* Save.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Save.m; path = "Data Model/Actions/PlaceActions/Save.m"; sourceTree = "<group>"; };
 		67BFB664147C262B005C862F /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceViewController.h; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.h; sourceTree = "<group>"; };
 		67BFB665147C262B005C862F /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewController.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.m; sourceTree = "<group>"; };
 		67BFB667147C4476005C862F /* PlaceHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceHeaderViewCell.h; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.h; sourceTree = "<group>"; };
@@ -652,8 +654,6 @@
 		67DD83FB154BC3FA00E65B8B /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place/Place.m"; sourceTree = "<group>"; };
 		67DD83FD154BC41900E65B8B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
 		67DD83FE154BC41900E65B8B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person/Person.m"; sourceTree = "<group>"; };
-		67DDAC0614EEF0E90018CD36 /* Recommend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recommend.h; path = "Data Model/Actions/PlaceActions/Recommend.h"; sourceTree = "<group>"; };
-		67DDAC0714EEF0E90018CD36 /* Recommend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recommend.m; path = "Data Model/Actions/PlaceActions/Recommend.m"; sourceTree = "<group>"; };
 		67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Heart-Gray@2x.png"; path = "Dash/Images/PlaceProfile/Heart-Gray@2x.png"; sourceTree = "<group>"; };
 		67DE842B152F7EFF00556C54 /* Heart-Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Heart-Red@2x.png"; path = "Dash/Images/PlaceProfile/Heart-Red@2x.png"; sourceTree = "<group>"; };
 		67DE842E152F8CCE00556C54 /* BadgeSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BadgeSquareView.h; path = Dash/ViewControllers/PlaceViewController/BadgeSquareView.h; sourceTree = "<group>"; };
@@ -1443,16 +1443,16 @@
 		67BAC8131459E6DD0001C738 /* PlaceActions */ = {
 			isa = PBXGroup;
 			children = (
-				67DDAC0614EEF0E90018CD36 /* Recommend.h */,
-				67DDAC0714EEF0E90018CD36 /* Recommend.m */,
-				67BAC8101459E6D50001C738 /* Save.h */,
-				67BAC8111459E6D50001C738 /* Save.m */,
 				67BAC80D1459E6D50001C738 /* Rate.h */,
 				67BAC80E1459E6D50001C738 /* Rate.m */,
 				67BAC80A1459E6D40001C738 /* Email.h */,
 				67BAC80B1459E6D50001C738 /* Email.m */,
 				67BAC8071459E6D40001C738 /* Visit.h */,
 				67BAC8081459E6D40001C738 /* Visit.m */,
+				67991299154F1713007CD93A /* Recommend.h */,
+				6799129A154F1713007CD93A /* Recommend.m */,
+				67991296154F1712007CD93A /* Dislike.h */,
+				67991297154F1712007CD93A /* Dislike.m */,
 			);
 			name = PlaceActions;
 			sourceTree = "<group>";
@@ -1959,7 +1959,6 @@
 				67BAC8091459E6D40001C738 /* Visit.m in Sources */,
 				67BAC80C1459E6D50001C738 /* Email.m in Sources */,
 				67BAC80F1459E6D50001C738 /* Rate.m in Sources */,
-				67BAC8121459E6D50001C738 /* Save.m in Sources */,
 				672C2C731459E9A4006A1D6B /* Category.m in Sources */,
 				672C2C741459E9A4006A1D6B /* Hours.m in Sources */,
 				672C2C761459E9A4006A1D6B /* PlaceLocation.m in Sources */,
@@ -2008,7 +2007,6 @@
 				6731868114917B370066E64A /* JCLocationManagerSingleton.m in Sources */,
 				6735AEA514BCC450000259AF /* Place+Helper.m in Sources */,
 				67A8977414C782DE00494273 /* FilterViewSegue.m in Sources */,
-				67DDAC0814EEF0E90018CD36 /* Recommend.m in Sources */,
 				67F20E911500357D0026CF4A /* LoginViewController.m in Sources */,
 				6722A4401507F01A007B6838 /* Stats.m in Sources */,
 				6722A446150AAA9D007B6838 /* Stats+Helper.m in Sources */,
@@ -2031,6 +2029,8 @@
 				67DD83FF154BC41900E65B8B /* Person.m in Sources */,
 				6799127A154ED194007CD93A /* MapViewController.m in Sources */,
 				6799127F154EF113007CD93A /* DashMapAnnotation.m in Sources */,
+				67991298154F1712007CD93A /* Dislike.m in Sources */,
+				6799129B154F1713007CD93A /* Recommend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

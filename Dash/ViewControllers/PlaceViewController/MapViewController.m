@@ -19,6 +19,7 @@
 
 @synthesize map = _map;
 @synthesize coordinate = _coordinate;
+@synthesize title = _myTitle;
 @synthesize subtitle = _subtitle;
 @synthesize toolbar = _toolbar;
 @synthesize cancelButton = _cancelButton;
@@ -96,7 +97,6 @@
 {
     NSMutableString *tempStr = [NSMutableString stringWithString:str];
     [tempStr replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tempStr length])];
-    
     
     return [[NSString stringWithFormat:@"%@",tempStr] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }

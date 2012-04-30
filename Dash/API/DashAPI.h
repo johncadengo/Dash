@@ -19,13 +19,8 @@
 #import "Highlight+Helper.h"
 #import "Comment.h"
 #import "Comment+Helper.h"
-
 #import "Photo.h"
-
 #import "Action+Helper.h"
-
-#import "Save.h"
-#import "Recommend.h"
 #import "Badge.h"
 
 #pragma - Enum constants

@@ -1,20 +1,20 @@
 //
-//  Recommend.m
+//  Dislike.m
 //  Dash
 //
 //  Created by John Cadengo on 4/30/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Recommend.h"
+#import "Dislike.h"
 #import "Person.h"
 #import "Place.h"
 
 
-@implementation Recommend
+@implementation Dislike
 
-@dynamic uid;
 @dynamic timestamp;
+@dynamic uid;
 @dynamic place;
 @dynamic author;
 

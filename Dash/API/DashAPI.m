@@ -506,7 +506,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
             [[[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate] setUserData:[NSNumber numberWithInt:kRecommends]];
         }
         // Create
-        NSLog(@"Trying to thumbs down! %@ %@", person.fb_uid, place.uid);
+        NSLog(@"Trying to thumbs down! %@", params);
         [[[RKClient sharedClient] post:@"/places/saves" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kSaves]];
     }
     

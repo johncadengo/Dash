@@ -1,5 +1,5 @@
 //
-//  Recommend.h
+//  Dislike.h
 //  Dash
 //
 //  Created by John Cadengo on 4/30/12.
@@ -11,10 +11,10 @@
 
 @class Person, Place;
 
-@interface Recommend : NSManagedObject
+@interface Dislike : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * uid;
 @property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSNumber * uid;
 @property (nonatomic, retain) Place *place;
 @property (nonatomic, retain) Person *author;
 

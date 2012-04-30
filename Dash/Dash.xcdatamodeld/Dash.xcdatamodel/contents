@@ -18,6 +18,12 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="action" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="comments" inverseEntity="Action" syncable="YES"/>
     </entity>
+    <entity name="Dislike" representedClassName="Dislike" syncable="YES">
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
+        <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" syncable="YES"/>
+    </entity>
     <entity name="Email" representedClassName="Email" parentEntity="PlaceAction" syncable="YES"/>
     <entity name="Flag" representedClassName="Flag" parentEntity="Action" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -117,8 +123,12 @@
     <entity name="Rate" representedClassName="Rate" parentEntity="PlaceAction" syncable="YES">
         <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="Recommend" representedClassName="Recommend" parentEntity="PlaceAction" syncable="YES"/>
-    <entity name="Save" representedClassName="Save" parentEntity="PlaceAction" syncable="YES"/>
+    <entity name="Recommend" representedClassName="Recommend" syncable="YES">
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
+        <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" syncable="YES"/>
+    </entity>
     <entity name="Stats" representedClassName="Stats" syncable="YES">
         <attribute name="favorites" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="followers" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -151,10 +161,10 @@
         <element name="Pop" positionX="-243" positionY="285" width="128" height="90"/>
         <element name="PopLocation" positionX="-243" positionY="162" width="128" height="60"/>
         <element name="Rate" positionX="-72" positionY="288" width="128" height="60"/>
-        <element name="Recommend" positionX="117" positionY="495" width="128" height="120"/>
-        <element name="Save" positionX="-72" positionY="180" width="128" height="45"/>
         <element name="Stats" positionX="405" positionY="351" width="128" height="105"/>
         <element name="Uniqueness" positionX="99" positionY="-225" width="128" height="60"/>
         <element name="Visit" positionX="-72" positionY="234" width="128" height="45"/>
+        <element name="Recommend" positionX="117" positionY="495" width="128" height="105"/>
+        <element name="Dislike" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>
