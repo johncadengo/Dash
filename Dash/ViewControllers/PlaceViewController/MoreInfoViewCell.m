@@ -46,7 +46,7 @@
         self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.mapButton.frame = CGRectMake(15.0f, 50.0f, 70.0f, 40.0f);
         [self.mapButton setImage:[UIImage imageNamed:@"MapButton.png"] forState:UIControlStateNormal];
-        [self.mapButton addTarget:self action:@selector(map:) forControlEvents:UIControlEventTouchUpInside];
+        //[self.mapButton addTarget:self action:@selector(map:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.mapButton];
         
         self.callButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -129,7 +129,9 @@
 
 - (void)map:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self URLEncodeString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", self.addressLabel.text]]]];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self URLEncodeString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", self.addressLabel.text]]]];
+    
+
 }
 
 #pragma mark - 

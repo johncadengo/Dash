@@ -8,9 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+
+@class Place;
 
 @interface MapViewController : UIViewController
 
 @property (nonatomic, strong) MKMapView *map;
+@property (nonatomic) CLLocationCoordinate2D loc;
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIBarButtonItem *cancelButton;
+@property (nonatomic, strong) UIBarButtonItem *doneButton;
+
+- (void)setWithPlace:(Place *)place;
+- (NSString *) URLEncodeString:(NSString *) str;
+- (void)googleMap:(id)sender;
 
 @end

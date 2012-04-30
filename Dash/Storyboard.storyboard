@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="k9c-Gj-ADy">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -29,44 +28,19 @@
             </objects>
             <point key="canvasLocation" x="447" y="-1200"/>
         </scene>
-        <!--Highlight View Controller - Detail View-->
-        <scene sceneID="oNg-Nb-Z2g">
+        <!--Map View Controller-->
+        <scene sceneID="Rdz-yl-ZHb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lot-FR-rOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="d3P-bh-jfq" customClass="HighlightViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EjF-6C-g3f">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PO2-J8-wWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Hsi-wz-X6t" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8wY-hl-dom">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JQR-be-sBZ" customClass="NewsItemViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="muc-9H-w8N">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="d3P-bh-jfq" id="SxJ-OU-zh0"/>
-                            <outlet property="delegate" destination="d3P-bh-jfq" id="0oL-a5-eYh"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Detail View" id="8xt-b4-i5J"/>
-                </tableViewController>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
             </objects>
-            <point key="canvasLocation" x="902" y="-1200"/>
+            <point key="canvasLocation" x="1326" y="-1348"/>
         </scene>
         <!--Dash View Controller - Dash-->
         <scene sceneID="fkx-2H-wDy">
@@ -246,6 +220,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
                     <connections>
                         <segue destination="jSF-Va-Qwt" kind="modal" identifier="ShowCreateHighlight" id="0hi-N0-Abz"/>
+                        <segue destination="Hsi-wz-X6t" kind="modal" identifier="ShowMapViewController" id="jxD-Jl-B7f"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -263,7 +238,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1326" y="-755"/>
+            <point key="canvasLocation" x="1338" y="-691"/>
         </scene>
         <!--Navigation Controller - Dash-->
         <scene sceneID="phr-Xt-Zrw">
@@ -386,38 +361,6 @@
         <image name="Profile.png" width="16" height="16"/>
         <image name="Search.png" width="52" height="54"/>
     </resources>
-    <classes>
-        <class className="CreateHighlightViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateHighlightViewController.h"/>
-        </class>
-        <class className="DashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashViewController.h"/>
-        </class>
-        <class className="FeedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedViewController.h"/>
-        </class>
-        <class className="FilterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FilterViewController.h"/>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-        </class>
-        <class className="NewsItemViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsItemViewCell.h"/>
-        </class>
-        <class className="PlaceViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
-        </class>
-        <class className="ProfileViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-        </class>
-        <class className="RecommendedPlacesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecommendedPlacesViewController.h"/>
-        </class>
-        <class className="SearchViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

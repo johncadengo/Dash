@@ -20,6 +20,7 @@
 #import "BadgesViewCell.h"
 #import "HighlightViewCell.h"
 #import "CreateHighlightViewController.h"
+#import "MapViewController.h"
 
 @implementation PlaceViewController
 
@@ -385,6 +386,7 @@
             // Connect us to the cell
             [self setMoreInfoCell:(MoreInfoViewCell *)cell];
             [self.moreInfoCell setWithPlace:self.place];
+            [self.moreInfoCell.mapButton addTarget:self action:@selector(map:) forControlEvents:UIControlEventTouchUpInside];
         }
         else {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
@@ -498,6 +500,11 @@
 
 #pragma mark - Buttons
 
+- (void)map:(id)sender
+{
+    [self performSegueWithIdentifier:kShowMapViewControllerSegueIdentifier sender:self.place];
+}
+
 - (void)heartTapped:(id)sender
 {
     UIButton *button = (UIButton *)sender;
@@ -560,6 +567,12 @@
         [createHighlightViewController setPlace:place];
         [createHighlightViewController setContext:self.managedObjectContext];
         [createHighlightViewController setDelegate:self];
+    }
+    else if ([[segue identifier] isEqualToString:kShowMapViewControllerSegueIdentifier]) {
+        MapViewController *mapViewController = (MapViewController *)[segue destinationViewController];
+        Place *place = (Place *)sender;
+        
+        [mapViewController setWithPlace:place];
     }
 }
 

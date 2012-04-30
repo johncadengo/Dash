@@ -59,9 +59,12 @@
     [self.cancelButton setTintColor:[UIColor blackColor]];
     
     // Add the space inbetween
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] 
+    UIBarButtonItem *flexibleSpace1 = [[UIBarButtonItem alloc] 
                                   initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
-                                                                               target:nil action:nil];
+                                       target:nil action:nil];
+    UIBarButtonItem *flexibleSpace2 = [[UIBarButtonItem alloc] 
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
+                                       target:nil action:nil];
     
     // Add the title
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 190.0f, 23.0f)];
@@ -81,7 +84,7 @@
     // Add the toolbar
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0f, 44.0f)];
     [self.toolbar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton, flexibleSpace, self.toolbarTitle, flexibleSpace, self.doneButton, nil]];
+    [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton, flexibleSpace1, self.toolbarTitle, flexibleSpace2, self.doneButton, nil]];
     [self.view addSubview:self.toolbar];
     
     // Add the character count label

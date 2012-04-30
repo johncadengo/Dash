@@ -145,6 +145,7 @@
 		6798E3B61535EC2A00539E1C /* CallButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6798E3B41535EC2A00539E1C /* CallButton@2x.png */; };
 		6798E3B71535EC2A00539E1C /* MapButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6798E3B51535EC2A00539E1C /* MapButton@2x.png */; };
 		6799127A154ED194007CD93A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67991279154ED194007CD93A /* MapViewController.m */; };
+		6799127C154EE237007CD93A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6799127B154EE236007CD93A /* MapKit.framework */; };
 		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
 		679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F91469D19600E0CDE2 /* Photo+Helper.m */; };
 		679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */; };
@@ -529,6 +530,7 @@
 		6798E3B51535EC2A00539E1C /* MapButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MapButton@2x.png"; path = "Dash/Images/PlaceProfile/MapButton@2x.png"; sourceTree = "<group>"; };
 		67991278154ED194007CD93A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Dash/ViewControllers/PlaceViewController/MapViewController.h; sourceTree = "<group>"; };
 		67991279154ED194007CD93A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = Dash/ViewControllers/PlaceViewController/MapViewController.m; sourceTree = "<group>"; };
+		6799127B154EE236007CD93A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		679A48F51469D02F00E0CDE2 /* FeedbackActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackActivityCell.h; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.h; sourceTree = "<group>"; };
 		679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackActivityCell.m; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.m; sourceTree = "<group>"; };
 		679A48F81469D19500E0CDE2 /* Photo+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Photo+Helper.h"; path = "Data Model/Abstract/Photo+Helper.h"; sourceTree = "<group>"; };
@@ -709,6 +711,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6799127C154EE237007CD93A /* MapKit.framework in Frameworks */,
 				670956B4145EFF9C00057E32 /* QuartzCore.framework in Frameworks */,
 				6769758D145A5CAE001191CF /* libRestKitCoreData.a in Frameworks */,
 				6769758E145A5CAE001191CF /* libRestKitJSONParserJSONKit.a in Frameworks */,
@@ -857,6 +860,7 @@
 			isa = PBXGroup;
 			children = (
 				67697582145A5C82001191CF /* libxml2.dylib */,
+				6799127B154EE236007CD93A /* MapKit.framework */,
 				67697581145A5C82001191CF /* CFNetwork.framework */,
 				67348AB41446350700A3160A /* CoreData.framework */,
 				67348AB21446350700A3160A /* CoreGraphics.framework */,
