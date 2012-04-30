@@ -18,7 +18,8 @@
 @implementation MapViewController
 
 @synthesize map = _map;
-@synthesize loc = _loc;
+@synthesize coordinate = _coordinate;
+@synthesize subtitle = _subtitle;
 @synthesize toolbar = _toolbar;
 @synthesize cancelButton = _cancelButton;
 @synthesize doneButton = _doneButton;
@@ -39,7 +40,7 @@
     self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, 480.0f - 64.0f)];
     [self.map setDelegate:self];
     [self.view addSubview:self.map];
-    MKCoordinateRegion region = MKCoordinateRegionMake(self.loc, MKCoordinateSpanMake(0.02, 0.02));
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.coordinate, MKCoordinateSpanMake(0.02, 0.02));
     [self.map setRegion:region animated:YES];
     
     // Add the cancel button
@@ -78,11 +79,16 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark -
+
 - (void)setWithPlace:(Place *)place
 {
     CLLocationDegrees lat = place.location.latitude.doubleValue;
     CLLocationDegrees lng = place.location.longitude.doubleValue;
-    self.loc = CLLocationCoordinate2DMake(lat, lng);
+    self.coordinate = CLLocationCoordinate2DMake(lat, lng);
+    
+    self.title = [NSString stringWithFormat:@"%@", place.name];
+    self.subtitle = [NSString stringWithFormat:@"%@", [place.address capitalizedString]];
 }
 
 - (NSString *) URLEncodeString:(NSString *) str
@@ -96,7 +102,18 @@
 
 - (void)googleMap:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self URLEncodeString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%f,%f", self.loc.latitude, self.loc.longitude]]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self URLEncodeString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%f,%f", self.coordinate.latitude, self.coordinate.longitude]]]];
+}
+
+#pragma mark -
+
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{
+    MKPinAnnotationView *annView=[[MKPinAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"currentloc"];
+    annView.pinColor = MKPinAnnotationColorRed;
+    annView.animatesDrop=TRUE;
+    annView.canShowCallout = YES;
+    annView.calloutOffset = CGPointMake(-5, 5);
+    return annView;
 }
 
 @end

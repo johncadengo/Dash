@@ -12,10 +12,12 @@
 
 @class Place;
 
-@interface MapViewController : UIViewController <MKMapViewDelegate>
+@interface MapViewController : UIViewController <MKMapViewDelegate, MKAnnotation>
 
 @property (nonatomic, strong) MKMapView *map;
-@property (nonatomic) CLLocationCoordinate2D loc;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *subtitle;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
