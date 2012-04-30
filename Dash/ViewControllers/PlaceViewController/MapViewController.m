@@ -39,6 +39,7 @@
     
     self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, 480.0f - 64.0f)];
     [self.map setDelegate:self];
+    [self.map addAnnotation:self];
     [self.view addSubview:self.map];
     MKCoordinateRegion region = MKCoordinateRegionMake(self.coordinate, MKCoordinateSpanMake(0.02, 0.02));
     [self.map setRegion:region animated:YES];
