@@ -351,8 +351,8 @@
         self.settingsSheet = [[UIActionSheet alloc] initWithTitle:@"Settings" 
                                                          delegate:self 
                                                 cancelButtonTitle:@"Cancel" 
-                                           destructiveButtonTitle:nil 
-                                                otherButtonTitles:@"Log out", nil];
+                                           destructiveButtonTitle:@"Log out" 
+                                                otherButtonTitles:nil];
     }
     
     [self.settingsSheet showFromTabBar:self.tabBarController.tabBar];
