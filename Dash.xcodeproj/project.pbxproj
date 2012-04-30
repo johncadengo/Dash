@@ -144,6 +144,7 @@
 		6798E3B31535EBE800539E1C /* MoreInformationButtonOpen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6798E3B21535EBE800539E1C /* MoreInformationButtonOpen@2x.png */; };
 		6798E3B61535EC2A00539E1C /* CallButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6798E3B41535EC2A00539E1C /* CallButton@2x.png */; };
 		6798E3B71535EC2A00539E1C /* MapButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6798E3B51535EC2A00539E1C /* MapButton@2x.png */; };
+		6799127A154ED194007CD93A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67991279154ED194007CD93A /* MapViewController.m */; };
 		679A48F71469D02F00E0CDE2 /* FeedbackActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */; };
 		679A48FA1469D19600E0CDE2 /* Photo+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A48F91469D19600E0CDE2 /* Photo+Helper.m */; };
 		679A49061469F2A900E0CDE2 /* JCImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A49051469F2A900E0CDE2 /* JCImageGalleryViewController.m */; };
@@ -526,6 +527,8 @@
 		6798E3B21535EBE800539E1C /* MoreInformationButtonOpen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MoreInformationButtonOpen@2x.png"; path = "Dash/Images/PlaceProfile/MoreInformationButtonOpen@2x.png"; sourceTree = "<group>"; };
 		6798E3B41535EC2A00539E1C /* CallButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CallButton@2x.png"; path = "Dash/Images/PlaceProfile/CallButton@2x.png"; sourceTree = "<group>"; };
 		6798E3B51535EC2A00539E1C /* MapButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MapButton@2x.png"; path = "Dash/Images/PlaceProfile/MapButton@2x.png"; sourceTree = "<group>"; };
+		67991278154ED194007CD93A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Dash/ViewControllers/PlaceViewController/MapViewController.h; sourceTree = "<group>"; };
+		67991279154ED194007CD93A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = Dash/ViewControllers/PlaceViewController/MapViewController.m; sourceTree = "<group>"; };
 		679A48F51469D02F00E0CDE2 /* FeedbackActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackActivityCell.h; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.h; sourceTree = "<group>"; };
 		679A48F61469D02F00E0CDE2 /* FeedbackActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackActivityCell.m; path = Dash/ViewControllers/HighlightViewController/FeedbackActivityCell.m; sourceTree = "<group>"; };
 		679A48F81469D19500E0CDE2 /* Photo+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Photo+Helper.h"; path = "Data Model/Abstract/Photo+Helper.h"; sourceTree = "<group>"; };
@@ -781,6 +784,8 @@
 				67DE842F152F8CCE00556C54 /* BadgeSquareView.m */,
 				67CF56361548DE3500BA65FC /* CreateHighlightViewController.h */,
 				67CF56371548DE3500BA65FC /* CreateHighlightViewController.m */,
+				67991278154ED194007CD93A /* MapViewController.h */,
+				67991279154ED194007CD93A /* MapViewController.m */,
 			);
 			name = PlaceViewController;
 			sourceTree = "<group>";
@@ -2015,6 +2020,7 @@
 				67DD83F9154BC3E200E65B8B /* Badge.m in Sources */,
 				67DD83FC154BC3FA00E65B8B /* Place.m in Sources */,
 				67DD83FF154BC41900E65B8B /* Person.m in Sources */,
+				6799127A154ED194007CD93A /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2118,6 +2124,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
@@ -2138,6 +2145,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHRISTOPHER KIM";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dash/Dash-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
