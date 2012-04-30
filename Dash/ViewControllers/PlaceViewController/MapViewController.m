@@ -37,7 +37,10 @@
     [super viewDidLoad];
     
     self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, 480.0f - 64.0f)];
+    [self.map setDelegate:self];
     [self.view addSubview:self.map];
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.loc, MKCoordinateSpanMake(0.02, 0.02));
+    [self.map setRegion:region animated:YES];
     
     // Add the cancel button
     self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" 
@@ -80,17 +83,10 @@
     CLLocationDegrees lat = place.location.latitude.doubleValue;
     CLLocationDegrees lng = place.location.longitude.doubleValue;
     self.loc = CLLocationCoordinate2DMake(lat, lng);
-    
-    MKCoordinateRegion region = MKCoordinateRegionMake(self.loc, MKCoordinateSpanMake(0.2, 0.2));
-    
-    [self.map setCenterCoordinate:self.loc];
-    [self.map setRegion:region];
-    [self.map regionThatFits:region];
 }
 
 - (NSString *) URLEncodeString:(NSString *) str
 {
-    
     NSMutableString *tempStr = [NSMutableString stringWithString:str];
     [tempStr replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tempStr length])];
     

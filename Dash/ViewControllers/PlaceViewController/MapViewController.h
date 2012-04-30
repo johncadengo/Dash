@@ -12,7 +12,7 @@
 
 @class Place;
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <MKMapViewDelegate>
 
 @property (nonatomic, strong) MKMapView *map;
 @property (nonatomic) CLLocationCoordinate2D loc;
