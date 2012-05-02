@@ -52,6 +52,7 @@ enum {
 - (void)loadProfileView;
 - (void)requestProfile;
 - (void)showSettingsView:(id)sender;
+- (void)newProfile:(NSNotification *)sender;
 
 - (ProfileHeaderCell *)headerCellForTableView:(UITableView *)tableView;
 - (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSInteger)row;

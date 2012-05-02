@@ -108,7 +108,12 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     // Cascades
     if (newValue) {
+        [self setSkipLogin:YES];
         [self setShouldRefreshProfile:YES];
+        [self setShouldRefreshFavorites:YES];
+    }
+    else {
+        // If we log out, refresh favorites
         [self setShouldRefreshFavorites:YES];
     }
 }

@@ -10,6 +10,7 @@
 #import "JCLocationManagerSingleton.h"
 #import "Constants.h"
 #import "DashAPI.h"
+#import "DashViewController.h"
 
 // Category to make sure that we have accessors to managedobjectcontext
 @interface UIViewController (Helper)
@@ -113,7 +114,8 @@ enum {
     NSLog(@"Uh oh");
 }
 
--(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
+-(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt 
+{
     NSLog(@"token extended");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
@@ -123,10 +125,11 @@ enum {
 
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
-    [DashAPI setMe:[Person personWithFBResult:result context:self.managedObjectContext]];
+    Person *newMe = [Person personWithFBResult:result context:self.managedObjectContext];
+    [DashAPI setMe:newMe];
     
     // Let everyone know that we're logged in and to respond accordingly
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"fbDidLogin" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"fbDidLogin" object:nil userInfo:[NSDictionary dictionaryWithObject:newMe forKey:@"newMe"]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

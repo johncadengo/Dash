@@ -267,17 +267,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     
-    if (![DashAPI skipLogin] && ![DashAPI loggedIn]) {
-        /*
-        self.filterShowing = YES;
-        [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
-        [self showFilter];
-        */
-        
+    if (![DashAPI skipLogin]) {
         [self showLogin];
-    }
-    else {
-        [self pop:nil];
     }
 }
 

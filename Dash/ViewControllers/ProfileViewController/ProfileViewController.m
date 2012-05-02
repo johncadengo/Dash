@@ -150,7 +150,7 @@
         [self.facebook requestWithGraphPath:@"me" andDelegate:self];
     }
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fbDidLogin) name:@"fbDidLogin" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newProfile:) name:@"fbDidLogin" object:nil];
 }
 
 - (void)viewDidUnload
@@ -418,6 +418,12 @@
     }
     
     [self loadView];
+}
+
+- (void)newProfile:(NSNotification *)sender;
+{
+    self.person = [sender.userInfo objectForKey:@"newMe"];
+    [self fbDidLogin];
 }
 
 - (void)request:(FBRequest *)request didLoad:(id)result

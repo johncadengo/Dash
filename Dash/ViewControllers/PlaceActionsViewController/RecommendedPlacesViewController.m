@@ -126,8 +126,9 @@
     self.feedItems = [[NSMutableArray alloc] initWithCapacity:12];
     
     // FB
-    self.facebook = [[Facebook alloc] initWithAppId:kFBAppID andDelegate:self];
-    
+    if (self.facebook == nil) {
+        self.facebook = [[Facebook alloc] initWithAppId:kFBAppID andDelegate:self];
+    }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] 
         && [defaults objectForKey:@"FBExpirationDateKey"]) {
@@ -156,7 +157,10 @@
     [super viewWillAppear:animated];
     
     if (DashAPI.shouldRefreshFavorites) {
-        [self refreshFeed];
+        self.facebook.accessToken = nil;
+        self.facebook.expirationDate = nil;
+        
+        [self loadView];
         [DashAPI setShouldRefreshFavorites:NO];
     }
 }
