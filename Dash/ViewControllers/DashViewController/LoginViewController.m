@@ -107,13 +107,12 @@
 #pragma mark - Login logic
 - (void)loginWithConnect:(id) sender
 {
-    [self.dashViewController pop:self];
-    
     if (![self.facebook isSessionValid]) {
         [self.facebook authorize:nil];
     }
     else {
         [DashAPI setLoggedIn:YES];
+        [self.dashViewController pop:self];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
