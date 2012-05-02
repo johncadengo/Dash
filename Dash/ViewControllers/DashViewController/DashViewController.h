@@ -60,6 +60,8 @@ typedef enum {
 
 // Gesture recognizers
 @property (nonatomic, strong) UIPanGestureRecognizer *drag;
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeUp;
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeDown;
 
 /** The four quadrants are divided up in to a Cartesian system,
     each bounded by two half-axes: I, II, III, and IV.
@@ -91,6 +93,7 @@ typedef enum {
 /** Receive touch events and respond accordingly.
  */
 - (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer;
+- (void)handleSwipe:(UISwipeGestureRecognizer *)gestureRecognizer;
 
 /**
  */

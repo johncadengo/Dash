@@ -43,6 +43,8 @@
 @synthesize filterView = _filterView;
 @synthesize filterViewController = _filterViewController;
 @synthesize drag = _drag;
+@synthesize swipeUp = _swipeUp;
+@synthesize swipeDown = _swipeDown;
 
 @synthesize quadrantCells = _quadrantCells;
 @synthesize quadrantFrames = _quadrantFrames;
@@ -238,6 +240,19 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     self.drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDrag:)];
     [self.view addGestureRecognizer:self.drag];
     [self.drag setDelegate:self];
+    [self.drag setCancelsTouchesInView:NO];
+    
+    // And our swipe gestures
+    self.swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    [self.swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
+    [self.swipeUp setDelegate:self];
+    
+    self.swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    [self.swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
+    [self.swipeDown setDelegate:self];
+    
+    [self.view addGestureRecognizer:self.swipeDown];
+    [self.view addGestureRecognizer:self.swipeUp];
     
     // Hide our navigation bar
     [self.navigationController setNavigationBarHidden:YES];
@@ -327,9 +342,14 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
  */
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    CGPoint origin = [touch locationInView:self.view];
-    BOOL insidePopButton = CGRectContainsPoint(self.popBackground.frame, origin);
-    return (self.isFilterShowing && !insidePopButton) ? NO : YES;
+    if (gestureRecognizer == self.drag) {
+        CGPoint origin = [touch locationInView:self.view];
+        BOOL insideScrollView = CGRectContainsPoint(self.popsScrollView.frame, origin);
+        return (insideScrollView) ? NO : YES;
+    }
+    else {
+        return YES;
+    }
 }
 
 /** Perceive a drag and respond accordingly
@@ -424,6 +444,11 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
         }
     }
+}
+
+- (void)handleSwipe:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    NSLog(@"Hey swipe %d", gestureRecognizer.direction);
 }
 
 - (void)hideFilter
