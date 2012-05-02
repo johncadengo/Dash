@@ -90,17 +90,10 @@ typedef enum {
 - (void)showFilter;
 - (void)offsetFrames:(CGFloat)offset;
 
-/** Receive touch events and respond accordingly.
- */
 - (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer;
 - (void)handleSwipe:(UISwipeGestureRecognizer *)gestureRecognizer;
 
-/**
- */
 - (void)showLogin;
-
-/**
- */
 - (void)pushPlaceAtIndex:(NSInteger)index;
 
 @end
