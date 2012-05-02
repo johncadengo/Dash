@@ -425,30 +425,38 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             }
         }
     }
-    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) { //(!self.isFilterShowing && gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        //NSLog(@"Pan begins");
-        
-        // Otherwise, we want to start dragging if the gesture begins in the pop button
-        //CGPoint origin = [self.view convertPoint:[gestureRecognizer locationInView:self.view] 
-        //                                  toView:self.popButton];
-        CGPoint origin = [gestureRecognizer locationInView:dragSuperView];
-        
-        //NSLog(@"origin %f %f", origin.x, origin.y);
-        BOOL inBackgroundFrame = CGRectContainsPoint(self.popBackground.frame, origin);
-        BOOL inDraggableFrame = CGRectContainsPoint(self.draggableFrame, origin);
-        
-        if ((self.isFilterShowing && inDraggableFrame) || (!self.isFilterShowing && inBackgroundFrame)) {
-            // Now, we are dragging
-            self.dragging = YES;
-            
-            [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
-        }
+    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) { 
+        // Now, we are dragging
+        self.dragging = YES;
     }
 }
 
 - (void)handleSwipe:(UISwipeGestureRecognizer *)gestureRecognizer
 {
-    NSLog(@"Hey swipe %d", gestureRecognizer.direction);
+    if (self.swipeUp == gestureRecognizer && !self.filterShowing) {
+        // If the filter isn't showing, and we swipe up, then show it
+        [UIView animateWithDuration:1.0f
+                              delay:0.0
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             [self showFilter];
+                         }
+                         completion:^(BOOL finished){
+                             self.filterShowing = YES;
+                         }];
+    }
+    else if (self.swipeDown == gestureRecognizer && self.filterShowing) {
+        // If the filter is showing, and we swipe down, then hide it
+        [UIView animateWithDuration:1.0f
+                              delay:0.0
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             [self hideFilter];
+                         }
+                         completion:^(BOOL finished){
+                             self.filterShowing = NO;
+                         }];
+    }
 }
 
 - (void)hideFilter
@@ -458,6 +466,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 - (void)showFilter
 {
+    [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
     [self offsetFrames:0.0f];
 }
 
