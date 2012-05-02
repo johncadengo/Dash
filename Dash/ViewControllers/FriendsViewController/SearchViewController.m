@@ -364,14 +364,14 @@
     if ([request isGET] && [response isJSON]) {
         // Grab the query either way
         NSDictionary *dict = [response parsedBody:nil];
-        self.currentQuery = [dict objectForKey:@"query"];
+        NSString *query = [dict objectForKey:@"query"];
         
         // Prepare pointers to reference appropriate data structures and tableviews
         UITableView *tableView = self.searchDisplayController.searchResultsTableView;
         NSMutableDictionary *resultsDict = self.resultsForAutocompleteQuery;
         
         // Grab the array corresponding with our query
-        NSMutableArray *results = [resultsDict objectForKey:self.currentQuery];
+        NSMutableArray *results = [resultsDict objectForKey:query];
         if (results) {
             // If it exists, clear it out
             [results removeAllObjects];   
@@ -379,7 +379,7 @@
         else {
             // Otherwise, create it
             results = [[NSMutableArray alloc] init];
-            [resultsDict setObject:results forKey:self.currentQuery];
+            [resultsDict setObject:results forKey:query];
         }
         
         // Fill it up
