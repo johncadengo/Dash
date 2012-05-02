@@ -91,8 +91,12 @@
     self.locationManager = [JCLocationManagerSingleton sharedInstance];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    //[self.locationManager startUpdatingLocation];
-
+    [self.locationManager startUpdatingLocation];
+    
+    // The first time around, we want to display nearby locations
+    [self.hud show:YES];
+    [self.api search:@"" near:[self.locationManager location]];
+    
 }
 
 - (void)clearSearchBarBackground
@@ -133,7 +137,11 @@
     
     // Now clear the entire dictionary
     [self.resultsForAutocompleteQuery removeAllObjects];
-    //[self.resultsForSearchQuery removeAllObjects];
+
+    // Make sure we turn off location services
+    // TODO: Make sure we restart it when we need it...
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopMonitoringSignificantLocationChanges];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
