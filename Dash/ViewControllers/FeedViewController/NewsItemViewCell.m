@@ -13,6 +13,8 @@
 #import "NSString+RandomStrings.h"
 #import "UIImage+ProportionalFill.h"
 #import "Constants.h"
+#import "Person.h"
+#import "Person+Helper.h"
 
 @implementation NewsItemViewCell
 
@@ -103,7 +105,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 {
     self.blurb =  newsItem.blurb;
     self.timestamp = [newsItem relativeTimestamp];
-    [self.icon setImageURL:[NSURL URLWithString:[NSString stringWithFormat: @"https://graph.facebook.com/%@/picture", newsItem.fb_uid]]];
+    [self.icon setImageURL:[NSURL URLWithString:[NSString stringWithFormat: @"https://graph.facebook.com/%@/picture", newsItem.author.fb_uid]]];
     
     [self setNeedsDisplay];
 }

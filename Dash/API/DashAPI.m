@@ -174,60 +174,11 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     return self;
 }
 
-#pragma mark - Scaffolding
-
-- (Person *)randomGhost
-{
-    Person *author;
-    
-    NSArray *names = [NSArray arrayWithObjects:@"Laura Byun", @"Grace Chi", @"Chloe Choe", @"Eunice Chung", @"Andrew Park", @"Chris Kim", @"Amos Kim", @"Julia Yang", nil];
-    author = (Person *)[NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:self.managedObjectContext];
-    [author setName:[NSString stringWithFormat:[names randomObject]]];
-    
-    Photo *profilePic = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:self.managedObjectContext];
-    [author setProfilepic:profilePic];
-    
-    return author;
-}
-
-- (Place *)randomCrypt
-{
-    Place *place;
-    
-    NSArray *names = [NSArray arrayWithObjects:@"Totto Ramen", @"Mamoun's Falafel", @"Ben's Pizzeria", @"Shake Shack", @"Halal Chicken & Rice", @"Whole Foods", nil];
-    place = (Place *)[NSEntityDescription insertNewObjectForEntityForName:@"Place" inManagedObjectContext:self.managedObjectContext];
-    [place setName:[NSString stringWithFormat:[names randomObject]]];
-    [place setAddress:[NSString stringWithFormat:@"226 Thompson St. 10012"]];
-    
-    return place;
-}
-
 #pragma mark - Params
 - (NSString *)key
 {
     // TODO: Obfuscate
     return kKey;
-}
-
-#pragma mark - RKRequestDelegate
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response 
-{ 
-//    NSLog(@"request %@", [request OAuth1ConsumerKey]);
-//    NSLog(@"response %@", [response bodyAsString]);
-}
-
-#pragma mark - RKObjectLoaderDelegate methods
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
-{
-    // Forward this call to the delegate
-    [self.delegate objectLoader:objectLoader didLoadObjects:objects];
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
-{
-    NSLog(@"Encountered an error: %@", error);
 }
 
 #pragma mark - Gets
@@ -284,15 +235,21 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
+    // Author mapping
+    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [authorMapping mapAttributes:@"name", @"fb_uid", nil];
+    
     // Define our news item mapping
     RKManagedObjectMapping *newsItemMapping = [RKManagedObjectMapping mappingForEntityWithName:@"NewsItem"];
-    [newsItemMapping mapAttributes:@"blurb", @"timestamp", @"fb_uid", nil];
+    [newsItemMapping mapAttributes:@"blurb", @"timestamp", nil];
     
     // Get place mapping
     RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
     
     // Map the relationships
     [newsItemMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
+    [newsItemMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
 
     // We expect to find the place entity inside of a dictionary keyed "feed"
     [objectManager.mappingProvider setMapping:newsItemMapping forKeyPath:@"feed"];
@@ -327,6 +284,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Define our author mapping for recommended places
     RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
     [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [authorMapping mapAttributes:@"name", @"fb_uid", nil];
     
     // Define our place mapping
     RKManagedObjectMapping *placeMapping = [[self class] placeMapping];

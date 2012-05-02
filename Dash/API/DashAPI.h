@@ -44,7 +44,7 @@ typedef enum {
 
 #pragma - Class definition
 
-@interface DashAPI : NSObject <RKObjectLoaderDelegate>
+@interface DashAPI : NSObject
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, weak) id <RKObjectLoaderDelegate> delegate;
@@ -67,15 +67,6 @@ typedef enum {
 + (void)setShouldRefreshProfile:(BOOL)newValue;
 + (Person *)me;
 + (void)setMe:(Person *)newMe;
-
-#pragma mark - For scaffolding purposes
-/** Generates a random person
- */
-- (Person *)randomGhost;
-
-/** Generates a random place
- */
-- (Place *)randomCrypt;
 
 #pragma mark - Key
 /** Generates the key
@@ -138,7 +129,7 @@ typedef enum {
  */
 - (void)autocomplete:(NSString *)query;
 
-/** Sends a request to query a string for a place and 
+/** Sends a request to query a string for a place and
  *  unlike autocomplete, it returns places with details
  */
 - (void)search:(NSString *)query;

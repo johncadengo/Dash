@@ -2,20 +2,20 @@
 //  NewsItem.h
 //  Dash
 //
-//  Created by John Cadengo on 4/25/12.
+//  Created by John Cadengo on 5/2/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Place;
+@class Person, Place;
 
 @interface NewsItem : NSManagedObject
 
 @property (nonatomic, retain) NSString * blurb;
-@property (nonatomic, retain) NSString * fb_uid;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) Place *place;
+@property (nonatomic, retain) Person *author;
 
 @end

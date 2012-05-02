@@ -65,6 +65,7 @@
         <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fb_uid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="newsItems" inverseEntity="Person" syncable="YES"/>
         <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="newsItems" inverseEntity="Place" syncable="YES"/>
     </entity>
     <entity name="Person" representedClassName="Person" parentEntity="Uniqueness" syncable="YES">
@@ -75,6 +76,7 @@
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Friendships" inverseName="source" inverseEntity="Friendships" syncable="YES"/>
         <relationship name="highlights" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Highlight" inverseName="author" inverseEntity="Highlight" syncable="YES"/>
         <relationship name="liked_highlights" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Highlight" inverseName="likes" inverseEntity="Highlight" syncable="YES"/>
+        <relationship name="newsItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsItem" inverseName="author" inverseEntity="NewsItem" syncable="YES"/>
         <relationship name="pops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pop" inverseName="party" inverseEntity="Pop" syncable="YES"/>
         <relationship name="profilepic" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="person" inverseEntity="Photo" syncable="YES"/>
         <relationship name="recommended_places" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="recommends" inverseEntity="Place" syncable="YES"/>
@@ -144,6 +146,7 @@
         <element name="Badge" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Category" positionX="-72" positionY="-126" width="128" height="75"/>
         <element name="Comment" positionX="369" positionY="-9" width="128" height="75"/>
+        <element name="Dislike" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Email" positionX="-74" positionY="360" width="128" height="45"/>
         <element name="Flag" positionX="358" positionY="-243" width="128" height="60"/>
         <element name="FlagPhoto" positionX="430" positionY="-153" width="128" height="60"/>
@@ -153,7 +156,7 @@
         <element name="Hours" positionX="-216" positionY="-126" width="128" height="105"/>
         <element name="Location" positionX="-315" positionY="-9" width="128" height="135"/>
         <element name="NewsItem" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Person" positionX="250" positionY="255" width="128" height="225"/>
+        <element name="Person" positionX="250" positionY="255" width="128" height="240"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
         <element name="Place" positionX="-72" positionY="-36" width="128" height="300"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
@@ -161,10 +164,9 @@
         <element name="Pop" positionX="-243" positionY="285" width="128" height="90"/>
         <element name="PopLocation" positionX="-243" positionY="162" width="128" height="60"/>
         <element name="Rate" positionX="-72" positionY="288" width="128" height="60"/>
+        <element name="Recommend" positionX="117" positionY="495" width="128" height="105"/>
         <element name="Stats" positionX="405" positionY="351" width="128" height="105"/>
         <element name="Uniqueness" positionX="99" positionY="-225" width="128" height="60"/>
         <element name="Visit" positionX="-72" positionY="234" width="128" height="45"/>
-        <element name="Recommend" positionX="117" positionY="495" width="128" height="105"/>
-        <element name="Dislike" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>
