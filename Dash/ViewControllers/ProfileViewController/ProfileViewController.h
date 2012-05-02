@@ -10,6 +10,7 @@
 #import <RestKit/RestKit.h>
 #import "RecommendedPlaceViewCell.h"
 #import "FBConnect.h"
+#import "MBProgressHUD.h"
 
 @class DashAPI;
 @class Person;
@@ -23,7 +24,7 @@ enum {
     kNumberOfButtons = 2,
 };
 
-@interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate, UIActionSheetDelegate, FBSessionDelegate, FBRequestDelegate>
+@interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate, UIActionSheetDelegate, FBSessionDelegate, FBRequestDelegate, MBProgressHUDDelegate>
 
 @property (nonatomic) BOOL showingProfileView;
 @property (nonatomic, strong) Facebook *facebook;
@@ -45,6 +46,7 @@ enum {
 @property (nonatomic, strong) NSMutableArray *recommends;
 @property (nonatomic, strong) UIBarButtonItem *settingsButton;
 @property (nonatomic, strong) UIActionSheet *settingsSheet;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)loadProfileView;
 - (void)requestProfile;

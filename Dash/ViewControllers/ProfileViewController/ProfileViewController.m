@@ -24,6 +24,7 @@
 @synthesize recommends = _recommends;
 @synthesize settingsButton = _settingsButton;
 @synthesize settingsSheet = _settingsSheet;
+@synthesize hud = _hud;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -100,6 +101,12 @@
     [button addTarget:self action:@selector(showSettingsView:) forControlEvents:UIControlEventTouchUpInside];
     self.settingsButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     [self.navigationItem setRightBarButtonItem:self.settingsButton];
+    
+    // Make our progress hud
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.hud];
+    [self.hud setDelegate:self];
+    self.hud.removeFromSuperViewOnHide = NO;
 }
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -141,6 +148,7 @@
     
     if ([self.facebook isSessionValid]) {
         [DashAPI setLoggedIn:YES];
+        [self.hud show:YES];
         [self.facebook requestWithGraphPath:@"me" andDelegate:self];
     }
 
@@ -431,7 +439,7 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
     // We are done loading, so stop the progress hud
-    //[self.progressHUD hide:YES]; 
+    [self.hud hide:YES];
     
     if ([objectLoader.userData isEqualToNumber:[NSNumber numberWithInt:kRecommends]]) {
         [self.recommends removeAllObjects];
