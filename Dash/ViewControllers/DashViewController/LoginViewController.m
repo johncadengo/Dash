@@ -94,6 +94,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     if ([self.facebook isSessionValid]) {
+        [self.dashViewController pop:self];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
@@ -112,7 +113,6 @@
     }
     else {
         [DashAPI setLoggedIn:YES];
-        [self.dashViewController pop:self];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
