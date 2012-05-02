@@ -93,10 +93,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if ([self.facebook isSessionValid]) {
-        [self.dashViewController pop:self];
-        [self dismissModalViewControllerAnimated:YES];
-    }
+    [super viewDidAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

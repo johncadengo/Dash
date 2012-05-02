@@ -276,6 +276,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         
         [self showLogin];
     }
+    else {
+        [self pop:nil];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
