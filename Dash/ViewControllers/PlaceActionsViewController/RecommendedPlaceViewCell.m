@@ -34,12 +34,12 @@ static const CGFloat kWidth = 320.0f;
 static const CGFloat kLineLength = 284.0f;
 static const CGFloat kPadding = 20.0f;
 
-static const CGFloat kTopHeight = 80.0f;
+static const CGFloat kTopHeight = 66.5f;
 static const CGFloat kMiddleHeight = 63.0f;
 static const CGFloat kBottomHeight = 73.0f;
-static const CGFloat kOnlyHeight = 90.0f;
+static const CGFloat kOnlyHeight = 71.5f;
 
-static const CGFloat kTopYOffset = 25.0f;
+static const CGFloat kTopYOffset = 11.5f;
 static const CGFloat kYOffset = 8.0f;
 
 #pragma mark - Class methods for determining the size of UI elements

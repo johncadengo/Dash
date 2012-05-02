@@ -254,7 +254,8 @@
                 titleCell = [[TitleViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceTitleCellIdentifier];
             }
             
-            titleCell.title = ([self.currentQuery isEqualToString:@""]) ? @"Nearby Places" : [NSString stringWithFormat: @"Results for: %@", self.currentQuery];
+            NSString *resultsFor = [NSString stringWithFormat: @"Results for: %@", self.currentQuery];
+            titleCell.title = ([self.currentQuery isEqualToString:@""]) ? @"Nearby Places" : resultsFor;
             cell = titleCell;
         }
         else {
@@ -415,8 +416,6 @@
     
     // Fill it up
     [results addObjectsFromArray:objects];
-    
-    NSLog(@"%@", objects);
     
     // Display it
     [tableView reloadData];
