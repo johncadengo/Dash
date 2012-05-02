@@ -15,6 +15,11 @@
 
 @implementation RecommendedPlacesViewController
 
+@synthesize showingFavoritesView = _showingFavoritesView;
+@synthesize facebook = _facebook;
+@synthesize fbconnect = _fbconnect;
+@synthesize backgroundView = _backgroundView;
+
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize api = _api;
 @synthesize hud = _hud;
@@ -39,20 +44,50 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+- (void)loadLoginView
 {
-    [super viewDidLoad];
+    // Create our self.view
+    //CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
+    UIView *view = [[UIView alloc] init];// initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SignInScreen.png"]];
+    self.backgroundView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 415.0f);
+    [view addSubview:self.backgroundView];
     
-    // Connect to our API.
-    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
+    // Fb Connect
+    self.fbconnect = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.fbconnect setBackgroundImage:[UIImage imageNamed:@"FacebookSignIn.png"] forState:UIControlStateNormal];
+    [self.fbconnect addTarget:self 
+                       action:@selector(loginWithConnect:) 
+             forControlEvents:UIControlEventTouchUpInside];
+    self.fbconnect.frame = CGRectMake(0.0f, 320.0f, 320.0f, 51.0f);
+    [view addSubview:self.fbconnect];
     
-    // Prepare our arrays of place actions
-    self.feedItems = [[NSMutableArray alloc] init];
+    // Finally, set our self.view
+    // NOTE: Do not get self.view in loadView
+    self.showingFavoritesView = NO;
+    self.view = view;
     
-    [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
+    // Get rid of top bar
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
+- (void)loadFavoritesView
+{
+    // When we are in profile view self.view is self.tableview
+    self.tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    // Change the color of the background..
-    self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
+    // Set our self.view
+    self.showingFavoritesView = YES;
+    self.view = self.tableView;
+    
+    // Put top bar back
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    // Set the bg color
+    [self.view setBackgroundColor:UIColorFromRGB(kPlaceOrangeBGColor)];
     
     // Make our progress hud
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
@@ -60,8 +95,53 @@
     [self.hud setDelegate:self];
     self.hud.removeFromSuperViewOnHide = NO;
     
-    // Make a call to the api
-    [self refreshFeed]; 
+    // Make our call
+    [self.hud show:YES];
+    [self refreshFeed];
+}
+
+- (void)loadView
+{
+    // Connect to our API.
+    self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
+    
+    // Default to NO
+    self.showingFavoritesView = NO;
+    
+    // Login logic
+    if (![DashAPI loggedIn]) {
+        // This means we skipped logging in earlier, and consequently are not logged in now.
+        [self loadLoginView];
+    }
+    else {
+        [self loadFavoritesView];
+    }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+ 
+    // Prepare our arrays of places
+    self.feedItems = [[NSMutableArray alloc] initWithCapacity:12];
+    
+    // FB
+    self.facebook = [[Facebook alloc] initWithAppId:kFBAppID andDelegate:self];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
+    
+    if ([self.facebook isSessionValid]) {
+        [DashAPI setLoggedIn:YES];
+        [self.hud show:YES];
+        [self refreshFeed];
+    }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fbDidLogin) name:@"fbDidLogin" object:nil];
 }
 
 - (void)viewDidUnload
@@ -223,6 +303,36 @@
     //self.requests = [NSDictionary dictionaryWithDictionary:[self.api placeActionsForPerson:nil]];
     [self.api recommendsForPerson:DashAPI.me];
 }
+
+
+#pragma mark - Button Actions
+
+- (void)loginWithConnect:(id) sender
+{
+    if (![self.facebook isSessionValid]) {
+        [self.facebook authorize:nil];
+    }
+    else {
+        [DashAPI setLoggedIn:YES];
+    }
+    
+    // Reload view.
+    [self loadView];
+}
+
+
+- (void)fbDidLogin 
+{    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
+    
+    [self loadView];
+}
+
 
 
 @end

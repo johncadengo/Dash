@@ -10,7 +10,6 @@
 #import "JCLocationManagerSingleton.h"
 #import "Constants.h"
 #import "DashAPI.h"
-#import "LoginViewController.h"
 
 // Category to make sure that we have accessors to managedobjectcontext
 @interface UIViewController (Helper)
@@ -23,14 +22,16 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
-@synthesize loginViewController = _loginViewController;
 @synthesize facebook = _facebook;
 
 // Make sure we start out on the Dash Tab.
 enum {
     kFeedTabIndex = 0,
     kPlacesTabIndex = 1,
-    kDashTabIndex = 2
+    kDashTabIndex = 2,
+    kSearchTabIndex = 3,
+    kProfileTabIndex = 4,
+    kNumTabs = 5
 };
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -63,7 +64,7 @@ enum {
     }
     
     // Configure manager
-    RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:@"https://thedashapp.com/api"];
+    [RKObjectManager objectManagerWithBaseURL:@"https://thedashapp.com/api"];
     
     // Color Dash Tab Bar Icon
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashFourColorIcon.png"]];
@@ -105,10 +106,6 @@ enum {
     
     [DashAPI setLoggedIn:YES];
     [self.facebook requestWithGraphPath:@"me" andDelegate:self];
-    
-    if (self.loginViewController) {
-        [self.loginViewController dismissModalViewControllerAnimated:YES];
-    }
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled
@@ -127,6 +124,9 @@ enum {
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
     [DashAPI setMe:[Person personWithFBResult:result context:self.managedObjectContext]];
+    
+    // Let everyone know that we're logged in and to respond accordingly
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"fbDidLogin" object:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

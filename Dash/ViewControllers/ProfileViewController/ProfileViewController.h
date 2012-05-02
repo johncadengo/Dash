@@ -31,6 +31,7 @@ enum {
 
 - (void)logout;
 - (void)fbDidLogout;
+- (void)fbDidLogin;
 
 #pragma mark - For when not logged in
 @property (nonatomic, strong) UIButton *fbconnect;

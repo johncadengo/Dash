@@ -10,10 +10,23 @@
 #import <RestKit/RestKit.h>
 #import "MBProgressHUD.h"
 #import "RecommendedPlaceViewCell.h"
+#import "FBConnect.h"
 
 @class DashAPI;
 
-@interface RecommendedPlacesViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate>
+@interface RecommendedPlacesViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MBProgressHUDDelegate, FBSessionDelegate, FBRequestDelegate>
+
+@property (nonatomic) BOOL showingFavoritesView;
+@property (nonatomic, strong) Facebook *facebook;
+
+#pragma mark - For when not logged in
+@property (nonatomic, strong) UIButton *fbconnect;
+@property (nonatomic, strong) UIImageView *backgroundView;
+
+- (void)loadLoginView;
+- (void)loginWithConnect:(id) sender;
+
+#pragma mark - For when logged in
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) DashAPI *api;
@@ -23,7 +36,9 @@
 // so will have different arrays for each type
 @property (nonatomic, strong) NSMutableArray *feedItems;
 
+- (void)loadFavoritesView;
 - (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row;
 - (void)refreshFeed;
+- (void)fbDidLogin;
 
 @end

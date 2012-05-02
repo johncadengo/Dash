@@ -79,6 +79,8 @@
     [super viewDidLoad];
     
     self.facebook = [[Facebook alloc] initWithAppId:kFBAppID andDelegate:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fbDidLogin) name:@"fbDidLogin" object:nil];
 }
 
 
@@ -118,14 +120,6 @@
 
 - (void)fbDidLogin 
 {
-    // Save it
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
-    [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
-    [defaults synchronize];
-    
-    // and pop it
-    [DashAPI setLoggedIn:YES];
     [self.dashViewController pop:self];
     [self dismissModalViewControllerAnimated:YES];
 }

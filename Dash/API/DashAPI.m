@@ -105,6 +105,12 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 + (void)setLoggedIn:(BOOL)newValue
 {
     _loggedIn = newValue;
+    
+    // Cascades
+    if (newValue) {
+        [self setShouldRefreshProfile:YES];
+        [self setShouldRefreshFavorites:YES];
+    }
 }
 
 + (BOOL)shouldRefreshFavorites

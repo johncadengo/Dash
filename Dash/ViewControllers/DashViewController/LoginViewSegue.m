@@ -19,8 +19,8 @@
     loginViewController.dashViewController = self.sourceViewController;
     
     // Mack out
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    delegate.loginViewController = loginViewController;
+    //AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //delegate.loginViewController = loginViewController;
     
     // And make out
     [self.sourceViewController presentModalViewController:self.destinationViewController animated:NO];

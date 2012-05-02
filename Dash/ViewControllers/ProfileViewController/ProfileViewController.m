@@ -112,8 +112,6 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    // Gotta do this before creating our views
-    
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
@@ -152,6 +150,7 @@
         [self.facebook requestWithGraphPath:@"me" andDelegate:self];
     }
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fbDidLogin) name:@"fbDidLogin" object:nil];
 }
 
 - (void)viewDidUnload
@@ -348,8 +347,7 @@
         [DashAPI setLoggedIn:YES];
     }
     
-    // Reload view. 
-    // TODO: Probably some memory leak here right?
+    // Reload view.
     [self loadView];
 }
 
@@ -392,6 +390,7 @@
 
 - (void)logout
 {
+    [DashAPI setMe:nil];
     [self.facebook logout];
 }
 
@@ -412,12 +411,12 @@
 - (void)fbDidLogin 
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
-    [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
-    [defaults synchronize];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
     
-    [DashAPI setLoggedIn:YES];
-    [self.facebook requestWithGraphPath:@"me" andDelegate:self];
     [self loadView];
 }
 
