@@ -20,7 +20,7 @@
 
 + (CGFloat)height
 {
-    return [@"Highlights" sizeWithFont:[self font]].height - 4.0f; // Negative leading..
+    return [@"Highlights" sizeWithFont:[self font]].height - 3.0f; // Negative leading..
 }
 
 

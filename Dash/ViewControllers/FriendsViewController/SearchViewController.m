@@ -13,6 +13,7 @@
 #import "Constants.h"
 #import "PlaceViewController.h"
 #import "JCLocationManagerSingleton.h"
+#import "TitleViewCell.h"
 
 @implementation SearchViewController
 
@@ -95,7 +96,8 @@
     
     // The first time around, we want to display nearby locations
     [self.hud show:YES];
-    [self.api search:@"" near:[self.locationManager location]];
+    self.currentQuery = [NSString stringWithFormat:@""];
+    [self.api search:self.currentQuery near:[self.locationManager location]];
     
 }
 
@@ -193,7 +195,12 @@
         height = self.tableView.rowHeight;
     }
     else {
-        height = [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:[indexPath row]]];
+        if (indexPath.section == 0) {
+            height = [TitleViewCell height] + 1.0f; // TODO: UGH.
+        }
+        else {
+            height = [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:[indexPath row]]];
+        }
     }
     
     return height;
@@ -205,10 +212,10 @@
 {
     // Return the number of sections.
     if (self.searchDisplayController.searchResultsTableView == tableView) {
-        return 1;
+        return 1; // Autocomplete
     }
     else {
-        return 1;
+        return 2; // Title section
     }
 }
 
@@ -221,7 +228,12 @@
         resultsDict = self.resultsForAutocompleteQuery;
     }
     else {
-        resultsDict = self.resultsForSearchQuery;
+        if (section == 0) {
+            return 1; // Title section
+        }
+        else {
+            resultsDict = self.resultsForSearchQuery;   
+        }
     }
     
     return [[resultsDict objectForKey:self.currentQuery] count];
@@ -236,8 +248,19 @@
         cell.backgroundView.backgroundColor = [UIColor clearColor];
     }
     else {
-        cell = [self tableView:tableView cellForSearchQueryRow:indexPath.row];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (indexPath.section == 0) {
+            TitleViewCell *titleCell = [tableView dequeueReusableCellWithIdentifier:kPlaceTitleCellIdentifier];
+            if (titleCell == nil) {
+                titleCell = [[TitleViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceTitleCellIdentifier];
+            }
+            
+            titleCell.title = ([self.currentQuery isEqualToString:@""]) ? @"Nearby Places" : [NSString stringWithFormat: @"Results for: %@", self.currentQuery];
+            cell = titleCell;
+        }
+        else {
+            cell = [self tableView:tableView cellForSearchQueryRow:indexPath.row];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
     }
         
     return cell;
