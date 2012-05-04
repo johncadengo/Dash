@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
 #import "NewsItemViewCell.h"
 #import "EGORefreshTableHeaderView.h"
@@ -18,9 +19,10 @@
 @class NewsItemViewCell;
 @class CustomSegmentView;
 
-@interface FeedViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate,EGORefreshTableHeaderDelegate, MBProgressHUDDelegate, RKObjectLoaderDelegate>
+@interface FeedViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate,EGORefreshTableHeaderDelegate, MBProgressHUDDelegate, RKObjectLoaderDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSMutableArray *feedItems;
 @property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;

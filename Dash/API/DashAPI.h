@@ -87,25 +87,7 @@ typedef enum {
 
 #pragma mark - Feed
 
-/** Returns a feed of news items nearby.
-    Defaults count and person.
- */
-- (void)feedForLocation:(CLLocation *)location;
-
-/** Returns count number of news items nearby.
-    Defaults person.
- */
-- (void)feedForLocation:(CLLocation *)location WithCount:(NSUInteger)count;
-
-/** Returns a feed of news items for a specific person.
-    Defaults count.
- */
-- (void)feedForPerson:(Person *)person;
-
-/** Returns count number of news items for a specific person.
-    Defaults nothing.
- */
-- (void)feedForPerson:(Person *)person withCount:(NSUInteger)count;
+- (void)feedForPerson:(Person *)person near:(CLLocation *)location;
 
 #pragma mark - Place actions
 // These are located inside of the Places tab: saves, recommends, and more to be added later.

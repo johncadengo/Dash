@@ -139,16 +139,16 @@
     
     // Now clear the entire dictionary
     [self.resultsForAutocompleteQuery removeAllObjects];
-
-    // Make sure we turn off location services
-    // TODO: Make sure we restart it when we need it...
-    [self.locationManager stopUpdatingLocation];
-    [self.locationManager stopMonitoringSignificantLocationChanges];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    // Make sure we turn off location services
+    // TODO: Make sure we restart it when we need it...
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopMonitoringSignificantLocationChanges];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

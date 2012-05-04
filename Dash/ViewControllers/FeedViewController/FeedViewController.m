@@ -13,10 +13,12 @@
 #import "CustomSegmentView.h"
 #import "NewsItem.h"
 #import "NewsItem+Helper.h"
+#import "JCLocationManagerSingleton.h"
 
 @implementation FeedViewController
 
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize locationManager = _locationManager;
 @synthesize api = _api;
 @synthesize feedItems = _feedItems;
 @synthesize refreshHeaderView = _refreshHeaderView;
@@ -81,6 +83,13 @@
     // Segmented control
     self.customSegmentView = [[CustomSegmentView alloc] initWithFrame:
                               CGRectMake(70.25, 7.25f, 359.0f / 2.0f, 59.0f / 2.0f)];
+    
+    // Figure out where we are
+    self.locationManager = [JCLocationManagerSingleton sharedInstance];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    [self.locationManager startUpdatingLocation];
+    
 }
 
 - (void)viewDidUnload
@@ -107,6 +116,11 @@
     [super viewWillDisappear:animated];
     
     [self.customSegmentView removeFromSuperview];
+    
+    // Make sure we turn off location services
+    // TODO: Make sure we restart it when we need it...
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopMonitoringSignificantLocationChanges];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -217,7 +231,8 @@
 
 - (void) refreshFeed
 {
-    [self.api feedForPerson:nil];
+    CLLocation *loc = [self.locationManager location];
+    [self.api feedForPerson:[DashAPI me] near:loc];
 }
 
 #pragma mark - RKObjectLoaderDelegate methods
@@ -238,6 +253,7 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
 {
+    NSLog(@"%@", objectLoader.response.bodyAsString);
     NSLog(@"Encountered an error: %@", error);
 }
 

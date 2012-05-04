@@ -216,7 +216,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Params are backwards compared to the way 
     // it is shown in the http: /pops?key=object
     NSString *rangeStr = (distance == @"") ? @"fake_range": @"range";
-    NSLog(@"%@ %@", rangeStr, distance);
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                             self.key, @"must_fix",
                             loc, @"loc",
@@ -231,17 +230,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [objectLoader send];
 }
 
-- (void)feedForLocation:(CLLocation *)location
-{
-    [self feedForPerson:nil];
-}
-
-- (void)feedForPerson:(Person *)person
-{
-    [self feedForPerson:person withCount:kDefaultNumFeedItems];
-}
-
-- (void)feedForPerson:(Person *)person withCount:(NSUInteger)count
+- (void)feedForPerson:(Person *)person near:(CLLocation *)location
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -268,14 +257,18 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Authentication
     // Params are backwards compared to the way 
     // it is shown in the http: /pops?key=object
+    NSNumber *count = [NSNumber numberWithInt:10];
+    NSString *locParam = [NSString stringWithFormat:@"%f, %f", location.coordinate.latitude,
+                          location.coordinate.longitude];
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                             self.key, @"must_fix",
-                            [NSNumber numberWithInt:count], @"count",nil];
+                            [NSString stringWithFormat:@"%@", person.fb_uid], @"fb_uid",
+                            locParam, @"loc",
+                            count, @"count",nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
-    RKObjectLoader *objectLoader= [objectManager objectLoaderWithResourcePath:@"feed" delegate:self.delegate];
+    RKObjectLoader *objectLoader= [objectManager objectLoaderWithResourcePath:[@"feed" appendQueryParams:params] delegate:self.delegate];
     objectLoader.method = RKRequestMethodGET;
-    objectLoader.params = params;
     objectLoader.userData = [NSNumber numberWithInt:kFeed];
     [objectLoader send];
 }
