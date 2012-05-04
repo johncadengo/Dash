@@ -48,7 +48,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     
     CGFloat textHeight = kPadding + blurbSize.height + kPadding + 
                             timestampSize.height + kPadding + kLineHeight;
-    CGFloat iconHeight = kPadding + kPicWidth + kPadding + kLineHeight;
+    CGFloat iconHeight = 10.0f + kPicWidth + kPadding + kLineHeight;
     
     return MAX(iconHeight, textHeight);
 }
@@ -144,8 +144,9 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
                        withFont:[[self class] timestampFont]];
     
     // Draw line
+    CGFloat iconHeight = 10.0f + kPicWidth + kPadding + kLineHeight;
     [self drawHorizontalLineStartingAt:CGPointMake(kLeftRightMargin, 
-                                                   blurbSize.height + 30.0f) 
+                                                   MAX(blurbSize.height + 30.0f, iconHeight)) 
                             withLength:kLineLength];
 	
 }
