@@ -14,6 +14,8 @@
 #import "Place.h"
 #import "Place+Helper.h"
 
+#import "TestFlight.h"
+
 // Private properties
 @interface DashAPI ()
 
@@ -111,10 +113,14 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
         [self setSkipLogin:YES];
         [self setShouldRefreshProfile:YES];
         [self setShouldRefreshFavorites:YES];
+        
+        [TestFlight passCheckpoint:@"Logged into Facebook"];
     }
     else {
         // If we log out, refresh favorites
         [self setShouldRefreshFavorites:YES];
+        
+        [TestFlight passCheckpoint:@"Logged out of Facebook"];
     }
 }
 
@@ -228,6 +234,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
+    
+    [TestFlight passCheckpoint:@"Popped"];
 }
 
 - (void)feedForPerson:(Person *)person near:(CLLocation *)location
@@ -271,6 +279,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.method = RKRequestMethodGET;
     objectLoader.userData = [NSNumber numberWithInt:kFeed];
     [objectLoader send];
+    
+    [TestFlight passCheckpoint:@"Requested Feed"];
 }
 
 #pragma mark - Place actions
@@ -380,6 +390,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
+    
+    [TestFlight passCheckpoint:@"Searched"];
 }
 
 - (void)search:(NSString *)query near:(CLLocation *)location
@@ -409,6 +421,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.method = RKRequestMethodPOST;
     objectLoader.params = params;
     [objectLoader send];
+    
+    [TestFlight passCheckpoint:@"Searched Nearby"];
 }
 
 #pragma mark - 
@@ -447,6 +461,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     [self.class setShouldRefreshFavorites:YES];
     [self.class setShouldRefreshProfile:YES];
+    
+    [TestFlight passCheckpoint:@"Favorited a place"];
 }
 
 - (void)thumbsDownPlace:(Place *)place
@@ -474,6 +490,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
     [self.class setShouldRefreshFavorites:YES];
     [self.class setShouldRefreshProfile:YES];
+    
+    [TestFlight passCheckpoint:@"Disliked a place"];
 }
 
 - (void)createHighlight:(NSString *)text atPlace:(Place *)place
@@ -485,6 +503,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             place.uid, @"place_id",
                             text, @"text", nil];
     [[[RKClient sharedClient] post:@"/places/highlights" params:params delegate:self.delegate] setUserData:[NSNumber numberWithInt:kHighlights]];
+    
+    [TestFlight passCheckpoint:@"Created a highlight"];
 }
 
 - (void)likeHighlight:(Highlight *)highlight
@@ -504,17 +524,24 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
         // TODO: Right now this URL scheme is funky...
         NSString *resourceEndPoint = [NSString stringWithFormat:@"/feedback/likes/%d", 1];
         [[RKClient sharedClient] delete:[resourceEndPoint appendQueryParams:params] delegate:self.delegate];
+        
+        [TestFlight passCheckpoint:@"Unliked a highlight"];
     }
     else {
         // Create new heart
         [[RKClient sharedClient] post:@"/feedback/likes" params:params delegate:self.delegate];
+        
+        [TestFlight passCheckpoint:@"Liked a highlight"];
     }
+    
 }
 #pragma mark -
 
 - (void)myProfile
 {
     [self profileForPerson:[self.class me]];
+    
+    [TestFlight passCheckpoint:@"Viewed my profile"];
 }
 
 

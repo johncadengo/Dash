@@ -45,6 +45,7 @@
 		67348AD71446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AD51446350700A3160A /* InfoPlist.strings */; };
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
 		67349C471559AE8900DEF21E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67349C431559AE8900DEF21E /* libTestFlight.a */; };
+		67349C4C1559AF1100DEF21E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67349C4B1559AF1100DEF21E /* libz.dylib */; };
 		6734EB781512520500D7EA7E /* PlutoBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB681512520500D7EA7E /* PlutoBlack.otf */; };
 		6734EB791512520500D7EA7E /* PlutoBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB691512520500D7EA7E /* PlutoBold.otf */; };
 		6734EB7A1512520500D7EA7E /* PlutoCondBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB6A1512520500D7EA7E /* PlutoCondBlack.otf */; };
@@ -419,6 +420,7 @@
 		67348AD91446350700A3160A /* DashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashTests.m; sourceTree = "<group>"; };
 		67349C431559AE8900DEF21E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		67349C461559AE8900DEF21E /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		67349C4B1559AF1100DEF21E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		6734EB681512520500D7EA7E /* PlutoBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoBlack.otf; path = Dash/Images/Fonts/PlutoBlack.otf; sourceTree = "<group>"; };
 		6734EB691512520500D7EA7E /* PlutoBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoBold.otf; path = Dash/Images/Fonts/PlutoBold.otf; sourceTree = "<group>"; };
 		6734EB6A1512520500D7EA7E /* PlutoCondBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoCondBlack.otf; path = Dash/Images/Fonts/PlutoCondBlack.otf; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67349C4C1559AF1100DEF21E /* libz.dylib in Frameworks */,
 				6799127C154EE237007CD93A /* MapKit.framework in Frameworks */,
 				670956B4145EFF9C00057E32 /* QuartzCore.framework in Frameworks */,
 				6769758D145A5CAE001191CF /* libRestKitCoreData.a in Frameworks */,
@@ -937,6 +940,7 @@
 		67349C4A1559AE9100DEF21E /* TestFlight */ = {
 			isa = PBXGroup;
 			children = (
+				67349C4B1559AF1100DEF21E /* libz.dylib */,
 				67349C431559AE8900DEF21E /* libTestFlight.a */,
 				67349C461559AE8900DEF21E /* TestFlight.h */,
 			);
@@ -2121,6 +2125,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -2131,7 +2136,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -2140,6 +2145,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

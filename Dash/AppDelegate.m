@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "DashAPI.h"
 #import "DashViewController.h"
+#import "TestFlight.h"
 
 // Category to make sure that we have accessors to managedobjectcontext
 @interface UIViewController (Helper)
@@ -37,6 +38,15 @@ enum {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Set up the test flight sdk
+    [TestFlight takeOff:@"df277f5ccd3ae69fadf14324b2725d73_ODMxNDkyMDEyLTA0LTI0IDE4OjUyOjQ5LjA5MjkyMg"];
+    
+    // TODO: Do not use this in production.
+    #define TESTING 1
+    #ifdef TESTING
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+    #endif
+    
     // Custom navigation bar color and button color
     [[UINavigationBar appearance] setBackgroundImage: [UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
