@@ -13,6 +13,7 @@
 #import "PlaceViewController.h"
 #import "JCLocationManagerSingleton.h"
 #import "FilterViewController.h"
+#import "TestFlight.h"
 
 @implementation DashViewController
 
@@ -454,13 +455,15 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 - (void)hideFilter
 {
-    [self offsetFrames:0.0f];    
+    [self offsetFrames:0.0f];
 }
 
 - (void)showFilter
 {
     [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
     [self offsetFrames:-(PlaceSquareView.size.height * 2)];
+    
+    [TestFlight passCheckpoint:@"Found Filter View"];
 }
 
 - (void)offsetFrames:(CGFloat)offset

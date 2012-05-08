@@ -11,6 +11,7 @@
 #import "DashAPI.h"
 #import "ProfileHeaderCell.h"
 #import "PlaceViewController.h"
+#import "TestFlight.h"
 
 @implementation ProfileViewController
 
@@ -358,10 +359,12 @@
                                                          delegate:self 
                                                 cancelButtonTitle:@"Cancel" 
                                            destructiveButtonTitle:@"Log out" 
-                                                otherButtonTitles:nil];
+                                                otherButtonTitles:@"Submit Feedback", nil];
     }
     
     [self.settingsSheet showFromTabBar:self.tabBarController.tabBar];
+    
+    [TestFlight passCheckpoint:@"Showing settings sheet"];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -369,6 +372,10 @@
     switch (buttonIndex) {
         case kLogoutButtonIndex:
             [self logout];
+            break;
+        case kFeedbackButtonIndex:
+            [TestFlight passCheckpoint:@"Showing submit feedback"];
+            [TestFlight openFeedbackView];
             break;
         case kCancelButtonIndex:
             NSLog(@"Cancel");

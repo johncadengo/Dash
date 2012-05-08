@@ -20,8 +20,9 @@
 // For our settings actionsheet
 enum {
     kLogoutButtonIndex = 0,
-    kCancelButtonIndex = 1,
-    kNumberOfButtons = 2,
+    kFeedbackButtonIndex = 1,
+    kCancelButtonIndex = 2,
+    kNumberOfButtons = 3,
 };
 
 @interface ProfileViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, RKObjectLoaderDelegate, UIActionSheetDelegate, FBSessionDelegate, FBRequestDelegate, MBProgressHUDDelegate>

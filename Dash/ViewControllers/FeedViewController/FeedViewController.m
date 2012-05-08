@@ -242,7 +242,6 @@
     // Let them know we're done
     [self.hud hide:YES];
     
-    NSLog(@"Feed items: %@", objects);
     self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
     
     // If we are switching from a different mode, need to hide the back views so that swipe will reset and work.
