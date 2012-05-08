@@ -44,6 +44,7 @@
 		67348ACF1446350700A3160A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67348AB41446350700A3160A /* CoreData.framework */; };
 		67348AD71446350700A3160A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67348AD51446350700A3160A /* InfoPlist.strings */; };
 		67348ADA1446350700A3160A /* DashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67348AD91446350700A3160A /* DashTests.m */; };
+		67349C471559AE8900DEF21E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67349C431559AE8900DEF21E /* libTestFlight.a */; };
 		6734EB781512520500D7EA7E /* PlutoBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB681512520500D7EA7E /* PlutoBlack.otf */; };
 		6734EB791512520500D7EA7E /* PlutoBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB691512520500D7EA7E /* PlutoBold.otf */; };
 		6734EB7A1512520500D7EA7E /* PlutoCondBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6734EB6A1512520500D7EA7E /* PlutoCondBlack.otf */; };
@@ -416,6 +417,8 @@
 		67348AD61446350700A3160A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		67348AD81446350700A3160A /* DashTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashTests.h; sourceTree = "<group>"; };
 		67348AD91446350700A3160A /* DashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashTests.m; sourceTree = "<group>"; };
+		67349C431559AE8900DEF21E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		67349C461559AE8900DEF21E /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		6734EB681512520500D7EA7E /* PlutoBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoBlack.otf; path = Dash/Images/Fonts/PlutoBlack.otf; sourceTree = "<group>"; };
 		6734EB691512520500D7EA7E /* PlutoBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoBold.otf; path = Dash/Images/Fonts/PlutoBold.otf; sourceTree = "<group>"; };
 		6734EB6A1512520500D7EA7E /* PlutoCondBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PlutoCondBlack.otf; path = Dash/Images/Fonts/PlutoCondBlack.otf; sourceTree = "<group>"; };
@@ -732,6 +735,7 @@
 				67348AB31446350700A3160A /* CoreGraphics.framework in Frameworks */,
 				67348AB51446350700A3160A /* CoreData.framework in Frameworks */,
 				67E2AA191545944A0002E641 /* libfacebook_ios_sdk.a in Frameworks */,
+				67349C471559AE8900DEF21E /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,6 +932,15 @@
 				67348AD51446350700A3160A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		67349C4A1559AE9100DEF21E /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				67349C431559AE8900DEF21E /* libTestFlight.a */,
+				67349C461559AE8900DEF21E /* TestFlight.h */,
+			);
+			name = TestFlight;
 			sourceTree = "<group>";
 		};
 		6734EB5415123E9A00D7EA7E /* Tabs */ = {
@@ -1524,6 +1537,7 @@
 		67F22FCD145F0C520010A09F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				67349C4A1559AE9100DEF21E /* TestFlight */,
 				67E2AA081545944A0002E641 /* facebook-ios-sdk */,
 				6731867E14917B1B0066E64A /* JCLocationManager */,
 				67E7D94B146862CC00E86F31 /* EGOTableViewPullRefresh */,
@@ -2143,6 +2157,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Dash/Helpers/facebook-ios-sdk/lib/facebook-ios-sdk\"",
+					"\"$(SRCROOT)/Dash\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2164,6 +2179,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Dash/Helpers/facebook-ios-sdk/lib/facebook-ios-sdk\"",
+					"\"$(SRCROOT)/Dash\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
