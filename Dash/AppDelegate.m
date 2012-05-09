@@ -12,6 +12,7 @@
 #import "DashAPI.h"
 #import "DashViewController.h"
 #import "TestFlight.h"
+#import "Appirater.h"
 
 // Category to make sure that we have accessors to managedobjectcontext
 @interface UIViewController (Helper)
@@ -46,6 +47,12 @@ enum {
     #ifdef TESTING
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
     #endif
+    
+    /*
+     
+     */
+    
+    [Appirater appLaunched:YES];
     
     // Custom navigation bar color and button color
     [[UINavigationBar appearance] setBackgroundImage: [UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
@@ -165,6 +172,8 @@ enum {
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    
+    [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

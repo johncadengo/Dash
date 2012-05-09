@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6703EFD4155AE6FB0005B9E1 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 6703EFD3155AE6FB0005B9E1 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		670956AC145EFBEF00057E32 /* TISwipeableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 670956AB145EFBEF00057E32 /* TISwipeableTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		670956B4145EFF9C00057E32 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670956B3145EFF9C00057E32 /* QuartzCore.framework */; };
 		670DFA1E1551A1C000DA3C9D /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 670DFA1D1551A1C000DA3C9D /* NewsItem.m */; };
@@ -355,6 +356,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6703EFD2155AE6FB0005B9E1 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = Helpers/Appirater/Appirater.h; sourceTree = "<group>"; };
+		6703EFD3155AE6FB0005B9E1 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Helpers/Appirater/Appirater.m; sourceTree = "<group>"; };
 		670956AA145EFBEF00057E32 /* TISwipeableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TISwipeableTableView.h; path = Dash/ViewControllers/TISwipeableTableView/TISwipeableTableView.h; sourceTree = "<group>"; };
 		670956AB145EFBEF00057E32 /* TISwipeableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TISwipeableTableView.m; path = Dash/ViewControllers/TISwipeableTableView/TISwipeableTableView.m; sourceTree = "<group>"; };
 		670956B3145EFF9C00057E32 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -756,6 +759,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6703EFD5155AE7000005B9E1 /* Appirater */ = {
+			isa = PBXGroup;
+			children = (
+				6703EFD2155AE6FB0005B9E1 /* Appirater.h */,
+				6703EFD3155AE6FB0005B9E1 /* Appirater.m */,
+			);
+			name = Appirater;
+			sourceTree = "<group>";
+		};
 		670956A9145EFBCF00057E32 /* TISwipeableTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1541,6 +1553,7 @@
 		67F22FCD145F0C520010A09F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6703EFD5155AE7000005B9E1 /* Appirater */,
 				67349C4A1559AE9100DEF21E /* TestFlight */,
 				67E2AA081545944A0002E641 /* facebook-ios-sdk */,
 				6731867E14917B1B0066E64A /* JCLocationManager */,
@@ -2049,6 +2062,7 @@
 				67991298154F1712007CD93A /* Dislike.m in Sources */,
 				6799129B154F1713007CD93A /* Recommend.m in Sources */,
 				670DFA1E1551A1C000DA3C9D /* NewsItem.m in Sources */,
+				6703EFD4155AE6FB0005B9E1 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

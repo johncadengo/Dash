@@ -13,8 +13,8 @@
 #import "NSDate+RandomDates.h"
 #import "Place.h"
 #import "Place+Helper.h"
-
 #import "TestFlight.h"
+#import "Appirater.h"
 
 // Private properties
 @interface DashAPI ()
@@ -236,6 +236,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [objectLoader send];
     
     [TestFlight passCheckpoint:@"Popped"];
+    [Appirater userDidSignificantEvent:YES];
 }
 
 - (void)feedForPerson:(Person *)person near:(CLLocation *)location
