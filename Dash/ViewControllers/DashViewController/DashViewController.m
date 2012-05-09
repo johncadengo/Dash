@@ -227,9 +227,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
     // Figure out where we are
     self.locationManager = [JCLocationManagerSingleton sharedInstance];
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    [self.locationManager startUpdatingLocation];
     
     // Add our progress hud
     self.progressHUD = [[MBProgressHUD alloc] initWithView:self.popsScrollView];
@@ -289,11 +286,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    // Make sure we turn off location services
-    // TODO: Make sure we restart it when we need it...
-    [self.locationManager stopUpdatingLocation];
-    [self.locationManager stopMonitoringSignificantLocationChanges];
+    // Figure out where we are
     
     [self.filterView removeFromSuperview];
 }
@@ -310,25 +303,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark - CLLocationManagerDelegate
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
-{
-    // If it's a relatively recent event, turn off updates to save power
-    NSDate* eventDate = newLocation.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0)
-    {
-        //NSLog(@"latitude %+.6f, longitude %+.6f\n",
-        //      newLocation.coordinate.latitude,
-        //      newLocation.coordinate.longitude);
-        [manager stopUpdatingLocation];
-        [manager startMonitoringSignificantLocationChanges];
-    }
-    // else skip the event and process the next one.
 }
 
 #pragma mark - UIGestureRecognizer Delegate

@@ -90,9 +90,6 @@
 
     // Figure out where we are
     self.locationManager = [JCLocationManagerSingleton sharedInstance];
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    [self.locationManager startUpdatingLocation];
     
     // The first time around, we want to display nearby locations
     [self.hud show:YES];
@@ -144,11 +141,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    // Make sure we turn off location services
-    // TODO: Make sure we restart it when we need it...
-    [self.locationManager stopUpdatingLocation];
-    [self.locationManager stopMonitoringSignificantLocationChanges];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

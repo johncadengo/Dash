@@ -25,7 +25,7 @@ typedef enum {
     kQuadIV = 3
 }QuadrantIndex;
 
-@interface DashViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate, PlaceSquareViewDelegate>
+@interface DashViewController : UIViewController <RKObjectLoaderDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate, PlaceSquareViewDelegate>
 
 // Model elements
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;

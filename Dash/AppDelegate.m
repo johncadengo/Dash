@@ -26,6 +26,7 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize facebook = _facebook;
+@synthesize locationManager = _locationManager;
 
 // Make sure we start out on the Dash Tab.
 enum {
@@ -47,10 +48,6 @@ enum {
     #ifdef TESTING
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
     #endif
-    
-    /*
-     
-     */
     
     [Appirater appLaunched:YES];
     
@@ -106,6 +103,16 @@ enum {
         }
     }
     
+    // Handle location manager stuff
+    self.locationManager = [JCLocationManagerSingleton sharedInstance];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    [self.locationManager startUpdatingLocation];
+    
+    // Make sure we have internet connection available always
+    NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(reachabilityDidChange:) name:RKReachabilityDidChangeNotification object:nil];
+    
     return YES;
 }
 
@@ -157,6 +164,8 @@ enum {
      */
     
     // TODO: Take singleton instance of location manager and stop getting location when we resign
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopMonitoringSignificantLocationChanges];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -165,6 +174,9 @@ enum {
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopMonitoringSignificantLocationChanges];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -174,6 +186,7 @@ enum {
      */
     
     [Appirater appEnteredForeground:YES];
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -183,12 +196,16 @@ enum {
      */
     
     [self.facebook extendAccessTokenIfNeeded];
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopMonitoringSignificantLocationChanges];
 }
 
 - (void)saveContext
@@ -207,6 +224,69 @@ enum {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         } 
+    }
+}
+
+#pragma mark - Restkit reachability notification
+
+- (void)reachabilityDidChange:(NSNotification *)notification 
+{
+    RKReachabilityObserver* observer = (RKReachabilityObserver *) [notification object];
+    RKReachabilityNetworkStatus status = [observer networkStatus];
+    if (RKReachabilityNotReachable == status) {
+        RKLogInfo(@"No network access!");
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Your internet connection is down. Please tap the home button to exit the app or you may experience unintended behavior." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    } else if (RKReachabilityReachableViaWiFi == status) {
+        RKLogInfo(@"Online via WiFi!");
+    } else if (RKReachabilityReachableViaWWAN == status) {
+        RKLogInfo(@"Online via Edge or 3G!");
+    }
+}
+
+#pragma mark - Location Manager Delegate
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    // If it's a relatively recent event, turn off updates to save power
+    NSDate* eventDate = newLocation.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0)
+    {
+        [manager stopUpdatingLocation];
+        [manager startMonitoringSignificantLocationChanges];
+        
+        [TestFlight passCheckpoint:@"Got a lock on location"];
+    }
+}
+
+- (void)locationManager: (CLLocationManager *)manager
+       didFailWithError: (NSError *)error
+{
+    [manager stopUpdatingLocation];
+    NSLog(@"error%@",error);
+    switch([error code])
+    {
+        case kCLErrorNetwork: // general, network-related error
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Your location cannot be determined. Please tap the home button to exit the app or you may experience unintended behavior." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+            break;
+        case kCLErrorDenied:{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app or the app may behave unexpectedly." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+            break;
+        default:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Your location cannot be determined. Please tap the home button to exit the app or you may experience unintended behavior." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+            break;
     }
 }
 
