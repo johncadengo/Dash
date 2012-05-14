@@ -584,6 +584,8 @@
     // Table view cells
     self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
     self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO selector:@selector(compare:)];
+    [self.highlights sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     [self.tableView reloadData];
     
     // Tool bar stuff

@@ -18,11 +18,9 @@
 /** Sets the attributes of a Highlight at one time: uid, timestamp, and text.
  */
 - (void)setUid:(NSNumber *)uid timestamp:(NSDate *)timestamp text:(NSString *)text;
-
-/** This is what is shown
- */
-- (NSString *)description;
-
 - (BOOL)likedByMe;
+
+- (NSComparisonResult)compare:(Highlight *)other;
+- (NSString *)description;
 
 @end
