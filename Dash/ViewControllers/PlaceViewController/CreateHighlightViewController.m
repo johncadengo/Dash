@@ -154,7 +154,6 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     // Now forward this to the place
-    NSLog(@"Hello %@ %@", self.delegate, objects);
     [self.delegate objectLoader:objectLoader didLoadObjects:objects];
     [self dismissModalViewControllerAnimated:YES];
 }

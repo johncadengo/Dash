@@ -108,10 +108,11 @@
 
 #pragma mark -
 
-- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation
+{
     MKPinAnnotationView *annView=[[MKPinAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"currentloc"];
     annView.pinColor = MKPinAnnotationColorRed;
-    annView.animatesDrop=TRUE;
+    annView.animatesDrop = TRUE;
     annView.canShowCallout = YES;
     annView.calloutOffset = CGPointMake(-5, 5);
     return annView;

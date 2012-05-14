@@ -63,7 +63,7 @@ enum {
     NSManagedObjectContext *context = [self managedObjectContext];
     if (!context) {
         // TODO: Handle the error.
-        NSLog(@"Uh oh");
+        TFLog(@"Cannot initialize context!");
     }
     
     // and make sure everyone gets a reference to it.
@@ -74,7 +74,7 @@ enum {
         }
         else {
             // This should never happen.
-            NSLog(@"Something went wrong trying to assign managed object context to one of the view controllers!");
+            TFLog(@"Something went wrong trying to assign managed object context to one of the view controllers!");
         }
     }
     
@@ -135,12 +135,11 @@ enum {
 
 - (void)fbDidNotLogin:(BOOL)cancelled
 {
-    NSLog(@"Uh oh");
+    TFLog(@"Facebook did not log in");
 }
 
 -(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt 
 {
-    NSLog(@"token extended");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
     [defaults setObject:expiresAt forKey:@"FBExpirationDateKey"];
@@ -221,7 +220,7 @@ enum {
              
              abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
              */
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            TFLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         } 
     }
@@ -236,7 +235,7 @@ enum {
     if (RKReachabilityNotReachable == status) {
         RKLogInfo(@"No network access!");
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Your internet connection is down. Please tap the home button to exit the app or you may experience unintended behavior." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"We are having trouble accessing the internet. Please restore the connection or tap the home button to exit the app." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
     } else if (RKReachabilityReachableViaWiFi == status) {
         RKLogInfo(@"Online via WiFi!");
@@ -267,7 +266,7 @@ enum {
        didFailWithError: (NSError *)error
 {
     [manager stopUpdatingLocation];
-    NSLog(@"error%@",error);
+    TFLog(@"Location Manager Error%@",error);
     switch([error code])
     {
         case kCLErrorNetwork: // general, network-related error
@@ -367,7 +366,7 @@ enum {
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        TFLog(@"Unresolved error with core data %@, %@", error, [error userInfo]);
         abort();
     }    
     

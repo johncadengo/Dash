@@ -143,7 +143,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
     return textSize;
 }
 
-+ (CGColorRef)black {
++ (CGColorRef)black 
+{
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     
     static CGColorRef black = NULL;

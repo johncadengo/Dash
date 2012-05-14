@@ -36,6 +36,9 @@ enum {
     kHighlightCharacterLimit = 64,
 };
 
+// Category Icons
+// Map category strings to enum constants, and enum constants to file names.
+
 // Text
 extern NSString * const kWelcomeText;
 extern NSString * const kIntroText;
