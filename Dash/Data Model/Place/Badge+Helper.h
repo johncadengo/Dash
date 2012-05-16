@@ -11,5 +11,6 @@
 @interface Badge (Helper)
 
 - (UIImage *)icon;
+- (NSComparisonResult)compare:(Badge *)other;
 
 @end

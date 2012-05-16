@@ -38,6 +38,43 @@ enum {
 
 // Category Icons
 // Map category strings to enum constants, and enum constants to file names.
+typedef enum {
+    kCategoryAmerican = 0,
+    kCategoryAsianNoodles = 1,
+    kCategoryBbq = 2,
+    kCategoryBlender = 3,
+    kCategoryBurger = 4,
+    kCategoryButcher = 5,
+    kCategoryChef = 6,
+    kCategoryChicken = 7,
+    kCategoryCocktail = 8,
+    kCategoryDonut = 9,
+    kCategoryHotSauce = 10,
+    kCategoryKettle = 11,
+    kCategoryOlives = 12,
+    kCategoryPizza = 13,
+    kCategoryPlates = 14,
+    kCategorySalad = 15,
+    kCategorySandwich = 16,
+    kCategoryShamrock = 17,
+    kCategorySoup = 18,
+    kCategorySpanishChicken = 19,
+    kCategoryTaco = 20,
+    kCategoryWine = 21,
+    kCategoryBeer = 22,
+    kCategoryCoffee = 23,
+    kCategoryCupcake = 24,
+    kCategoryEgg = 25,
+    kCategoryFastFood = 26,
+    kCategoryFish = 27,
+    kCategoryHotDog = 28,
+    kCategoryIceCream = 29,
+    kCategorySteak = 30,
+    kCategoryTomato = 31,
+    kCategoryBread = 32,
+    kCategoryFoodStand = 33,
+    kNumCategoryIconTypes = 34,
+} kCategoryIconType;
 
 // Text
 extern NSString * const kWelcomeText;

@@ -55,7 +55,7 @@
 - (void)setBadges:(NSArray *)badges
 {
     // Save the badges
-    _badges = badges;
+    _badges = [badges sortedArrayUsingSelector:@selector(compare:)];
     
     // Clear out the old badges
     [self.badgesViews removeAllObjects];

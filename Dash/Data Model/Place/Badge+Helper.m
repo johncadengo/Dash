@@ -23,4 +23,10 @@
     return [icons randomObject];
 }
 
+- (NSComparisonResult)compare:(Badge *)other
+{
+    return [self.uid compare:other.uid];
+}
+
+
 @end

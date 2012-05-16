@@ -220,7 +220,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     }
     
     
-    self.image = [UIImage imageNamed:@"Burger-Profile-Orange.png"];
+    self.image = [place categoryIconForThemeColor:self.themeColor];
     
     [self setNeedsDisplay];
 }
