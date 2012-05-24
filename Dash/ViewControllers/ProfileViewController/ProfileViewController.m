@@ -26,6 +26,7 @@
 @synthesize settingsButton = _settingsButton;
 @synthesize settingsSheet = _settingsSheet;
 @synthesize hud = _hud;
+@synthesize alertView = _alertView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -443,7 +444,9 @@
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error
 {
-    NSLog(@"Request %@ Error %@", request, error);
+    TFLog(@"Request %@ Error %@", request, error);
+    
+    [self.hud hide:YES];
 }
 
 #pragma mark - RKObjectLoaderDelegate methods
@@ -471,10 +474,24 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
 {
-    NSLog(@"Encountered an error: %@", error);
+    TFLog(@"Encountered an error: %@", error);
+    
+    [self.hud hide:YES];
+
+    // We can't reach the internet, so let the user know
+    if (self.alertView == nil) {
+        self.alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" 
+                                                    message:kNoInternetMessage 
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Ok" 
+                                          otherButtonTitles:nil];
+    }
+    else {
+        [self.alertView setMessage:kNoInternetMessage];
+    }
+    
+    [self.alertView show];
 }
-
-
 
 
 @end

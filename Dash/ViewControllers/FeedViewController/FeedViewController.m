@@ -14,6 +14,7 @@
 #import "NewsItem.h"
 #import "NewsItem+Helper.h"
 #import "JCLocationManagerSingleton.h"
+#import "TestFlight.h"
 
 @implementation FeedViewController
 
@@ -25,6 +26,7 @@
 @synthesize hud = _hud;
 @synthesize backgroundBubble = _backgroundBubble;
 @synthesize customSegmentView = _customSegmentView;
+@synthesize alertView = _alertView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -229,7 +231,24 @@
 - (void) refreshFeed
 {
     CLLocation *loc = [self.locationManager location];
-    [self.api feedForPerson:[DashAPI me] near:loc];
+    
+    if (INTERNET_REACHABLE) {
+        [self.api feedForPerson:[DashAPI me] near:loc];
+    }
+    else {
+        // We can't reach the internet, so let the user know
+        [self.hud hide:YES];
+        
+        if (self.alertView == nil) {
+            self.alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" 
+                                                        message:kNoInternetMessage 
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok" 
+                                              otherButtonTitles:nil];
+        }
+        
+        [self.alertView show];
+    }
 }
 
 #pragma mark - RKObjectLoaderDelegate methods
@@ -249,8 +268,9 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
 {
-    NSLog(@"%@", objectLoader.response.bodyAsString);
-    NSLog(@"Encountered an error: %@", error);
+    TFLog(@"Encountered an error: %@", error);
+    
+    [self.hud hide:YES];
 }
 
 #pragma mark -

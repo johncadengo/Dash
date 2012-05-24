@@ -49,6 +49,7 @@ enum {
 @property (nonatomic, strong) UIBarButtonItem *settingsButton;
 @property (nonatomic, strong) UIActionSheet *settingsSheet;
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UIAlertView *alertView;
 
 - (void)loadProfileView;
 - (void)requestProfile;

@@ -481,7 +481,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     if ([self canShowNextPage]) {
         [self showNextPage];
     }
-    else if ([[[RKClient sharedClient] reachabilityObserver] isReachabilityDetermined] && [[RKClient sharedClient] isNetworkReachable]) {
+    else if (INTERNET_REACHABLE) {
         // Otherwise, as long as we can reach the internet, indicate we are now loading
         [self.progressHUD show:YES];
         

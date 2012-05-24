@@ -30,6 +30,7 @@
 
 @property (nonatomic, strong) CustomSegmentView *customSegmentView;
 @property (nonatomic, strong) UIImageView *backgroundBubble;
+@property (nonatomic, strong) UIAlertView *alertView;
 
 /** Want to be able to display recommending a place, liking a highlight, or adding a highlight.
  *  Also, if a friend has joined dash.

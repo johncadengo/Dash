@@ -14,6 +14,7 @@
 #import "PlaceViewController.h"
 #import "JCLocationManagerSingleton.h"
 #import "TitleViewCell.h"
+#import "TestFlight.h"
 
 @implementation SearchViewController
 
@@ -390,6 +391,13 @@
     }
 }
 
+- (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error
+{
+    TFLog(@"Encountered an error: %@", error);
+    
+    [self.hud hide:YES];
+}
+
 #pragma mark - RKObjectLoaderDelegate methods
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
@@ -421,7 +429,9 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error 
 {
-    //NSLog(@"Encountered an error: %@", error);
+    TFLog(@"Encountered an error: %@", error);
+    
+    [self.hud hide:YES];
 }
 
 #pragma mark - Table view delegate
