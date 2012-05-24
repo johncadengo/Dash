@@ -194,14 +194,14 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
     for (Highlight* highlight in place.highlights) {
         [highlights appendFormat:@"%@, ", highlight.text];
     }
-    self.blurb = [NSString stringWithFormat:@"Highlights: %@", highlights];
+    //self.blurb = [NSString stringWithFormat:@"Highlights: %@", highlights];
     
     // 50+ miles
     if (distance >= kDistanceCutoff) {
-        self.distancePrice = [NSString stringWithFormat:@"%@ mi   %@", kDistanceCutOffString, place.price];   
+        self.distancePrice = [NSString stringWithFormat:@"%@   %@ mi", place.price, kDistanceCutOffString];   
     }
     else {
-        self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];    
+        self.distancePrice = [NSString stringWithFormat:@"%@   %.1f mi", place.price, distance];    
     }
     
     self.icon = [place categoryIconLarge];
