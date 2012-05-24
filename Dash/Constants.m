@@ -17,6 +17,7 @@ NSString * const kMoreInfoPhone = @"Phone";
 NSString * const kMoreInfoHours = @"Hours";
 NSString * const kLoginAlertTitle = @"Please Log In";
 NSString * const kLoginAlertMessage = @"Please log into Facebook to use this feature.";
+NSString * const kNoInternetMessage = @"Sorry, you are not connected to the internet.";
 
 #pragma mark - Fonts
 

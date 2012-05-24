@@ -481,8 +481,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     if ([self canShowNextPage]) {
         [self showNextPage];
     }
-    else {
-        // Otherwise, indicate we are now loading
+    else if ([[[RKClient sharedClient] reachabilityObserver] isReachabilityDetermined] && [[RKClient sharedClient] isNetworkReachable]) {
+        // Otherwise, as long as we can reach the internet, indicate we are now loading
         [self.progressHUD show:YES];
         
         // Figure out the filters
@@ -521,6 +521,21 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         }
         
         [self.api pop:locParam types:types prices:prices distance:distance];
+    }
+    else {
+        // We can't reach the internet, so let the user know
+        if (self.alertView == nil) {
+            self.alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" 
+                                                        message:kNoInternetMessage 
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok" 
+                                              otherButtonTitles:nil];
+        }
+        else {
+            [self.alertView setMessage:kNoInternetMessage];
+        }
+        
+        [self.alertView show];
     }
 }
 
@@ -678,6 +693,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
                                                        delegate:nil
                                               cancelButtonTitle:@"Ok" 
                                               otherButtonTitles:nil];
+        }
+        else {
+            [self.alertView setMessage:@"We were unable to retrive any results with the criteria you've specified! Please change your filter options."];
         }
         
         [self.alertView show];
