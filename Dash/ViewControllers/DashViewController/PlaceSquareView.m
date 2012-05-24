@@ -204,12 +204,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
         self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];    
     }
     
-    // Some logic here
-    NSArray *iconChoices = [NSArray arrayWithObjects:
-                            @"DashBurgerIcon.png", @"DashTacoIcon.png", 
-                            @"DashPizzaIcon.png", @"DashNoodlesIcon.png" ,nil];
-    NSString *iconName = [NSString stringWithFormat:@"%@", [iconChoices randomObject]];
-    self.icon = [UIImage imageNamed:iconName];
+    self.icon = [place categoryIconLarge];
     
     // Draw self
     [self setNeedsDisplay];
