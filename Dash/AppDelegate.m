@@ -30,12 +30,11 @@
 
 // Make sure we start out on the Dash Tab.
 enum {
-    kFeedTabIndex = 0,
-    kPlacesTabIndex = 1,
-    kDashTabIndex = 2,
-    kSearchTabIndex = 3,
-    kProfileTabIndex = 4,
-    kNumTabs = 5
+    kFeedTabIndex = 1,
+    kDashTabIndex = 0,
+    kSearchTabIndex = 2,
+    kProfileTabIndex = 3,
+    kNumTabs = 4
 };
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

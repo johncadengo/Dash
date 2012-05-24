@@ -217,10 +217,11 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [self.popButton addTarget:self 
                        action:@selector(pop:)
              forControlEvents:UIControlEventTouchUpInside];
-    [self.popButton setTitle:@"dash" forState:UIControlStateNormal];
-    [self.popButton.titleLabel setFont:[UIFont fontWithName:kPlutoBold size:42.5f]];
-    [self.popButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //[self.popButton setTitle:@"dash" forState:UIControlStateNormal];
+    //[self.popButton.titleLabel setFont:[UIFont fontWithName:kPlutoBold size:42.5f]];
+    //[self.popButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.popButton setBackgroundImage:[UIImage imageNamed:@"DashOrangeButton"] forState:UIControlStateNormal];
+    [self.popButton setBackgroundImage:[UIImage imageNamed:@"DashOrangeButtonPressed"] forState:UIControlStateHighlighted];
     self.popButtonFrame = CGRectMake(10.0f, kPopBackgroundY + kPopButtonYOffset, 300.0f, 54.5f);
     self.popButton.frame = self.popButtonFrame;
     [self.view addSubview:self.popButton];

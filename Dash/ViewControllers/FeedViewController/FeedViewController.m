@@ -55,7 +55,6 @@
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
 
     if (_refreshHeaderView == nil) {
-		
 		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
 		view.delegate = self;
 		[self.tableView addSubview:view];
@@ -81,8 +80,8 @@
     [self refreshFeed];
     
     // Segmented control
-    self.customSegmentView = [[CustomSegmentView alloc] initWithFrame:
-                              CGRectMake(70.25, 7.25f, 359.0f / 2.0f, 59.0f / 2.0f)];
+    //self.customSegmentView = [[CustomSegmentView alloc] initWithFrame:
+    //                          CGRectMake(70.25, 7.25f, 359.0f / 2.0f, 59.0f / 2.0f)];
     
     // Figure out where we are
     self.locationManager = [JCLocationManagerSingleton sharedInstance];
@@ -101,6 +100,9 @@
     [super viewWillAppear:animated];
     
     [self.navigationController.navigationBar addSubview:self.customSegmentView];
+    
+    // Set the custom nav bar
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBar.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -113,6 +115,9 @@
     [super viewWillDisappear:animated];
     
     [self.customSegmentView removeFromSuperview];
+    
+    // Reset it
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
