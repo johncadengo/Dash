@@ -219,7 +219,6 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
         self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];    
     }
     
-    
     self.image = [place categoryIconForThemeColor:self.themeColor];
     
     [self setNeedsDisplay];

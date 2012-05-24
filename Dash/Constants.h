@@ -15,7 +15,7 @@ enum {
     kHighlightLinesColor = 0x878787,
     kDashNavBarBGColor = 0x454545,
     kPlaceOrangeBGColor = 0xffedd6,
-    kPlaceOrangeTextColor = 0xff9933,
+    kPlaceOrangeTextColor = 0xEF9F3B,
     kHighlightTextColor = 0x434546,
     kHighlightAuthorColor = 0x7b7b7b,
     kHighlightLikesColor = 0x4d4d4d,

@@ -213,7 +213,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [self.view addSubview:self.flipGrip];
     
     // Dash button
-    self.popButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.popButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.popButton addTarget:self 
                        action:@selector(pop:)
              forControlEvents:UIControlEventTouchUpInside];

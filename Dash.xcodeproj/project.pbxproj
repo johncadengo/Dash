@@ -359,6 +359,7 @@
 		67A4F131156E8EB9005D5F88 /* Search_Taco@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F065156E8EB8005D5F88 /* Search_Taco@2x.png */; };
 		67A4F132156E8EB9005D5F88 /* Search_Tomato@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F066156E8EB8005D5F88 /* Search_Tomato@2x.png */; };
 		67A4F133156E8EB9005D5F88 /* Search_Wine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F067156E8EB8005D5F88 /* Search_Wine@2x.png */; };
+		67A4F136156ECDED005D5F88 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A4F135156ECDED005D5F88 /* Place.m */; };
 		67A5D8FC151B817C00924CAB /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A5D8FB151B817C00924CAB /* FilterViewController.m */; };
 		67A5D8FF151B942300924CAB /* FlipGrip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FD151B942300924CAB /* FlipGrip@2x.png */; };
 		67A5D900151B942300924CAB /* BlackGradientBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */; };
@@ -433,7 +434,6 @@
 		67DD83F5154BA8D400E65B8B /* ThumbsDownButtonSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DD83F3154BA8D400E65B8B /* ThumbsDownButtonSelected@2x.png */; };
 		67DD83F6154BA8D400E65B8B /* ThumbsUpButtonSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DD83F4154BA8D400E65B8B /* ThumbsUpButtonSelected@2x.png */; };
 		67DD83F9154BC3E200E65B8B /* Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83F8154BC3E200E65B8B /* Badge.m */; };
-		67DD83FC154BC3FA00E65B8B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83FB154BC3FA00E65B8B /* Place.m */; };
 		67DD83FF154BC41900E65B8B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD83FE154BC41900E65B8B /* Person.m */; };
 		67DE842C152F7EFF00556C54 /* Heart-Gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */; };
 		67DE842D152F7EFF00556C54 /* Heart-Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DE842B152F7EFF00556C54 /* Heart-Red@2x.png */; };
@@ -960,6 +960,8 @@
 		67A4F065156E8EB8005D5F88 /* Search_Taco@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Search_Taco@2x.png"; path = "Dash/Images/Categories/Search_Taco@2x.png"; sourceTree = "<group>"; };
 		67A4F066156E8EB8005D5F88 /* Search_Tomato@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Search_Tomato@2x.png"; path = "Dash/Images/Categories/Search_Tomato@2x.png"; sourceTree = "<group>"; };
 		67A4F067156E8EB8005D5F88 /* Search_Wine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Search_Wine@2x.png"; path = "Dash/Images/Categories/Search_Wine@2x.png"; sourceTree = "<group>"; };
+		67A4F134156ECDED005D5F88 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = "Data Model/Place/Place.h"; sourceTree = "<group>"; };
+		67A4F135156ECDED005D5F88 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place/Place.m"; sourceTree = "<group>"; };
 		67A5D8FA151B817C00924CAB /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewController.h; path = Dash/ViewControllers/DashViewController/FilterViewController.h; sourceTree = "<group>"; };
 		67A5D8FB151B817C00924CAB /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewController.m; path = Dash/ViewControllers/DashViewController/FilterViewController.m; sourceTree = "<group>"; };
 		67A5D8FD151B942300924CAB /* FlipGrip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlipGrip@2x.png"; path = "Dash/Images/Tabs/Dash/FlipGrip@2x.png"; sourceTree = "<group>"; };
@@ -1058,8 +1060,6 @@
 		67DD83F4154BA8D400E65B8B /* ThumbsUpButtonSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThumbsUpButtonSelected@2x.png"; path = "Dash/Images/PlaceProfile/ThumbsUpButtonSelected@2x.png"; sourceTree = "<group>"; };
 		67DD83F7154BC3E200E65B8B /* Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Badge.h; path = "Data Model/Place/Badge.h"; sourceTree = "<group>"; };
 		67DD83F8154BC3E200E65B8B /* Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Badge.m; path = "Data Model/Place/Badge.m"; sourceTree = "<group>"; };
-		67DD83FA154BC3FA00E65B8B /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = "Data Model/Place/Place.h"; sourceTree = "<group>"; };
-		67DD83FB154BC3FA00E65B8B /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place/Place.m"; sourceTree = "<group>"; };
 		67DD83FD154BC41900E65B8B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = "Data Model/Person/Person.h"; sourceTree = "<group>"; };
 		67DD83FE154BC41900E65B8B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = "Data Model/Person/Person.m"; sourceTree = "<group>"; };
 		67DE842A152F7EFF00556C54 /* Heart-Gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Heart-Gray@2x.png"; path = "Dash/Images/PlaceProfile/Heart-Gray@2x.png"; sourceTree = "<group>"; };
@@ -1614,8 +1614,8 @@
 				672C2C6C1459E9A4006A1D6B /* Category.m */,
 				672C2C6D1459E9A4006A1D6B /* Hours.h */,
 				672C2C6E1459E9A4006A1D6B /* Hours.m */,
-				67DD83FA154BC3FA00E65B8B /* Place.h */,
-				67DD83FB154BC3FA00E65B8B /* Place.m */,
+				67A4F134156ECDED005D5F88 /* Place.h */,
+				67A4F135156ECDED005D5F88 /* Place.m */,
 				6735AEA314BCC450000259AF /* Place+Helper.h */,
 				6735AEA414BCC450000259AF /* Place+Helper.m */,
 				672C2C711459E9A4006A1D6B /* PlaceLocation.h */,
@@ -2851,7 +2851,6 @@
 				67E2AA2215482C430002E641 /* NewsItem+Helper.m in Sources */,
 				67CF56381548DE3500BA65FC /* CreateHighlightViewController.m in Sources */,
 				67DD83F9154BC3E200E65B8B /* Badge.m in Sources */,
-				67DD83FC154BC3FA00E65B8B /* Place.m in Sources */,
 				67DD83FF154BC41900E65B8B /* Person.m in Sources */,
 				6799127A154ED194007CD93A /* MapViewController.m in Sources */,
 				6799127F154EF113007CD93A /* DashMapAnnotation.m in Sources */,
@@ -2859,6 +2858,7 @@
 				6799129B154F1713007CD93A /* Recommend.m in Sources */,
 				670DFA1E1551A1C000DA3C9D /* NewsItem.m in Sources */,
 				6703EFD4155AE6FB0005B9E1 /* Appirater.m in Sources */,
+				67A4F136156ECDED005D5F88 /* Place.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

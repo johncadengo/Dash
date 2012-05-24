@@ -92,8 +92,10 @@
     <entity name="Place" representedClassName="Place" parentEntity="Uniqueness" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="num_ratings" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="thumbsdowncount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="thumbsupcount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceAction" inverseName="place" inverseEntity="PlaceAction" syncable="YES"/>
@@ -158,7 +160,7 @@
         <element name="NewsItem" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Person" positionX="250" positionY="255" width="128" height="240"/>
         <element name="Photo" positionX="97" positionY="-27" width="128" height="90"/>
-        <element name="Place" positionX="-72" positionY="-36" width="128" height="300"/>
+        <element name="Place" positionX="-72" positionY="-36" width="128" height="330"/>
         <element name="PlaceAction" positionX="97" positionY="75" width="128" height="75"/>
         <element name="PlaceLocation" positionX="-387" positionY="162" width="128" height="60"/>
         <element name="Pop" positionX="-243" positionY="285" width="128" height="90"/>

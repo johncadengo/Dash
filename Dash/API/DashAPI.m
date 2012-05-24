@@ -75,7 +75,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [placeMapping mapKeyPath:@"id" toAttribute:@"uid"];
     [placeMapping mapKeyPath:@"up" toAttribute:@"thumbsupcount"];
     [placeMapping mapKeyPath:@"down" toAttribute:@"thumbsdowncount"];
-    [placeMapping mapAttributes:@"name", @"address", @"phone", @"price", nil];
+    [placeMapping mapAttributes:@"name", @"address", @"phone", @"price", @"rating", @"num_ratings", nil];
     
     // Define the relationship mappings between place and category, highlight, location
     [placeMapping mapKeyPath:@"categories" toRelationship:@"categories" withMapping:categoryMapping];
@@ -269,11 +269,21 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     NSNumber *count = [NSNumber numberWithInt:10];
     NSString *locParam = [NSString stringWithFormat:@"%f, %f", location.coordinate.latitude,
                           location.coordinate.longitude];
-    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            self.key, @"must_fix",
-                            [NSString stringWithFormat:@"%@", person.fb_uid], @"fb_uid",
-                            locParam, @"loc",
-                            count, @"count",nil];
+    
+    NSDictionary* params;
+    if (person.fb_uid) {
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                    self.key, @"must_fix",
+                    [NSString stringWithFormat:@"%@", person.fb_uid], @"fb_uid",
+                    locParam, @"loc",
+                    count, @"count",nil];
+    }
+    else {
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                    self.key, @"must_fix",
+                    locParam, @"loc",
+                    count, @"count",nil];
+    }
     
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader= [objectManager objectLoaderWithResourcePath:[@"feed" appendQueryParams:params] delegate:self.delegate];

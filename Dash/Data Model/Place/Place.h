@@ -2,7 +2,7 @@
 //  Place.h
 //  Dash
 //
-//  Created by John Cadengo on 4/28/12.
+//  Created by John Cadengo on 5/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -20,6 +20,8 @@
 @property (nonatomic, retain) NSString * price;
 @property (nonatomic, retain) NSNumber * thumbsdowncount;
 @property (nonatomic, retain) NSNumber * thumbsupcount;
+@property (nonatomic, retain) NSNumber * rating;
+@property (nonatomic, retain) NSNumber * num_ratings;
 @property (nonatomic, retain) NSSet *actions;
 @property (nonatomic, retain) NSSet *badges;
 @property (nonatomic, retain) NSSet *categories;

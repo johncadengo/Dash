@@ -2,7 +2,7 @@
 //  Place.m
 //  Dash
 //
-//  Created by John Cadengo on 4/28/12.
+//  Created by John Cadengo on 5/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -27,6 +27,8 @@
 @dynamic price;
 @dynamic thumbsdowncount;
 @dynamic thumbsupcount;
+@dynamic rating;
+@dynamic num_ratings;
 @dynamic actions;
 @dynamic badges;
 @dynamic categories;
