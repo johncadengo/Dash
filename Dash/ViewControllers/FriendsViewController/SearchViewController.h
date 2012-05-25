@@ -20,8 +20,8 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSString *currentQuery;
-
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UIAlertView *alertView;
 
 - (void)clearSearchBarBackground;
 

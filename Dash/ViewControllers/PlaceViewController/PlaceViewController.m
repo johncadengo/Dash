@@ -400,7 +400,7 @@
 - (UITableViewCell *)badgesSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
     if (row == 0)
-        return [self titleViewCellForTableView:tableView WithTitle:@"Notables"];
+        return [self titleViewCellForTableView:tableView WithTitle:@"Recognized By"];
     
     BadgesViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceBadgesCellIdentifier];
     if (cell == nil) {

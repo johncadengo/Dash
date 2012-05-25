@@ -25,6 +25,7 @@
 @synthesize resultsForSearchQuery = _resultsForSearchQuery;
 @synthesize currentQuery = _currentQuery;
 @synthesize hud = _hud;
+@synthesize alertView = _alertView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -432,6 +433,20 @@
     TFLog(@"Encountered an error: %@", error);
     
     [self.hud hide:YES];
+    
+    // We can't reach the internet, so let the user know
+    if (self.alertView == nil) {
+        self.alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" 
+                                                    message:kNoInternetMessage 
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Ok" 
+                                          otherButtonTitles:nil];
+    }
+    else {
+        [self.alertView setMessage:kNoInternetMessage];
+    }
+    
+    [self.alertView show];
 }
 
 #pragma mark - Table view delegate

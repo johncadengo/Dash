@@ -360,6 +360,7 @@
 		67A4F132156E8EB9005D5F88 /* Search_Tomato@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F066156E8EB8005D5F88 /* Search_Tomato@2x.png */; };
 		67A4F133156E8EB9005D5F88 /* Search_Wine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F067156E8EB8005D5F88 /* Search_Wine@2x.png */; };
 		67A4F136156ECDED005D5F88 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A4F135156ECDED005D5F88 /* Place.m */; };
+		67A4F138156EF13D005D5F88 /* NoSearchResultsMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F137156EF13D005D5F88 /* NoSearchResultsMessage@2x.png */; };
 		67A5D8FC151B817C00924CAB /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A5D8FB151B817C00924CAB /* FilterViewController.m */; };
 		67A5D8FF151B942300924CAB /* FlipGrip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FD151B942300924CAB /* FlipGrip@2x.png */; };
 		67A5D900151B942300924CAB /* BlackGradientBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */; };
@@ -962,6 +963,8 @@
 		67A4F067156E8EB8005D5F88 /* Search_Wine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Search_Wine@2x.png"; path = "Dash/Images/Categories/Search_Wine@2x.png"; sourceTree = "<group>"; };
 		67A4F134156ECDED005D5F88 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = "Data Model/Place/Place.h"; sourceTree = "<group>"; };
 		67A4F135156ECDED005D5F88 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place/Place.m"; sourceTree = "<group>"; };
+		67A4F137156EF13D005D5F88 /* NoSearchResultsMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NoSearchResultsMessage@2x.png"; path = "Dash/Images/Tabs/Search/NoSearchResultsMessage@2x.png"; sourceTree = "<group>"; };
+		67A4F139156F2BDA005D5F88 /* Dash 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Dash 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		67A5D8FA151B817C00924CAB /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewController.h; path = Dash/ViewControllers/DashViewController/FilterViewController.h; sourceTree = "<group>"; };
 		67A5D8FB151B817C00924CAB /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewController.m; path = Dash/ViewControllers/DashViewController/FilterViewController.m; sourceTree = "<group>"; };
 		67A5D8FD151B942300924CAB /* FlipGrip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlipGrip@2x.png"; path = "Dash/Images/Tabs/Dash/FlipGrip@2x.png"; sourceTree = "<group>"; };
@@ -1429,6 +1432,7 @@
 		6734EB5815123EBD00D7EA7E /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				67A4F137156EF13D005D5F88 /* NoSearchResultsMessage@2x.png */,
 				67DEF891153C8DAE0079C097 /* SearchBar@2x.png */,
 				67DEF892153C8DAE0079C097 /* SearchBarWithMGlass@2x.png */,
 			);
@@ -2708,6 +2712,7 @@
 				67A4F131156E8EB9005D5F88 /* Search_Taco@2x.png in Resources */,
 				67A4F132156E8EB9005D5F88 /* Search_Tomato@2x.png in Resources */,
 				67A4F133156E8EB9005D5F88 /* Search_Wine@2x.png in Resources */,
+				67A4F138156EF13D005D5F88 /* NoSearchResultsMessage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3074,9 +3079,10 @@
 		67348AC21446350700A3160A /* Dash.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				67A4F139156F2BDA005D5F88 /* Dash 1.1.xcdatamodel */,
 				67348AC31446350700A3160A /* Dash.xcdatamodel */,
 			);
-			currentVersion = 67348AC31446350700A3160A /* Dash.xcdatamodel */;
+			currentVersion = 67A4F139156F2BDA005D5F88 /* Dash 1.1.xcdatamodel */;
 			path = Dash.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

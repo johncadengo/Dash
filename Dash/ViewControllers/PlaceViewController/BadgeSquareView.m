@@ -31,8 +31,8 @@ static CGFloat kIconWidth = 40.0f;
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
         
-        self.label = [[UILabel alloc] initWithFrame: CGRectMake(0.0f, kIconWidth + 2.5f, 
-                                kWidth, kHeight - (kIconWidth + 2.5f))];
+        self.label = [[UILabel alloc] initWithFrame: CGRectMake(0.0f, kIconWidth, 
+                                kWidth, kHeight - kIconWidth)];
         [self.label setFont:[UIFont systemFontOfSize:10.0f]];
         [self.label setNumberOfLines:2];
         [self.label setLineBreakMode:UILineBreakModeWordWrap];
@@ -45,7 +45,7 @@ static CGFloat kIconWidth = 40.0f;
 
 - (void)setWithBadge:(Badge *)badge
 {
-    self.label.text = [[NSString stringWithFormat:@"Popular On %@", badge.name] capitalizedString];
+    self.label.text = [[NSString stringWithFormat:@"%@", badge.name] capitalizedString];
     self.icon = badge.icon;
     
     [self setNeedsDisplay];
@@ -58,7 +58,7 @@ static CGFloat kIconWidth = 40.0f;
     [super drawRect:rect];
     
     // Draw the icon
-    [self.icon drawInRect:CGRectMake((kWidth - kIconWidth) / 2.0f, 2.5f, kIconWidth, kIconWidth)];
+    [self.icon drawInRect:CGRectMake((kWidth - kIconWidth) / 2.0f, 10.0f, kIconWidth, kIconWidth)];
 }
 
 

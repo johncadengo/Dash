@@ -337,10 +337,15 @@ enum {
     }
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Dash.sqlite"];
-    
     NSError *error = nil;
+    
+    //Turn on automatic store migration
+    NSDictionary *optionsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                                       [NSNumber numberWithBool:NO], NSInferMappingModelAutomaticallyOption, nil];
+    
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:optionsDictionary error:&error])
     {
         /*
          Replace this implementation with code to handle the error appropriately.
@@ -365,8 +370,22 @@ enum {
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
-        TFLog(@"Unresolved error with core data %@, %@", error, [error userInfo]);
-        abort();
+        
+        // Uh oh
+        TFLog(@"Error with core data %@, %@", error, [error userInfo]);
+        
+        // Try deleting our store first
+        TFLog(@"Going to try removing the store first");
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+        
+        // Try again
+        __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+        if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:optionsDictionary error:&error]) {
+            // This means we're in trouble
+            TFLog(@"Uh oh. Still doesn't work %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
     }    
     
     return __persistentStoreCoordinator;
