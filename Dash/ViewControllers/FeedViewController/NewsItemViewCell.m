@@ -46,13 +46,13 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 + (CGFloat)heightForNewsItem:(NewsItem *)newsItem;
 {
-    CGSize blurbSize = [self textSizeForBlurb:newsItem.blurb];
+    CGSize blurbSize = [self textSizeForBlurb:newsItem];
     CGSize timestampSize = [self textSizeForTimestamp:@"My"];
     
     CGFloat textHeight = kPadding + blurbSize.height + kPadding + 
                             timestampSize.height + kPadding + kLineHeight;
     CGFloat iconHeight = 10.0f + kPicWidth + kPadding + kLineHeight;
-    
+    ;
     return MAX(iconHeight, textHeight);
 }
 
@@ -66,8 +66,9 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     return [UIFont systemFontOfSize:10.0f];
 }
 
-+ (CGSize)textSizeForBlurb:(NSString *)blurb
++ (CGSize)textSizeForBlurb:(NewsItem *)newsItem
 {
+    /*
     CGFloat maxWidth = kWindowWidth - kPicWidth - (2 * kLeftRightMargin) - (2 * kPadding);
     CGSize maxSize = CGSizeMake(maxWidth, kMaxBlurbHeight);
 	CGSize textSize = [blurb sizeWithFont:[self blurbFont] 
@@ -75,7 +76,21 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
                             lineBreakMode:kBlurbLineBreak];
     
     return textSize;
+    */
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:newsItem.blurb];
+    [attrStr setFont:[self.class blurbFont]];
+    [attrStr setTextColor:UIColorFromRGB(kFeedBlurbColor)];
     
+    // Now we want to bold the person's name and the place's name
+    [attrStr setFont:[UIFont fontWithName:kHelveticaNeueBold size:kBlurbFontSize] 
+               range:[newsItem.blurb rangeOfString:newsItem.author.name]];
+    [attrStr setFont:[UIFont fontWithName:kHelveticaNeueBold size:kBlurbFontSize] 
+               range:[newsItem.blurb rangeOfString:newsItem.place.name]];
+    
+    // Now connect the attributed string to our OHAttributedLabel
+    CGFloat maxWidth = kWindowWidth - kPicWidth - (2 * kLeftRightMargin) - (2 * kPadding);
+    CGSize maxSize = CGSizeMake(maxWidth, kMaxBlurbHeight);
+    return [attrStr sizeConstrainedToSize:maxSize];
 }
 
 + (CGSize)textSizeForTimestamp:(NSString *)timestamp
@@ -127,7 +142,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     self.timestamp = [newsItem relativeTimestamp];
     [self.icon setImageURL:[NSURL URLWithString:[NSString stringWithFormat: @"https://graph.facebook.com/%@/picture", newsItem.author.fb_uid]]];
     
-    CGSize blurbSize = [[self class] textSizeForBlurb:newsItem.blurb];
+    CGSize blurbSize = [[self class] textSizeForBlurb:newsItem];
     [self.blurb setFrame:CGRectMake(kLeftRightMargin + kPicWidth + kPadding, 10.0f,
                                     blurbSize.width, blurbSize.height)];
     [self.blurb setNeedsDisplay];
@@ -159,7 +174,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 {
     // Draw text
     
-    CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb.attributedText.string];
+    CGSize blurbSize = self.blurb.frame.size;
         
     /*
     [UIColorFromRGB(kFeedBlurbColor) set];

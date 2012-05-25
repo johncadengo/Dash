@@ -24,7 +24,7 @@
 
 + (UIFont *)blurbFont;
 + (UIFont *)timestampFont;
-+ (CGSize)textSizeForBlurb:(NSString *)blurb;
++ (CGSize)textSizeForBlurb:(NewsItem *)newsItem;
 + (CGSize)textSizeForTimestamp:(NSString *)timestamp;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
