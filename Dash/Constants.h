@@ -77,6 +77,15 @@ typedef enum {
     kNumCategoryIconTypes = 34,
 } kCategoryIconType;
 
+// Badge Icons
+typedef enum {
+    kBadgeDash = 0,
+    kBadgeFork = 1,
+    kBadgeNews = 2,
+    kBadgeLaptop = 3,
+    kBadgeIconTypes = 4,
+} kBadgeIconType;
+
 // Text
 extern NSString * const kWelcomeText;
 extern NSString * const kIntroText;

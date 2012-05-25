@@ -10,6 +10,10 @@
 
 @interface Badge (Helper)
 
+
++ (NSDictionary *)badgesDictionary;
++ (NSDictionary *)flattenBadgesDictionary;
+
 - (UIImage *)icon;
 - (NSComparisonResult)compare:(Badge *)other;
 
