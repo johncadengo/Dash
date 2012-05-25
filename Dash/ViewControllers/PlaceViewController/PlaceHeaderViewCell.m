@@ -227,7 +227,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     self.stars = [UIImage imageNamed:[place filenameForStarsColor:kStarsColorGrey]];
     
-    self.numRatings = [place numRatingsDescription];
+    self.numRatings = [NSString stringWithFormat:@"%@", [place numRatingsDescription]];
     
     [self setNeedsDisplay];
 }
