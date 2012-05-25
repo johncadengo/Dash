@@ -196,7 +196,7 @@
     }
     else {
         if (indexPath.section == 0) {
-            height = [TitleViewCell height] + 1.0f; // TODO: UGH.
+            height = [TitleViewCell height];
         }
         else {
             height = [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:[indexPath row]]];

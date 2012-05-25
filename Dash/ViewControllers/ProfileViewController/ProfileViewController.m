@@ -12,6 +12,7 @@
 #import "ProfileHeaderCell.h"
 #import "PlaceViewController.h"
 #import "TestFlight.h"
+#import "TitleViewCell.h"
 
 @implementation ProfileViewController
 
@@ -209,7 +210,9 @@
         case 0:
             height = [ProfileHeaderCell height];
             break;
-            
+        case 1:
+            height = [TitleViewCell height];
+            break;
         default:
             height = [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:indexPath.row]];
             break;
@@ -243,8 +246,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return 2;
+    // Return the number of sections. 
+    return 3; //One for the header. One for the title. And one for the liked restaurants.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -255,6 +258,9 @@
         return 1;
     }
     else if (section == 1) {
+        return 1;
+    }
+    else if (section == 2) {
         // A row for each kind of stats
         return [self.recommends count]; 
     }
@@ -271,6 +277,9 @@
     switch (indexPath.section) {
         case 0:
             cell = [self headerCellForTableView:tableView];
+            break;
+        case 1:
+            cell = [self titleViewCellForTableView:tableView];
             break;
         default:
             cell = [self recommendCellForTableView:tableView row:indexPath.row];
@@ -296,6 +305,19 @@
     return cell;
 }
 
+- (TitleViewCell *)titleViewCellForTableView:(UITableView *)tableView
+{
+    TitleViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceTitleCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[TitleViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceTitleCellIdentifier];
+    }
+    
+    [cell setTitle:@"Liked Restaurants"];
+    
+    return cell;
+}
+
 - (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSInteger)row
 {
     RecommendedPlaceViewCell *cell = (RecommendedPlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
@@ -315,7 +337,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         Place *place = [[self.recommends objectAtIndex:indexPath.row] place];
         [self performSegueWithIdentifier:kShowProfileViewDetailsIdentifier sender:place];
     }

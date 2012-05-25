@@ -29,7 +29,7 @@ static CGFloat const kPicWidth = 50.0f;
 #pragma mark - 
 + (UIFont *)nameFont
 {
-    return [UIFont fontWithName:kPlutoBold size:13.0f];
+    return [UIFont fontWithName:kPlutoBold size:25.0f];
 }
 
 + (CGFloat) height
@@ -44,7 +44,7 @@ static CGFloat const kPicWidth = 50.0f;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Set the infoBubble
-        self.infoBubble = [UIImage imageNamed:@"InformationBubble.png"];
+        //self.infoBubble = [UIImage imageNamed:@"InformationBubble.png"];
         
         // Clear background
         self.backgroundColor = [UIColor clearColor];

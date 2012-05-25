@@ -16,6 +16,7 @@
 @class Person;
 @class ProfileHeaderCell;
 @class RecommendedPlaceViewCell;
+@class TitleViewCell;
 
 // For our settings actionsheet
 enum {
@@ -57,6 +58,7 @@ enum {
 - (void)newProfile:(NSNotification *)sender;
 
 - (ProfileHeaderCell *)headerCellForTableView:(UITableView *)tableView;
+- (TitleViewCell *)titleViewCellForTableView:(UITableView *)tableView;
 - (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSInteger)row;
 - (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row;
 

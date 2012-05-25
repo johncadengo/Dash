@@ -371,6 +371,7 @@
 		67A4F14C156F3698005D5F88 /* ThreeFiveWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F142156F3698005D5F88 /* ThreeFiveWhite@2x.png */; };
 		67A4F14D156F3698005D5F88 /* ThreeGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F143156F3698005D5F88 /* ThreeGrey@2x.png */; };
 		67A4F14E156F3698005D5F88 /* ThreeWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F144156F3698005D5F88 /* ThreeWhite@2x.png */; };
+		67A4F150156F7947005D5F88 /* NoLikesMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F14F156F7946005D5F88 /* NoLikesMessage@2x.png */; };
 		67A5D8FC151B817C00924CAB /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A5D8FB151B817C00924CAB /* FilterViewController.m */; };
 		67A5D8FF151B942300924CAB /* FlipGrip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FD151B942300924CAB /* FlipGrip@2x.png */; };
 		67A5D900151B942300924CAB /* BlackGradientBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */; };
@@ -985,6 +986,7 @@
 		67A4F142156F3698005D5F88 /* ThreeFiveWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThreeFiveWhite@2x.png"; path = "Dash/Images/Stars/ThreeFiveWhite@2x.png"; sourceTree = "<group>"; };
 		67A4F143156F3698005D5F88 /* ThreeGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThreeGrey@2x.png"; path = "Dash/Images/Stars/ThreeGrey@2x.png"; sourceTree = "<group>"; };
 		67A4F144156F3698005D5F88 /* ThreeWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThreeWhite@2x.png"; path = "Dash/Images/Stars/ThreeWhite@2x.png"; sourceTree = "<group>"; };
+		67A4F14F156F7946005D5F88 /* NoLikesMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NoLikesMessage@2x.png"; path = "Dash/Images/Tabs/Profile/NoLikesMessage@2x.png"; sourceTree = "<group>"; };
 		67A5D8FA151B817C00924CAB /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewController.h; path = Dash/ViewControllers/DashViewController/FilterViewController.h; sourceTree = "<group>"; };
 		67A5D8FB151B817C00924CAB /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewController.m; path = Dash/ViewControllers/DashViewController/FilterViewController.m; sourceTree = "<group>"; };
 		67A5D8FD151B942300924CAB /* FlipGrip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlipGrip@2x.png"; path = "Dash/Images/Tabs/Dash/FlipGrip@2x.png"; sourceTree = "<group>"; };
@@ -1462,6 +1464,7 @@
 		6734EB5915123EC400D7EA7E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				67A4F14F156F7946005D5F88 /* NoLikesMessage@2x.png */,
 				67A859911540C9C800B451D9 /* SignInScreen@2x.png */,
 				67A8597C1540BE3300B451D9 /* FavoritesBubbleBottom@2x.png */,
 				67A8597D1540BE3300B451D9 /* FavoritesBubbleMiddle@2x.png */,
@@ -2761,6 +2764,7 @@
 				67A4F14C156F3698005D5F88 /* ThreeFiveWhite@2x.png in Resources */,
 				67A4F14D156F3698005D5F88 /* ThreeGrey@2x.png in Resources */,
 				67A4F14E156F3698005D5F88 /* ThreeWhite@2x.png in Resources */,
+				67A4F150156F7947005D5F88 /* NoLikesMessage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
