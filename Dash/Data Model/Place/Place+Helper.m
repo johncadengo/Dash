@@ -333,4 +333,37 @@ enum {
     return filename;
 }
 
+- (NSString *)filenameForStarsColor:(kStarsColor)color
+{
+    NSString *basename;
+    NSString *colorname;
+    
+    if ([self.rating compare:[NSNumber numberWithFloat:4.5]] == NSOrderedSame) {
+        basename = kFive;
+    }
+    else if ([self.rating compare:[NSNumber numberWithFloat:4.5]] == NSOrderedDescending){
+        basename = kFourFive;
+    }
+    else if ([self.rating compare:[NSNumber numberWithFloat:4.0]] == NSOrderedDescending) {
+        basename = kFour;
+    }
+    else if ([self.rating compare:[NSNumber numberWithFloat:3.5]] == NSOrderedDescending) {
+        basename = kThreeFive;
+    }
+    else {
+        // Defaults to three
+        basename = kThree;
+    }
+    
+    if (color == kStarsColorWhite) {
+        colorname = kWhite;
+    }
+    else {
+        // kStarsColorGrey
+        colorname = kGrey;
+    }
+    
+    return [NSString stringWithFormat:@"%@%@", basename, colorname];
+}
+
 @end

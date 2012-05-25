@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSMutableArray *badges;
 @property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, strong) UIImage *backgroundImage;
+@property (nonatomic, strong) UIImage *stars;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) NSInteger index;
 @property (nonatomic, strong) UITapGestureRecognizer *tap;

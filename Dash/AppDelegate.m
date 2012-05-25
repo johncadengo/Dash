@@ -13,6 +13,7 @@
 #import "DashViewController.h"
 #import "TestFlight.h"
 #import "Appirater.h"
+#import "EGOCache.h"
 
 // Category to make sure that we have accessors to managedobjectcontext
 @interface UIViewController (Helper)
@@ -164,6 +165,7 @@ enum {
     // TODO: Take singleton instance of location manager and stop getting location when we resign
     [self.locationManager stopUpdatingLocation];
     [self.locationManager stopMonitoringSignificantLocationChanges];
+    [[EGOCache currentCache] clearCache];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -175,6 +177,7 @@ enum {
     
     [self.locationManager stopUpdatingLocation];
     [self.locationManager stopMonitoringSignificantLocationChanges];
+    [[EGOCache currentCache] clearCache];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -204,6 +207,7 @@ enum {
     
     [self.locationManager stopUpdatingLocation];
     [self.locationManager stopMonitoringSignificantLocationChanges];
+    [[EGOCache currentCache] clearCache];
 }
 
 - (void)saveContext

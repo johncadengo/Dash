@@ -65,7 +65,7 @@
     
     // Tableview
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    self.view.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
+    self.view.backgroundColor = UIColorFromRGB(kGreyBGColor);
     
     // Search bar
     [self.searchDisplayController.searchBar setTintColor:[UIColor blackColor]];

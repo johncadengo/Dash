@@ -25,6 +25,7 @@
 @synthesize badges = _badges;
 @synthesize icon = _icon;
 @synthesize backgroundImage = _backgroundImage;
+@synthesize stars = _stars;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize index = _index;
 @synthesize tap = _tap;
@@ -37,6 +38,7 @@ static CGFloat kHeight = 160.0f;
 static CGFloat kPadding = 5.0f;
 static CGFloat kHalfPadding = 1.0f;
 static CGFloat kMaxBlurbHeight = 30.0f;
+static CGFloat kStarsHeight = 14.5f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kInfoLinebreak = UILineBreakModeTailTruncation;
@@ -206,6 +208,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
     
     self.icon = [place categoryIconLarge];
     
+    self.stars = [UIImage imageNamed:[place filenameForStarsColor:kStarsColorWhite]];
+    
     // Draw self
     [self setNeedsDisplay];
 }
@@ -322,6 +326,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
     //                             iconSize.width, iconSize.height);
     // New static positioning
     [self.icon drawAtPoint:CGPointMake(kWidth - kHalfPadding - iconSize.width, 55.0f)];
+    
+    [self.stars drawAtPoint:CGPointMake(kPadding, kHeight - (kPadding + kStarsHeight))];
 }
 
 

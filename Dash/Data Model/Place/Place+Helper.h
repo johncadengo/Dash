@@ -9,6 +9,12 @@
 #import "Place.h"
 #import "PlaceViewController.h"
 
+// White is for the four squares page, and grey is for the restaurant profile
+typedef enum {
+    kStarsColorWhite = 0,
+    kStarsColorGrey = 1
+} kStarsColor;
+
 @interface Place (Helper)
 
 + (NSDictionary *)categoriesDictionary;
@@ -37,5 +43,9 @@
  *  for constructing the actual file name (i.e. "Main_Taco.png")
  */
 - (NSString *)categoryIconBaseFilename;
+
+/** Returns the stars filename depending on what color we want.
+ */
+- (NSString *)filenameForStarsColor:(kStarsColor)color;
 
 @end

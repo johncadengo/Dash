@@ -79,3 +79,13 @@ NSString * const kDistanceCutOffString = @"50+";
 #pragma mark - FB Connect
 
 NSString * const kFBAppID = @"101827883286265";
+
+#pragma mark - Stars filenames
+NSString * const kFive = @"Five";
+NSString * const kFourFive = @"FourFive";
+NSString * const kFour = @"Four";
+NSString * const kThreeFive = @"ThreeFive";
+NSString * const kThree = @"Three";
+NSString * const kWhite = @"White";
+NSString * const kGrey = @"Grey";
+

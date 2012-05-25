@@ -361,6 +361,16 @@
 		67A4F133156E8EB9005D5F88 /* Search_Wine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F067156E8EB8005D5F88 /* Search_Wine@2x.png */; };
 		67A4F136156ECDED005D5F88 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A4F135156ECDED005D5F88 /* Place.m */; };
 		67A4F138156EF13D005D5F88 /* NoSearchResultsMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F137156EF13D005D5F88 /* NoSearchResultsMessage@2x.png */; };
+		67A4F145156F3698005D5F88 /* FiveGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F13B156F3698005D5F88 /* FiveGrey@2x.png */; };
+		67A4F146156F3698005D5F88 /* FiveWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F13C156F3698005D5F88 /* FiveWhite@2x.png */; };
+		67A4F147156F3698005D5F88 /* FourFiveGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F13D156F3698005D5F88 /* FourFiveGrey@2x.png */; };
+		67A4F148156F3698005D5F88 /* FourFiveWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F13E156F3698005D5F88 /* FourFiveWhite@2x.png */; };
+		67A4F149156F3698005D5F88 /* FourGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F13F156F3698005D5F88 /* FourGrey@2x.png */; };
+		67A4F14A156F3698005D5F88 /* FourWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F140156F3698005D5F88 /* FourWhite@2x.png */; };
+		67A4F14B156F3698005D5F88 /* ThreeFiveGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F141156F3698005D5F88 /* ThreeFiveGrey@2x.png */; };
+		67A4F14C156F3698005D5F88 /* ThreeFiveWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F142156F3698005D5F88 /* ThreeFiveWhite@2x.png */; };
+		67A4F14D156F3698005D5F88 /* ThreeGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F143156F3698005D5F88 /* ThreeGrey@2x.png */; };
+		67A4F14E156F3698005D5F88 /* ThreeWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F144156F3698005D5F88 /* ThreeWhite@2x.png */; };
 		67A5D8FC151B817C00924CAB /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A5D8FB151B817C00924CAB /* FilterViewController.m */; };
 		67A5D8FF151B942300924CAB /* FlipGrip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FD151B942300924CAB /* FlipGrip@2x.png */; };
 		67A5D900151B942300924CAB /* BlackGradientBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */; };
@@ -965,6 +975,16 @@
 		67A4F135156ECDED005D5F88 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = "Data Model/Place/Place.m"; sourceTree = "<group>"; };
 		67A4F137156EF13D005D5F88 /* NoSearchResultsMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NoSearchResultsMessage@2x.png"; path = "Dash/Images/Tabs/Search/NoSearchResultsMessage@2x.png"; sourceTree = "<group>"; };
 		67A4F139156F2BDA005D5F88 /* Dash 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Dash 1.1.xcdatamodel"; sourceTree = "<group>"; };
+		67A4F13B156F3698005D5F88 /* FiveGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FiveGrey@2x.png"; path = "Dash/Images/Stars/FiveGrey@2x.png"; sourceTree = "<group>"; };
+		67A4F13C156F3698005D5F88 /* FiveWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FiveWhite@2x.png"; path = "Dash/Images/Stars/FiveWhite@2x.png"; sourceTree = "<group>"; };
+		67A4F13D156F3698005D5F88 /* FourFiveGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FourFiveGrey@2x.png"; path = "Dash/Images/Stars/FourFiveGrey@2x.png"; sourceTree = "<group>"; };
+		67A4F13E156F3698005D5F88 /* FourFiveWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FourFiveWhite@2x.png"; path = "Dash/Images/Stars/FourFiveWhite@2x.png"; sourceTree = "<group>"; };
+		67A4F13F156F3698005D5F88 /* FourGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FourGrey@2x.png"; path = "Dash/Images/Stars/FourGrey@2x.png"; sourceTree = "<group>"; };
+		67A4F140156F3698005D5F88 /* FourWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FourWhite@2x.png"; path = "Dash/Images/Stars/FourWhite@2x.png"; sourceTree = "<group>"; };
+		67A4F141156F3698005D5F88 /* ThreeFiveGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThreeFiveGrey@2x.png"; path = "Dash/Images/Stars/ThreeFiveGrey@2x.png"; sourceTree = "<group>"; };
+		67A4F142156F3698005D5F88 /* ThreeFiveWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThreeFiveWhite@2x.png"; path = "Dash/Images/Stars/ThreeFiveWhite@2x.png"; sourceTree = "<group>"; };
+		67A4F143156F3698005D5F88 /* ThreeGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThreeGrey@2x.png"; path = "Dash/Images/Stars/ThreeGrey@2x.png"; sourceTree = "<group>"; };
+		67A4F144156F3698005D5F88 /* ThreeWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThreeWhite@2x.png"; path = "Dash/Images/Stars/ThreeWhite@2x.png"; sourceTree = "<group>"; };
 		67A5D8FA151B817C00924CAB /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewController.h; path = Dash/ViewControllers/DashViewController/FilterViewController.h; sourceTree = "<group>"; };
 		67A5D8FB151B817C00924CAB /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewController.m; path = Dash/ViewControllers/DashViewController/FilterViewController.m; sourceTree = "<group>"; };
 		67A5D8FD151B942300924CAB /* FlipGrip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlipGrip@2x.png"; path = "Dash/Images/Tabs/Dash/FlipGrip@2x.png"; sourceTree = "<group>"; };
@@ -1927,6 +1947,7 @@
 				67F3DA2C152CE43700A287F6 /* NavBar */,
 				6734EB67151251F800D7EA7E /* Fonts */,
 				6734EB5415123E9A00D7EA7E /* Tabs */,
+				67A4F13A156F3688005D5F88 /* Stars */,
 				679009E11450E6D000511E0F /* IconsSplash */,
 			);
 			name = Images;
@@ -1995,6 +2016,23 @@
 				67EDA8FD146C87C200AD3625 /* ViewControllerStates */,
 			);
 			name = JCImageGalleryView;
+			sourceTree = "<group>";
+		};
+		67A4F13A156F3688005D5F88 /* Stars */ = {
+			isa = PBXGroup;
+			children = (
+				67A4F13B156F3698005D5F88 /* FiveGrey@2x.png */,
+				67A4F13C156F3698005D5F88 /* FiveWhite@2x.png */,
+				67A4F13D156F3698005D5F88 /* FourFiveGrey@2x.png */,
+				67A4F13E156F3698005D5F88 /* FourFiveWhite@2x.png */,
+				67A4F13F156F3698005D5F88 /* FourGrey@2x.png */,
+				67A4F140156F3698005D5F88 /* FourWhite@2x.png */,
+				67A4F141156F3698005D5F88 /* ThreeFiveGrey@2x.png */,
+				67A4F142156F3698005D5F88 /* ThreeFiveWhite@2x.png */,
+				67A4F143156F3698005D5F88 /* ThreeGrey@2x.png */,
+				67A4F144156F3698005D5F88 /* ThreeWhite@2x.png */,
+			);
+			name = Stars;
 			sourceTree = "<group>";
 		};
 		67A5D901151BA0B600924CAB /* Filter */ = {
@@ -2713,6 +2751,16 @@
 				67A4F132156E8EB9005D5F88 /* Search_Tomato@2x.png in Resources */,
 				67A4F133156E8EB9005D5F88 /* Search_Wine@2x.png in Resources */,
 				67A4F138156EF13D005D5F88 /* NoSearchResultsMessage@2x.png in Resources */,
+				67A4F145156F3698005D5F88 /* FiveGrey@2x.png in Resources */,
+				67A4F146156F3698005D5F88 /* FiveWhite@2x.png in Resources */,
+				67A4F147156F3698005D5F88 /* FourFiveGrey@2x.png in Resources */,
+				67A4F148156F3698005D5F88 /* FourFiveWhite@2x.png in Resources */,
+				67A4F149156F3698005D5F88 /* FourGrey@2x.png in Resources */,
+				67A4F14A156F3698005D5F88 /* FourWhite@2x.png in Resources */,
+				67A4F14B156F3698005D5F88 /* ThreeFiveGrey@2x.png in Resources */,
+				67A4F14C156F3698005D5F88 /* ThreeFiveWhite@2x.png in Resources */,
+				67A4F14D156F3698005D5F88 /* ThreeGrey@2x.png in Resources */,
+				67A4F14E156F3698005D5F88 /* ThreeWhite@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

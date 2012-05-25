@@ -69,13 +69,16 @@
     // Set up the fake background view
     self.backgroundBubble = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundBubble.png"]];
     self.tableView.backgroundView = self.backgroundBubble;
-    self.tableView.backgroundColor = UIColorFromRGB(kPlaceOrangeBGColor);
+    self.tableView.backgroundColor = UIColorFromRGB(kGreyBGColor);
     
     // Make our progress hud
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
     [self.hud setDelegate:self];
     self.hud.removeFromSuperViewOnHide = NO;
+    
+    // Figure out where we are
+    self.locationManager = [JCLocationManagerSingleton sharedInstance];
     
     // Make the call
     [self.hud show:YES];
@@ -85,8 +88,6 @@
     //self.customSegmentView = [[CustomSegmentView alloc] initWithFrame:
     //                          CGRectMake(70.25, 7.25f, 359.0f / 2.0f, 59.0f / 2.0f)];
     
-    // Figure out where we are
-    self.locationManager = [JCLocationManagerSingleton sharedInstance];
     
 }
 

@@ -30,6 +30,7 @@ enum {
     kFeedTimestampColor = 0x7b7b7b,
     kFeedLinesColor = 0xacacac,
     kProfileHeaderNameFontColor = 0x333333,
+    kGreyBGColor = 0xDCD8D5,
 };
 
 enum {
@@ -138,10 +139,19 @@ extern NSString * const kShowSearchResultDetailView;
 extern NSString * const kShowCreateHighlightSegueIdentifier;
 extern NSString * const kShowMapViewControllerSegueIdentifier;
 
-
 // Distance cutoff
 static double const kDistanceCutoff = 50.0;
 extern NSString * const kDistanceCutOffString;
 
 // FB Connect
-extern NSString *const kFBAppID;
+extern NSString * const kFBAppID;
+
+// Stars filenames
+extern NSString * const kFive;
+extern NSString * const kFourFive;
+extern NSString * const kFour;
+extern NSString * const kThreeFive;
+extern NSString * const kThree;
+extern NSString * const kWhite;
+extern NSString * const kGrey;
+

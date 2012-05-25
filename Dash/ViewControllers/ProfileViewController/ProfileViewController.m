@@ -94,7 +94,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     // Set the bg color
-    [self.view setBackgroundColor:UIColorFromRGB(kPlaceOrangeBGColor)];
+    [self.view setBackgroundColor:UIColorFromRGB(kGreyBGColor)];
         
     // Add the settings button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
