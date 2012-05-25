@@ -366,4 +366,48 @@ enum {
     return [NSString stringWithFormat:@"%@%@", basename, colorname];
 }
 
+- (NSString *)numRatingsDescription
+{
+    NSString *numRatings;
+    
+    if ([self.num_ratings compare:[NSNumber numberWithInt:1000]] == NSOrderedDescending) {
+        numRatings = kThousandPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:900]] == NSOrderedDescending) {
+        numRatings = kNineHundredPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:800]] == NSOrderedDescending) {
+        numRatings = kEightHundredPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:700]] == NSOrderedDescending) {
+        numRatings = kSevenHundredPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:600]] == NSOrderedDescending) {
+        numRatings = kSixHundredPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:500]] == NSOrderedDescending) {
+        numRatings = kFiveHundredPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:400]] == NSOrderedDescending) {
+        numRatings = kFourHundredPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:300]] == NSOrderedDescending) {
+        numRatings = kThreeHundredPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:200]] == NSOrderedDescending) {
+        numRatings = kTwoHundredPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:100]] == NSOrderedDescending) {
+        numRatings = kHundredPlus;
+    }
+    else if ([self.num_ratings compare:[NSNumber numberWithInt:50]] == NSOrderedDescending) {
+        numRatings = kFiftyPlus;
+    }
+    else {
+        numRatings = kTenPlus;
+    }
+    
+    return numRatings;
+}
+
 @end

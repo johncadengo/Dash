@@ -89,3 +89,19 @@ NSString * const kThree = @"Three";
 NSString * const kWhite = @"White";
 NSString * const kGrey = @"Grey";
 
+#pragma mark - Number of Ratings
+NSString * const kTenPlus = @"10+";
+NSString * const kFiftyPlus = @"50+";
+NSString * const kHundredPlus = @"100+";
+NSString * const kTwoHundredPlus = @"200+";
+NSString * const kThreeHundredPlus = @"300+";
+NSString * const kFourHundredPlus = @"400+";
+NSString * const kFiveHundredPlus = @"500+";
+NSString * const kSixHundredPlus = @"600+";
+NSString * const kSevenHundredPlus = @"700+";
+NSString * const kEightHundredPlus = @"800+";
+NSString * const kNineHundredPlus = @"900+";
+NSString * const kThousandPlus = @"1000+";
+
+
+

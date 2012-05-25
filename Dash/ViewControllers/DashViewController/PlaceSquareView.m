@@ -22,6 +22,7 @@
 @synthesize categories = _categories;
 @synthesize distancePrice = _distancePrice;
 @synthesize blurb = _blurb;
+@synthesize numRatings = _numRatings;
 @synthesize badges = _badges;
 @synthesize icon = _icon;
 @synthesize backgroundImage = _backgroundImage;
@@ -39,6 +40,7 @@ static CGFloat kPadding = 5.0f;
 static CGFloat kHalfPadding = 1.0f;
 static CGFloat kMaxBlurbHeight = 30.0f;
 static CGFloat kStarsHeight = 14.5f;
+static CGFloat kStarsWidth = 76.0f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kInfoLinebreak = UILineBreakModeTailTruncation;
@@ -210,6 +212,8 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
     
     self.stars = [UIImage imageNamed:[place filenameForStarsColor:kStarsColorWhite]];
     
+    self.numRatings = [place numRatingsDescription];
+    
     // Draw self
     [self setNeedsDisplay];
 }
@@ -309,7 +313,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
                        withFont:[[self class] distancePriceFont] 
                   lineBreakMode:kInfoLinebreak];
     
-    [UIColorFromRGB(0x434546) set];
+    //[UIColorFromRGB(0x434546) set];
     CGSize blurbSize = [[self class] sizeForBlurb:self.blurb];
     CGRect blurbRect = CGRectMake(kPadding, 
                                   kHeight - blurbSize.height - kPadding,
@@ -327,7 +331,11 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
     // New static positioning
     [self.icon drawAtPoint:CGPointMake(kWidth - kHalfPadding - iconSize.width, 55.0f)];
     
-    [self.stars drawAtPoint:CGPointMake(kPadding, kHeight - (kPadding + kStarsHeight))];
+    [self.stars drawAtPoint:CGPointMake(kPadding, kHeight - ((2 * kPadding) + kStarsHeight))];
+    
+    [self.numRatings drawAtPoint:CGPointMake(kPadding + kStarsWidth + kPadding, 
+                                            kHeight - ((2 * kPadding) + kStarsHeight)) 
+                        withFont:[self.class distancePriceFont]];
 }
 
 

@@ -48,4 +48,8 @@ typedef enum {
  */
 - (NSString *)filenameForStarsColor:(kStarsColor)color;
 
+/** Number of ratings formatted to be human readable, i.e. <50, 50+, 100+, 200+, and so on.
+ */
+- (NSString *)numRatingsDescription;
+
 @end

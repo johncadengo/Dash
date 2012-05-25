@@ -155,3 +155,19 @@ extern NSString * const kThree;
 extern NSString * const kWhite;
 extern NSString * const kGrey;
 
+// Number of ratings
+extern NSString * const kTenPlus;
+extern NSString * const kFiftyPlus;
+extern NSString * const kHundredPlus;
+extern NSString * const kTwoHundredPlus;
+extern NSString * const kThreeHundredPlus;
+extern NSString * const kFourHundredPlus;
+extern NSString * const kFiveHundredPlus;
+extern NSString * const kSixHundredPlus;
+extern NSString * const kSevenHundredPlus;
+extern NSString * const kEightHundredPlus;
+extern NSString * const kNineHundredPlus;
+extern NSString * const kThousandPlus;
+
+
+

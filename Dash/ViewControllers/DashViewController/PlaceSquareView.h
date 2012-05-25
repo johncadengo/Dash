@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *categories;
 @property (nonatomic, strong) NSString *distancePrice;
 @property (nonatomic, strong) NSString *blurb;
+@property (nonatomic, strong) NSString *numRatings;
 @property (nonatomic, strong) NSMutableArray *badges;
 @property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, strong) UIImage *backgroundImage;
