@@ -26,7 +26,9 @@ typedef enum {
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *categories;
 @property (nonatomic, strong) NSString *distancePrice;
+@property (nonatomic, strong) NSString *numRatings;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImage *stars;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) JCImageGalleryViewController *imageGalleryViewController;
 @property (nonatomic) PlaceThemeColor themeColor;

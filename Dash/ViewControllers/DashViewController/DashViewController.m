@@ -631,7 +631,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     // Now scroll to the newest pops
     CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
-    [self.popsScrollView setContentOffset:CGPointMake(self.currentPage * popsScrollViewWidth, 0.0f) animated:NO];
+    [self.popsScrollView setContentOffset:CGPointMake(self.currentPage * popsScrollViewWidth, 0.0f) animated:YES];
 }
 
 #pragma mark - Storyboard Segue

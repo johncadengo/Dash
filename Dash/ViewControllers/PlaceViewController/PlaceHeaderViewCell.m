@@ -26,6 +26,8 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize imageGalleryViewController = _imageGalleryViewController;
 @synthesize themeColor = _themeColor;
+@synthesize numRatings = _numRatings;
+@synthesize stars = _stars;
 
 #pragma mark - Some UI Constants
 
@@ -33,6 +35,8 @@ static CGFloat kWindowWidth = 320.0f;
 static CGFloat kPadding = 7.5f;
 static CGFloat kPicWidth = 70.0f;
 static CGFloat kMinHeight = 70.0f;
+static CGFloat kStarsHeight = 14.5f;
+static CGFloat kStarsWidth = 76.0f;
 
 static UILineBreakMode kNameLineBreak = UILineBreakModeTailTruncation;
 static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
@@ -45,7 +49,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     CGSize categoriesSize = [self sizeForCategories:@"hey hey"];
     CGSize distancePriceSize = [self sizeForDistancePrice:@"0.2 mi $$"];
     
-    CGFloat height =  nameSize.height + categoriesSize.height + [self categoriesLeading] + distancePriceSize.height + [self distancePriceLeading] + kPadding;
+    CGFloat height =  nameSize.height + categoriesSize.height + [self categoriesLeading] + (2 * distancePriceSize.height) + (2 * [self distancePriceLeading]) + kPadding;
     
     return height;
 }
@@ -213,13 +217,17 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     
     // 50+ miles
     if (distance >= kDistanceCutoff) {
-        self.distancePrice = [NSString stringWithFormat:@"%@ mi   %@", kDistanceCutOffString, place.price];   
+        self.distancePrice = [NSString stringWithFormat:@"%@   %@ mi", place.price, kDistanceCutOffString];   
     }
     else {
-        self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];    
+        self.distancePrice = [NSString stringWithFormat:@"%@   %.1f mi", place.price, distance];    
     }
     
     self.image = [place categoryIconForThemeColor:self.themeColor];
+    
+    self.stars = [UIImage imageNamed:[place filenameForStarsColor:kStarsColorGrey]];
+    
+    self.numRatings = [place numRatingsDescription];
     
     [self setNeedsDisplay];
 }
@@ -285,17 +293,24 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
     // Draw the categories and price, distance
     UIColor *textColor = UIColorFromRGB(kPlaceCategoriesTextColor);
     [textColor set];
+    
+    [self.stars drawAtPoint:CGPointMake(kPadding, adjustedNameSize.height)];
+    
+    CGSize starsRatingsSize = [[self class] sizeForDistancePrice:self.distancePrice];
+    [self.numRatings drawAtPoint:CGPointMake(kPadding + kStarsWidth + kPadding, adjustedNameSize.height) 
+                        withFont:[self.class distancePriceFont]];
+    
     CGSize categoriesSize = [[self class] sizeForCategories:self.categories];
-    [self.categories drawInRect:CGRectMake(kPadding, adjustedNameSize.height, 
+    [self.categories drawInRect:CGRectMake(kPadding, 
+                                           adjustedNameSize.height + starsRatingsSize.height + [self.class distancePriceLeading], 
                                            categoriesSize.width, categoriesSize.height) 
                        withFont:[[self class] categoriesFont] 
                   lineBreakMode:kBlurbLineBreak];
     
-    textColor = UIColorFromRGB(kPlaceCategoriesTextColor);
-    [textColor set];
     CGSize distancePriceSize = [[self class] sizeForDistancePrice:self.distancePrice];
     [self.distancePrice drawInRect:CGRectMake(kPadding, 
-                                              adjustedNameSize.height + categoriesSize.height + [[self class] categoriesLeading], 
+                                              adjustedNameSize.height + starsRatingsSize.height + [self.class distancePriceLeading] 
+                                              + categoriesSize.height + [[self class] categoriesLeading], 
                                               distancePriceSize.width, distancePriceSize.height) 
                           withFont:[[self class] distancePriceFont] 
                      lineBreakMode:kBlurbLineBreak];

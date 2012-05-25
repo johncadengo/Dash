@@ -45,7 +45,7 @@ static CGFloat kIconWidth = 40.0f;
 
 - (void)setWithBadge:(Badge *)badge
 {
-    self.label.text = [[NSString stringWithFormat:@"%@", badge.name] capitalizedString];
+    self.label.text = [NSString stringWithFormat:@"%@", badge.name];
     self.icon = badge.icon;
     
     [self setNeedsDisplay];

@@ -25,19 +25,19 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // By default, none are checked
+        // By default, all are checked
         self.typesChecked = [[NSMutableArray alloc] initWithObjects:
-                             [NSNumber numberWithBool:NO], 
-                             [NSNumber numberWithBool:NO],
-                             [NSNumber numberWithBool:NO],
-                             [NSNumber numberWithBool:NO],nil];
+                             [NSNumber numberWithBool:YES], 
+                             [NSNumber numberWithBool:YES],
+                             [NSNumber numberWithBool:YES],
+                             [NSNumber numberWithBool:YES],nil];
         
-        // By default, the first three are checked, and the last is unchecked
+        // Default values
         self.pricesChecked = [[NSMutableArray alloc] initWithObjects:
                               [NSNumber numberWithBool:YES],
                               [NSNumber numberWithBool:YES],
                               [NSNumber numberWithBool:YES],
-                              [NSNumber numberWithBool:NO],nil];
+                              [NSNumber numberWithBool:YES],nil];
         
         // By default, we use auto distance filter
         self.currentDistanceFilter = DistanceFilterAuto;
