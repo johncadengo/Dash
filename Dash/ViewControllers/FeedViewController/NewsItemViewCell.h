@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreText/CoreText.h>
+#import "NSAttributedString+Attributes.h"
+#import "OHAttributedLabel.h"
 #import "EGOImageView.h"
 
 @class NewsItem;
 
 @interface NewsItemViewCell : UITableViewCell <EGOImageViewDelegate>
 
-@property (nonatomic, strong) NSString *blurb;
+@property (nonatomic, strong) OHAttributedLabel *blurb;
 @property (nonatomic, strong) NSString *timestamp;
 @property (nonatomic, strong) EGOImageView *icon;
 

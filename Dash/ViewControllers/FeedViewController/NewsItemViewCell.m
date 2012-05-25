@@ -15,6 +15,8 @@
 #import "Constants.h"
 #import "Person.h"
 #import "Person+Helper.h"
+#import "Place.h"
+#import "Place+Helper.h"
 
 @implementation NewsItemViewCell
 
@@ -34,6 +36,7 @@ static CGFloat kLineHeight = 4.0f;
 /** Should never get THIS big.. Just wanted to leave room
  */
 static CGFloat kMaxBlurbHeight = 1000.0f;
+static CGFloat kBlurbFontSize = 14.0f;
 
 static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
@@ -55,7 +58,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 + (UIFont *)blurbFont
 {
-    return [UIFont fontWithName:kHelveticaNeueBold size:14.0f];
+    return [UIFont systemFontOfSize:kBlurbFontSize];
 }
 
 + (UIFont *)timestampFont
@@ -96,6 +99,10 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
         self.icon = [[EGOImageView alloc] initWithPlaceholderImage:[[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)] delegate:self];
         self.icon.frame = CGRectMake(kLeftRightMargin, 10.0f, kPicWidth, kPicWidth);
         [self addSubview:self.icon];
+        
+        self.blurb = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
+        [self.blurb setBackgroundColor:[UIColor clearColor]];
+        [self addSubview:self.blurb];
     }
 	
     return self;
@@ -103,9 +110,28 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 
 - (void)setWithNewsItem:(NewsItem *)newsItem;
 {
-    self.blurb =  newsItem.blurb;
+    // Let's emphasize the person and place in our attributed label
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:newsItem.blurb];
+    [attrStr setFont:[self.class blurbFont]];
+    [attrStr setTextColor:UIColorFromRGB(kFeedBlurbColor)];
+    
+    // Now we want to bold the person's name and the place's name
+    [attrStr setFont:[UIFont fontWithName:kHelveticaNeueBold size:kBlurbFontSize] 
+               range:[newsItem.blurb rangeOfString:newsItem.author.name]];
+    [attrStr setFont:[UIFont fontWithName:kHelveticaNeueBold size:kBlurbFontSize] 
+               range:[newsItem.blurb rangeOfString:newsItem.place.name]];
+    
+    // Now connect the attributed string to our OHAttributedLabel
+    [self.blurb setAttributedText:attrStr];
+    
     self.timestamp = [newsItem relativeTimestamp];
     [self.icon setImageURL:[NSURL URLWithString:[NSString stringWithFormat: @"https://graph.facebook.com/%@/picture", newsItem.author.fb_uid]]];
+    
+    CGSize blurbSize = [[self class] textSizeForBlurb:newsItem.blurb];
+    [self.blurb setFrame:CGRectMake(kLeftRightMargin + kPicWidth + kPadding, 10.0f,
+                                    blurbSize.width, blurbSize.height)];
+    [self.blurb setNeedsDisplay];
+    
     
     [self setNeedsDisplay];
 }
@@ -132,11 +158,15 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 - (void)drawRect:(CGRect)rect
 {
     // Draw text
-    CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb];
+    
+    CGSize blurbSize = [[self class] textSizeForBlurb:self.blurb.attributedText.string];
+        
+    /*
     [UIColorFromRGB(kFeedBlurbColor) set];
     [self.blurb drawInRect:CGRectMake(kLeftRightMargin + kPicWidth + kPadding, 10.0f,
                                       blurbSize.width, blurbSize.height) 
                   withFont:[[self class] blurbFont] lineBreakMode:kBlurbLineBreak];
+    */
     
     [UIColorFromRGB(kFeedTimestampColor) set];
     [self.timestamp drawAtPoint:CGPointMake(kLeftRightMargin + kPicWidth + kPadding, 

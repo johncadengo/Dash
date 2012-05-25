@@ -19,3 +19,6 @@
 [submodule "Dash/Helpers/JCLocationManager"]
 	path = Dash/Helpers/JCLocationManager
 	url = git@github.com:johncadengo/JCLocationManager.git
+[submodule "Dash/Helpers/OHAttributedLabel"]
+	path = Dash/Helpers/OHAttributedLabel
+	url = https://github.com/AliSoftware/OHAttributedLabel.git

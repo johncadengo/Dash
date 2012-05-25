@@ -373,6 +373,9 @@
 		67A4F14E156F3698005D5F88 /* ThreeWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F144156F3698005D5F88 /* ThreeWhite@2x.png */; };
 		67A4F150156F7947005D5F88 /* NoLikesMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F14F156F7946005D5F88 /* NoLikesMessage@2x.png */; };
 		67A4F152156F8285005D5F88 /* ReportButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A4F151156F8285005D5F88 /* ReportButton@2x.png */; };
+		67A4F154156FEF21005D5F88 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A4F153156FEF20005D5F88 /* CoreText.framework */; };
+		67A4F15A156FF040005D5F88 /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A4F157156FF040005D5F88 /* NSAttributedString+Attributes.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		67A4F15B156FF040005D5F88 /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A4F159156FF040005D5F88 /* OHAttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67A5D8FC151B817C00924CAB /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A5D8FB151B817C00924CAB /* FilterViewController.m */; };
 		67A5D8FF151B942300924CAB /* FlipGrip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FD151B942300924CAB /* FlipGrip@2x.png */; };
 		67A5D900151B942300924CAB /* BlackGradientBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D8FE151B942300924CAB /* BlackGradientBackground@2x.png */; };
@@ -989,6 +992,11 @@
 		67A4F144156F3698005D5F88 /* ThreeWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThreeWhite@2x.png"; path = "Dash/Images/Stars/ThreeWhite@2x.png"; sourceTree = "<group>"; };
 		67A4F14F156F7946005D5F88 /* NoLikesMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NoLikesMessage@2x.png"; path = "Dash/Images/Tabs/Profile/NoLikesMessage@2x.png"; sourceTree = "<group>"; };
 		67A4F151156F8285005D5F88 /* ReportButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ReportButton@2x.png"; path = "Dash/Images/PlaceProfile/ReportButton@2x.png"; sourceTree = "<group>"; };
+		67A4F153156FEF20005D5F88 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		67A4F156156FF040005D5F88 /* NSAttributedString+Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Attributes.h"; path = "Helpers/OHAttributedLabel/NSAttributedString+Attributes.h"; sourceTree = "<group>"; };
+		67A4F157156FF040005D5F88 /* NSAttributedString+Attributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Attributes.m"; path = "Helpers/OHAttributedLabel/NSAttributedString+Attributes.m"; sourceTree = "<group>"; };
+		67A4F158156FF040005D5F88 /* OHAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHAttributedLabel.h; path = Helpers/OHAttributedLabel/OHAttributedLabel.h; sourceTree = "<group>"; };
+		67A4F159156FF040005D5F88 /* OHAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHAttributedLabel.m; path = Helpers/OHAttributedLabel/OHAttributedLabel.m; sourceTree = "<group>"; };
 		67A5D8FA151B817C00924CAB /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewController.h; path = Dash/ViewControllers/DashViewController/FilterViewController.h; sourceTree = "<group>"; };
 		67A5D8FB151B817C00924CAB /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewController.m; path = Dash/ViewControllers/DashViewController/FilterViewController.m; sourceTree = "<group>"; };
 		67A5D8FD151B942300924CAB /* FlipGrip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlipGrip@2x.png"; path = "Dash/Images/Tabs/Dash/FlipGrip@2x.png"; sourceTree = "<group>"; };
@@ -1147,6 +1155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67A4F154156FEF21005D5F88 /* CoreText.framework in Frameworks */,
 				67349C4C1559AF1100DEF21E /* libz.dylib in Frameworks */,
 				6799127C154EE237007CD93A /* MapKit.framework in Frameworks */,
 				670956B4145EFF9C00057E32 /* QuartzCore.framework in Frameworks */,
@@ -1308,6 +1317,7 @@
 		67348AAD1446350700A3160A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67A4F153156FEF20005D5F88 /* CoreText.framework */,
 				67697582145A5C82001191CF /* libxml2.dylib */,
 				6799127B154EE236007CD93A /* MapKit.framework */,
 				67697581145A5C82001191CF /* CFNetwork.framework */,
@@ -2041,6 +2051,17 @@
 			name = Stars;
 			sourceTree = "<group>";
 		};
+		67A4F155156FF038005D5F88 /* OHAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				67A4F156156FF040005D5F88 /* NSAttributedString+Attributes.h */,
+				67A4F157156FF040005D5F88 /* NSAttributedString+Attributes.m */,
+				67A4F158156FF040005D5F88 /* OHAttributedLabel.h */,
+				67A4F159156FF040005D5F88 /* OHAttributedLabel.m */,
+			);
+			name = OHAttributedLabel;
+			sourceTree = "<group>";
+		};
 		67A5D901151BA0B600924CAB /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -2198,6 +2219,7 @@
 		67F22FCD145F0C520010A09F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				67A4F155156FF038005D5F88 /* OHAttributedLabel */,
 				6703EFD5155AE7000005B9E1 /* Appirater */,
 				67349C4A1559AE9100DEF21E /* TestFlight */,
 				67E2AA081545944A0002E641 /* facebook-ios-sdk */,
@@ -2920,6 +2942,8 @@
 				670DFA1E1551A1C000DA3C9D /* NewsItem.m in Sources */,
 				6703EFD4155AE6FB0005B9E1 /* Appirater.m in Sources */,
 				67A4F136156ECDED005D5F88 /* Place.m in Sources */,
+				67A4F15A156FF040005D5F88 /* NSAttributedString+Attributes.m in Sources */,
+				67A4F15B156FF040005D5F88 /* OHAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
