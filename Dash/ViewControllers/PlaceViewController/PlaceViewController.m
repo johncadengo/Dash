@@ -21,6 +21,7 @@
 #import "HighlightViewCell.h"
 #import "CreateHighlightViewController.h"
 #import "MapViewController.h"
+#import "TestFlight.h"
 
 @implementation PlaceViewController
 
@@ -225,6 +226,9 @@
         case kPlaceFootprintsSection:
             height = [self heightForFootprintSectionCellForRow:row];
             break;
+        case kPlaceReportProblemSection:
+            height = 50.0f;
+            break;
         default:
             NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
             break;
@@ -313,6 +317,9 @@
         case kPlaceFootprintsSection:
             numRows = 1; // TODO: Just a filler cell to accomdate for toolbar
             break;
+        case kPlaceReportProblemSection:
+            numRows = 1;
+            break;
         default:
             NSAssert(NO, @"Asking for number of rows in a section that doesn't exist %d", section);
             break;
@@ -342,6 +349,9 @@
             break;
         case kPlaceFootprintsSection:
             cell = [self footprintsSectionCellForTableView:tableView forRow:row];
+            break;
+        case kPlaceReportProblemSection:
+            cell = [self reportProblemSectionCellForTableView:tableView];
             break;
         default:
             NSAssert(NO, @"Asking for a cell in a section that doesn't exist %d", section);
@@ -444,6 +454,19 @@
     }
     
     cell.backgroundColor = [UIColor clearColor];
+    
+    return cell;
+}
+
+- (UITableViewCell *)reportProblemSectionCellForTableView:(UITableView *)tableView
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceReportProblemCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceReportProblemCellIdentifier];
+    }
+    
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ReportButton"]];
     
     return cell;
 }

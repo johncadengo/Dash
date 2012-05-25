@@ -159,10 +159,7 @@ static const CGFloat kYOffset = 8.0f;
     }
     
     // Some logic here
-    NSArray *iconChoices = [NSArray arrayWithObjects:
-                            @"Coffee-Places.png", @"FastFood-Places.png" ,nil];
-    NSString *iconName = [NSString stringWithFormat:@"%@", [iconChoices randomObject]];
-    self.icon = [UIImage imageNamed:iconName];
+    self.icon = [place categoryIconSmall];
     
     [self setNeedsDisplay];
 }

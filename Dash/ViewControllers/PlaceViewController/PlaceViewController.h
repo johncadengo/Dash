@@ -18,8 +18,9 @@ enum {
     kPlaceBadgesSection = 1,
     kPlaceMoreInfoSection = 2,
     kPlaceHighlightsSection = 3,
-    kPlaceFootprintsSection = 4,
-    kPlaceNumSections = 5
+    kPlaceFootprintsSection = 5,
+    kPlaceReportProblemSection = 4,
+    kPlaceNumSections = 6
 };
 
 /** Color themes
@@ -75,6 +76,7 @@ typedef enum {
 - (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView;
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (UITableViewCell *)reportProblemSectionCellForTableView:(UITableView *)tableView;
 
 - (UITableViewCell *)titleViewCellForTableView:(UITableView *)tableView WithTitle:(NSString *)title;
 - (UITableViewCell *)createHighlightViewCellForTableView:(UITableView *)tableView;
