@@ -508,6 +508,9 @@
         // This is the create highlights row
         [self createHighlight:self];
     }
+    if (indexPath.section == kPlaceReportProblemSection) {
+        [TestFlight openFeedbackView];
+    }
 }
 
 
