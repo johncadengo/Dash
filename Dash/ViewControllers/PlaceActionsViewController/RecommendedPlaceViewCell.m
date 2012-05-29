@@ -23,6 +23,7 @@
 @synthesize context = _context;
 @synthesize type = _type;
 @synthesize name = _name;
+@synthesize address = _address;
 @synthesize category = _category;
 @synthesize distancePrice = _distancePrice;
 @synthesize backgroundImage = _backgroundImage;
@@ -144,7 +145,8 @@ static const CGFloat kYOffset = 8.0f;
     // Set our context
     self.context = context;
 
-    self.name = [place name];
+    self.name = place.name;
+    self.address = place.address;
     double distance = [[self calculateDistanceFromPlace:place] doubleValue];
     
     NSMutableString *categoryInfo = [[NSMutableString alloc] initWithString:[place categoriesDescriptionLong]];
@@ -152,10 +154,10 @@ static const CGFloat kYOffset = 8.0f;
     
     // 50+ miles
     if (distance >= kDistanceCutoff) {
-        self.distancePrice = [NSString stringWithFormat:@"%@ mi   %@", kDistanceCutOffString, place.price];   
+        self.distancePrice = [NSString stringWithFormat:@"%@   %@ mi", kDistanceCutOffString, place.price];   
     }
     else {
-        self.distancePrice = [NSString stringWithFormat:@"%.1f mi   %@", distance, place.price];    
+        self.distancePrice = [NSString stringWithFormat:@"%@   %.1f mi", distance, place.price];    
     }
     
     // Some logic here
@@ -200,12 +202,18 @@ static const CGFloat kYOffset = 8.0f;
     
     // Draw the subtitle, the category and the price and distance
     [UIColorFromRGB(kRecommendedPlaceSubtitleColor) set];
-    [self.category drawAtPoint:CGPointMake(kPadding, offset + 14.0f + 5.0f) withFont:[[self class] subtitleFont]];
-    [self.distancePrice drawAtPoint:CGPointMake(kPadding, offset + 14.0f + 5.0f + 10.0f + 5.0f) withFont:[[self class] subtitleFont]];
+    [self.address drawAtPoint:CGPointMake(kPadding, offset + 14.0f + 5.0f) withFont:[[self class] subtitleFont]];
+    [self.distancePrice drawAtPoint:CGPointMake(kPadding, offset + 14.0f + 5.0f + 10.0f + 5.0f) 
+                           withFont:[[self class] subtitleFont]];
     
     // Icon
-    CGSize iconSize = CGSizeMake(50.0f, 50.0f);
+    CGSize iconSize = CGSizeMake(25.0f, 25.0f);
     [self.icon drawAtPoint:CGPointMake(kWidth - kPadding - iconSize.width, offset)];
+    [self.category drawInRect:CGRectMake(kPadding + 50.0f, offset + 14.0f + 5.0f + 10.0f + 5.0f, 
+                                         kWidth - kPadding - iconSize.width - 50.0f, 16.0f) 
+                     withFont:[[self class] subtitleFont] 
+                lineBreakMode:UILineBreakModeTailTruncation 
+                    alignment:UITextAlignmentRight];
     
     // Draw line at bottom, as long as we aren't the last cell
     if (self.type != RecommendedPlaceViewCellTypeLast && self.type != RecommendedPlaceViewCellTypeOnly) {

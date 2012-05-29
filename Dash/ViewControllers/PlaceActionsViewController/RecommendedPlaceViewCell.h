@@ -23,6 +23,7 @@ typedef enum {
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic) RecommendedPlaceViewCellType type;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *category;
 @property (nonatomic, strong) NSString *distancePrice;
 @property (nonatomic, strong) UIImage *backgroundImage;
