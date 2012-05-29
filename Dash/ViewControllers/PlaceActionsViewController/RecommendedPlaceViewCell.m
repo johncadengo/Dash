@@ -154,10 +154,10 @@ static const CGFloat kYOffset = 8.0f;
     
     // 50+ miles
     if (distance >= kDistanceCutoff) {
-        self.distancePrice = [NSString stringWithFormat:@"%@   %@ mi", kDistanceCutOffString, place.price];   
+        self.distancePrice = [NSString stringWithFormat:@"%@   %@ mi", place.price, kDistanceCutOffString];   
     }
     else {
-        self.distancePrice = [NSString stringWithFormat:@"%@   %.1f mi", distance, place.price];    
+        self.distancePrice = [NSString stringWithFormat:@"%@   %.1f mi", place.price, distance];    
     }
     
     // Some logic here
