@@ -182,6 +182,9 @@
     if ([DashAPI shouldRefreshFavorites] || [DashAPI shouldRefreshProfile]) {
         [self.api placeByID:self.place.uid];
     }
+    
+    // Add the toolbar to our view
+    [self.toolbar setHidden:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -196,14 +199,16 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
     
     // Duration must match the popping pushing animation.. It appears to be the perfect #
-    if (animated)
+    /*if (animated)
         [UIView animateWithDuration:2.75f
                          animations:^{
                              self.toolbar.frame = CGRectMake(320.0f, 480.0f - 49.0f, 320.0f, 49.0f);
                          }
-                         completion:^(BOOL finished){ [self.toolbar removeFromSuperview]; }];
+                         completion:^(BOOL finished){ [self.toolbar setHidden:YES]; }];
     else
-        [self.toolbar removeFromSuperview];
+        [self.toolbar setHidden:YES];
+     */
+    [self.toolbar setHidden:YES];
     
 }
 
