@@ -512,7 +512,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
                                   loc.coordinate.longitude];
         }
         
-        NSMutableString *types = [[NSMutableString alloc] initWithCapacity:16];;
+        NSMutableString *types = [[NSMutableString alloc] initWithCapacity:16];
         for (int i = 0; i < 4; i++) {
             check = [[self.filterViewController.filterView.typesChecked objectAtIndex:i] boolValue];
             if (check) {
