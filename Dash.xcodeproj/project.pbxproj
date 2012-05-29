@@ -123,6 +123,7 @@
 		6773230E152211CD00F17A40 /* 3Dollar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6773230A152211CD00F17A40 /* 3Dollar@2x.png */; };
 		6773230F152211CD00F17A40 /* 4Dollar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6773230B152211CD00F17A40 /* 4Dollar@2x.png */; };
 		67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */; };
+		677A2BC9157549EE00932627 /* DashButtonTip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 677A2BC8157549EE00932627 /* DashButtonTip@2x.png */; };
 		6789D2C1152E1A920029BF48 /* TitleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6789D2C0152E1A920029BF48 /* TitleViewCell.m */; };
 		6789D2C4152E28A70029BF48 /* BadgesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6789D2C3152E28A70029BF48 /* BadgesViewCell.m */; };
 		6789D2CD152E349C0029BF48 /* BadgeBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C6152E349C0029BF48 /* BadgeBubble@2x.png */; };
@@ -721,6 +722,7 @@
 		6773230B152211CD00F17A40 /* 4Dollar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "4Dollar@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/4Dollar@2x.png"; sourceTree = "<group>"; };
 		67751E9B147D7EBB0083011D /* MoreInfoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreInfoViewCell.h; path = Dash/ViewControllers/PlaceViewController/MoreInfoViewCell.h; sourceTree = "<group>"; };
 		67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreInfoViewCell.m; path = Dash/ViewControllers/PlaceViewController/MoreInfoViewCell.m; sourceTree = "<group>"; };
+		677A2BC8157549EE00932627 /* DashButtonTip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashButtonTip@2x.png"; path = "Dash/Images/IconsSplash/DashButtonTip@2x.png"; sourceTree = "<group>"; };
 		6789D2BF152E1A910029BF48 /* TitleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleViewCell.h; path = Dash/ViewControllers/PlaceViewController/TitleViewCell.h; sourceTree = "<group>"; };
 		6789D2C0152E1A920029BF48 /* TitleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleViewCell.m; path = Dash/ViewControllers/PlaceViewController/TitleViewCell.m; sourceTree = "<group>"; };
 		6789D2C2152E28A70029BF48 /* BadgesViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BadgesViewCell.h; path = Dash/ViewControllers/PlaceViewController/BadgesViewCell.h; sourceTree = "<group>"; };
@@ -1972,6 +1974,7 @@
 		679009E11450E6D000511E0F /* IconsSplash */ = {
 			isa = PBXGroup;
 			children = (
+				677A2BC8157549EE00932627 /* DashButtonTip@2x.png */,
 				67A859691540224300B451D9 /* defaultProfile@2x.jpg */,
 				67354C25153DF2C900A7555C /* DashItNow@2x.png */,
 				67354C26153DF2C900A7555C /* FacebookSignIn@2x.png */,
@@ -2791,6 +2794,7 @@
 				67A4F14E156F3698005D5F88 /* ThreeWhite@2x.png in Resources */,
 				67A4F150156F7947005D5F88 /* NoLikesMessage@2x.png in Resources */,
 				67A4F152156F8285005D5F88 /* ReportButton@2x.png in Resources */,
+				677A2BC9157549EE00932627 /* DashButtonTip@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

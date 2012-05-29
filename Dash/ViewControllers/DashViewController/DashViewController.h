@@ -57,6 +57,7 @@ typedef enum {
 @property (nonatomic, strong) UIView *filterView;
 @property (nonatomic, strong) MBProgressHUD *progressHUD;
 @property (nonatomic, strong) UIAlertView *alertView;
+@property (nonatomic, strong) UIImageView *dashButtonTip;
 
 // Gesture recognizers
 @property (nonatomic, strong) UIPanGestureRecognizer *drag;

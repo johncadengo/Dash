@@ -35,6 +35,7 @@
 @synthesize popBackgroundFrame = _popBackgroundFrame;
 @synthesize popButtonFrame = _popButtonFrame;
 @synthesize popButton = _popButton;
+@synthesize dashButtonTip = _dashButtonTip;
 
 @synthesize draggableFrame = _draggableFrame;
 @synthesize flipGripFrame = _flipGripFrame;
@@ -258,6 +259,18 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
     // Initial filter view frame
     self.filterViewFrame = CGRectMake(0.0f, 360.0f, 320.0f, 480.0f);
+    
+    // Dash button tip
+    self.dashButtonTip = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashButtonTip"]];
+    /*
+     [self.dashButtonTip setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 411.0f)];
+    [self.dashButtonTip setImage:[UIImage imageNamed:@"DashButtonTip"] 
+                        forState:UIControlStateNormal];
+    [self.dashButtonTip setImage:[UIImage imageNamed:@"DashButtonTip"] 
+                        forState:UIControlStateHighlighted];
+    [self.dashButtonTip addTarget:self action:@selector(dismissTip:) forControlEvents:UIControlEventTouchDown];
+     */
+    [self.view addSubview:self.dashButtonTip];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -327,6 +340,12 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
  */
 - (void)handleDrag:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    // If the tip is showing, dismiss it
+    if ([self.dashButtonTip superview]) {
+        [self.dashButtonTip removeFromSuperview];
+    }
+
+    
     UIView *dragSuperView = self.view;
     
     if (self.isDragging && gestureRecognizer.state == UIGestureRecognizerStateEnded) {
@@ -402,6 +421,11 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 - (void)handleSwipe:(UISwipeGestureRecognizer *)gestureRecognizer
 {
+    // If the tip is showing, dismiss it
+    if ([self.dashButtonTip superview]) {
+        [self.dashButtonTip removeFromSuperview];
+    }
+    
     if (self.swipeUp == gestureRecognizer && !self.filterShowing) {
         // If the filter isn't showing, and we swipe up, then show it
         [UIView animateWithDuration:1.0f
@@ -461,6 +485,11 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 - (void)pop:(id) sender
 {
+    // If the tip is showing, dismiss it
+    if ([self.dashButtonTip superview]) {
+        [self.dashButtonTip removeFromSuperview];
+    }
+    
     // If filter is showing.. Animate down and pop
     if (self.filterShowing) {
         [UIView animateWithDuration:1.0f
