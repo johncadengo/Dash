@@ -363,10 +363,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     if ([self.dashButtonTip superview]) {
         [self.dashButtonTip removeFromSuperview];
     }
-
     
     UIView *dragSuperView = self.view;
-    
     if (self.isDragging && gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         // Reset isDragging
         self.dragging = NO;
@@ -411,6 +409,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         }
     }
     else if (self.isDragging) {
+        [self performSegueWithIdentifier:kPresentFilterViewController sender:nil];
         // Keep track of where we are
         CGPoint origin = [gestureRecognizer locationInView:dragSuperView];
         
