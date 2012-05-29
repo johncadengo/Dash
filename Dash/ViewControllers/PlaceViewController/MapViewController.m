@@ -74,6 +74,11 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    
+    self.map = nil;
+    self.toolbar = nil;
+    self.cancelButton = nil;
+    self.doneButton = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

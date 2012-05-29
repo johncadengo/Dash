@@ -168,7 +168,6 @@
     self.upLabel = nil;
     self.downLabel = nil;
     self.alertView = nil;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated

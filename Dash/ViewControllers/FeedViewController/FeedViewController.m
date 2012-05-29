@@ -96,6 +96,12 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.refreshHeaderView = nil;
+    self.hud = nil;
+    self.customSegmentView = nil;
+    self.backgroundBubble = nil;
+    self.alertView = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

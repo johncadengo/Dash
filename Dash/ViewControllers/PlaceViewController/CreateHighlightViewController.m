@@ -100,6 +100,13 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    
+    self.toolbar = nil;
+    self.textView = nil;
+    self.cancelButton = nil;
+    self.doneButton = nil;
+    self.toolbarTitle = nil;
+    self.characterCountLabel = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
