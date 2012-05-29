@@ -60,8 +60,9 @@ NSString * const kPlaceCreateHighlightCellIdentifier = @"com.BoxOutDev.Dash.Plac
 NSString * const kPlaceTitleCellIdentifier = @"com.BoxOutDev.Dash.PlaceTitleCell";
 NSString * const kPlaceReportProblemCellIdentifier = @"com.BoxOutDev.Dash.PlaceReportProblemCellIdentifier";
 NSString * const kSearchAutocompleteCellIdentifier = @"com.BoxOutDev.Dash.SearchAutocompleteCell";
-NSString * const kProfileHeaderCellIdentifier = @"com.BoxOutDev.Dash.ProfileHeaderCellIdentifier";
-NSString * const kProfileNoLikesCellIdentifier = @"com.BoxOutDev.Dash.ProfileNoLikesCellIdentifier";
+NSString * const kSearchNoResultsCellIdentifier = @"com.BoxOutDev.Dash.SearchNoResultsCell";
+NSString * const kProfileHeaderCellIdentifier = @"com.BoxOutDev.Dash.ProfileHeaderCell";
+NSString * const kProfileNoLikesCellIdentifier = @"com.BoxOutDev.Dash.ProfileNoLikesCell";
 
 #pragma mark - Segue Identifiers
 

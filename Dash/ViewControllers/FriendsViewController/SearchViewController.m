@@ -25,6 +25,7 @@
 @synthesize resultsForSearchQuery = _resultsForSearchQuery;
 @synthesize currentQuery = _currentQuery;
 @synthesize hud = _hud;
+@synthesize searching = _searching;
 @synthesize alertView = _alertView;
 @synthesize searchController = _searchController;
 @synthesize searchBar = _searchBar;
@@ -106,6 +107,7 @@
     
     // The first time around, we want to display nearby locations
     [self.hud show:YES];
+    self.searching = YES;
     self.currentQuery = [NSString stringWithFormat:@""];
     [self.api search:self.currentQuery near:[self.locationManager location]];
     
@@ -213,8 +215,11 @@
         if (indexPath.section == 0) {
             height = [TitleViewCell height];
         }
-        else {
+        else if ([[self.resultsForSearchQuery objectForKey:self.currentQuery] count]) {
             height = [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:[indexPath row]]];
+        }
+        else {
+            height = 150.0f; // For no results cell
         }
     }
     
@@ -237,21 +242,23 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSMutableDictionary *resultsDict;
+    // TODO: Spaghetti code..
+    NSInteger numRows;
     
     if (self.searchController.searchResultsTableView == tableView) {
-        resultsDict = self.resultsForAutocompleteQuery;
+        numRows = [[self.resultsForAutocompleteQuery objectForKey:self.currentQuery] count];
     }
     else {
         if (section == 0) {
-            return 1; // Title section
+            numRows = 1; // Title section
         }
         else {
-            resultsDict = self.resultsForSearchQuery;   
+            NSInteger count = [[self.resultsForSearchQuery objectForKey:self.currentQuery] count]; 
+            numRows = (count) ? count : 1; // 1 for the no results section
         }
     }
     
-    return [[resultsDict objectForKey:self.currentQuery] count];
+    return numRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -273,9 +280,23 @@
             titleCell.title = ([self.currentQuery isEqualToString:@""]) ? @"Nearby Places" : resultsFor;
             cell = titleCell;
         }
-        else {
+        else if ([[self.resultsForSearchQuery objectForKey:self.currentQuery] count]) {
             cell = [self tableView:tableView cellForSearchQueryRow:indexPath.row];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        else {
+            // Means no search results
+            cell = [tableView dequeueReusableCellWithIdentifier:kSearchNoResultsCellIdentifier];
+            
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchNoResultsCellIdentifier];
+            }
+            
+            if (!self.isSearching) {
+                [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NoSearchResultsMessage"]]];
+            }
+            
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
     }
         
@@ -346,6 +367,7 @@
 {
     // Let them know we're working on it
     [self.hud show:YES];
+    self.searching = YES;
     
     // When search is clicked, perform a search with the search string
     NSString *searchString = searchBar.text;
@@ -370,6 +392,14 @@
 {
     // Clear the background
     [self clearSearchBarBackground];
+}
+
+#pragma mark - ProgressHUD Delegate
+
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    self.searching = NO;
+    [self.tableView reloadData];
 }
 
 #pragma mark - RKRequestDelegate
@@ -474,13 +504,13 @@
         
         // Get our query
         NSMutableArray *results = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
-        NSString *query = [results objectAtIndex:indexPath.row];
+        self.currentQuery = [results objectAtIndex:indexPath.row];
         
         // Find out where we are
         CLLocation *loc = [self.locationManager location];
         
         // Send a new request to the api to search and return places with details
-        [self.api search:query near:loc];
+        [self.api search:self.currentQuery near:loc];
         
         // Display it
         [self.tableView reloadData];
@@ -488,7 +518,7 @@
         // Hide the search display controller
         [self.searchController setActive:NO animated:YES];
     }
-    else {
+    else if ([[self.resultsForSearchQuery objectForKey:self.currentQuery] count]) {
         // A row selected in search means we will segue to the place view controller
         NSArray *results = [self.resultsForSearchQuery objectForKey:self.currentQuery];
         Place *place = [results objectAtIndex:indexPath.row];

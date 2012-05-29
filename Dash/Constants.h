@@ -136,7 +136,9 @@ extern NSString * const kPlaceCreateHighlightCellIdentifier;
 extern NSString * const kPlaceTitleCellIdentifier;
 extern NSString * const kPlaceReportProblemCellIdentifier;
 extern NSString * const kSearchAutocompleteCellIdentifier;
+extern NSString * const kSearchNoResultsCellIdentifier;
 extern NSString * const kProfileHeaderCellIdentifier;
+extern NSString * const kProfileNoLikesCellIdentifier;
 
 // Segues
 extern NSString * const kShowLoginViewControllerSegueIdentifier;
@@ -148,7 +150,6 @@ extern NSString * const kPresentFilterViewController;
 extern NSString * const kShowSearchResultDetailView;
 extern NSString * const kShowCreateHighlightSegueIdentifier;
 extern NSString * const kShowMapViewControllerSegueIdentifier;
-extern NSString * const kProfileNoLikesCellIdentifier;
 
 // Distance cutoff
 static double const kDistanceCutoff = 50.0;

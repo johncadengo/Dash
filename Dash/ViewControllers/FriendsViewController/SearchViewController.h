@@ -21,6 +21,7 @@
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) NSString *currentQuery;
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, getter = isSearching) BOOL searching;
 @property (nonatomic, strong) UIAlertView *alertView;
 @property (nonatomic, strong) UISearchDisplayController *searchController;
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
