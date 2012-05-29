@@ -258,11 +258,12 @@
         return 1;
     }
     else if (section == 1) {
+        // Title view cell section
         return 1;
     }
     else if (section == 2) {
-        // A row for each kind of stats
-        return [self.recommends count]; 
+        // Recommend cells.. If not recommends, then return 1 for the no likes message.
+        return (self.recommends.count) ? self.recommends.count : 1; 
     }
     else {
         // Should never happen
@@ -320,24 +321,41 @@
 
 - (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSInteger)row
 {
-    RecommendedPlaceViewCell *cell = (RecommendedPlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
+    id newCell;
     
-    if (cell == nil) {
-        cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:row]];
+    if (self.recommends.count) {
+        RecommendedPlaceViewCell *cell = (RecommendedPlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:row]];
+        }
+        
+        // Always update type
+        [cell setType:[self recommendedPlaceViewCellTypeForRow:row]];
+        [cell setWithPlace:[[self.recommends objectAtIndex:row] place] context:self.managedObjectContext];
+        
+        newCell = cell;
+    }
+    else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfileNoLikesCellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kProfileNoLikesCellIdentifier];
+        }
+        
+        [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NoLikesMessage"]]];
+        
+        newCell = cell;
     }
     
-    // Always update type
-    [cell setType:[self recommendedPlaceViewCellTypeForRow:row]];
-    [cell setWithPlace:[[self.recommends objectAtIndex:row] place] context:self.managedObjectContext];
-    
-    return cell;
+    return newCell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 2) {
+    if (indexPath.section == 2 && self.recommends.count) {
         Place *place = [[self.recommends objectAtIndex:indexPath.row] place];
         [self performSegueWithIdentifier:kShowProfileViewDetailsIdentifier sender:place];
     }

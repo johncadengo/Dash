@@ -148,6 +148,7 @@ extern NSString * const kPresentFilterViewController;
 extern NSString * const kShowSearchResultDetailView;
 extern NSString * const kShowCreateHighlightSegueIdentifier;
 extern NSString * const kShowMapViewControllerSegueIdentifier;
+extern NSString * const kProfileNoLikesCellIdentifier;
 
 // Distance cutoff
 static double const kDistanceCutoff = 50.0;
