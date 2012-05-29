@@ -288,8 +288,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSNumber *timesDashShown = [defaults objectForKey:@"TimesDashShown"];
     
-    // Show the filter swipe tip on the 2nd and 3rd tries
-    if (timesDashShown && [timesDashShown compare:[NSNumber numberWithInt:4]] == NSOrderedAscending) {
+    // Show the filter swipe tip on the 2nd try
+    if (timesDashShown && [timesDashShown compare:[NSNumber numberWithInt:2]] == NSOrderedSame) {
         // Increment times dash shown in our defaults
         [defaults setObject:[NSNumber numberWithInt:timesDashShown.intValue+1] forKey:@"TimesDashShown"];
         

@@ -116,7 +116,7 @@
 
 - (void)fbDidLogin 
 {
-    [self.dashViewController pop:self];
+    //[self.dashViewController pop:self];
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -140,7 +140,7 @@
     [DashAPI setSkipLogin:YES];
     
     // Pop it
-    [self.dashViewController pop:self];
+    //[self.dashViewController pop:self];
     
     // Goodbye!
     [self dismissModalViewControllerAnimated:YES];
