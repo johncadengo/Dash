@@ -118,6 +118,9 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.alertView = nil;
+    self.hud = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

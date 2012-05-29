@@ -289,7 +289,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     NSNumber *timesDashShown = [defaults objectForKey:@"TimesDashShown"];
     
     // Show the filter swipe tip on the 2nd try
-    if (timesDashShown && [timesDashShown compare:[NSNumber numberWithInt:2]] == NSOrderedSame) {
+    if (timesDashShown && [timesDashShown compare:[NSNumber numberWithInt:1]] == NSOrderedSame) {
         // Increment times dash shown in our defaults
         [defaults setObject:[NSNumber numberWithInt:timesDashShown.intValue+1] forKey:@"TimesDashShown"];
         
@@ -318,9 +318,18 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    //NSLog(@"UNLOAD");
+    self.popsScrollView = nil;
+    self.popBackground = nil;
+    self.popButton = nil;
+    self.flipGrip = nil;
+    self.filterViewController = nil;
+    self.filterView = nil;
+    self.alertView = nil;
+    self.dashButtonTip = nil;
+    self.progressHUD = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

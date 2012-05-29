@@ -93,22 +93,6 @@
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self refresh];
-}
-
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    // Make sure the top bar and bottom bar show
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
     
     // Make the toolbar
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 480.0f - 49.0f, 320.0f, 49.0f)];
@@ -165,6 +149,35 @@
                           innerNegative, self.thumbsUpButton, innerNegative, self.thumbsDownButton, nil];
     [self.toolbar addSubview:self.upLabel];
     [self.toolbar addSubview:self.downLabel];
+}
+
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+    
+    self.highlightTitle = nil;
+    self.toolbar = nil;
+    self.createHighlightButton = nil;
+    self.thumbsUpButton = nil;
+    self.thumbsDownButton = nil;
+    self.upButton = nil;
+    self.downButton = nil;
+    self.upLabel = nil;
+    self.downLabel = nil;
+    self.alertView = nil;
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Make sure the top bar and bottom bar show
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    
     
     // Make this smarter, but for now
     if ([DashAPI shouldRefreshFavorites] || [DashAPI shouldRefreshProfile]) {

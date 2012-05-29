@@ -161,6 +161,13 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.hud = nil;
+    self.fbconnect = nil;
+    self.backgroundView = nil;
+    self.settingsSheet = nil;
+    self.settingsButton = nil;
+    self.alertView = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

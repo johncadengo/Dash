@@ -96,6 +96,11 @@ enum {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.filterView = nil;
+    self.locationButton = nil;
+    self.changeLocationSheet = nil;
+    self.customLocationAlert = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
