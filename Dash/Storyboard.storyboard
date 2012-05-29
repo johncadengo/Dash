@@ -101,19 +101,10 @@
                     <tabBarItem key="tabBarItem" title="Item" id="ent-O0-PYz"/>
                     <navigationItem key="navigationItem" id="EAV-TG-CPr"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="Zfx-8B-OyC" id="CHv-NE-RU3"/>
+                        <outlet property="searchBar" destination="Qek-h7-j6d" id="rya-6Z-o4H"/>
                         <segue destination="ZvP-bc-h0g" kind="push" identifier="ShowSearchResultDetailView" id="ty8-Gx-CC2"/>
                     </connections>
                 </tableViewController>
-                <searchDisplayController id="Zfx-8B-OyC">
-                    <connections>
-                        <outlet property="delegate" destination="9kF-QB-6qP" id="uZO-Mv-4fj"/>
-                        <outlet property="searchBar" destination="Qek-h7-j6d" id="fvz-bn-C88"/>
-                        <outlet property="searchContentsController" destination="9kF-QB-6qP" id="fSx-tp-j2v"/>
-                        <outlet property="searchResultsDataSource" destination="9kF-QB-6qP" id="fSV-67-7W5"/>
-                        <outlet property="searchResultsDelegate" destination="9kF-QB-6qP" id="kTL-V3-vJk"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="447" y="685"/>
         </scene>
@@ -391,6 +382,9 @@
         </class>
         <class className="SearchViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

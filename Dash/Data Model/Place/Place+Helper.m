@@ -329,7 +329,6 @@ enum {
                     [NSNumber numberWithInt:kCategoryAmerican]];
     }
     
-    NSLog(@"%@", filename);
     return filename;
 }
 

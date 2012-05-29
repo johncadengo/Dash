@@ -26,6 +26,8 @@
 @synthesize currentQuery = _currentQuery;
 @synthesize hud = _hud;
 @synthesize alertView = _alertView;
+@synthesize searchController = _searchController;
+@synthesize searchBar = _searchBar;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -56,6 +58,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    // Manually create our search display controller, 
+    // otherwise a bug in storyboard will cause to crash after view did unload is called
+    UISearchDisplayController* searchController = [[UISearchDisplayController alloc] 
+                                                   initWithSearchBar:self.searchBar contentsController:self];
+    searchController.searchResultsDataSource = self;
+    searchController.searchResultsDelegate = self;
+    searchController.delegate = self;
+    self.searchController = searchController;
+    
     // Connect to our API.
     self.api = [[DashAPI alloc] initWithManagedObjectContext:self.managedObjectContext delegate:self];
     
@@ -68,14 +79,14 @@
     self.view.backgroundColor = UIColorFromRGB(kGreyBGColor);
     
     // Search bar
-    [self.searchDisplayController.searchBar setTintColor:[UIColor blackColor]];
+    [self.searchController.searchBar setTintColor:[UIColor blackColor]];
     [self clearSearchBarBackground];
     
     // Search text field
     UITextField *searchField;
-    for(int i = 0; i < [self.searchDisplayController.searchBar.subviews count]; i++) {
-        if([[self.searchDisplayController.searchBar.subviews objectAtIndex:i] isKindOfClass:[UITextField class]]) {
-            searchField = [self.searchDisplayController.searchBar.subviews objectAtIndex:i];
+    for(int i = 0; i < [self.searchController.searchBar.subviews count]; i++) {
+        if([[self.searchController.searchBar.subviews objectAtIndex:i] isKindOfClass:[UITextField class]]) {
+            searchField = [self.searchController.searchBar.subviews objectAtIndex:i];
             break;
         }
     }
@@ -102,7 +113,7 @@
 
 - (void)clearSearchBarBackground
 {
-    for (UIImageView *view in self.searchDisplayController.searchBar.subviews)
+    for (UIImageView *view in self.searchController.searchBar.subviews)
     {
         if ([view isKindOfClass:NSClassFromString
              (@"UISearchBarBackground")])
@@ -121,6 +132,7 @@
     
     self.alertView = nil;
     self.hud = nil;
+    self.searchController = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -194,7 +206,7 @@
 {
     CGFloat height;
     
-    if (self.searchDisplayController.searchResultsTableView == tableView) {
+    if (self.searchController.searchResultsTableView == tableView) {
         height = self.tableView.rowHeight;
     }
     else {
@@ -214,7 +226,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    if (self.searchDisplayController.searchResultsTableView == tableView) {
+    if (self.searchController.searchResultsTableView == tableView) {
         return 1; // Autocomplete
     }
     else {
@@ -227,7 +239,7 @@
     // Return the number of rows in the section.
     NSMutableDictionary *resultsDict;
     
-    if (self.searchDisplayController.searchResultsTableView == tableView) {
+    if (self.searchController.searchResultsTableView == tableView) {
         resultsDict = self.resultsForAutocompleteQuery;
     }
     else {
@@ -246,7 +258,7 @@
 {
     UITableViewCell *cell;
     
-    if (self.searchDisplayController.searchResultsTableView == tableView) {
+    if (self.searchController.searchResultsTableView == tableView) {
         cell = [self tableView:tableView cellForAutocompleteRow:indexPath.row];
         cell.backgroundView.backgroundColor = [UIColor clearColor];
     }
@@ -320,7 +332,7 @@
     // Check if its results are already cached 
     NSMutableArray *result = [self.resultsForAutocompleteQuery objectForKey:self.currentQuery];
     if (result && [result count]) {
-        [self.searchDisplayController.searchResultsTableView reloadData];
+        [self.searchController.searchResultsTableView reloadData];
     }
     else {
         // Send the request out to autocomplete
@@ -345,7 +357,7 @@
     [self.api search:searchString near:loc];
     
     // Dismiss the search display controller
-    [self.searchDisplayController setActive:NO animated:YES];
+    [self.searchController setActive:NO animated:YES];
 }
 
 - (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
@@ -370,7 +382,7 @@
         NSString *query = [dict objectForKey:@"query"];
         
         // Prepare pointers to reference appropriate data structures and tableviews
-        UITableView *tableView = self.searchDisplayController.searchResultsTableView;
+        UITableView *tableView = self.searchController.searchResultsTableView;
         NSMutableDictionary *resultsDict = self.resultsForAutocompleteQuery;
         
         // Grab the array corresponding with our query
@@ -457,7 +469,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Check which table view is being selected
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         // A row selected in autocomplete means we will send a request to search for a query
         
         // Get our query
@@ -474,7 +486,7 @@
         [self.tableView reloadData];
         
         // Hide the search display controller
-        [self.searchDisplayController setActive:NO animated:YES];
+        [self.searchController setActive:NO animated:YES];
     }
     else {
         // A row selected in search means we will segue to the place view controller

@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSString *currentQuery;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) UIAlertView *alertView;
+@property (nonatomic, strong) UISearchDisplayController *searchController;
+@property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
 
 - (void)clearSearchBarBackground;
 
