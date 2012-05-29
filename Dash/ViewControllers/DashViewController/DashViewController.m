@@ -259,18 +259,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
     // Initial filter view frame
     self.filterViewFrame = CGRectMake(0.0f, 360.0f, 320.0f, 480.0f);
-    
-    // Dash button tip
-    self.dashButtonTip = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashButtonTip"]];
-    /*
-     [self.dashButtonTip setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 411.0f)];
-    [self.dashButtonTip setImage:[UIImage imageNamed:@"DashButtonTip"] 
-                        forState:UIControlStateNormal];
-    [self.dashButtonTip setImage:[UIImage imageNamed:@"DashButtonTip"] 
-                        forState:UIControlStateHighlighted];
-    [self.dashButtonTip addTarget:self action:@selector(dismissTip:) forControlEvents:UIControlEventTouchDown];
-     */
-    [self.view addSubview:self.dashButtonTip];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -294,6 +282,28 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     }
     else {
         self.filterView.frame = CGRectMake(0.0f, 400.0f, 320.0f, 320.0f);
+    }
+    
+    // Tip logic
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *timesDashShown = [defaults objectForKey:@"TimesDashShown"];
+    
+    // Show the filter swipe tip on the 2nd and 3rd tries
+    if (timesDashShown && [timesDashShown compare:[NSNumber numberWithInt:4]] == NSOrderedAscending) {
+        // Increment times dash shown in our defaults
+        [defaults setObject:[NSNumber numberWithInt:timesDashShown.intValue+1] forKey:@"TimesDashShown"];
+        
+        // Show filter swipe tip
+        self.dashButtonTip = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashFilterTip"]];
+        [self.view addSubview:self.dashButtonTip];
+    }
+    else {
+        // Add times dash shown to our defaults
+        [defaults setObject:[NSNumber numberWithInt:1] forKey:@"TimesDashShown"];
+        
+        // Show dash button tip
+        self.dashButtonTip = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashButtonTip"]];
+        [self.view addSubview:self.dashButtonTip];
     }
 }
 
