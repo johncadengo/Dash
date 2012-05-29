@@ -24,6 +24,7 @@
 @synthesize feedItems = _feedItems;
 @synthesize refreshHeaderView = _refreshHeaderView;
 @synthesize hud = _hud;
+@synthesize searching = _searching;
 @synthesize backgroundBubble = _backgroundBubble;
 @synthesize customSegmentView = _customSegmentView;
 @synthesize alertView = _alertView;
@@ -82,6 +83,7 @@
     
     // Make the call
     [self.hud show:YES];
+    self.searching = YES;
     [self refreshFeed];
     
     // Segmented control
@@ -169,9 +171,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Get the blurb we are using for that row
-    Action *action = [self.feedItems objectAtIndex:indexPath.row];
-    return [NewsItemViewCell heightForNewsItem:action];
+    CGFloat height = 0.0f; 
+    if (self.feedItems.count) {
+        NewsItem *item = [self.feedItems objectAtIndex:indexPath.row];
+        height = [NewsItemViewCell heightForNewsItem:item];    
+    }
+    else {
+        height = 150.0f; // No results height
+    }
+    return height;
 }
 
 
@@ -185,33 +193,56 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numRows = [self.feedItems count];
+    NSInteger numRows = (self.feedItems.count) ? self.feedItems.count : 1; // 1 for no one nearby message
     
     return numRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NewsItemViewCell *cell = (NewsItemViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
+    id newCell;
     
-    if (cell == nil) {
-        cell = [[NewsItemViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                     reuseIdentifier:kFeedItemCellIdentifier];
+    if (self.feedItems.count) {
+        NewsItemViewCell *cell = (NewsItemViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[NewsItemViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                         reuseIdentifier:kFeedItemCellIdentifier];
+        }
+        
+        NewsItem *newsItem = [[self feedItems] objectAtIndex:indexPath.row];
+        [cell setWithNewsItem:newsItem];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        newCell = cell;
+    }
+    else {
+        // No one nearby message
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSearchNoResultsCellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchNoResultsCellIdentifier];
+        }
+        
+        if (!self.isSearching) {
+            [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NoOneNearbyMessage"]]];
+        }
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        newCell = cell;
     }
     
-    NewsItem *newsItem = [[self feedItems] objectAtIndex:indexPath.row];
-    [cell setWithNewsItem:newsItem];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
-    return cell;
+    return newCell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NewsItem *newsItem = [self.feedItems objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:newsItem];
+    if (self.feedItems.count) {
+        NewsItem *newsItem = [self.feedItems objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:kShowFeedItemDetailsSegueIdentifier sender:newsItem];
+    }
 }
 
 #pragma mark - Storyboard Segue
@@ -278,6 +309,14 @@
     TFLog(@"Encountered an error: %@", error);
     
     [self.hud hide:YES];
+}
+
+#pragma mark - HUD delegate
+
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    self.searching = NO;
+    [self.tableView reloadData];
 }
 
 #pragma mark -

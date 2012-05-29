@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSMutableArray *feedItems;
 @property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, getter = isSearching) BOOL searching;
 
 @property (nonatomic, strong) CustomSegmentView *customSegmentView;
 @property (nonatomic, strong) UIImageView *backgroundBubble;
