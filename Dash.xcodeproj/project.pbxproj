@@ -125,6 +125,7 @@
 		67751E9D147D7EBB0083011D /* MoreInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */; };
 		677A2BC9157549EE00932627 /* DashButtonTip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 677A2BC8157549EE00932627 /* DashButtonTip@2x.png */; };
 		677A2BCB1575527500932627 /* DashFilterTip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 677A2BCA1575527500932627 /* DashFilterTip@2x.png */; };
+		677A2BCD15756B1E00932627 /* NoOneNearbyMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 677A2BCC15756B1E00932627 /* NoOneNearbyMessage@2x.png */; };
 		6789D2C1152E1A920029BF48 /* TitleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6789D2C0152E1A920029BF48 /* TitleViewCell.m */; };
 		6789D2C4152E28A70029BF48 /* BadgesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6789D2C3152E28A70029BF48 /* BadgesViewCell.m */; };
 		6789D2CD152E349C0029BF48 /* BadgeBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6789D2C6152E349C0029BF48 /* BadgeBubble@2x.png */; };
@@ -725,6 +726,7 @@
 		67751E9C147D7EBB0083011D /* MoreInfoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreInfoViewCell.m; path = Dash/ViewControllers/PlaceViewController/MoreInfoViewCell.m; sourceTree = "<group>"; };
 		677A2BC8157549EE00932627 /* DashButtonTip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashButtonTip@2x.png"; path = "Dash/Images/IconsSplash/DashButtonTip@2x.png"; sourceTree = "<group>"; };
 		677A2BCA1575527500932627 /* DashFilterTip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashFilterTip@2x.png"; path = "Dash/Images/IconsSplash/DashFilterTip@2x.png"; sourceTree = "<group>"; };
+		677A2BCC15756B1E00932627 /* NoOneNearbyMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NoOneNearbyMessage@2x.png"; path = "Dash/Images/Tabs/Feed/NoOneNearbyMessage@2x.png"; sourceTree = "<group>"; };
 		6789D2BF152E1A910029BF48 /* TitleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleViewCell.h; path = Dash/ViewControllers/PlaceViewController/TitleViewCell.h; sourceTree = "<group>"; };
 		6789D2C0152E1A920029BF48 /* TitleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleViewCell.m; path = Dash/ViewControllers/PlaceViewController/TitleViewCell.m; sourceTree = "<group>"; };
 		6789D2C2152E28A70029BF48 /* BadgesViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BadgesViewCell.h; path = Dash/ViewControllers/PlaceViewController/BadgesViewCell.h; sourceTree = "<group>"; };
@@ -1446,6 +1448,7 @@
 		6734EB5615123EA900D7EA7E /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				677A2BCC15756B1E00932627 /* NoOneNearbyMessage@2x.png */,
 				67A85961153F5DF800B451D9 /* BackgroundBubble@2x.png */,
 				67A85962153F5DF800B451D9 /* TopBarFriendsSelected@2x.png */,
 				67A85963153F5DF800B451D9 /* TopBarNearbyFriends@2x.png */,
@@ -2799,6 +2802,7 @@
 				67A4F152156F8285005D5F88 /* ReportButton@2x.png in Resources */,
 				677A2BC9157549EE00932627 /* DashButtonTip@2x.png in Resources */,
 				677A2BCB1575527500932627 /* DashFilterTip@2x.png in Resources */,
+				677A2BCD15756B1E00932627 /* NoOneNearbyMessage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
