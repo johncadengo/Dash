@@ -297,7 +297,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         self.dashButtonTip = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashFilterTip"]];
         [self.view addSubview:self.dashButtonTip];
     }
-    else {
+    else if (!timesDashShown){
         // Add times dash shown to our defaults
         [defaults setObject:[NSNumber numberWithInt:1] forKey:@"TimesDashShown"];
         
