@@ -229,7 +229,12 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [self pop:locParam types:@"" prices:@"$, $$, $$$," distance:@""];
 }
 
-- (void)pop:(NSString *)loc types:(NSString *)types prices:(NSString *)prices distance:(NSString *)distance;
+- (void)pop:(NSString *)loc types:(NSString *)types prices:(NSString *)prices distance:(NSString *)distance
+{
+    return [self pop:loc types:types prices:prices distance:distance page:self.class.curPage];
+}
+
+- (void)pop:(NSString *)loc types:(NSString *)types prices:(NSString *)prices distance:(NSString *)distance page:(NSInteger)page
 {
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];

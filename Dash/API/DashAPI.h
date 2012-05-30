@@ -89,6 +89,10 @@ typedef enum {
  */
 - (void)pop:(NSString *)loc types:(NSString *)types prices:(NSString *)prices distance:(NSString *)distance;
 
+/** Pop with page.
+ */
+- (void)pop:(NSString *)loc types:(NSString *)types prices:(NSString *)prices distance:(NSString *)distance page:(NSInteger)page;
+
 #pragma mark - Feed
 
 - (void)feedForPerson:(Person *)person near:(CLLocation *)location;
