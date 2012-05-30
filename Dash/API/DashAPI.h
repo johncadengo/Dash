@@ -67,6 +67,10 @@ typedef enum {
 + (void)setShouldRefreshProfile:(BOOL)newValue;
 + (Person *)me;
 + (void)setMe:(Person *)newMe;
++ (void)updateLastPop;
++ (NSDate *)lastPop;
++ (void)setCurPage:(NSInteger)newValue;
++ (NSInteger)curPage;
 
 #pragma mark - Key
 /** Generates the key

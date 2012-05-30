@@ -208,7 +208,7 @@ static const CGFloat kYOffset = 8.0f;
     
     // Icon
     CGSize iconSize = CGSizeMake(25.0f, 25.0f);
-    [self.icon drawAtPoint:CGPointMake(kWidth - kPadding - iconSize.width, offset)];
+    [self.icon drawAtPoint:CGPointMake(kWidth - kPadding - iconSize.width, offset + 2.0f)];
     [self.category drawInRect:CGRectMake(kPadding + 50.0f, offset + 14.0f + 5.0f + 10.0f + 5.0f, 
                                          kWidth - kPadding - iconSize.width - 50.0f, 16.0f) 
                      withFont:[[self class] subtitleFont] 

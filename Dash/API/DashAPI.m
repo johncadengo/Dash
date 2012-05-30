@@ -28,6 +28,8 @@ static BOOL _loggedIn = NO;
 static BOOL _shouldRefreshFavorites = NO;
 static BOOL _shouldRefreshProfile = NO;
 static Person *_me = nil;
+static NSInteger _curPage = 0;
+static NSDate *_lastPop = nil;
 
 @implementation DashAPI
 
@@ -154,6 +156,26 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     _me = newMe;
 }
 
++ (void)updateLastPop
+{
+    _lastPop = [NSDate date];
+}
+
++ (NSDate *)lastPop
+{
+    return _lastPop;
+}
+
++ (void)setCurPage:(NSInteger)newValue
+{
+    _curPage = newValue;
+}
+
++ (NSInteger)curPage
+{
+    return _curPage;
+}
+
 #pragma mark - Init
 
 -(id) init
@@ -209,7 +231,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
 
 - (void)pop:(NSString *)loc types:(NSString *)types prices:(NSString *)prices distance:(NSString *)distance;
 {
-    
     // Create an object manager and connect core data's persistent store to it
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
@@ -228,6 +249,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             distance, rangeStr,
                             prices, @"prices",
                             types, @"types", nil];
+    
+    TFLog(@"Pop params %@", params);
     
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self.delegate];
