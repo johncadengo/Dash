@@ -91,6 +91,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [placeMapping mapKeyPath:@"badges" toRelationship:@"badges" withMapping:badgeMapping];
     [placeMapping mapKeyPath:@"recommends" toRelationship:@"recommends" withMapping:authorMapping];
     [placeMapping mapKeyPath:@"saves" toRelationship:@"saves" withMapping:authorMapping];
+    [placeMapping mapKeyPath:@"hours" toRelationship:@"hours" withMapping:hoursMapping];
     
     return placeMapping;
 }
