@@ -263,14 +263,14 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Authentication
     // Params are backwards compared to the way 
     // it is shown in the http: /pops?key=object
-    NSString *rangeStr = (distance == @"") ? @"fake_range": @"range";
+    NSString *rangeStr = ([distance isEqualToString:@""]) ? @"fake_range" : @"range";
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                             self.key, @"must_fix",
                             loc, @"loc",
-                            distance, rangeStr,
                             prices, @"prices",
                             types, @"types", 
-                            [NSNumber numberWithInt:self.class.curPage], @"page", nil];
+                            [NSNumber numberWithInt:self.class.curPage], @"page",
+                            distance, rangeStr, nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self.delegate];
