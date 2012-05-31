@@ -22,3 +22,6 @@
 [submodule "Dash/Helpers/OHAttributedLabel"]
 	path = Dash/Helpers/OHAttributedLabel
 	url = https://github.com/AliSoftware/OHAttributedLabel.git
+[submodule "Dash/Helpers/DashHours"]
+	path = Dash/Helpers/DashHours
+	url = git@github.com:johncadengo/DashHours.git

@@ -644,6 +644,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
  */ 
 - (BOOL)canShowNextPage
 {
+    NSLog(@"%@ %d", self.places, self.places.count);
+    return (self.places.count % 4 == 0 && self.places.count > 0) ? YES : NO;
+    
     NSInteger maxIndexAvailable = self.places.count - 1;
     NSInteger lastPageWeCanShow = [[self class] pageForIndex:maxIndexAvailable];
     
@@ -739,6 +742,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     // Now, show them
     if ([self canShowNextPage]) {
+        NSLog(@"Can show next page %d", [[self class] pageForIndex:self.places.count - 1]);
         [self showNextPage];
     }
     else {

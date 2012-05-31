@@ -424,6 +424,7 @@
         [self setMoreInfoCell:cell];
         [self.moreInfoCell setWithPlace:self.place];
         [self.moreInfoCell.mapButton addTarget:self action:@selector(map:) forControlEvents:UIControlEventTouchUpInside];
+        [self.moreInfoCell.hoursButton addTarget:self action:@selector(showHours:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return cell;
@@ -546,6 +547,29 @@
     [self performSegueWithIdentifier:kShowMapViewControllerSegueIdentifier sender:self.place];
 }
 
+
+- (void)showHours:(id)sender
+{
+    NSMutableString *hoursString = [[NSMutableString alloc] initWithCapacity:64];
+    
+    for (Hours *hours in self.place.hours) {
+        [hoursString appendFormat:@"%@\n", hours];
+    }
+    
+    if ([hoursString isEqualToString:@""])
+        [hoursString appendFormat:@"Aw, sorry, we don't have business hour information for this place."];
+    
+    NSString *title = [NSString stringWithFormat:@"Hours For %@", self.place.name];
+
+    if (self.alertView == nil) {
+        self.alertView = [[UIAlertView alloc] initWithTitle:title message:hoursString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    }
+    
+    [self.alertView setTitle:title];
+    [self.alertView setMessage:hoursString];
+    [self.alertView show];
+}
+
 - (void)heartTapped:(id)sender
 {
     UIButton *button = (UIButton *)sender;
@@ -564,6 +588,9 @@
         if (self.alertView == nil) {
             self.alertView = [[UIAlertView alloc] initWithTitle:kLoginAlertTitle message:kLoginAlertMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         }
+        
+        [self.alertView setTitle:kLoginAlertTitle];
+        [self.alertView setMessage:kLoginAlertMessage];
         [self.alertView show];
     }
 }
@@ -578,6 +605,9 @@
         if (self.alertView == nil) {
             self.alertView = [[UIAlertView alloc] initWithTitle:kLoginAlertTitle message:kLoginAlertMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         }
+        
+        [self.alertView setTitle:kLoginAlertTitle];
+        [self.alertView setMessage:kLoginAlertMessage];
         [self.alertView show];
     }
 }
@@ -592,6 +622,9 @@
         if (self.alertView == nil) {
             self.alertView = [[UIAlertView alloc] initWithTitle:kLoginAlertTitle message:kLoginAlertMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         }
+        
+        [self.alertView setTitle:kLoginAlertTitle];
+        [self.alertView setMessage:kLoginAlertMessage];
         [self.alertView show];
     }
 }

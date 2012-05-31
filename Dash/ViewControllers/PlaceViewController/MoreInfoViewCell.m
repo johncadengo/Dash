@@ -10,11 +10,14 @@
 #import "Constants.h"
 #import "Place.h"
 #import "Place+Helper.h"
+#import "Hours.h"
+#import "Hours+Helper.h"
 
 @implementation MoreInfoViewCell
 
 @synthesize mapButton = _mapButton;
 @synthesize callButton = _callButton;
+@synthesize hoursButton = _hoursButton;
 @synthesize addressLabel = _addressLabel;
 @synthesize phoneLabel = _phoneLabel;
 @synthesize hoursLabel = _hoursLabel;
@@ -58,6 +61,11 @@ static CGFloat kHeight = 178.5f;
         [self.callButton addTarget:self action:@selector(call:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.callButton];
         
+        self.hoursButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.hoursButton.frame = CGRectMake(0.0f, kTopPadding + (2 * kLabelHeight), kWindowWidth, kLabelHeight);
+        //[self.hoursButton addTarget:self action:@selector(showHours:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.hoursButton];
+        
         // Labels
         UIFont *labelFont = [UIFont systemFontOfSize:14.0f];
         UIColor *labelColor = UIColorFromRGB(kMoreInfoTextColor);
@@ -98,7 +106,36 @@ static CGFloat kHeight = 178.5f;
     
     self.phoneLabel.text = place.phone;
     
-    self.hoursLabel.text = [NSString stringWithFormat: @"%@", @"Hours Unavailable"];
+    NSMutableString *hoursString = [[NSMutableString alloc] initWithCapacity:64];
+   
+    /*
+    [hoursString appendFormat:@"Today's hours:\n"];
+    
+    for (Hours *hours in place.hours) {
+        if (hours.openToday) {
+            [hoursString appendFormat:@"%@\n", hours];
+        }
+    }
+    
+    if ([hoursString isEqualToString:@"Today's hours:\n"]) {
+        [hoursString appendFormat:@"Closed"];
+    }
+     */
+    
+    for (Hours *hours in place.hours) {
+        if (hours.openToday && [hoursString length] == 0) {
+            [hoursString appendFormat:@"Currently Open", hours];
+        }
+    }
+    
+    if ([place.hours count] == 0) {
+        [hoursString appendFormat:@"Hours Unavailable"];
+    }
+    else if ([hoursString length] == 0) {
+        [hoursString appendFormat:@"Currently Closed"];
+    }
+    
+    self.hoursLabel.text = [hoursString description];
     //[self.hoursLabel sizeToFit];
 }
 
@@ -114,5 +151,6 @@ static CGFloat kHeight = 178.5f;
         [notPermitted show];
     }
 }
+
 
 @end

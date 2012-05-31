@@ -459,6 +459,7 @@
 		67DEF893153C8DAE0079C097 /* SearchBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF891153C8DAE0079C097 /* SearchBar@2x.png */; };
 		67DEF894153C8DAE0079C097 /* SearchBarWithMGlass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF892153C8DAE0079C097 /* SearchBarWithMGlass@2x.png */; };
 		67E221361577F6A800096DAE /* InformationBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E221351577F6A800096DAE /* InformationBubble@2x.png */; };
+		67E221391578221400096DAE /* Hours+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E221381578221400096DAE /* Hours+Helper.m */; };
 		67E2AA181545944A0002E641 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67E2AA0B1545944A0002E641 /* FBDialog.bundle */; };
 		67E2AA191545944A0002E641 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E2AA111545944A0002E641 /* libfacebook_ios_sdk.a */; };
 		67E2AA2215482C430002E641 /* NewsItem+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E2AA2115482C430002E641 /* NewsItem+Helper.m */; };
@@ -1109,6 +1110,8 @@
 		67DEF891153C8DAE0079C097 /* SearchBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SearchBar@2x.png"; path = "Dash/Images/Tabs/Search/SearchBar@2x.png"; sourceTree = "<group>"; };
 		67DEF892153C8DAE0079C097 /* SearchBarWithMGlass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SearchBarWithMGlass@2x.png"; path = "Dash/Images/Tabs/Search/SearchBarWithMGlass@2x.png"; sourceTree = "<group>"; };
 		67E221351577F6A800096DAE /* InformationBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InformationBubble@2x.png"; path = "Dash/Images/PlaceProfile/InformationBubble@2x.png"; sourceTree = "<group>"; };
+		67E221371578221400096DAE /* Hours+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Hours+Helper.h"; path = "Helpers/DashHours/DashHours/Hours+Helper.h"; sourceTree = "<group>"; };
+		67E221381578221400096DAE /* Hours+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Hours+Helper.m"; path = "Helpers/DashHours/DashHours/Hours+Helper.m"; sourceTree = "<group>"; };
 		67E2AA091545944A0002E641 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		67E2AA0A1545944A0002E641 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		67E2AA0B1545944A0002E641 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
@@ -1660,6 +1663,8 @@
 				672C2C6C1459E9A4006A1D6B /* Category.m */,
 				672C2C6D1459E9A4006A1D6B /* Hours.h */,
 				672C2C6E1459E9A4006A1D6B /* Hours.m */,
+				67E221371578221400096DAE /* Hours+Helper.h */,
+				67E221381578221400096DAE /* Hours+Helper.m */,
 				67A4F134156ECDED005D5F88 /* Place.h */,
 				67A4F135156ECDED005D5F88 /* Place.m */,
 				6735AEA314BCC450000259AF /* Place+Helper.h */,
@@ -2956,6 +2961,7 @@
 				67A4F136156ECDED005D5F88 /* Place.m in Sources */,
 				67A4F15A156FF040005D5F88 /* NSAttributedString+Attributes.m in Sources */,
 				67A4F15B156FF040005D5F88 /* OHAttributedLabel.m in Sources */,
+				67E221391578221400096DAE /* Hours+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
