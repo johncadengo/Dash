@@ -536,7 +536,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     else if (INTERNET_REACHABLE) {
         // Otherwise, as long as we can reach the internet, indicate we are now loading
         self.loading = YES;
-        //[self.progressHUD show:YES];
+        [self.progressHUD show:YES];
         
         // Figure out the filters
         NSMutableString *prices = [[NSMutableString alloc] initWithCapacity:16];
