@@ -25,7 +25,9 @@
 @property (nonatomic, strong) UIAlertView *alertView;
 @property (nonatomic, strong) UISearchDisplayController *searchController;
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) UIBarButtonItem *nearbyButton;
 
+- (void)searchNearby:(id) sender;
 - (void)clearSearchBarBackground;
 
 /** Stores the results keyed by query. We clear these results, 

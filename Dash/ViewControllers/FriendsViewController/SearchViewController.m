@@ -29,6 +29,7 @@
 @synthesize alertView = _alertView;
 @synthesize searchController = _searchController;
 @synthesize searchBar = _searchBar;
+@synthesize nearbyButton = _nearbyButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -106,11 +107,19 @@
     self.locationManager = [JCLocationManagerSingleton sharedInstance];
     
     // The first time around, we want to display nearby locations
+    [self searchNearby:nil];
+    
+    // Nearby button
+    self.nearbyButton = [[UIBarButtonItem alloc] initWithTitle:@"Nearby" style:UIBarButtonItemStyleBordered target:self action:@selector(searchNearby:)];
+    self.navigationItem.rightBarButtonItem = self.nearbyButton;
+}
+
+- (void)searchNearby:(id)sender
+{
     [self.hud show:YES];
     self.searching = YES;
     self.currentQuery = [NSString stringWithFormat:@""];
     [self.api search:self.currentQuery near:[self.locationManager location]];
-    
 }
 
 - (void)clearSearchBarBackground
@@ -135,6 +144,7 @@
     self.alertView = nil;
     self.hud = nil;
     self.searchController = nil;
+    self.nearbyButton = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
