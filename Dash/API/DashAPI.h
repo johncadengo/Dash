@@ -70,6 +70,8 @@ typedef enum {
 + (void)updateLastPop;
 + (NSDate *)lastPop;
 + (void)setCurPage:(NSInteger)newValue;
++ (void)incrementCurPage;
++ (void)resetCurPage;
 + (NSInteger)curPage;
 
 #pragma mark - Key

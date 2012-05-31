@@ -171,6 +171,16 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     _curPage = newValue;
 }
 
++ (void)incrementCurPage
+{
+    ++_curPage;
+}
+
++ (void)resetCurPage
+{
+    _curPage = 0;
+}
+
 + (NSInteger)curPage
 {
     return _curPage;
@@ -253,9 +263,8 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
                             loc, @"loc",
                             distance, rangeStr,
                             prices, @"prices",
-                            types, @"types", nil];
-    
-    TFLog(@"Pop params %@", params);
+                            types, @"types", 
+                            [NSNumber numberWithInt:self.class.curPage], @"page", nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self.delegate];
@@ -263,8 +272,12 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.params = params;
     [objectLoader send];
     
+    TFLog(@"Pop params %@", params);
     [TestFlight passCheckpoint:@"Popped"];
     [Appirater userDidSignificantEvent:YES];
+    
+    // Increment our cur page
+    [self.class incrementCurPage];
 }
 
 - (void)feedForPerson:(Person *)person near:(CLLocation *)location
