@@ -553,7 +553,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             }
         }
         
-        NSString *distance = [self.filterViewController stringForDistanceFilter:self.filterViewController.filterView.currentDistanceFilter];
+        // Have to account for if the filterview hasn't been segued to yet
+        NSString *distance = (self.filterViewController) ? [self.filterViewController stringForDistanceFilter:self.filterViewController.filterView.currentDistanceFilter] : @"";
         
         // And send request to API for more places
         NSString *locParam;

@@ -192,6 +192,20 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     return _curPage;
 }
 
++ (NSString *)uuid
+{
+    static dispatch_once_t pred;
+    static NSString *uuidString = nil;
+    dispatch_once(&pred, ^{
+        // Taken from: http://www.tuaw.com/2011/08/21/dev-juice-help-me-generate-unique-identifiers/
+        CFUUIDRef theUUID = CFUUIDCreate(NULL);
+        uuidString = 
+            (__bridge_transfer NSString *)
+            CFUUIDCreateString(NULL, theUUID);
+        CFRelease(theUUID);});
+    return uuidString;
+}
+
 #pragma mark - Init
 
 -(id) init
@@ -263,14 +277,17 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Authentication
     // Params are backwards compared to the way 
     // it is shown in the http: /pops?key=object
-    NSString *rangeStr = ([distance isEqualToString:@""]) ? @"fake_range" : @"range";
+    Person *person = self.class.me;
+    NSString *rangeStr = ([distance length] == 0) ? @"fake_range" : @"range";
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [NSString stringWithFormat:@"%@", person.fb_uid], @"fb_uid",
                             self.key, @"must_fix",
                             loc, @"loc",
                             prices, @"prices",
                             types, @"types", 
                             [NSNumber numberWithInt:self.class.curPage], @"page",
-                            distance, rangeStr, nil];
+                            distance, rangeStr,
+                            self.class.uuid, @"uuid", nil];
     
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:@"pops" delegate:self.delegate];

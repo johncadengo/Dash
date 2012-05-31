@@ -73,6 +73,7 @@ typedef enum {
 + (void)incrementCurPage;
 + (void)resetCurPage;
 + (NSInteger)curPage;
++ (NSString *)uuid;
 
 #pragma mark - Key
 /** Generates the key
