@@ -241,8 +241,8 @@
         case kPlaceFootprintsSection:
             height = [self heightForFootprintSectionCellForRow:row];
             break;
-        case kPlaceReportProblemSection:
-            height = 50.0f;
+        case kPlaceFeedbackSection:
+            height = [self heightForFeedBackSectionForRow:row];
             break;
         default:
             NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
@@ -288,6 +288,15 @@
     }
     
     return MoreInfoViewCell.height;
+}
+
+- (CGFloat)heightForFeedBackSectionForRow:(NSInteger)row
+{
+    if (row == 0) {
+        return TitleViewCell.height;
+    }
+    
+    return 50.0f;
 }
 
 - (HighlightViewCellType)highlightViewCellTypeForRow:(NSInteger)row
@@ -336,8 +345,8 @@
         case kPlaceFootprintsSection:
             numRows = 1; // TODO: Just a filler cell to accomdate for toolbar
             break;
-        case kPlaceReportProblemSection:
-            numRows = 1;
+        case kPlaceFeedbackSection:
+            numRows = 2;
             break;
         default:
             NSAssert(NO, @"Asking for number of rows in a section that doesn't exist %d", section);
@@ -369,8 +378,8 @@
         case kPlaceFootprintsSection:
             cell = [self footprintsSectionCellForTableView:tableView forRow:row];
             break;
-        case kPlaceReportProblemSection:
-            cell = [self reportProblemSectionCellForTableView:tableView];
+        case kPlaceFeedbackSection:
+            cell = [self reportProblemSectionCellForTableView:tableView forRow:row];
             break;
         default:
             NSAssert(NO, @"Asking for a cell in a section that doesn't exist %d", section);
@@ -471,8 +480,12 @@
     return cell;
 }
 
-- (UITableViewCell *)reportProblemSectionCellForTableView:(UITableView *)tableView
+- (UITableViewCell *)feedbackSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
+    if (row == 0) {
+        return [self titleViewCellForTableView:tableView WithTitle:@"Feedback"];
+    }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceReportProblemCellIdentifier];
     
     if (cell == nil) {
@@ -521,7 +534,7 @@
         // This is the create highlights row
         [self createHighlight:self];
     }
-    if (indexPath.section == kPlaceReportProblemSection) {
+    if (indexPath.section == kPlaceFeedbackSection && indexPath.row == 1) {
         [TestFlight openFeedbackView];
     }
 }

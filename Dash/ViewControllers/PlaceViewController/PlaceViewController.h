@@ -17,7 +17,7 @@ enum {
     kPlaceBadgesSection = 1,
     kPlaceHighlightsSection = 2,
     kPlaceMoreInfoSection = 3,
-    kPlaceReportProblemSection = 4,
+    kPlaceFeedbackSection = 4,
     kPlaceFootprintsSection = 5,
     kPlaceNumSections = 6
 };
@@ -67,6 +67,7 @@ typedef enum {
 - (CGFloat)heightForBadgeSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForMoreInforSectionForRow:(NSInteger)row;
+- (CGFloat)heightForFeedBackSectionForRow:(NSInteger)row;
 
 - (HighlightViewCellType)highlightViewCellTypeForRow:(NSInteger)row;
 
@@ -75,7 +76,7 @@ typedef enum {
 - (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
-- (UITableViewCell *)reportProblemSectionCellForTableView:(UITableView *)tableView;
+- (UITableViewCell *)feedbackSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 
 - (UITableViewCell *)titleViewCellForTableView:(UITableView *)tableView WithTitle:(NSString *)title;
 - (UITableViewCell *)createHighlightViewCellForTableView:(UITableView *)tableView;
