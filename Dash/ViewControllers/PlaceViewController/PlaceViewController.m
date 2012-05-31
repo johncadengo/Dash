@@ -379,7 +379,7 @@
             cell = [self footprintsSectionCellForTableView:tableView forRow:row];
             break;
         case kPlaceFeedbackSection:
-            cell = [self reportProblemSectionCellForTableView:tableView forRow:row];
+            cell = [self feedbackSectionCellForTableView:tableView forRow:row];
             break;
         default:
             NSAssert(NO, @"Asking for a cell in a section that doesn't exist %d", section);
