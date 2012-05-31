@@ -16,23 +16,21 @@
 @synthesize mapButton = _mapButton;
 @synthesize callButton = _callButton;
 @synthesize addressLabel = _addressLabel;
-@synthesize addressTitle = _addressTitle;
 @synthesize phoneLabel = _phoneLabel;
-@synthesize phoneTitle = _phoneTitle;
 @synthesize hoursLabel = _hoursLabel;
-@synthesize hoursTitle = _hoursTitle;
 
 
 #pragma mark - UI Constants
 
 //static CGFloat kWindowWidth = 320.0f;
 //static CGFloat kPadding = 5.0f;
+static CGFloat kHeight = 178.5f;
 
 #pragma mark - Class methods
 
 + (CGFloat)height
 {
-    return 200.0f;
+    return kHeight;
 }
 
 #pragma mark - Initialization
@@ -42,6 +40,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        [self setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"InformationBubble"]]];
+        
         // Buttons
         self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.mapButton.frame = CGRectMake(15.0f, 50.0f, 70.0f, 40.0f);
@@ -54,11 +54,6 @@
         [self.callButton setImage:[UIImage imageNamed:@"CallButton.png"] forState:UIControlStateNormal];
         [self.callButton addTarget:self action:@selector(call:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.callButton];
-        
-        // Titles
-        self.addressTitle = kMoreInfoAddress;
-        self.phoneTitle = kMoreInfoPhone;
-        self.hoursTitle = kMoreInfoHours;
         
         // Labels
         UIFont *labelFont = [UIFont fontWithName:kHelveticaNeueBold size:14.0f];
@@ -100,7 +95,7 @@
     
     self.phoneLabel.text = place.phone;
     
-    self.hoursLabel.text = [NSString stringWithFormat: @"%@", @"Open"];
+    self.hoursLabel.text = [NSString stringWithFormat: @"%@", @"Hours Unavailable"];
     [self.hoursLabel sizeToFit];
 }
 
@@ -115,43 +110,6 @@
         UIAlertView *notPermitted=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [notPermitted show];
     }
-}
-
--(NSString *) URLEncodeString:(NSString *) str
-{
-    
-    NSMutableString *tempStr = [NSMutableString stringWithString:str];
-    [tempStr replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tempStr length])];
-    
-    
-    return [[NSString stringWithFormat:@"%@",tempStr] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-}
-
-- (void)map:(id)sender
-{
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self URLEncodeString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", self.addressLabel.text]]]];
-    
-
-}
-
-#pragma mark - 
-
-
-- (void)drawRect:(CGRect)rect
-{
-    [super drawRect:rect];
-    
-    // Draw the background
-    [[UIImage imageNamed:@"MoreInformationButtonOpen.png"] drawAtPoint:CGPointZero]; 
-    
-    // Draw the titles
-    UIFont *titleFont = [UIFont fontWithName:kHelveticaNeueBold size:10.0f];
-    [UIColorFromRGB(kMoreInfoTextColor) set];
-    [self.addressTitle drawAtPoint:CGPointMake(100.0f, 40.0f) withFont:titleFont];
-    [self.phoneTitle drawAtPoint:CGPointMake(100.0f, 100.0f) withFont:titleFont];
-    [self.hoursTitle drawAtPoint:CGPointMake(100.0f, 140.0f) withFont:titleFont];
-    
-    
 }
 
 @end

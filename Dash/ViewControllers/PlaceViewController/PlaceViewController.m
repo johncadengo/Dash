@@ -22,6 +22,7 @@
 #import "CreateHighlightViewController.h"
 #import "MapViewController.h"
 #import "TestFlight.h"
+#import "MoreInfoViewCell.h"
 
 @implementation PlaceViewController
 
@@ -34,7 +35,6 @@
 @synthesize themeColor = _themeColor;
 @synthesize highlightTitle = _highlightTitle;
 @synthesize moreInfoCell = _moreInfoCell;
-@synthesize moreInfoOpen = _moreInfoOpen;
 @synthesize toolbar = _toolbar;
 @synthesize createHighlightButton = _createHighlightButton;
 @synthesize thumbsUpButton = _thumbsUpButton;
@@ -49,8 +49,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // By default more info is closed
-        self.moreInfoOpen = NO;
     }
     return self;
 }
@@ -235,7 +233,7 @@
             height = [self heightForBadgeSectionCellForRow:row];
             break;
         case kPlaceMoreInfoSection:
-            height = [self heightForMoreInforSection];
+            height = [self heightForMoreInforSectionForRow:row];
             break;
         case kPlaceHighlightsSection:
             height = [self heightForHighlightSectionCellForRow:row];
@@ -283,9 +281,13 @@
     return height;    
 }
 
-- (CGFloat)heightForMoreInforSection
+- (CGFloat)heightForMoreInforSectionForRow:(NSInteger)row
 {
-    return (self.moreInfoOpen) ? [MoreInfoViewCell height] : 40.0f;
+    if (row == 0) {
+        return TitleViewCell.height;
+    }
+    
+    return MoreInfoViewCell.height;
 }
 
 - (HighlightViewCellType)highlightViewCellTypeForRow:(NSInteger)row
@@ -326,7 +328,7 @@
             numRows = ([self.badges count] == 0) ? 0 : 2; // One for the title, the other for the badges scroll view
             break;
         case kPlaceMoreInfoSection:
-            numRows = 1;
+            numRows = 2; // Title and the actual cell
             break;
         case kPlaceHighlightsSection:
             numRows = [self.highlights count] + 1; // +1 for create highlight cell
@@ -359,7 +361,7 @@
             cell = [self badgesSectionCellForTableView:tableView forRow:row];
             break;
         case kPlaceMoreInfoSection:
-            cell = [self moreInfoCellForTableView:tableView];
+            cell = [self moreInfoCellForTableView:tableView forRow:row];
             break;
         case kPlaceHighlightsSection:
             cell = [self highlightsSectionCellForTableView:tableView forRow:row];
@@ -396,29 +398,23 @@
     return cell;
 }
 
-- (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView
+- (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    UITableViewCell *cell;
-    if (self.moreInfoOpen) {
-        cell = [tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoOpenCellIdentifier];
-    }
-    else {
-        cell = [tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoCellIdentifier];        
-    }
+    if (row == 0) 
+        return [self titleViewCellForTableView:tableView WithTitle:@"Information"];
+        
+    MoreInfoViewCell *cell;
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:kPlaceMoreInfoCellIdentifier];        
     
     if (cell == nil) {
-        if (self.moreInfoOpen) {
-            cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoOpenCellIdentifier];
-            
-            // Connect us to the cell
-            [self setMoreInfoCell:(MoreInfoViewCell *)cell];
-            [self.moreInfoCell setWithPlace:self.place];
-            [self.moreInfoCell.mapButton addTarget:self action:@selector(map:) forControlEvents:UIControlEventTouchUpInside];
-        }
-        else {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceMoreInfoCellIdentifier];
-            cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MoreInformationButton.png"]];
-        }
+        cell = [[MoreInfoViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                       reuseIdentifier:kPlaceMoreInfoCellIdentifier];
+        
+        // Connect us to the cell
+        [self setMoreInfoCell:cell];
+        [self.moreInfoCell setWithPlace:self.place];
+        [self.moreInfoCell.mapButton addTarget:self action:@selector(map:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return cell;
@@ -519,7 +515,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == kPlaceMoreInfoSection) {
-        [self toggleMoreInfo];
+        //[self toggleMoreInfo];
     }
     if (indexPath.section == kPlaceHighlightsSection && indexPath.row == [self.highlights count]) {
         // This is the create highlights row
@@ -528,17 +524,6 @@
     if (indexPath.section == kPlaceReportProblemSection) {
         [TestFlight openFeedbackView];
     }
-}
-
-
-
-#pragma mark - More info cell delegate
-
-- (void)toggleMoreInfo
-{
-    self.moreInfoOpen = !self.moreInfoOpen;
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kPlaceMoreInfoSection] 
-                  withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Buttons

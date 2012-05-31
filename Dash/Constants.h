@@ -87,8 +87,6 @@ typedef enum {
 } kBadgeIconType;
 
 // Text
-extern NSString * const kWelcomeText;
-extern NSString * const kIntroText;
 extern NSString * const kSignUpText;
 extern NSString * const kMoreInfoAddress;
 extern NSString * const kMoreInfoPhone;
@@ -128,7 +126,6 @@ extern NSString * const kListModeTwo;
 
 extern NSString * const kPlacesPlaceCellIdentifier;
 extern NSString * const kPlaceHeaderCellIdentifier;
-extern NSString * const kPlaceMoreInfoOpenCellIdentifier;
 extern NSString * const kPlaceMoreInfoCellIdentifier;
 extern NSString * const kPlaceBadgesCellIdentifier;
 extern NSString * const kPlaceHighlightCellIdentifier;

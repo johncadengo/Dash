@@ -8,9 +8,7 @@
 
 #import "Constants.h"
 
-#pragma mark - Welcome Text
-NSString * const kWelcomeText = @"Welcome to Dash"; 
-NSString * const kIntroText = @"Your very own personal restaurant consultant. Let's get started with creating an account so that we can make smart, customized suggestions for you, or you can simply make one later.";
+#pragma mark - Text
 NSString *const kSignUpText = @"You are not signed in. Please log in with Facebook Connect, or directly into Dash.";
 NSString * const kMoreInfoAddress = @"Address";
 NSString * const kMoreInfoPhone = @"Phone";
@@ -52,7 +50,6 @@ NSString * const kListModeTwo = @"Nearby";
 
 NSString * const kPlacesPlaceCellIdentifier = @"com.BoxOutDev.Dash.PlacesPlaceCell";
 NSString * const kPlaceHeaderCellIdentifier = @"com.BoxOutDev.Dash.PlaceHeaderCell";
-NSString * const kPlaceMoreInfoOpenCellIdentifier = @"com.BoxOutDev.Dash.PlaceMoreInfoOpenCell";
 NSString * const kPlaceMoreInfoCellIdentifier = @"com.BoxOutDev.Dash.PlaceMoreInfoCell";
 NSString * const kPlaceBadgesCellIdentifier = @"com.BoxOutDev.Dash.PlaceBadgesCell";
 NSString * const kPlaceHighlightCellIdentifier = @"com.BoxOutDev.Dash.PlaceHighlightCell";

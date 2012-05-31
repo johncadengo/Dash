@@ -459,6 +459,7 @@
 		67DE8430152F8CCF00556C54 /* BadgeSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DE842F152F8CCE00556C54 /* BadgeSquareView.m */; };
 		67DEF893153C8DAE0079C097 /* SearchBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF891153C8DAE0079C097 /* SearchBar@2x.png */; };
 		67DEF894153C8DAE0079C097 /* SearchBarWithMGlass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF892153C8DAE0079C097 /* SearchBarWithMGlass@2x.png */; };
+		67E221361577F6A800096DAE /* InformationBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E221351577F6A800096DAE /* InformationBubble@2x.png */; };
 		67E2AA181545944A0002E641 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67E2AA0B1545944A0002E641 /* FBDialog.bundle */; };
 		67E2AA191545944A0002E641 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E2AA111545944A0002E641 /* libfacebook_ios_sdk.a */; };
 		67E2AA2215482C430002E641 /* NewsItem+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E2AA2115482C430002E641 /* NewsItem+Helper.m */; };
@@ -1109,6 +1110,7 @@
 		67DE842F152F8CCE00556C54 /* BadgeSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BadgeSquareView.m; path = Dash/ViewControllers/PlaceViewController/BadgeSquareView.m; sourceTree = "<group>"; };
 		67DEF891153C8DAE0079C097 /* SearchBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SearchBar@2x.png"; path = "Dash/Images/Tabs/Search/SearchBar@2x.png"; sourceTree = "<group>"; };
 		67DEF892153C8DAE0079C097 /* SearchBarWithMGlass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SearchBarWithMGlass@2x.png"; path = "Dash/Images/Tabs/Search/SearchBarWithMGlass@2x.png"; sourceTree = "<group>"; };
+		67E221351577F6A800096DAE /* InformationBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InformationBubble@2x.png"; path = "Dash/Images/PlaceProfile/InformationBubble@2x.png"; sourceTree = "<group>"; };
 		67E2AA091545944A0002E641 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		67E2AA0A1545944A0002E641 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		67E2AA0B1545944A0002E641 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
@@ -2109,6 +2111,7 @@
 		67B378C81534BE8300A2A4CB /* BadgeIcons */ = {
 			isa = PBXGroup;
 			children = (
+				67E221351577F6A800096DAE /* InformationBubble@2x.png */,
 				67B378C91534BE9E00A2A4CB /* DashGold@2x.png */,
 				67B378CA1534BE9E00A2A4CB /* LaptopIcon@2x.png */,
 				67B378CB1534BE9E00A2A4CB /* NewspaperIcon@2x.png */,
@@ -2803,6 +2806,7 @@
 				677A2BC9157549EE00932627 /* DashButtonTip@2x.png in Resources */,
 				677A2BCB1575527500932627 /* DashFilterTip@2x.png in Resources */,
 				677A2BCD15756B1E00932627 /* NoOneNearbyMessage@2x.png in Resources */,
+				67E221361577F6A800096DAE /* InformationBubble@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

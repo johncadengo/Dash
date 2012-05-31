@@ -6,7 +6,6 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MoreInfoViewCell.h"
 #import "HighlightViewCell.h"
 #import <RestKit/RestKit.h>
 
@@ -16,10 +15,10 @@
 enum {
     kPlaceHeaderSection = 0,
     kPlaceBadgesSection = 1,
-    kPlaceMoreInfoSection = 2,
-    kPlaceHighlightsSection = 3,
-    kPlaceFootprintsSection = 5,
+    kPlaceHighlightsSection = 2,
+    kPlaceMoreInfoSection = 3,
     kPlaceReportProblemSection = 4,
+    kPlaceFootprintsSection = 5,
     kPlaceNumSections = 6
 };
 
@@ -37,6 +36,7 @@ typedef enum {
 @class Place;
 @class DashAPI;
 @class TitleViewCell;
+@class MoreInfoViewCell;
 
 @interface PlaceViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, RKRequestDelegate>
 
@@ -49,7 +49,6 @@ typedef enum {
 @property (nonatomic) PlaceThemeColor themeColor;
 @property (nonatomic, strong) TitleViewCell *highlightTitle;
 @property (nonatomic, strong) MoreInfoViewCell *moreInfoCell;
-@property (nonatomic) BOOL moreInfoOpen;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *createHighlightButton;
 @property (nonatomic, strong) UIBarButtonItem *thumbsUpButton;
@@ -67,13 +66,13 @@ typedef enum {
 - (CGFloat)heightForHighlightSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForBadgeSectionCellForRow:(NSInteger)row;
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row;
-- (CGFloat)heightForMoreInforSection;
+- (CGFloat)heightForMoreInforSectionForRow:(NSInteger)row;
 
 - (HighlightViewCellType)highlightViewCellTypeForRow:(NSInteger)row;
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)badgesSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
-- (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView;
+- (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)reportProblemSectionCellForTableView:(UITableView *)tableView;
@@ -83,7 +82,6 @@ typedef enum {
 
 - (void)map:(id)sender;
 - (void)heartTapped:(id)sender;
-- (void)toggleMoreInfo;
 
 - (void)createHighlight:(id)sender;
 - (void)thumbsUp:(id)sender;
