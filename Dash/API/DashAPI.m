@@ -71,6 +71,11 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [badgeMapping mapKeyPath:@"id" toAttribute:@"uid"];
     [badgeMapping mapAttributes:@"name", nil];
     
+    // Define the hours mapping
+    RKManagedObjectMapping *hoursMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Hours"];
+    [hoursMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [hoursMapping mapAttributes:@"days", @"open", @"close", nil];
+    
     // Define our place mapping, which also has 
     // a relationship with category, highlight, and location
     RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
