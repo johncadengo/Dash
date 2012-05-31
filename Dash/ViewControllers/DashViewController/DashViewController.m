@@ -431,7 +431,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
             }
         }
     }
-    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) { 
+    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         // Now, we are dragging
         self.dragging = YES;
     }
@@ -503,6 +503,11 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 - (void)pop:(id) sender
 {
+    // If we're loading, ignore a pop
+    if (self.isLoading) {
+        return;
+    }
+    
     // If the tip is showing, dismiss it
     if ([self.dashButtonTip superview]) {
         [self.dashButtonTip removeFromSuperview];
@@ -530,6 +535,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     }
     else if (INTERNET_REACHABLE) {
         // Otherwise, as long as we can reach the internet, indicate we are now loading
+        self.loading = YES;
         [self.progressHUD show:YES];
         
         // Figure out the filters
@@ -658,6 +664,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         }
     }
     
+    [DashAPI incrementCurPage];
     ++self.currentPage;
     NSInteger firstIndex = [[self class] firstIndexForPage:self.currentPage];
     NSInteger lastIndex = firstIndex + kPlacesPerPage;
@@ -723,6 +730,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects 
 {
     // We are done loading, so stop the progress hud
+    self.loading = NO;
     [self.progressHUD hide:YES]; 
     
     // Get the objects we've just loaded and fill our places array with them

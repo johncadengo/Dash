@@ -33,6 +33,8 @@ typedef enum {
 - (void)invertPriceCheckedAtIndex:(NSInteger)i;
 - (void)setDistanceChecked:(DistanceFilter)i;
 
+- (void)filterChanged;
+
 /** Sends an action sheet up to prompt for a change in location
  */
 - (void)promptForLocation:(id)sender;

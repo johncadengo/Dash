@@ -8,6 +8,7 @@
 
 #import "FilterViewController.h"
 #import "Constants.h"
+#import "DashAPI.h"
 
 @implementation FilterViewController
 
@@ -185,6 +186,8 @@ enum {
  
     // Update current state
     [self.filterView.typesChecked replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:checked]];
+    
+    [self filterChanged];
 }
 
 - (void)invertPriceCheckedAtIndex:(NSInteger)i
@@ -197,11 +200,20 @@ enum {
     
     // Update current state
     [self.filterView.pricesChecked replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:checked]];
+    
+    [self filterChanged];
 }
 
 - (void)setDistanceChecked:(DistanceFilter)i
 {
     self.filterView.currentDistanceFilter = i;
+    
+    [self filterChanged];
+}
+
+- (void)filterChanged
+{
+    [DashAPI resetCurPage];
 }
 
 #pragma mark - 
