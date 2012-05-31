@@ -25,7 +25,7 @@
 static CGFloat kWindowWidth = 320.0f;
 static CGFloat kTopPadding = 10.0f;
 static CGFloat kLeftPadding = 20.0f;
-static CGFloat kLabelWidth = 240.0f;
+static CGFloat kLabelWidth = 220.0f;
 static CGFloat kLabelHeight = 50.0f;
 static CGFloat kHeight = 178.5f;
 
@@ -69,7 +69,7 @@ static CGFloat kHeight = 178.5f;
         self.addressLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.addressLabel];
         
-        self.phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftPadding, (2 * kTopPadding) + kLabelHeight, kLabelWidth, kLabelHeight)];
+        self.phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftPadding, (2 * kTopPadding) - 2.5f + kLabelHeight, kLabelWidth, kLabelHeight)];
         self.phoneLabel.numberOfLines = 1;
         self.phoneLabel.textColor = labelColor;
         self.phoneLabel.font = labelFont;
@@ -77,7 +77,7 @@ static CGFloat kHeight = 178.5f;
         self.phoneLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.phoneLabel];
         
-        self.hoursLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftPadding, (3 * kTopPadding) + (2 * kLabelHeight), kLabelWidth, kLabelHeight)];
+        self.hoursLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLeftPadding, (2 * kTopPadding) - 2.5f + (2 * kLabelHeight), kLabelWidth, kLabelHeight)];
         self.hoursLabel.numberOfLines = 0;
         self.hoursLabel.textColor = labelColor;
         self.hoursLabel.font = labelFont;
@@ -93,7 +93,7 @@ static CGFloat kHeight = 178.5f;
 
 - (void)setWithPlace:(Place *)place
 {
-    self.addressLabel.text = place.address;
+    self.addressLabel.text = [NSString stringWithFormat: @"%@", place.address];
     //[self.addressLabel sizeToFit];
     
     self.phoneLabel.text = place.phone;
