@@ -231,8 +231,9 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     self.locationManager = [JCLocationManagerSingleton sharedInstance];
     
     // Add our progress hud
-    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.popsScrollView];
-    [self.popsScrollView addSubview:self.progressHUD];
+    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    self.progressHUD.yOffset = -44.0f;
+    [self.view addSubview:self.progressHUD];
     self.progressHUD.delegate = self;
     self.progressHUD.removeFromSuperViewOnHide = NO;
     
