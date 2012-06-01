@@ -530,10 +530,11 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     CLLocation *loc = [self.locationManager location];
     
     // If we have enough places to show, show next page
-    if ([self canShowNextPage]) {
-        [self showNextPage];
-    }
-    else if (INTERNET_REACHABLE) {
+    //if ([self canShowNextPage]) {
+    //    [self showNextPage];
+    //}
+    //else if (INTERNET_REACHABLE) {
+    if (INTERNET_REACHABLE) {
         // Otherwise, as long as we can reach the internet, indicate we are now loading
         self.loading = YES;
         [self.progressHUD show:YES];
@@ -644,7 +645,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
  */ 
 - (BOOL)canShowNextPage
 {
-    NSLog(@"%@ %d", self.places, self.places.count);
     return (self.places.count % 4 == 0 && self.places.count > 0) ? YES : NO;
     
     NSInteger maxIndexAvailable = self.places.count - 1;
@@ -742,7 +742,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     // Now, show them
     if ([self canShowNextPage]) {
-        NSLog(@"Can show next page %d", [[self class] pageForIndex:self.places.count - 1]);
         [self showNextPage];
     }
     else {
