@@ -214,6 +214,10 @@
         [cell setWithNewsItem:newsItem];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
+        // Make sure the image button connects
+        [cell.icon addTarget:self action:@selector(showProfile:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.icon setTag:indexPath.row];
+        
         newCell = cell;
     }
     else {
@@ -287,6 +291,17 @@
         
         [self.alertView show];
     }
+}
+
+- (void)showProfile:(id)sender;
+{
+    UIButton *button = (UIButton *)sender;
+    NSInteger row = button.tag;
+    
+    NewsItem *newsItem = [self.feedItems objectAtIndex:row];
+    Person *person = newsItem.author;
+    
+    TFLog(@"Tapping news item profile pic for fb uid %@", person.fb_uid);
 }
 
 #pragma mark - RKObjectLoaderDelegate methods

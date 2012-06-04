@@ -237,7 +237,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     self.progressHUD.delegate = self;
     self.progressHUD.removeFromSuperViewOnHide = NO;
     
-    // Add our drag gesture recognizer
+    // Add our draga gesture recognizer
     self.drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDrag:)];
     [self.view addGestureRecognizer:self.drag];
     [self.drag setDelegate:self];

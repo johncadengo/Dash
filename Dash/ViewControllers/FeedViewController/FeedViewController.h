@@ -39,4 +39,6 @@
 
 - (void)refreshFeed;
 
+- (void)showProfile:(id)sender;
+
 @end

@@ -123,7 +123,7 @@ static CGFloat kHeight = 178.5f;
      */
     
     for (Hours *hours in place.hours) {
-        if (hours.openToday && [hoursString length] == 0) {
+        if (hours.openNow && [hoursString length] == 0) {
             [hoursString appendFormat:@"Currently Open", hours];
         }
     }

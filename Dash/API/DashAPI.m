@@ -653,8 +653,6 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.params = params;
     objectLoader.userData = [NSNumber numberWithInt:kProfile];
     //[objectLoader send];    
-    
-    NSLog(@"Profile For Person");
 }
 
 

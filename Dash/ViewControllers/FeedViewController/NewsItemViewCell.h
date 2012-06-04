@@ -10,15 +10,15 @@
 #import <CoreText/CoreText.h>
 #import "NSAttributedString+Attributes.h"
 #import "OHAttributedLabel.h"
-#import "EGOImageView.h"
+#import "EGOImageButton.h"
 
 @class NewsItem;
 
-@interface NewsItemViewCell : UITableViewCell <EGOImageViewDelegate>
+@interface NewsItemViewCell : UITableViewCell <EGOImageButtonDelegate>
 
 @property (nonatomic, strong) OHAttributedLabel *blurb;
 @property (nonatomic, strong) NSString *timestamp;
-@property (nonatomic, strong) EGOImageView *icon;
+@property (nonatomic, strong) EGOImageButton *icon;
 
 + (CGFloat)heightForNewsItem:(NewsItem *)newsItem;
 

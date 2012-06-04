@@ -111,7 +111,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self.icon = [[EGOImageView alloc] initWithPlaceholderImage:[[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)] delegate:self];
+        self.icon = [[EGOImageButton alloc] initWithPlaceholderImage:[[UIImage imageNamed:@"defaultProfile.jpg"] imageCroppedToFitSize:CGSizeMake(kPicWidth, kPicWidth)] delegate:self];
         self.icon.frame = CGRectMake(kLeftRightMargin, 10.0f, kPicWidth, kPicWidth);
         [self addSubview:self.icon];
         
