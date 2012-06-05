@@ -91,7 +91,7 @@
     CGFloat width = PlaceSquareView.size.width;
     CGFloat height = PlaceSquareView.size.height;
     
-    NSInteger firstAvailableSection = (self.currentPage + 1) * 2;
+    NSInteger firstAvailableSection = (self.currentPage - 1) * 2;
     CGFloat x = (indexPath.section - firstAvailableSection) * width;
     CGFloat y = indexPath.row * height;
     
