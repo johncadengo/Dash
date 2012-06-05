@@ -996,28 +996,8 @@
     // NSOrderedAscending if self < other's close time
     // NSOrderedDescending if self > other
 
-    Hours *otherHours = (Hours *) otherObject;
-    //get close time and convert to integer
-    NSInteger closeHour = [self.close intValue];
-    NSInteger otherHour = [otherHours.close intValue];
-
-    NSLog(@"closehour %d", closeHour);
-    NSLog(@"otherhour %d", otherHour);
-    
-    if(closeHour == otherHour)
-    {
-        return NSOrderedSame;
-    }
-    else if(closeHour < otherHour)
-    {
-        return NSOrderedAscending;
-    }
-    else
-    {
-        return NSOrderedDescending;
-    }
-
-    
+    Hours *otherHours = (Hours *)otherObject;
+    return [self.closeTime compare:otherHours.closeTime];
 }
 
 @end

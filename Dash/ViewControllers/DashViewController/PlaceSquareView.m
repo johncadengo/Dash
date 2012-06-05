@@ -226,7 +226,7 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
     self.icon = nil;
     self.stars = nil;
     self.numRatings = nil;
-    [self setNeedsDisplay];
+    //[self setNeedsDisplay];
 }
 
 #pragma mark - Gestures

@@ -25,6 +25,7 @@
 @synthesize loading = _loading;
 @synthesize dragging = _dragging;
 @synthesize filterShowing = _filterShowing;
+@synthesize didLoad = _didLoad;
 
 @synthesize popsScrollView = _popsScrollView;
 @synthesize quadrantImages = _quadrantImages;
@@ -91,6 +92,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 #pragma mark - View lifecycle
 - (void)loadView
 {
+    self.didLoad = NO;
     // The visible view at all times
     //self.view = [[UIView alloc] init];
     [super loadView];
@@ -147,7 +149,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     // Dash button
     self.popButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.popButton addTarget:self 
-                       action:@selector(pop:)
+                       action:@selector(popScroll:)
              forControlEvents:UIControlEventTouchUpInside];
     //[self.popButton setTitle:@"dash" forState:UIControlStateNormal];
     //[self.popButton.titleLabel setFont:[UIFont fontWithName:kPlutoBold size:42.5f]];
@@ -191,6 +193,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
     // Initial filter view frame
     self.filterViewFrame = CGRectMake(0.0f, 360.0f, 320.0f, 480.0f);
+    
+    self.didLoad = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -433,6 +437,28 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 #pragma mark -
 
+- (void)popScroll:(id)sender
+{
+    // If filter is showing.. Animate down and pop
+    if (self.filterShowing) {
+        self.popsScrollView.currentPage = self.popsScrollView.maxPage;
+        [self.popsScrollView updateVisibleCells];
+        [UIView animateWithDuration:1.0f
+                              delay:0.0f
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             [self hideFilter];
+                         }
+                         completion:^(BOOL finished){
+                             self.filterShowing = NO;
+                         }];
+    }
+    else {
+        self.popsScrollView.currentPage++;
+        [self.popsScrollView updateVisibleCells];
+    }
+}
+
 - (void)pop:(id) sender
 {
     // If we're loading, ignore a pop
@@ -443,19 +469,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     // If the tip is showing, dismiss it
     if ([self.dashButtonTip superview]) {
         [self.dashButtonTip removeFromSuperview];
-    }
-    
-    // If filter is showing.. Animate down and pop
-    if (self.filterShowing) {
-        [UIView animateWithDuration:1.0f
-                              delay:0.0f
-                            options:UIViewAnimationCurveLinear
-                         animations:^{
-                             [self hideFilter];
-                         }
-                         completion:^(BOOL finished){
-                             self.filterShowing = NO;
-                         }];
     }
     
     // Find out where we are
@@ -512,7 +525,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     }
     else {
         // We can't reach the internet, so let the user know
-        if (self.alertView == nil) {
+        if (self.alertView == nil && self.didLoad) {
             self.alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" 
                                                         message:kNoInternetMessage 
                                                        delegate:nil

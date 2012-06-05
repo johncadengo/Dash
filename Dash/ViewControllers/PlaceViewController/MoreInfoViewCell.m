@@ -107,25 +107,12 @@ static CGFloat kHeight = 178.5f;
     self.phoneLabel.text = place.phone;
     
     NSMutableString *hoursString = [[NSMutableString alloc] initWithCapacity:64];
-   
-    /*
-    [hoursString appendFormat:@"Today's hours:\n"];
     
-    for (Hours *hours in place.hours) {
-        if (hours.openToday) {
-            [hoursString appendFormat:@"%@\n", hours];
-        }
-    }
+    NSArray *sortedArray = [[place.hours allObjects] sortedArrayUsingSelector:@selector(compare:)];
     
-    if ([hoursString isEqualToString:@"Today's hours:\n"]) {
-        [hoursString appendFormat:@"Closed"];
-    }
-     */
-    
-    for (Hours *hours in place.hours) {
+    for (Hours *hours in sortedArray) {
         if (hours.openNow && [hoursString length] == 0) {
-            [hoursString appendFormat:@"Currently Open", hours];
-        }
+            [hoursString appendFormat:@"Currently Open"];}
     }
     
     if ([place.hours count] == 0) {

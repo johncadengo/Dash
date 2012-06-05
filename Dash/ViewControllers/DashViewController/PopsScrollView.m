@@ -128,6 +128,8 @@
 
 - (void)updateVisibleCells
 {
+    NSLog(@"update visibles");
+    
     // Put our visible cells back into the pool
     for (PlaceSquareView *cell in self.visibleCells) {
         [self.availableCells addObject:cell];

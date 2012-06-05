@@ -29,6 +29,7 @@
 @property (nonatomic, getter=isLoading) BOOL loading;
 @property (nonatomic, getter=isDragging) BOOL dragging;
 @property (nonatomic, getter=isFilterShowing) BOOL filterShowing;
+@property (nonatomic, getter=didLoad) BOOL didLoad;
 
 // UI Elements, and views
 // PopsScroll, PopBG, and PopButton
@@ -56,6 +57,7 @@
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeUp;
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeDown;
 
+- (void)popScroll:(id)sender;
 - (void)pop:(id) sender;
 
 // PopsScrollView
