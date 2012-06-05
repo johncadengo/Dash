@@ -864,8 +864,8 @@
     days = [self weekdays];
     
     //open time and close time of restaurant
-    NSMutableString *openHour;
-    NSMutableString *closeHour;
+    NSString *openHour;
+    NSString *closeHour;
     
     //find out what time the restaurant opens and closes
     NSInteger timeOpen = [self.open intValue];
@@ -885,8 +885,24 @@
     }
     
     
-    //change 24hr time to 12hr time
     
+
+    openHour = [self openTime];
+    closeHour = [self closeTime];
+
+
+
+     
+    return [NSString stringWithFormat:@"%@ %@ - %@", days, openHour, closeHour];
+}
+/** Human readable open time i.e. self.open == 1000 means "10:00am"
+ */
+- (NSString *)openTime
+{
+    NSMutableString *openHour;
+    
+    NSInteger timeOpen = [self.open intValue];
+
     //12:00am - 12:59am
     if(timeOpen < 60)
     {
@@ -922,15 +938,25 @@
     {
         return @"Hours Unavailable";
     }
+    
+    //add ":" to format time
+    [openHour insertString:@":" atIndex:[openHour length] - 4];
 
+    return openHour;
+}
 
+- (NSString *)closeTime
+{
+    NSMutableString *closeHour;
+
+    NSInteger timeClose = [self.close intValue];
 
     if(timeClose < 60)
     {
         timeClose = 1200 + timeClose;
         closeHour = [NSMutableString stringWithFormat:@"%d", timeClose];
         [closeHour appendString:@"am"];
-
+        
     }
     else if(timeClose >= 100 && timeClose <1200)
     {
@@ -956,13 +982,42 @@
     {
         return @"Hours Unavailable";
     }
-
- 
-    //add ":" to format time
-    [openHour insertString:@":" atIndex:[openHour length] - 4];
-    [closeHour insertString:@":" atIndex:[closeHour length] - 4];
     
-    return [NSString stringWithFormat:@"%@ %@ - %@", days, openHour, closeHour];
+    //add ":" to format string
+    [closeHour insertString:@":" atIndex:[closeHour length] - 4];
+
+    return closeHour;
+}
+
+- (NSComparisonResult)compare:(id)otherObject
+{
+    // TODO:
+    // Return NSOrderedSame if close times are the same
+    // NSOrderedAscending if self < other's close time
+    // NSOrderedDescending if self > other
+
+    Hours *otherHours = (Hours *) otherObject;
+    //get close time and convert to integer
+    NSInteger closeHour = [self.close intValue];
+    NSInteger otherHour = [otherHours.close intValue];
+
+    NSLog(@"closehour %d", closeHour);
+    NSLog(@"otherhour %d", otherHour);
+    
+    if(closeHour == otherHour)
+    {
+        return NSOrderedSame;
+    }
+    else if(closeHour < otherHour)
+    {
+        return NSOrderedAscending;
+    }
+    else
+    {
+        return NSOrderedDescending;
+    }
+
+    
 }
 
 @end

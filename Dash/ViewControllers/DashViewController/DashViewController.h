@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
 #import "PlaceSquareView.h"
+#import "PopsScrollView.h"
 
 @class DashAPI;
 @class Place;
@@ -25,7 +26,7 @@ typedef enum {
     kQuadIV = 3
 }QuadrantIndex;
 
-@interface DashViewController : UIViewController <RKObjectLoaderDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate, PlaceSquareViewDelegate>
+@interface DashViewController : UIViewController <RKObjectLoaderDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate, PlaceSquareViewDelegate, PopsScrollViewDelegate>
 
 // Model elements
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -44,7 +45,7 @@ typedef enum {
 @property (nonatomic) CGRect popsScrollViewFrame;
 @property (nonatomic) CGRect popBackgroundFrame;
 @property (nonatomic) CGRect popButtonFrame;
-@property (nonatomic, strong) UIScrollView *popsScrollView;
+@property (nonatomic, strong) PopsScrollView *popsScrollView;
 @property (nonatomic, strong) UIImageView *popBackground;
 @property (nonatomic, strong) UIButton *popButton;
 
@@ -71,7 +72,6 @@ typedef enum {
  */
 @property (nonatomic, strong) NSMutableArray *quadrantCells;
 @property (nonatomic, strong) NSMutableArray *quadrantFrames;
-@property (nonatomic, strong) NSMutableArray *quadrantImages;
 
 + (NSInteger)pageForIndex:(NSInteger) index;
 + (NSInteger)firstIndexForPage:(NSInteger) page;

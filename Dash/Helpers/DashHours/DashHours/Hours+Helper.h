@@ -53,4 +53,16 @@ typedef enum {
  */
 - (NSString *)description;
 
+/** Human readable open time i.e. self.open == 1000 means "10:00am"
+ */
+- (NSString *)openTime;
+
+/** Human readable close time i.e. self.close == 1000 means "10:00am"
+ */
+- (NSString *)closeTime;
+
+/** Based on close time.
+ */
+- (NSComparisonResult)compare:(id)otherObject;
+
 @end

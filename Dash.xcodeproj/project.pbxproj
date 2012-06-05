@@ -438,6 +438,7 @@
 		67BAC8091459E6D40001C738 /* Visit.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC8081459E6D40001C738 /* Visit.m */; };
 		67BAC80C1459E6D50001C738 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC80B1459E6D50001C738 /* Email.m */; };
 		67BAC80F1459E6D50001C738 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BAC80E1459E6D50001C738 /* Rate.m */; };
+		67BC39F3157D376300BB1CA4 /* PopsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BC39F2157D376300BB1CA4 /* PopsScrollView.m */; };
 		67BFB666147C262B005C862F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB665147C262B005C862F /* PlaceViewController.m */; };
 		67BFB669147C4476005C862F /* PlaceHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BFB668147C4476005C862F /* PlaceHeaderViewCell.m */; };
 		67C829091520DB0E0089E95F /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C829081520DB0E0089E95F /* FilterView.m */; };
@@ -1078,6 +1079,8 @@
 		67BAC80B1459E6D50001C738 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Email.m; path = "Data Model/Actions/PlaceActions/Email.m"; sourceTree = "<group>"; };
 		67BAC80D1459E6D50001C738 /* Rate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rate.h; path = "Data Model/Actions/PlaceActions/Rate.h"; sourceTree = "<group>"; };
 		67BAC80E1459E6D50001C738 /* Rate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rate.m; path = "Data Model/Actions/PlaceActions/Rate.m"; sourceTree = "<group>"; };
+		67BC39F1157D376300BB1CA4 /* PopsScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopsScrollView.h; path = Dash/ViewControllers/DashViewController/PopsScrollView.h; sourceTree = "<group>"; };
+		67BC39F2157D376300BB1CA4 /* PopsScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopsScrollView.m; path = Dash/ViewControllers/DashViewController/PopsScrollView.m; sourceTree = "<group>"; };
 		67BFB664147C262B005C862F /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceViewController.h; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.h; sourceTree = "<group>"; };
 		67BFB665147C262B005C862F /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewController.m; path = Dash/ViewControllers/PlaceViewController/PlaceViewController.m; sourceTree = "<group>"; };
 		67BFB667147C4476005C862F /* PlaceHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceHeaderViewCell.h; path = Dash/ViewControllers/PlaceViewController/PlaceHeaderViewCell.h; sourceTree = "<group>"; };
@@ -1949,6 +1952,8 @@
 			children = (
 				679009D91450D9B300511E0F /* DashViewController.h */,
 				679009DA1450D9B300511E0F /* DashViewController.m */,
+				67BC39F1157D376300BB1CA4 /* PopsScrollView.h */,
+				67BC39F2157D376300BB1CA4 /* PopsScrollView.m */,
 				673ABD5A148EAE19004446B2 /* PlaceSquareView.h */,
 				673ABD5B148EAE19004446B2 /* PlaceSquareView.m */,
 				67A5D8FA151B817C00924CAB /* FilterViewController.h */,
@@ -2962,6 +2967,7 @@
 				67A4F15A156FF040005D5F88 /* NSAttributedString+Attributes.m in Sources */,
 				67A4F15B156FF040005D5F88 /* OHAttributedLabel.m in Sources */,
 				67E221391578221400096DAE /* Hours+Helper.m in Sources */,
+				67BC39F3157D376300BB1CA4 /* PopsScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
