@@ -19,14 +19,13 @@
 
 @interface PopsScrollView : UIScrollView <UIScrollViewDelegate>
 
-@property (nonatomic, strong) NSArray *quadrantImages;
 @property (nonatomic, strong) NSMutableArray *availableCells;
 @property (nonatomic, strong) NSMutableArray *visibleCells;
 @property (nonatomic) NSInteger currentPage;
+@property (nonatomic, weak) id <PopsScrollViewDelegate> popDelegate;
 
+- (id)initWithFrame:(CGRect)frame delegate:(id)delegate;
 - (CGRect)frameForCellAtIndexPath:(NSIndexPath *)indexPath;
-- (UIImage *)imageForCellAtIndexPath:(NSIndexPath *)indexPath;
-- (BOOL)cellVisibleAtIndexPath:(NSIndexPath *)indexPath;
 - (void)updateVisibleCells;
 - (void)reloadData;
 - (PlaceSquareView *)dequeueReuseableCellAtIndexPath:(NSIndexPath *)indexPath;

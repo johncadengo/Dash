@@ -162,12 +162,12 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
 
 #pragma mark - Initialization
 
-- (id)initWithFrame:(CGRect)frame backgroundImage:(UIImage *)backgroundImage
+- (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self setBackgroundColor:[UIColor blackColor]];
-        self.backgroundImage = backgroundImage;
+        //self.backgroundImage = backgroundImage;
         
         // Add our tap gesture recognizer
         self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];

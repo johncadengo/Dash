@@ -36,26 +36,27 @@
 
 @implementation PopsScrollView
 
-@synthesize quadrantImages = _quadrantImages;
 @synthesize availableCells = _availableCells;
 @synthesize visibleCells = _visibleCells;
 @synthesize currentPage = _currentPage;
+@synthesize popDelegate = _popDelegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Set up the quadrantImages
-        UIImage *firstImage = [UIImage imageNamed:@"DashGreenBox.png"]; 
-        UIImage *secondImage = [UIImage imageNamed:@"DashOrangeBox.png"]; 
-        UIImage *thirdImage = [UIImage imageNamed:@"DashRedBox.png"]; 
-        UIImage *fourthImage = [UIImage imageNamed:@"DashTealBox.png"];
-        self.quadrantImages = [[NSArray alloc] initWithObjects:
-                               firstImage, secondImage, thirdImage, fourthImage, nil];
-        
+        //
+    }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame delegate:(id)delegate
+{
+    self = [super initWithFrame:frame];
+    if (self) {
         // Recycling pool
         self.availableCells = [[NSMutableArray alloc] initWithCapacity:16];
-        self.visibleCells = [[NSMutableArray alloc] initWithCapacity:8];
+        self.visibleCells = [[NSMutableArray alloc] initWithCapacity:12];
         
         self.scrollEnabled = YES;
         self.pagingEnabled = YES;
@@ -63,12 +64,18 @@
         self.contentSize = CGSizeMake(6 * PlaceSquareView.size.width, 2 * PlaceSquareView.size.height);
         self.currentPage = 1;
         
-        // Populate empty initial views
+        // Populate initial views
+        PlaceSquareView *cell;
+        NSIndexPath *indexPath;
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 2; j++) {
-                [self dequeueReuseableCellAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i]];
+                indexPath = [NSIndexPath indexPathForRow:j inSection:i];
+                cell = [[PlaceSquareView alloc] initWithFrame:CGRectZero];
+                [self.availableCells addObject:cell];
             }
         }
+        
+        self.popDelegate = delegate;
         [self updateVisibleCells];
     }
     return self;
@@ -84,88 +91,51 @@
     CGFloat width = PlaceSquareView.size.width;
     CGFloat height = PlaceSquareView.size.height;
     
-    NSInteger firstAvailableSection = self.currentPage * 2;
+    NSInteger firstAvailableSection = (self.currentPage + 1) * 2;
     CGFloat x = (indexPath.section - firstAvailableSection) * width;
     CGFloat y = indexPath.row * height;
     
     return CGRectMake(x, y, width, height);
 }
 
-- (UIImage *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
-{
-    UIImage *image;
-    NSInteger sectionParity = indexPath.section % 2;
-
-    if (sectionParity == 0) {
-        // This means we're on the left half of the screen, i.e. second or third image, i.e. index 1 and 2
-        if (indexPath.row == 0) {
-            image = [self.quadrantImages objectAtIndex:1];
-        }
-        else {
-            image = [self.quadrantImages objectAtIndex:2];
-        }
-    }
-    else {
-        // Right half of screen
-        if (indexPath.row == 0) {
-            image = [self.quadrantImages objectAtIndex:0];
-        }
-        else {
-            image = [self.quadrantImages objectAtIndex:3];
-        }
-    }
-
-    return image;
-}
-
-- (BOOL)cellVisibleAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGRect frame = [self frameForCellAtIndexPath:indexPath];
-    return CGRectContainsRect(self.frame, frame);
-}
-
 - (PlaceSquareView *)dequeueReuseableCellAtIndexPath:(NSIndexPath *)indexPath
 {
-    PlaceSquareView *cell;
-    
-    // If we don't have enough, make more
-    if (!self.availableCells.count) {
-        cell = [[PlaceSquareView alloc] initWithFrame:[self frameForCellAtIndexPath:indexPath] backgroundImage:[self imageForCellAtIndexPath:indexPath]];
-        [self.availableCells addObject:cell];
-    }
-    else {
+    PlaceSquareView *cell = nil;
+
+    if (self.availableCells.count) {
         cell = [self.availableCells dequeue];
-        [cell setBackgroundImage:[self imageForCellAtIndexPath:indexPath]];
+        [self addSubview:cell];
     }
-    
-    [self addSubview:cell];
     
     return cell;
 }
 
 - (void)updateVisibleCells
 {
-    NSMutableArray *allCells = [[NSMutableArray alloc] initWithCapacity:32];
-    [allCells addObjectsFromArray:self.availableCells];
-    [allCells addObjectsFromArray:self.visibleCells];
-    [self.availableCells removeAllObjects];
+    // Put our visible cells back into the pool
+    for (PlaceSquareView *cell in self.visibleCells) {
+        [self.availableCells addObject:cell];
+        [cell removeFromSuperview];
+    }
     [self.visibleCells removeAllObjects];
     
-    for (PlaceSquareView *cell in allCells) {
-        if (CGRectContainsRect(self.frame, cell.frame)) {
+    // Go through and ask our delegate for the cells
+    PlaceSquareView *cell;
+    NSIndexPath *indexPath;
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 2; j++) {
+            indexPath = [NSIndexPath indexPathForRow:j inSection:i];
+            cell = [self.popDelegate popsScrollView:self cellAtIndexPath:indexPath];
             [self.visibleCells addObject:cell];
-        }
-        else {
-            [self.availableCells addObject:cell];
+            [cell setFrame:[self frameForCellAtIndexPath:indexPath]];
+            [self addSubview:cell];
         }
     }
-    
-    [allCells removeAllObjects];
 }
 
 - (void)reloadData
 {
-    //[self updateVisibleCells];
+    [self updateVisibleCells];
 }
 
 #pragma mark - Scroll view delegate
@@ -173,8 +143,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     // Adjust page
-    self.currentPage = floorf(scrollView.contentOffset.x / PlaceSquareView.size.width);
-    [self updateVisibleCells];
+    //self.currentPage = floorf(scrollView.contentOffset.x / PlaceSquareView.size.width);
+    //[self updateVisibleCells];
 }
 
 @end

@@ -58,7 +58,7 @@
 
 + (CGColorRef)black;
    
-- (id)initWithFrame:(CGRect)frame backgroundImage:(UIImage *)backgroundImage;
+- (id)initWithFrame:(CGRect)frame;
 - (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
 
 - (void)handleTap:(UIGestureRecognizer *)tap;

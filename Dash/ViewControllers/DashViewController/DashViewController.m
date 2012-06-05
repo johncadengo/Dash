@@ -25,9 +25,9 @@
 @synthesize loading = _loading;
 @synthesize dragging = _dragging;
 @synthesize filterShowing = _filterShowing;
-@synthesize currentPage = _currentPage;
 
 @synthesize popsScrollView = _popsScrollView;
+@synthesize quadrantImages = _quadrantImages;
 @synthesize progressHUD = _progressHUD;
 @synthesize alertView = _alertView;
 @synthesize popBackground = _popBackground;
@@ -48,15 +48,7 @@
 @synthesize swipeUp = _swipeUp;
 @synthesize swipeDown = _swipeDown;
 
-@synthesize quadrantCells = _quadrantCells;
-@synthesize quadrantFrames = _quadrantFrames;
-
 #pragma mark - UI Constants
-enum {
-    kPrePopPage = -1,
-    kPlacesPerPage = 4
-};
-
 static double const kRightHalfXOffset = 0.5f;
 static double const kBottomHalfYOffset = 0.5f;
 static double const kPopButtonYOffset = 15.0f;
@@ -71,31 +63,6 @@ CGRect CGRectMatchCGPointY(CGRect rect, CGPoint origin) {
 CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset);
 CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset) {
     return CGRectMake(rect.origin.x, origin.y + offset, rect.size.width, rect.size.height);
-}
-
-#pragma mark - Class methods for determining layout
-
-/** There are four places per page.
- */
-+ (NSInteger)pageForIndex:(NSInteger) index
-{
-    NSInteger page;
-    
-    // Calculate page if it is greater than or equal to zero
-    // But otherwise, we are at the PrePopPage
-    page = (index >= 0) ? (index / kPlacesPerPage) : kPrePopPage;
-    
-    return page;
-}
-
-+ (NSInteger)firstIndexForPage:(NSInteger) page
-{
-    NSInteger index;
-    
-    //
-    index = (page >= 0) ? (page * kPlacesPerPage) : kPrePopPage;
-    
-    return index;
 }
 
 #pragma mark - Initialization
@@ -129,42 +96,20 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [super loadView];
     self.view.backgroundColor = [UIColor blackColor];
     
+    // Set up the quadrantImages
+    UIImage *firstImage = [UIImage imageNamed:@"DashGreenBox.png"]; 
+    UIImage *secondImage = [UIImage imageNamed:@"DashOrangeBox.png"]; 
+    UIImage *thirdImage = [UIImage imageNamed:@"DashRedBox.png"]; 
+    UIImage *fourthImage = [UIImage imageNamed:@"DashTealBox.png"];
+    self.quadrantImages = [[NSArray alloc] initWithObjects:
+                           firstImage, secondImage, thirdImage, fourthImage, nil];
+    
     // Add our pops scroll view
     CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
     CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
     self.popsScrollViewFrame = CGRectMake(0.0f, 0.0f, popsScrollViewWidth, popsScrollViewHeight);
-    self.popsScrollView = [[PopsScrollView alloc] initWithFrame:self.popsScrollViewFrame];
+    self.popsScrollView = [[PopsScrollView alloc] initWithFrame:self.popsScrollViewFrame delegate:self];
     [self.view addSubview:self.popsScrollView];
-    
-    // Set up the quadrantFrames
-    CGFloat squareWidth = PlaceSquareView.size.width;
-    CGFloat squareHeight = PlaceSquareView.size.height;
-    
-    CGRect firstFrame = CGRectMake(squareWidth + kRightHalfXOffset, 0.0f, squareWidth, squareHeight);
-    CGRect secondFrame = CGRectMake(0.0f, 0.0f, squareWidth, squareHeight);
-    CGRect thirdFrame = CGRectMake(0.0f, squareHeight + kBottomHalfYOffset, squareWidth, squareHeight);
-    CGRect fourthFrame = CGRectMake(squareWidth + kRightHalfXOffset, squareHeight + kBottomHalfYOffset, squareWidth, squareHeight);
-    
-    self.quadrantFrames = [[NSMutableArray alloc] initWithObjects:
-                           [NSValue valueWithCGRect:firstFrame],
-                           [NSValue valueWithCGRect:secondFrame],
-                           [NSValue valueWithCGRect:thirdFrame],
-                           [NSValue valueWithCGRect:fourthFrame], nil];
-
-    // Set up the array to contain our cells
-    self.quadrantCells = [[NSMutableArray alloc] initWithCapacity:kPlacesPerPage * 16];
-
-    // Set up our initial four blank cells
-    UIImageView *imageView;
-    UIImage *image;
-    CGRect frame;
-    
-    for (int i = 0; i < kPlacesPerPage; ++i) {
-        frame = [[self.quadrantFrames objectAtIndex:i] CGRectValue];
-        imageView = [[UIImageView alloc] initWithImage: image];
-        imageView.frame = frame;
-        [self.popsScrollView addSubview:imageView];
-    }
 }
 
 - (void)viewDidLoad
@@ -175,7 +120,6 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     self.loading = NO;
     self.dragging = NO;
     self.filterShowing = NO;
-    self.currentPage = kPrePopPage; // -1
     self.places = [[NSMutableArray alloc] initWithCapacity:12];
     
     // Connect to our API.
@@ -584,117 +528,46 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 #pragma mark - Paging logic
 
-- (PlaceSquareView *)popsScrollView:(PopsScrollView *)popsScrollView cellAtIndexPath:(NSIndexPath *)indexPath
+- (UIImage *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
 {
-    PlaceSquareView *cell;
-    
-    if (cell == nil) {
-        cell = [popsScrollView dequeueReuseableCellAtIndexPath:indexPath];
-    }
-    
-    // Set with place.. eventually
-    
-    return cell;
-}
-
-- (Place *)placeForQuadrant:(QuadrantIndex)quadrant
-{
-    NSInteger firstIndex = [[self class] firstIndexForPage:self.currentPage];
-    Place *place = [self.places objectAtIndex:firstIndex + quadrant];
-    
-    return place;
-}
-
-
-- (void)adjustScrollViewContentSize
-{
-    // Our content size is determined by what page we are currently on.
-    CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
-    CGFloat popsScrollViewHeight = PlaceSquareView.size.height * 2.0f;
-    self.popsScrollView.contentSize = CGSizeMake(popsScrollViewWidth * (self.currentPage + 1), popsScrollViewHeight);    
-}
-
-- (void)addFourMoreQuadrantCells
-{
-    // Set up the quadrants
-    PlaceSquareView *cell;
-    NSValue *value;
-    CGRect cellFrame;
     UIImage *image;
-    NSInteger index;
-    NSInteger start = [self.quadrantCells count];
-    CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
+    NSInteger sectionParity = indexPath.section % 2;
     
-    for (int i = start; i < start + kPlacesPerPage; ++i) {
-        // Get the frames and images
-        index = i % kPlacesPerPage;
-        value = [self.quadrantFrames objectAtIndex:index];
-        cellFrame = CGRectOffset([value CGRectValue], popsScrollViewWidth * self.currentPage, 0.0);
-        
-        // Create the cells
-        cell = [[PlaceSquareView alloc] initWithFrame:cellFrame backgroundImage:image];
-        cell.delegate = self;
-        cell.index = i;
-        
-        [self.quadrantCells addObject:cell];
-        [self.popsScrollView addSubview:cell];       
+    if (sectionParity == 0) {
+        // This means we're on the left half of the screen, i.e. second or third image, i.e. index 1 and 2
+        if (indexPath.row == 0) {
+            image = [self.quadrantImages objectAtIndex:1];
+        }
+        else {
+            image = [self.quadrantImages objectAtIndex:2];
+        }
     }
-}
-
-/** Figures out if we have enough places in our array to show the next page
- */ 
-- (BOOL)canShowNextPage
-{
-    return (self.places.count % 4 == 0 && self.places.count > 0) ? YES : NO;
-    
-    NSInteger maxIndexAvailable = self.places.count - 1;
-    NSInteger lastPageWeCanShow = [[self class] pageForIndex:maxIndexAvailable];
-    
-    return (lastPageWeCanShow == self.currentPage) ? NO : YES;
-}
-
-/** Assumes that we have enough places to display. 
-    Should not call if there's nothing to show.
- */
-- (void)showNextPage
-{
-    // Should never happen
-    NSAssert([self canShowNextPage], @"Tried to showNextPage when canShowNextPage fails");
-    
-    // If this is our first time showing a page, clear out the initial imageviews
-    if (self.currentPage < 0) {
-        for (UIView *subView in self.popsScrollView.subviews) {
-            [subView removeFromSuperview];
+    else {
+        // Right half of screen
+        if (indexPath.row == 0) {
+            image = [self.quadrantImages objectAtIndex:0];
+        }
+        else {
+            image = [self.quadrantImages objectAtIndex:3];
         }
     }
     
-    [DashAPI incrementCurPage];
-    ++self.currentPage;
+    return image;
+}
+
+- (PlaceSquareView *)popsScrollView:(PopsScrollView *)popsScrollView cellAtIndexPath:(NSIndexPath *)indexPath
+{
+    PlaceSquareView *cell = [popsScrollView dequeueReuseableCellAtIndexPath:indexPath];
     
-    [self.popsScrollView reloadData];
-    
-    /*
-    NSInteger firstIndex = [[self class] firstIndexForPage:self.currentPage];
-    NSInteger lastIndex = firstIndex + kPlacesPerPage;
-    Place *place;
-    PlaceSquareView *squareCell;
-    
-    // Adjust the content size of the scroll view to accommodate the new places we've just added
-    [self adjustScrollViewContentSize];
-    
-    // Now add more cells to fill up the new content
-    [self addFourMoreQuadrantCells];
-    
-    for (int i = firstIndex; i < lastIndex; ++i) {
-        place = [self.places objectAtIndex:i];
-        squareCell = [self.quadrantCells objectAtIndex:i];
-        [squareCell setWithPlace:place context:self.managedObjectContext];
+    if (cell == nil) {
+        cell = [[PlaceSquareView alloc] initWithFrame:CGRectZero];
     }
     
-    // Now scroll to the newest pops
-    CGFloat popsScrollViewWidth = PlaceSquareView.size.width * 2.0f;
-    [self.popsScrollView setContentOffset:CGPointMake(self.currentPage * popsScrollViewWidth, 0.0f) animated:YES];
-     */
+    // Set stuff
+    [cell setBackgroundImage:[self imageForCellAtIndexPath:indexPath]];
+    // place
+    
+    return cell;
 }
 
 #pragma mark - Storyboard Segue
@@ -746,8 +619,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     [self.places addObjectsFromArray:objects];
     
     // Now, show them
-    if ([self canShowNextPage]) {
-        [self showNextPage];
+    if (objects.count) {
+        [self.popsScrollView reloadData];
     }
     else {
         // Alert the user that we were unable to obtain results
