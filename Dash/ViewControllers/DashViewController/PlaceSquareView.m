@@ -218,6 +218,17 @@ static UILineBreakMode kBlurbLineBreak = UILineBreakModeTailTruncation;
     [self setNeedsDisplay];
 }
 
+- (void)reset
+{
+    self.name = nil;
+    self.categories = nil;
+    self.distancePrice = nil;
+    self.icon = nil;
+    self.stars = nil;
+    self.numRatings = nil;
+    [self setNeedsDisplay];
+}
+
 #pragma mark - Gestures
 
 /** Receive touch events and respond accordingly.

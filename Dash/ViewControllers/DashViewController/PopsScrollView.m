@@ -58,10 +58,13 @@
         self.availableCells = [[NSMutableArray alloc] initWithCapacity:16];
         self.visibleCells = [[NSMutableArray alloc] initWithCapacity:12];
         
+        self.backgroundColor = [UIColor blackColor];
         self.scrollEnabled = YES;
         self.pagingEnabled = YES;
+        self.showsHorizontalScrollIndicator = NO;
         self.delegate = self;
         self.contentSize = CGSizeMake(6 * PlaceSquareView.size.width, 2 * PlaceSquareView.size.height);
+        self.contentOffset = CGPointMake(2 * PlaceSquareView.size.width, 0.0f);
         self.currentPage = 1;
         
         // Populate initial views
@@ -91,11 +94,22 @@
     CGFloat width = PlaceSquareView.size.width;
     CGFloat height = PlaceSquareView.size.height;
     
-    NSInteger firstAvailableSection = (self.currentPage - 1) * 2;
-    CGFloat x = (indexPath.section - firstAvailableSection) * width;
+    CGFloat x;
+    
+    if (self.currentPage) {
+        x = (indexPath.section - (2 * (self.currentPage - 1))) * width;
+    }
+    else {
+        x = indexPath.section * width;
+    }
     CGFloat y = indexPath.row * height;
     
-    return CGRectMake(x, y, width, height);
+    CGFloat xOffset = (indexPath.section % 2 == 0) ? 0.0f : 0.5f;
+    CGFloat yOffset = (indexPath.row % 2 == 0) ? 0.0f : 0.5f;
+    
+    //NSLog(@"%f %f %@", x, y, indexPath);
+    
+    return CGRectMake(x + xOffset, y + yOffset, width, height);
 }
 
 - (PlaceSquareView *)dequeueReuseableCellAtIndexPath:(NSIndexPath *)indexPath
@@ -115,6 +129,7 @@
     // Put our visible cells back into the pool
     for (PlaceSquareView *cell in self.visibleCells) {
         [self.availableCells addObject:cell];
+        [cell reset];
         [cell removeFromSuperview];
     }
     [self.visibleCells removeAllObjects];
@@ -122,7 +137,14 @@
     // Go through and ask our delegate for the cells
     PlaceSquareView *cell;
     NSIndexPath *indexPath;
-    for (int i = 0; i < 6; i++) {
+    NSInteger start = (self.currentPage - 1) * 2;
+    NSInteger end = start + 6;
+    if (self.currentPage == 0) {
+        start = 0;
+        end = 4;
+    }
+    //NSLog(@"start %d end %d", start, end);
+    for (int i = start; i < end; i++) {
         for (int j = 0; j < 2; j++) {
             indexPath = [NSIndexPath indexPathForRow:j inSection:i];
             cell = [self.popDelegate popsScrollView:self cellAtIndexPath:indexPath];
@@ -130,6 +152,17 @@
             [cell setFrame:[self frameForCellAtIndexPath:indexPath]];
             [self addSubview:cell];
         }
+    }
+    
+    // Don't let me go beyond the great beyond..
+    if (self.currentPage == 0) {
+        [self setContentOffset:CGPointMake(0.0f, 0.0f) animated:NO];
+        self.contentSize = CGSizeMake(4 * PlaceSquareView.size.width, 2 * PlaceSquareView.size.height);
+    }
+    else {
+        // Update our content view, always center the middle page
+        [self setContentOffset:CGPointMake(2 * PlaceSquareView.size.width, 0.0f) animated:NO];
+        self.contentSize = CGSizeMake(6 * PlaceSquareView.size.width, 2 * PlaceSquareView.size.height);
     }
 }
 
@@ -140,11 +173,29 @@
 
 #pragma mark - Scroll view delegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    // Adjust page
-    //self.currentPage = floorf(scrollView.contentOffset.x / PlaceSquareView.size.width);
-    //[self updateVisibleCells];
+    // Figure out if we scrolled left, right, or stayed the same, and adjust the current page accordingly
+    //self.currentPage = scrollView.contentOffset.x / (2 * PlaceSquareView.size.width);
+    
+    NSInteger previousPage = self.currentPage;
+    CGFloat pageWidth = scrollView.frame.size.width;
+    float fractionalPage = scrollView.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    
+    if (page == 0 && self.currentPage != 0) {
+        self.currentPage--;
+    }
+    else if (page == 2) {
+        self.currentPage++;
+    }
+    else if (page == 1 && self.currentPage == 0) {
+        self.currentPage++;
+    }
+    
+    //NSLog(@"page %d cp %d", page, self.currentPage);
+    
+    [self updateVisibleCells];
 }
 
 @end

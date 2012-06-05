@@ -60,6 +60,7 @@
    
 - (id)initWithFrame:(CGRect)frame;
 - (void)setWithPlace:(Place *)place context:(NSManagedObjectContext *)context;
+- (void)reset;
 
 - (void)handleTap:(UIGestureRecognizer *)tap;
 

@@ -60,6 +60,8 @@
 
 // PopsScrollView
 - (UIImage *)imageForCellAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)indexForIndexPath:(NSIndexPath *)indexPath;
+- (Place *)placeAtIndexPath:(NSIndexPath *)indexPath;
 - (PopsScrollView *)popsScrollView:(PopsScrollView *)popsScrollView cellAtIndexPath:(NSIndexPath *)indexPath;
 
 // For dragging

@@ -469,6 +469,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     if (INTERNET_REACHABLE) {
         // Otherwise, as long as we can reach the internet, indicate we are now loading
         self.loading = YES;
+        self.popsScrollView.scrollEnabled = NO;
         [self.progressHUD show:YES];
         
         // Figure out the filters
@@ -506,7 +507,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
                 [types appendFormat:@"%d,", i];
             }
         }
-        
+
         [self.api pop:locParam types:types prices:prices distance:distance];
     }
     else {
@@ -530,7 +531,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 
 - (UIImage *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIImage *image;
+    UIImage *image = nil;
     NSInteger sectionParity = indexPath.section % 2;
     
     if (sectionParity == 0) {
@@ -555,6 +556,42 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     return image;
 }
 
+- (NSInteger)indexForIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger index;
+    
+    if (!indexPath.row) {
+        index = indexPath.section;
+    }
+    else {
+        index = indexPath.section + 6;            
+    }
+    
+    return index;
+}
+
+- (Place *)placeAtIndexPath:(NSIndexPath *)indexPath
+{
+    Place *place = nil;
+    NSInteger index;
+    
+    @try {
+        index = [self indexForIndexPath:indexPath];
+        //NSLog(@"index %d and path %@", index, indexPath);
+        place = [self.places objectAtIndex:index];
+    
+    }
+    @catch (NSException *exception) {
+        // Get more
+        [self pop:nil];
+    }
+    @finally {
+        NSLog(@"place count %d", self.places.count);
+    }
+    
+    return place;
+}
+
 - (PlaceSquareView *)popsScrollView:(PopsScrollView *)popsScrollView cellAtIndexPath:(NSIndexPath *)indexPath
 {
     PlaceSquareView *cell = [popsScrollView dequeueReuseableCellAtIndexPath:indexPath];
@@ -565,7 +602,13 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     // Set stuff
     [cell setBackgroundImage:[self imageForCellAtIndexPath:indexPath]];
-    // place
+    
+    Place *place = [self placeAtIndexPath:indexPath];
+    if (place) {
+        [cell setWithPlace:place context:self.managedObjectContext];
+        cell.delegate = self;
+        cell.index = [self indexForIndexPath:indexPath];
+    }
     
     return cell;
 }
@@ -613,6 +656,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 {
     // We are done loading, so stop the progress hud
     self.loading = NO;
+    self.popsScrollView.scrollEnabled = YES;
     [self.progressHUD hide:YES]; 
     
     // Get the objects we've just loaded and fill our places array with them
