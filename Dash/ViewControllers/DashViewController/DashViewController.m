@@ -564,7 +564,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         index = indexPath.section;
     }
     else {
-        index = indexPath.section + 6;            
+        index = indexPath.section + 6;
     }
     
     return index;
@@ -573,20 +573,14 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 - (Place *)placeAtIndexPath:(NSIndexPath *)indexPath
 {
     Place *place = nil;
-    NSInteger index;
+    NSInteger index = [self indexForIndexPath:indexPath];
     
-    @try {
-        index = [self indexForIndexPath:indexPath];
-        //NSLog(@"index %d and path %@", index, indexPath);
+    if (index < self.places.count) {
         place = [self.places objectAtIndex:index];
-    
     }
-    @catch (NSException *exception) {
+    else {
         // Get more
         [self pop:nil];
-    }
-    @finally {
-        NSLog(@"place count %d", self.places.count);
     }
     
     return place;
@@ -664,13 +658,15 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     
     // Now, show them
     if (objects.count) {
+        self.popsScrollView.maxPage = (self.places.count / 4);
+        NSLog(@"max page %d current page %d", self.popsScrollView.maxPage, self.popsScrollView.currentPage);
         [self.popsScrollView reloadData];
     }
     else {
         // Alert the user that we were unable to obtain results
         if (self.alertView == nil) {
             self.alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" 
-                                                        message:@"We were unable to retrive any results with the criteria you've specified! Please change your filter options." 
+                                                        message:@"We've run out of places in your area that fit the criteria you've specified!" 
                                                        delegate:nil
                                               cancelButtonTitle:@"Ok" 
                                               otherButtonTitles:nil];

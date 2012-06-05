@@ -39,6 +39,7 @@
 @synthesize availableCells = _availableCells;
 @synthesize visibleCells = _visibleCells;
 @synthesize currentPage = _currentPage;
+@synthesize maxPage = _maxPage;
 @synthesize popDelegate = _popDelegate;
 
 - (id)initWithFrame:(CGRect)frame
@@ -66,6 +67,7 @@
         self.contentSize = CGSizeMake(6 * PlaceSquareView.size.width, 2 * PlaceSquareView.size.height);
         self.contentOffset = CGPointMake(2 * PlaceSquareView.size.width, 0.0f);
         self.currentPage = 1;
+        self.maxPage = 2;
         
         // Populate initial views
         PlaceSquareView *cell;
@@ -143,6 +145,9 @@
         start = 0;
         end = 4;
     }
+    else if (self.currentPage == self.maxPage) {
+        end = start + 4;
+    }
     //NSLog(@"start %d end %d", start, end);
     for (int i = start; i < end; i++) {
         for (int j = 0; j < 2; j++) {
@@ -155,13 +160,21 @@
     }
     
     // Don't let me go beyond the great beyond..
+    BOOL animate = NO;
     if (self.currentPage == 0) {
-        [self setContentOffset:CGPointMake(0.0f, 0.0f) animated:NO];
+        [self setContentOffset:CGPointMake(0.0f, 0.0f) animated:animate];
         self.contentSize = CGSizeMake(4 * PlaceSquareView.size.width, 2 * PlaceSquareView.size.height);
+    }
+    else if (self.currentPage == self.maxPage) {
+        [self setContentOffset:CGPointMake(2 * PlaceSquareView.size.width, 0.0f) animated:animate];
+        self.contentSize = CGSizeMake(4 * PlaceSquareView.size.width, 2 * PlaceSquareView.size.height);
+        
+        // ask the delegate for more
+        [self.popDelegate pop:self];
     }
     else {
         // Update our content view, always center the middle page
-        [self setContentOffset:CGPointMake(2 * PlaceSquareView.size.width, 0.0f) animated:NO];
+        [self setContentOffset:CGPointMake(2 * PlaceSquareView.size.width, 0.0f) animated:animate];
         self.contentSize = CGSizeMake(6 * PlaceSquareView.size.width, 2 * PlaceSquareView.size.height);
     }
 }

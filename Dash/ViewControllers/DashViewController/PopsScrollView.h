@@ -14,6 +14,7 @@
 @protocol PopsScrollViewDelegate <NSObject>
 
 - (PlaceSquareView *)popsScrollView:(PopsScrollView *)popsScrollView cellAtIndexPath:(NSIndexPath *)indexPath;
+- (void)pop:(id)sender;
 
 @end
 
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) NSMutableArray *availableCells;
 @property (nonatomic, strong) NSMutableArray *visibleCells;
 @property (nonatomic) NSInteger currentPage;
+@property (nonatomic) NSInteger maxPage;
 @property (nonatomic, weak) id <PopsScrollViewDelegate> popDelegate;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id)delegate;
