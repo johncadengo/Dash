@@ -337,7 +337,7 @@ enum {
     NSString *basename;
     NSString *colorname;
     
-    if ([self.rating compare:[NSNumber numberWithFloat:4.5]] == NSOrderedSame) {
+    if ([self.rating compare:[NSNumber numberWithFloat:5.0]] == NSOrderedSame) {
         basename = kFive;
     }
     else if ([self.rating compare:[NSNumber numberWithFloat:4.5]] == NSOrderedDescending){

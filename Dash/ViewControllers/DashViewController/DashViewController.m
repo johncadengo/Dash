@@ -510,7 +510,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
         // And send request to API for more places
         NSString *locParam;
         if (self.filterViewController.customLocation) {
-            locParam = self.filterViewController.customLocation;
+            locParam = self.filterViewController.customLocationGeocoded;
         }
         else {
             locParam = [NSString stringWithFormat:@"%f, %f", loc.coordinate.latitude,

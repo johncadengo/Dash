@@ -208,6 +208,9 @@
      */
     [self.toolbar setHidden:YES];
     
+    
+    [self.api cancelRequests];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
