@@ -87,10 +87,6 @@
     self.showingProfileView = YES;
     self.view = self.tableView;
     
-    // And finally, every time we show the profile view, 
-    // we need to make a call to our Dash API to request the profile.
-    [self requestProfile];
-    
     // Put top bar back
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
@@ -98,12 +94,14 @@
     [self.view setBackgroundColor:UIColorFromRGB(kGreyBGColor)];
         
     // Add the settings button
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(265.0f, 10.0f, 49.0f, 34.0f);
-    [button setImage:[UIImage imageNamed:@"SettingsButton.png"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(showSettingsView:) forControlEvents:UIControlEventTouchUpInside];
-    self.settingsButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-    [self.navigationItem setRightBarButtonItem:self.settingsButton];
+    if (!self.person) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(265.0f, 10.0f, 49.0f, 34.0f);
+        [button setImage:[UIImage imageNamed:@"SettingsButton.png"] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(showSettingsView:) forControlEvents:UIControlEventTouchUpInside];
+        self.settingsButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+        [self.navigationItem setRightBarButtonItem:self.settingsButton];
+    }
     
     // Make our progress hud
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
@@ -122,12 +120,13 @@
     self.showingProfileView = NO;
     
     // Login logic
-    if (![DashAPI loggedIn]) {
+    if (!DashAPI.loggedIn && !self.person) {
         // This means we skipped logging in earlier, and consequently are not logged in now.
         [self loadLoginView];
     }
     else {
         [self loadProfileView];
+        [self requestProfile];
     }
 }
 
@@ -146,11 +145,16 @@
         self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
         self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
     }
-    
-    if ([self.facebook isSessionValid]) {
+
+    // My profile or someone else's
+    if ([self.facebook isSessionValid] && !self.person) {
         [DashAPI setLoggedIn:YES];
         [self.hud show:YES];
         [self.facebook requestWithGraphPath:@"me" andDelegate:self];
+    }
+    else if (self.person) {
+        [self.hud show:YES];
+        [self.facebook requestWithGraphPath:self.person.fb_uid andDelegate:self];
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newProfile:) name:@"fbDidLogin" object:nil];
@@ -168,6 +172,7 @@
     self.settingsSheet = nil;
     self.settingsButton = nil;
     self.alertView = nil;
+    self.person = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -437,8 +442,13 @@
 
 - (void)requestProfile
 {
-    [self.api myProfile];
-    [self.api recommendsForPerson:DashAPI.me];
+    if (self.person) {
+        [self.api recommendsForPerson:self.person];
+    }
+    else if (DashAPI.me) {
+        [self.api myProfile];
+        [self.api recommendsForPerson:DashAPI.me];
+    }
 }
 
 #pragma mark - FB Connect

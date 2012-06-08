@@ -15,6 +15,7 @@
 #import "NewsItem+Helper.h"
 #import "JCLocationManagerSingleton.h"
 #import "TestFlight.h"
+#import "ProfileViewController.h"
 
 @implementation FeedViewController
 
@@ -266,6 +267,14 @@
         // Make sure the tabbar hides so we can replace it with a toolbar
         placeViewController.hidesBottomBarWhenPushed = YES;
     }
+    if ([[segue identifier] isEqualToString:kShowProfileViewControllerIdentifier]) {
+        Person *person = (Person *)sender;
+        ProfileViewController *profileViewController = (ProfileViewController *)[segue destinationViewController];
+        
+        profileViewController.managedObjectContext = self.managedObjectContext;
+        profileViewController.person = person;
+        [profileViewController.recommends removeAllObjects];
+    }
 }
 
 #pragma mark -
@@ -300,8 +309,7 @@
     
     NewsItem *newsItem = [self.feedItems objectAtIndex:row];
     Person *person = newsItem.author;
-    
-    TFLog(@"Tapping news item profile pic for fb uid %@", person.fb_uid);
+    [self performSegueWithIdentifier:kShowProfileViewControllerIdentifier sender:person];
 }
 
 #pragma mark - RKObjectLoaderDelegate methods

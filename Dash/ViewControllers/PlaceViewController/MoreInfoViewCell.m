@@ -108,11 +108,13 @@ static CGFloat kHeight = 178.5f;
     
     NSMutableString *hoursString = [[NSMutableString alloc] initWithCapacity:64];
     
-    NSArray *sortedArray = [[place.hours allObjects] sortedArrayUsingSelector:@selector(compare:)];
+    NSArray *openNow = [[place.hours objectsPassingTest:^BOOL(id obj, BOOL *stop){
+        Hours *hours = (Hours *)obj;
+        return hours.openNow;
+    }] allObjects];
     
-    for (Hours *hours in sortedArray) {
-        if (hours.openNow && [hoursString length] == 0) {
-            [hoursString appendFormat:@"Currently Open"];}
+    if (openNow.count) {
+        [hoursString appendFormat:@"Currently Open"];
     }
     
     if ([place.hours count] == 0) {
