@@ -246,7 +246,7 @@
     if (indexPath.section == 2) {
         last = [self.recommends count] - 1;
     }
-    else if (h) {
+    else if (indexPath.section == 4 && h) {
         last = self.highlights.count - 1;
     }
     else {
@@ -463,8 +463,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 2 && self.recommends.count) {
-        Place *place = [[self.recommends objectAtIndex:indexPath.row] place];
+    Place *place = nil;
+    NSInteger r = self.recommends.count;
+    NSInteger h = self.highlights.count;
+    NSInteger lh = self.likeHighlights.count;
+    
+    if (indexPath.section == 2 && r) {
+        place = [[self.recommends objectAtIndex:indexPath.row] place];
+    }
+    else if (indexPath.section == 4 && h) {
+        place = [[self.highlights objectAtIndex:indexPath.row] place];
+    }
+    else if (lh) {
+        place = [[self.likeHighlights objectAtIndex:indexPath.row] place];
+    }
+    
+    if (place) {
         [self performSegueWithIdentifier:kShowProfileViewDetailsIdentifier sender:place];
     }
 }
