@@ -111,6 +111,11 @@ typedef enum {
  */
 - (void)recommendsForPerson:(Person *) person withCount:(NSUInteger)count;
 
+- (void)highlightsForPerson:(Person *) person;
+- (void)likeHighlightsForPerson:(Person *) person;
+- (void)highlightsForPerson:(Person *) person withCount:(NSUInteger)count;
+- (void)likeHighlightsForPerson:(Person *) person withCount:(NSUInteger)count;
+
 #pragma mark - 
 
 - (void)placeByID:(NSNumber *)uid;

@@ -274,6 +274,8 @@
         profileViewController.managedObjectContext = self.managedObjectContext;
         profileViewController.person = person;
         [profileViewController.recommends removeAllObjects];
+        
+        [TestFlight passCheckpoint:@"Viewed friend's profile"];
     }
 }
 

@@ -406,6 +406,99 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
 }
 
+
+- (void)highlightsForPerson:(Person *) person
+{
+    return [self highlightsForPerson:person withCount:kDefaultNumFeedItems];
+}
+
+- (void)highlightsForPerson:(Person *) person withCount:(NSUInteger)count
+{
+    // Create an object manager and connect core data's persistent store to it
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    
+    // Define our author mapping for recommended places
+    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [authorMapping mapAttributes:@"name", @"fb_uid", nil];
+    
+    // Define our place mapping
+    RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
+    
+    // Now, connect the two via a recommend
+    RKManagedObjectMapping *recommendMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Recommend"];
+    [recommendMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [recommendMapping mapAttributes:@"timestamp", nil];
+    
+    [recommendMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
+    [recommendMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    
+    // We expect to find the place entity inside of a dictionary keyed "recommends"
+    [objectManager.mappingProvider setMapping:recommendMapping forKeyPath:@"highlights"];
+    
+    // Authentication
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [NSString stringWithFormat:@"%@", person.fb_uid], @"fb_uid",
+                            self.key, @"must_fix",
+                            [NSNumber numberWithInt:count], @"count",nil];
+    
+    // Prepare our object loader to load and map objects from remote server, and send
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:RKPathAppendQueryParams(@"places/highlights", params) delegate:self.delegate];
+    objectLoader.method = RKRequestMethodGET;
+    objectLoader.userData = [NSNumber numberWithInt:kRecommends];
+    [objectLoader send];
+    
+    
+}
+
+- (void)likeHighlightsForPerson:(Person *) person
+{
+    return [self likeHighlightsForPerson:person withCount:kDefaultNumFeedItems];
+}
+
+- (void)likeHighlightsForPerson:(Person *) person withCount:(NSUInteger)count
+{
+    // Create an object manager and connect core data's persistent store to it
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    
+    // Define our author mapping for recommended places
+    RKManagedObjectMapping *authorMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Person"];
+    [authorMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [authorMapping mapAttributes:@"name", @"fb_uid", nil];
+    
+    // Define our place mapping
+    RKManagedObjectMapping *placeMapping = [[self class] placeMapping];
+    
+    // Now, connect the two via a recommend
+    RKManagedObjectMapping *recommendMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Recommend"];
+    [recommendMapping mapKeyPath:@"id" toAttribute:@"uid"];
+    [recommendMapping mapAttributes:@"timestamp", nil];
+    
+    [recommendMapping mapKeyPath:@"place" toRelationship:@"place" withMapping:placeMapping];
+    [recommendMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    
+    // We expect to find the place entity inside of a dictionary keyed "recommends"
+    [objectManager.mappingProvider setMapping:recommendMapping forKeyPath:@"like_highlights"];
+    
+    // Authentication
+    // Params are backwards compared to the way 
+    // it is shown in the http: /pops?key=object
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [NSString stringWithFormat:@"%@", person.fb_uid], @"fb_uid",
+                            self.key, @"must_fix",
+                            [NSNumber numberWithInt:count], @"count",nil];
+    
+    // Prepare our object loader to load and map objects from remote server, and send
+    RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:RKPathAppendQueryParams(@"places/saves", params) delegate:self.delegate];
+    objectLoader.method = RKRequestMethodGET;
+    objectLoader.userData = [NSNumber numberWithInt:kRecommends];
+    [objectLoader send];
+    
+    
+}
+
 #pragma mark - 
 
 - (void)placeByID:(NSNumber *)uid
@@ -653,6 +746,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     objectLoader.params = params;
     objectLoader.userData = [NSNumber numberWithInt:kProfile];
     //[objectLoader send];    
+    
 }
 
 
