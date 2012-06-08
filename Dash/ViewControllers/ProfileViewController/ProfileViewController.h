@@ -47,6 +47,8 @@ enum {
 @property (nonatomic, strong) DashAPI *api;
 @property (nonatomic, strong) Person *person;
 @property (nonatomic, strong) NSMutableArray *recommends;
+@property (nonatomic, strong) NSMutableArray *highlights;
+@property (nonatomic, strong) NSMutableArray *likeHighlights;
 @property (nonatomic, strong) UIBarButtonItem *settingsButton;
 @property (nonatomic, strong) UIActionSheet *settingsSheet;
 @property (nonatomic, strong) MBProgressHUD *hud;
@@ -58,8 +60,10 @@ enum {
 - (void)newProfile:(NSNotification *)sender;
 
 - (ProfileHeaderCell *)headerCellForTableView:(UITableView *)tableView;
-- (TitleViewCell *)titleViewCellForTableView:(UITableView *)tableView;
-- (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSInteger)row;
-- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row;
+- (TitleViewCell *)titleViewCellForTableView:(UITableView *)tableView section:(NSInteger)section;
+- (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSIndexPath *)indexPath;
+- (RecommendedPlaceViewCell *)highlightCellForTableView:(UITableView *)tableView row:(NSIndexPath *)indexPath;
+- (RecommendedPlaceViewCell *)likeHighlightCellForTableView:(UITableView *)tableView row:(NSIndexPath *)indexPath;
+- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSIndexPath *)indexPath;
 
 @end

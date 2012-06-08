@@ -447,7 +447,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:RKPathAppendQueryParams(@"places/highlights", params) delegate:self.delegate];
     objectLoader.method = RKRequestMethodGET;
-    objectLoader.userData = [NSNumber numberWithInt:kRecommends];
+    objectLoader.userData = [NSNumber numberWithInt:kHighlights];
     [objectLoader send];
     
     
@@ -493,7 +493,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     // Prepare our object loader to load and map objects from remote server, and send
     RKObjectLoader *objectLoader = [objectManager objectLoaderWithResourcePath:RKPathAppendQueryParams(@"places/saves", params) delegate:self.delegate];
     objectLoader.method = RKRequestMethodGET;
-    objectLoader.userData = [NSNumber numberWithInt:kRecommends];
+    objectLoader.userData = [NSNumber numberWithInt:kSaves];
     [objectLoader send];
     
     

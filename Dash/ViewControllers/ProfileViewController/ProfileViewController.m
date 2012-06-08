@@ -24,6 +24,8 @@
 @synthesize api = _api;
 @synthesize person = _person;
 @synthesize recommends = _recommends;
+@synthesize highlights = _highlights;
+@synthesize likeHighlights = _likeHighlights;
 @synthesize settingsButton = _settingsButton;
 @synthesize settingsSheet = _settingsSheet;
 @synthesize hud = _hud;
@@ -135,6 +137,8 @@
     [super viewDidLoad];
 
     self.recommends = [[NSMutableArray alloc] initWithCapacity:12];
+    self.highlights = [[NSMutableArray alloc] initWithCapacity:12];
+    self.likeHighlights = [[NSMutableArray alloc] initWithCapacity:12];
     
     // FB
     self.facebook = [[Facebook alloc] initWithAppId:kFBAppID andDelegate:self];
@@ -218,33 +222,44 @@
 {
     CGFloat height;
     
-    switch (indexPath.section) {
-        case 0:
-            height = [ProfileHeaderCell height];
-            break;
-        case 1:
-            height = [TitleViewCell height];
-            break;
-        default:
-            height = [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:indexPath.row]];
-            break;
+    if (indexPath.section == 0) {
+        height = [ProfileHeaderCell height];
+    }
+    else if (indexPath.section % 2 == 1) {
+        height = [TitleViewCell height];
+    }
+    else {
+        height = [RecommendedPlaceViewCell heightForType:[self recommendedPlaceViewCellTypeForRow:indexPath]];
     }
     
     return height;
 }
 
-- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSInteger)row
+- (RecommendedPlaceViewCellType)recommendedPlaceViewCellTypeForRow:(NSIndexPath *)indexPath
 {
     RecommendedPlaceViewCellType type;
-    NSInteger last = [self.recommends count] - 1;
+    NSInteger last = 0;
+    NSInteger r = self.recommends.count;
+    NSInteger h = self.highlights.count;
+    NSInteger lh = self.likeHighlights.count;
+    
+    if (indexPath.section == 2) {
+        last = [self.recommends count] - 1;
+    }
+    else if (h) {
+        last = self.highlights.count - 1;
+    }
+    else {
+        last = self.likeHighlights.count - 1;
+    }
     
     if (last == 0) {
         type = RecommendedPlaceViewCellTypeOnly;
     }
-    else if (row == 0) {
+    else if (indexPath.row == 0) {
         type = RecommendedPlaceViewCellTypeFirst;
     }
-    else if (row == last) {
+    else if (indexPath.row == last) {
         type = RecommendedPlaceViewCellTypeLast;
     }
     else {
@@ -258,45 +273,76 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections. 
-    return 3; //One for the header. One for the title. And one for the liked restaurants.
+    // Each group requires 2 sections, 1 for the title view cell and 1 for the list of places.
+    NSInteger sections = 1; // 1 for the header
+    NSInteger recommends = 2;
+    NSInteger highlights = (self.highlights.count) ? 2 : 0;
+    NSInteger likeHighlights = (self.likeHighlights.count) ? 2 : 0;
+    
+    sections += recommends + highlights + likeHighlights;
+    
+    return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSInteger rows = 0;
+    NSInteger r = self.recommends.count;
+    NSInteger h = self.highlights.count;
+    NSInteger lh = self.likeHighlights.count;
+    
     // Return the number of rows in the section.
     if (section == 0) {
         // One header row
-        return 1;
+        rows = 1;
     }
-    else if (section == 1) {
+    else if (section % 2 == 1) {
         // Title view cell section
-        return 1;
+        rows = 1;
     }
     else if (section == 2) {
-        // Recommend cells.. If not recommends, then return 1 for the no likes message.
-        return (self.recommends.count) ? self.recommends.count : 1; 
+        if (!r && !h && !lh) {
+            rows = 1; // For the empty recommends cell
+        }
+        else {
+            rows = r;
+        }
     }
-    else {
-        // Should never happen
-        return 0;
+    else if (section == 4) {
+        if (h) {
+            rows = h;
+        }
+        else if (lh) {
+            rows = lh;
+        }
     }
+    else if (section == 6) {
+        if (lh) {
+            rows = lh;
+        }
+    }
+
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
+    UITableViewCell *cell = nil;
     
-    switch (indexPath.section) {
-        case 0:
-            cell = [self headerCellForTableView:tableView];
-            break;
-        case 1:
-            cell = [self titleViewCellForTableView:tableView];
-            break;
-        default:
-            cell = [self recommendCellForTableView:tableView row:indexPath.row];
-            break;
+    if (indexPath.section == 0) {
+        cell = [self headerCellForTableView:tableView];
+    }
+    else if (indexPath.section % 2 == 1) {
+        cell = [self titleViewCellForTableView:tableView section:indexPath.section];
+    }
+    else if (indexPath.section == 2) {
+        cell = [self recommendCellForTableView:tableView row:indexPath];
+    }
+    else if (indexPath.section == 4 && self.highlights.count) {
+        cell = [self highlightCellForTableView:tableView row:indexPath];
+    }
+    else if (self.likeHighlights.count) {
+        cell = [self likeHighlightCellForTableView:tableView row:indexPath];
     }
     
     // None should have a selection style
@@ -318,7 +364,7 @@
     return cell;
 }
 
-- (TitleViewCell *)titleViewCellForTableView:(UITableView *)tableView
+- (TitleViewCell *)titleViewCellForTableView:(UITableView *)tableView section:(NSInteger)section
 {
     TitleViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceTitleCellIdentifier];
     
@@ -326,12 +372,32 @@
         cell = [[TitleViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlaceTitleCellIdentifier];
     }
     
-    [cell setTitle:@"Liked Restaurants"];
+    NSInteger r = self.recommends.count;
+    NSInteger h = self.highlights.count;
+    NSInteger lh = self.likeHighlights.count;
+    NSString *title;
+    
+    if (section == 1) {
+        title = @"Liked Restaurants";
+    }
+    else if (section == 3) {
+        if (h) {
+            title = @"Made Highlights At";
+        }
+        else {
+            title = @"Liked Highlights At";
+        }
+    }
+    else {
+        title = @"Liked Highlights At";
+    }
+    
+    [cell setTitle:title];
     
     return cell;
 }
 
-- (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSInteger)row
+- (RecommendedPlaceViewCell *)recommendCellForTableView:(UITableView *)tableView row:(NSIndexPath *)indexPath
 {
     id newCell;
     
@@ -339,12 +405,12 @@
         RecommendedPlaceViewCell *cell = (RecommendedPlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
         
         if (cell == nil) {
-            cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:row]];
+            cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:indexPath]];
         }
         
         // Always update type
-        [cell setType:[self recommendedPlaceViewCellTypeForRow:row]];
-        [cell setWithPlace:[[self.recommends objectAtIndex:row] place] context:self.managedObjectContext];
+        [cell setType:[self recommendedPlaceViewCellTypeForRow:indexPath]];
+        [cell setWithPlace:[[self.recommends objectAtIndex:indexPath.row] place] context:self.managedObjectContext];
         
         newCell = cell;
     }
@@ -361,6 +427,36 @@
     }
     
     return newCell;
+}
+
+- (RecommendedPlaceViewCell *)highlightCellForTableView:(UITableView *)tableView row:(NSIndexPath *)indexPath
+{
+    RecommendedPlaceViewCell *cell = (RecommendedPlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:indexPath]];
+    }
+    
+    // Always update type
+    [cell setType:[self recommendedPlaceViewCellTypeForRow:indexPath]];
+    [cell setWithPlace:[[self.highlights objectAtIndex:indexPath.row] place] context:self.managedObjectContext];
+    
+    return cell;
+}
+
+- (RecommendedPlaceViewCell *)likeHighlightCellForTableView:(UITableView *)tableView row:(NSIndexPath *)indexPath
+{
+    RecommendedPlaceViewCell *cell = (RecommendedPlaceViewCell *)[tableView dequeueReusableCellWithIdentifier:kPlacesPlaceCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[RecommendedPlaceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPlacesPlaceCellIdentifier type:[self recommendedPlaceViewCellTypeForRow:indexPath]];
+    }
+    
+    // Always update type
+    [cell setType:[self recommendedPlaceViewCellTypeForRow:indexPath]];
+    [cell setWithPlace:[[self.likeHighlights objectAtIndex:indexPath.row] place] context:self.managedObjectContext];
+    
+    return cell;
 }
 
 #pragma mark - Table view delegate
@@ -444,10 +540,14 @@
 {
     if (self.person) {
         [self.api recommendsForPerson:self.person];
+        [self.api highlightsForPerson:self.person];
+        [self.api likeHighlightsForPerson:self.person];
     }
     else if (DashAPI.me) {
         [self.api myProfile];
         [self.api recommendsForPerson:DashAPI.me];
+        [self.api highlightsForPerson:DashAPI.me];
+        [self.api likeHighlightsForPerson:DashAPI.me];
     }
 }
 
@@ -517,11 +617,13 @@
         [self.recommends removeAllObjects];
         [self.recommends addObjectsFromArray:objects];
     }
-    else {
-        // Get the objects we've just loaded and fill our places array with them
-        //self.person = [objects lastObject];
-        
-        //NSLog(@"Profile: %@ %@", objects, self.person.actions);    
+    else if ([objectLoader.userData isEqualToNumber:[NSNumber numberWithInt:kHighlights]]) {
+        [self.highlights removeAllObjects];
+        [self.highlights addObjectsFromArray:objects];
+    }
+    else if ([objectLoader.userData isEqualToNumber:[NSNumber numberWithInt:kSaves]]) {
+        [self.likeHighlights removeAllObjects];
+        [self.likeHighlights addObjectsFromArray:objects];
     }
     
     // Display it
