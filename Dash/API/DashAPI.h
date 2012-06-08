@@ -162,4 +162,6 @@ typedef enum {
  */
 - (void)profileForPerson:(Person *)person;
 
+- (void)cancelRequests;
+
 @end

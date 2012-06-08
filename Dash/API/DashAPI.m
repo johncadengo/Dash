@@ -749,7 +749,9 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     
 }
 
-
-
+- (void)cancelRequests
+{
+    [[RKClient sharedClient].requestQueue cancelRequestsWithDelegate:self.delegate];   
+}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "FilterView.h"
 
 typedef enum {
@@ -28,6 +29,8 @@ typedef enum {
 @property (nonatomic, strong) UIActionSheet *changeLocationSheet;
 @property (nonatomic, strong) UIAlertView *customLocationAlert;
 @property (nonatomic, strong) NSString *customLocation;
+@property (nonatomic, strong) NSString *customLocationGeocoded;
+@property (nonatomic, strong) UIAlertView *alertView;
 
 - (void)invertTypeCheckedAtIndex:(NSInteger)i;
 - (void)invertPriceCheckedAtIndex:(NSInteger)i;

@@ -31,6 +31,8 @@ enum {
 @synthesize changeLocationSheet = _changeLocationSheet;
 @synthesize customLocationAlert = _customLocationAlert;
 @synthesize customLocation = _customLocation;
+@synthesize customLocationGeocoded = _customLocationGeocoded;
+@synthesize alertView = _alertView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -102,6 +104,7 @@ enum {
     self.locationButton = nil;
     self.changeLocationSheet = nil;
     self.customLocationAlert = nil;
+    self.alertView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -149,9 +152,35 @@ enum {
 #pragma mark - UIAlertView delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    self.customLocation = nil;
     NSString *inputText = [[alertView textFieldAtIndex:0] text];
-    self.customLocation = [NSString stringWithFormat:@"%@", inputText];
-    [self.locationButton setTitle:[NSString stringWithFormat:@"  Custom Location: %@", self.customLocation] forState:UIControlStateNormal];
+    
+    // Geocode it
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:inputText completionHandler:
+     ^(NSArray *placemarks, NSError*error){
+         if (placemarks && placemarks.count) {
+             self.customLocation = [NSString stringWithFormat:@"%@", inputText];
+             [self.locationButton setTitle:[NSString stringWithFormat:@"  Custom Location: %@", self.customLocation] forState:UIControlStateNormal];
+             
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             self.customLocationGeocoded = [NSString stringWithFormat:@"%f, %f", placemark.location.coordinate.latitude, placemark.location.coordinate.longitude];
+         }
+         else {
+             self.customLocation = nil;
+             
+             if (self.alertView == nil) {
+                 self.alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" 
+                                                             message:@"We were unable to geocode your custom location. Please try again." 
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"Ok" 
+                                                   otherButtonTitles:nil];
+             }
+             
+             [self.alertView show];
+         }
+     }];
+    
 }
 
 #pragma mark - UIActionSheet delegate
