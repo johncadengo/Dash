@@ -340,13 +340,13 @@ enum {
     if ([self.rating compare:[NSNumber numberWithFloat:5.0]] == NSOrderedSame) {
         basename = kFive;
     }
-    else if ([self.rating compare:[NSNumber numberWithFloat:4.5]] == NSOrderedDescending){
+    else if ([self.rating compare:[NSNumber numberWithFloat:4.5]] == NSOrderedSame){
         basename = kFourFive;
     }
-    else if ([self.rating compare:[NSNumber numberWithFloat:4.0]] == NSOrderedDescending) {
+    else if ([self.rating compare:[NSNumber numberWithFloat:4.0]] == NSOrderedSame) {
         basename = kFour;
     }
-    else if ([self.rating compare:[NSNumber numberWithFloat:3.5]] == NSOrderedDescending) {
+    else if ([self.rating compare:[NSNumber numberWithFloat:3.5]] == NSOrderedSame) {
         basename = kThreeFive;
     }
     else {

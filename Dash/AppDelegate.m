@@ -44,7 +44,7 @@ enum {
     [TestFlight takeOff:@"df277f5ccd3ae69fadf14324b2725d73_ODMxNDkyMDEyLTA0LTI0IDE4OjUyOjQ5LjA5MjkyMg"];
     
     // TODO: Do not use this in production.
-    #define TESTING 1
+    #define TESTING 0
     #ifdef TESTING
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
     #endif
