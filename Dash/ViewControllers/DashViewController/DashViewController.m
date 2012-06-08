@@ -201,6 +201,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 {
     [super viewWillAppear:animated];
     
+    self.progressHUD.delegate = self;
+    
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     
     if (![DashAPI skipLogin]) {
@@ -249,6 +251,8 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
     // Figure out where we are
     
     [self.filterView removeFromSuperview];
+    
+    self.progressHUD.delegate = nil;
 }
 
 - (void)viewDidUnload

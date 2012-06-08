@@ -30,6 +30,7 @@
 @synthesize settingsSheet = _settingsSheet;
 @synthesize hud = _hud;
 @synthesize alertView = _alertView;
+@synthesize myProfile = _myProfile;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -121,6 +122,8 @@
     // Default to NO
     self.showingProfileView = NO;
     
+    self.myProfile = !self.person;
+    
     // Login logic
     if (!DashAPI.loggedIn && !self.person) {
         // This means we skipped logging in earlier, and consequently are not logged in now.
@@ -182,6 +185,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.hud.delegate = self;
 
     // Set the custom nav bar
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBar.png"] forBarMetrics:UIBarMetricsDefault];
@@ -203,6 +208,8 @@
     
     // Reset it
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    self.hud.delegate = nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -608,8 +615,12 @@
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
     self.person = [Person personWithFBResult:result context:self.managedObjectContext];
-    [self.api createPerson:self.person];
-    [DashAPI setMe:self.person];
+    
+    if (self.myProfile) {
+        [self.api createPerson:self.person];
+        [DashAPI setMe:self.person];
+    }
+    
     [self.tableView reloadData];
 }
 

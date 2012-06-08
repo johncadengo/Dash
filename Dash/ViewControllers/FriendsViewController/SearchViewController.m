@@ -159,6 +159,8 @@
 {
     [super viewDidAppear:animated];
     
+    self.hud.delegate = self;
+    
     // Clear cached results
     NSMutableArray *result;
     for (NSString *key in self.resultsForAutocompleteQuery) {
@@ -173,6 +175,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    self.hud.delegate = nil;
     
     // Reset it
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWithoutDash.png"] forBarMetrics:UIBarMetricsDefault];

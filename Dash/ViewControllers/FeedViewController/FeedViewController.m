@@ -111,6 +111,8 @@
 {
     [super viewWillAppear:animated];
     
+    self.hud.delegate = self;
+    
     [self.navigationController.navigationBar addSubview:self.customSegmentView];
     
     // Set the custom nav bar
@@ -125,6 +127,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    self.hud.delegate = nil;
     
     [self.customSegmentView removeFromSuperview];
     
