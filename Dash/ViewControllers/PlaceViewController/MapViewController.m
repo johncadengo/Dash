@@ -40,9 +40,15 @@
     self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, 480.0f - 64.0f)];
     [self.map setDelegate:self];
     [self.map addAnnotations:self.annotations];
-    DashMapAnnotation *annotation = [self.annotations lastObject];
-    [self.map setRegion:MKCoordinateRegionMake(annotation.coordinate, MKCoordinateSpanMake(0.02, 0.02)) animated:YES];
     [self.view addSubview:self.map];
+    
+    DashMapAnnotation *annotation = [self.annotations lastObject];
+    MKCoordinateRegion region = self.map.region;
+    region.center = annotation.coordinate;
+    region.span.longitudeDelta /= 8192.0f; // Bigger the value, closer the map view
+    region.span.latitudeDelta /= 8192.0f;
+    [self.map setRegion:region animated:YES];
+    
     
     // Add the cancel button
     self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" 
