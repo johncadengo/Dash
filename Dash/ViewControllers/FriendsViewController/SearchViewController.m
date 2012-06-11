@@ -15,6 +15,7 @@
 #import "JCLocationManagerSingleton.h"
 #import "TitleViewCell.h"
 #import "TestFlight.h"
+#import "MapViewController.h"
 
 @implementation SearchViewController
 
@@ -127,7 +128,7 @@
 
 - (void)map:(id)sender
 {
-    NSLog(@"Search map");
+    [self performSegueWithIdentifier:kShowSearchMapViewController sender:self.resultsForSearchQuery];
 }
 
 - (void)clearSearchBarBackground
@@ -565,6 +566,11 @@
         
         // Make sure the tabbar hides so we can replace it with a toolbar
         placeViewController.hidesBottomBarWhenPushed = YES;
+    }
+    else if ([segue.identifier isEqualToString:kShowSearchMapViewController]) {
+        MapViewController *mapViewController = (MapViewController *)segue.destinationViewController;
+        NSArray *places = (NSArray *)sender;
+        [mapViewController setWithPlaces:places];
     }
 }
 

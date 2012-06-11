@@ -10,6 +10,7 @@
 #import "Place.h"
 #import "Place+Helper.h"
 #import "PlaceLocation.h"
+#import "DashMapAnnotation.h"
 
 @interface MapViewController ()
 
@@ -18,9 +19,7 @@
 @implementation MapViewController
 
 @synthesize map = _map;
-@synthesize coordinate = _coordinate;
-@synthesize title = _myTitle;
-@synthesize subtitle = _subtitle;
+@synthesize annotations = _annotations;
 @synthesize toolbar = _toolbar;
 @synthesize cancelButton = _cancelButton;
 @synthesize doneButton = _doneButton;
@@ -29,7 +28,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -40,10 +39,10 @@
     
     self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, 480.0f - 64.0f)];
     [self.map setDelegate:self];
-    [self.map addAnnotation:self];
+    [self.map addAnnotations:self.annotations];
+    DashMapAnnotation *annotation = [self.annotations lastObject];
+    [self.map setRegion:MKCoordinateRegionMake(annotation.coordinate, MKCoordinateSpanMake(0.02, 0.02)) animated:YES];
     [self.view addSubview:self.map];
-    MKCoordinateRegion region = MKCoordinateRegionMake(self.coordinate, MKCoordinateSpanMake(0.02, 0.02));
-    [self.map setRegion:region animated:YES];
     
     // Add the cancel button
     self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" 
@@ -58,10 +57,12 @@
                                        target:nil action:nil];
     
     // Add the done button
-    self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" 
-                                                       style:UIBarButtonItemStyleDone 
-                                                      target:self 
-                                                      action:@selector(googleMap:)];
+    if (self.annotations.count == 1) {
+        self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" 
+                                                           style:UIBarButtonItemStyleDone 
+                                                          target:self 
+                                                          action:@selector(googleMap:)];
+    }
     
     // Add the toolbar
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0f, 44.0f)];
@@ -90,12 +91,30 @@
 
 - (void)setWithPlace:(Place *)place
 {
-    CLLocationDegrees lat = place.location.latitude.doubleValue;
-    CLLocationDegrees lng = place.location.longitude.doubleValue;
-    self.coordinate = CLLocationCoordinate2DMake(lat, lng);
+    [self setWithPlaces:[NSArray arrayWithObject:place]];
+}
+
+- (void)setWithPlaces:(NSArray *)places
+{
+    if (self.annotations == nil) {
+        self.annotations = [[NSMutableArray alloc] initWithCapacity:32];    
+    }
     
-    self.title = [NSString stringWithFormat:@"%@", place.name];
-    self.subtitle = [NSString stringWithFormat:@"%@", [place.address capitalizedString]];
+    [self.annotations removeAllObjects];
+    
+    // Create annotations for all the places
+    DashMapAnnotation *annotation;
+    for (Place *place in places) {
+        annotation = [[DashMapAnnotation alloc] init];
+        
+        CLLocationDegrees lat = place.location.latitude.doubleValue;
+        CLLocationDegrees lng = place.location.longitude.doubleValue;
+        annotation.coordinate = CLLocationCoordinate2DMake(lat, lng);
+        annotation.title = [NSString stringWithFormat:@"%@", place.name];
+        annotation.subtitle = [NSString stringWithFormat:@"%@", [place.address capitalizedString]];
+        
+        [self.annotations addObject:annotation];
+    }
 }
 
 - (NSString *) URLEncodeString:(NSString *) str
@@ -108,19 +127,9 @@
 
 - (void)googleMap:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self URLEncodeString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%f,%f", self.coordinate.latitude, self.coordinate.longitude]]]];
-}
-
-#pragma mark -
-
-- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation
-{
-    MKPinAnnotationView *annView=[[MKPinAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"currentloc"];
-    annView.pinColor = MKPinAnnotationColorRed;
-    annView.animatesDrop = TRUE;
-    annView.canShowCallout = YES;
-    annView.calloutOffset = CGPointMake(-5, 5);
-    return annView;
+    DashMapAnnotation *annotation = [self.annotations lastObject];
+    
+   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self URLEncodeString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%f,%f", annotation.coordinate.latitude, annotation.coordinate.longitude]]]];
 }
 
 @end

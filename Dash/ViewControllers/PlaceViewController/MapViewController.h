@@ -12,17 +12,16 @@
 
 @class Place;
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, MKAnnotation>
+@interface MapViewController : UIViewController <MKMapViewDelegate>
 
 @property (nonatomic, strong) MKMapView *map;
-@property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, strong) NSMutableArray *annotations;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
 
 - (void)setWithPlace:(Place *)place;
+- (void)setWithPlaces:(NSArray *)places;
 - (NSString *) URLEncodeString:(NSString *) str;
 - (void)googleMap:(id)sender;
 
