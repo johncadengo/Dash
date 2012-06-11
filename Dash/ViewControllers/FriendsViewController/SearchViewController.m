@@ -128,7 +128,11 @@
 
 - (void)map:(id)sender
 {
-    [self performSegueWithIdentifier:kShowSearchMapViewController sender:self.resultsForSearchQuery];
+    NSArray *places = [self.resultsForSearchQuery objectForKey:self.currentQuery];
+    
+    if (self.places.count) {
+        [self performSegueWithIdentifier:kShowSearchMapViewController sender:places];
+    }
 }
 
 - (void)clearSearchBarBackground
