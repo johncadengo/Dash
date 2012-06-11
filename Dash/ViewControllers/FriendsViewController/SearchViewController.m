@@ -130,7 +130,7 @@
 {
     NSArray *places = [self.resultsForSearchQuery objectForKey:self.currentQuery];
     
-    if (self.places.count) {
+    if (places.count) {
         [self performSegueWithIdentifier:kShowSearchMapViewController sender:places];
     }
 }
