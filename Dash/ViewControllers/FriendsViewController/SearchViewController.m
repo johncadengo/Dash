@@ -30,6 +30,7 @@
 @synthesize searchController = _searchController;
 @synthesize searchBar = _searchBar;
 @synthesize nearbyButton = _nearbyButton;
+@synthesize mapButton = _mapButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -109,9 +110,11 @@
     // The first time around, we want to display nearby locations
     [self searchNearby:nil];
     
-    // Nearby button
+    // Nearby and map buttons
     self.nearbyButton = [[UIBarButtonItem alloc] initWithTitle:@"Nearby" style:UIBarButtonItemStyleBordered target:self action:@selector(searchNearby:)];
-    self.navigationItem.rightBarButtonItem = self.nearbyButton;
+    self.mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStyleDone target:self action:@selector(map:)];
+    self.navigationItem.leftBarButtonItem = self.nearbyButton;
+    self.navigationItem.rightBarButtonItem = self.mapButton;
 }
 
 - (void)searchNearby:(id)sender
@@ -120,6 +123,11 @@
     self.searching = YES;
     self.currentQuery = [NSString stringWithFormat:@""];
     [self.api search:self.currentQuery near:[self.locationManager location]];
+}
+
+- (void)map:(id)sender
+{
+    NSLog(@"Search map");
 }
 
 - (void)clearSearchBarBackground

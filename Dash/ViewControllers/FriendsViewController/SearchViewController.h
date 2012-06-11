@@ -26,8 +26,10 @@
 @property (nonatomic, strong) UISearchDisplayController *searchController;
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) UIBarButtonItem *nearbyButton;
+@property (nonatomic, strong) UIBarButtonItem *mapButton;
 
-- (void)searchNearby:(id) sender;
+- (void)searchNearby:(id)sender;
+- (void)map:(id)sender;
 - (void)clearSearchBarBackground;
 
 /** Stores the results keyed by query. We clear these results, 
