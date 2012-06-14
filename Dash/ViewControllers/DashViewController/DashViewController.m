@@ -577,12 +577,7 @@ CGRect CGRectMatchCGPointYWithOffset(CGRect rect, CGPoint origin, CGFloat offset
 {
     NSInteger index;
     
-    if (!indexPath.row) {
-        index = indexPath.section;
-    }
-    else {
-        index = indexPath.section + 6;
-    }
+    index = (indexPath.section * 2) + indexPath.row;
     
     return index;
 }
