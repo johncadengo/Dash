@@ -16,10 +16,11 @@ enum {
     kPlaceHeaderSection = 0,
     kPlaceBadgesSection = 1,
     kPlaceHighlightsSection = 2,
-    kPlaceMoreInfoSection = 3,
-    kPlaceFeedbackSection = 4,
-    kPlaceFootprintsSection = 5,
-    kPlaceNumSections = 6
+    kPlaceFootprintsSection = 3,
+    kPlaceMoreInfoSection = 4,
+    kPlaceFeedbackSection = 5,
+    kPlaceFooterSection = 6,
+    kPlaceNumSections = 7
 };
 
 /** Color themes
@@ -75,7 +76,8 @@ typedef enum {
 - (UITableViewCell *)badgesSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)moreInfoCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)highlightsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
-- (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (UITableViewCell *)footprintSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
+- (UITableViewCell *)footerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)feedbackSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 
 - (UITableViewCell *)titleViewCellForTableView:(UITableView *)tableView WithTitle:(NSString *)title;

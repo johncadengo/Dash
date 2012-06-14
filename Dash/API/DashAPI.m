@@ -76,6 +76,11 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [hoursMapping mapKeyPath:@"id" toAttribute:@"uid"];
     [hoursMapping mapAttributes:@"days", @"open", @"close", nil];
     
+    // Define our news item mapping
+    RKManagedObjectMapping *newsItemMapping = [RKManagedObjectMapping mappingForEntityWithName:@"NewsItem"];
+    [newsItemMapping mapAttributes:@"blurb", @"timestamp", nil];
+    [newsItemMapping mapKeyPath:@"author" toRelationship:@"author" withMapping:authorMapping];
+    
     // Define our place mapping, which also has 
     // a relationship with category, highlight, and location
     RKManagedObjectMapping *placeMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Place"];
@@ -92,6 +97,7 @@ NSString * const kKey = @"KAEMyqRkVRgShNWGZW73u2Fk";
     [placeMapping mapKeyPath:@"recommends" toRelationship:@"recommends" withMapping:authorMapping];
     [placeMapping mapKeyPath:@"saves" toRelationship:@"saves" withMapping:authorMapping];
     [placeMapping mapKeyPath:@"hours" toRelationship:@"hours" withMapping:hoursMapping];
+    [placeMapping mapKeyPath:@"footprints" toRelationship:@"newsItems" withMapping:newsItemMapping];
     
     return placeMapping;
 }

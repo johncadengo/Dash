@@ -23,6 +23,8 @@
 #import "MapViewController.h"
 #import "TestFlight.h"
 #import "MoreInfoViewCell.h"
+#import "NewsItemViewCell.h"
+#import "NewsItem.h"
 
 @implementation PlaceViewController
 
@@ -247,6 +249,9 @@
         case kPlaceFeedbackSection:
             height = [self heightForFeedBackSectionForRow:row];
             break;
+        case kPlaceFooterSection:
+            height = 60.0f;
+            break;
         default:
             NSAssert(NO, @"Asking for the height of a row in a section that doesn't exist: %d", section);
             break;
@@ -278,8 +283,16 @@
 }
 
 - (CGFloat)heightForFootprintSectionCellForRow:(NSInteger)row
-{    
-    CGFloat height = 60.0f; // TODO: For now, this will just make it so toolbar doesn't cover last cell
+{   
+    CGFloat height;
+    
+    if (row == 0) {
+        height = TitleViewCell.height;
+    }
+    else {
+        NewsItem *item = [self.footprints objectAtIndex:row];
+        height = [NewsItemViewCell heightForNewsItem:item];   
+    }
     
     return height;    
 }
@@ -346,10 +359,13 @@
             numRows = [self.highlights count] + 1; // +1 for create highlight cell
             break;
         case kPlaceFootprintsSection:
-            numRows = 1; // TODO: Just a filler cell to accomdate for toolbar
+            numRows = (self.footprints.count == 0) ? 0 : self.footprints.count + 1;
             break;
         case kPlaceFeedbackSection:
             numRows = 2;
+            break;
+        case kPlaceFooterSection:
+            numRows = 1;
             break;
         default:
             NSAssert(NO, @"Asking for number of rows in a section that doesn't exist %d", section);
@@ -379,7 +395,10 @@
             cell = [self highlightsSectionCellForTableView:tableView forRow:row];
             break;
         case kPlaceFootprintsSection:
-            cell = [self footprintsSectionCellForTableView:tableView forRow:row];
+            cell = [self footprintSectionCellForTableView:tableView forRow:row];
+            break;
+        case kPlaceFooterSection:
+            cell = [self footerSectionCellForTableView:tableView forRow:row];
             break;
         case kPlaceFeedbackSection:
             cell = [self feedbackSectionCellForTableView:tableView forRow:row];
@@ -470,7 +489,16 @@
     return cell;
 }
 
-- (UITableViewCell *)footprintsSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+- (UITableViewCell *)footprintSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
+{
+    if (row == 0) {
+        return [self titleViewCellForTableView:tableView WithTitle:@"Footprints"];
+    }
+    
+    return nil;
+}
+
+- (UITableViewCell *)footerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
     static NSString *identifier = @"FillerCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -661,6 +689,7 @@
     // Table view cells
     self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
     self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
+    
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO selector:@selector(compare:)];
     [self.highlights sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     [self.tableView reloadData];
