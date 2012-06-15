@@ -8,6 +8,7 @@
 
 #import "HighlightViewCell.h"
 #import <RestKit/RestKit.h>
+#import "FootprintCell.h"
 
 #pragma mark - Constants
 /** Sections
@@ -71,6 +72,7 @@ typedef enum {
 - (CGFloat)heightForFeedBackSectionForRow:(NSInteger)row;
 
 - (HighlightViewCellType)highlightViewCellTypeForRow:(NSInteger)row;
+- (FootprintCellType)footprintCellTypeForRow:(NSInteger)row;
 
 - (UITableViewCell *)headerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;
 - (UITableViewCell *)badgesSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row;

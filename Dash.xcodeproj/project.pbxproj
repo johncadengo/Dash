@@ -391,6 +391,7 @@
 		67A5D910151BA6CE00924CAB /* RadarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D90C151BA6CE00924CAB /* RadarIcon@2x.png */; };
 		67A5D911151BA6CE00924CAB /* WalkingManIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D90D151BA6CE00924CAB /* WalkingManIcon@2x.png */; };
 		67A5D913151BA70E00924CAB /* DashFourColorIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A5D912151BA70E00924CAB /* DashFourColorIcon@2x.png */; };
+		67A73813158BD2AC00090950 /* FootprintCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A73812158BD2AC00090950 /* FootprintCell.m */; };
 		67A85965153F5DF800B451D9 /* BackgroundBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A85961153F5DF800B451D9 /* BackgroundBubble@2x.png */; };
 		67A85966153F5DF800B451D9 /* TopBarFriendsSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A85962153F5DF800B451D9 /* TopBarFriendsSelected@2x.png */; };
 		67A85967153F5DF800B451D9 /* TopBarNearbyFriends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A85963153F5DF800B451D9 /* TopBarNearbyFriends@2x.png */; };
@@ -1018,6 +1019,8 @@
 		67A5D90C151BA6CE00924CAB /* RadarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RadarIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/RadarIcon@2x.png"; sourceTree = "<group>"; };
 		67A5D90D151BA6CE00924CAB /* WalkingManIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "WalkingManIcon@2x.png"; path = "Dash/Images/Tabs/Dash/Filter/WalkingManIcon@2x.png"; sourceTree = "<group>"; };
 		67A5D912151BA70E00924CAB /* DashFourColorIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DashFourColorIcon@2x.png"; path = "Dash/Images/Tabs/Icons/DashFourColorIcon@2x.png"; sourceTree = "<group>"; };
+		67A73811158BD2AC00090950 /* FootprintCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FootprintCell.h; path = Dash/ViewControllers/PlaceViewController/FootprintCell.h; sourceTree = "<group>"; };
+		67A73812158BD2AC00090950 /* FootprintCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FootprintCell.m; path = Dash/ViewControllers/PlaceViewController/FootprintCell.m; sourceTree = "<group>"; };
 		67A85961153F5DF800B451D9 /* BackgroundBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BackgroundBubble@2x.png"; path = "Dash/Images/Tabs/Feed/BackgroundBubble@2x.png"; sourceTree = "<group>"; };
 		67A85962153F5DF800B451D9 /* TopBarFriendsSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopBarFriendsSelected@2x.png"; path = "Dash/Images/Tabs/Feed/TopBarFriendsSelected@2x.png"; sourceTree = "<group>"; };
 		67A85963153F5DF800B451D9 /* TopBarNearbyFriends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopBarNearbyFriends@2x.png"; path = "Dash/Images/Tabs/Feed/TopBarNearbyFriends@2x.png"; sourceTree = "<group>"; };
@@ -2018,6 +2021,8 @@
 				6729D053147C1E3B0046C8DB /* RecommendedPlacesViewController.m */,
 				6729D054147C1E3B0046C8DB /* RecommendedPlaceViewCell.h */,
 				6729D055147C1E3B0046C8DB /* RecommendedPlaceViewCell.m */,
+				67A73811158BD2AC00090950 /* FootprintCell.h */,
+				67A73812158BD2AC00090950 /* FootprintCell.m */,
 			);
 			name = PlaceActionsViewController;
 			sourceTree = "<group>";
@@ -2968,6 +2973,7 @@
 				67A4F15B156FF040005D5F88 /* OHAttributedLabel.m in Sources */,
 				67E221391578221400096DAE /* Hours+Helper.m in Sources */,
 				67BC39F3157D376300BB1CA4 /* PopsScrollView.m in Sources */,
+				67A73813158BD2AC00090950 /* FootprintCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

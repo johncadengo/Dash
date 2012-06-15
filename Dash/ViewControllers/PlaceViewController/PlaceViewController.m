@@ -292,7 +292,7 @@
     else {
         NewsItem *item = [self.footprints objectAtIndex:row - 1];
         //NSLog(@"%@",item);
-        height = [NewsItemViewCell heightForNewsItem:item];   
+        height = [FootprintCell heightForType:[self footprintCellTypeForRow:row]];   
     }
     
     return height;    
@@ -331,6 +331,24 @@
      */
     else 
         type = HighlightViewCellTypeMiddle;
+    
+    return type;
+}
+
+- (FootprintCellType)footprintCellTypeForRow:(NSInteger)row
+{
+    FootprintCellType type;
+    NSInteger firstRow = 1;
+    NSInteger lastRow = self.footprints.count;
+
+    if (row == firstRow)
+        type = FootprintCellTypeFirst;
+    else if (row == lastRow) {
+        type = FootprintCellTypeLast;
+    }
+    else {
+        type = FootprintCellTypeMiddle;
+    }
     
     return type;
 }
@@ -498,11 +516,12 @@
         newCell = [self titleViewCellForTableView:tableView WithTitle:@"Footprints"];
     }
     else {
-        NewsItemViewCell *cell = (NewsItemViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
+        FootprintCell *cell = (FootprintCell *)[tableView dequeueReusableCellWithIdentifier:@"FootprintCell"];
         
         if (cell == nil) {
-            cell = [[NewsItemViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                           reuseIdentifier:kFeedItemCellIdentifier];
+            cell = [[FootprintCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                           reuseIdentifier:kFeedItemCellIdentifier
+                                                   type:[self footprintCellTypeForRow:row]];
         }
         
         NewsItem *newsItem = [[self footprints] objectAtIndex:row-1];
