@@ -47,6 +47,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
 + (CGFloat)heightForNewsItem:(NewsItem *)newsItem;
 {
     CGSize blurbSize = [self textSizeForBlurb:newsItem];
+    
     CGSize timestampSize = [self textSizeForTimestamp:@"My"];
     
     CGFloat textHeight = kPadding + blurbSize.height + kPadding + 
@@ -77,6 +78,7 @@ static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
     
     return textSize;
     */
+
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:newsItem.blurb];
     [attrStr setFont:[self.class blurbFont]];
     [attrStr setTextColor:UIColorFromRGB(kFeedBlurbColor)];

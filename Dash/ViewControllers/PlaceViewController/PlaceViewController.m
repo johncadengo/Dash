@@ -290,7 +290,8 @@
         height = TitleViewCell.height;
     }
     else {
-        NewsItem *item = [self.footprints objectAtIndex:row];
+        NewsItem *item = [self.footprints objectAtIndex:row - 1];
+        //NSLog(@"%@",item);
         height = [NewsItemViewCell heightForNewsItem:item];   
     }
     
@@ -491,11 +492,31 @@
 
 - (UITableViewCell *)footprintSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
 {
-    if (row == 0) {
-        return [self titleViewCellForTableView:tableView WithTitle:@"Footprints"];
+    UITableViewCell *newCell = nil;
+    
+    if (row==0) {
+        newCell = [self titleViewCellForTableView:tableView WithTitle:@"Footprints"];
+    }
+    else {
+        NewsItemViewCell *cell = (NewsItemViewCell *)[tableView dequeueReusableCellWithIdentifier:kFeedItemCellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[NewsItemViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                           reuseIdentifier:kFeedItemCellIdentifier];
+        }
+        
+        NewsItem *newsItem = [[self footprints] objectAtIndex:row-1];
+        [cell setWithNewsItem:newsItem];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        // Make sure the image button connects
+        //[cell.icon addTarget:self action:@selector(showProfile:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.icon setTag:row];
+        
+        newCell = cell;
     }
     
-    return nil;
+    return newCell;
 }
 
 - (UITableViewCell *)footerSectionCellForTableView:(UITableView *)tableView forRow:(NSInteger)row
@@ -689,6 +710,12 @@
     // Table view cells
     self.badges = [[NSMutableArray alloc] initWithArray:[self.place.badges allObjects]];
     self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
+    self.footprints = [[NSMutableArray alloc] initWithArray:[self.place.newsItems allObjects]];
+    
+    // Connect the news items to us
+    for (NewsItem *newsItem in self.footprints) {
+        newsItem.place = self.place;
+    }
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO selector:@selector(compare:)];
     [self.highlights sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
