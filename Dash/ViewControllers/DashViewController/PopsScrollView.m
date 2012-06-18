@@ -128,8 +128,6 @@
 
 - (void)updateVisibleCells
 {
-    NSLog(@"update visibles");
-    
     // Put our visible cells back into the pool
     for (PlaceSquareView *cell in self.visibleCells) {
         [self.availableCells addObject:cell];
@@ -150,7 +148,6 @@
     else if (self.currentPage == self.maxPage) {
         end = start + 4;
     }
-    //NSLog(@"start %d end %d", start, end);
     for (int i = start; i < end; i++) {
         for (int j = 0; j < 2; j++) {
             indexPath = [NSIndexPath indexPathForRow:j inSection:i];
