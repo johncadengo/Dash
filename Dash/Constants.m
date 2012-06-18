@@ -74,6 +74,7 @@ NSString * const kShowCreateHighlightSegueIdentifier = @"ShowCreateHighlight";
 NSString * const kShowMapViewControllerSegueIdentifier = @"ShowMapViewController";
 NSString * const kShowProfileViewControllerIdentifier = @"ShowProfileViewController";
 NSString * const kShowSearchMapViewController = @"ShowSearchMapViewController";
+NSString * const kShowFootprintProfile = @"ShowFootprintProfile";
 
 #pragma mark - Distance cutoff
 NSString * const kDistanceCutOffString = @"50+";

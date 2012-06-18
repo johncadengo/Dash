@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="k9c-Gj-ADy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="k9c-Gj-ADy">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -28,7 +28,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="447" y="-1200"/>
+            <point key="canvasLocation" x="463" y="-580"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Rdz-yl-ZHb">
@@ -116,7 +116,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMs-8Z-85d" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="uCd-lj-enM" customClass="ProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="u07-TN-5Bc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -158,41 +158,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-26" y="-1200"/>
-        </scene>
-        <!--Recommended Places View Controller - Favorites-->
-        <scene sceneID="0yi-PX-Kun">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xak-M4-wyX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="d0u-3Q-WJe" customClass="RecommendedPlacesViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YGW-wT-Qmz">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Mes-3b-Nlr">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="d0u-3Q-WJe" id="7KB-d8-I19"/>
-                            <outlet property="delegate" destination="d0u-3Q-WJe" id="XOL-wy-Uo5"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="5vL-6S-Ajf"/>
-                    <navigationItem key="navigationItem" title="Favorites" id="Xdx-WY-A6D"/>
-                    <connections>
-                        <segue destination="ZvP-bc-h0g" kind="push" identifier="ShowPlaceActionDetails" id="J5w-qJ-RMU"/>
-                    </connections>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="447" y="-585"/>
+            <point key="canvasLocation" x="-10" y="-580"/>
         </scene>
         <!--Place View Controller-->
         <scene sceneID="Cox-XS-V9E">
@@ -215,6 +181,7 @@
                     <connections>
                         <segue destination="jSF-Va-Qwt" kind="modal" identifier="ShowCreateHighlight" id="0hi-N0-Abz"/>
                         <segue destination="Hsi-wz-X6t" kind="modal" identifier="ShowMapViewController" id="jxD-Jl-B7f"/>
+                        <segue destination="uCd-lj-enM" kind="push" identifier="ShowFootprintProfile" id="lQp-4s-n6F"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -279,22 +246,6 @@
             </objects>
             <point key="canvasLocation" x="1334" y="511"/>
         </scene>
-        <!--Navigation Controller - Favorites-->
-        <scene sceneID="NMc-mT-qex">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ViJ-wf-3jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="IdB-Gh-7Ud" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="Places.png" id="0EB-Vu-1yY"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="56U-ry-ZHk">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="d0u-3Q-WJe" kind="relationship" relationship="rootViewController" id="DuX-2Z-767"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="-26" y="-580"/>
-        </scene>
         <!--Navigation Controller - Search-->
         <scene sceneID="F5X-gs-bmU">
             <objects>
@@ -350,53 +301,12 @@
     </scenes>
     <resources>
         <image name="Feed.png" width="16" height="16"/>
-        <image name="Places.png" width="16" height="16"/>
         <image name="Profile.png" width="16" height="16"/>
         <image name="Search.png" width="52" height="54"/>
     </resources>
-    <classes>
-        <class className="CreateHighlightViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateHighlightViewController.h"/>
-        </class>
-        <class className="DashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashViewController.h"/>
-        </class>
-        <class className="FeedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedViewController.h"/>
-        </class>
-        <class className="FilterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FilterViewController.h"/>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-        </class>
-        <class className="PlaceViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
-        </class>
-        <class className="ProfileViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-        </class>
-        <class className="RecommendedPlacesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecommendedPlacesViewController.h"/>
-        </class>
-        <class className="SearchViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="ax5-89-X2b"/>
-        <segue reference="ty8-Gx-CC2"/>
-        <segue reference="guq-Ru-ro3"/>
-    </inferredMetricsTieBreakers>
 </document>

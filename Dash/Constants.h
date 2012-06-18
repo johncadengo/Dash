@@ -149,6 +149,7 @@ extern NSString * const kShowCreateHighlightSegueIdentifier;
 extern NSString * const kShowMapViewControllerSegueIdentifier;
 extern NSString * const kShowProfileViewControllerIdentifier;
 extern NSString * const kShowSearchMapViewController;
+extern NSString * const kShowFootprintProfile;
 
 // Distance cutoff
 static double const kDistanceCutoff = 50.0;

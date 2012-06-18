@@ -95,4 +95,6 @@ typedef enum {
 
 - (void)refresh;
 
+- (void)showProfile:(id)sender;
+
 @end

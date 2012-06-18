@@ -562,15 +562,15 @@
 - (void)requestProfile
 {
     if (self.person) {
-        [self.api recommendsForPerson:self.person];
-        [self.api highlightsForPerson:self.person];
         [self.api likeHighlightsForPerson:self.person];
+        [self.api highlightsForPerson:self.person];
+        [self.api recommendsForPerson:self.person];
     }
     else if (DashAPI.me) {
         [self.api myProfile];
-        [self.api recommendsForPerson:DashAPI.me];
-        [self.api highlightsForPerson:DashAPI.me];
         [self.api likeHighlightsForPerson:DashAPI.me];
+        [self.api highlightsForPerson:DashAPI.me];
+        [self.api recommendsForPerson:DashAPI.me];
     }
 }
 

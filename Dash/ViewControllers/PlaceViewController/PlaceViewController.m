@@ -25,6 +25,7 @@
 #import "MoreInfoViewCell.h"
 #import "NewsItemViewCell.h"
 #import "NewsItem.h"
+#import "ProfileViewController.h"
 
 @implementation PlaceViewController
 
@@ -532,8 +533,9 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         // Make sure the image button connects
-        //[cell.icon addTarget:self action:@selector(showProfile:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.icon setTag:row];
+        [cell.icon addTarget:self action:@selector(showProfile:) forControlEvents:UIControlEventTouchUpInside];
+        NSInteger footprintIndex = row-1;
+        [cell.icon setTag:footprintIndex];
         
         newCell = cell;
     }
@@ -722,8 +724,19 @@
         
         [mapViewController setWithPlace:place];
     }
+    else if ([segue.identifier isEqualToString:kShowFootprintProfile]) {
+        Person *person = (Person *)sender;
+        ProfileViewController *profileViewController = (ProfileViewController *)[segue destinationViewController];
+        
+        profileViewController.managedObjectContext = self.managedObjectContext;
+        profileViewController.person = person;
+        [profileViewController.recommends removeAllObjects];
+        [profileViewController.highlights removeAllObjects];
+        [profileViewController.likeHighlights removeAllObjects];
+        
+        [TestFlight passCheckpoint:@"Viewed footprint's profile"];       
+    }
 }
-
 
 #pragma mark -
 
@@ -748,6 +761,17 @@
     [self.downButton setSelected:[self.place savedByMe]];
     [self.downLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsdowncount integerValue])]];
     [self.upLabel setText:[NSString stringWithFormat:@"%d", ([self.place.thumbsupcount integerValue])]];
+}
+
+- (void)showProfile:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    NSInteger row = button.tag;
+    
+    NewsItem *newsItem = [self.footprints objectAtIndex:row];
+    Person *author = newsItem.author;
+    
+   [self performSegueWithIdentifier:kShowFootprintProfile sender:author];
 }
 
 #pragma mark - RKObjectLoaderDelegate methods
