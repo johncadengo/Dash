@@ -341,7 +341,10 @@
     NSInteger firstRow = 1;
     NSInteger lastRow = self.footprints.count;
 
-    if (row == firstRow)
+    if (firstRow == lastRow) {
+        type = FootprintCellTypeOnly;
+    }
+    else if (row == firstRow)
         type = FootprintCellTypeFirst;
     else if (row == lastRow) {
         type = FootprintCellTypeLast;

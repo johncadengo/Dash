@@ -248,7 +248,7 @@ static const CGFloat kYOffset = 8.0f;
                        withFont:[[self class] timestampFont]];
     
     // Draw line
-    if (self.type != FootprintCellTypeLast) {
+    if (self.type != FootprintCellTypeLast && self.type != FootprintCellTypeOnly) {
         CGFloat iconHeight = 10.0f + kPicWidth + kPadding + kLineHeight;
         [self drawHorizontalLineStartingAt:CGPointMake(kLeftRightMargin, 
                                                        MAX(blurbSize.height + 30.0f, iconHeight)) 
