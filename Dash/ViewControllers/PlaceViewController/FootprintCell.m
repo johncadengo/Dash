@@ -31,14 +31,14 @@
 static CGFloat kWindowWidth = 320.0f;
 static CGFloat kLeftRightMargin = 18.0f;
 static CGFloat kPadding = 5.0f;
-static CGFloat kPicWidth = 50.0f;
+static CGFloat kPicWidth = 40.0f;
 static CGFloat kLineLength = 284.0f;
 static CGFloat kLineHeight = 4.0f;
 
 /** Should never get THIS big.. Just wanted to leave room
  */
 static CGFloat kMaxBlurbHeight = 1000.0f;
-static CGFloat kBlurbFontSize = 14.0f;
+static CGFloat kBlurbFontSize = 12.0f;
 
 static UILineBreakMode kBlurbLineBreak = UILineBreakModeWordWrap;
 static UILineBreakMode kTimestampLineBreak = UILineBreakModeTailTruncation;
@@ -48,7 +48,7 @@ static const CGFloat kMiddleHeight = 63.0f;
 static const CGFloat kBottomHeight = 73.0f;
 static const CGFloat kOnlyHeight = 71.5f;
 
-static const CGFloat kTopYOffset = 11.5f;
+static const CGFloat kTopYOffset = 12.0f;
 static const CGFloat kYOffset = 8.0f;
 
 #pragma mark - Class methods for determining the size of UI elements
@@ -248,10 +248,13 @@ static const CGFloat kYOffset = 8.0f;
                        withFont:[[self class] timestampFont]];
     
     // Draw line
-    CGFloat iconHeight = 10.0f + kPicWidth + kPadding + kLineHeight;
-    [self drawHorizontalLineStartingAt:CGPointMake(kLeftRightMargin, 
-                                                   MAX(blurbSize.height + 30.0f, iconHeight)) 
-                            withLength:kLineLength];
+    if (self.type != FootprintCellTypeLast) {
+        CGFloat iconHeight = 10.0f + kPicWidth + kPadding + kLineHeight;
+        [self drawHorizontalLineStartingAt:CGPointMake(kLeftRightMargin, 
+                                                       MAX(blurbSize.height + 30.0f, iconHeight)) 
+                                withLength:kLineLength];        
+    }
+
 	
 }
 
