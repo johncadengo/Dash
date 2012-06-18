@@ -17,4 +17,9 @@
     return time;
 }
 
+- (NSComparisonResult)compare:(NewsItem *)other
+{
+    return [self.timestamp compare:other.timestamp];
+}
+
 @end

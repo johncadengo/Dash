@@ -11,5 +11,6 @@
 @interface NewsItem (Helper)
 
 - (NSString *)relativeTimestamp;
+- (NSComparisonResult)compare:(NewsItem *)other;
 
 @end

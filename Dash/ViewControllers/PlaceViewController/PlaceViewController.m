@@ -747,13 +747,12 @@
     self.highlights = [[NSMutableArray alloc] initWithArray:[self.place.highlights allObjects]];
     self.footprints = [[NSMutableArray alloc] initWithArray:[self.place.newsItems allObjects]];
     
-    // Connect the news items to us
-    for (NewsItem *newsItem in self.footprints) {
-        newsItem.place = self.place;
-    }
-    
+    // Sort stuff
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO selector:@selector(compare:)];
     [self.highlights sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO selector:@selector(compare:)];
+    [self.footprints sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
     [self.tableView reloadData];
     
     // Tool bar stuff
